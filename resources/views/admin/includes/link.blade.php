@@ -113,8 +113,7 @@
     <script src="{{ asset('assets/admin/js/calendar/moment.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/calendar/fullcalendar.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/calendar/fullcalendar-active.js') }}"></script>
-    <!-- Include DataTables JS -->
-    {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> --}}
+    
     
 
 
