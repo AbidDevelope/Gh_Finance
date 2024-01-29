@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\FinanceController;
+use App\Http\Controllers\Admin\ServicesController;
 
 
 // Route::get('/', function () {
@@ -28,7 +29,6 @@ Route::controller(AuthController::class)->group(function(){
 Route::controller(FinanceController::class)->group(function(){
     Route::prefix('admin')->group(function(){
         Route::middleware(['adminAuthentication'])->group(function(){
-            Route::get('all/services', 'allSerices')->name('all/services');
             Route::get('quotation', 'quotation')->name('quotation');
             Route::get('quotations/create', 'quotationCreate')->name('quotations/create');
             Route::get('quotation/view', 'quotationView')->name('quotation/view');
@@ -42,6 +42,17 @@ Route::controller(FinanceController::class)->group(function(){
             Route::get('payments', 'paymentList')->name('payments');
             Route::get('expenses', 'expensesList')->name('expenses');
             // Route::get('bankaccounts', 'bankAcoountList')->name('bankaccounts');
+        });
+    });
+});
+
+// Services Controller Start
+Route::controller(ServicesController::class)->group(function(){
+    Route::prefix('admin')->group(function(){
+        Route::middleware(['adminAuthentication'])->group(function(){
+            Route::get('all/services', 'allServices')->name('all/services');
+            Route::get('create/project', 'createProjectList')->name('create/project');
+            Route::post('create/project', 'createProjectData')->name('create/project');
         });
     });
 });
