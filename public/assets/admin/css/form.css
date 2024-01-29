@@ -1,0 +1,59 @@
+/* Style the form section */
+.form-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 100px 0;
+}
+
+/* Style labels */
+.form-section .form-label {
+    color: #333;
+    margin-top: 11px;
+    font-weight: bold;
+}
+
+/* Style input fields */
+.form-section .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    background: #fff;
+    color: #000;
+}
+
+/* Style the textarea */
+.form-section .form-floating > .form-control {
+    height: auto;
+}
+.form-section h4
+{
+    color: #000;
+    margin: 15px;
+}
+/* Style the button */
+.form-section button[type="submit"] {
+    color: #fff;
+    padding: 10px 20px;
+    border: 1px solid #1B2A47 !important;
+    border-radius: 0 !important; 
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto;
+    background: #1B2A47;
+}
+
+.form-section button[type="submit"]:hover {
+    background-color: #fff;
+    border: 1px solid #1B2A47;
+    color: #000;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .form-section .row > div {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
