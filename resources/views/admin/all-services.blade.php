@@ -112,13 +112,16 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-actions">
-                                <a href="#" class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
+                                <a href="{{ route('create/project') }}" class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                     <i class="fa fa-plus"></i> Create Project
                                 </a>
                                 <a href="#" class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
                                         <i class="fa fa-file-export"></i> Export
                                 </a>
                             </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                               <span class="text-success">{{ session('success') }}</span>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <table id="dataTable">

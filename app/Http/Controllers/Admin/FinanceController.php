@@ -8,10 +8,7 @@ use App, Session;
 
 class FinanceController extends Controller
 {
-    public function allSerices()
-    {
-        return view('admin.all-services');
-    }
+
     public function invoiceList()
     {
         return view('admin.invoices');
