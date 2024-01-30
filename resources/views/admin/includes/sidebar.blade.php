@@ -8,7 +8,7 @@
 
         <div class="nalika-profile">
             <div class="profile-dtl">
-                <a href="#"><img src="{{ asset('assets/admin/img/logo/gh_logo.jpg') }}" alt="" /></a>
+                <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/admin/img/logo/gh_logo.jpg') }}" alt="" /></a>
                 {{-- <h2>{{ Auth::guard('admin')->user()->first_name }} <span class="min-dtn">{{ Auth::guard('admin')->user()->last_name }}</span></h2> --}}
                 <h2> <span class="min-dtn">GHADER & HAMDOUN</span></h2>
             </div>
@@ -22,7 +22,7 @@
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
                     <li class="active">
-                        <a class="" href="{{ route('admin/dashboard') }}">
+                        <a class="" href="{{ route('dashboard') }}">
                             <img src="{{ asset('assets/admin/img/icon/dashboard.png') }}" alt="">
                                <span class="mini-click-non">Dashboard</span>
                             </a>
@@ -31,10 +31,10 @@
                         <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/services.png') }}" alt=""> <span class="mini-click-non">Services</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Login" href="{{ route('all/services') }}"><img src="{{ asset('assets/admin/img/icon/order-white.png') }}" alt=""><span class="mini-sub-pro">All</span></a></li>
-                            <li><a title="Lock" href="#"><span class="mini-sub-pro">Design</span></a></li>
-                            <li><a title="Password Recovery" href="#"><span class="mini-sub-pro">Construction</span></a></li>
-                            <li><a title="Password Recovery" href="#"><span class="mini-sub-pro">AIU</span></a></li>
-                            <li><a title="Password Recovery" href="#"><span class="mini-sub-pro">Bidaa</span></a></li>
+                            <li><a title="Lock" href="{{ route('designs') }}"><img src="{{ asset('assets/admin/img/icon/design.png') }}" alt=""><span class="mini-sub-pro">Designs</span></a></li>
+                            <li><a title="Password Recovery" href="{{ route('constructions') }}"><img src="{{ asset('assets/admin/img/icon/construction.png') }}" alt=""><span class="mini-sub-pro">Constructions</span></a></li>
+                            {{-- <li><a title="Password Recovery" href="#"><span class="mini-sub-pro">AIU</span></a></li> --}}
+                            {{-- <li><a title="Password Recovery" href="#"><span class="mini-sub-pro">Bidaa</span></a></li> --}}
                         </ul>
                     </li>
                     <li id="removable">
@@ -57,8 +57,8 @@
                             {{-- <li><a title="Compose Mail" href="{{ route('invoices') }}"><span class="mini-sub-pro">Invoices</span></a></li> --}}
                             {{-- <li><a title="Compose Mail" href="{{ route('quotation') }}"><span class="mini-sub-pro">Quotation</span></a></li> --}}
                             {{-- <li><a title="Compose Mail" href="{{ route('bankaccounts') }}"><span class="mini-sub-pro">Bank Account</span></a></li> --}}
-                            <li><a title="Compose Mail" href="{{ route('payments') }}"><span class="mini-sub-pro">Payments</span></a></li>
-                            <li><a title="Compose Mail" href="{{ route('expenses') }}"><span class="mini-sub-pro">Expenses</span></a></li>
+                            <li><a title="Compose Mail" href="{{ route('payments') }}"><img src="{{ asset('assets/admin/img/icon/payments.png') }}" alt=""><span class="mini-sub-pro">Payments</span></a></li>
+                            <li><a title="Compose Mail" href="{{ route('expenses') }}"><img src="{{ asset('assets/admin/img/icon/expense.png') }}" alt=""><span class="mini-sub-pro">Expenses</span></a></li>
                         </ul>
                     </li>
                     <li id="removable">
@@ -90,7 +90,7 @@
                     <nav id="dropdown">
                         <ul class="mobile-menu-nav">
                             <li class="active">
-                                <a class="" href="{{ route('admin/dashboard') }}">
+                                <a class="" href="{{ route('dashboard') }}">
                                     <img src="{{ asset('assets/admin/img/icon/dashboard.png') }}" alt="">
                                        <span class="mini-click-non">Dashboard</span>
                                     </a>

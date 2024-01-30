@@ -22,7 +22,7 @@
                                                 <i class="icon nalika-user"></i>
                                                 {{-- <span class="admin-name">HAMDOUN</span> --}}
                                                 {{-- <span class="admin-name">{{ Auth::guard('admin')->user()->first_name }}</span> --}}
-                                                <i class="icon nalika-down-arrow nalika-angle-dw"></i>
+                                                {{-- <i class="icon nalika-down-arrow nalika-angle-dw"></i> --}}
                                             </a>
                                         <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                             <li><a href="register.html"><span class="icon nalika-home author-log-ic"></span> Register</a>

@@ -21,27 +21,29 @@
                                         </div>
                                         <div class="input-field second-wrap">
                                             <div class="icon-wrap">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24">
                                                     <path
                                                         d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z">
                                                     </path>
-                                                </svg>
+                                                </svg> --}}
                                             </div>
-                                            <input class="datepicker flatpickr-input" id="depart" type="text"
-                                                placeholder="29 Aug 2018" readonly="readonly">
+                                            <input type="date" placeholder="29 Aug 2018" />
+                                            {{-- <input class="datepicker flatpickr-input" id="depart" type="date"
+                                                placeholder="29 Aug 2018" readonly="readonly"> --}}
                                         </div>
                                         <div class="input-field third-wrap">
                                             <div class="icon-wrap">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24">
                                                     <path
                                                         d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z">
                                                     </path>
-                                                </svg>
+                                                </svg> --}}
                                             </div>
-                                            <input class="datepicker flatpickr-input" id="return" type="text"
-                                                placeholder="30 Aug 2018" readonly="readonly">
+                                            <input type="date" placeholder="29 Aug 2018" />
+                                            {{-- <input class="datepicker flatpickr-input" id="return" type="text"
+                                                placeholder="30 Aug 2018" readonly="readonly"> --}}
                                         </div>
                                         <div class="input-field fouth-wrap">
                                             <div class="icon-wrap">
@@ -112,7 +114,7 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-actions">
-                                <a href="{{ route('create/designs') }}"
+                                <a href="{{ route('create/constructions') }}"
                                     class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                     <i class="fa fa-plus"></i> Create Project
                                 </a>
@@ -124,9 +126,10 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <span class="text-success">{{ session('success') }}</span>
+                            <span class="text-success">{{ session('error') }}</span>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="mb-0 f-21 font-weight-normal text-capitalize">All Services</h4>
+                            <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Constructions</h4>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <table id="dataTable">
@@ -137,7 +140,7 @@
                                         <th>Title#</th>
                                         <th>Beneficiary</th>
                                         <th>Amount</th>
-                                        <th>Date</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -149,7 +152,11 @@
                                                 <td>{{ $item->title }}</td>
                                                 <td>{{ $item->beneficiary }}</td>
                                                 <td>{{ $item->amount }}</td>
-                                                <td>{{ $item->created_at }}</td>
+                                                <td>
+                                                    <a href="#"><img src="{{ asset('assets/admin/img/icon/view.png') }}" alt=""></a>
+                                                    <a href="{{ route('constructions/edit', $item->id) }}"><img src="{{ asset('assets/admin/img/icon/edit.png') }}" alt=""></a>
+                                                    <a href="{{ route('constructions/delete', $item->id) }}"><img src="{{ asset('assets/admin/img/icon/delete.png') }}" alt=""></a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @else
@@ -195,16 +202,17 @@
     <script>
         $('#dataTable').DataTable();
     </script>
-    {{-- Data trigger --}}
-    <script src="{{ asset('assets/admin/js/choices.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/flatpickr.js') }}"></script>
-    <script>
-        flatpickr(".datepicker", {});
-    </script>
-    <script>
-        const choices = new Choices('[data-trigger]', {
-            searchEnabled: false,
-            itemSelectText: '',
-        });
-    </script>
+     {{-- Data trigger --}}
+     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
+     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
+     <script>
+         flatpickr(".datepicker", {});
+     </script>
+     <script>
+         const choices = new Choices('[data-trigger]', {
+             searchEnabled: false,
+             itemSelectText: '',
+         });
+     </script>
+
 @endsection

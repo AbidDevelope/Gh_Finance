@@ -7,25 +7,30 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
-                                <form action="{{ route('create/project') }}" method="POST">
+                                <form action="{{ route('constructions/update', $data->id) }}" method="POST">
                                     @csrf
                                     <div class="row">
-                                        <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Create Project</h4>
+                                        <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Edit Constructions</h4>
                                         <hr class="m-0 border-top-grey">
+                                        <?php
+                                    //    dd($data);
+                                        ?>
                                         <div class="col-lg-4">
+                                            <input type="hidden" class="form-control" name="id" value="{{ $data->id }}">
                                             <label for="name" class="form-label text-dark">Type</label>
-                                            <select name="type" class="form-control" id="">
-                                                <option >Select Type</option>
-                                                <option value="design">Designs</option>
-                                                <option value="constructions">Constructions</option>
-                                            </select>
-                                            @error('title')
+                                            <select name="type" class="form-control">
+                                                <option disabled>Select Type</option>
+                                                <option value="Design" {{ $data == 'Design' ? 'selected' : '' }}>Designs</option>
+                                                <option value="Constructions" {{ $data == 'Constructions' ? 'selected' : '' }}>Constructions</option>
+                                            </select>                                            
+                                                                                       
+                                            @error('type')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="col-lg-4">
                                             <label for="name" class="form-label text-dark">Title</label>
-                                            <input type="text" class="form-control" name="title" placeholder="Title" value="">
+                                            <input type="text" class="form-control" name="title" placeholder="Title" value="{{ $data->title }}">
                                             @error('title')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -33,21 +38,21 @@
                                         <div class="col-lg-4">
                                             <label for="title" class="form-label text-dark">Beneficiary</label>
                                             <input type="text" class="form-control" placeholder="Beneficiary"
-                                                name="beneficiary">
+                                                name="beneficiary" value="{{ $data->beneficiary }}">
                                                 @error('beneficiary')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="col-lg-4">
-                                            <label for="email" class="form-label text-dark">Recp No. / cheque number</label>
-                                            <input type="text" class="form-control" placeholder="Recp No. / Cheque Number" name="receipt" value="">
+                                            <label for="email" class="form-label text-dark">Recp No. / Cheque Number</label>
+                                            <input type="text" class="form-control" placeholder="Recp No. / Cheque Number" name="receipt" value="{{ $data->receipt }}">
                                             @error('receipt')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="col-lg-4">
                                             <label for="text" class="form-label text-dark">Amount</label>
-                                            <input type="number" class="form-control" onkeypress="return /[0-9]/i.test(event.key)" placeholder="Amount" name="amount" value="">
+                                            <input type="text" class="form-control" onkeypress="return /[0-9,-.]/.test(event.key)" placeholder="Amount" name="amount" value="{{ $data->amount }}">
                                             @error('amount')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -55,15 +60,15 @@
                                         <div class="col-lg-4">
                                             <label for="title" class="form-label text-dark"> Description
                                                 </label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Description" name="description">
+                                            <textarea type="text" class="form-control"
+                                                placeholder="Description" name="description">{{ $data->description }}</textarea>
                                                 @error('description')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <!-- <div class="row"> -->
-                                    <button type="submit" class="btn btn-create btn-lg mt-5">CREATE</button>
+                                    <button type="submit" class="btn btn-create btn-lg mt-5">UPDATE</button>
                                     <!-- </div> -->
                                 </form>
                             </div>
@@ -90,6 +95,4 @@
     <!-- main JS
                                                         ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
-    {{-- Data table JS --}}
-     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 @endsection

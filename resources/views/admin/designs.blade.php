@@ -124,9 +124,10 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <span class="text-success">{{ session('success') }}</span>
+                            <span class="text-success">{{ session('error') }}</span>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="mb-0 f-21 font-weight-normal text-capitalize">All Services</h4>
+                            <h4 class="mb-0 f-21 text-capitalize">Designs</h4>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <table id="dataTable">
@@ -137,7 +138,7 @@
                                         <th>Title#</th>
                                         <th>Beneficiary</th>
                                         <th>Amount</th>
-                                        <th>Date</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -149,7 +150,11 @@
                                                 <td>{{ $item->title }}</td>
                                                 <td>{{ $item->beneficiary }}</td>
                                                 <td>{{ $item->amount }}</td>
-                                                <td>{{ $item->created_at }}</td>
+                                                <td>
+                                                    <a href="#"><img src="{{ asset('assets/admin/img/icon/view.png') }}" alt=""></a>
+                                                    <a href="{{ route('design/edit', $item->id) }}"><img src="{{ asset('assets/admin/img/icon/edit.png') }}" alt=""></a>
+                                                    <a href="{{ route('design/delete', $item->id) }}"><img src="{{ asset('assets/admin/img/icon/delete.png') }}" alt=""></a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @else

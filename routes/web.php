@@ -6,9 +6,6 @@ use App\Http\Controllers\Admin\FinanceController;
 use App\Http\Controllers\Admin\ServicesController;
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 // AuthController 
 Route::controller(AuthController::class)->group(function(){
@@ -19,7 +16,7 @@ Route::controller(AuthController::class)->group(function(){
 
     Route::prefix('admin/')->group(function(){
         Route::middleware(['adminAuthentication'])->group(function(){
-            Route::get('dashboard', 'index')->name('admin/dashboard');
+            Route::get('dashboard', 'index')->name('dashboard');
             Route::get('logout', 'logout')->name('admin/logout');
         });
     });
@@ -51,8 +48,18 @@ Route::controller(ServicesController::class)->group(function(){
     Route::prefix('admin')->group(function(){
         Route::middleware(['adminAuthentication'])->group(function(){
             Route::get('all/services', 'allServices')->name('all/services');
-            Route::get('create/project', 'createProjectList')->name('create/project');
-            Route::post('create/project', 'createProjectData')->name('create/project');
+            Route::get('designs', 'designs')->name('designs');
+            Route::get('create/designs', 'createDesignList')->name('create/designs');
+            Route::post('create/designs', 'createDesign')->name('create/designs');
+            Route::get('design/edit/{id}', 'designEdit')->name('design/edit');
+            Route::post('design/update/{id}', 'designUpdate')->name('design/update');
+            Route::get('design/delete/{id}', 'designDelete')->name('design/delete');
+            Route::get('constructions', 'constructions')->name('constructions');
+            Route::get('create/constructions', 'createConstructionsList')->name('create/constructions');
+            Route::post('create/constructions', 'createConstructions')->name('create/constructions');
+            Route::get('constructions/edit/{id}', 'constructionsEdit')->name('constructions/edit');
+            Route::post('constructions/update/{id}', 'constructionsUpdate')->name('constructions/update');
+            Route::get('constructions/delete/{id}', 'constructionsDelete')->name('constructions/delete');
         });
     });
 });

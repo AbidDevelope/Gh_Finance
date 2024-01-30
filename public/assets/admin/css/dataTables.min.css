@@ -111,7 +111,9 @@ table.dataTable thead th,
 table.dataTable thead td {
     padding: 5px 10px;
     font-size: 13px;
-    border-bottom: 1px solid #111;
+    color: #fff;
+    text-align: center;
+    /* border-bottom: 1px solid #111; */
 }
 table.dataTable thead th:active,
 table.dataTable thead td:active {
@@ -157,6 +159,7 @@ table.dataTable tbody th,
 table.dataTable tbody td {
     padding: 8px 10px;
     font-size: 12px;
+    text-align: center;
 }
 table.dataTable.row-border tbody th,
 table.dataTable.row-border tbody td,
@@ -313,6 +316,7 @@ table.dataTable td {
 .dataTables_wrapper {
     position: relative;
     clear: both;
+    top: 30px;
 }
 .dataTables_wrapper .dataTables_length {
     float: left;
@@ -321,7 +325,7 @@ table.dataTable td {
     border: 1px solid #aaa;
     border-radius: 3px;
     padding: 5px;
-    background-color: transparent;
+    /* background-color: transparent; */
     padding: 4px;
 }
 .dataTables_wrapper .dataTables_filter {
@@ -332,7 +336,8 @@ table.dataTable td {
     border: 1px solid #aaa;
     border-radius: 3px;
     padding: 5px;
-    background-color: transparent;
+    outline: none;
+    /* background-color: transparent; */
     margin-left: 3px;
 }
 .dataTables_wrapper .dataTables_info {

@@ -18,6 +18,9 @@
     -ms-flex-direction: column;
     flex-direction: column;
 }
+.sidebar-nav .metismenu span{
+    padding: 10px;
+}
 
 .sidebar-nav .metismenu li + li {
   margin-top: 5px;

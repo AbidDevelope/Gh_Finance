@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->nullable();
             $table->string('title')->nullable();
             $table->string('beneficiary')->nullable();
             $table->string('receipt')->nullable();
-            $table->string('amount')->nullable();
+            $table->decimal('amount', 8,3)->nullable();
             $table->string('description')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }

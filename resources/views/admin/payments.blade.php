@@ -141,7 +141,11 @@
                                         <td>1</td>
                                         <td>1</td>
                                         <td>1</td>
-                                        <td><a href="#">View</a></td>
+                                        <td>
+                                            <a href="#"><img src="{{ asset('assets/admin/img/icon/view.png') }}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('assets/admin/img/icon/edit.png') }}" alt=""></a>
+                                            <a href="#"><img src="{{ asset('assets/admin/img/icon/delete.png') }}" alt=""></a>
+                                        </td>
                                     </tr>
                                     <tr class="odd">
                                         <td valign="top" colspan="7" class="dataTables_empty">No data available in
