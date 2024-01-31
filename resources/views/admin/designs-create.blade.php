@@ -4,7 +4,7 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
                                 <form action="{{ route('create/designs') }}" method="POST">
@@ -14,12 +14,13 @@
                                         <hr class="m-0 border-top-grey">
                                         <div class="col-lg-4">
                                             <label for="name" class="form-label text-dark">Type</label>
-                                            <select name="type" class="form-control" id="">
+                                            {{-- <select name="type" class="form-control" id="">
                                                 <option >Select Type</option>
                                                 <option value="Design">Designs</option>
                                                 <option value="Constructions">Constructions</option>
-                                            </select>
-                                            @error('title')
+                                            </select> --}}
+                                            <input type="text" readonly class="form-control bg-light" name="type" value="Design">
+                                            @error('type')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>

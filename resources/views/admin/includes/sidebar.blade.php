@@ -33,6 +33,7 @@
                             <li><a title="Login" href="{{ route('all/services') }}"><img src="{{ asset('assets/admin/img/icon/order-white.png') }}" alt=""><span class="mini-sub-pro">All</span></a></li>
                             <li><a title="Lock" href="{{ route('designs') }}"><img src="{{ asset('assets/admin/img/icon/design.png') }}" alt=""><span class="mini-sub-pro">Designs</span></a></li>
                             <li><a title="Password Recovery" href="{{ route('constructions') }}"><img src="{{ asset('assets/admin/img/icon/construction.png') }}" alt=""><span class="mini-sub-pro">Constructions</span></a></li>
+                            <li><a title="Password Recovery" href="{{ route('design/constructions') }}"><img src="{{ asset('assets/admin/img/icon/design-constructions.png') }}" alt=""><span class="mini-sub-pro">Design & Cons.</span></a></li>
                             {{-- <li><a title="Password Recovery" href="#"><span class="mini-sub-pro">AIU</span></a></li> --}}
                             {{-- <li><a title="Password Recovery" href="#"><span class="mini-sub-pro">Bidaa</span></a></li> --}}
                         </ul>

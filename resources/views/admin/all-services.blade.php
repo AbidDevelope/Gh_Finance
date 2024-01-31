@@ -4,7 +4,7 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
@@ -21,87 +21,27 @@
                                         </div>
                                         <div class="input-field second-wrap">
                                             <div class="icon-wrap">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z">
-                                                    </path>
-                                                </svg>
+                                        
                                             </div>
-                                            <input class="datepicker flatpickr-input" id="depart" type="text"
-                                                placeholder="29 Aug 2018" readonly="readonly">
+                                            <input type="date" placeholder="30 Aug 2018" >
                                         </div>
                                         <div class="input-field third-wrap">
                                             <div class="icon-wrap">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z">
-                                                    </path>
-                                                </svg>
+                                            
                                             </div>
-                                            <input class="datepicker flatpickr-input" id="return" type="text"
-                                                placeholder="30 Aug 2018" readonly="readonly">
+                                            <input type="date" placeholder="30 Aug 2018" >
                                         </div>
                                         <div class="input-field fouth-wrap">
                                             <div class="icon-wrap">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
-                                                    </path>
-                                                </svg>
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                                              </svg>
                                             </div>
-                                            <div class="choices" role="listbox" data-type="select-one" tabindex="0"
-                                                aria-haspopup="true" aria-expanded="false" dir="ltr"
-                                                aria-activedescendant="choices-choices-single-defaul-z0-item-choice-2">
-                                                <div class="choices__inner"><select data-trigger=""
-                                                        name="choices-single-defaul" class="choices__input is-hidden"
-                                                        tabindex="-1" style="display:none;" aria-hidden="true"
-                                                        data-choice="active">
-                                                        <option value="2 Adults" selected="">2 Adults</option>
-                                                    </select>
-                                                    <div class="choices__list choices__list--single">
-                                                        <div class="choices__item choices__item--selectable choices__placeholder"
-                                                            data-item="" data-id="1" data-value="2 Adults"
-                                                            aria-selected="true">
-                                                            All
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="choices__list choices__list--dropdown" aria-expanded="false">
-                                                    <div class="choices__list" dir="ltr" role="listbox">
-                                                        <div class="choices__item choices__item--choice choices__item--selectable choices__placeholder"
-                                                            data-select-text="" data-choice="" data-id="1"
-                                                            data-value="2 Adults" data-choice-selectable=""
-                                                            id="choices-choices-single-defaul-z0-item-choice-1"
-                                                            role="option" aria-selected="false">
-                                                            2 Adults
-                                                        </div>
-                                                        <div class="choices__item choices__item--choice choices__item--selectable is-highlighted"
-                                                            data-select-text="" data-choice="" data-id="2"
-                                                            data-value="3 Adults" data-choice-selectable=""
-                                                            id="choices-choices-single-defaul-z0-item-choice-2"
-                                                            role="option" aria-selected="true">
-                                                            3 Adults
-                                                        </div>
-                                                        <div class="choices__item choices__item--choice choices__item--selectable"
-                                                            data-select-text="" data-choice="" data-id="3"
-                                                            data-value="4 Adults" data-choice-selectable=""
-                                                            id="choices-choices-single-defaul-z0-item-choice-3"
-                                                            role="option" aria-selected="false">
-                                                            4 Adults
-                                                        </div>
-                                                        <div class="choices__item choices__item--choice choices__item--selectable"
-                                                            data-select-text="" data-choice="" data-id="4"
-                                                            data-value="5 Adults" data-choice-selectable=""
-                                                            id="choices-choices-single-defaul-z0-item-choice-4"
-                                                            role="option" aria-selected="false">
-                                                            5 Adults
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <select data-trigger="" name="choices-single-defaul">
+                                              <option placeholder="">All</option>
+                                              <option>Constructions</option>
+                                              <option>Designs</option>
+                                            </select>
                                         </div>
                                         <div class="input-field fifth-wrap">
                                             <button class="btn-search" type="button">SEARCH</button>
@@ -109,6 +49,9 @@
                                     </div>
                                 </form>
                             </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h4 class="mt-3">All Services</h4>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-actions">
@@ -126,42 +69,41 @@
                             <span class="text-success">{{ session('success') }}</span>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="mb-0 f-21 font-weight-normal text-capitalize">All Services</h4>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <table id="dataTable">
-                                <thead>
-                                    <tr role="row">
-                                        <th>Sr. No.</th>
-                                        <th>Type</th>
-                                        <th>Title#</th>
-                                        <th>Beneficiary</th>
-                                        <th>Amount</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if (count($data) > 0)
-                                        @foreach ($data as $index=>$item)
-                                            <tr>
-                                                <td>{{ $index+1 }}</td>
-                                                <td>{{ $item->type }}</td>
-                                                <td>{{ $item->title }}</td>
-                                                <td>{{ $item->beneficiary }}</td>
-                                                <td>{{ $item->amount }}</td>
-                                                <td>{{ $item->created_at }}</td>
-                                            </tr>
-                                        @endforeach
-                                    @else
-                                        <tr class="odd">
-                                            <td valign="top" colspan="6" class="dataTables_empty">No data available
-                                                in
-                                                table
-                                            </td>
+                            <div class="table-responsive">
+                                <table id="dataTable">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>Sr. No.</th>
+                                            <th>Type</th>
+                                            <th>Title#</th>
+                                            <th>Beneficiary</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
                                         </tr>
-                                    @endif
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @if (count($data) > 0)
+                                            @foreach ($data as $index=>$item)
+                                                <tr>
+                                                    <td>{{ $index+1 }}</td>
+                                                    <td>{{ $item->type }}</td>
+                                                    <td>{{ $item->title }}</td>
+                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td>{{ $item->amount }}</td>
+                                                    <td>{{ $item->created_at }}</td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr class="odd">
+                                                <td valign="top" colspan="6" class="dataTables_empty">No data available
+                                                    in
+                                                    table
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -196,8 +138,8 @@
         $('#dataTable').DataTable();
     </script>
     {{-- Data trigger --}}
-    <script src="{{ asset('assets/admin/js/choices.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/flatpickr.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
     <script>
         flatpickr(".datepicker", {});
     </script>

@@ -7,21 +7,21 @@
                     <div class="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
-                                <form action="{{ route('create/constructions') }}" method="POST">
+                                <form action="#" method="POST">
                                     @csrf
                                     <div class="row">
-                                        <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Create Project</h4>
+                                        <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Create Expenses</h4>
                                         <hr class="m-0 border-top-grey">
                                         <div class="col-lg-4">
-                                            <label for="name" class="form-label text-dark">Type</label>
-                                            <input type="text" readonly class="form-control" name="type" value="Constructions">
+                                            <label for="name" class="form-label text-dark">Date</label>
+                                            <input type="date" class="form-control" name="date" placeholder="dd/mm/yy" >
                                             @error('type')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="col-lg-4">
-                                            <label for="name" class="form-label text-dark">Title</label>
-                                            <input type="text" class="form-control" name="title" placeholder="Title" value="">
+                                            <label for="name" class="form-label text-dark">Project</label>
+                                            <input type="text" class="form-control" name="project" placeholder="Project" value="">
                                             @error('title')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -42,8 +42,15 @@
                                             @enderror
                                         </div>
                                         <div class="col-lg-4">
-                                            <label for="text" class="form-label text-dark">Amount</label>
-                                            <input type="text" class="form-control" onkeypress="return /[0-9,-.]/.test(event.key)" placeholder="Amount" name="amount" value="">
+                                            <label for="text" class="form-label text-dark">Amount Deposited</label>
+                                            <input type="text" class="form-control" onkeypress="return /[0-9,-.]/.test(event.key)" placeholder="Amount Deposited" name="amount_deposit" value="">
+                                            @error('amount')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="text" class="form-label text-dark">Amount Withdrawn</label>
+                                            <input type="text" class="form-control" onkeypress="return /[0-9,-.]/.test(event.key)" placeholder="Amount Withdrawn" name="amount_withdrawn" value="">
                                             @error('amount')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror

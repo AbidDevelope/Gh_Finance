@@ -15,6 +15,12 @@ class ServicesController extends Controller
         return view('admin.all-services', compact('data'));
     }
 
+    public function designConstructions()
+    {
+        $data = Project::whereIn('type', ['Design', 'Constructions'])->get();
+        return view('admin.design-&-construction',compact('data'));
+    }
+
     public function createDesignList()
     {
       return view('admin.designs-create');
