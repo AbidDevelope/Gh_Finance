@@ -911,6 +911,8 @@ ul.breadcome-menu li a:hover{
 }
 .breadcomb-report button:active, .breadcomb-report button:hover, .breadcomb-report button:focus, .breadcomb-report button:visited{
 	outline:none;
+    border: 1px solid #152036;
+    color: #000;
 }
 .breadcomb-report i{
 	color:#fff;

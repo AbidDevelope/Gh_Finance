@@ -1,12 +1,10 @@
 @extends('admin.layouts.master')
 @section('content')
-    <div class="all-content-wrapper" style="background:#F2F4F7">
-
+    <div class="all-content-wrapper">
         <div class="header-advance-area">
-
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
@@ -41,8 +39,8 @@
                                             </div>
                                             <select data-trigger="" name="choices-single-defaul">
                                               <option placeholder="">All</option>
-                                              <option placeholder="">Invoices 1</option>
-                                              <option placeholder="">Invoices 2</option>
+                                              <option>Designs</option>
+                                              <option>Constructions</option>
                                             </select>
                                         </div>
                                         <div class="input-field fifth-wrap">
@@ -53,48 +51,48 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="mt-3 text-headings">Invoices</h4>
+                            <h5 class="mt-3"><span>Design & Constructions</span></h5>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="table-actions">
-                                <a href="{{ route('invoices/create') }}" class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                    <i class="fa fa-plus"></i> Create Invoice
-                                </a>
-                                <a href="#" class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
-                                        <i class="fa fa-file-export"></i> Export
-                                </a>
+                            <span class="text-success">{{ session('success') }}</span>
+                            <span class="text-success">{{ session('error') }}</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
+                            <div class="table-responsive">
+                                <table id="dataTable">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>Sr. No.</th>
+                                            <th>Type</th>
+                                            <th>Title#</th>
+                                            <th>Beneficiary</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (count($data) > 0)
+                                            @foreach ($data as $index=>$item)
+                                                <tr>
+                                                    <td>{{ $index+1 }}</td>
+                                                    <td>{{ $item->type }}</td>
+                                                    <td>{{ $item->title }}</td>
+                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td>{{ $item->amount }}</td>
+                                                    <td>{{ $item->created_at }}</td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr class="odd">
+                                                <td valign="top" colspan="6" class="dataTables_empty">No data available
+                                                    in
+                                                    table
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <table id="dataTable">
-                                <thead>
-                                    <tr role="row">
-                                        <th>Id</th>
-                                        <th>Invoice</th>
-                                        <th>Date</th>
-                                        <th>DESCRIPTION </th>
-                                        <th>Project</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td><a href="{{ route('invoice/view') }}">View</a></td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td valign="top" colspan="7" class="dataTables_empty">No data available in
-                                            table
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
@@ -107,20 +105,20 @@
     </div>
 
     <!-- metisMenu JS
-                                    ============================================ -->
+                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                    ============================================ -->
+                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -132,16 +130,12 @@
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
     <script>
-      flatpickr(".datepicker",
-      {});
-
+        flatpickr(".datepicker", {});
     </script>
     <script>
-        const choices = new Choices('[data-trigger]',
-        {
-          searchEnabled: false,
-          itemSelectText: '',
+        const choices = new Choices('[data-trigger]', {
+            searchEnabled: false,
+            itemSelectText: '',
         });
-  
-      </script>
+    </script>
 @endsection

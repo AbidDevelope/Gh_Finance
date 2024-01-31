@@ -20,7 +20,7 @@ class FinanceController extends Controller
     }
     public function invoiceView()
     {
-        return view('admin.invoice-view');
+        return view('admin.invoices-view');
     }
 
     public function quotation()
