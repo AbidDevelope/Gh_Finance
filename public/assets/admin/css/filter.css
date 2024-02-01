@@ -1276,7 +1276,7 @@
   .s002 form .inner-form .input-field.fifth-wrap .btn-search {
     height: 50px;
     width: 100%;
-    background: #1B2A47;
+    background: var(--filter-color);
     white-space: nowrap;
     border-radius: .5px;
     font-size: 15px;
@@ -1291,7 +1291,7 @@
   .s002 form .inner-form .input-field.fifth-wrap .btn-search:hover {
     background: #fff;
     color: #000;
-    border: 1px solid #1B2A47;
+    border: 1px solid var(--filter-color);
   }
 
   .table-actions {
@@ -1299,8 +1299,8 @@
    }
   .table-actions .btn-primary
   {
-    background-color: #1d82f5;
-    border: 1px solid #1d82f5;
+    background-color: var(--filter-btn);
+    border: 1px solid var(--filter-btn);
     padding: 8px;
   }
   .table-actions .btn-template
@@ -1308,24 +1308,24 @@
     background: #fff;
     color: #919191;
     padding: 8px;
-    border: 1px solid #1B2A47;
+    border: 1px solid var(--filter-color);
   }
   .table-actions .btn-template:hover{
-    background: #1B2A47;
+    background: var(--filter-color);
     color: #fff;
-    border: 1px solid #1B2A47;
+    border: 1px solid var(--filter-color);
   }
   .table-actions .dt-buttons
   {
     background: #fff;
     color: #919191;
     padding: 8px;
-    border: 1px solid #1B2A47;
+    border: 1px solid var(--filter-color);
   }
   .table-actions .dt-buttons:hover{
-    background: #1B2A47;
+    background: var(--filter-color);
     color: #fff;
-    border: 1px solid #1B2A47;
+    border: 1px solid var(--filter-color);
   }
   
   @media screen and (max-width: 992px) {
