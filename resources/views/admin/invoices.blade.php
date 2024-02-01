@@ -86,7 +86,11 @@
                                         <td>1</td>
                                         <td>1</td>
                                         <td>1</td>
-                                        <td><a href="{{ route('invoice/view') }}">View</a></td>
+                                        <td>
+                                            <a href="{{ route('invoice/view') }}"><img
+                                                src="{{ asset('assets/admin/img/icon/view.png') }}"
+                                                alt=""></a>
+                                        </td>
                                     </tr>
                                     <tr class="odd">
                                         <td valign="top" colspan="7" class="dataTables_empty">No data available in

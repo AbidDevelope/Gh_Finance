@@ -47,7 +47,7 @@
                                     <h4><b>MRS.</b> SHAHED AL-SABEEH</h4>
                                     <p> name@client.com <br>
                                     <p> IBRAH COMPANY <br>
-                                    <p> KUWAI,USA <br>
+                                    <p> KUWAIT,UAE <br>
                                     <p> Phone: 1-864-933-0793</p>
                                 </address>
 

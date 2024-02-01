@@ -23,26 +23,29 @@
                                         </div>
                                         <div class="input-field second-wrap">
                                             <div class="icon-wrap">
-                                        
+
                                             </div>
-                                            <input type="date" placeholder="30 Aug 2018" >
+                                            <input type="date" placeholder="30 Aug 2018">
                                         </div>
                                         <div class="input-field third-wrap">
                                             <div class="icon-wrap">
-                                            
+
                                             </div>
-                                            <input type="date" placeholder="30 Aug 2018" >
+                                            <input type="date" placeholder="30 Aug 2018">
                                         </div>
                                         <div class="input-field fouth-wrap">
                                             <div class="icon-wrap">
-                                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-                                              </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
+                                                    </path>
+                                                </svg>
                                             </div>
                                             <select data-trigger="" name="choices-single-defaul">
-                                              <option placeholder="">All</option>
-                                              <option placeholder="">Expenses 1</option>
-                                              <option placeholder="">Expenses 2</option>
+                                                <option placeholder="">All</option>
+                                                <option placeholder="">Expenses 1</option>
+                                                <option placeholder="">Expenses 2</option>
                                             </select>
                                         </div>
                                         <div class="input-field fifth-wrap">
@@ -57,46 +60,63 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-actions">
-                                <a href="{{ route('expenses/create') }}" class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
+                                <a href="{{ route('expenses/create') }}"
+                                    class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                     <i class="fa fa-plus"></i> Create Expense
                                 </a>
-                                <a href="#" class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
-                                        <i class="fa fa-file-export"></i> Export
+                                <a href="#"
+                                    class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
+                                    <i class="fa fa-file-export"></i> Export
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <table id="dataTable">
-                                <thead>
-                                    <tr role="row">
-                                        <th>Id</th>
-                                        <th>Date</th>
-                                        <th>Item Name</th>
-                                        <th>Price </th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>
-                                            <a href="#"><img src="{{ asset('assets/admin/img/icon/view.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('assets/admin/img/icon/edit.png') }}" alt=""></a>
-                                            <a href="#"><img src="{{ asset('assets/admin/img/icon/delete.png') }}" alt=""></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td valign="top" colspan="6" class="dataTables_empty">No data available in
-                                            table
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <span class="text-success">{{ session('success') }}</span>
+                            <span class="text-danger">{{ session('error') }}</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="table-responsive">
+                                <table id="dataTable">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>Id</th>
+                                            <th>Date</th>
+                                            <th>Project</th>
+                                            <th>Beneficiary </th>
+                                            <th>Receipt</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (count($data) > 0)
+                                            @foreach ($data as $index=>$item)
+                                                <tr>
+                                                    <td>{{ $index+1 }}</td>
+                                                    <td>{{ $item->date }}</td>
+                                                    <td>{{ $item->project }}</td>
+                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td>{{ $item->receipt }}</td>
+                                                    <td>
+                                                        <a href="#"><img
+                                                                src="{{ asset('assets/admin/img/icon/view.png') }}"
+                                                                alt=""></a>
+                                                        <a href="{{ route('expenses/edit', $item->id) }}"><img
+                                                                src="{{ asset('assets/admin/img/icon/edit.png') }}"
+                                                                alt=""></a>
+                                                        <a href="{{ route('expenses/delete', $item->id) }}"><img
+                                                                src="{{ asset('assets/admin/img/icon/delete.png') }}"
+                                                                alt=""></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="6" class="text-danger">No Record Found</td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,20 +129,20 @@
     </div>
 
     <!-- metisMenu JS
-                                    ============================================ -->
+                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                    ============================================ -->
+                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -134,16 +154,12 @@
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
     <script>
-      flatpickr(".datepicker",
-      {});
-
+        flatpickr(".datepicker", {});
     </script>
     <script>
-        const choices = new Choices('[data-trigger]',
-        {
-          searchEnabled: false,
-          itemSelectText: '',
+        const choices = new Choices('[data-trigger]', {
+            searchEnabled: false,
+            itemSelectText: '',
         });
-  
-      </script>
+    </script>
 @endsection

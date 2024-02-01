@@ -34,8 +34,7 @@ Route::controller(FinanceController::class)->prefix('admin')->middleware(['admin
     Route::get('invoices/create', 'invoiceCreate')->name('invoices/create');
     Route::get('invoice/view', 'invoiceView')->name('invoice/view');
     Route::get('payments', 'paymentList')->name('payments');
-    Route::get('expenses', 'expensesList')->name('expenses');
-    Route::get('expenses/create', 'expensescreate')->name('expenses/create');
+    
     // Route::get('bankaccounts', 'bankAcoountList')->name('bankaccounts');
 });
 
@@ -58,5 +57,11 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
 });
 // ExpensesController Route Start
 Route::controller(ExpensesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
+    Route::get('expenses', 'expensesList')->name('expenses');
     Route::get('expenses/create', 'expensesCreate')->name('expenses/create');
+    Route::post('expenses/create', 'expensesCreateData')->name('expenses/create');
+    Route::get('expenses/edit/{id}', 'expensesEdit')->name('expenses/edit');
+    Route::post('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
+    Route::get('expenses/delete/{id}', 'expensesDelete')->name('expenses/delete');
+    // Route::post('get/temp/img', 'tempImgStores')->name('get/temp/img');
 });
