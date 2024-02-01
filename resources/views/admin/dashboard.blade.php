@@ -1,7 +1,8 @@
 @extends('admin.layouts.master')
 @section('content')
 <!-- Start Welcome area -->
-<div class="all-content-wrapper" style="background: #BEC0BF">
+<!-- style="background: #BEC0BF" -->
+<div class="all-content-wrapper">
 
     <div class="header-advance-area">
 
@@ -379,10 +380,15 @@
             </div>
         </div>
     </div>
+
+
+
+
+
     <div class="container-fluid px-2 ">
 
 
-        <div class="row  bg-red  mx-3">
+        <div class="row   mx-3">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3">
                 <div class="row align-items-center">
                     <div class="col-4">
@@ -394,8 +400,8 @@
                         </svg>
                     </div>
                     <div class="col-8">
-                        <p class="m-0">Sales</p>
-                        <p class="m-0">$768678</p>
+                        <p class="m-0 dashboard-color-text">EMPLOYEE</p>
+                        <p class="m-0 dashboard-color-subcolor">$768678</p>
                     </div>
                 </div>
 
@@ -411,8 +417,8 @@
                         </svg>
                     </div>
                     <div class="col-8">
-                        <p class="m-0">Sales</p>
-                        <p class="m-0">$768678</p>
+                        <p class="m-0 dashboard-color-text">TAX DEDUCTION</p>
+                        <p class="m-0 dashboard-color-subcolor">$768678</p>
                     </div>
                 </div>
 
@@ -428,8 +434,8 @@
                         </svg>
                     </div>
                     <div class="col-8">
-                        <p class="m-0">Sales</p>
-                        <p class="m-0">$768678</p>
+                        <p class="m-0 dashboard-color-text">REVENUE</p>
+                        <p class="m-0 dashboard-color-subcolor">$768678</p>
                     </div>
                 </div>
 
@@ -445,8 +451,8 @@
                         </svg>
                     </div>
                     <div class="col-8">
-                        <p class="m-0">Sales</p>
-                        <p class="m-0">$768678</p>
+                        <p class="m-0 dashboard-color-text">EXPENSES</p>
+                        <p class="m-0 dashboard-color-subcolor">$768678</p>
                     </div>
                 </div>
 
@@ -462,238 +468,257 @@
         <div class="row mx-3">
             <div class="col-lg-8 col-md-12">
                 <div>
-                    <p>This Year Sales</p>
+                    <div class="caption pro-sl-hd">
+                        <span class="caption-subject text-uppercase pb-4"><b>This Year Revenue</b></span>
+                    </div>
                     <div id="sparklinehome" class="sparkline-container">Loading..</div>
+                    <!-- <div id="thisyearsales " class="sparkline-container">Loading..</div> -->
 
                 </div>
             </div>
             <div class="col-lg-4 col-md-12">
                 <div>
                     <p>Sales by Countries</p>
+                    <!-- <div class="analytics-rounded-content">
+                        <h5>Percentage distribution</h5>
+                        <h2><span class="counter">60</span>/20</h2>
+                        <div class="text-center">
+                            <div id="sparkline51"></div>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <div class="analytics-rounded">
+                    <div class="analytics-rounded-content">
+                        <h5>Percentage division</h5>
+                        <h2><span class="counter">150</span>/<span class="counter">54</span></h2>
+                        <div class="text-center">
+                            <div id="sparkline52"></div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container-fluid my-4">
+    <div class="row mx-3">
+        <div class="col-xs-12 col-md-6">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <p>Last Month Sale</p>
+                    <p>$7656765</p>
 
                 </div>
+                <div class="col-xs-12 col-md-6">
+                    <p>Last Week Sale</p>
+                    <p>$7656765</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div>
+                <p>Top Selling Products</p>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-2 col-xs-12">
+                        <p class="m-0">image</p>
+                    </div>
+                    <div class="col-md-8 col-xs-12">
+                        <p class="m-0">text</p>
+                        <p class="m-0">subtitle</p>
+                        <p>$46456 <del>$57567</del></p>
+                    </div>
+                    <div class="col-md-2 col-xs-12">
+                        <p>buttom</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid my-4 ">
+    <div class="row mx-3">
+        <div class="col-lg-6 col-xs-12">
+            <div class="d-flex justify-content-between">
+                <p>New Users</p>
+                <p>icon</p>
+
+            </div>
+            <div class="row text-center">
+
+
+                <div class="col-1">
+                    <p>Id</p>
+
+                </div>
+                <div class="col-2">
+                    <p>Name</p>
+
+                </div>
+                <div class="col-2">
+                    <p>Avatar</p>
+
+                </div>
+                <div class="col-3">
+                    <p>Email</p>
+
+                </div>
+                <div class="col-2">
+                    <p>Status</p>
+
+                </div>
+                <div class="col-2">
+                    <p>Action</p>
+
+                </div>
+            </div>
+            <div class="row text-center">
+
+
+                <div class="col-1">
+                    <p>Id</p>
+
+                </div>
+                <div class="col-2">
+                    <p>Name</p>
+
+                </div>
+                <div class="col-2">
+                    <p>Avatar</p>
+
+                </div>
+                <div class="col-3">
+                    <p>test@gmail.com</p>
+
+                </div>
+                <div class="col-2">
+                    <p>active</p>
+
+                </div>
+                <div class="col-2">
+                    <div class="row">
+                        <div class="col-6">
+                            <p>icon1</p>
+                        </div>
+
+                        <div class="col-6">
+                            <p>icon2</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row text-center">
+
+
+                <div class="col-1">
+                    <p>Id</p>
+
+                </div>
+                <div class="col-2">
+                    <p>Name</p>
+
+                </div>
+                <div class="col-2">
+                    <p>Avatar</p>
+
+                </div>
+                <div class="col-3">
+                    <p>test@gmail.com</p>
+
+                </div>
+                <div class="col-2">
+                    <p>active</p>
+
+                </div>
+                <div class="col-2">
+                    <div class="row">
+                        <div class="col-6">
+                            <p>icon1</p>
+                        </div>
+
+                        <div class="col-6">
+                            <p>icon2</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="col-lg-6 col-xs-12 ">
+            <div class="d-flex justify-content-between">
+                <p>User activity</p>
+                <p>icon</p>
+            </div>
+            <div class="row">
+                <div class="col-4 py-2 px-4">
+                    <p class="m-0">Pages / Visit</p>
+                    <p>547657</p>
+                </div>
+                <div class="col-4 py-2 px-4">
+                    <p class="m-0">Pages / Visit</p>
+                    <p>547657</p>
+                </div>
+                <div class="col-4 py-2 px-4">
+                    <p class="m-0">Pages / Visit</p>
+                    <p>547657</p>
+                </div>
+                <div class="col-4 py-2 px-4">
+                    <p class="m-0">Pages / Visit</p>
+                    <p>547657</p>
+                </div>
+                <div class="col-4 py-2 px-4">
+                    <p class="m-0">Pages / Visit</p>
+                    <p>547657</p>
+                </div>
+                <div class="col-4 py-2 px-4">
+                    <p class="m-0">Pages / Visit</p>
+                    <p>547657</p>
+                </div>
+                <div class="col-4 py-2 px-4">
+                    <p class="m-0">Pages / Visit</p>
+                    <p>547657</p>
+                </div>
+                <div class="col-4 py-2 px-4">
+                    <p class="m-0">Pages / Visit</p>
+                    <p>547657</p>
+                </div>
+                <div class="col-4 py-2 px-4">
+                    <p class="m-0">Pages / Visit</p>
+                    <p>547657</p>
+                </div>
+
+
             </div>
 
         </div>
 
     </div>
 
-    <div class="container-fluid my-4">
-        <div class="row mx-3">
-            <div class="col-xs-12 col-md-6">
-                <div class="row">
-                    <div class="col-xs-12 col-md-6">
-                        <p>Last Month Sale</p>
-                        <p>$7656765</p>
+</div>
 
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                        <p>Last Week Sale</p>
-                        <p>$7656765</p>
+<div class="container fluid ">
+    <div class="row mx-3">
+        <p>Last 20 Day Leads</p>
 
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-6">
-                <div>
-                    <p>Top Selling Products</p>
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-md-2 col-xs-12">
-                            <p class="m-0">image</p>
-                        </div>
-                        <div class="col-md-8 col-xs-12">
-                            <p class="m-0">text</p>
-                            <p class="m-0">subtitle</p>
-                            <p>$46456 <del>$57567</del></p>
-                        </div>
-                        <div class="col-md-2 col-xs-12">
-                            <p>buttom</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="col">
+            <p>graph</p>
+            <div>
+
             </div>
         </div>
     </div>
-
-
-    <div class="container-fluid my-4 ">
-        <div class="row mx-3">
-            <div class="col-lg-6 col-xs-12">
-                <div class="d-flex justify-content-between">
-                    <p>New Users</p>
-                    <p>icon</p>
-
-                </div>
-                <div class="row text-center">
-
-
-                    <div class="col-1">
-                        <p>Id</p>
-
-                    </div>
-                    <div class="col-2">
-                        <p>Name</p>
-
-                    </div>
-                    <div class="col-2">
-                        <p>Avatar</p>
-
-                    </div>
-                    <div class="col-3">
-                        <p>Email</p>
-
-                    </div>
-                    <div class="col-2">
-                        <p>Status</p>
-
-                    </div>
-                    <div class="col-2">
-                        <p>Action</p>
-
-                    </div>
-                </div>
-                <div class="row text-center">
-
-
-                    <div class="col-1">
-                        <p>Id</p>
-
-                    </div>
-                    <div class="col-2">
-                        <p>Name</p>
-
-                    </div>
-                    <div class="col-2">
-                        <p>Avatar</p>
-
-                    </div>
-                    <div class="col-3">
-                        <p>test@gmail.com</p>
-
-                    </div>
-                    <div class="col-2">
-                        <p>active</p>
-
-                    </div>
-                    <div class="col-2">
-                        <div class="row">
-                            <div class="col-6">
-                                <p>icon1</p>
-                            </div>
-
-                            <div class="col-6">
-                                <p>icon2</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="row text-center">
-
-
-                    <div class="col-1">
-                        <p>Id</p>
-
-                    </div>
-                    <div class="col-2">
-                        <p>Name</p>
-
-                    </div>
-                    <div class="col-2">
-                        <p>Avatar</p>
-
-                    </div>
-                    <div class="col-3">
-                        <p>test@gmail.com</p>
-
-                    </div>
-                    <div class="col-2">
-                        <p>active</p>
-
-                    </div>
-                    <div class="col-2">
-                        <div class="row">
-                            <div class="col-6">
-                                <p>icon1</p>
-                            </div>
-
-                            <div class="col-6">
-                                <p>icon2</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-
-            </div>
-            <div class="col-lg-6 col-xs-12 ">
-                <div class="d-flex justify-content-between">
-                    <p>User activity</p>
-                    <p>icon</p>
-                </div>
-                <div class="row">
-                    <div class="col-4 py-2 px-4">
-                        <p class="m-0">Pages / Visit</p>
-                        <p>547657</p>
-                    </div>
-                    <div class="col-4 py-2 px-4">
-                        <p class="m-0">Pages / Visit</p>
-                        <p>547657</p>
-                    </div>
-                    <div class="col-4 py-2 px-4">
-                        <p class="m-0">Pages / Visit</p>
-                        <p>547657</p>
-                    </div>
-                    <div class="col-4 py-2 px-4">
-                        <p class="m-0">Pages / Visit</p>
-                        <p>547657</p>
-                    </div>
-                    <div class="col-4 py-2 px-4">
-                        <p class="m-0">Pages / Visit</p>
-                        <p>547657</p>
-                    </div>
-                    <div class="col-4 py-2 px-4">
-                        <p class="m-0">Pages / Visit</p>
-                        <p>547657</p>
-                    </div>
-                    <div class="col-4 py-2 px-4">
-                        <p class="m-0">Pages / Visit</p>
-                        <p>547657</p>
-                    </div>
-                    <div class="col-4 py-2 px-4">
-                        <p class="m-0">Pages / Visit</p>
-                        <p>547657</p>
-                    </div>
-                    <div class="col-4 py-2 px-4">
-                        <p class="m-0">Pages / Visit</p>
-                        <p>547657</p>
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="container fluid ">
-        <div class="row mx-3">
-            <p>Last 20 Day Leads</p>
-
-            <div class="col">
-                <p>graph</p>
-                <div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 </div>
 
 
@@ -726,7 +751,11 @@
 <!-- plugins JS
             ============================================ -->
 <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
+<!-- <script src="{{ asset('assets/admin/js/mychart.js') }}"></script> -->
 <!-- main JS
         ============================================ -->
 <script src="{{ asset('assets/admin/js/main.js') }}"></script>
+
+
+
 @endsection
