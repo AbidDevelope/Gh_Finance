@@ -37,17 +37,17 @@
 .form-section button[type="submit"] {
     color: #fff;
     padding: 10px 20px;
-    border: 1px solid #1B2A47 !important;
+    border: 1px solid var(--filter-color) !important;
     border-radius: 0 !important; 
     cursor: pointer;
     font-size: 16px;
     margin: 20px auto;
-    background: #1B2A47;
+    background: var(--filter-color);
 }
 
 .form-section button[type="submit"]:hover {
     background-color: #fff;
-    border: 1px solid #1B2A47;
+    border: 1px solid var(--filter-color);
     color: #000;
 }
 
