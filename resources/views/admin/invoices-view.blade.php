@@ -34,20 +34,22 @@
             </div>
         </div>
 
-        <!-- Static Table Start -->
-        <div class="static-table-area mg-t-15">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <article>
-                            <h1>Recipient</h1>
-                            <address class="norm">
-                                <h4><b>MRS.</b> SHAHED AL-SABEEH</h4>
-                                <p> name@client.com <br>
-                                <p> IBRAH COMPANY <br>
-                                <p> KUWAI,USA <br>
-                                <p> Phone: 1-864-933-0793</p>
-                            </address>
+
+            <!-- Static Table Start -->
+            <div class="static-table-area mg-t-15">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <article>
+                                <h1>Recipient</h1>
+                                <address class="norm">
+                                    <h4><b>MRS.</b> SHAHED AL-SABEEH</h4>
+                                    <p> name@client.com <br>
+                                    <p> IBRAH COMPANY <br>
+                                    <p> KUWAIT,UAE <br>
+                                    <p> Phone: 1-864-933-0793</p>
+                                </address>
+
 
                             <table class="meta">
                                 <tr>

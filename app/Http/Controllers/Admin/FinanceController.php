@@ -48,9 +48,4 @@ class FinanceController extends Controller
     {
         return view('admin.payments');
     }
-
-    public function expensesList()
-    {
-        return view('admin.expenses');
-    }
 }
