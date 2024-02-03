@@ -14,12 +14,15 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('type')->nullable();
-            $table->string('title')->nullable();
-            $table->string('beneficiary')->nullable();
-            $table->string('receipt')->nullable();
+            $table->string('project')->nullable();
+            $table->string('purchase_from')->nullable();
+            $table->string('purchase_date')->nullable();
+            $table->string('purchase_by')->nullable();
+            $table->string('paid_by')->nullable();
             $table->decimal('amount', 8,3)->nullable();
+            $table->string('attachments')->nullable();
             $table->string('description')->nullable();
-            $table->string('status')->default(1);
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }

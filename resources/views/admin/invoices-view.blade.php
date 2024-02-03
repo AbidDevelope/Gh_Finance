@@ -34,7 +34,6 @@
             </div>
         </div>
 
-
             <!-- Static Table Start -->
             <div class="static-table-area mg-t-15">
                 <div class="container-fluid">
@@ -49,7 +48,6 @@
                                     <p> KUWAIT,UAE <br>
                                     <p> Phone: 1-864-933-0793</p>
                                 </address>
-
 
                             <table class="meta">
                                 <tr>

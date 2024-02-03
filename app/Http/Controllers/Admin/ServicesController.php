@@ -29,9 +29,11 @@ class ServicesController extends Controller
     public function createDesign(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'type' => 'required',                   'title' => 'required|string',  
-            'beneficiary'  => 'required|string',    'receipt' => 'required|string',  
-            'amount'  => 'required|string',         'description' => 'required|string', 
+            'type'          => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
+            'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
+            'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
+            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' , 
+            'attachments'   => 'required',
         ]);
 
         if($validate->fails())
@@ -39,17 +41,19 @@ class ServicesController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }else
         {
-            $data = new Project();
-            $data->type = $request->type;
-            $data->title = $request->title;
-            $data->beneficiary = $request->beneficiary;
-            $data->receipt = $request->receipt;
-            $data->amount = $request->amount;
-            $data->description = $request->description;
-            $data->save();
+           $requestData = $request->all();
+           if($request->hasFile('attachments'))
+           {
+            $file = $request->file('attachments');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time(). '.'. $extension;
+            $file->move(public_path('uploads/designs'), $fileName);
+            $requestData['attachments'] = $fileName;
+        }
+        Project::create($requestData);
 
-            session()->flash('success', 'Designs Created Successfully');
-            return redirect()->route('designs');
+        session()->flash('success', 'Designs Created Successfully');
+        return redirect()->route('designs');
         }
     }
 
@@ -68,9 +72,10 @@ class ServicesController extends Controller
     public function designUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'type' => 'required',                   'title' => 'required|string',  
-            'beneficiary'  => 'required|string',    'receipt' => 'required|string',  
-            'amount'  => 'required|string',         'description' => 'required|string', 
+            'type'          => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
+            'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
+            'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
+            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' , 
         ]);
 
         if($validate->fails())
@@ -92,6 +97,24 @@ class ServicesController extends Controller
         }
     }
 
+    public function designChangeStatus($id)
+    {
+        $data = Project::where('id', $id)->first();
+
+        if($data->status == 'Pending')
+        {
+            $status = 'Approved';
+        }else{
+            $status = 'Pending';
+        }
+
+        $value = array('status' => $status);
+        Project::where('id', $id)->update($value);
+
+        session()->flash('success', 'Status Change Successfully.');
+        return redirect()->back();
+    }
+
     public function designDelete($id)
     {
        Project::find($id)->delete();
@@ -103,12 +126,12 @@ class ServicesController extends Controller
     public function constructions()
     {
         $data = Project::where(['type' => 'Constructions'])->get();
-        return view('admin.constructions',compact('data'));
+        return view('admin.constructions.constructions',compact('data'));
     }
 
     public function createConstructionsList()
     {
-        return view('admin.contsructions-create');
+        return view('admin.constructions.contsructions-create');
     }
 
     public function createConstructions(Request $request)
@@ -141,7 +164,7 @@ class ServicesController extends Controller
     public function constructionsEdit($id)
     {
        $data = Project::find($id);
-       return view('admin.constructions-edit', compact('data'));
+       return view('admin.constructions.constructions-edit', compact('data'));
     }
 
     public function constructionsUpdate(Request $request, $id)

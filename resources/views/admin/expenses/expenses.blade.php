@@ -74,8 +74,8 @@
                             <span class="text-success">{{ session('success') }}</span>
                             <span class="text-danger">{{ session('error') }}</span>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="table-responsive">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
+                            {{-- <div class="table-responsive">
                                 <table id="dataTable">
                                     <thead>
                                         <tr role="row">
@@ -113,6 +113,74 @@
                                             <tr>
                                                 <td colspan="6" class="text-danger">No Record Found</td>
                                             </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div> --}}
+                            <div class="table-responsive">
+                                <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Item</th>
+                                            <th>Purchase From</th>
+                                            <th>Purchase Date</th>
+                                            <th>Purchased By</th>
+                                            <th>Amount</th>
+                                            <th>Paid By</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-right">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (count($data) > 0)
+                                            @foreach ($data as $index=>$item)
+                                            <tr>
+                                                <td>
+                                                    {{ $index+1 }}
+                                                </td>
+                                                <td>
+                                                    <strong>{{ $item->item_name }}</strong>
+                                                </td>
+                                                <td>{{ $item->purchase_from }}</td>
+                                                <td>{{ $item->purchase_date }}</td>
+                                                <td>
+                                                    {{-- <a href="" class="avatar avatar-xs"><img src="{{ asset('assets/admin/img/profiles/avatar-04.jpg') }}" alt=""></a> --}}
+                                                    <a >{{ $item->purchase_by }}</a>
+                                                </td>
+                                                <td>{{ $item->amount }}</td>
+                                                <td>{{ $item->paid_by }}</td>
+                                                <td class="text-center">
+                                                    <div class="dropdown action-label">
+                                                        <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                            @if($item->status == 'Approved')
+                                                            <i class="fa fa-dot-circle-o text-success"></i> {{ $item->status }}
+                                                            @else
+                                                            <i class="fa fa-dot-circle-o text-danger"></i> {{ $item->status }}
+                                                            @endif
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item" href="{{ route('expenses/change/status', $item->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Pending</a>
+                                                            <a class="dropdown-item" href="{{ route('expenses/change/status', $item->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon " data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item" href="#" ><i class="fa fa-eye m-r-5"></i> View</a>
+                                                            <a class="dropdown-item" href="{{ route('expenses/edit', $item->id) }}" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                            <a class="dropdown-item" href="{{ route('expenses/delete', $item->id) }}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        @else
+                                        <tr>
+                                            <td colspan="9" class="text-center">No Record Found</td>
+                                        </tr>    
                                         @endif
                                     </tbody>
                                 </table>

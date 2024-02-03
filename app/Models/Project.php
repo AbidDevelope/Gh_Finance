@@ -9,6 +9,14 @@ class Project extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'type', 'title', 'beneficiary', 'receipt', 'amount', 'description'
+        'type',
+        'project',
+        'purchase_from',
+        'purchase_date',
+        'purchase_by',
+        'amount',
+        'paid_by',
+        'attachments',
+        'description',
     ];
 }
