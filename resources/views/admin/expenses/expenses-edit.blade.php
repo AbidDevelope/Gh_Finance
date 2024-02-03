@@ -4,20 +4,20 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Edit Design</h4>
+                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Edit Expenses</h4>
                                 <hr class="m-0 border-top-grey">
-                                <form action="{{ route('design/update', $data->id) }}" method="POST">
+                                <form action="{{ route('expenses/update', $data->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Type</label>
-                                                <input type="text" readonly class="form-control" value="Design" name="type">
-                                                @error('type')
+                                                <label>Item Name</label>
+                                                <input class="form-control" type="text" name="item_name" value="{{ $data->item_name }}">
+                                                @error('item_name')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -60,7 +60,7 @@
                                                     <option value="" disabled>Select By</option>
                                                     <option value="Abid" {{ $data->purchase_by == 'Abid' ? 'selected' : '' }}>Abid</option>
                                                     <option value="Monika" {{ $data->purchase_by == 'Monika' ? 'selected' : '' }}>Monika</option>
-                                                </select>                                               
+                                                </select>                                                
                                                 @error('purchase_by')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -84,7 +84,7 @@
                                                     <option value="" disabled>Select By</option>
                                                     <option value="Cash" {{ $data->paid_by == 'Cash' ? 'selected' : '' }}>Cash</option>
                                                     <option value="Cheque" {{ $data->paid_by == 'Cheque' ? 'selected' : '' }}>Cheque</option>
-                                                </select>
+                                                </select>                                                
                                                 @error('paid_by')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -92,26 +92,39 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label>Status</label>
+                                                <select class="select form-control" name="status">
+                                                    <option value="" disabled>Select Status</option>
+                                                    <option value="Pending" {{ $data->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                                    <option value="Approved" {{ $data->status == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                </select>                                                
+                                                @error('status')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label>Attachments</label>
-                                                <input class="form-control" type="file" name="attachments" value="{{ $data->attachments }}">
+                                                <input class="form-control" type="file" name="attachments">
                                                 @error('attachments')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <textarea type="text" name="description" class="form-control" id="" >{{ $data->description }}</textarea>
+                                                <input class="form-control" type="text" name="description" value="{{ $data->description }}">
                                                 @error('description')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="row"> -->
-                                    <button type="submit" class="btn btn-create btn-lg mt-5">UPDATE</button>
-                                    <!-- </div> -->
+                                    <div class="submit-section">
+                                        <button type="submit" class="btn btn-primary submit-btn">UPDATE</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -122,19 +135,19 @@
         </div>
     </div>
     <!-- metisMenu JS
-                        ============================================ -->
+                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                            ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                            ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                        ============================================ -->
+                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 @endsection

@@ -3748,6 +3748,58 @@ th.fc-day-header.fc-widget-header {
 }
 
 
+
+.top-selling-tittle {
+    font-size: 1.1rem;
+  
+}
+.top-selling-subtittle {
+    font-size: 12px;
+}
+.avatar-lg-top {
+    width: 175px;
+    height: 115px;
+}
+
+.view-details-btn {
+    padding: 5px 2px;
+    border: 1px solid var(--active-nav-black);
+    font-size: 12px;
+    width: 100px;
+    border-radius: 40px!important;
+}
+
+.view-details-btn-selling {
+    padding: 2px 2px;
+    border: 1px solid var(--active-nav-black);
+    background-color:  var(--active-nav-black);
+    color: #fff;
+    font-size: 12px;
+    width: 100px;
+    border-radius: 40px!important;
+}
+
+.view-details-btn-user {
+    padding: 2px 2px;
+    border: 1px solid var(--active-nav-black);
+    background-color:  var(--active-nav-black);
+    color: #fff;
+    font-size: 12px;
+    width: 70px;
+    border-radius: 40px!important;
+}
+
+.view-details-btn:hover {
+    background-color:  var(--active-nav-black);
+    color: #fff;
+}
+
+.avatar-sm-table {
+    width: 25px;
+    height: 25px;
+}
+
+
 /* // Test //  */
 .dashboard-color-text {
   color :  #70657b!important

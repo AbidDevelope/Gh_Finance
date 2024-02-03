@@ -4,7 +4,7 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
@@ -69,15 +69,18 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-responsive">
-                                <table id="dataTable">
+                                <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
                                     <thead>
                                         <tr role="row">
-                                            <th>Sr. No.</th>
+                                            <th>Id</th>
                                             <th>Type</th>
-                                            <th>Title#</th>
-                                            <th>Beneficiary</th>
+                                            <th>Purchase From</th>
+                                            <th>Purchase Date</th>
+                                            <th>Purchased By</th>
                                             <th>Amount</th>
-                                            <th>Action</th>
+                                            <th>Paid By</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-right">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,19 +89,42 @@
                                                 <tr>
                                                     <td>{{ $index+1 }}</td>
                                                     <td>{{ $item->type }}</td>
-                                                    <td>{{ $item->title }}</td>
-                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td>{{ $item->purchase_from }}</td>
+                                                    <td>{{ $item->purchase_date }}</td>
+                                                    <td><a >{{ $item->purchase_by }}</a></td>
+                                                    <td>{{ $item->paid_by }}</td>
                                                     <td>{{ $item->amount }}</td>
-                                                    <td>
-                                                        <a href="#"><img src="{{ asset('assets/admin/img/icon/view.png') }}" alt=""></a>
-                                                        <a href="{{ route('design/edit', $item->id) }}"><img src="{{ asset('assets/admin/img/icon/edit.png') }}" alt=""></a>
-                                                        <a href="{{ route('design/delete', $item->id) }}"><img src="{{ asset('assets/admin/img/icon/delete.png') }}" alt=""></a>
+                    
+                                                    <td class="text-center">
+                                                        <div class="dropdown action-label">
+                                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                                @if($item->status == 'Approved')
+                                                                <i class="fa fa-dot-circle-o text-success"></i> {{ $item->status }}
+                                                                @else
+                                                                <i class="fa fa-dot-circle-o text-danger"></i> {{ $item->status }}
+                                                                @endif
+                                                            </a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Pending</a>
+                                                                <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="dropdown dropdown-action">
+                                                            <a href="#" class="action-icon " data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="#" ><i class="fa fa-eye m-r-5"></i> View</a>
+                                                                <a class="dropdown-item" href="{{ route('design/edit', $item->id) }}" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                                <a class="dropdown-item" href="{{ route('design/delete', $item->id) }}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         @else
                                             <tr class="odd">
-                                                <td valign="top" colspan="6" class="dataTables_empty">No data available
+                                                <td valign="top" colspan="7" class="dataTables_empty">No data available
                                                     in
                                                     table
                                                 </td>

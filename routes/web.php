@@ -46,8 +46,9 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
     Route::get('create/designs', 'createDesignList')->name('create/designs');
     Route::post('create/designs', 'createDesign')->name('create/designs');
     Route::get('design/edit/{id}', 'designEdit')->name('design/edit');
-    Route::post('design/update/{id}', 'designUpdate')->name('design/update');
+    Route::put('design/update/{id}', 'designUpdate')->name('design/update');
     Route::get('design/delete/{id}', 'designDelete')->name('design/delete');
+    Route::get('designChangeStatus/{id}', 'designChangeStatus')->name('designChangeStatus');
     Route::get('constructions', 'constructions')->name('constructions');
     Route::get('create/constructions', 'createConstructionsList')->name('create/constructions');
     Route::post('create/constructions', 'createConstructions')->name('create/constructions');
@@ -61,7 +62,8 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('expenses/create', 'expensesCreate')->name('expenses/create');
     Route::post('expenses/create', 'expensesCreateData')->name('expenses/create');
     Route::get('expenses/edit/{id}', 'expensesEdit')->name('expenses/edit');
-    Route::post('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
+    Route::put('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
     Route::get('expenses/delete/{id}', 'expensesDelete')->name('expenses/delete');
+    Route::get('expenses/change/status/{id}', 'expensesChangeStatus')->name('expenses/change/status');
     // Route::post('get/temp/img', 'tempImgStores')->name('get/temp/img');
 });
