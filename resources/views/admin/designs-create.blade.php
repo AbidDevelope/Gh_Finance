@@ -8,8 +8,8 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Design</h4>
-                                <hr class="m-0 border-top-grey">
-                                <form action="{{ route('create/designs') }}" method="POST">
+                                <hr class="border-top-grey">
+                                <form action="{{ route('create/designs') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">

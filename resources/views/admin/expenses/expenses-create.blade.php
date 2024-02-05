@@ -13,7 +13,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Expenses</h4>
-                                <hr class="m-0 border-top-grey">
+                                <hr class="border-top-grey">
                                 <form action="{{ route('expenses/create') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
@@ -127,7 +127,7 @@
                                         </div>
                                     </div>
                                     <div class="submit-section">
-                                        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                                        <button type="submit" class="btn btn-primary submit-btn">CREATE</button>
                                     </div>
                                 </form>
                             </div>

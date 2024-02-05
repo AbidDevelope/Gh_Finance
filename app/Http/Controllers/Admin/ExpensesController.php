@@ -77,6 +77,15 @@ class ExpensesController extends Controller
             $expenses = Expense::where('id', $id)->first();
             $requestData = $request->all();
 
+            if($request->hasFile('attachments'))
+            {
+                $file = $request->file('attachments');
+                $extension = $file->getClientOriginalExtension();
+                $fileName = time(). '.' . $extension;
+                $file->move(public_path('uploads/expenses'), $fileName);
+                $requestData['attachments'] = $fileName;
+            }
+
             $expenses->update($requestData);
 
             session()->flash('success', 'Expenses Updated Successfully.');
@@ -90,7 +99,7 @@ class ExpensesController extends Controller
     public function expensesChangeStatus($id)
     {
         $data = Expense::where('id', $id)->first();
-        // dd($data);
+     
         if($data->status == 'Approved')
         {
             $status = 'Pending';

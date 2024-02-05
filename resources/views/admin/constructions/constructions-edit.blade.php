@@ -7,64 +7,110 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
-                                <form action="{{ route('constructions/update', $data->id) }}" method="POST">
+                                <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Edit Constructions</h4>
+                                <hr class="m-0 border-top-grey">
+                                <form action="{{ route('constructions/update', $data->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
-                                        <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Edit Constructions</h4>
-                                        <hr class="m-0 border-top-grey">
-                                        <?php
-                                    //    dd($data);
-                                        ?>
-                                        <div class="col-lg-4">
-                                            <input type="hidden" class="form-control" name="id" value="{{ $data->id }}">
-                                            <label for="name" class="form-label text-dark">Type</label>
-                                            <select name="type" class="form-control">
-                                                <option disabled>Select Type</option>
-                                                <option value="Design" {{ $data == 'Design' ? 'selected' : '' }}>Designs</option>
-                                                <option value="Constructions" {{ $data == 'Constructions' ? 'selected' : '' }}>Constructions</option>
-                                            </select>                                            
-                                                                                       
-                                            @error('type')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Type</label>
+                                                <select name="type" class="form-control" id="">
+                                                    <option value="" disabled selected>Select Type</option>
+                                                    <option value="Designs" {{ $data->type == 'Designs' ?  'selected' : '' }}>Designs</option>
+                                                    <option value="Constructions" {{ $data->type == 'Constructions' ? 'selected' : '' }}>Constructions</option>
+                                                </select>
+                                                @error('type')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <label for="name" class="form-label text-dark">Title</label>
-                                            <input type="text" class="form-control" name="title" placeholder="Title" value="{{ $data->title }}">
-                                            @error('title')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Project</label>
+                                                <input class="form-control" type="text" name="project" value="{{ $data->project }}">
+                                                @error('project')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <label for="title" class="form-label text-dark">Beneficiary</label>
-                                            <input type="text" class="form-control" placeholder="Beneficiary"
-                                                name="beneficiary" value="{{ $data->beneficiary }}">
-                                                @error('beneficiary')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Purchase From</label>
+                                                <input class="form-control" type="text" name="purchase_from" value="{{ $data->purchase_from }}">
+                                                @error('purchase_from')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <label for="email" class="form-label text-dark">Recp No. / Cheque Number</label>
-                                            <input type="text" class="form-control" placeholder="Recp No. / Cheque Number" name="receipt" value="{{ $data->receipt }}">
-                                            @error('receipt')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Purchase Date</label>
+                                                <div class=""><input class="form-control" type="date"
+                                                        name="purchase_date" value="{{ $data->purchase_date }}"></div>
+                                                @error('purchase_date')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <label for="text" class="form-label text-dark">Amount</label>
-                                            <input type="text" class="form-control" onkeypress="return /[0-9,-.]/.test(event.key)" placeholder="Amount" name="amount" value="{{ $data->amount }}">
-                                            @error('amount')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Purchased By </label>
+                                                <select class="select form-control" name="purchase_by">
+                                                    <option value="" selected disabled>Select By</option>
+                                                    <option value="Abid" {{ $data->purchase_by == 'Abid' ? 'selected' : '' }} >Abid</option>
+                                                    <option value="Monika" {{ $data->purchase_by == 'Monika' ? 'selected' : '' }}>Monika</option>
+                                                </select>
+                                                @error('purchase_by')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <label for="title" class="form-label text-dark"> Description
-                                                </label>
-                                            <textarea type="text" class="form-control"
-                                                placeholder="Description" name="description">{{ $data->description }}</textarea>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Amount</label>
+                                                <input placeholder="$50" class="form-control" type="text" name="amount" value="{{ $data->amount }}">
+                                                @error('amount')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Paid By</label>
+                                                <select class="select form-control" name="paid_by">
+                                                    <option value="" selected disabled>Select By</option>
+                                                    <option value="Cash" {{ $data->paid_by == 'Cash' ? 'selected' : '' }}>Cash</option>
+                                                    <option value="Cheque" {{ $data->paid_by == 'Cheque' ? 'selected' : '' }}>Cheque</option>
+                                                </select>
+                                                @error('paid_by')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Attachments</label>
+                                                <input class="form-control" type="file" name="attachments" value="{{ $data->attachments }}">
+                                                @error('attachments')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea type="text" name="description" class="form-control" id="">{{ $data->description }}</textarea>
                                                 @error('description')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- <div class="row"> -->
@@ -80,19 +126,19 @@
         </div>
     </div>
     <!-- metisMenu JS
-                        ============================================ -->
+                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                            ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                            ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                        ============================================ -->
+                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 @endsection

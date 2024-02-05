@@ -69,11 +69,11 @@
                             <table id="dataTable">
                                 <thead>
                                     <tr role="row">
-                                        <th>Id</th>
-                                        <th>Invoice</th>
-                                        <th>Date</th>
-                                        <th>DESCRIPTION </th>
-                                        <th>Project</th>
+                                        <th>#</th>
+                                        <th>Invoice Number</th>
+                                        <th>Client</th>
+                                        <th>Created Date</th>
+                                        <th>Amount</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -85,12 +85,47 @@
                                         <td>1</td>
                                         <td>1</td>
                                         <td>1</td>
-                                        <td>1</td>
-                                        <td>
+                                        <td><span class="badge bg-inverse-success">Paid</span></td>
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon " data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="{{ route('invoice/view') }}" ><i class="fa fa-eye m-r-5"></i> View</a>
+                                                    <a class="dropdown-item" href="#" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-file-pdf-o m-r-5"></i> Download</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {{-- <td>
                                             <a href="{{ route('invoice/view') }}"><img
                                                 src="{{ asset('assets/admin/img/icon/view.png') }}"
                                                 alt=""></a>
+                                        </td> --}}
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td><span class="badge bg-inverse-success">Paid</span></td>
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon " data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="{{ route('invoice/view') }}" ><i class="fa fa-eye m-r-5"></i> View</a>
+                                                    <a class="dropdown-item" href="#" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-file-pdf-o m-r-5"></i> Download</a>
+                                                    <a class="dropdown-item" href="#"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                </div>
+                                            </div>
                                         </td>
+                                        {{-- <td>
+                                            <a href="{{ route('invoice/view') }}"><img
+                                                src="{{ asset('assets/admin/img/icon/view.png') }}"
+                                                alt=""></a>
+                                        </td> --}}
                                     </tr>
                                     <tr class="odd">
                                         <td valign="top" colspan="7" class="dataTables_empty">No data available in

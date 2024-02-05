@@ -21,24 +21,27 @@
                                         </div>
                                         <div class="input-field second-wrap">
                                             <div class="icon-wrap">
-                                        
+
                                             </div>
-                                            <input type="date" placeholder="30 Aug 2018" >
+                                            <input type="date" placeholder="30 Aug 2018">
                                         </div>
                                         <div class="input-field third-wrap">
                                             <div class="icon-wrap">
-                                            
+
                                             </div>
-                                            <input type="date" placeholder="30 Aug 2018" >
+                                            <input type="date" placeholder="30 Aug 2018">
                                         </div>
                                         <div class="input-field fouth-wrap">
                                             <div class="icon-wrap">
-                                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-                                              </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
+                                                    </path>
+                                                </svg>
                                             </div>
                                             <select data-trigger="" name="choices-single-defaul">
-                                              <option placeholder="">Constructions</option>
+                                                <option placeholder="">Constructions</option>
                                             </select>
                                         </div>
                                         <div class="input-field fifth-wrap">
@@ -64,41 +67,85 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <span class="text-success">{{ session('success') }}</span>
-                            <span class="text-success">{{ session('error') }}</span>
+                            <span class="text-success text-center">{{ session('success') }}</span>
+                            <span class="text-success text-center">{{ session('error') }}</span>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-responsive">
-                                <table id="dataTable">
+                                <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Sr. No.</th>
+                                            <th>Id</th>
                                             <th>Type</th>
-                                            <th>Title#</th>
-                                            <th>Beneficiary</th>
+                                            <th>Purchase From</th>
+                                            <th>Purchase Date</th>
+                                            <th>Purchased By</th>
                                             <th>Amount</th>
-                                            <th>Action</th>
+                                            <th>Paid By</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-right">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if (count($data) > 0)
-                                            @foreach ($data as $index=>$item)
+                                            @foreach ($data as $index => $item)
                                                 <tr>
-                                                    <td>{{ $index+1 }}</td>
+                                                    <td>{{ $index + 1 }}</td>
                                                     <td>{{ $item->type }}</td>
-                                                    <td>{{ $item->title }}</td>
-                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td>{{ $item->purchase_from }}</td>
+                                                    <td>{{ $item->purchase_date }}</td>
+                                                    <td><a>{{ $item->purchase_by }}</a></td>
+                                                    <td>{{ $item->paid_by }}</td>
                                                     <td>{{ $item->amount }}</td>
-                                                    <td>
-                                                        <a href="#"><img src="{{ asset('assets/admin/img/icon/view.png') }}" alt=""></a>
-                                                        <a href="{{ route('constructions/edit', $item->id) }}"><img src="{{ asset('assets/admin/img/icon/edit.png') }}" alt=""></a>
-                                                        <a href="{{ route('constructions/delete', $item->id) }}"><img src="{{ asset('assets/admin/img/icon/delete.png') }}" alt=""></a>
+
+                                                    <td class="text-center">
+                                                        <div class="dropdown action-label">
+                                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle"
+                                                                href="#" data-toggle="dropdown" aria-expanded="false">
+                                                                @if ($item->status == 'Approved')
+                                                                    <i class="fa fa-dot-circle-o text-success"></i>
+                                                                    {{ $item->status }}
+                                                                @else
+                                                                    <i class="fa fa-dot-circle-o text-danger"></i>
+                                                                    {{ $item->status }}
+                                                                @endif
+                                                            </a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('designChangeStatus', $item->id) }}"><i
+                                                                        class="fa fa-dot-circle-o text-danger"></i>
+                                                                    Pending</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('designChangeStatus', $item->id) }}"><i
+                                                                        class="fa fa-dot-circle-o text-success"></i>
+                                                                    Approved</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="dropdown dropdown-action">
+                                                            <a href="#" class="action-icon " data-toggle="dropdown"
+                                                                aria-expanded="false"><img
+                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                    alt=""></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="#"><i
+                                                                        class="fa fa-eye m-r-5"></i> View</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('constructions/edit', $item->id) }}"><i
+                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('constructions/delete', $item->id) }}"><i
+                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         @else
                                             <tr class="odd">
-                                                <td valign="top" colspan="6" class="dataTables_empty">No data available in table </td>
+                                                <td valign="top" colspan="9" class="dataTables_empty">No data available
+                                                    in table </td>
                                             </tr>
                                         @endif
                                     </tbody>
@@ -116,20 +163,20 @@
     </div>
 
     <!-- metisMenu JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -137,17 +184,17 @@
     <script>
         $('#dataTable').DataTable();
     </script>
-     {{-- Data trigger --}}
-     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
-     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
-     <script>
-         flatpickr(".datepicker", {});
-     </script>
-     <script>
-         const choices = new Choices('[data-trigger]', {
-             searchEnabled: false,
-             itemSelectText: '',
-         });
-     </script>
+    {{-- Data trigger --}}
+    <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
+    <script>
+        flatpickr(".datepicker", {});
+    </script>
+    <script>
+        const choices = new Choices('[data-trigger]', {
+            searchEnabled: false,
+            itemSelectText: '',
+        });
+    </script>
 
 @endsection

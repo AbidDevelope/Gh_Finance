@@ -5,10 +5,11 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\FinanceController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\ExpensesController;
+use App\Http\Controllers\Admin\InvoiceController;
 
 
 
-// AuthController 
+// ------------------------- AuthController -------------------------- //
 Route::controller(AuthController::class)->group(function(){
     Route::get('/', 'getLogin')->name('/');
     Route::post('login', 'postLogin')->name('admin/login');
@@ -21,7 +22,7 @@ Route::controller(AuthController::class)->group(function(){
     });
 });
 
-// FinanceController
+// --------------------------- FinanceController -------------------------- //
 Route::controller(FinanceController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('quotation', 'quotation')->name('quotation');
     Route::get('quotations/create', 'quotationCreate')->name('quotations/create');
@@ -30,15 +31,12 @@ Route::controller(FinanceController::class)->prefix('admin')->middleware(['admin
     // Route::get('proposals', 'proposalList')->name('proposals');
     // Route::get('proposals/create', 'proposalCreate')->name('proposals/create');
     // Route::get('estimates', 'estimatesList')->name('estimates');
-    Route::get('invoices', 'invoiceList')->name('invoices');
-    Route::get('invoices/create', 'invoiceCreate')->name('invoices/create');
-    Route::get('invoice/view', 'invoiceView')->name('invoice/view');
     Route::get('payments', 'paymentList')->name('payments');
     
     // Route::get('bankaccounts', 'bankAcoountList')->name('bankaccounts');
 });
 
-// Services Controller Start
+// ----------------------------- ServicesController ---------------------------- //
 Route::controller(ServicesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('all/services', 'allServices')->name('all/services');
     Route::get('design/constructions', 'designConstructions')->name('design/constructions');
@@ -56,7 +54,8 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
     Route::post('constructions/update/{id}', 'constructionsUpdate')->name('constructions/update');
     Route::get('constructions/delete/{id}', 'constructionsDelete')->name('constructions/delete');
 });
-// ExpensesController Route Start
+
+// -------------------------- ExpensesController --------------------------- //
 Route::controller(ExpensesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('expenses', 'expensesList')->name('expenses');
     Route::get('expenses/create', 'expensesCreate')->name('expenses/create');
@@ -66,4 +65,12 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('expenses/delete/{id}', 'expensesDelete')->name('expenses/delete');
     Route::get('expenses/change/status/{id}', 'expensesChangeStatus')->name('expenses/change/status');
     // Route::post('get/temp/img', 'tempImgStores')->name('get/temp/img');
+});
+
+// ------------------------- InvoiceController ----------------------- //
+Route::controller(InvoiceController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
+    Route::get('invoices', 'invoiceList')->name('invoices');
+    Route::get('invoices/create', 'invoice')->name('invoices/create');
+    Route::get('invoice/view', 'invoiceView')->name('invoice/view');
+    Route::post('invoice/create', 'invoiceCreate')->name('invoice/create');
 });
