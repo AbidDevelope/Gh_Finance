@@ -31,7 +31,10 @@
 .form-section h4
 {
     color: #000;
-    margin: 15px;
+    margin: 0px auto;
+}
+.form-section form{
+    margin-top: 22px;
 }
 /* Style the button */
 .form-section button[type="submit"] {

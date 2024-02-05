@@ -64,9 +64,9 @@
                                         <tr role="row">
                                             <th>Sr. No.</th>
                                             <th>Type</th>
-                                            <th>Title#</th>
-                                            <th>Beneficiary</th>
+                                            <th>Project#</th>
                                             <th>Amount</th>
+                                            <th>Status</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -76,9 +76,23 @@
                                                 <tr>
                                                     <td>{{ $index+1 }}</td>
                                                     <td>{{ $item->type }}</td>
-                                                    <td>{{ $item->title }}</td>
-                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td>{{ $item->project }}</td>
                                                     <td>{{ $item->amount }}</td>
+                                                    <td class="text-center">
+                                                        <div class="dropdown action-label">
+                                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                                @if($item->status == 'Approved')
+                                                                <i class="fa fa-dot-circle-o text-success"></i> {{ $item->status }}
+                                                                @else
+                                                                <i class="fa fa-dot-circle-o text-danger"></i> {{ $item->status }}
+                                                                @endif
+                                                            </a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Pending</a>
+                                                                <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                     <td>{{ $item->created_at }}</td>
                                                 </tr>
                                             @endforeach

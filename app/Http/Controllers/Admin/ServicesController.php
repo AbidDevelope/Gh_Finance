@@ -32,8 +32,8 @@ class ServicesController extends Controller
             'type'          => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
             'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
             'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
-            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' , 
-            'attachments'   => 'required',
+            'paid_by'       => 'required|string|max:255' ,  'attachments'    => 'required|mimes:jpg,jpeg,png,pdf|max:2048',
+            'description'   => 'required|string|max:255' , 
         ]);
 
         if($validate->fails())
@@ -42,13 +42,15 @@ class ServicesController extends Controller
         }else
         {
            $requestData = $request->all();
-           if($request->hasFile('attachments'))
-           {
+
+           if ($request->hasFile('attachments')) {
             $file = $request->file('attachments');
             $extension = $file->getClientOriginalExtension();
-            $fileName = time(). '.'. $extension;
-            $file->move(public_path('uploads/designs'), $fileName);
-            $requestData['attachments'] = $fileName;
+            $fileName = time() . '.' . $extension;
+           
+            $file->move(public_path('uploads/designs'), $fileName); 
+        
+            $requestData['attachments'] = $fileName; 
         }
         Project::create($requestData);
 
@@ -83,10 +85,19 @@ class ServicesController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
             $getData = Project::where('id', $id)->first();
-            $data = $request->all();
+            $requestData = $request->all();
+
+            if($request->hasFile('attachments'))
+            {
+                $file = $request->file('attachments');
+                $extension = $file->getClientOriginalExtension();
+                $fileName = time(). '.' . $extension;
+                $file->move(public_path('uploads/designs'), $fileName);
+                $requestData['attachments'] = $fileName;
+            }
             if($getData)
             {
-                $getData->update($data);
+                $getData->update($requestData);
 
                 session()->flash('success', 'Data Updated Successfully.');
                 return redirect()->route('designs');
@@ -137,9 +148,11 @@ class ServicesController extends Controller
     public function createConstructions(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'type' => 'required',                   'title' => 'required|string',  
-            'beneficiary'  => 'required|string',    'receipt' => 'required|string',  
-            'amount'  => 'required|string',         'description' => 'required|string', 
+            'type'          => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
+            'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
+            'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
+            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' ,
+            'attachments'   => 'required', 
         ]);
 
         if($validate->fails())
@@ -147,17 +160,26 @@ class ServicesController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }else
         {
-            $data = new Project();
-            $data->type = $request->type;
-            $data->title = $request->title;
-            $data->beneficiary = $request->beneficiary;
-            $data->receipt = $request->receipt;
-            $data->amount = $request->amount;
-            $data->description = $request->description;
-            $data->save();
+            $requestData = $request->all();
 
-            session()->flash('success', 'Constructions Created Successfully');
-            return redirect()->route('constructions');
+            if($request->hasFile('attachments'))
+            {
+                $file = $request->file('attachments');
+                $extension = $file->getClientOriginalExtension();
+                $fileName = time(). '.' . $extension;
+                $file->move(public_path('uploads/constructions'), $fileName);
+                $requestData['attachments'] = $fileName;
+            }
+
+            $data = Project::create($requestData);
+            if($data)
+            {
+                session()->flash('success', 'Constructions Created Successfully');
+                return redirect()->route('constructions');
+            }else{
+                session()->flash('error', 'Something Went Wrong');
+                return redirect()->back();
+            }
         }
     }
 
@@ -170,9 +192,10 @@ class ServicesController extends Controller
     public function constructionsUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'type' => 'required',                   'title' => 'required|string',  
-            'beneficiary'  => 'required|string',    'receipt' => 'required|string',  
-            'amount'  => 'required|string',         'description' => 'required|string', 
+            'type'          => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
+            'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
+            'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
+            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' ,
         ]);
 
         if($validate->fails())
@@ -180,10 +203,19 @@ class ServicesController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
             $getData = Project::where('id', $id)->first();
-            $data = $request->all();
+            $requestData = $request->all();
+
+            if($request->hasFile('attachments'))
+            {
+                $file = $request->file('attachments');
+                $extension = $file->getClientOriginalExtension();
+                $fileName = time(). '.' . $extension;
+                $file->move(public_path('uploads/constructions'), $fileName);
+                $requestData['attachments'] = $fileName;
+            }
             if($getData)
             {
-                $getData->update($data);
+                $getData->update($requestData);
 
                 session()->flash('success', 'Data Updated Successfully.');
                 return redirect()->route('constructions');
@@ -199,5 +231,6 @@ class ServicesController extends Controller
        Project::find($id)->delete();
 
        session()->flash('success', 'Constructions Deleted Successfully.');
+       return redirect()->back();
     }
 }

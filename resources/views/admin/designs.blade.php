@@ -71,7 +71,7 @@
                             <div class="table-responsive">
                                 <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
                                     <thead>
-                                        <tr role="row">
+                                        <tr>
                                             <th>Id</th>
                                             <th>Type</th>
                                             <th>Purchase From</th>

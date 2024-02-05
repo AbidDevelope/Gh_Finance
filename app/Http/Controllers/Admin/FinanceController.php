@@ -9,20 +9,6 @@ use App, Session;
 class FinanceController extends Controller
 {
 
-    public function invoiceList()
-    {
-        return view('admin.invoices');
-    }
-
-    public function invoiceCreate()
-    {
-        return view('admin.invoices-create');
-    }
-    public function invoiceView()
-    {
-        return view('admin.invoices-view');
-    }
-
     public function quotation()
     {
         return view('admin.quotation');

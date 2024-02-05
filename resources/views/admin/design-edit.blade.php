@@ -9,7 +9,7 @@
                             <div class="form-section">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Edit Design</h4>
                                 <hr class="m-0 border-top-grey">
-                                <form action="{{ route('design/update', $data->id) }}" method="POST">
+                                <form action="{{ route('design/update', $data->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="row">
