@@ -24,6 +24,24 @@
     box-shadow: none;
 }
 
+/* .input-group .form-control {
+    padding-left: 50px; 
+} */
+
+.input-group-text {
+    position: absolute;
+    z-index: 3;
+    margin-left: 10px; /* Adjust based on your layout */
+    margin-top: calc(0.375rem + 1px); /* Adjust to vertically center, based on input height */
+    background-color: transparent;
+    border-color: transparent;
+}
+
+
+.table-responsive{
+    overflow: hidden;
+}
+
 /* Style the textarea */
 .form-section .form-floating > .form-control {
     height: auto;

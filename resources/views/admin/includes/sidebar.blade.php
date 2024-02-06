@@ -76,6 +76,12 @@
                             <li><a title="Login" href="{{ route('quotation') }}"><img src="{{ asset('assets/admin/img/icon/file.png') }}" alt=""><span class="mini-sub-pro">Quotation List</span></a></li>
                         </ul>
                     </li>
+                    <li id="removable">
+                        <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/beneficiary.png') }}" alt=""> <span class="mini-click-non">Beneficiary</span></a>
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Login" href="{{ route('beneficiary') }}"><img src="{{ asset('assets/admin/img/icon/add-beneficiary.png') }}" alt=""><span class="mini-sub-pro">Beneficiary List</span></a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>

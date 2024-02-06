@@ -71,7 +71,7 @@
                                     <tr role="row">
                                         <th>#</th>
                                         <th>Invoice Number</th>
-                                        <th>Client</th>
+                                        <th>Beneficiary</th>
                                         <th>Created Date</th>
                                         <th>Amount</th>
                                         <th>Status</th>
