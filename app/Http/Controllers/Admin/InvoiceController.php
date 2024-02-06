@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Beneficiary;
 
 class InvoiceController extends Controller
 {
@@ -13,8 +14,9 @@ class InvoiceController extends Controller
     }
 
     public function invoice()
-    {
-        return view('admin.invoices.invoices-create');
+    { 
+        $data = Beneficiary::all();
+        return view('admin.invoices.invoices-create', compact('data'));
     }
 
     public function invoiceView()

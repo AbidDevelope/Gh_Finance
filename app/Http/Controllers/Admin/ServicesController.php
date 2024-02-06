@@ -23,7 +23,7 @@ class ServicesController extends Controller
 
     public function createDesignList()
     {
-      return view('admin.designs-create');
+      return view('admin.designs.designs-create');
     }
 
     public function createDesign(Request $request)
@@ -62,13 +62,13 @@ class ServicesController extends Controller
     public function designs()
     { 
         $data = Project::where(['type' => 'Design'])->get();
-        return view('admin.designs', compact('data'));
+        return view('admin.designs.designs', compact('data'));
     }
 
     public function designEdit($id)
     {
         $data = Project::find($id);
-        return view('admin.design-edit', compact('data'));
+        return view('admin.designs.design-edit', compact('data'));
     }
 
     public function designUpdate(Request $request, $id)

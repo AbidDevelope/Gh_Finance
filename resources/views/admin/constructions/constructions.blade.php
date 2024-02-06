@@ -72,16 +72,14 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-responsive">
-                                <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
+                                <table id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>#</th>
                                             <th>Type</th>
                                             <th>Purchase From</th>
                                             <th>Purchase Date</th>
-                                            <th>Purchased By</th>
-                                            <th>Amount</th>
-                                            <th>Paid By</th>
+                                            {{-- <th>Purchased By</th> --}}
                                             <th class="text-center">Status</th>
                                             <th class="text-right">Actions</th>
                                         </tr>
@@ -94,10 +92,7 @@
                                                     <td>{{ $item->type }}</td>
                                                     <td>{{ $item->purchase_from }}</td>
                                                     <td>{{ $item->purchase_date }}</td>
-                                                    <td><a>{{ $item->purchase_by }}</a></td>
-                                                    <td>{{ $item->paid_by }}</td>
-                                                    <td>{{ $item->amount }}</td>
-
+                                                    {{-- <td><a>{{ $item->purchase_by }}</a></td> --}}
                                                     <td class="text-center">
                                                         <div class="dropdown action-label">
                                                             <a class="btn btn-white btn-sm btn-rounded dropdown-toggle"

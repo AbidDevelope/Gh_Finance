@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\FinanceController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\ExpensesController;
 use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\BeneficiaryController;
 
 
 
@@ -71,6 +72,17 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
 Route::controller(InvoiceController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
     Route::get('invoices', 'invoiceList')->name('invoices');
     Route::get('invoices/create', 'invoice')->name('invoices/create');
-    Route::get('invoice/view', 'invoiceView')->name('invoice/view');
     Route::post('invoice/create', 'invoiceCreate')->name('invoice/create');
+    Route::get('invoice/view', 'invoiceView')->name('invoice/view');
+});
+
+// ------------------------- BeneficiaryController ------------------------ //
+Route::controller(BeneficiaryController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
+    Route::get('beneficiary', 'beneficiary')->name('beneficiary');
+    Route::get('beneficiary/create', 'beneficiaryCreate')->name('beneficiary/create');
+    Route::post('beneficiary/create', 'beneficiaryCreatePost')->name('beneficiary/create');
+    Route::get('beneficiary/edit/{id}', 'beneficiaryEdit')->name('beneficiary/edit');
+    Route::post('beneficiary/update/{id}', 'beneficiaryUpdate')->name('beneficiary/update');
+    Route::get('beneficiary/delete/{id}', 'beneficiaryDelete')->name('beneficiary/delete');
+    Route::get('beneficiary/status/change/{id}', 'changeStatus')->name('beneficiary/status/change');
 });
