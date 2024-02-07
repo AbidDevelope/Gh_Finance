@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Beneficiary;
 
 class Project extends Model
 {
@@ -19,4 +20,9 @@ class Project extends Model
         'attachments',
         'description',
     ];
+
+    public function beneficiary()
+    {
+        return $this->belongsTo(Beneficiary::class);
+    }
 }

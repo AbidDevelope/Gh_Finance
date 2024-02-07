@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('invoice_id')->nullable();
             $table->foreignId('beneficiary_id')->constrained()->onDelete('cascade');
-            $table->decimal('tax', 10, 2)->nullable();
+            $table->foreignId('project_id')->constrained()->onDelete('cascade');
             $table->date('invoice_date')->nullable();
             $table->date('due_date')->nullable();
             $table->decimal('subtotal', 10, 2)->nullable();
             $table->decimal('discount', 10, 2)->nullable();
             $table->decimal('grandtotal', 10, 2)->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }

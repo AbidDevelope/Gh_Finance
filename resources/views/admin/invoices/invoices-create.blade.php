@@ -13,57 +13,43 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
-
+                                            <label>Invoice ID </label>
                                             <div class="input-group" style="position: relative;">
-                                                <span class="input-group-text" id="invoice-id-addon" style="position: absolute; z-index: 3; margin-left: -4px; margin-top: calc(0.375rem + -4px); background-color: transparent; border-color: transparent;">INV-</span>
-                                                <input type="text" class="form-control" name="invoice_id" placeholder="Invoice ID" aria-label="Invoice ID" aria-describedby="invoice-id-addon" style="padding-left: 50px;" value="{{ old('invoice_id') }}">
+                                                <span class="input-group-text" id="invoice-id-addon"
+                                                    style="position: absolute; z-index: 3; margin-left: -4px; margin-top: calc(0.375rem + -4px); background-color: transparent; border-color: transparent;">INV-</span>
+                                                <input type="text" class="form-control" name="invoice_id"
+                                                    placeholder="Invoice ID" aria-label="Invoice ID"
+                                                    aria-describedby="invoice-id-addon" style="padding-left: 50px;"
+                                                    value="">
                                             </div>
-                                            
-
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Beneficiary <span class="text-danger">*</span></label>
-                                                <select class="form-control" name="beneficiary">
+                                                <select class="form-control" name="beneficiary_id">
                                                     <option value="" disabled selected>Please Select</option>
-                                                    @foreach ($data as $item)
-                                                        <option value="{{ $item->beneficiary }}">{{ $item->beneficiary }}
-                                                        </option>
+                                                    @foreach ($beneficiaries as $beneficairy)
+                                                        <option value="{{ $beneficairy->id }}">
+                                                            {{ $beneficairy->beneficiary }}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('beneficiary')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project <span class="text-danger">*</span></label>
-                                                <select class="form-control" name="project">
+                                                <select class="form-control" name="project_id">
                                                     <option value="" disabled selected>Select Project</option>
-                                                    <option value="Office Management">Office Management</option>
-                                                    <option value="Project Management">Project Management</option>
+                                                    @foreach ($beneficiaries as $beneficiary)
+                                                        @foreach ($beneficiary->projects as $item)
+                                                            <option value="{{ $item->id }}">{{ $item->project }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endforeach
                                                 </select>
-                                                @error('client')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
                                             </div>
                                         </div>
 
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Tax</label>
-                                                <select class="form-control" name="tax_type">
-                                                    <option disabled selected>Select Tax</option>
-                                                    <option value="Vat">VAT</option>
-                                                    <option value="Gst">GST</option>
-                                                    <option value="No Tax">No Tax</option>
-                                                </select>
-                                                @error('tax_type')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Invoice date <span class="text-danger">*</span></label>
@@ -162,7 +148,9 @@
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
-                                                                $ 0.00
+                                                                <input class="form-control text-right"
+                                                                onkeypress="return /[0-9.,]/i.test(event.key)"
+                                                                type="text" name="grandtotal">
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -183,20 +171,20 @@
         </div>
     </div>
     <!-- metisMenu JS
-                                ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                    ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                    ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                ============================================ -->
+                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Add and Remove table row  --}}
