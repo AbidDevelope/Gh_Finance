@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('qty')->nullable();
             $table->decimal('price', 10, 3)->nullable();
             $table->decimal('total', 10, 3)->nullable();
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }
