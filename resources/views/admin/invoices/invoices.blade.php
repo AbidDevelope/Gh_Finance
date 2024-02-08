@@ -92,11 +92,11 @@
                                         @foreach ($invoices as $index => $invoice)
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
-                                                <td>{{ $invoice->invoice_id }}</td>
+                                                <td>{{ $invoice->invoice_number }}</td>
                                                 <td>{{ $invoice->beneficiaries->beneficiary }}</td>
                                                 <td>{{ $invoice->created_at->format('d M Y') }}</td>
                                                 <td>{{ $invoice->grandtotal }}</td>
-                                                <td><span class="badge bg-inverse-success">Paid</span></td>
+                                                <td><span class="badge bg-success">Paid</span></td>
                                                 <td class="text-right">
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon " data-toggle="dropdown"
@@ -105,11 +105,16 @@
                                                                 alt=""></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item"
-                                                                href="{{ route('invoice/view') }}"><i
-                                                                    class="fa fa-eye m-r-5"></i> View</a>
+                                                                href="{{ route('invoice/view', $invoice->id) }}"><i
+                                                                    class="fa fa-eye m-r-5"></i> View
+                                                            </a>
                                                             <a class="dropdown-item" href="#"><i
                                                                     class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#"><i
+                                                                    <a class="dropdown-item"
+                                                                href="{{ route('invoice/pdf/view', $invoice->id) }}"><i
+                                                                    class="fa fa-eye m-r-5"></i> View PDF
+                                                            </a>
+                                                            <a class="dropdown-item" href="{{ route('invoice/pdf/download', $invoice->id) }}"><i
                                                                     class="fa fa-file-pdf-o m-r-5"></i> Download</a>
                                                             <a class="dropdown-item" href="#"><i
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>

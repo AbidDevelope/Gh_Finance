@@ -9,24 +9,45 @@ use App\Models\Project;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use Validator;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class InvoiceController extends Controller
 {
     public function invoiceList()
     {
-        $invoices = Invoice::with('beneficiaries')->get();
+        $invoices = Invoice::orderBy('id', 'desc')->with('beneficiaries')->get();
         return view('admin.invoices.invoices', compact('invoices'));
     }
 
     public function invoice()
     { 
-        $beneficiaries = Beneficiary::orderBy('beneficiary', 'asc')->with('projects')->get();
-        return view('admin.invoices.invoices-create', compact('beneficiaries'));
+        $beneficiaries = Beneficiary::orderBy('beneficiary', 'asc')->with(['projects', 'invoices'])->get();
+        $lastInvoice = Invoice::orderBy('id', 'desc')->first();
+        $nextInvoiceId = $lastInvoice ? $lastInvoice->id + 1: 1;
+
+        return view('admin.invoices.invoices-create', compact('beneficiaries', 'nextInvoiceId'));
     }
 
-    public function invoiceView()
+    public function invoiceView($id)
     {
-        return view('admin.invoices.invoices-view');
+        $invoices = Invoice::where('id', $id)->with(['invoiceItems', 'beneficiaries'])->first();
+
+        return view('admin.invoices.invoices-view', compact('invoices'));
+    }
+
+    public function downloadInvoicePDF($id)
+    {
+        $invoices = Invoice::where('id', $id)->with(['invoiceItems', 'beneficiaries'])->first();
+        $pdf = PDF::loadView('admin.invoices.invoices-pdf', compact('invoices'))->setOptions(['defaultFont' => 'sans-serif']);
+
+        return $pdf->download('INV#'. $invoices->id. '.pdf');
+    }
+
+    public function invoicePdfView($id)
+    {
+        $invoices = Invoice::where('id', $id)->with(['invoiceItems', 'beneficiaries'])->first();
+
+        return view('admin.invoices.invoices-pdf', compact('invoices'));
     }
 
     public function invoiceCreate(Request $request)
@@ -45,15 +66,15 @@ class InvoiceController extends Controller
         {
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
-        //   dd($request->all());
+
             $invoice = new Invoice();
-            $invoice->invoice_id     = $request->invoice_id;
-            $invoice->beneficiary_id = $request->beneficiary_id;
-            $invoice->project_id     = $request->project_id;
-            $invoice->invoice_date   = $request->invoice_date;
-            $invoice->due_date       = $request->due_date;
-            $invoice->subtotal       = $request->subtotal;
-            $invoice->discount       = $request->discount;
+            $invoice->invoice_number     = $request->invoice_number;
+            $invoice->beneficiary_id      = $request->beneficiary_id;
+            $invoice->project_id           = $request->project_id;
+            $invoice->invoice_date          = $request->invoice_date;
+            $invoice->due_date             = $request->due_date;
+            $invoice->subtotal            = $request->subtotal;
+            $invoice->discount          = $request->discount;
             $invoice->grandtotal       = $request->grandtotal;
             $invoice->save();
             
@@ -61,13 +82,13 @@ class InvoiceController extends Controller
             foreach($request->qty as $key=>$value)
             {
                 $invoiceItems = new InvoiceItem([
-                    'invoice_id'     => $invoice->id,
-                    'beneficiary_id' => $request->beneficiary_id,
-                    'description'  => $request->description[$key],
-                    'unit'        => $request->unit[$key],
-                    'qty'         => $request->qty[$key],
+                    'invoice_id'        => $invoice->id,
+                    'beneficiary_id'   => $request->beneficiary_id,
+                    'description'     => $request->description[$key],
+                    'unit'           => $request->unit[$key],
+                    'qty'           => $request->qty[$key],
                     'price'        => $request->price[$key],
-                    'total'      => $request->total[$key]  
+                    'total'       => $request->total[$key]  
                 ]);
                 $invoiceItems->save();
             }

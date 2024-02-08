@@ -73,7 +73,9 @@ Route::controller(InvoiceController::class)->prefix('admin')->middleware('adminA
     Route::get('invoices', 'invoiceList')->name('invoices');
     Route::get('invoices/create', 'invoice')->name('invoices/create');
     Route::post('invoice/create', 'invoiceCreate')->name('invoice/create');
-    Route::get('invoice/view', 'invoiceView')->name('invoice/view');
+    Route::get('invoice/view/{id}', 'invoiceView')->name('invoice/view');
+    Route::get('invoice/pdf/view/{id}', 'invoicePdfView')->name('invoice/pdf/view');
+    Route::get('invoice/pdf/download/{id}', 'downloadInvoicePDF')->name('invoice/pdf/download');
 });
 
 // ------------------------- BeneficiaryController ------------------------ //

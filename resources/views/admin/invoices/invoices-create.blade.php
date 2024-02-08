@@ -13,14 +13,10 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label>Invoice ID </label>
-                                            <div class="input-group" style="position: relative;">
-                                                <span class="input-group-text" id="invoice-id-addon"
-                                                    style="position: absolute; z-index: 3; margin-left: -4px; margin-top: calc(0.375rem + -4px); background-color: transparent; border-color: transparent;">INV-</span>
-                                                <input type="text" class="form-control" name="invoice_id"
-                                                    placeholder="Invoice ID" aria-label="Invoice ID"
-                                                    aria-describedby="invoice-id-addon" style="padding-left: 50px;"
-                                                    value="">
+                                            <label>Invoice Number </label>
+                                            <div class="form-group">
+                                                <input type="text" readonly class="form-control" name="invoice_number"
+                                                    value="{{ 'INV#0'.$nextInvoiceId }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -132,7 +128,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="5" class="text-right">
-                                                                Discount %
+                                                                Discount 
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px;width: 230px">
