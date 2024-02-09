@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\ExpensesController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\BeneficiaryController;
+use App\Http\Controllers\Admin\QuotationController;
 
 
 
@@ -25,10 +26,6 @@ Route::controller(AuthController::class)->group(function(){
 
 // --------------------------- FinanceController -------------------------- //
 Route::controller(FinanceController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
-    Route::get('quotation', 'quotation')->name('quotation');
-    Route::get('quotations/create', 'quotationCreate')->name('quotations/create');
-    Route::get('quotation/view', 'quotationView')->name('quotation/view');
-    Route::get('/lang/{locale}', 'switchLanguage')->name('lang.switch');
     // Route::get('proposals', 'proposalList')->name('proposals');
     // Route::get('proposals/create', 'proposalCreate')->name('proposals/create');
     // Route::get('estimates', 'estimatesList')->name('estimates');
@@ -87,4 +84,13 @@ Route::controller(BeneficiaryController::class)->prefix('admin')->middleware('ad
     Route::post('beneficiary/update/{id}', 'beneficiaryUpdate')->name('beneficiary/update');
     Route::get('beneficiary/delete/{id}', 'beneficiaryDelete')->name('beneficiary/delete');
     Route::get('beneficiary/status/change/{id}', 'changeStatus')->name('beneficiary/status/change');
+});
+
+// ---------------------------- QuotationController ------------------------------//
+Route::controller(QuotationController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
+    Route::get('quotation', 'quotation')->name('quotation');
+    Route::get('/lang/{locale}', 'switchLanguage')->name('lang.switch');
+    Route::get('quotations/create', 'quotationCreateForm')->name('quotations/create');
+    Route::post('quotations/create', 'quotationCreate')->name('quotations/create');
+    Route::get('quotation/view', 'quotationView')->name('quotation/view');
 });
