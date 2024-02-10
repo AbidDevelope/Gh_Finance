@@ -18,7 +18,7 @@
                 </ul>
             </div>
         </div>
-        <div class="left-custom-menu-adp-wrap comment-scrollbar">
+        <div class="left-custom-menu-adp-wrap comment-scrollbar mb-10"  style="height: 400px; overflow-y: auto;">
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
                     <li class="active">
@@ -102,7 +102,7 @@
                                        <span class="mini-click-non">Dashboard</span>
                                     </a>
                             </li>
-                    
+
                             </li>
                             <li><a data-toggle="collapse" data-target="#demo" href="#">Services <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                 <ul id="demo" class="collapse dropdown-header-top">

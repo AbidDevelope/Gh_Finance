@@ -21,13 +21,13 @@
                                         </div>
                                         <div class="input-field second-wrap">
                                             <div class="icon-wrap">
-                                        
+
                                             </div>
                                             <input type="date" placeholder="30 Aug 2018" >
                                         </div>
                                         <div class="input-field third-wrap">
                                             <div class="icon-wrap">
-                                            
+
                                             </div>
                                             <input type="date" placeholder="30 Aug 2018" >
                                         </div>
@@ -50,10 +50,11 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="container">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <h4 class="mt-3 text-headings">Quotations</h4>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
                             <div class="table-actions">
                                 <a href="{{ route('quotations/create') }}" class="btn btn-primary rounded proposals-create f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                     <i class="fa fa-plus"></i> Create Quotation
@@ -63,6 +64,7 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <table id="dataTable">
                                 <thead>
@@ -96,7 +98,7 @@
                 </div>
             </div>
 
-            
+
         </div>
         <!-- Static Table End -->
     </div>

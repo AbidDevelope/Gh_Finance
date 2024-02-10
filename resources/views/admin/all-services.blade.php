@@ -21,13 +21,13 @@
                                         </div>
                                         <div class="input-field second-wrap">
                                             <div class="icon-wrap">
-                                        
+
                                             </div>
                                             <input type="date" placeholder="30 Aug 2018" >
                                         </div>
                                         <div class="input-field third-wrap">
                                             <div class="icon-wrap">
-                                            
+
                                             </div>
                                             <input type="date" placeholder="30 Aug 2018" >
                                         </div>

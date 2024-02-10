@@ -393,10 +393,10 @@
 
 
         <div class="row   mx-1 gap-1 flex-nowrap">
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3 shadow">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3 shadow" style="background-color: white">
                 <div class="row align-items-center">
                     <div class="col-4">
-                        <img src="/assets/admin/img/logo/img4.png" alt="Description of the image" width="200" height="200">
+                        <img src="/assets/admin/img/logo/img4.png" alt="Description of the image">
 
                         {{-- <svg width="80" height="80" viewBox="0 0 232 241" fill="none" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -418,7 +418,7 @@
 
             </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3 shadow">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3 shadow" style="background-color: white">
                 <div class="row align-items-center">
                     <div class="col-4">
                         <img src="/assets/admin/img/logo/img3.png" alt="Description of the image" width="200" height="200">
@@ -431,7 +431,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3 shadow">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3 shadow" style="background-color: white">
                 <div class="row align-items-center">
                     <div class="col-4">
                         <img src="/assets/admin/img/logo/img2.png" alt="Description of the image" width="200" height="200">
@@ -444,7 +444,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3 shadow">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3 shadow" style="background-color: white">
                 <div class="row align-items-center">
                     <div class="col-4">
                         <img src="/assets/admin/img/logo/img1.png" alt="Description of the image" width="200" height="200">
@@ -467,7 +467,7 @@
 
     <div class="container-fluid my-4">
         <div class="row mx-1 gap-0">
-            <div class="col-lg-8 col-md-12 pt-3 shadow">
+            <div class="col-lg-8 col-md-12 pt-3 shadow" style="background-color: white">
                 <div>
                     <div class="caption pro-sl-hd">
                         <span class="caption-subject text-uppercase pb-4"><b>This Year Revenue</b></span>
@@ -478,7 +478,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12 pt-3 shadow">
+            <div class="col-lg-4 col-md-12 pt-3 shadow" style="background-color: white">
                 <div class="caption pro-sl-hd">
                     <span class="caption-subject text-uppercase pb-4"><b>All Services</b></span>
 
@@ -509,14 +509,14 @@
 
     <div class="container-fluid my-4 ">
         <div class="row mx-1">
-            <div class="col-xs-12 col-md-6 pt-3 shadow">
+            <div class="col-xs-12 col-md-6 pt-3 ">
                 <div class="row p-0">
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-12 col-md-6 shadow" style="background-color: white">
                         <p class="m-0 dashboard-color-text">Last Month Sale</p>
                         <p class="dashboard-color-subcolor">7656765 KWD</p>
                         <div id="echart-bar-last-month" style="width: 100%; height:400px ; position:relative"></div>
                     </div>
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-12 col-md-6 shadow" style="background-color: white" >
                         <p class="m-0 dashboard-color-text">Last Week Sale</p>
                         <p class="dashboard-color-subcolor">7656765 KWD</p>
                         <div id="echart-bar-last-week" style="width: 100%; height:400px"></div>
@@ -524,10 +524,11 @@
                     </div>
                 </div>
             </div>
-            <div class=" col-xs-12 col-md-6 pt-3 ">
+            <div class=" col-xs-5 col-md-1  pt-3"></div>
+            <div class=" col-xs-12 col-md-5 bg-white pt-3 ">
                 <div>
-                    <p class="dashboard-color-text m-0">Top Selling Products</p>
-                    <div class="d-flex align-items-center flex-column flex-md-row justify-content-center">
+                    <p class="dashboard-color-text ">Top Selling Products</p>
+                    <div class="d-flex align-items-center flex-column flex-md-row  ">
                         <div class="col-lg-3 col-12 p-0">
                             <p class="m-0 avatar-lg-top">
                                 <img
@@ -539,8 +540,8 @@
                             <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
                             <p class="text-small text-danger m-0">46456 KWD <del class="text-muted">57567 KWD</del></p>
                         </div>
-                        <div class="col-lg-2 col-12 p-0">
-                            <button class="view-details-btn">View details</button>
+                        <div class="col-lg-2 col-12 p-0 mr-lg-5">
+                            <button class="border-white bg-white cursor-pointer">View details</button>
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
@@ -556,7 +557,8 @@
                             <p class="text-small text-danger m-0">46456 KWD <del class="text-muted">57567 KWD</del></p>
                         </div>
                         <div class="col-lg-2 col-12 p-0">
-                            <button class="view-details-btn">View details</button>
+                            <button class="border-white bg-white cursor-pointer">View details</button>
+                            {{-- <button class="view-details-btn">View details</button> --}}
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
@@ -572,8 +574,8 @@
                             <p class="text-small text-danger m-0">46456 KWD <del class="text-muted">57567 KWD</del></p>
                         </div>
                         <div class="col-lg-2 col-12 p-0">
-                            <button class="view-details-btn">View details</button>
-                        </div>
+                            <button class="border-white bg-white cursor-pointer">View details</button>
+                            {{-- <button class="view-details-btn">View details</button> --}}                        </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
                         <div class="col-lg-3 col-12 p-0">
@@ -588,8 +590,8 @@
                             <p class="text-small text-danger m-0">46456 KWD <del class="text-muted">57567 KWD</del></p>
                         </div>
                         <div class="col-lg-2 col-12 p-0">
-                            <button class="view-details-btn">View details</button>
-                        </div>
+                            <button class="border-white bg-white cursor-pointer">View details</button>
+                            {{-- <button class="view-details-btn">View details</button> --}}                        </div>
                     </div>
 
                 </div>
@@ -600,7 +602,7 @@
 
     <div class="container-fluid my-4 ">
         <div class="row mx-1 g-5">
-            <div class="col-lg-6 col-xs-12 pt-3 shadow">
+            <div class="col-lg-6 col-xs-12 pt-3 shadow"  style="background-color: white">
                 <div class="d-flex justify-content-between">
                     <p>New Users</p>
                     <p class="">
@@ -830,7 +832,7 @@
 
 
             </div>
-            <div class="col-lg-6 col-xs-12 pt-3 shadow">
+            <div class="col-lg-6 col-xs-12 pt-3 shadow"  style="background-color: white">
                 <div class="d-flex justify-content-between">
                     <p class="dashboard-color-text m-0">User activity</p>
                     <button class="view-details-btn-selling">Update daily</button>
@@ -883,7 +885,7 @@
     </div>
 
 
-    <div class="row mx-3 pt-3 shadow ">
+    <div class="row mx-3 pt-3 shadow "  style="background-color: white">
         <p class="dashboard-color-text mx-3">Last 20 Day Leads</p>
 
         <div class="col">
@@ -961,20 +963,21 @@ function getLastMonthLine(data) {
     let myChart = echarts.init(dom);
     let option = {
         grid: {
-            left: '-0%',
+            left: '-15%',
             right: '0%',
             bottom: '0%',
             top: '0%',
-            // containLabel: true,
+            containLabel: true,
         },
         xAxis: {
             type: 'category',
-            show: false, // Hide xAxis
-            // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            show: true, // Hide xAxis
+            //  data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
         yAxis: {
             type: 'value',
-            show: false, // Hide xAxis
+            show: true, // Hide xAxis
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
 
         series: JSON.parse(data),
@@ -1000,17 +1003,17 @@ function getLeads(data) {
             left: '0%',
             right: '0%',
             bottom: '0%',
-            top: '0%',
+            top: '5%',
             containLabel: true,
         },
         xAxis: {
             type: 'category',
-            show: false, // Hide xAxis
+            show: true, // Hide xAxis
             // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
         yAxis: {
             type: 'value',
-            show: false, // Hide yAxis
+            show: true, // Hide yAxis
         },
         series: JSON.parse(data),
     };
@@ -1032,12 +1035,13 @@ function getLastWeekLine(data) {
         },
         xAxis: {
             type: 'category',
-            show: false, // Hide xAxis
-            // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            show: true, // Hide xAxis
+            //  data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
         yAxis: {
             type: 'value',
-            show: false, // Hide xAxis
+            show: true, // Hide xAxis
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
 
         series: JSON.parse(data),

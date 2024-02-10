@@ -51,10 +51,11 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="container">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <h4 class="mt-3">Constructions</h4>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
                             <div class="table-actions">
                                 <a href="{{ route('create/constructions') }}"
                                     class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
@@ -65,7 +66,7 @@
                                     <i class="fa fa-file-export"></i> Export
                                 </a>
                             </div>
-                        </div>
+                        </div></div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <span class="text-success text-center">{{ session('success') }}</span>
                             <span class="text-success text-center">{{ session('error') }}</span>
