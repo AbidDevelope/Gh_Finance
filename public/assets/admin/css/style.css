@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------------
 
-    Template Name: Your template name 
+    Template Name: Your template name
     Template URI: http://bootexperts.com
     Description: This is html5 template
     Author: BootExperts
@@ -8,10 +8,10 @@
     Version: 1.0
 
 -----------------------------------------------------------------------------------
-    
+
     CSS INDEX
     ===================
-	
+
     1. Theme Default CSS (body, link color, section etc)
 
 -----------------------------------------------------------------------------------*/
@@ -108,11 +108,11 @@ body {}
 }
 .left-sidebar-pro {
     z-index: 9999;
-    width: 240px;
+    width: 140px;
 }
 #sidebar {
-    min-width: 230px;
-    background: var(--own-black);
+    min-width: 130px;
+    background: var(--own-red);
     color: #fff;
 	position:fixed;
     transition: all 0.3s;
@@ -348,12 +348,12 @@ ul.dtl-social li a{
 	background:#2b2a2a;
 }
 .header-top-menu .navbar-nav>li .dropdown-menu{
-	border: 0px solid #ccc; 
+	border: 0px solid #ccc;
     border: 0px solid rgba(0,0,0,.15);
-	background-color: #303030;	
+	background-color: #303030;
 }
 .header-right-info .navbar-nav>li .dropdown-menu{
-	border: 0px solid #ccc; 
+	border: 0px solid #ccc;
     border: 0px solid rgba(0,0,0,.15);
 }
 .header-top-menu .nav>li>a:focus, .header-top-menu .nav>li>a:hover, .header-top-menu .nav>li>a:active {
@@ -395,7 +395,7 @@ ul.dtl-social li a{
 	top:130%;
 	left:-10px;
 	width:200px;
-	background:#303030;
+	/* background:#303030; */
 	opacity:0;
 	transition: all 0.5s ease 0s;
 	z-index:999;
@@ -431,7 +431,7 @@ ul.dtl-social li a{
 	padding:18px 10px;
 }
 .header-right-info {
-	
+
 }
 .header-right-info ul.header-right-menu li{
 	display:inline-block;
@@ -989,7 +989,7 @@ ul.cus-product-sl-rp li h5{
 	font-size:20px;
 	color: #000;
 	text-transform: capitalize;
-} 
+}
 .cus-gh-hd-pro h2{
 	font-size:20px;
 	color: #000;
@@ -1406,7 +1406,7 @@ ul.tab-custon-design, ul.tab-review-design {
 }
 .rating > input:checked ~ label, .rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
   color: #24caa1;
-} 
+}
 .rating > input:checked + label:hover, .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, .rating > input:checked ~ label:hover ~ label {
   color: #24caa1;
@@ -1532,7 +1532,7 @@ ul#single-product-tab li{
 	background:#f7941d;
 }
 .single-pro-size span, .color-quality-details span {
-  display: inline-block; 
+  display: inline-block;
   font-weight: 300;
   height: 25px;
   line-height: 25px;
@@ -1631,7 +1631,7 @@ ul#single-product-tab li{
 	color:#fff;
 }
 .review-content-section .input-group input[type="text"]{
-	
+
 }
 .review-content-section .input-group input::-webkit-input-placeholder, .product-delivary .form-group input::-webkit-input-placeholder, .form-group input::-webkit-input-placeholder, .review-content-section input::-webkit-input-placeholder {
     color:#fff;
@@ -3677,7 +3677,7 @@ th.fc-day-header.fc-widget-header {
 	border-color: var(--active-nav-black);
 }
 .review-pro-edt button:hover, .review-pro-edt button:focus, .review-pro-edt button:active{
-	background:var(--active-nav-black) !important; 
+	background:var(--active-nav-black) !important;
 	border-color: var(--active-nav-black) !important;
 	outline:none;
 }
@@ -3739,11 +3739,11 @@ th.fc-day-header.fc-widget-header {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
-    
+
         100% {
             -webkit-transform: rotate(1turn);
             transform: rotate(1turn);
-        
+
     }
 }
 
@@ -3751,7 +3751,7 @@ th.fc-day-header.fc-widget-header {
 
 .top-selling-tittle {
     font-size: 1.1rem;
-  
+
 }
 .top-selling-subtittle {
     font-size: 12px;
