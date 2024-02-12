@@ -95,8 +95,8 @@
                                                     <td>{{ $index + 1 }}</td>
                                                     <td>{{ $item->type }}</td>
                                                     <td>{{ $item->purchase_from }}</td>
-                                                    <td>{{ $item->purchase_date }}</td>
-                                                    <td><a>{{ $item->purchase_by }}</a></td>
+                                                    <td>{{ \Carbon\Carbon::parse($item->purchase_date)->format('d M Y') }}</td>
+                                                    <td><a >{{ $item->purchase_by }}</a></td>
                                                     <td>{{ $item->paid_by }}</td>
                                                     <td>{{ $item->amount }}</td>
 

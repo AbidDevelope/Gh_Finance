@@ -6,21 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Beneficiary;
 
-class Project extends Model
+class Quotation extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'name',
-        'project_manager_id',
-        'description',
-        'start_date',
-        'end_date',
-        'budget',
-        'location',
-        'status',
+        'beneficiary_id', 'project_id', 'quotation_number', 'quotation_date', 
+        'valid_until', 'subtotal', 'others', 'grandtotal', 'status'
     ];
 
-    public function beneficiary()
+    public function beneficiaries()
     {
         return $this->belongsTo(Beneficiary::class);
     }

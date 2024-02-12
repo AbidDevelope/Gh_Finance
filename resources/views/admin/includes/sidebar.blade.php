@@ -39,6 +39,13 @@
                         </ul>
                     </li>
                     <li id="removable">
+                        <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/project.png') }}" alt=""> <span class="mini-click-non">Projects</span></a>
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li><a title="Login" href="{{ route('projects') }}"><img src="{{ asset('assets/admin/img/icon/project-list.png') }}" alt=""><span class="mini-sub-pro">Projects List</span></a></li>
+                            <li><a title="Login" href="{{ route('projectManager') }}"><img src="{{ asset('assets/admin/img/icon/project-list.png') }}" alt=""><span class="mini-sub-pro">Projects Manager</span></a></li>
+                        </ul>
+                    </li>
+                    <li id="removable">
                         <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/payables.png') }}" alt=""> <span class="mini-click-non">Payables</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Login" href="#"><span class="mini-sub-pro">Payables 1</span></a></li>

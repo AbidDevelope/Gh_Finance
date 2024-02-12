@@ -23,24 +23,27 @@
                                             <div class="icon-wrap">
 
                                             </div>
-                                            <input type="date" placeholder="30 Aug 2018" >
+                                            <input type="date" placeholder="30 Aug 2018">
                                         </div>
                                         <div class="input-field third-wrap">
                                             <div class="icon-wrap">
 
                                             </div>
-                                            <input type="date" placeholder="30 Aug 2018" >
+                                            <input type="date" placeholder="30 Aug 2018">
                                         </div>
                                         <div class="input-field fouth-wrap">
                                             <div class="icon-wrap">
-                                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-                                              </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
+                                                    </path>
+                                                </svg>
                                             </div>
                                             <select data-trigger="" name="choices-single-defaul">
-                                              <option placeholder="">All</option>
-                                              <option placeholder="">Quotations 1</option>
-                                              <option placeholder="">Quotations 2</option>
+                                                <option placeholder="">All</option>
+                                                <option placeholder="">Quotations 1</option>
+                                                <option placeholder="">Quotations 2</option>
                                             </select>
                                         </div>
                                         <div class="input-field fifth-wrap">
@@ -56,11 +59,13 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
                             <div class="table-actions">
-                                <a href="{{ route('quotations/create') }}" class="btn btn-primary rounded proposals-create f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
+                                <a href="{{ route('quotations/create') }}"
+                                    class="btn btn-primary rounded proposals-create f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                     <i class="fa fa-plus"></i> Create Quotation
                                 </a>
-                                <a href="#" class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
-                                        <i class="fa fa-file-export"></i> Export
+                                <a href="#"
+                                    class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
+                                    <i class="fa fa-file-export"></i> Export
                                 </a>
                             </div>
                         </div>
@@ -69,28 +74,54 @@
                             <table id="dataTable">
                                 <thead>
                                     <tr role="row">
-                                        <th>Id</th>
-                                        <th>Date</th>
-                                        <th>DESCRIPTION </th>
-                                        <th>Project</th>
+                                        <th>#</th>
+                                        <th>Quotation Number</th>
+                                        <th>Create Date </th>
+                                        <th>Amount</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td><a href="{{ route('quotation/view') }}">View</a></td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td valign="top" colspan="6" class="dataTables_empty">No data available in
-                                            table
-                                        </td>
-                                    </tr>
+                                    @if (count($quotations) > 0)
+                                        @foreach ($quotations as $index=>$quotation)
+                                            <tr>
+                                                <td>{{ $index+1 }}</td>
+                                                <td>{{ $quotation->quotation_number }}</td>
+                                                <td>{{ $quotation->created_at->format('d M Y') }}</td>
+                                                <td>{{ $quotation->grandtotal }}</td>
+                                                <td>{{ $quotation->status }}</td>
+                                                <td class="text-right">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon " data-toggle="dropdown"
+                                                            aria-expanded="false"><img
+                                                                src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                alt=""></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('quotation/view', $quotation->id) }}"><i
+                                                                    class="fa fa-eye m-r-5"></i> View
+                                                            </a>
+                                                            <a class="dropdown-item" href="#"><i
+                                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                                    <a class="dropdown-item"
+                                                                href="#"><i
+                                                                    class="fa fa-eye m-r-5"></i> View PDF
+                                                            </a>
+                                                            <a class="dropdown-item" href="#"><i
+                                                                    class="fa fa-file-pdf-o m-r-5"></i> Download</a>
+                                                            <a class="dropdown-item" href="#"><i
+                                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="6" class="text-center">No Record Found</td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -104,20 +135,20 @@
     </div>
 
     <!-- metisMenu JS
-                        ============================================ -->
+                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                            ============================================ -->
+                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                            ============================================ -->
+                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                        ============================================ -->
+                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
 
@@ -146,20 +177,16 @@
     <script>
         let table = new DataTable('#dataTable');
     </script>
-{{-- Data trigger --}}
-<script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
-<script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
-<script>
-  flatpickr(".datepicker",
-  {});
-
-</script>
-<script>
-    const choices = new Choices('[data-trigger]',
-    {
-      searchEnabled: false,
-      itemSelectText: '',
-    });
-
-  </script>
+    {{-- Data trigger --}}
+    <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
+    <script>
+        flatpickr(".datepicker", {});
+    </script>
+    <script>
+        const choices = new Choices('[data-trigger]', {
+            searchEnabled: false,
+            itemSelectText: '',
+        });
+    </script>
 @endsection
