@@ -12,23 +12,15 @@
                     <div class="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Expenses</h4>
+                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Miscellaneous</h4>
                                 <hr class="border-top-grey">
-                                <form action="{{ route('expenses/create') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('miscellaneous/create') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                      <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Project Type</label>
-                                                <select name="project_type" class="form-control" id="">
-                                                    <option value="" disabled selected>Select Type</option>
-                                                    <option value="Design">Design</option>
-                                                    <option value="Construction"> Construction</option>
-                                                    <option value="Design & Consrtuction"> Design & Consrtuction</option>
-                                                    <option value="Others"> Others</option>
-                                                   {{-- @foreach ($projects as $project)
-                                                   <option value="{{ $project->id }}">{{ $project->type }}</option>
-                                                   @endforeach --}}
+                                                 <input readonly type="text" value="Others" name="project_type" class="form-control">
                                                 </select>
                                             </div>
                                         </div>

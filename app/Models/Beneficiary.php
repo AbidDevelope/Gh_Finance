@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Project;
 use App\Models\Invoice;
+use App\Models\Quotation;
 
 class Beneficiary extends Model
 {
@@ -25,5 +26,10 @@ class Beneficiary extends Model
     public function invoices()
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    public function quotations()
+    {
+        return $this->hasMany(Quotation::class);
     }
 }

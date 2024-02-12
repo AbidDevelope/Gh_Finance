@@ -53,18 +53,6 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <h4 class="mt-3">All Services</h4>
                         </div>
-                        {{-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="table-actions">
-                                <a href="{{ route('create/designs') }}"
-                                    class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                    <i class="fa fa-plus"></i> Create Project
-                                </a>
-                                <a href="#"
-                                    class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
-                                    <i class="fa fa-file-export"></i> Export
-                                </a>
-                            </div>
-                        </div> --}}
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <span class="text-success">{{ session('success') }}</span>
                         </div>
@@ -74,11 +62,10 @@
                                     <thead>
                                         <tr role="row">
                                             <th>Sr. No.</th>
+                                            <th>Date</th>
                                             <th>Type</th>
                                             <th>Project#</th>
-                                            <th>Purchase By</th>
-                                            <th>Status</th>
-                                            <th>Date</th>
+                                            <th>Location</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,25 +73,10 @@
                                             @foreach ($data as $index=>$item)
                                                 <tr>
                                                     <td>{{ $index+1 }}</td>
+                                                    <td>{{ $item->created_at->format('d M Y') }}</td>
                                                     <td>{{ $item->type }}</td>
-                                                    <td>{{ $item->project }}</td>
-                                                    <td>{{ $item->purchase_by }}</td>
-                                                    <td class="text-center">
-                                                        <div class="dropdown action-label">
-                                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                                @if($item->status == 'Approved')
-                                                                <i class="fa fa-dot-circle-o text-success"></i> {{ $item->status }}
-                                                                @else
-                                                                <i class="fa fa-dot-circle-o text-danger"></i> {{ $item->status }}
-                                                                @endif
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Pending</a>
-                                                                <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>{{ $item->created_at }}</td>
+                                                    <td>{{ $item->name }}</td>
+                                                    <td>{{ $item->location }}</td>
                                                 </tr>
                                             @endforeach
                                         @else
