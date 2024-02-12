@@ -21,24 +21,27 @@
                                         </div>
                                         <div class="input-field second-wrap">
                                             <div class="icon-wrap">
-                                        
+
                                             </div>
-                                            <input type="date" placeholder="30 Aug 2018" >
+                                            <input type="date" placeholder="30 Aug 2018">
                                         </div>
                                         <div class="input-field third-wrap">
                                             <div class="icon-wrap">
-                                            
+
                                             </div>
-                                            <input type="date" placeholder="30 Aug 2018" >
+                                            <input type="date" placeholder="30 Aug 2018">
                                         </div>
                                         <div class="input-field fouth-wrap">
                                             <div class="icon-wrap">
-                                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-                                              </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
+                                                    </path>
+                                                </svg>
                                             </div>
                                             <select data-trigger="" name="choices-single-defaul">
-                                              <option placeholder="">Designs</option>
+                                                <option placeholder="">Designs</option>
                                             </select>
                                         </div>
                                         <div class="input-field fifth-wrap">
@@ -48,19 +51,21 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="mt-3">Designs</h4>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="table-actions">
-                                <a href="{{ route('create/designs') }}"
-                                    class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                    <i class="fa fa-plus"></i> Create Project
-                                </a>
-                                <a href="#"
-                                    class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
-                                    <i class="fa fa-file-export"></i> Export
-                                </a>
+                        <div class="container">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <h4 class="mt-3">Designs</h4>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
+                                <div class="table-actions">
+                                    <a href="{{ route('create/designs') }}"
+                                        class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
+                                        <i class="fa fa-plus"></i> Create Project
+                                    </a>
+                                    <a href="#"
+                                        class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
+                                        <i class="fa fa-file-export"></i> Export
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -85,38 +90,55 @@
                                     </thead>
                                     <tbody>
                                         @if (count($data) > 0)
-                                            @foreach ($data as $index=>$item)
+                                            @foreach ($data as $index => $item)
                                                 <tr>
-                                                    <td>{{ $index+1 }}</td>
+                                                    <td>{{ $index + 1 }}</td>
                                                     <td>{{ $item->type }}</td>
                                                     <td>{{ $item->purchase_from }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($item->purchase_date)->format('d M Y') }}</td>
                                                     <td><a >{{ $item->purchase_by }}</a></td>
                                                     <td>{{ $item->paid_by }}</td>
                                                     <td>{{ $item->amount }}</td>
-                    
+
                                                     <td class="text-center">
                                                         <div class="dropdown action-label">
-                                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                                @if($item->status == 'Approved')
-                                                                <i class="fa fa-dot-circle-o text-success"></i> {{ $item->status }}
+                                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle"
+                                                                href="#" data-toggle="dropdown" aria-expanded="false">
+                                                                @if ($item->status == 'Approved')
+                                                                    <i class="fa fa-dot-circle-o text-success"></i>
+                                                                    {{ $item->status }}
                                                                 @else
-                                                                <i class="fa fa-dot-circle-o text-danger"></i> {{ $item->status }}
+                                                                    <i class="fa fa-dot-circle-o text-danger"></i>
+                                                                    {{ $item->status }}
                                                                 @endif
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Pending</a>
-                                                                <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('designChangeStatus', $item->id) }}"><i
+                                                                        class="fa fa-dot-circle-o text-danger"></i>
+                                                                    Pending</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('designChangeStatus', $item->id) }}"><i
+                                                                        class="fa fa-dot-circle-o text-success"></i>
+                                                                    Approved</a>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td class="text-right">
                                                         <div class="dropdown dropdown-action">
-                                                            <a href="#" class="action-icon " data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
+                                                            <a href="#" class="action-icon " data-toggle="dropdown"
+                                                                aria-expanded="false"><img
+                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                    alt=""></a>
                                                             <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item" href="#" ><i class="fa fa-eye m-r-5"></i> View</a>
-                                                                <a class="dropdown-item" href="{{ route('design/edit', $item->id) }}" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                                <a class="dropdown-item" href="{{ route('design/delete', $item->id) }}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                                <a class="dropdown-item" href="#"><i
+                                                                        class="fa fa-eye m-r-5"></i> View</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('design/edit', $item->id) }}"><i
+                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('design/delete', $item->id) }}"><i
+                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -145,20 +167,20 @@
     </div>
 
     <!-- metisMenu JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
