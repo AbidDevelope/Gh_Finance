@@ -14,6 +14,35 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label>Project Type</label>
+                                                <select name="type" class="form-control" id="">
+                                                    <option value="" disabled selected>Select Type</option>
+                                                    <option value="Design">Design</option>
+                                                    <option value="Construction">Construction</option>
+                                                    <option value="Design_and_Construction">Design & Construction</option>
+                                                </select>
+                                                @error('type')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Project Lead</label>
+                                                <select name="project_manager_id" class="form-control" id="">
+                                                    <option value="" disabled selected>Select Lead</option>
+                                                    @foreach ($projectsManagers as $projectsManager)
+                                                      <option value="{{ $projectsManager->id }}">{{ $projectsManager->name }}</option>
+                                                    @endforeach
+                            
+                                                </select>
+                                                @error('type')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label>Project Name</label>
                                                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                                 @error('name')
@@ -21,6 +50,8 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Start Date</label>
@@ -30,8 +61,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>End Date</label>
@@ -41,6 +70,8 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Budget</label>
@@ -50,8 +81,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Location </label>

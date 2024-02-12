@@ -79,12 +79,10 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Type</th>
-                                            <th>Purchase From</th>
-                                            <th>Purchase Date</th>
-                                            <th>Purchased By</th>
+                                            <th>Create Date</th>
                                             <th>Amount</th>
-                                            <th>Paid By</th>
-                                            <th class="text-center">Status</th>
+                                            {{-- <th>Paid By</th> --}}
+                                            {{-- <th class="text-center">Status</th> --}}
                                             <th class="text-right">Actions</th>
                                         </tr>
                                     </thead>
@@ -94,13 +92,10 @@
                                                 <tr>
                                                     <td>{{ $index + 1 }}</td>
                                                     <td>{{ $item->type }}</td>
-                                                    <td>{{ $item->purchase_from }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($item->purchase_date)->format('d M Y') }}</td>
-                                                    <td><a >{{ $item->purchase_by }}</a></td>
-                                                    <td>{{ $item->paid_by }}</td>
                                                     <td>{{ $item->amount }}</td>
-
-                                                    <td class="text-center">
+                                                    {{-- <td>{{ $item->paid_by }}</td> --}}
+                                                    {{-- <td class="text-center">
                                                         <div class="dropdown action-label">
                                                             <a class="btn btn-white btn-sm btn-rounded dropdown-toggle"
                                                                 href="#" data-toggle="dropdown" aria-expanded="false">
@@ -123,7 +118,7 @@
                                                                     Approved</a>
                                                             </div>
                                                         </div>
-                                                    </td>
+                                                    </td> --}}
                                                     <td class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"

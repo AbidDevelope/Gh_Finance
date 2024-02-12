@@ -45,6 +45,18 @@
                             <li><a title="Login" href="{{ route('projectManager') }}"><img src="{{ asset('assets/admin/img/icon/project-list.png') }}" alt=""><span class="mini-sub-pro">Projects Manager</span></a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a class="has-arrow" href="" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/finance.png') }}" alt=""> <span class="mini-click-non">Expenses</span></a>
+                        <ul class="submenu-angle" aria-expanded="false">
+                            {{-- <li><a title="Inbox"     href="{{ route('proposals') }}"><span class="mini-sub-pro">Proposals</span></a></li> --}}
+                            {{-- <li><a title="View Mail" href="{{ route('estimates') }}"><span class="mini-sub-pro">Estimates</span></a></li> --}}
+                            {{-- <li><a title="Compose Mail" href="{{ route('invoices') }}"><span class="mini-sub-pro">Invoices</span></a></li> --}}
+                            {{-- <li><a title="Compose Mail" href="{{ route('quotation') }}"><span class="mini-sub-pro">Quotation</span></a></li> --}}
+                            {{-- <li><a title="Compose Mail" href="{{ route('bankaccounts') }}"><span class="mini-sub-pro">Bank Account</span></a></li> --}}
+                            <li><a title="Compose Mail" href="{{ route('miscellaneous') }}"><img src="{{ asset('assets/admin/img/icon/payments.png') }}" alt=""><span class="mini-sub-pro">miscellaneous</span></a></li>
+                            <li><a title="Compose Mail" href="{{ route('expenses') }}"><img src="{{ asset('assets/admin/img/icon/expense.png') }}" alt=""><span class="mini-sub-pro">Peticash</span></a></li>
+                        </ul>
+                    </li>
                     <li id="removable">
                         <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/payables.png') }}" alt=""> <span class="mini-click-non">Payables</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
@@ -55,18 +67,6 @@
                         <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/receivables.png') }}" alt=""> <span class="mini-click-non">Receivables</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Login" href="#"><span class="mini-sub-pro">Receivables 2</span></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/finance.png') }}" alt=""> <span class="mini-click-non">Finance</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            {{-- <li><a title="Inbox"     href="{{ route('proposals') }}"><span class="mini-sub-pro">Proposals</span></a></li> --}}
-                            {{-- <li><a title="View Mail" href="{{ route('estimates') }}"><span class="mini-sub-pro">Estimates</span></a></li> --}}
-                            {{-- <li><a title="Compose Mail" href="{{ route('invoices') }}"><span class="mini-sub-pro">Invoices</span></a></li> --}}
-                            {{-- <li><a title="Compose Mail" href="{{ route('quotation') }}"><span class="mini-sub-pro">Quotation</span></a></li> --}}
-                            {{-- <li><a title="Compose Mail" href="{{ route('bankaccounts') }}"><span class="mini-sub-pro">Bank Account</span></a></li> --}}
-                            <li><a title="Compose Mail" href="{{ route('payments') }}"><img src="{{ asset('assets/admin/img/icon/payments.png') }}" alt=""><span class="mini-sub-pro">Payments</span></a></li>
-                            <li><a title="Compose Mail" href="{{ route('expenses') }}"><img src="{{ asset('assets/admin/img/icon/expense.png') }}" alt=""><span class="mini-sub-pro">Expenses</span></a></li>
                         </ul>
                     </li>
                     <li id="removable">

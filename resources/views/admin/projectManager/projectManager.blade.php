@@ -62,7 +62,7 @@
                             <div class="table-actions">
                                 <a href="{{ route('projectManager/create') }}"
                                     class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                    <i class="fa fa-plus"></i> Project Manager
+                                    <i class="fa fa-plus"></i> Create
                                 </a>
                                 <a href="#"
                                     class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
@@ -102,8 +102,8 @@
                                                             @endif
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="{{ route('designChangeStatus', $projectManager->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Active</a>
-                                                            <a class="dropdown-item" href="{{ route('designChangeStatus', $projectManager->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Inactive</a>
+                                                            <a class="dropdown-item" href="{{ route('projectManagerChangeStatus', $projectManager->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
+                                                            <a class="dropdown-item" href="{{ route('projectManagerChangeStatus', $projectManager->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -114,12 +114,12 @@
                                                                 src="{{ asset('assets/admin/img/icon/action.png') }}"
                                                                 alt=""></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#"><i
+                                                            <a class="dropdown-item" href="{{ route('projectManager/view', $projectManager->id) }}"><i
                                                                     class="fa fa-eye m-r-5"></i> View
                                                             </a>
                                                             <a class="dropdown-item" href="{{ route('projectManager/edit', $projectManager->id) }}"><i
                                                                     class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#"><i
+                                                            <a class="dropdown-item" href="{{ route('projectManager/delete', $projectManager->id) }}"><i
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>

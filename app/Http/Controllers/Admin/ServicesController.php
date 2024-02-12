@@ -17,7 +17,7 @@ class ServicesController extends Controller
 
     public function designConstructions()
     {
-        $data = Project::whereIn('type', ['Design', 'Constructions'])->get();
+        $data = Project::where('type', 'Design_and_Construction')->get();
         return view('admin.design-&-construction',compact('data'));
     }
 
@@ -136,7 +136,7 @@ class ServicesController extends Controller
 
     public function constructions()
     {
-        $data = Project::where(['type' => 'Constructions'])->get();
+        $data = Project::where(['type' => 'Construction'])->get();
         return view('admin.constructions.constructions',compact('data'));
     }
 

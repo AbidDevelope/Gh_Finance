@@ -14,6 +14,35 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label>Project Type</label>
+                                                <select name="type" class="form-control" id="">
+                                                    <option value="" disabled selected>Select Type</option>
+                                                    <option value="Design" {{ $projects->type == 'Design' ? 'selected' : '' }}>Design</option>
+                                                    <option value="Construction" {{ $projects->type == 'Construction' ? 'selected' : '' }}>Construction</option>
+                                                    <option value="Design_and_Construction" {{ $projects->type == 'Design_and_Construction' ? 'selected' : '' }}>Design & Construction</option>
+                                                </select>
+                                                @error('type')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Project Lead</label>
+                                                <select name="project_manager_id" class="form-control" id="">
+                                                    <option value="" disabled selected>Select Lead</option>
+                                                    @foreach ($projectManagers as $projectsManager)
+                                                      <option value="{{ $projectsManager->id }}" {{ $projectsManager->project_manager_id == $projectsManager->id ? 'selected' : '' }}>{{ $projectsManager->name }}</option>
+                                                    @endforeach
+                            
+                                                </select>
+                                                @error('type')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label>Project Name</label>
                                                 <input type="text" class="form-control" name="name" value="{{ $projects->name }}">
                                                 @error('name')
@@ -21,6 +50,8 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Start Date</label>
@@ -30,8 +61,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>End Date</label>
@@ -41,6 +70,8 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Budget</label>
@@ -50,8 +81,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Location </label>

@@ -62,12 +62,11 @@
                                 <table id="dataTable">
                                     <thead>
                                         <tr role="row">
-                                            <th>Sr. No.</th>
+                                            <th>#</th>
+                                            <th>Date</th>
                                             <th>Type</th>
                                             <th>Project#</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>
-                                            <th>Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,25 +74,26 @@
                                             @foreach ($data as $index=>$item)
                                                 <tr>
                                                     <td>{{ $index+1 }}</td>
+                                                    <td>{{ $item->created_at }}</td>
                                                     <td>{{ $item->type }}</td>
-                                                    <td>{{ $item->project }}</td>
-                                                    <td>{{ $item->amount }}</td>
-                                                    <td class="text-center">
-                                                        <div class="dropdown action-label">
-                                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                                @if($item->status == 'Approved')
-                                                                <i class="fa fa-dot-circle-o text-success"></i> {{ $item->status }}
-                                                                @else
-                                                                <i class="fa fa-dot-circle-o text-danger"></i> {{ $item->status }}
-                                                                @endif
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right z-50 d-flex">
-                                                                <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Pending</a>
-                                                                <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
+                                                    <td>{{ $item->name }}</td>
+                                                    <td class="text-right">
+                                                        <div class="dropdown dropdown-action">
+                                                            <a href="#" class="action-icon " data-toggle="dropdown"
+                                                                aria-expanded="false"><img
+                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                    alt=""></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="#"><i
+                                                                        class="fa fa-eye m-r-5"></i> View
+                                                                </a>
+                                                                <a class="dropdown-item" href="#"><i
+                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                                <a class="dropdown-item" href="#"><i
+                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>{{ $item->created_at }}</td>
                                                 </tr>
                                             @endforeach
                                         @else
