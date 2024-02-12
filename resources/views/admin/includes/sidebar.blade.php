@@ -2,15 +2,30 @@
     i{
         font-size: 30px;
     }
-</style>
-<div class="left-sidebar-pro">
-    <nav id="sidebar" class="">
+    .left-sidebar-pro {
+        background-color: white;
+    }
 
-        <div class="nalika-profile">
+.left-sidebar-menu-pro li {
+    border-top: 1px solid #ccc; /* Add a 1px solid border to the top side */
+    margin-bottom: 35px; /* Add margin to separate each li */
+    padding-top: 5px; /* Add padding to the top side */
+}
+
+
+
+a:hover {
+    background-color: transparent !important;
+}
+</style>
+<div class="left-sidebar-pro ">
+    <nav id="sidebar" class="bg-white">
+
+        <div class="nalika-profile bg-white">
             <div class="profile-dtl">
                 <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/admin/img/logo/gh_logo.jpg') }}" alt="" /></a>
                 {{-- <h2>{{ Auth::guard('admin')->user()->first_name }} <span class="min-dtn">{{ Auth::guard('admin')->user()->last_name }}</span></h2> --}}
-                <h2> <span class="min-dtn">GHADER & HAMDOUN</span></h2>
+                <h2> <span class="min-dtn text-black-50">GHADER & HAMDOUN</span></h2>
             </div>
             <div class="profile-social-dtl">
                 <ul class="dtl-social">
@@ -18,68 +33,118 @@
                 </ul>
             </div>
         </div>
-        <div class="left-custom-menu-adp-wrap comment-scrollbar mb-10"  style="height: 400px; overflow-y: auto;">
+        <div class="left-custom-menu-adp-wrap comment-scrollbar "  style="height: 400px; overflow-y: auto;">
             <nav class="sidebar-nav left-sidebar-menu-pro">
-                <ul class="metismenu" id="menu1">
-                    <li class="active">
-                        <a class="" href="{{ route('dashboard') }}">
-                            <img src="{{ asset('assets/admin/img/icon/dashboard.png') }}" alt="">
-                               <span class="mini-click-non">Dashboard</span>
+                <ul class="metismenu bg-white " id="menu1">
+                    <li class="">
+                        <a class="text-black-50 " href="{{ route('dashboard') }}">
+                            <i class="fas fa-home text"></i>
+
+                            {{-- <img class="text-black-50" src="{{ asset('assets/admin/img/icon/dashboard.png') }}" alt=""> --}}
+                               <span class="mini-click-non text">Dashboard</span>
                             </a>
                     </li>
                     <li id="removable">
-                        <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/services.png') }}" alt=""> <span class="mini-click-non">Services</span></a>
+                        <a class="has-arrow text-black-50" href="#" aria-expanded="false">   <svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                            <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
+                            <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                          </svg> <!-- Font Awesome cog icon -->
+                            <span class="mini-click-non text">Services</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Login" href="{{ route('all/services') }}"><img src="{{ asset('assets/admin/img/icon/order-white.png') }}" alt=""><span class="mini-sub-pro">All</span></a></li>
-                            <li><a title="Lock" href="{{ route('designs') }}"><img src="{{ asset('assets/admin/img/icon/design.png') }}" alt=""><span class="mini-sub-pro">Designs</span></a></li>
-                            <li><a title="Password Recovery" href="{{ route('constructions') }}"><img src="{{ asset('assets/admin/img/icon/construction.png') }}" alt=""><span class="mini-sub-pro">Constructions</span></a></li>
-                            <li><a title="Password Recovery" href="{{ route('design/constructions') }}"><img src="{{ asset('assets/admin/img/icon/design-constructions.png') }}" alt=""><span class="mini-sub-pro">Design & Cons.</span></a></li>
-                            {{-- <li><a title="Password Recovery" href="#"><span class="mini-sub-pro">AIU</span></a></li> --}}
-                            {{-- <li><a title="Password Recovery" href="#"><span class="mini-sub-pro">Bidaa</span></a></li> --}}
+                            <li><a class="text-black-50" title="Login" href="{{ route('all/services') }}"> <svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                                <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
+                                <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                              </svg><span class=" text mini-sub-pro">All</span></a></li>
+                            <li><a class="text-black-50" title="Lock" href="{{ route('designs') }}"> <svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                                <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
+                                <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                              </svg><span class="text mini-sub-pro">Designs</span></a></li>
+                            <li><a class="text-black-50" title="Password Recovery" href="{{ route('constructions') }}"> <svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                                <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
+                                <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                              </svg><span class="text mini-sub-pro">Constructions</span></a></li>
+                            <li><a class="text-black-50" title="Password Recovery" href="{{ route('design/constructions') }}"> <svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                                <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
+                                <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                              </svg><span class="text mini-sub-pro">Design & Cons.</span></a></li>
                         </ul>
                     </li>
                     <li id="removable">
-                        <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/payables.png') }}" alt=""> <span class="mini-click-non">Payables</span></a>
+                        <a class="has-arrow text-black-50" href="#" aria-expanded="false"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                            <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                          </svg> <span class="mini-click-non text">Payables</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Login" href="#"><span class="mini-sub-pro">Payables 1</span></a></li>
+                            <li><a class="text-black-50" title="Login" href="#"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                                <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                              </svg><span class="mini-sub-pro text">Payables 1</span></a></li>
                         </ul>
                     </li>
                     <li id="removable">
-                        <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/receivables.png') }}" alt=""> <span class="mini-click-non">Receivables</span></a>
+                        <a class="has-arrow text-black-50" href="#" aria-expanded="false"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
+                            <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z"/>
+                            <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
+                          </svg> <span class="mini-click-non text">Receivables</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Login" href="#"><span class="mini-sub-pro">Receivables 2</span></a></li>
+                            <li><a class="text-black-50" title="Login" href="#"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
+                                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z"/>
+                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
+                              </svg><span class="mini-sub-pro text">Receivables 2</span></a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" href="" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/finance.png') }}" alt=""> <span class="mini-click-non">Finance</span></a>
+                        <a class="has-arrow text-black-50" href="" aria-expanded="false"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-bank2" viewBox="0 0 16 16">
+                            <path d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916zM12.375 6v7h-1.25V6zm-2.5 0v7h-1.25V6zm-2.5 0v7h-1.25V6zm-2.5 0v7h-1.25V6zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2M.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1z"/>
+                          </svg> <span class="mini-click-non text">Finance</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             {{-- <li><a title="Inbox"     href="{{ route('proposals') }}"><span class="mini-sub-pro">Proposals</span></a></li> --}}
                             {{-- <li><a title="View Mail" href="{{ route('estimates') }}"><span class="mini-sub-pro">Estimates</span></a></li> --}}
                             {{-- <li><a title="Compose Mail" href="{{ route('invoices') }}"><span class="mini-sub-pro">Invoices</span></a></li> --}}
                             {{-- <li><a title="Compose Mail" href="{{ route('quotation') }}"><span class="mini-sub-pro">Quotation</span></a></li> --}}
                             {{-- <li><a title="Compose Mail" href="{{ route('bankaccounts') }}"><span class="mini-sub-pro">Bank Account</span></a></li> --}}
-                            <li><a title="Compose Mail" href="{{ route('payments') }}"><img src="{{ asset('assets/admin/img/icon/payments.png') }}" alt=""><span class="mini-sub-pro">Payments</span></a></li>
-                            <li><a title="Compose Mail" href="{{ route('expenses') }}"><img src="{{ asset('assets/admin/img/icon/expense.png') }}" alt=""><span class="mini-sub-pro">Expenses</span></a></li>
+                            <li><a class="text-black-50" title="Compose Mail" href="{{ route('payments') }}"> <svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-credit-card-2-front-fill" viewBox="0 0 16 16">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+                              </svg> <span class="text mini-sub-pro">Payments</span></a></li>
+                            <li><a class="text-black-50" title="Compose Mail" href="{{ route('expenses') }}"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-credit-card-fill" viewBox="0 0 16 16">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1"/>
+                              </svg><span class="text mini-sub-pro">Expenses</span></a></li>
                         </ul>
                     </li>
                     <li id="removable">
-                        <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/invoice2.png') }}" alt=""> <span class="mini-click-non">Invoices</span></a>
+                        <a class="has-arrow text-black-50" href="#" aria-expanded="false"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
+                            <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z"/>
+                            <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
+                          </svg> <span class="text mini-click-non">Invoices</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li>
-                                <a title="Login" href="{{ route('invoices') }}"><img src="{{ asset('assets/admin/img/icon/invoice.png') }}" alt=""><span class="mini-sub-pro">Invoices List</span></a>
+                                <a class="text-black-50"  title="Login" href="{{ route('invoices') }}"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
+                                    <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z"/>
+                                    <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
+                                  </svg><span class="text mini-sub-pro">Invoices List</span></a>
                             </li>
                         </ul>
                     </li>
                     <li id="removable">
-                        <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/quotation.png') }}" alt=""> <span class="mini-click-non">Quotations</span></a>
+                        <a class="has-arrow text-black-50" href="#" aria-expanded="false"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-chat-right-quote-fill" viewBox="0 0 16 16">
+                            <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353zM7.194 4.766q.13.188.227.401c.428.948.393 2.377-.942 3.706a.446.446 0 0 1-.612.01.405.405 0 0 1-.011-.59c.419-.416.672-.831.809-1.22-.269.165-.588.26-.93.26C4.775 7.333 4 6.587 4 5.667S4.776 4 5.734 4c.271 0 .528.06.756.166l.008.004c.169.07.327.182.469.324q.128.125.227.272M11 7.073c-.269.165-.588.26-.93.26-.958 0-1.735-.746-1.735-1.666S9.112 4 10.069 4c.271 0 .528.06.756.166l.008.004c.17.07.327.182.469.324q.128.125.227.272.131.188.228.401c.428.948.392 2.377-.942 3.706a.446.446 0 0 1-.613.01.405.405 0 0 1-.011-.59c.42-.416.672-.831.81-1.22z"/>
+                          </svg> <span class="text mini-click-non">Quotations</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Login" href="{{ route('quotation') }}"><img src="{{ asset('assets/admin/img/icon/file.png') }}" alt=""><span class="mini-sub-pro">Quotation List</span></a></li>
+                            <li><a class="text-black-50"  title="Login" href="{{ route('quotation') }}"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-chat-right-quote-fill" viewBox="0 0 16 16">
+                                <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353zM7.194 4.766q.13.188.227.401c.428.948.393 2.377-.942 3.706a.446.446 0 0 1-.612.01.405.405 0 0 1-.011-.59c.419-.416.672-.831.809-1.22-.269.165-.588.26-.93.26C4.775 7.333 4 6.587 4 5.667S4.776 4 5.734 4c.271 0 .528.06.756.166l.008.004c.169.07.327.182.469.324q.128.125.227.272M11 7.073c-.269.165-.588.26-.93.26-.958 0-1.735-.746-1.735-1.666S9.112 4 10.069 4c.271 0 .528.06.756.166l.008.004c.17.07.327.182.469.324q.128.125.227.272.131.188.228.401c.428.948.392 2.377-.942 3.706a.446.446 0 0 1-.613.01.405.405 0 0 1-.011-.59c.42-.416.672-.831.81-1.22z"/>
+                              </svg><span class="text mini-sub-pro">Quotation List</span></a></li>
                         </ul>
                     </li>
                     <li id="removable">
-                        <a class="has-arrow" href="#" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/beneficiary.png') }}" alt=""> <span class="mini-click-non">Beneficiary</span></a>
+                        <a class="has-arrow text-black-50" href="#" aria-expanded="false"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                            <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+                          </svg> <span class="text mini-click-non">Beneficiary</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Login" href="{{ route('beneficiary') }}"><img src="{{ asset('assets/admin/img/icon/add-beneficiary.png') }}" alt=""><span class="mini-sub-pro">Beneficiary List</span></a></li>
+                            <li><a class="text-black-50" title="Login" href="{{ route('beneficiary') }}"><svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+                                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                                <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+                              </svg><span class="text mini-sub-pro">Beneficiary List</span></a></li>
                         </ul>
                     </li>
                 </ul>

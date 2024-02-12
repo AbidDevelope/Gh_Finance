@@ -87,7 +87,7 @@
                                                                 <i class="fa fa-dot-circle-o text-danger"></i> {{ $item->status }}
                                                                 @endif
                                                             </a>
-                                                            <div class="dropdown-menu dropdown-menu-right z-50 d-flex">
+                                                            <div class="dropdown-menu dropdown-menu-right ">
                                                                 <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Pending</a>
                                                                 <a class="dropdown-item" href="{{ route('designChangeStatus', $item->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
                                                             </div>
