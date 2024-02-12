@@ -60,11 +60,16 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('expenses', 'expensesList')->name('expenses');
     Route::get('expenses/create', 'expensesCreate')->name('expenses/create');
     Route::post('expenses/create', 'expensesCreateData')->name('expenses/create');
+    Route::get('expenses/view/{id}', 'expensesView')->name('expenses/view');
     Route::get('expenses/edit/{id}', 'expensesEdit')->name('expenses/edit');
     Route::put('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
     Route::get('expenses/delete/{id}', 'expensesDelete')->name('expenses/delete');
     Route::get('expenses/change/status/{id}', 'expensesChangeStatus')->name('expenses/change/status');
     // Route::post('get/temp/img', 'tempImgStores')->name('get/temp/img');
+    Route::get('miscellaneous', 'miscellaneous')->name('miscellaneous');
+    Route::get('miscellaneous/create', 'miscellaneousCreateForm')->name('miscellaneous/create');
+    Route::post('miscellaneous/create', 'miscellaneousCreate')->name('miscellaneous/create');
+    Route::get('miscellaneous/view/{id}', 'miscellaneousView')->name('miscellaneous/view');
 });
 
 // ------------------------- InvoiceController ----------------------- //
@@ -115,5 +120,7 @@ Route::controller(ProjectManagerController::class)->prefix('admin')->middleware(
     Route::post('projectsManager/create', 'projectManagerCreate')->name('projectsManager/create');
     Route::get('projectManager/edit/{id}', 'projectManagerEdit')->name('projectManager/edit');
     Route::post('projectManager/update/{id}', 'projectManagerUpdate')->name('projectManager/update');
-    Route::get('projectManager/delete/{id}', 'projectManagerDelete')->name('projectManager/edit');
+    Route::get('projectManager/view/{id}', 'projectManagerView')->name('projectManager/view');
+    Route::get('projectManager/delete/{id}', 'projectManagerDelete')->name('projectManager/delete');
+    Route::get('projectManagerChangeStatus/{id}', 'ChangeStatus')->name('projectManagerChangeStatus');
 });

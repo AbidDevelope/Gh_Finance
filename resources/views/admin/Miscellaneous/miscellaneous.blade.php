@@ -1,7 +1,9 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
+
         <div class="header-advance-area">
+
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="row">
@@ -41,7 +43,9 @@
                                                 </svg>
                                             </div>
                                             <select data-trigger="" name="choices-single-defaul">
-                                                <option placeholder="">Constructions</option>
+                                                <option placeholder="">All</option>
+                                                <option placeholder="">Expenses 1</option>
+                                                <option placeholder="">Expenses 2</option>
                                             </select>
                                         </div>
                                         <div class="input-field fifth-wrap">
@@ -53,13 +57,13 @@
                         </div>
                         <div class="container">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <h4 class="mt-3">Constructions</h4>
+                            <h4 class="mt-3 text-headings">Miscellaneous</h4>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
                             <div class="table-actions">
-                                <a href="{{ route('create/constructions') }}"
+                                <a href="{{ route('miscellaneous/create') }}"
                                     class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                    <i class="fa fa-plus"></i> Create Project
+                                    <i class="fa fa-plus"></i> Create
                                 </a>
                                 <a href="#"
                                     class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
@@ -68,81 +72,97 @@
                             </div>
                         </div></div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <span class="text-success text-center">{{ session('success') }}</span>
-                            <span class="text-success text-center">{{ session('error') }}</span>
+                            <span class="text-success">{{ session('success') }}</span>
+                            <span class="text-danger">{{ session('error') }}</span>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="table-responsive">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
+                            {{-- <div class="table-responsive">
                                 <table id="dataTable">
                                     <thead>
-                                        <tr>
-                                            <th>#</th>
+                                        <tr role="row">
+                                            <th>Id</th>
                                             <th>Date</th>
-                                            <th>Type</th>
+                                            <th>Project</th>
+                                            <th>Beneficiary </th>
+                                            <th>Receipt</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (count($data) > 0)
+                                            @foreach ($data as $index=>$item)
+                                                <tr>
+                                                    <td>{{ $index+1 }}</td>
+                                                    <td>{{ $item->date }}</td>
+                                                    <td>{{ $item->project }}</td>
+                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td>{{ $item->receipt }}</td>
+                                                    <td>
+                                                        <a href="#"><img
+                                                                src="{{ asset('assets/admin/img/icon/view.png') }}"
+                                                                alt=""></a>
+                                                        <a href="{{ route('expenses/edit', $item->id) }}"><img
+                                                                src="{{ asset('assets/admin/img/icon/edit.png') }}"
+                                                                alt=""></a>
+                                                        <a href="{{ route('expenses/delete', $item->id) }}"><img
+                                                                src="{{ asset('assets/admin/img/icon/delete.png') }}"
+                                                                alt=""></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="6" class="text-danger">No Record Found</td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div> --}}
+                            <div class="table-responsive">
+                                <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Date</th>
+                                            <th>Project Type</th>
                                             <th>Project Name</th>
-                                            {{-- <th>Purchased By</th> --}}
-                                            <th class="text-center">Location</th>
+                                            <th>Receipt</th>
+                                            <th>Total Amount</th>
+                                            <th>Total Withdraw</th>
                                             <th class="text-right">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if (count($data) > 0)
-                                            @foreach ($data as $index => $item)
-                                                <tr>
-                                                    <td>{{ $index + 1 }}</td>
-                                                    <td>{{ $item->created_at->format('d M Y') }}</td>
-                                                    <td>{{ $item->type }}</td>
-                                                    <td>{{ $item->name }}</td>
-                                                    <td><a>{{ $item->location }}</a></td>
-                                                    {{-- <td class="text-center">
-                                                        <div class="dropdown action-label">
-                                                            <a class="btn btn-white btn-sm btn-rounded dropdown-toggle"
-                                                                href="#" data-toggle="dropdown" aria-expanded="false">
-                                                                @if ($item->status == 'Approved')
-                                                                    <i class="fa fa-dot-circle-o text-success"></i>
-                                                                    {{ $item->status }}
-                                                                @else
-                                                                    <i class="fa fa-dot-circle-o text-danger"></i>
-                                                                    {{ $item->status }}
-                                                                @endif
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('designChangeStatus', $item->id) }}"><i
-                                                                        class="fa fa-dot-circle-o text-danger"></i>
-                                                                    Pending</a>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('designChangeStatus', $item->id) }}"><i
-                                                                        class="fa fa-dot-circle-o text-success"></i>
-                                                                    Approved</a>
-                                                            </div>
+                                            @foreach ($data as $index=>$item)
+                                            <tr>
+                                                <td>
+                                                    {{ $index+1 }}
+                                                </td>
+                                                <td>{{ $item->created_at->format('d M Y') }}</td>
+                                                <td>
+                                                    <strong>{{ $item->project_type }}</strong>
+                                                </td>
+                                                <td>{{ $item->project_name }}</td>
+                                                <td>{{ $item->receipt }}</td>
+                                                <td>{{ $item->amount_deposite }}</td>
+                                                <td>{{ $item->amount_withdraw }}</td>
+                                                <td class="text-right">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon " data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item" href="{{ route('miscellaneous/view', $item->id) }}" ><i class="fa fa-eye m-r-5"></i> View</a>
+                                                            <a class="dropdown-item" href="#" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                            <a class="dropdown-item" href="#"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
-                                                    </td> --}}
-                                                    <td class="text-right">
-                                                        <div class="dropdown dropdown-action">
-                                                            <a href="#" class="action-icon " data-toggle="dropdown"
-                                                                aria-expanded="false"><img
-                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
-                                                                    alt=""></a>
-                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item" href="#"><i
-                                                                        class="fa fa-eye m-r-5"></i> View</a>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('constructions/edit', $item->id) }}"><i
-                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('constructions/delete', $item->id) }}"><i
-                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                             @endforeach
                                         @else
-                                            <tr class="odd">
-                                                <td valign="top" colspan="6" class="dataTables_empty">No data available
-                                                    in table </td>
-                                            </tr>
+                                        <tr>
+                                            <td colspan="9" class="text-center">No Record Found</td>
+                                        </tr>
                                         @endif
                                     </tbody>
                                 </table>
@@ -159,20 +179,20 @@
     </div>
 
     <!-- metisMenu JS
-                                            ============================================ -->
+                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                            ============================================ -->
+                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -192,5 +212,4 @@
             itemSelectText: '',
         });
     </script>
-
 @endsection

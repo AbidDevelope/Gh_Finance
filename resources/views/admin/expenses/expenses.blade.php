@@ -63,7 +63,7 @@
                             <div class="table-actions">
                                 <a href="{{ route('expenses/create') }}"
                                     class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                    <i class="fa fa-plus"></i> Create Expense
+                                    <i class="fa fa-plus"></i> Create
                                 </a>
                                 <a href="#"
                                     class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
@@ -123,13 +123,12 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Item</th>
-                                            <th>Purchase From</th>
-                                            <th>Purchase Date</th>
-                                            <th>Purchased By</th>
-                                            <th>Amount</th>
-                                            <th>Paid By</th>
-                                            <th class="text-center">Status</th>
+                                            <th>Date</th>
+                                            <th>Project Type</th>
+                                            <th>Project Name</th>
+                                            <th>Receipt</th>
+                                            <th>Total Amount</th>
+                                            <th>Total Withdraw</th>
                                             <th class="text-right">Actions</th>
                                         </tr>
                                     </thead>
@@ -140,37 +139,19 @@
                                                 <td>
                                                     {{ $index+1 }}
                                                 </td>
+                                                <td>{{ $item->created_at->format('d M Y') }}</td>
                                                 <td>
-                                                    <strong>{{ $item->item_name }}</strong>
+                                                    <strong>{{ $item->project_type }}</strong>
                                                 </td>
-                                                <td>{{ $item->purchase_from }}</td>
-                                                <td>{{ $item->purchase_date }}</td>
-                                                <td>
-                                                    {{-- <a href="" class="avatar avatar-xs"><img src="{{ asset('assets/admin/img/profiles/avatar-04.jpg') }}" alt=""></a> --}}
-                                                    <a >{{ $item->purchase_by }}</a>
-                                                </td>
-                                                <td>{{ $item->amount }}</td>
-                                                <td>{{ $item->paid_by }}</td>
-                                                <td class="text-center">
-                                                    <div class="dropdown action-label">
-                                                        <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                            @if($item->status == 'Approved')
-                                                            <i class="fa fa-dot-circle-o text-success"></i> {{ $item->status }}
-                                                            @else
-                                                            <i class="fa fa-dot-circle-o text-danger"></i> {{ $item->status }}
-                                                            @endif
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="{{ route('expenses/change/status', $item->id) }}"><i class="fa fa-dot-circle-o text-danger"></i> Pending</a>
-                                                            <a class="dropdown-item" href="{{ route('expenses/change/status', $item->id) }}"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                <td>{{ $item->project_name }}</td>
+                                                <td>{{ $item->receipt }}</td>
+                                                <td>{{ $item->amount_deposite }}</td>
+                                                <td>{{ $item->amount_withdraw }}</td>
                                                 <td class="text-right">
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon " data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" ><i class="fa fa-eye m-r-5"></i> View</a>
+                                                            <a class="dropdown-item" href="{{ route('expenses/view', $item->id) }}" ><i class="fa fa-eye m-r-5"></i> View</a>
                                                             <a class="dropdown-item" href="{{ route('expenses/edit', $item->id) }}" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
                                                             <a class="dropdown-item" href="{{ route('expenses/delete', $item->id) }}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>

@@ -65,6 +65,7 @@
                                             <th>Date</th>
                                             <th>Type</th>
                                             <th>Project#</th>
+                                            <th>Location</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -74,7 +75,8 @@
                                                     <td>{{ $index+1 }}</td>
                                                     <td>{{ $item->created_at->format('d M Y') }}</td>
                                                     <td>{{ $item->type }}</td>
-                                                    <td>{{ $item->project }}</td>
+                                                    <td>{{ $item->name }}</td>
+                                                    <td>{{ $item->location }}</td>
                                                 </tr>
                                             @endforeach
                                         @else

@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->date('date')->nullable();
-            $table->string('project')->nullable();
-            $table->string('beneficiary')->nullable();
+            $table->string('project_type')->nullable();
+            $table->string('project_name')->nullable();
+            $table->string('project_manager_name')->nullable();
             $table->string('receipt')->nullable();
-            $table->decimal('amount_deposit', 8,3)->nullable();
-            $table->decimal('amount_withdrawn', 8,3)->nullable();
-            $table->string('bill')->nullable();
+            $table->string('beneficiary')->nullable();
+            $table->decimal('amount_deposite', 8,3)->nullable();
+            $table->decimal('amount_withdraw', 8,3)->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

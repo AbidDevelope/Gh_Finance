@@ -11,7 +11,7 @@ class ProjectManagerController extends Controller
 {
     public function projectManager()
     {
-        $projectManagers = ProjectManager::all();
+        $projectManagers = ProjectManager::orderBy('id', 'desc')->get();
         return view('admin.projectManager.projectManager', compact('projectManagers'));
     }
 
@@ -23,6 +23,7 @@ class ProjectManagerController extends Controller
     public function projectManagerCreate(Request $request)
     {
         $validate = Validator::make($request->all(), [
+            'type' => 'required',
             'name'      => 'required' ,     'email'  => 'required',
             'mobile'     => 'required' ,    'gender'   => 'required',
             'address'     => 'required' 
@@ -53,7 +54,24 @@ class ProjectManagerController extends Controller
 
     public function projectManagerUpdate(Request $request, $id)
     {
-        dd($request->all());
+        $validate = Validator::make($request->all(), [
+            'type' => 'required',
+            'name'      => 'required' ,     'email'  => 'required',
+            'mobile'     => 'required' ,    'gender'   => 'required',
+            'address'     => 'required' 
+        ]);
+
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }else{
+            $requestData = $request->all();
+            $projectManagers = ProjectManager::where('id', $id)->first();
+            
+            $projectManagers->update($requestData);
+            session()->flash('success', 'Data Updated Successfully.');
+            return redirect()->route('projectManager');
+        }
     }
 
     public function projectManagerDelete($id)
@@ -62,5 +80,29 @@ class ProjectManagerController extends Controller
 
         session()->flash('success', 'Deleted Successfully.');
         return redirect()->back();
+    }
+
+    public function ChangeStatus($id)
+    {
+       $projectManager = projectManager::find($id);
+
+       if($projectManager->status == 'Active')
+       {
+        $status = 'Inactive';
+       }else{
+        $status = 'Active';
+       }
+
+       $values = array('status' => $status);
+       ProjectManager::where('id', $id)->update($values);
+
+       session()->flash('success', 'Data Updated Successfully.');
+       return redirect()->route('projectManager');
+    }
+
+    public function projectManagerView($id)
+    {
+        $projectManagers = ProjectManager::find($id);
+        return view('admin.projectManager.projectManager-view', compact('projectManagers'));
     }
 }

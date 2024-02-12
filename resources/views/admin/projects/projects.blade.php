@@ -80,6 +80,7 @@
                                     <tr role="row">
                                         <th>#</th>
                                         <th>Create Date</th>
+                                        <th>Project Type</th>
                                         <th>Projects</th>
                                         <th>location</th>
                                         <th>Action</th>
@@ -91,6 +92,7 @@
                                             <tr>
                                                 <td>{{ $key+1 }}</td>
                                                 <td>{{ $project->created_at->format('d M Y') }}</td>
+                                                <td>{{ $project->type }}</td>
                                                 <td>{{ $project->name }}</td>
                                                 <td>{{ $project->location }}</td>
                                                 <td class="text-right">
