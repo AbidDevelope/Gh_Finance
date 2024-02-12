@@ -76,6 +76,7 @@
                                                     <td>{{ $index+1 }}</td>
                                                     <td>{{ $item->created_at }}</td>
                                                     <td>{{ $item->type }}</td>
+
                                                     <td>{{ $item->name }}</td>
                                                     <td class="text-right">
                                                         <div class="dropdown dropdown-action">
@@ -91,6 +92,7 @@
                                                                         class="fa fa-pencil m-r-5"></i> Edit</a>
                                                                 <a class="dropdown-item" href="#"><i
                                                                         class="fa fa-trash-o m-r-5"></i> Delete</a>
+
                                                             </div>
                                                         </div>
                                                     </td>
