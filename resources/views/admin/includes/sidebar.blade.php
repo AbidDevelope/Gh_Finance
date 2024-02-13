@@ -37,7 +37,7 @@ a:hover {
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu bg-white " id="menu1">
                     <li class="">
-                        <a class="text-black-50 " href="{{ route('dashboard') }}">
+                        <a class="text-black-50 d-flex " href="{{ route('dashboard') }}">
                             <i class="fas fa-home text"></i>
 
                             {{-- <img class="text-black-50" src="{{ asset('assets/admin/img/icon/dashboard.png') }}" alt=""> --}}
