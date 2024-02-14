@@ -53,7 +53,7 @@
                         </div>
                         <div class="container">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <h4 class="mt-3">Designs</h4>
+                                <h4 class="mt-3">All Design</h4>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
                                 <div class="table-actions">
@@ -90,7 +90,8 @@
                                             <th>Date</th>
                                             <th>Project Type</th>
                                             <th>Project Name</th>
-                                            <th>Project Location</th>
+                                            <th>Mobile</th>
+                                            <th>Project Value</th>
                                             <th class="text-right">Actions</th>
                                         </tr>
                                     </thead>
@@ -103,7 +104,8 @@
                                                     <td>{{ $project->created_at->format('d M Y') }}</td>
                                                     <td>{{ $project->project_type }}</td>
                                                     <td>{{ $project->project_name }}</td>
-                                                    <td>{{ $project->project_location }}</td>
+                                                    <td>{{ $project->project_mobile }}</td>
+                                                    <td>{{ $project->project_value }}</td>
                                                     <td class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"

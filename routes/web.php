@@ -39,6 +39,8 @@ Route::controller(FinanceController::class)->prefix('admin')->middleware(['admin
 // ----------------------------- ServicesController ---------------------------- //
 Route::controller(ServicesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('all/services', 'allServices')->name('all/services');
+    Route::get('all-services/view/{id}', 'allServicesView')->name('all-services/view');
+    
     Route::get('designs', 'designs')->name('designs');
     Route::get('create/designs', 'createDesignList')->name('create/designs');
     Route::post('create/designs', 'createDesign')->name('create/designs');
@@ -48,8 +50,8 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
     Route::get('design/delete/{id}', 'designDelete')->name('design/delete');
 
     Route::get('constructions', 'constructions')->name('constructions');
-    Route::get('create/constructions', 'createConstructionsForm')->name('create/constructions');
-    Route::post('create/constructions', 'createConstructions')->name('create/constructions');
+    Route::get('constructions/create', 'createConstructionsForm')->name('create/constructions');
+    Route::post('constructions/create', 'createConstructions')->name('create/constructions');
     Route::get('construction/view/{id}', 'constructionView')->name('construction/view');
     Route::get('construction/edit/{id}', 'constructionEdit')->name('construction/edit');
     Route::post('construction/update/{id}', 'constructionUpdate')->name('construction/update');
