@@ -12,7 +12,13 @@ class ServicesController extends Controller
     public function allServices()
     {
         $projects = Project::all();
-        return view('admin.all-services', compact('projects'));
+        return view('admin.allServices.all-services', compact('projects'));
+    }
+
+    public function allServicesView($id)
+    {
+        $projects = Project::find($id);
+        return view('admin.allServices.all-services-view', compact('projects'));
     }
 
     public function designs()
@@ -30,13 +36,18 @@ class ServicesController extends Controller
     public function createDesign(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'project_type'     => 'required' ,  'project_manager'     => 'required',
-            'project_name'     => 'required' ,  'project_location'    => 'required',
-            'project_value'    => 'required' ,  'email'               => 'required',
-            'mobile'           => 'required' ,  'office_landline'     => 'required',
-            'office_location'  => 'required' , 'remarks'              => 'required',
-            'company_name'     => 'required' , 'company_location'     => 'required',
-            'description'      => 'required' , 
+            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
+            'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
+            'company_name'      => 'required' ,  'company_project_name'  => 'required',
+            'company_email'     => 'required' ,  'company_mobile'        => 'required',
+            'company_landline'  => 'required' ,  'company_location'      => 'required',
+            'company_country'   => 'required' ,  'company_website'       => 'required' ,
+            'company_remarks'   => 'required' ,  'project_name'          => 'required' ,
+            'company_project'   => 'required' ,  'project_email'         => 'required' ,
+            'project_mobile'    => 'required' ,  'project_location'      => 'required' ,
+            'project_value'     => 'required' ,  'project_country'       => 'required' ,
+            'project_remarks'   => 'required' , 
         ]);
 
         if($validate->fails())
@@ -62,13 +73,18 @@ class ServicesController extends Controller
     public function designUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'project_type'     => 'required' ,  'project_manager'     => 'required',
-            'project_name'     => 'required' ,  'project_location'    => 'required',
-            'project_value'    => 'required' ,  'email'               => 'required',
-            'mobile'           => 'required' ,  'office_landline'     => 'required',
-            'office_location'  => 'required' , 'remarks'              => 'required',
-            'company_name'     => 'required' , 'company_location'     => 'required',
-            'description'      => 'required' , 
+            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
+            'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
+            'company_name'      => 'required' ,  'company_project_name'  => 'required',
+            'company_email'     => 'required' ,  'company_mobile'        => 'required',
+            'company_landline'  => 'required' ,  'company_location'      => 'required',
+            'company_country'   => 'required' ,  'company_website'       => 'required' ,
+            'company_remarks'   => 'required' ,  'project_name'          => 'required' ,
+            'company_project'   => 'required' ,  'project_email'         => 'required' ,
+            'project_mobile'    => 'required' ,  'project_location'      => 'required' ,
+            'project_value'     => 'required' ,  'project_country'       => 'required' ,
+            'project_remarks'   => 'required' , 
         ]);
 
         if($validate->fails())
@@ -120,13 +136,18 @@ class ServicesController extends Controller
     public function createConstructions(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'project_type'     => 'required' ,  'project_manager'     => 'required',
-            'project_name'     => 'required' ,  'project_location'    => 'required',
-            'project_value'    => 'required' ,  'email'               => 'required',
-            'mobile'           => 'required' ,  'office_landline'     => 'required',
-            'office_location'  => 'required' , 'remarks'              => 'required',
-            'company_name'     => 'required' , 'company_location'     => 'required',
-            'description'      => 'required' ,
+            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
+            'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
+            'company_name'      => 'required' ,  'company_project_name'  => 'required',
+            'company_email'     => 'required' ,  'company_mobile'        => 'required',
+            'company_landline'  => 'required' ,  'company_location'      => 'required',
+            'company_country'   => 'required' ,  'company_website'       => 'required' ,
+            'company_remarks'   => 'required' ,  'project_name'          => 'required' ,
+            'company_project'   => 'required' ,  'project_email'         => 'required' ,
+            'project_mobile'    => 'required' ,  'project_location'      => 'required' ,
+            'project_value'     => 'required' ,  'project_country'       => 'required' ,
+            'project_remarks'   => 'required' , 
         ]);
 
         if($validate->fails())
@@ -163,13 +184,18 @@ class ServicesController extends Controller
     public function constructionUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'project_type'     => 'required' ,  'project_manager'     => 'required',
-            'project_name'     => 'required' ,  'project_location'    => 'required',
-            'project_value'    => 'required' ,  'email'               => 'required',
-            'mobile'           => 'required' ,  'office_landline'     => 'required',
-            'office_location'  => 'required' , 'remarks'              => 'required',
-            'company_name'     => 'required' , 'company_location'     => 'required',
-            'description'      => 'required' ,
+            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
+            'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
+            'company_name'      => 'required' ,  'company_project_name'  => 'required',
+            'company_email'     => 'required' ,  'company_mobile'        => 'required',
+            'company_landline'  => 'required' ,  'company_location'      => 'required',
+            'company_country'   => 'required' ,  'company_website'       => 'required' ,
+            'company_remarks'   => 'required' ,  'project_name'          => 'required' ,
+            'company_project'   => 'required' ,  'project_email'         => 'required' ,
+            'project_mobile'    => 'required' ,  'project_location'      => 'required' ,
+            'project_value'     => 'required' ,  'project_country'       => 'required' ,
+            'project_remarks'   => 'required' ,
         ]);
 
         if($validate->fails())
@@ -214,13 +240,18 @@ class ServicesController extends Controller
     public function designConstructionCreate(Request $request)
     {
         $validate = Validator::make($request->all(),[
-            'project_type'     => 'required' ,  'project_manager'     => 'required',
-            'project_name'     => 'required' ,  'project_location'    => 'required',
-            'project_value'    => 'required' ,  'email'               => 'required',
-            'mobile'           => 'required' ,  'office_landline'     => 'required',
-            'office_location'  => 'required' , 'remarks'              => 'required',
-            'company_name'     => 'required' , 'company_location'     => 'required',
-            'description'      => 'required' ,
+            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
+            'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
+            'company_name'      => 'required' ,  'company_project_name'  => 'required',
+            'company_email'     => 'required' ,  'company_mobile'        => 'required',
+            'company_landline'  => 'required' ,  'company_location'      => 'required',
+            'company_country'   => 'required' ,  'company_website'       => 'required' ,
+            'company_remarks'   => 'required' ,  'project_name'          => 'required' ,
+            'company_project'   => 'required' ,  'project_email'         => 'required' ,
+            'project_mobile'    => 'required' ,  'project_location'      => 'required' ,
+            'project_value'     => 'required' ,  'project_country'       => 'required' ,
+            'project_remarks'   => 'required' ,
         ]);
 
         if($validate->fails())
@@ -250,13 +281,18 @@ class ServicesController extends Controller
     public function designConstructionUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'project_type'     => 'required' ,  'project_manager'     => 'required',
-            'project_name'     => 'required' ,  'project_location'    => 'required',
-            'project_value'    => 'required' ,  'email'               => 'required',
-            'mobile'           => 'required' ,  'office_landline'     => 'required',
-            'office_location'  => 'required' , 'remarks'              => 'required',
-            'company_name'     => 'required' , 'company_location'     => 'required',
-            'description'      => 'required' ,
+            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
+            'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
+            'company_name'      => 'required' ,  'company_project_name'  => 'required',
+            'company_email'     => 'required' ,  'company_mobile'        => 'required',
+            'company_landline'  => 'required' ,  'company_location'      => 'required',
+            'company_country'   => 'required' ,  'company_website'       => 'required' ,
+            'company_remarks'   => 'required' ,  'project_name'          => 'required' ,
+            'company_project'   => 'required' ,  'project_email'         => 'required' ,
+            'project_mobile'    => 'required' ,  'project_location'      => 'required' ,
+            'project_value'     => 'required' ,  'project_country'       => 'required' ,
+            'project_remarks'   => 'required' ,
         ]);
 
         if($validate->fails())
@@ -276,6 +312,7 @@ class ServicesController extends Controller
 
         }
     }
+    
 
     public function designConstructionDelete($id)
     {

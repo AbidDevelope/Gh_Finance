@@ -74,8 +74,8 @@
                                             <th>Date</th>
                                             <th>Project Type</th>
                                             <th>Project Name</th>
+                                            <th>Mobile</th>
                                             <th>Project Value</th>
-                                            <th>Project Location</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -87,8 +87,8 @@
                                                     <td>{{ $project->created_at->format('d M Y') }}</td>
                                                     <td>{{ $project->project_type }}</td>
                                                     <td>{{ $project->project_name }}</td>
+                                                    <td>{{ $project->project_mobile }}</td>
                                                     <td>{{ $project->project_value }}</td>
-                                                    <td>{{ $project->project_location }}</td>
                                                     <td class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"
@@ -97,7 +97,7 @@
                                                                     alt=""></a>
                                                             <div class="dropdown-menu dropdown-menu-right">
                                                                 <a class="dropdown-item"
-                                                                    href="#"><i
+                                                                    href="{{ route('all-services/view', $project->id) }}"><i
                                                                         class="fa fa-eye m-r-5"></i> View
                                                                 </a>
                                                                 <a class="dropdown-item" href="#"><i
@@ -105,7 +105,6 @@
                                                                 <a class="dropdown-item"
                                                                     href="#"><i
                                                                         class="fa fa-trash-o m-r-5"></i> Delete</a>
-
                                                             </div>
                                                         </div>
                                                     </td>
