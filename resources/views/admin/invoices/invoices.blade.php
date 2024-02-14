@@ -72,8 +72,16 @@
                             </div>
                         </div></div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <span class="text-success">{{ session('success') }}</span>
-                            <span class="text-danger">{{ session('error') }}</span>
+                            @if (Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <table id="dataTable">

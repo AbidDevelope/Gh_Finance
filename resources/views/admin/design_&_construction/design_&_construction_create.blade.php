@@ -7,23 +7,15 @@
                     <div class="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Project</h4>
+                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Design & Construction</h4>
                                 <hr class="border-top-grey">
-                                <form action="{{ route('projects/create') }}" method="POST">
+                                <form action="{{ route('design_&_construction/create') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Project Type</label>
-                                                <select name="project_type" class="form-control" id="">
-                                                    <option value="" disabled selected>Select Type</option>
-                                                    <option value="Design">Design</option>
-                                                    <option value="Construction">Construction</option>
-                                                    <option value="Design_and_Construction">Design & Construction</option>
-                                                </select>
-                                                @error('project_type')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
+                                                <input readonly type="text" name="project_type" class="form-control" value="Design & Construction">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -56,7 +48,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Project Value</label>
-                                                <input type="text" class="form-control" name="project_value" value="{{ old('project_value') }}">
+                                                <input type="text" class="form-control" name="project_value" onkeypress="return /[0-9]/i.test(event.key)" value="{{ old('project_value') }}">
                                                 @error('project_value')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -76,7 +68,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Mobile</label>
-                                                <input class="form-control" type="text" name="mobile" value="{{ old('mobile') }}">
+                                                <input class="form-control" type="text" name="mobile" onkeypress="return /[0-9,.]/i.test(event.key)" maxlength="10" value="{{ old('mobile') }}">
                                                 @error('mobile')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -85,7 +77,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Office Landline</label>
-                                                <input class="form-control" type="text" name="office_landline" onkeypress="return /[0-9,.]/i.test(event.key)" value="{{ old('office_landline') }}">
+                                                <input class="form-control" type="text" name="office_landline" onkeypress="return /[0-9]/i.test(event.key)" value="{{ old('office_landline') }}">
                                                 @error('office_landline')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror

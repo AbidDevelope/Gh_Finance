@@ -9,23 +9,56 @@
                             <div class="form-section">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Constructions</h4>
                                 <hr class="border-top-grey">
-                                <form action="{{ route('create/constructions') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('create/constructions') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Type</label>
-                                                <input type="text" readonly class="form-control" value="Constructions" name="type">
-                                                @error('type')
+                                                <label>Project Type</label>
+                                                <input readonly type="text" name="project_type" class="form-control" value="Construction">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Project Manager</label>
+                                                <input type="text" class="form-control" name="project_manager" value="{{ old('project_manager') }}">
+                                                @error('project_manager')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Project</label>
-                                                <input class="form-control" type="text" name="project">
-                                                @error('project')
+                                                <label>Project Name</label>
+                                                <input type="text" class="form-control" name="project_name" value="{{ old('project_name') }}">
+                                                @error('project_name')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Project Location </label>
+                                                 <input type="text" name="project_location" class="form-control" value="{{ old('project_location') }}">                                               
+                                                @error('project_location')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Project Value</label>
+                                                <input type="text" class="form-control" name="project_value" onkeypress="return /[0-9]/i.test(event.key)" value="{{ old('project_value') }}">
+                                                @error('project_value')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input class="form-control" type="email" name="email" value="{{ old('email') }}">
+                                                @error('email')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -34,18 +67,18 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Purchase From</label>
-                                                <input class="form-control" type="text" name="purchase_from">
-                                                @error('purchase_from')
+                                                <label>Mobile</label>
+                                                <input class="form-control" type="text" name="mobile" onkeypress="return /[0-9,.]/i.test(event.key)" maxlength="10" value="{{ old('mobile') }}">
+                                                @error('mobile')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Purchase Date</label>
-                                                <div class=""><input class="form-control" type="date" name="purchase_date"></div>
-                                                @error('purchase_date')
+                                                <label>Office Landline</label>
+                                                <input class="form-control" type="text" name="office_landline" onkeypress="return /[0-9]/i.test(event.key)" value="{{ old('office_landline') }}">
+                                                @error('office_landline')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -54,56 +87,48 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Purchased By </label>
-                                                <select class="select form-control" name="purchase_by">
-                                                    <option value="" selected disabled>Select By</option>
-                                                    <option value="Abid">Abid</option>
-                                                    <option value="Monika">Monika</option>
-                                                </select>                                                
-                                                @error('purchase_by')
+                                                <label>Office Location </label>
+                                                 <input type="text" name="office_location" class="form-control" value="{{ old('office_location') }}">                                               
+                                                @error('office_location')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Amount</label>
-                                                <input placeholder="$50" class="form-control" type="text" name="amount">
-                                                @error('amount')
+                                                <label>Remarks </label>
+                                                 <input type="text" name="remarks" class="form-control" value="{{ old('remarks') }}">                                               
+                                                @error('remarks')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Company Name </label>
+                                                 <input type="text" name="company_name" class="form-control" value="{{ old('company_name') }}">                                               
+                                                @error('company_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Company Location </label>
+                                                 <input type="text" name="company_location" class="form-control" value="{{ old('company_location') }}">                                               
+                                                @error('company_location')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Paid By</label>
-                                                <select class="select form-control" name="paid_by">
-                                                    <option value="" selected disabled >Select By</option>
-                                                    <option value="Cash">Cash</option>
-                                                    <option value="Cheque">Cheque</option>
-                                                </select>
-                                                @error('paid_by')
-                                                <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Attachments</label>
-                                                <input class="form-control" type="file" name="attachments">
-                                                @error('attachments')
-                                                <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea type="text" name="description" class="form-control" id="" ></textarea>
+                                                <label>Description </label>
+                                                 <textarea name="description" class="form-control" value="{{ old('description') }}"></textarea>                                               
                                                 @error('description')
-                                                    <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>

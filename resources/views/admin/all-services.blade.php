@@ -54,29 +54,61 @@
                             <h4 class="mt-3">All Services</h4>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <span class="text-success">{{ session('success') }}</span>
+                            @if (Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-                            <div class="table-responsive">
+                            <div class="">
                                 <table id="dataTable">
                                     <thead>
                                         <tr role="row">
                                             <th>Sr. No.</th>
                                             <th>Date</th>
-                                            <th>Type</th>
-                                            <th>Project#</th>
-                                            <th>Location</th>
+                                            <th>Project Type</th>
+                                            <th>Project Name</th>
+                                            <th>Project Value</th>
+                                            <th>Project Location</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (count($data) > 0)
-                                            @foreach ($data as $index=>$item)
+                                        @if (count($projects) > 0)
+                                            @foreach ($projects as $index=>$project)
                                                 <tr>
                                                     <td>{{ $index+1 }}</td>
-                                                    <td>{{ $item->created_at->format('d M Y') }}</td>
-                                                    <td>{{ $item->type }}</td>
-                                                    <td>{{ $item->name }}</td>
-                                                    <td>{{ $item->location }}</td>
+                                                    <td>{{ $project->created_at->format('d M Y') }}</td>
+                                                    <td>{{ $project->project_type }}</td>
+                                                    <td>{{ $project->project_name }}</td>
+                                                    <td>{{ $project->project_value }}</td>
+                                                    <td>{{ $project->project_location }}</td>
+                                                    <td class="text-right">
+                                                        <div class="dropdown dropdown-action">
+                                                            <a href="#" class="action-icon " data-toggle="dropdown"
+                                                                aria-expanded="false"><img
+                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                    alt=""></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"
+                                                                    href="#"><i
+                                                                        class="fa fa-eye m-r-5"></i> View
+                                                                </a>
+                                                                <a class="dropdown-item" href="#"><i
+                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                                <a class="dropdown-item"
+                                                                    href="#"><i
+                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         @else

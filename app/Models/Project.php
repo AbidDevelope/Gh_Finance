@@ -11,15 +11,19 @@ class Project extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'type',
-        'name',
-        'project_manager_id',
+        'project_type',
+        'project_manager',
+        'project_name',
+        'project_location',
+        'project_value',
+        'email',
+        'mobile',
+        'office_landline',
+        'office_location',
+        'remarks',
+        'company_name',
+        'company_location',
         'description',
-        'start_date',
-        'end_date',
-        'budget',
-        'location',
-        'status',
     ];
 
     public function beneficiary()

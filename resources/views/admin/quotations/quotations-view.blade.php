@@ -133,15 +133,15 @@
                             <table class="meta">
                                 <tr>
                                     <th>SubTotal:</th>
-                                    <td><span data-prefix>$</span><span>600.00</span></td>
+                                    <td><span data-prefix></span><span>600.000</span></td>
                                 </tr>
                                 <tr>
                                     <th><span>Others:</span></th>
-                                    <td><span data-prefix>$</span><span>600.00</span></td>
+                                    <td><span data-prefix></span><span>600.000</span></td>
                                 </tr>
                                 <tr>
                                     <th><span>Grand Total</span></th>
-                                    <td><span data-prefix>$</span><span>600.00</span></td>
+                                    <td><span data-prefix></span><span>600.000</span></td>
                                 </tr>
                             </table><br><br>
                             <div class="norm">

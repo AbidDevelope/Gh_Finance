@@ -25,7 +25,7 @@ class QuotationController extends Controller
 
     public function quotationCreateForm()
     {
-        $beneficiaries = Beneficiary::with('projects')->orderBy('beneficiary', 'asc')->get();
+        $beneficiaries = Beneficiary::all();
         $lastQuotation = Quotation::orderBy('id', 'desc')->first();
         $nextQuotationId = $lastQuotation ? $lastQuotation->id + 1: 1;
 

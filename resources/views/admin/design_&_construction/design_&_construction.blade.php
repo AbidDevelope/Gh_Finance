@@ -23,24 +23,27 @@
                                             <div class="icon-wrap">
 
                                             </div>
-                                            <input type="date" placeholder="30 Aug 2018" >
+                                            <input type="date" placeholder="30 Aug 2018">
                                         </div>
                                         <div class="input-field third-wrap">
                                             <div class="icon-wrap">
 
                                             </div>
-                                            <input type="date" placeholder="30 Aug 2018" >
+                                            <input type="date" placeholder="30 Aug 2018">
                                         </div>
                                         <div class="input-field fouth-wrap">
                                             <div class="icon-wrap">
-                                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-                                              </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
+                                                    </path>
+                                                </svg>
                                             </div>
                                             <select data-trigger="" name="choices-single-defaul">
-                                              <option placeholder="">All</option>
-                                              <option>Designs</option>
-                                              <option>Constructions</option>
+                                                <option placeholder="">All</option>
+                                                <option>Designs</option>
+                                                <option>Constructions</option>
                                             </select>
                                         </div>
                                         <div class="input-field fifth-wrap">
@@ -50,34 +53,57 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <h5 class="mt-3"><span>Design & Constructions</span></h5>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
+                            <div class="table-actions">
+                                <a href="{{ route('design_&_construction/create') }}"
+                                    class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
+                                    <i class="fa fa-plus"></i> Create
+                                </a>
+                                <a href="#"
+                                    class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
+                                    <i class="fa fa-file-export"></i> Export
+                                </a>
+                            </div>
+                        </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <span class="text-success">{{ session('success') }}</span>
-                            <span class="text-success">{{ session('error') }}</span>
+                            @if (Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-                            <div class="table-responsive">
+                            <div class="">
                                 <table id="dataTable">
                                     <thead>
                                         <tr role="row">
-                                            <th>#</th>
+                                            <th>Sr. No.</th>
+                                            <th>Project Id</th>
                                             <th>Date</th>
-                                            <th>Type</th>
-                                            <th>Project#</th>
-                                            <th>Action</th>
+                                            <th>Project Type</th>
+                                            <th>Project Name</th>
+                                            <th>Project Location</th>
+                                            <th class="text-right">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (count($data) > 0)
-                                            @foreach ($data as $index=>$item)
+                                        @if (count($projects) > 0)
+                                            @foreach ($projects as $index => $project)
                                                 <tr>
-                                                    <td>{{ $index+1 }}</td>
-                                                    <td>{{ $item->created_at }}</td>
-                                                    <td>{{ $item->type }}</td>
-
-                                                    <td>{{ $item->name }}</td>
+                                                    <td>{{ $index + 1 }}</td>
+                                                    <td>{{ $project->id }}</td>
+                                                    <td>{{ $project->created_at->format('d M Y') }}</td>
+                                                    <td>{{ $project->project_type }}</td>
+                                                    <td>{{ $project->project_name }}</td>
+                                                    <td>{{ $project->project_location }}</td>
                                                     <td class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"
@@ -85,12 +111,14 @@
                                                                     src="{{ asset('assets/admin/img/icon/action.png') }}"
                                                                     alt=""></a>
                                                             <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item" href="#"><i
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('design_&_construction/view', $project->id) }}"><i
                                                                         class="fa fa-eye m-r-5"></i> View
                                                                 </a>
-                                                                <a class="dropdown-item" href="#"><i
+                                                                <a class="dropdown-item" href="{{ route('design_&_construction/edit', $project->id) }}"><i
                                                                         class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                                <a class="dropdown-item" href="#"><i
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('design_&_construction/delete', $project->id) }}"><i
                                                                         class="fa fa-trash-o m-r-5"></i> Delete</a>
 
                                                             </div>
@@ -100,7 +128,7 @@
                                             @endforeach
                                         @else
                                             <tr class="odd">
-                                                <td valign="top" colspan="6" class="dataTables_empty">No data available
+                                                <td valign="top" colspan="7" class="dataTables_empty">No data available
                                                     in
                                                     table
                                                 </td>
@@ -121,20 +149,20 @@
     </div>
 
     <!-- metisMenu JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}

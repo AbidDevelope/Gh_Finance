@@ -11,15 +11,16 @@ class ServicesController extends Controller
 {
     public function allServices()
     {
-        $data = Project::all();
-        return view('admin.all-services', compact('data'));
+        $projects = Project::all();
+        return view('admin.all-services', compact('projects'));
     }
 
-    public function designConstructions()
-    {
-        $data = Project::where('type', 'Design_and_Construction')->get();
-        return view('admin.design-&-construction',compact('data'));
+    public function designs()
+    { 
+        $projects = Project::orderBy('id', 'desc')->where(['project_type' => 'Design'])->get();
+        return view('admin.designs.designs', compact('projects'));
     }
+
 
     public function createDesignList()
     {
@@ -29,11 +30,13 @@ class ServicesController extends Controller
     public function createDesign(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'type'          => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
-            'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
-            'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
-            'paid_by'       => 'required|string|max:255' ,  'attachments'    => 'required|mimes:jpg,jpeg,png,pdf|max:2048',
-            'description'   => 'required|string|max:255' , 
+            'project_type'     => 'required' ,  'project_manager'     => 'required',
+            'project_name'     => 'required' ,  'project_location'    => 'required',
+            'project_value'    => 'required' ,  'email'               => 'required',
+            'mobile'           => 'required' ,  'office_landline'     => 'required',
+            'office_location'  => 'required' , 'remarks'              => 'required',
+            'company_name'     => 'required' , 'company_location'     => 'required',
+            'description'      => 'required' , 
         ]);
 
         if($validate->fails())
@@ -42,62 +45,42 @@ class ServicesController extends Controller
         }else
         {
            $requestData = $request->all();
+           Project::create($requestData);
 
-           if ($request->hasFile('attachments')) {
-            $file = $request->file('attachments');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = time() . '.' . $extension;
-           
-            $file->move(public_path('uploads/designs'), $fileName); 
-        
-            $requestData['attachments'] = $fileName; 
-        }
-        Project::create($requestData);
-
-        session()->flash('success', 'Designs Created Successfully');
+        session()->flash('success', 'Created Successfully');
         return redirect()->route('designs');
         }
     }
 
-    public function designs()
-    { 
-        $data = Project::where(['type' => 'Design'])->get();
-        return view('admin.designs.designs', compact('data'));
-    }
 
     public function designEdit($id)
     {
-        $data = Project::find($id);
-        return view('admin.designs.design-edit', compact('data'));
+        $projects = Project::find($id);
+        return view('admin.designs.design-edit', compact('projects'));
     }
 
     public function designUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'type'          => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
-            'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
-            'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
-            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' , 
+            'project_type'     => 'required' ,  'project_manager'     => 'required',
+            'project_name'     => 'required' ,  'project_location'    => 'required',
+            'project_value'    => 'required' ,  'email'               => 'required',
+            'mobile'           => 'required' ,  'office_landline'     => 'required',
+            'office_location'  => 'required' , 'remarks'              => 'required',
+            'company_name'     => 'required' , 'company_location'     => 'required',
+            'description'      => 'required' , 
         ]);
 
         if($validate->fails())
         {
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
-            $getData = Project::where('id', $id)->first();
+            $projects = Project::where('id', $id)->first();
             $requestData = $request->all();
 
-            if($request->hasFile('attachments'))
+            if($projects)
             {
-                $file = $request->file('attachments');
-                $extension = $file->getClientOriginalExtension();
-                $fileName = time(). '.' . $extension;
-                $file->move(public_path('uploads/designs'), $fileName);
-                $requestData['attachments'] = $fileName;
-            }
-            if($getData)
-            {
-                $getData->update($requestData);
+                $projects->update($requestData);
 
                 session()->flash('success', 'Data Updated Successfully.');
                 return redirect()->route('designs');
@@ -108,23 +91,12 @@ class ServicesController extends Controller
         }
     }
 
-    public function designChangeStatus($id)
+    public function designView($id)
     {
-        $data = Project::where('id', $id)->first();
-
-        if($data->status == 'Pending')
-        {
-            $status = 'Approved';
-        }else{
-            $status = 'Pending';
-        }
-
-        $value = array('status' => $status);
-        Project::where('id', $id)->update($value);
-
-        session()->flash('success', 'Status Change Successfully.');
-        return redirect()->back();
+        $projects = Project::find($id);
+        return view('admin.designs.design-view', compact('projects'));
     }
+
 
     public function designDelete($id)
     {
@@ -136,11 +108,11 @@ class ServicesController extends Controller
 
     public function constructions()
     {
-        $data = Project::where(['type' => 'Construction'])->get();
-        return view('admin.constructions.constructions',compact('data'));
+        $projects = Project::orderBy('id', 'desc')->where(['project_type' => 'Construction'])->get();
+        return view('admin.constructions.constructions', compact('projects'));
     }
 
-    public function createConstructionsList()
+    public function createConstructionsForm()
     {
         return view('admin.constructions.contsructions-create');
     }
@@ -148,11 +120,13 @@ class ServicesController extends Controller
     public function createConstructions(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'type'          => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
-            'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
-            'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
-            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' ,
-            'attachments'   => 'required', 
+            'project_type'     => 'required' ,  'project_manager'     => 'required',
+            'project_name'     => 'required' ,  'project_location'    => 'required',
+            'project_value'    => 'required' ,  'email'               => 'required',
+            'mobile'           => 'required' ,  'office_landline'     => 'required',
+            'office_location'  => 'required' , 'remarks'              => 'required',
+            'company_name'     => 'required' , 'company_location'     => 'required',
+            'description'      => 'required' ,
         ]);
 
         if($validate->fails())
@@ -162,17 +136,8 @@ class ServicesController extends Controller
         {
             $requestData = $request->all();
 
-            if($request->hasFile('attachments'))
-            {
-                $file = $request->file('attachments');
-                $extension = $file->getClientOriginalExtension();
-                $fileName = time(). '.' . $extension;
-                $file->move(public_path('uploads/constructions'), $fileName);
-                $requestData['attachments'] = $fileName;
-            }
-
-            $data = Project::create($requestData);
-            if($data)
+            $projects = Project::create($requestData);
+            if($projects)
             {
                 session()->flash('success', 'Constructions Created Successfully');
                 return redirect()->route('constructions');
@@ -183,39 +148,40 @@ class ServicesController extends Controller
         }
     }
 
-    public function constructionsEdit($id)
+    public function constructionView($id)
     {
-       $data = Project::find($id);
-       return view('admin.constructions.constructions-edit', compact('data'));
+       $projects = Project::find($id);
+       return view('admin.constructions.construction-view', compact('projects'));
     }
 
-    public function constructionsUpdate(Request $request, $id)
+    public function constructionEdit($id)
+    {
+       $projects = Project::find($id);
+       return view('admin.constructions.constructions-edit', compact('projects'));
+    }
+
+    public function constructionUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'type'          => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
-            'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
-            'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
-            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' ,
+            'project_type'     => 'required' ,  'project_manager'     => 'required',
+            'project_name'     => 'required' ,  'project_location'    => 'required',
+            'project_value'    => 'required' ,  'email'               => 'required',
+            'mobile'           => 'required' ,  'office_landline'     => 'required',
+            'office_location'  => 'required' , 'remarks'              => 'required',
+            'company_name'     => 'required' , 'company_location'     => 'required',
+            'description'      => 'required' ,
         ]);
 
         if($validate->fails())
         {
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
-            $getData = Project::where('id', $id)->first();
+            $projects = Project::where('id', $id)->first();
             $requestData = $request->all();
 
-            if($request->hasFile('attachments'))
+            if($projects)
             {
-                $file = $request->file('attachments');
-                $extension = $file->getClientOriginalExtension();
-                $fileName = time(). '.' . $extension;
-                $file->move(public_path('uploads/constructions'), $fileName);
-                $requestData['attachments'] = $fileName;
-            }
-            if($getData)
-            {
-                $getData->update($requestData);
+                $projects->update($requestData);
 
                 session()->flash('success', 'Data Updated Successfully.');
                 return redirect()->route('constructions');
@@ -226,11 +192,96 @@ class ServicesController extends Controller
         }
     }
 
-    public function constructionsDelete($id)
+    public function constructionDelete($id)
     {
        Project::find($id)->delete();
 
        session()->flash('success', 'Constructions Deleted Successfully.');
        return redirect()->back();
+    }
+
+    public function designConstructions()
+    {
+        $projects = Project::where('project_type', 'Design & Construction')->get();
+        return view('admin.design_&_construction.design_&_construction',compact('projects'));
+    }
+
+    public function designConstructionCreateForm()
+    {
+        return view('admin.design_&_construction.design_&_construction_create');
+    }
+
+    public function designConstructionCreate(Request $request)
+    {
+        $validate = Validator::make($request->all(),[
+            'project_type'     => 'required' ,  'project_manager'     => 'required',
+            'project_name'     => 'required' ,  'project_location'    => 'required',
+            'project_value'    => 'required' ,  'email'               => 'required',
+            'mobile'           => 'required' ,  'office_landline'     => 'required',
+            'office_location'  => 'required' , 'remarks'              => 'required',
+            'company_name'     => 'required' , 'company_location'     => 'required',
+            'description'      => 'required' ,
+        ]);
+
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }else{
+            $requestData = $request->all();
+
+            Project::create($requestData);
+            session()->flash('success', 'Created Successfully.');
+            return redirect()->route('design_&_construction');
+        }
+    }
+
+    public function designConstructionView($id)
+    {
+        $projects = Project::find($id);
+        return view('admin.design_&_construction.design_&_construction_view', compact('projects'));
+    }
+
+    public function designConstructionEdit($id)
+    {
+        $projects = Project::find($id);
+        return view('admin.design_&_construction.design_&_construction_edit', compact('projects'));
+    }
+
+    public function designConstructionUpdate(Request $request, $id)
+    {
+        $validate = Validator::make($request->all(),[
+            'project_type'     => 'required' ,  'project_manager'     => 'required',
+            'project_name'     => 'required' ,  'project_location'    => 'required',
+            'project_value'    => 'required' ,  'email'               => 'required',
+            'mobile'           => 'required' ,  'office_landline'     => 'required',
+            'office_location'  => 'required' , 'remarks'              => 'required',
+            'company_name'     => 'required' , 'company_location'     => 'required',
+            'description'      => 'required' ,
+        ]);
+
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }else{
+            $projects = Project::where('id', $id)->first();
+            $requestData = $request->all();
+
+            if($projects)
+            {
+                $projects->update($requestData);
+
+                session()->flash('success', 'Updated Successfully.');
+                return redirect()->route('design_&_construction');
+            }
+
+        }
+    }
+
+    public function designConstructionDelete($id)
+    {
+        Project::find($id)->delete();
+
+        session()->flash('success', 'Deleted Successfully.');
+        return redirect()->back();
     }
 }
