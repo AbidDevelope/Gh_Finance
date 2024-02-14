@@ -167,6 +167,12 @@ body {}
     border-radius: 50%;
     border: 2px solid var(--active-nav-black);
 }
+.sidebarCollapse{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid var(--active-nav-black);
+}
 .profile-dtl h2{
 	font-size:16px;
 	color:#fff;
@@ -262,7 +268,7 @@ ul.dtl-social li a{
 }
 .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:hover, .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:focus, .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:active, .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:visited{
 	background:#ebebeb;
-	color:#444;
+	color:#fff;
 }
 .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li .indicator-right-menu{
 	float: right;
@@ -3645,10 +3651,11 @@ th.fc-day-header.fc-widget-header {
     box-shadow: none;
 }
 .mini-navbar .profile-social-dtl, .mini-navbar .min-dtn{
-	display:none;
+	display:block;
+    font-size:10px;
 }
 .mini-navbar .profile-dtl img {
-    height: 50px;
+    height: 40px;
 }
 .fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td {
    padding-bottom: 0px;
