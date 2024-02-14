@@ -72,52 +72,18 @@
                             </div>
                         </div></div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <span class="text-success">{{ session('success') }}</span>
-                            <span class="text-danger">{{ session('error') }}</span>
+                            @if (Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-                            {{-- <div class="table-responsive">
-                                <table id="dataTable">
-                                    <thead>
-                                        <tr role="row">
-                                            <th>Id</th>
-                                            <th>Date</th>
-                                            <th>Project</th>
-                                            <th>Beneficiary </th>
-                                            <th>Receipt</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @if (count($data) > 0)
-                                            @foreach ($data as $index=>$item)
-                                                <tr>
-                                                    <td>{{ $index+1 }}</td>
-                                                    <td>{{ $item->date }}</td>
-                                                    <td>{{ $item->project }}</td>
-                                                    <td>{{ $item->beneficiary }}</td>
-                                                    <td>{{ $item->receipt }}</td>
-                                                    <td>
-                                                        <a href="#"><img
-                                                                src="{{ asset('assets/admin/img/icon/view.png') }}"
-                                                                alt=""></a>
-                                                        <a href="{{ route('expenses/edit', $item->id) }}"><img
-                                                                src="{{ asset('assets/admin/img/icon/edit.png') }}"
-                                                                alt=""></a>
-                                                        <a href="{{ route('expenses/delete', $item->id) }}"><img
-                                                                src="{{ asset('assets/admin/img/icon/delete.png') }}"
-                                                                alt=""></a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @else
-                                            <tr>
-                                                <td colspan="6" class="text-danger">No Record Found</td>
-                                            </tr>
-                                        @endif
-                                    </tbody>
-                                </table>
-                            </div> --}}
                             <div class="table-responsive">
                                 <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
                                     <thead>

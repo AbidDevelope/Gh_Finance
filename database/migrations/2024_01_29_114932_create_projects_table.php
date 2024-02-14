@@ -13,15 +13,19 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('type')->nullable();
-            $table->string('name')->nullable();
-            $table->bigInteger('project_manager_id')->unsigned()->index();
+            $table->string('project_type')->nullable();
+            $table->string('project_manager')->nullable();
+            $table->string('project_name')->nullable();
+            $table->string('project_location')->nullable();
+            $table->decimal('project_value', 10, 3)->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('office_landline')->nullable();
+            $table->string('office_location')->nullable();
+            $table->string('remarks')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_location')->nullable();
             $table->text('description')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
-            $table->decimal('budget', 10,3)->nullablle();
-            $table->string('location')->nullablle();
-            $table->string('status')->default(1);
             $table->timestamps();
         });
 
