@@ -44,7 +44,7 @@
                                             </select>
                                         </div>
                                         <div class="input-field fifth-wrap">
-                                            <button class="btn-search" type="button">SEARCH</button>
+                                            <button class="btn-search" type="button">SEARCH </button>
                                         </div>
                                     </div>
                                 </form>
