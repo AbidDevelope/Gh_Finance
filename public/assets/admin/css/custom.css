@@ -72,7 +72,7 @@ header input {
     position: absolute;
     top: 0;
     width: 100%;
-    
+
     /* Add any other necessary styles */
 }
 
@@ -291,7 +291,7 @@ header img {
     max-height: 100%;
     max-width: 100%;
 }
-header input {
+/* header input {
     cursor: pointer;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     height: 100%;
@@ -300,7 +300,20 @@ header input {
     position: absolute;
     top: 0;
     width: 100%;
+} */
+
+header input {
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    opacity: 1; /* Change opacity to 1 to make it fully visible */
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    /* Add any other necessary styles */
 }
+
 
 /* article */
 
