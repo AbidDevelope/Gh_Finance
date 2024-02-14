@@ -522,7 +522,7 @@
                         <div class="col-xs-12 col-md-6 shadow" style="background-color: white">
                             <p class="m-0 dashboard-color-text">Last Week Revenue</p>
                             <p class="dashboard-color-subcolor">7656.000 KWD</p>
-                            <div id="echart-bar-last-week" style="width: 100%; height:400px"></div>
+                            <didropdown-menuv id="echart-bar-last-week" style="width: 100%; height:400px"></didropdown-menuv>
 
                         </div>
                     </div>
@@ -533,75 +533,90 @@
                         <p class="dashboard-color-text ">Projects</p>
                         <div class="d-flex align-items-center flex-column flex-md-row  ">
                             <div class="col-lg-3 col-12 p-0">
-                                <p class="m-0 avatar-lg-top">
+                                {{-- <p class="m-0 avatar-lg-top">
                                     <img
                                         src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p>
+                                </p> --}}
                             </div>
                             <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Wireless Headphone E23</p>
+                                <p class="mb-2 top-selling-tittle">Project 1 </p>
                                 <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                <p class="text-small text-danger m-0">46456 KWD <del class="text-muted">57567 KWD</del>
+                                <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567 KWD</del>
                                 </p>
                             </div>
                             <div class="col-lg-2 col-12 p-0 mr-lg-5">
                                 <button class="border-white bg-white cursor-pointer">View </button>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center justify-content-center">
+                        <div class="d-flex align-items-center flex-column flex-md-row  ">
                             <div class="col-lg-3 col-12 p-0">
-                                <p class="m-0 avatar-lg-top">
+                                {{-- <p class="m-0 avatar-lg-top">
                                     <img
                                         src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p>
+                                </p> --}}
                             </div>
                             <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Wireless Headphone E23</p>
+                                <p class="mb-2 top-selling-tittle">Project 1 </p>
                                 <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                <p class="text-small text-danger m-0">46456 KWD <del class="text-muted">57567 KWD</del>
+                                <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567 KWD</del>
                                 </p>
                             </div>
-                            <div class="col-lg-2 col-12 p-0">
+                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
                                 <button class="border-white bg-white cursor-pointer">View </button>
-
                             </div>
                         </div>
-                        <div class="d-flex align-items-center justify-content-center">
+                        <div class="d-flex align-items-center flex-column flex-md-row  ">
                             <div class="col-lg-3 col-12 p-0">
-                                <p class="m-0 avatar-lg-top">
+                                {{-- <p class="m-0 avatar-lg-top">
                                     <img
                                         src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p>
+                                </p> --}}
                             </div>
                             <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Wireless Headphone E23</p>
+                                <p class="mb-2 top-selling-tittle">Project 1 </p>
                                 <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                <p class="text-small text-danger m-0">46456 KWD <del class="text-muted">57567 KWD</del>
+                                <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567 KWD</del>
                                 </p>
                             </div>
-                            <div class="col-lg-2 col-12 p-0">
+                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
                                 <button class="border-white bg-white cursor-pointer">View </button>
-
                             </div>
                         </div>
-                        <div class="d-flex align-items-center justify-content-center">
+                        <div class="d-flex align-items-center flex-column flex-md-row  ">
                             <div class="col-lg-3 col-12 p-0">
-                                <p class="m-0 avatar-lg-top">
+                                {{-- <p class="m-0 avatar-lg-top">
                                     <img
                                         src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p>
+                                </p> --}}
                             </div>
                             <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Wireless Headphone E23</p>
+                                <p class="mb-2 top-selling-tittle">Project 1 </p>
                                 <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                <p class="text-small text-danger m-0">46456 KWD <del class="text-muted">57567 KWD</del>
+                                <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567 KWD</del>
                                 </p>
                             </div>
-                            <div class="col-lg-2 col-12 p-0">
+                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
                                 <button class="border-white bg-white cursor-pointer">View </button>
-
                             </div>
                         </div>
+                        <div class="d-flex align-items-center flex-column flex-md-row  ">
+                            <div class="col-lg-3 col-12 p-0">
+                                {{-- <p class="m-0 avatar-lg-top">
+                                    <img
+                                        src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
+                                </p> --}}
+                            </div>
+                            <div class="col-lg-7 col-12 p-0">
+                                <p class="mb-2 top-selling-tittle">Project 1 </p>
+                                <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567 KWD</del>
+                                </p>
+                            </div>
+                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
+                                <button class="border-white bg-white cursor-pointer">View </button>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
