@@ -22,55 +22,74 @@
         background-color: transparent !important;
     }
 
-   /* Initially hide the submenu */
-   .container {
-    position: relative;
-    display: inline-block; /* Ensure the container only takes the necessary width */
-}
+    /* Initially hide the submenu */
+    .container {
+        position: relative;
+        display: inline-block;
+        /* Ensure the container only takes the necessary width */
+    }
 
-#servicesMenu {
-    display: none;
-    position: absolute;
-    top: 50;
-    bottom: 50%;
-    left: 100%; /* Position to the right of the parent */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
+    #servicesMenu {
+        display: none;
+        position: absolute;
+        top: 50;
+        bottom: 50%;
+        left: 100%;
+        /* Position to the right of the parent */
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 10px;
 
-}
-.height{
-    height: 15px;
+    }
 
-}
+    .height {
+        height: 15px;
 
-#toggleServices:hover + #servicesMenu {
-    display: block; /* Show the menu when hovering over the toggle */
-}
-.has-arrow:hover #servicesMenu {
-    display: block;
-}
+    }
 
 
+
+    .submenu-angle li {
+        list-style-type: none;
+        /* Remove default list style */
+        padding: 5px 10px;
+        /* Adjust padding as needed */
+    }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function() {
     var toggleServices = document.getElementById('toggleServices');
     var servicesMenu = document.getElementById('servicesMenu');
 
-    toggleServices.addEventListener('mouseenter', function () {
-        servicesMenu.classList.add('active');
+    // Show the servicesMenu when hovering over the toggleServices link
+    toggleServices.addEventListener('mouseenter', function() {
+        servicesMenu.style.display = 'block';
     });
 
-    toggleServices.addEventListener('mouseleave', function () {
-        servicesMenu.classList.remove('active');
+    // Hide the servicesMenu when hovering away from toggleServices and servicesMenu
+    toggleServices.addEventListener('mouseleave', function() {
+        servicesMenu.style.display = 'block';
+    });
+
+    // Hide the servicesMenu when clicking outside toggleServices and servicesMenu
+    document.addEventListener('click', function(event) {
+        var targetElement = event.target;
+        // Check if the click event occurred outside toggleServices and servicesMenu
+        if (!toggleServices.contains(targetElement) && !servicesMenu.contains(targetElement)) {
+            servicesMenu.style.display = 'none';
+        }
+    });
+
+    // Hide the servicesMenu when clicking on the toggleServices link if it is visible
+    toggleServices.addEventListener('click', function() {
+        if (servicesMenu.style.display === 'block') {
+            servicesMenu.style.display = 'none';
+        }
     });
 });
-.submenu-angle li {
-    list-style-type: none; /* Remove default list style */
-    padding: 5px 10px; /* Adjust padding as needed */
-}
+
+
 
 </script>
 
@@ -102,12 +121,15 @@ document.addEventListener('DOMContentLoaded', function () {
                         </a>
                     </li>
                     <li class="container">
-                        <a id="toggleServices" class="has-arrow text-black-50 d-flex flex-column align-items-center" href="#" aria-expanded="false">
+                        <a id="toggleServices" class="text-black-50 d-flex flex-column align-items-center"
+                            href="#" aria-expanded="false">
                             <div class="mb-2">
                                 <!-- SVG Icon -->
-                                <svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
-                                    <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
-                                    <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                                <svg class="text" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                    fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                                    <path
+                                        d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
+                                    <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
                                 </svg>
                             </div>
                             <div>
@@ -115,23 +137,39 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <span class="mini-click-non text">Services</span>
                             </div>
                         </a>
-                        <ul id="servicesMenu"  class="submenu-angle " aria-expanded="false">
-                            <div class=" "><a class="height text-black-50 " title="Login" href="{{ route('all/services') }}"> <svg class="text" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
-                                <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
-                                <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
-                            </svg><span class="text mini-sub-pro">All</span></a></div>
-                            <div class="mt-3"><a class="text-black-50   " title="Lock" href="{{ route('designs') }}"> <svg class="text" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
-                                <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
-                                <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
-                            </svg><span class="text mini-sub-pro">Designs</span></a></div>
-                            <div><a class="text-black-50 d-flex " title="Password Recovery" href="{{ route('constructions') }}"> <svg class="text" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
-                                <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
-                                <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
-                            </svg><span class="text mini-sub-pro">Constructions</span></a></div>
-                            <div><a class="text-black-50 d-flex" title="Password Recovery" href="{{ route('design_&_construction') }}"> <svg class="text" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
-                                <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207"/>
-                                <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
-                            </svg>Design & Cons.</a></div>
+                        <ul id="servicesMenu" class="submenu-angle " aria-expanded="false">
+                            <div class=" "><a class="height text-black-50 " title="Login"
+                                    href="{{ route('all/services') }}"> <svg class="text"
+                                        xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                        fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                                        <path
+                                            d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
+                                        <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                                    </svg><span class="text mini-sub-pro">All</span></a></div>
+                            <div class="mt-3"><a class="text-black-50   " title="Lock"
+                                    href="{{ route('designs') }}"> <svg class="text"
+                                        xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                        fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                                        <path
+                                            d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
+                                        <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                                    </svg><span class="text mini-sub-pro">Designs</span></a></div>
+                            <div><a class="text-black-50 d-flex " title="Password Recovery"
+                                    href="{{ route('constructions') }}"> <svg class="text"
+                                        xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                        fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                                        <path
+                                            d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
+                                        <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                                    </svg><span class="text mini-sub-pro">Constructions</span></a></div>
+                            <div><a class="text-black-50 d-flex" title="Password Recovery"
+                                    href="{{ route('design_&_construction') }}"> <svg class="text"
+                                        xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                        fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                                        <path
+                                            d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
+                                        <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                                    </svg>Design & Constructions</a></div>
                         </ul>
                     </li>
 
@@ -180,21 +218,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         </ul>
                     </li> --}}
-                    <li>
-                        <a class="text-black-50  d-flex flex-column align-items-center has-arrow" href=""
-                            aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="36"
-                                height="36" fill="currentColor" class="bi bi-explicit" viewBox="0 0 16 16">
+                    <li class="removable">
+                        <a class="has-arrow text-black-50 d-flex flex-column align-items-center" href="#"
+                            aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                fill="currentColor" class="bi bi-explicit" viewBox="0 0 16 16">
                                 <path d="M6.826 10.88H10.5V12h-5V4.002h5v1.12H6.826V7.4h3.457v1.073H6.826z" />
                                 <path
                                     d="M2.5 0A2.5 2.5 0 0 0 0 2.5v11A2.5 2.5 0 0 0 2.5 16h11a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 13.5 0zM1 2.5A1.5 1.5 0 0 1 2.5 1h11A1.5 1.5 0 0 1 15 2.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 13.5z" />
                             </svg> <span class="mini-click-non">Expenses</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            {{-- <li><a title="Inbox"     href="{{ route('proposals') }}"><span class="mini-sub-pro">Proposals</span></a></li> --}}
-                            {{-- <li><a title="View Mail" href="{{ route('estimates') }}"><span class="mini-sub-pro">Estimates</span></a></li> --}}
-                            {{-- <li><a title="Compose Mail" href="{{ route('invoices') }}"><span class="mini-sub-pro">Invoices</span></a></li> --}}
-                            {{-- <li><a title="Compose Mail" href="{{ route('quotation') }}"><span class="mini-sub-pro">Quotation</span></a></li> --}}
-                            {{-- <li><a title="Compose Mail" href="{{ route('bankaccounts') }}"><span class="mini-sub-pro">Bank Account</span></a></li> --}}
-                            <li><a class="text-black-50  d-flex flex-column align-items-center" title="Compose Mail"
+                        <ul  class="submenu-angle " aria-expanded="false">
+                            <li><a class="height text-black-50  d-flex " title="Compose Mail"
                                     href="{{ route('miscellaneous') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="36" height="36" fill="currentColor" class="bi bi-explicit"
                                         viewBox="0 0 16 16">
@@ -202,14 +235,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <path
                                             d="M2.5 0A2.5 2.5 0 0 0 0 2.5v11A2.5 2.5 0 0 0 2.5 16h11a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 13.5 0zM1 2.5A1.5 1.5 0 0 1 2.5 1h11A1.5 1.5 0 0 1 15 2.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 13.5z" />
                                     </svg><span class="mini-sub-pro">miscellaneous</span></a></li>
-                            <li><a class="text-black-50  d-flex flex-column align-items-center" title="Compose Mail"
+                            <li><a class="height text-black-50  d-flex " title="Compose Mail"
                                     href="{{ route('expenses') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="36" height="36" fill="currentColor" class="bi bi-explicit"
                                         viewBox="0 0 16 16">
                                         <path d="M6.826 10.88H10.5V12h-5V4.002h5v1.12H6.826V7.4h3.457v1.073H6.826z" />
                                         <path
                                             d="M2.5 0A2.5 2.5 0 0 0 0 2.5v11A2.5 2.5 0 0 0 2.5 16h11a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 13.5 0zM1 2.5A1.5 1.5 0 0 1 2.5 1h11A1.5 1.5 0 0 1 15 2.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 13.5z" />
-                                    </svg><span class="mini-sub-pro">Peticash</span></a></li>
+                                    </svg><span class="mini-sub-pro">Petty Cash</span></a></li>
                         </ul>
                     </li>
                     {{-- <li id="removable">

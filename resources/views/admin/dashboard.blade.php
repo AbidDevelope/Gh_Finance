@@ -427,7 +427,7 @@
                         </div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Construction</p>
-                            <p class="m-0 dashboard-color-subcolor">4021 KWD</p>
+                            <p class="m-0 dashboard-color-subcolor">4021.000 KWD</p>
                         </div>
                     </div>
 
@@ -456,7 +456,7 @@
                         </div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">EXPENSES</p>
-                            <p class="m-0 dashboard-color-subcolor">1200 KWD</p>
+                            <p class="m-0 dashboard-color-subcolor">1200.000 KWD</p>
                         </div>
                     </div>
 
@@ -473,7 +473,7 @@
                 <div class="col-lg-8 col-md-12 pt-3 shadow" style="background-color: white">
                     <div>
                         <div class="caption pro-sl-hd">
-                            <span class="caption-subject text-uppercase pb-4"><b>This Year Revenue</b></span>
+                            <span class="caption-subject text-uppercase pb-4"><b>Revenue</b></span>
                         </div>
                         <!-- <div id="sparklinehome" class="sparkline-container">Loading..</div> -->
                         <div id="echart-bar" style="width: 100%; height: 400px;"></div>
@@ -483,7 +483,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12 pt-3 shadow" style="background-color: white">
                     <div class="caption pro-sl-hd">
-                        <span class="caption-subject text-uppercase pb-4"><b>All Services</b></span>
+                        <span class="caption-subject text-uppercase pb-4"><b>Services</b></span>
 
                         <div id="echart-bar-sales" style="width: 100%; height: 400px;"></div>
                         <!-- <div class="analytics-rounded-content">
@@ -515,13 +515,13 @@
                 <div class="col-xs-12 col-md-6 pt-3 ">
                     <div class="row p-0">
                         <div class="col-xs-12 col-md-6 shadow" style="background-color: white">
-                            <p class="m-0 dashboard-color-text">Last Month Sale</p>
-                            <p class="dashboard-color-subcolor">7656765 KWD</p>
+                            <p class="m-0 dashboard-color-text">Last Month Revenue</p>
+                            <p class="dashboard-color-subcolor">7656765.000 KWD</p>
                             <div id="echart-bar-last-month" style="width: 100%; height:400px ; position:relative"></div>
                         </div>
                         <div class="col-xs-12 col-md-6 shadow" style="background-color: white">
-                            <p class="m-0 dashboard-color-text">Last Week Sale</p>
-                            <p class="dashboard-color-subcolor">7656765 KWD</p>
+                            <p class="m-0 dashboard-color-text">Last Week Revenue</p>
+                            <p class="dashboard-color-subcolor">7656.000 KWD</p>
                             <div id="echart-bar-last-week" style="width: 100%; height:400px"></div>
 
                         </div>
@@ -530,7 +530,7 @@
                 <div class=" col-xs-5 col-md-1  pt-3"></div>
                 <div class=" col-xs-12 col-md-5 bg-white pt-3 ">
                     <div>
-                        <p class="dashboard-color-text ">Top Selling Products</p>
+                        <p class="dashboard-color-text ">Projects</p>
                         <div class="d-flex align-items-center flex-column flex-md-row  ">
                             <div class="col-lg-3 col-12 p-0">
                                 <p class="m-0 avatar-lg-top">
@@ -545,7 +545,7 @@
                                 </p>
                             </div>
                             <div class="col-lg-2 col-12 p-0 mr-lg-5">
-                                <button class="border-white bg-white cursor-pointer">View details</button>
+                                <button class="border-white bg-white cursor-pointer">View </button>
                             </div>
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
@@ -562,8 +562,8 @@
                                 </p>
                             </div>
                             <div class="col-lg-2 col-12 p-0">
-                                <button class="border-white bg-white cursor-pointer">View details</button>
-                                {{-- <button class="view-details-btn">View details</button> --}}
+                                <button class="border-white bg-white cursor-pointer">View </button>
+
                             </div>
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
@@ -580,8 +580,8 @@
                                 </p>
                             </div>
                             <div class="col-lg-2 col-12 p-0">
-                                <button class="border-white bg-white cursor-pointer">View details</button>
-                                {{-- <button class="view-details-btn">View details</button> --}}
+                                <button class="border-white bg-white cursor-pointer">View </button>
+
                             </div>
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
@@ -598,8 +598,8 @@
                                 </p>
                             </div>
                             <div class="col-lg-2 col-12 p-0">
-                                <button class="border-white bg-white cursor-pointer">View details</button>
-                                {{-- <button class="view-details-btn">View details</button> --}}
+                                <button class="border-white bg-white cursor-pointer">View </button>
+
                             </div>
                         </div>
 
@@ -609,7 +609,7 @@
         </div>
 
 
-        <div class="container-fluid my-4 ">
+        {{-- <div class="container-fluid my-4 ">
             <div class="row mx-1 g-5">
                 <div class="col-lg-6 col-xs-12 pt-3 shadow" style="background-color: white">
                     <div class="d-flex justify-content-between">
@@ -892,7 +892,7 @@
 
             </div>
 
-        </div>
+        </div> --}}
 
 
         <div class="row mx-3 pt-3 shadow " style="background-color: white">
