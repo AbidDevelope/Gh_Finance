@@ -571,11 +571,13 @@
 
 
 
+<div class="mt-3">
 
-                    <div class="mt-3 position-relative">
-                        <i id="bell-icon" class="fas fa-bell text-black-50"></i>
+    <i id="bell-icon" class="fas fa-bell text-black-50"></i>
+</div>
+                    <div class="mt-3 position-relative d-flex justify-content-center">
                         <!-- Notification Popup Container -->
-                        <div id="notification-popup" class="popup-container position-absolute top-10 start-0  translate-middle-x mt-4">
+                        <div id="notification-popup" class="popup-container position-fixed top-10 end-0 translate-middle-y mt-4 me-4">
                             <div class="popup-content">
                                 <ul class="list-unstyled">
                                     <li class="d-flex justify-content-between align-items-center mb-3 gap-5 border-bottom">
@@ -631,6 +633,7 @@
 
 
 
+
                     <div class="mt-3">
                         <div id="profile-pic" class="circular-pic" style="background-image: url('/assets/admin/img/prof pic.jpg');"></div>
                     </div>
@@ -640,7 +643,7 @@
                         <div class="popup-content">
                             <ul class="list-unstyled">
                                 <li class="mb-2">
-                                    <a href="#" class="d-flex justify-content-between text-black-50">
+                                    <a href="#" class="d-flex justify-content-between text-black">
                                         <span> My Profile</span>
                                         <span class="icon nalika-settings author-log-ic"></span>
                                     </a>
@@ -654,14 +657,14 @@
                                     </a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="#" class="d-flex justify-content-between text-black-50">
+                                    <a href="#" class="d-flex justify-content-between text-black">
                                         <span>Settings</span>
                                         <span class="icon nalika-settings author-log-ic"></span>
                                     </a>
                                 </li>
                                 <!-- Replace {{ route('admin/logout') }} with the appropriate logout URL -->
                                 <li class="mb-2">
-                                    <a href="#" class="d-flex justify-content-between text-black-50">
+                                    <a href="#" class="d-flex justify-content-between text-black">
                                         <span>Log Out</span>
                                         <span class="icon nalika-unlocked author-log-ic"></span>
                                     </a>
