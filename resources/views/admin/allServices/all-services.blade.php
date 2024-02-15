@@ -1,3 +1,40 @@
+<script>
+    // Format the date input to dd/mm/yyyy
+    $(document).ready(function () {
+      // Get the input element
+      var dateInput = document.getElementById('dateInput');
+
+      // Change the date format to dd/mm/yyyy
+      dateInput.addEventListener('change', function () {
+        var dateValue = dateInput.value; // Get the value from the input
+        if (dateValue) {
+          var formattedDate = formatDate(dateValue);
+          dateInput.value = formattedDate; // Update the input value
+        }
+      });
+
+      // Function to format the date
+      function formatDate(dateString) {
+        var dateObject = new Date(dateString); // Convert the string to a date object
+        var day = dateObject.getDate();
+        var month = dateObject.getMonth() + 1;
+        var year = dateObject.getFullYear();
+
+        // Add leading zeros to day and month if needed
+        if (day < 10) {
+          day = '0' + day;
+        }
+        if (month < 10) {
+          month = '0' + month;
+        }
+
+        return day + '/' + month + '/' + year;
+      }
+    });
+</script>
+
+
+
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
@@ -8,7 +45,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
-                                    <div class="inner-form">
+                                    {{-- <div class="inner-form mt-5">
                                         <div class="input-field first-wrap">
                                             <div class="icon-wrap">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -46,7 +83,30 @@
                                         <div class="input-field fifth-wrap">
                                             <button class="btn-search" type="button">SEARCH </button>
                                         </div>
+                                    </div> --}}
+                            <div class="d-flex" >
+                                    <div class="container mt-5">
+                                        <div class="form-group">
+                                          <label for="dateInput">Select Start Date:</label>
+                                          <!-- Input with Bootstrap styling -->
+                                          <input type="date" class="form-control bg-white text-black" id="dateInput">
+                                        </div>
+                                      </div>
+                                    <div class="container mt-5 ">
+                                        <div class="form-group">
+                                          <label for="dateInput">Select End Date:</label>
+                                          <!-- Input with Bootstrap styling -->
+                                          <input type="date" class="form-control bg-white text-black" id="dateInput">
+                                        </div>
+                                      </div>
+                                    <div class="container " style="margin-top: 80px;">
+                                        <div class="form-group">
+                                            <button class="btn-search bg-gray-100 " type="button">SEARCH </button>
+
+                                        </div>
+                                      </div>
                                     </div>
+
                                 </form>
                             </div>
                         </div>

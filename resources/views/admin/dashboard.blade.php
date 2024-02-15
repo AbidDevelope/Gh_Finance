@@ -384,15 +384,13 @@
 
         <style>
             .custom-padding-top {
-                padding-top: 90px;
+                padding-top: 110px;
             }
         </style>
 
 
-        <div class="container-fluid px-2  custom-padding-top   ">
-
-
-            <div class="row   mx-1 gap-1 flex-nowrap">
+        <div class="container-fluid px-2   custom-padding-top ">
+            <div class="row mx-1 gap-1 flex-nowrap ">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3 shadow" style="background-color: white">
                     <div class="row align-items-center">
                         <div class="col-4">

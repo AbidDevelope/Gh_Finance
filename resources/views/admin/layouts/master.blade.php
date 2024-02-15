@@ -18,8 +18,8 @@
         @yield('content')
     </div>
 
-    <footer>
-        {{-- @include('admin.includes.footer') --}}
-    </footer>
+    {{-- <footer>
+        @include('admin.includes.footer')
+    </footer> --}}
 </body>
 </html>
