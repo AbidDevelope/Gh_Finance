@@ -19,7 +19,7 @@ class ExpensesController extends Controller
 
     public function expensesCreate()
     {
-        $projects = Project::orderBy('type', 'asc')->get();
+        $projects = Project::orderBy('project_type', 'asc')->get();
         $projectManagers = ProjectManager::all();
         // return $projects;
         return view('admin.expenses.expenses-create', compact('projects', 'projectManagers'));
