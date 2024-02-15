@@ -20,22 +20,18 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Project Type</label>
-                                                 <input readonly type="text" value="Others" name="project_type" class="form-control">
+                                                <select name="project_type" class="form-control" id="">
+                                                    <option value="" disabled selected>Select Type</option>
+                                                    <option value="Design">Design</option>
+                                                    <option value="Construction"> Construction</option>
+                                                    <option value="Design & Consrtuction"> Design & Consrtuction</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Project Name</label>
-                                                <select name="project_name" class="form-control" id="">
-                                                    <option value="" disabled selected>Select Name</option>
-                                                     <option value="Xaltam Management">Xaltam Management</option>
-                                                     <option value="Abc Management"> Abc Management</option>
-                                                     <option value="Xyz Management"> Xyz Management</option>
-                                                    {{-- @foreach ($projects as $project)
-                                                        <option value="{{ $project->id }}">{{ $project->name }}</option>
-                                                    @endforeach --}}
-                                                </select>
+                                               <input type="text" value="" class="form-control" name="project_name">
                                             </div>
                                         </div>
                                         <div class="col-md-6">

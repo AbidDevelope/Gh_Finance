@@ -12,7 +12,7 @@
                                 <form action="{{ route('design/update', $projects->id) }}" method="POST">
                                     @csrf
                                     <div class="row">
-                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">1. Project Type</h5>
+                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Type</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Project Type</label>
@@ -74,7 +74,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">2. Company Details</h5>
+                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Company Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Company Name </label>
@@ -168,7 +168,7 @@
                                     </div>
                                     
                                     <div class="row">
-                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">3. Project Details</h5>
+                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Project Name </label>

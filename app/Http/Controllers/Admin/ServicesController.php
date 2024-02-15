@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Payment;
 use Validator;
 
 class ServicesController extends Controller
@@ -35,6 +36,7 @@ class ServicesController extends Controller
 
     public function createDesign(Request $request)
     {
+        // dd($request->all());
         $validate = Validator::make($request->all(), [
             'project_type'      => 'required' ,  'project_manager'       => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
@@ -56,7 +58,22 @@ class ServicesController extends Controller
         }else
         {
            $requestData = $request->all();
-           Project::create($requestData);
+           $project = Project::create($requestData);
+
+           foreach($request->amount as $key=>$payment)
+           {
+              $payments = new Payment([
+                  'project_id' => $project->id,
+                  'paymentMode' => $request->paymentMode[$key],
+                  'date'      => $request->date[$key],
+                  'amount'   => $request->amount[$key],
+                  'receivable'  => $request->receivable[$key],
+                  'chequeNumber'  => $request->chequeNumber[$key],
+                  'bankName'  => $request->bankName[$key],
+                  'transactionId'  => $request->transactionId[$key],
+              ]);
+              $payments->save();
+           }
 
         session()->flash('success', 'Created Successfully');
         return redirect()->route('designs');
@@ -156,10 +173,24 @@ class ServicesController extends Controller
         }else
         {
             $requestData = $request->all();
-
             $projects = Project::create($requestData);
+
             if($projects)
             {
+                foreach($request->amount as $key=>$payment)
+                {
+                   $payments = new Payment([
+                       'project_id' => $projects->id,
+                       'paymentMode' => $request->paymentMode[$key],
+                       'date'      => $request->date[$key],
+                       'amount'   => $request->amount[$key],
+                       'receivable'  => $request->receivable[$key],
+                       'chequeNumber'  => $request->chequeNumber[$key],
+                       'bankName'  => $request->bankName[$key],
+                       'transactionId'  => $request->transactionId[$key],
+                   ]);
+                   $payments->save();
+                }
                 session()->flash('success', 'Constructions Created Successfully');
                 return redirect()->route('constructions');
             }else{

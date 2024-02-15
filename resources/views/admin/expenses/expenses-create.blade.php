@@ -25,10 +25,6 @@
                                                     <option value="Design">Design</option>
                                                     <option value="Construction"> Construction</option>
                                                     <option value="Design & Consrtuction"> Design & Consrtuction</option>
-                                                    <option value="Others"> Others</option>
-                                                   {{-- @foreach ($projects as $project)
-                                                   <option value="{{ $project->id }}">{{ $project->type }}</option>
-                                                   @endforeach --}}
                                                 </select>
                                             </div>
                                         </div>
@@ -65,7 +61,7 @@
                                     
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Recp No. / cheque number</label>
+                                                <label>Recp No. / Cheque number</label>
                                                 <input class="form-control" type="text" name="receipt" placeholder="Receipt">
                                                 @error('receipt')
                                                     <span class="text-danger">{{ $message }}</span>
