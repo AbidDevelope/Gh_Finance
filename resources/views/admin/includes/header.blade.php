@@ -40,15 +40,18 @@
         max-height: 200px;
         overflow-y: auto;
     }
+    .height{
+        height:85px;
+    }
 </style>
 <div class="header-top-area bg-white">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 height shadow">
                 {{-- <div class="header-top-wraper"> --}}
                 {{-- <div class="row"> --}}
                 {{-- <div class="d-flex"> --}}
-                <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12 mt-1">
                     <div class="menu-switcher-pro ">
                         <button type="button" id="sidebarCollapse"
                             class="text-black-500 btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
@@ -56,7 +59,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="mt-3 col-lg-2 col-md-1 col-sm-1 col-xs-12 ">
+                <div class="mt-3 col-lg-2 col-md-1 col-sm-1 col-xs-12 mt-3">
                     <div class="dropdown">
                         <a class="btn btn-secondary dropdown-toggle bg-white text-black-50 border-0 dropdown-toggle-no-caret"
                             href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
@@ -220,7 +223,9 @@
                     </div>
 
                 </div>
-                <div class="mt-3  col-lg-1 col-md-1 col-sm-1 col-xs-12 ">
+
+                {{-- searchbar --}}
+                <div class="mt-3  col-lg-1 col-md-1 col-sm-1 col-xs-12 mt-2">
                     <div class="input-field first-wrap">
                         <div class="icon-wrap">
                             <!-- Adjust the color class applied to the SVG icon -->
@@ -231,13 +236,13 @@
                             </svg>
                         </div>
                         <input id="search" type="text" class="bg-white form-control rounded-pill"
-                            style="width: 200px; height: 40px;" placeholder="search">
+                            style="width: 230px; height: 40px;" placeholder="search">
                     </div>
 
                 </div>
 
 
-                <div class="d-flex justify-content-end gap-3">
+                <div class="d-flex justify-content-end gap-3 mt-1">
                     <div class=" mt-1 "> <i class="bi bi-arrows-move text-black-50">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                 fill="currentColor" class="bi bi-arrows-move" viewBox="0 0 16 16">
@@ -571,16 +576,18 @@
 
 
 
-<div class="mt-3">
+                    <div class="mt-3">
 
-    <i id="bell-icon" class="fas fa-bell text-black-50"></i>
-</div>
+                        <i id="bell-icon" class="fas fa-bell text-black-50"></i>
+                    </div>
                     <div class="mt-3 position-relative d-flex justify-content-center">
                         <!-- Notification Popup Container -->
-                        <div id="notification-popup" class="popup-container position-fixed top-10 end-0 translate-middle-y mt-4 me-4">
+                        <div id="notification-popup"
+                            class="popup-container position-fixed top-10 end-0 translate-middle-y mt-4 me-4">
                             <div class="popup-content">
                                 <ul class="list-unstyled">
-                                    <li class="d-flex justify-content-between align-items-center mb-3 gap-5 border-bottom">
+                                    <li
+                                        class="d-flex justify-content-between align-items-center mb-3 gap-5 border-bottom">
                                         <div class="col-auto">
                                             <!-- Icon -->
                                             <i class="fas fa-bell"></i>
@@ -594,7 +601,8 @@
                                             10:00 AM
                                         </div>
                                     </li>
-                                    <li class="d-flex justify-content-between align-items-center mb-3 gap-5 border-bottom">
+                                    <li
+                                        class="d-flex justify-content-between align-items-center mb-3 gap-5 border-bottom">
                                         <div class="col-auto">
                                             <!-- Icon -->
                                             <i class="fas fa-bell"></i>
@@ -635,11 +643,13 @@
 
 
                     <div class="mt-3">
-                        <div id="profile-pic" class="circular-pic" style="background-image: url('/assets/admin/img/prof pic.jpg');"></div>
+                        <div id="profile-pic" class="circular-pic"
+                            style="background-image: url('/assets/admin/img/prof pic.jpg');"></div>
                     </div>
 
                     <!-- Profile Picture Popup Container -->
-                    <div id="profile-pic-popup" class="popup-container position-fixed top-10 end-0 translate-middle-y mt-4 me-4">
+                    <div id="profile-pic-popup"
+                        class="popup-container position-fixed top-10 end-0 translate-middle-y mt-4 me-4">
                         <div class="popup-content">
                             <ul class="list-unstyled">
                                 <li class="mb-2">
@@ -651,7 +661,8 @@
                                 <li class="mb-2">
                                     <!-- File Input Element -->
                                     <input type="file" id="file-input" style="display: none;" accept="image/*">
-                                    <a href="#" class="d-flex justify-content-between text-black-50" id="change-profile-pic">
+                                    <a href="#" class="d-flex justify-content-between text-black-50"
+                                        id="change-profile-pic">
                                         <span>Change Profile Picture</span>
                                         <span class="icon nalika-edit author-log-ic"></span>
                                     </a>
@@ -730,67 +741,66 @@
 </div>
 
 <script>
-   document.addEventListener('DOMContentLoaded', function() {
-    var profilePic = document.getElementById('profile-pic');
-    var fileInput = document.getElementById('file-input');
-    var changeProfilePicLink = document.getElementById('change-profile-pic');
+    document.addEventListener('DOMContentLoaded', function() {
+        var profilePic = document.getElementById('profile-pic');
+        var fileInput = document.getElementById('file-input');
+        var changeProfilePicLink = document.getElementById('change-profile-pic');
 
-    // Check if there's a profile picture URL stored in localStorage
-    var storedPicUrl = localStorage.getItem('profilePicUrl');
-    if (storedPicUrl) {
-        profilePic.style.backgroundImage = 'url(' + storedPicUrl + ')';
-    }
+        // Check if there's a profile picture URL stored in localStorage
+        var storedPicUrl = localStorage.getItem('profilePicUrl');
+        if (storedPicUrl) {
+            profilePic.style.backgroundImage = 'url(' + storedPicUrl + ')';
+        }
 
-    // Function to handle file input change
-    fileInput.addEventListener('change', function(event) {
-        var file = event.target.files[0];
-        var reader = new FileReader();
+        // Function to handle file input change
+        fileInput.addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
 
-        reader.onload = function(e) {
-            var picUrl = e.target.result;
-            profilePic.style.backgroundImage = 'url(' + picUrl + ')';
+            reader.onload = function(e) {
+                var picUrl = e.target.result;
+                profilePic.style.backgroundImage = 'url(' + picUrl + ')';
 
-            // Store the URL of the selected profile picture in localStorage
-            localStorage.setItem('profilePicUrl', picUrl);
-        };
+                // Store the URL of the selected profile picture in localStorage
+                localStorage.setItem('profilePicUrl', picUrl);
+            };
 
-        reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
+        });
+
+        // Trigger file input when the "Change" option is clicked
+        changeProfilePicLink.addEventListener('click', function() {
+            fileInput.click();
+        });
     });
-
-    // Trigger file input when the "Change" option is clicked
-    changeProfilePicLink.addEventListener('click', function() {
-        fileInput.click();
-    });
-});
 
 
 
     document.addEventListener('DOMContentLoaded', function() {
-    var bellIcon = document.getElementById('bell-icon');
-    var notificationPopup = document.getElementById('notification-popup');
-    var profilePic = document.getElementById('profile-pic');
-    var profilePicPopup = document.getElementById('profile-pic-popup');
+        var bellIcon = document.getElementById('bell-icon');
+        var notificationPopup = document.getElementById('notification-popup');
+        var profilePic = document.getElementById('profile-pic');
+        var profilePicPopup = document.getElementById('profile-pic-popup');
 
-    // Toggle the visibility of the notification popup when the bell icon is clicked
-    bellIcon.addEventListener('click', function() {
-        togglePopup(notificationPopup);
-    });
+        // Toggle the visibility of the notification popup when the bell icon is clicked
+        bellIcon.addEventListener('click', function() {
+            togglePopup(notificationPopup);
+        });
 
-    // Show the profile pic popup when profile pic is clicked
-    profilePic.addEventListener('click', function() {
-        togglePopup(profilePicPopup);
-    });
+        // Show the profile pic popup when profile pic is clicked
+        profilePic.addEventListener('click', function() {
+            togglePopup(profilePicPopup);
+        });
 
-    // Function to toggle popup visibility
-    function togglePopup(popup) {
-        if (popup.style.display === 'block') {
-            popup.style.display = 'none';
-        } else {
-            popup.style.display = 'block';
+        // Function to toggle popup visibility
+        function togglePopup(popup) {
+            if (popup.style.display === 'block') {
+                popup.style.display = 'none';
+            } else {
+                popup.style.display = 'block';
+            }
         }
-    }
-});
-
+    });
 </script>
 <script>
     // Add a click event listener to the SVG element
