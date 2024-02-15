@@ -1,8 +1,8 @@
 <style>
     .dropdown-menu {
-        min-width: 30rem;
+        /* min-width: 30rem; */
         /* Adjust the width as per your requirement */
-        min-height: 20rem;
+        /* min-height: 20rem; */
         /* Adjust the width as per your requirement */
     }
 
@@ -72,7 +72,7 @@
                         </a>
 
 
-                        <ul class="dropdown-menu max-w-xl" aria-labelledby="dropdownMenuLink">
+                        <ul class="dropdown-menu max-w-xl"  style="min-width: 30rem;" aria-labelledby="dropdownMenuLink">
                             <div class="container">
                                 <div class="row">
                                     <li class="col-sm-4">
@@ -259,7 +259,7 @@
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
                             </svg></a>
 
-                        <ul class="dropdown-menu max-w-xl" aria-labelledby="dropdownMenuLink">
+                        <ul class="dropdown-menu max-w-xl"  style="min-width: 30rem;" aria-labelledby="dropdownMenuLink">
                             <div class="container">
                                 <div class="row">
                                     <li class="col-sm-4">
