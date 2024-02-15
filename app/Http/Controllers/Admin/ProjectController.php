@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\ProjectManager;
 use Validator;
 
 class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+  
     public function projects()
     {
         $projects = Project::orderBy('id', 'desc')->get();
@@ -20,12 +19,15 @@ class ProjectController extends Controller
 
     public function projectsCreateForm()
     {
-        return view('admin.projects.projects-create');
+        $projectsManagers = ProjectManager::all();
+        // return $projectsManagers;
+        return view('admin.projects.projects-create', compact('projectsManagers'));
     }
 
     public function projectsCreate(Request $request)
     {
         $validate = Validator::make($request->all(), [
+            'project_manager_id' => 'required', 
             'name'      => 'required' ,     'description'  => 'required',
             'start_date'  => 'required' ,   'end_date'   => 'required',
             'budget'    => 'required' ,     'location'  => 'required',
@@ -55,14 +57,18 @@ class ProjectController extends Controller
 
     public function projectsEdit(string $id)
     {
-        $projects = Project::find($id);
-        return view('admin.projects.projects-edit', compact('projects'));
+        $projects = Project::where('id', $id)->with('projectManager')->first();
+
+        $projectManagers = ProjectManager::all();
+
+        return view('admin.projects.projects-edit', compact('projects', 'projectManagers'));
     }
 
  
     public function projectsUpdate(Request $request, string $id)
     {
         $validate = Validator::make($request->all(), [
+            'project_manager_id' => 'required',
             'name'      => 'required' ,     'description'  => 'required',
             'start_date'  => 'required' ,   'end_date'   => 'required',
             'budget'    => 'required' ,     'location'  => 'required',

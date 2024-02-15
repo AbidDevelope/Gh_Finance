@@ -9,7 +9,7 @@
                             <div class="form-section">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Service</h4>
                                 <hr class="border-top-grey">
-                                <form action="{{ route('create/constructions') }}" method="POST">
+                                <form action="{{ route('design_&_construction/create') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Type</h5>
@@ -17,7 +17,7 @@
                                             <div class="form-group">
                                                 <label>Project Type</label>
                                                 <input readonly type="text" name="project_type" class="form-control"
-                                                    value="Construction">
+                                                    value="Design & Construction">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -245,58 +245,9 @@
 
                                     <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-white" id="customFields">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="width:50px"><a href="javascript:void(0)" id="add-row" 
-                                                            class="text-success font-18" title="Add"><img
-                                                                src="{{ asset('assets/admin/img/icon/plus.png') }}"
-                                                                alt=""></a>
-                                                        </td>
-                                                        <td>
-                                                            <select name="paymentMode[]"
-                                                                class="form-control payment-mode">
-                                                                <option value="" disabled selected>Select Mode
-                                                                </option>
-                                                                <option value="Cash">Cash</option>
-                                                                <option value="Cheque">Cheque</option>
-                                                                <option value="Online">Online</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control common-field" type="date" name="date[]" style="display: none">
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control common-field" type="text"
-                                                                name="amount[]" placeholder="Amount"
-                                                                style="display: none">
-                                                        </td>
-                                                        <td class="cash-fields" style="display: none">
-                                                            <input class="form-control" type="text"
-                                                                name="receivable[]" placeholder="Receivable By">
-                                                        </td>
-                                                        <td class="cheque-fields" style="display: none">
-                                                            <input class="form-control" type="text"
-                                                                name="chequeNumber[]" placeholder="Cheque Number">
-                                                        </td>
-                                                        <td class="cheque-fields" style="display: none">
-                                                            <input class="form-control" type="text" name="bankName[]"
-                                                                placeholder="Bank Name">
-                                                        </td>
-                                                        <td class="online-fields" style="display: none">
-                                                            <input class="form-control" type="text"
-                                                                name="transactionId[]" placeholder="Transaction ID">
-                                                        </td>
-                                                        <td class="online-fields" style="display: none">
-                                                            <input class="form-control" type="text"
-                                                            name="bankName[]" placeholder="Bank Name">
-                                                        </td>
-                                                        <!-- Example of an Add button, already in your code -->
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                       
+    
+                    
                                     </div>
                                     <!-- <div class="row"> -->
                                     <button type="submit" class="btn btn-create btn-lg mt-5">CREATE</button>
@@ -328,45 +279,4 @@
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     {{-- Data table JS --}}
      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-     {{-- Add or remove section script start --}}
-    <script>
-        $(document).ready(function() {
-            var maxField = 5; 
-            var addButton = $('#add-row'); 
-            var wrapper = $('#customFields');
-            var fieldHTML = '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field" type="date" name="date[]" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html 
-            var x = 1; 
-        
-            $(addButton).click(function() {
-                if (x < maxField) {
-                    x++; 
-                    $(wrapper).append(fieldHTML); 
-                } else {
-                    alert('A maximum of ' + maxField + ' fields are allowed.');
-                }
-            });
-        
-            $(wrapper).on('click', '.remove-row', function(e) {
-                e.preventDefault();
-                $(this).closest('tr').remove(); 
-                x--; 
-            });
-        
-            $(wrapper).on('change', '.payment-mode', function() {
-                var tr = $(this).closest('tr');
-                tr.find('.common-field, .cash-fields, .cheque-fields, .online-fields').hide(); 
-        
-                tr.find('.common-field').css('display', 'inline-block');
-        
-                if (this.value === 'Cash') {
-                    tr.find('.cash-fields').css('display', 'inline-block');
-                } else if (this.value === 'Cheque') {
-                    tr.find('.cheque-fields').css('display', 'inline-block');
-                } else if (this.value === 'Online') {
-                    tr.find('.online-fields').css('display', 'inline-block');
-                }
-            });
-        });
-        </script>
-    {{-- Add or Remove input field end --}}
 @endsection

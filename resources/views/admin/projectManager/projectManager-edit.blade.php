@@ -46,8 +46,8 @@
                                                 <label>Gender</label>
                                                 <select name="gender" class="form-control" id="">
                                                     <option value="" disabled selected>Select Gender</option>
-                                                    <option value="M">Male</option>
-                                                    <option value="F">Female</option>
+                                                    <option value="M" {{ $projectManagers->gender == 'M' ? 'selected' : '' }}>Male</option>
+                                                    <option value="F" {{ $projectManagers->gender == 'F' ? 'selected' : '' }}>Female</option>
                                                 </select>
                                                 @error('gender')
                                                 <span class="text-danger">{{ $message }}</span>

@@ -13,14 +13,29 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->bigInteger('project_manager_id')->unsigned()->index();
-            $table->text('description')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
-            $table->decimal('budget', 10,3)->nullablle();
-            $table->string('location')->nullablle();
-            $table->string('status')->default(1);
+            $table->string('project_type')->nullable();
+            $table->string('project_manager')->nullable();
+            $table->string('manager_email')->nullable();
+            $table->string('Manager_mobile')->nullable();
+            $table->string('Manager_landline')->nullable();
+            $table->string('manager_remarks')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_project_name')->nullable();
+            $table->string('company_email')->nullable();
+            $table->string('company_mobile')->nullable();
+            $table->string('company_landline')->nullable();
+            $table->string('company_location')->nullable();
+            $table->string('company_country')->nullable();
+            $table->string('company_website')->nullable();
+            $table->string('company_remarks')->nullable();
+            $table->string('project_name')->nullable();
+            $table->string('company_project')->nullable();
+            $table->string('project_email')->nullable();
+            $table->string('project_mobile')->nullable();
+            $table->string('project_location')->nullable();
+            $table->decimal('project_value', 10, 3)->nullable();
+            $table->string('project_country')->nullable();
+            $table->string('project_remarks')->nullable();
             $table->timestamps();
         });
 

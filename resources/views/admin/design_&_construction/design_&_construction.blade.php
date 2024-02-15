@@ -1,12 +1,10 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
-
         <div class="header-advance-area">
-
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
@@ -44,8 +42,8 @@
                                             </div>
                                             <select data-trigger="" name="choices-single-defaul">
                                                 <option placeholder="">All</option>
-                                                <option placeholder="">Expenses 1</option>
-                                                <option placeholder="">Expenses 2</option>
+                                                <option>Designs</option>
+                                                <option>Constructions</option>
                                             </select>
                                         </div>
                                         <div class="input-field fifth-wrap">
@@ -55,13 +53,12 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="container">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <h4 class="mt-3 text-headings">Expenses</h4>
+                            <h5 class="mt-3"><span>Design & Construction</span></h5>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
                             <div class="table-actions">
-                                <a href="{{ route('expenses/create') }}"
+                                <a href="{{ route('design_&_construction/create') }}"
                                     class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                     <i class="fa fa-plus"></i> Create
                                 </a>
@@ -70,7 +67,7 @@
                                     <i class="fa fa-file-export"></i> Export
                                 </a>
                             </div>
-                        </div></div>
+                        </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
                                 <div class="alert alert-success">
@@ -84,51 +81,59 @@
                             @endif
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-                            <div class="table-responsive">
-                                <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
+                            <div class="">
+                                <table id="dataTable">
                                     <thead>
-                                        <tr>
-                                            <th>Id</th>
+                                        <tr role="row">
+                                            <th>Sr. No.</th>
+                                            <th>Project Id</th>
                                             <th>Date</th>
                                             <th>Project Type</th>
                                             <th>Project Name</th>
-                                            <th>Receipt</th>
-                                            <th>Total Amount</th>
-                                            <th>Total Withdraw</th>
+                                            <th>Mobile</th>
+                                            <th>Project value</th>
                                             <th class="text-right">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (count($data) > 0)
-                                            @foreach ($data as $index=>$item)
-                                            <tr>
-                                                <td>
-                                                    {{ $index+1 }}
-                                                </td>
-                                                <td>{{ $item->created_at->format('d M Y') }}</td>
-                                                <td>
-                                                    <strong>{{ $item->project_type }}</strong>
-                                                </td>
-                                                <td>{{ $item->project_name }}</td>
-                                                <td>{{ $item->receipt }}</td>
-                                                <td>{{ $item->amount_deposite }}</td>
-                                                <td>{{ $item->amount_withdraw }}</td>
-                                                <td class="text-right">
-                                                    <div class="dropdown dropdown-action">
-                                                        <a href="#" class="action-icon " data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="{{ route('expenses/view', $item->id) }}" ><i class="fa fa-eye m-r-5"></i> View</a>
-                                                            <a class="dropdown-item" href="{{ route('expenses/edit', $item->id) }}" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="{{ route('expenses/delete', $item->id) }}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                        @if (count($projects) > 0)
+                                            @foreach ($projects as $index => $project)
+                                                <tr>
+                                                    <td>{{ $index + 1 }}</td>
+                                                    <td>{{ $project->id }}</td>
+                                                    <td>{{ $project->created_at->format('d M Y') }}</td>
+                                                    <td>{{ $project->project_type }}</td>
+                                                    <td>{{ $project->project_name }}</td>
+                                                    <td>{{ $project->project_mobile }}</td>
+                                                    <td>{{ $project->project_value }}</td>
+                                                    <td class="text-right">
+                                                        <div class="dropdown dropdown-action">
+                                                            <a href="#" class="action-icon " data-toggle="dropdown"
+                                                                aria-expanded="false"><img
+                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                    alt=""></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('design_&_construction/view', $project->id) }}"><i
+                                                                        class="fa fa-eye m-r-5"></i> View
+                                                                </a>
+                                                                <a class="dropdown-item" href="{{ route('design_&_construction/edit', $project->id) }}"><i
+                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('design_&_construction/delete', $project->id) }}"><i
+                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         @else
-                                        <tr>
-                                            <td colspan="9" class="text-center">No Record Found</td>
-                                        </tr>
+                                            <tr class="odd">
+                                                <td valign="top" colspan="7" class="dataTables_empty">No data available
+                                                    in
+                                                    table
+                                                </td>
+                                            </tr>
                                         @endif
                                     </tbody>
                                 </table>
@@ -145,20 +150,20 @@
     </div>
 
     <!-- metisMenu JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}

@@ -57,11 +57,11 @@
                         </div>
                         <div class="container">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <h4 class="mt-3 text-headings">Expenses</h4>
+                            <h4 class="mt-3 text-headings">Miscellaneous</h4>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
                             <div class="table-actions">
-                                <a href="{{ route('expenses/create') }}"
+                                <a href="{{ route('miscellaneous/create') }}"
                                     class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                     <i class="fa fa-plus"></i> Create
                                 </a>
@@ -72,18 +72,52 @@
                             </div>
                         </div></div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            @if (Session::has('success'))
-                                <div class="alert alert-success">
-                                    {{ Session::get('success') }}
-                                </div>
-                            @endif
-                            @if (Session::has('error'))
-                                <div class="alert alert-danger">
-                                    {{ Session::get('error') }}
-                                </div>
-                            @endif
+                            <span class="text-success">{{ session('success') }}</span>
+                            <span class="text-danger">{{ session('error') }}</span>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
+                            {{-- <div class="table-responsive">
+                                <table id="dataTable">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>Id</th>
+                                            <th>Date</th>
+                                            <th>Project</th>
+                                            <th>Beneficiary </th>
+                                            <th>Receipt</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (count($data) > 0)
+                                            @foreach ($data as $index=>$item)
+                                                <tr>
+                                                    <td>{{ $index+1 }}</td>
+                                                    <td>{{ $item->date }}</td>
+                                                    <td>{{ $item->project }}</td>
+                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td>{{ $item->receipt }}</td>
+                                                    <td>
+                                                        <a href="#"><img
+                                                                src="{{ asset('assets/admin/img/icon/view.png') }}"
+                                                                alt=""></a>
+                                                        <a href="{{ route('expenses/edit', $item->id) }}"><img
+                                                                src="{{ asset('assets/admin/img/icon/edit.png') }}"
+                                                                alt=""></a>
+                                                        <a href="{{ route('expenses/delete', $item->id) }}"><img
+                                                                src="{{ asset('assets/admin/img/icon/delete.png') }}"
+                                                                alt=""></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="6" class="text-danger">No Record Found</td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div> --}}
                             <div class="table-responsive">
                                 <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
                                     <thead>
@@ -117,9 +151,9 @@
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon " data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="{{ route('expenses/view', $item->id) }}" ><i class="fa fa-eye m-r-5"></i> View</a>
-                                                            <a class="dropdown-item" href="{{ route('expenses/edit', $item->id) }}" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="{{ route('expenses/delete', $item->id) }}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                            <a class="dropdown-item" href="{{ route('miscellaneous/view', $item->id) }}" ><i class="fa fa-eye m-r-5"></i> View</a>
+                                                            <a class="dropdown-item" href="#" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                            <a class="dropdown-item" href="#"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>
                                                 </td>

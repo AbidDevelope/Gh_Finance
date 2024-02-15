@@ -12,9 +12,9 @@
                     <div class="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Expenses</h4>
+                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Miscellaneous</h4>
                                 <hr class="border-top-grey">
-                                <form action="{{ route('expenses/create') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('miscellaneous/create') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                      <div class="row">
                                         <div class="col-md-6">
@@ -31,15 +31,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Project Name</label>
-                                                <select name="project_name" class="form-control" id="">
-                                                    <option value="" disabled selected>Select Name</option>
-                                                     <option value="Xaltam Management">Xaltam Management</option>
-                                                     <option value="Abc Management"> Abc Management</option>
-                                                     <option value="Xyz Management"> Xyz Management</option>
-                                                    {{-- @foreach ($projects as $project)
-                                                        <option value="{{ $project->id }}">{{ $project->name }}</option>
-                                                    @endforeach --}}
-                                                </select>
+                                               <input type="text" value="" class="form-control" name="project_name">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -61,7 +53,7 @@
                                     
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Recp No. / Cheque number</label>
+                                                <label>Recp No. / cheque number</label>
                                                 <input class="form-control" type="text" name="receipt" placeholder="Receipt">
                                                 @error('receipt')
                                                     <span class="text-danger">{{ $message }}</span>

@@ -36,11 +36,11 @@
                                                 <label>Project <span class="text-danger">*</span></label>
                                                 <select class="form-control" name="project_id">
                                                     <option value="" disabled selected>Select Project</option>
-                                                    @foreach ($beneficiaries as $quotation)
+                                                    {{-- @foreach ($beneficiaries as $quotation)
                                                         @foreach ($quotation->projects as $item)
                                                         <option value="{{ $item->id }}">{{ $item->project }}</option>
                                                         @endforeach
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </select>
                                             </div>
                                         </div>

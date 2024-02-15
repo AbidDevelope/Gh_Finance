@@ -39,20 +39,31 @@ Route::controller(FinanceController::class)->prefix('admin')->middleware(['admin
 // ----------------------------- ServicesController ---------------------------- //
 Route::controller(ServicesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('all/services', 'allServices')->name('all/services');
-    Route::get('design/constructions', 'designConstructions')->name('design/constructions');
+    Route::get('all-services/view/{id}', 'allServicesView')->name('all-services/view');
+    
     Route::get('designs', 'designs')->name('designs');
     Route::get('create/designs', 'createDesignList')->name('create/designs');
     Route::post('create/designs', 'createDesign')->name('create/designs');
     Route::get('design/edit/{id}', 'designEdit')->name('design/edit');
-    Route::put('design/update/{id}', 'designUpdate')->name('design/update');
+    Route::post('design/update/{id}', 'designUpdate')->name('design/update');
+    Route::get('design/view/{id}', 'designView')->name('design/view');
     Route::get('design/delete/{id}', 'designDelete')->name('design/delete');
-    Route::get('designChangeStatus/{id}', 'designChangeStatus')->name('designChangeStatus');
+
     Route::get('constructions', 'constructions')->name('constructions');
-    Route::get('create/constructions', 'createConstructionsList')->name('create/constructions');
-    Route::post('create/constructions', 'createConstructions')->name('create/constructions');
-    Route::get('constructions/edit/{id}', 'constructionsEdit')->name('constructions/edit');
-    Route::post('constructions/update/{id}', 'constructionsUpdate')->name('constructions/update');
-    Route::get('constructions/delete/{id}', 'constructionsDelete')->name('constructions/delete');
+    Route::get('constructions/create', 'createConstructionsForm')->name('create/constructions');
+    Route::post('constructions/create', 'createConstructions')->name('create/constructions');
+    Route::get('construction/view/{id}', 'constructionView')->name('construction/view');
+    Route::get('construction/edit/{id}', 'constructionEdit')->name('construction/edit');
+    Route::post('construction/update/{id}', 'constructionUpdate')->name('construction/update');
+    Route::get('construction/delete/{id}', 'constructionDelete')->name('construction/delete');
+
+    Route::get('design_&_construction', 'designConstructions')->name('design_&_construction');
+    Route::get('design_&_construction/create', 'designConstructionCreateForm')->name('design_&_construction/create');
+    Route::post('design_&_construction/create', 'designConstructionCreate')->name('design_&_construction/create');
+    Route::get('design_&_construction/view/{id}', 'designConstructionView')->name('design_&_construction/view');
+    Route::get('design_&_construction/edit/{id}', 'designConstructionEdit')->name('design_&_construction/edit');
+    Route::post('design_&_construction/update/{id}', 'designConstructionUpdate')->name('design_&_construction/update');
+    Route::get('design_&_construction/delete/{id}', 'designConstructionDelete')->name('design_&_construction/delete');
 });
 
 // -------------------------- ExpensesController --------------------------- //
@@ -60,11 +71,16 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('expenses', 'expensesList')->name('expenses');
     Route::get('expenses/create', 'expensesCreate')->name('expenses/create');
     Route::post('expenses/create', 'expensesCreateData')->name('expenses/create');
+    Route::get('expenses/view/{id}', 'expensesView')->name('expenses/view');
     Route::get('expenses/edit/{id}', 'expensesEdit')->name('expenses/edit');
     Route::put('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
     Route::get('expenses/delete/{id}', 'expensesDelete')->name('expenses/delete');
     Route::get('expenses/change/status/{id}', 'expensesChangeStatus')->name('expenses/change/status');
     // Route::post('get/temp/img', 'tempImgStores')->name('get/temp/img');
+    Route::get('miscellaneous', 'miscellaneous')->name('miscellaneous');
+    Route::get('miscellaneous/create', 'miscellaneousCreateForm')->name('miscellaneous/create');
+    Route::post('miscellaneous/create', 'miscellaneousCreate')->name('miscellaneous/create');
+    Route::get('miscellaneous/view/{id}', 'miscellaneousView')->name('miscellaneous/view');
 });
 
 // ------------------------- InvoiceController ----------------------- //
@@ -115,5 +131,7 @@ Route::controller(ProjectManagerController::class)->prefix('admin')->middleware(
     Route::post('projectsManager/create', 'projectManagerCreate')->name('projectsManager/create');
     Route::get('projectManager/edit/{id}', 'projectManagerEdit')->name('projectManager/edit');
     Route::post('projectManager/update/{id}', 'projectManagerUpdate')->name('projectManager/update');
-    Route::get('projectManager/delete/{id}', 'projectManagerDelete')->name('projectManager/edit');
+    Route::get('projectManager/view/{id}', 'projectManagerView')->name('projectManager/view');
+    Route::get('projectManager/delete/{id}', 'projectManagerDelete')->name('projectManager/delete');
+    Route::get('projectManagerChangeStatus/{id}', 'ChangeStatus')->name('projectManagerChangeStatus');
 });

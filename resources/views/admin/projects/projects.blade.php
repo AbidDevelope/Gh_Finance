@@ -71,8 +71,16 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <span class="text-success">{{ session('success') }}</span>
-                            <span class="text-danger">{{ session('error') }}</span>
+                            @if (Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <table id="dataTable">
@@ -80,6 +88,7 @@
                                     <tr role="row">
                                         <th>#</th>
                                         <th>Create Date</th>
+                                        <th>Project Type</th>
                                         <th>Projects</th>
                                         <th>location</th>
                                         <th>Action</th>
@@ -87,10 +96,11 @@
                                 </thead>
                                 <tbody>
                                     @if (count($projects) > 0)
-                                        @foreach ($projects as $key=>$project)
+                                        @foreach ($projects as $key => $project)
                                             <tr>
-                                                <td>{{ $key+1 }}</td>
+                                                <td>{{ $key + 1 }}</td>
                                                 <td>{{ $project->created_at->format('d M Y') }}</td>
+                                                <td>{{ $project->type }}</td>
                                                 <td>{{ $project->name }}</td>
                                                 <td>{{ $project->location }}</td>
                                                 <td class="text-right">
@@ -100,12 +110,15 @@
                                                                 src="{{ asset('assets/admin/img/icon/action.png') }}"
                                                                 alt=""></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="{{ route('project/view', $project->id) }}"><i
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('project/view', $project->id) }}"><i
                                                                     class="fa fa-eye m-r-5"></i> View
                                                             </a>
-                                                            <a class="dropdown-item" href="{{ route('projects/edit', $project->id) }}"><i
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('projects/edit', $project->id) }}"><i
                                                                     class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="{{ route('projects/delete', $project->id) }}"><i
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('projects/delete', $project->id) }}"><i
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>
@@ -133,20 +146,20 @@
     </div>
 
     <!-- metisMenu JS
-                                                    ============================================ -->
+                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                        ============================================ -->
+                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                        ============================================ -->
+                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                    ============================================ -->
+                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
