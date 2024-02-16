@@ -30,32 +30,31 @@ dateInput.addEventListener("input", function () {
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
-
-                                    <div class="d-flex" >
-                                        <div class="form-group">
-                                            <label for="dateInput">Select Start Date:</label>
-                                            <input
-                                              type="date"
-                                              class="form-control bg-white text-black"
-                                              id="dateInput"
-                                              placeholder="dd/mm/yyyy"
-                                            />
-                                          </div>
+                                    <div class="d-flex">
+                                        <div class="container mt-5">
+                                            <div class="form-group">
+                                                <label for="dateInput">Select Start Date:</label>
+                                                <!-- Input with Bootstrap styling -->
+                                                <input type="date" class="form-control bg-white text-black"
+                                                    id="dateInput">
+                                            </div>
+                                        </div>
                                         <div class="container mt-5 ">
                                             <div class="form-group">
-                                              <label for="dateInput">Select End Date:</label>
-                                              <!-- Input with Bootstrap styling -->
-                                              <input type="date" class="form-control bg-white text-black" id="dateInput">
+                                                <label for="dateInput">Select End Date:</label>
+                                                <!-- Input with Bootstrap styling -->
+                                                <input type="date" class="form-control bg-white text-black"
+                                                    id="dateInput">
                                             </div>
-                                          </div>
+                                        </div>
                                         <div class="container " style="margin-top: 75px;">
                                             <div class="form-group">
-                                                <button class="btn-search btn btn-primary bg-gray-100 " type="button">SEARCH </button>
+                                                <button class="btn-search btn btn-primary bg-gray-100 "
+                                                    type="button">SEARCH </button>
 
                                             </div>
-                                          </div>
                                         </div>
-
+                                    </div>
                                 </form>
                             </div>
                         </div>

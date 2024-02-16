@@ -8,29 +8,31 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
-                                    <div class="d-flex" >
+                                    <div class="d-flex">
                                         <div class="container mt-5">
                                             <div class="form-group">
-                                              <label for="dateInput">Select Start Date:</label>
-                                              <!-- Input with Bootstrap styling -->
-                                              <input type="date" class="form-control bg-white text-black" id="dateInput">
+                                                <label for="dateInput">Select Start Date:</label>
+                                                <!-- Input with Bootstrap styling -->
+                                                <input type="date" class="form-control bg-white text-black"
+                                                    id="dateInput">
                                             </div>
-                                          </div>
+                                        </div>
                                         <div class="container mt-5 ">
                                             <div class="form-group">
-                                              <label for="dateInput">Select End Date:</label>
-                                              <!-- Input with Bootstrap styling -->
-                                              <input type="date" class="form-control bg-white text-black" id="dateInput">
+                                                <label for="dateInput">Select End Date:</label>
+                                                <!-- Input with Bootstrap styling -->
+                                                <input type="date" class="form-control bg-white text-black"
+                                                    id="dateInput">
                                             </div>
-                                          </div>
+                                        </div>
                                         <div class="container " style="margin-top: 75px;">
                                             <div class="form-group">
-                                                <button class="btn-search btn btn-primary bg-gray-100 " type="button">SEARCH </button>
+                                                <button class="btn-search btn btn-primary bg-gray-100 "
+                                                    type="button">SEARCH </button>
 
                                             </div>
-                                          </div>
                                         </div>
-                                </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -131,20 +133,20 @@
     </div>
 
     <!-- metisMenu JS
-                                                ============================================ -->
+                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                    ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                    ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                ============================================ -->
+                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
