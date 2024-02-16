@@ -56,6 +56,7 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/calendar/fullcalendar.print.min.css') }}">
     <!-- style CSS
 		============================================ -->
+
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
     {{-- Custom CSS --}}
     <link href="{{ asset('assets/admin/css/auth.css') }}" rel="stylesheet">
