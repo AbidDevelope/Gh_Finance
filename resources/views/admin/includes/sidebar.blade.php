@@ -55,6 +55,19 @@
         margin-top: -222px !important;
 
     }
+    .expenseslist {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 260px;
+        height: 100vh;
+        background-color: #fff;
+        box-sizing: border-box;
+        z-index: 999;
+        margin-top: -102px !important;
+
+    }
 
     .Quotationslist {
         display: none;
@@ -106,6 +119,9 @@
     }
 
     .padding-top-service {
+        padding-top: 100px !important;
+    }
+    .padding-top-expenses {
         padding-top: 100px !important;
     }
 
@@ -276,6 +292,30 @@ document.addEventListener('DOMContentLoaded', function() {
         beneficiaryMenu.style.display = beneficiaryMenu.style.display === 'block' ? 'none' : 'block';
     });
 });
+// expenses
+    document.addEventListener('DOMContentLoaded', function() {
+    var expenses = document.getElementsByClassName('expenses')[0];
+    var expensesMenu = document.getElementsByClassName('expenseslist')[0];
+
+    expenses.addEventListener('mouseenter', function() {
+        expensesMenu.style.display = 'block';
+    });
+
+    expenses.addEventListener('mouseleave', function() {
+        expensesMenu.style.display = 'none';
+    });
+
+    document.addEventListener('click', function(event) {
+        var targetElement = event.target;
+        if (!expenses.contains(targetElement) && !expensesMenu.contains(targetElement)) {
+            expensesMenu.style.display = 'none';
+        }
+    });
+
+    expenses.addEventListener('click', function() {
+        expensesMenu.style.display = expensesMenu.style.display === 'block' ? 'none' : 'block';
+    });
+});
 
 </script>
 
@@ -378,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         </ul>
                     </li>
-                    <li class="removable sidebar-h invoices">
+                    <li class="removable sidebar-h expenses">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
                              aria-expanded="false">
                             <div class="mb-2">
@@ -393,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div><span class="text mini-click-non hovercolor">Expenses</span></div>
                             <div class="triangle"></div>
                         </a>
-                        <ul class="submenu-angle invoiceslist padding-top-Invoices" aria-expanded="false">
+                        <ul class="submenu-angle expenseslist padding-top-expenses" aria-expanded="false">
                             <div class=" text-black-50"> <a class="left_margin text-black-50 "
                                     href="{{ route('miscellaneous') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" fill="currentColor" class="bi bi-receipt"
@@ -414,6 +454,38 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <path
                                             d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5" />
                                     </svg><span class="ml-1">Petty Cash </span>
+
+                                </a></div>
+
+                        </ul>
+
+                    </li>
+                    <li class="removable sidebar-h invoices">
+                        <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
+                             aria-expanded="false">
+                            <div class="mb-2">
+                                <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                    fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
+                                    <path
+                                        d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z" />
+                                    <path
+                                        d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5" />
+                                </svg>
+                            </div>
+                            <div><span class="text mini-click-non hovercolor">Invoices</span></div>
+                            <div class="triangle"></div>
+                        </a>
+                        <ul class="submenu-angle invoiceslist padding-top-Invoices" aria-expanded="false">
+
+                                <div class=" text-black-50"> <a class="left_margin text-black-50 "
+                                    href="{{ route('invoices') }}"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" fill="currentColor" class="bi bi-receipt"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z" />
+                                        <path
+                                            d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5" />
+                                    </svg><span class="ml-1">Invoices List </span>
 
                                 </a></div>
 
