@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Design</p>
-                            <p class="m-0 dashboard-color-subcolor">205</p>
+                            <p class="m-0 dashboard-color-subcolor " style="font-size: 20px">205</p>
                         </div>
                     </div>
 
