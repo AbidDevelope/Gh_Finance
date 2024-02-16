@@ -34,6 +34,7 @@ class Project extends Model
         'project_value',
         'project_country',
         'project_remarks',
+        'project_description',
     ];
 
     public function beneficiary()

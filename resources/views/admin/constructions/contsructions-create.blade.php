@@ -241,6 +241,15 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea name="project_description" class="form-control" type="text"></textarea>
+                                                @error('project_description')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="row">

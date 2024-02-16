@@ -36,6 +36,7 @@ return new class extends Migration
             $table->decimal('project_value', 10, 3)->nullable();
             $table->string('project_country')->nullable();
             $table->string('project_remarks')->nullable();
+            $table->text('project_description')->nullable();
             $table->timestamps();
         });
 

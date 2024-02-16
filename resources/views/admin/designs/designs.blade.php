@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
                                 <div class="table-actions">
-                                    <a href="{{ route('create/designs') }}"
+                                    <a href="{{ route('designs/create') }}"
                                         class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                         <i class="fa fa-plus"></i> Create
                                     </a>

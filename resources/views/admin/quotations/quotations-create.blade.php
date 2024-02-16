@@ -13,35 +13,35 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
+                                            <label for="Project Id">Project Id</label>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="project_id" onkeypress="return /[0-9]/i.test(event.key)"  name="project_id" value="{{ old('project_id') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="Project Type">Project Type</label>
+                                            <div class="form-group">
+                                                <input readonly type="text" class="form-control" id="project_type" name="project_type" value="{{ old('project_type') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="Project Name">Project Name</label>
+                                            <div class="form-group">
+                                                <input readonly type="text" class="form-control" id="project_name" name="project_name" value="{{ old('project_name') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="Project Value">Project Value</label>
+                                            <div class="form-group">
+                                                <input readonly type="text" class="form-control" id="project_value" name="project_value" value="{{ old('project_value') }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
                                             <label>Quotation Number </label>
                                             <div class="form-group">
-                                                <input type="text" readonly class="form-control" name="quotation_number"
-                                                    value="{{ 'QUOT#0'. $nextQuotationId }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Beneficiary <span class="text-danger">*</span></label>
-                                                <select class="form-control" name="beneficiary_id">
-                                                    <option value="" disabled selected>Please Select</option>
-                                                    @foreach ($beneficiaries as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->beneficiary }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Project <span class="text-danger">*</span></label>
-                                                <select class="form-control" name="project_id">
-                                                    <option value="" disabled selected>Select Project</option>
-                                                    {{-- @foreach ($beneficiaries as $quotation)
-                                                        @foreach ($quotation->projects as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->project }}</option>
-                                                        @endforeach
-                                                    @endforeach --}}
-                                                </select>
+                                                <input type="text" class="form-control" name="quotation_number" value="{{ old('quotation_number') }}">
                                             </div>
                                         </div>
 
@@ -50,20 +50,8 @@
                                                 <label>Quotation date <span class="text-danger">*</span></label>
                                                 <div class="cal-icon">
                                                     <input class="form-control datetimepicker" type="date"
-                                                        name="quotation_date">
+                                                        name="quotation_date" value="{{ old('quotation_date') }}">
                                                     @error('quotation_date')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Valid Until <span class="text-danger">*</span></label>
-                                                <div class="cal-icon">
-                                                    <input class="form-control datetimepicker" type="date"
-                                                        name="valid_until">
-                                                    @error('valid_until')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
@@ -88,20 +76,20 @@
                                                         <tr>
                                                             <td>
                                                                 <input class="form-control" type="text"
-                                                                    style="min-width:150px" name="description[]">
+                                                                    style="min-width:150px" name="description[]" value="{{ old('description.0') }}">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="unit[]">
+                                                                <input class="form-control" type="text" name="unit[]" value="{{ old('unit.0') }}">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="qty[]">
+                                                                <input class="form-control" type="text" name="qty[]" value="{{ old('qty.0') }}">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="price[]">
+                                                                <input class="form-control" type="text" name="price[]" value="{{ old('price.0') }}">
                                                             </td>
                                                             <td>
                                                                 <input class="form-control" type="text"
-                                                                    style="min-width:150px" name="total[]">
+                                                                    style="min-width:150px" name="total[]" value="{{ old('total.0') }}">
                                                             </td>
                                                             <td><a href="javascript:void(0)" id="add-row"
                                                                     class="text-success font-18" title="Add"><img
@@ -207,5 +195,38 @@
                 x--;
             });
         });
+    </script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+    {{-- Get Project Data --}}
+    <script>
+        $(document).ready(function(){
+            $('#project_id').change(function(){
+                var projectID = $(this).val();
+                if(projectID)
+                {
+                    var url = '/project-data/' + projectID;
+
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                        if(data.status === 'success')
+                        {
+                            $('#project_type').val(data.data.project_type);
+                                $('#project_name').val(data.data.project_name);
+                                $('#project_value').val(data.data.project_value);
+                        } else {
+                                alert('Project Not Found');
+                        }
+                        },
+                        error: function(request, status, error) {
+                            alert('Error: ' + request.responseText);
+                        },
+                    });
+                }
+            });
+        });
+
     </script>
 @endsection
