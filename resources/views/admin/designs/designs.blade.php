@@ -23,9 +23,9 @@
                                               <input type="date" class="form-control bg-white text-black" id="dateInput">
                                             </div>
                                           </div>
-                                        <div class="container " style="margin-top: 80px;">
+                                        <div class="container " style="margin-top: 75px;">
                                             <div class="form-group">
-                                                <button class="btn-search bg-gray-100 " type="button">SEARCH </button>
+                                                <button class="btn-search btn btn-primary bg-gray-100 " type="button">SEARCH </button>
 
                                             </div>
                                           </div>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
                                 <div class="table-actions">
-                                    <a href="{{ route('create/designs') }}"
+                                    <a href="{{ route('designs/create') }}"
                                         class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                         <i class="fa fa-plus"></i> Create
                                     </a>

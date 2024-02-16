@@ -61,7 +61,7 @@
                             <div class="table-actions">
                                 <a href="{{ route('quotations/create') }}"
                                     class="btn btn-primary rounded proposals-create f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                    <i class="fa fa-plus"></i> Create Quotation
+                                    <i class="fa fa-plus"></i> Create
                                 </a>
                                 <a href="#"
                                     class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
@@ -74,11 +74,11 @@
                             <table id="dataTable">
                                 <thead>
                                     <tr role="row">
-                                        <th>#</th>
+                                        <th>Sr. No</th>
+                                        <th>Project Id</th>
                                         <th>Quotation Number</th>
-                                        <th>Create Date </th>
+                                        <th>Quotation Date </th>
                                         <th>Amount</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -87,10 +87,10 @@
                                         @foreach ($quotations as $index=>$quotation)
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
+                                                <td>{{ $quotation->project_id }}</td>
                                                 <td>{{ $quotation->quotation_number }}</td>
-                                                <td>{{ $quotation->created_at->format('d M Y') }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($quotation->quotation_date)->format('d M Y') }}</td>
                                                 <td>{{ $quotation->grandtotal }}</td>
-                                                <td>{{ $quotation->status }}</td>
                                                 <td class="text-right">
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon " data-toggle="dropdown"

@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\QuotationItem;
 use App\Models\Quotation;
 use App\Models\Beneficiary;
+use App\Models\Project;
 use App, Session, Validator;
 
 class QuotationController extends Controller
 {
     public function quotation()
     {
-        $quotations = Quotation::all();
+        $quotations = Quotation::orderBy('id', 'desc')->get();
         return view('admin.quotations.quotations', compact('quotations'));
     }
 
@@ -36,8 +37,9 @@ class QuotationController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'quotation_number' => 'required',  'quotation_date' => 'required',
-            'valid_until'      => 'required',  'subtotal'       => 'required',
-            'others'           => 'required',  'grandtotal'     => 'required',
+            'subtotal'         => 'required',  'others'         => 'required', 
+            'grandtotal'       => 'required',  
+            
             'description'      => 'required',  'unit'           => 'required',
             'qty'              => 'required',  'price'          => 'required',
             'total'            => 'required', 
@@ -51,11 +53,9 @@ class QuotationController extends Controller
             // $requestData = $request->all();
             // $quotation = Quotation::create($requestData);
             $quotation = new Quotation();
-            $quotation->beneficiary_id = $request->beneficiary_id;
             $quotation->project_id      = $request->project_id;
             $quotation->quotation_number = $request->quotation_number;
             $quotation->quotation_date    = $request->quotation_date;
-            $quotation->valid_until      = $request->valid_until;
             $quotation->subtotal        = $request->subtotal;
             $quotation->others         = $request->others;
             $quotation->grandtotal    = $request->grandtotal;
@@ -79,8 +79,25 @@ class QuotationController extends Controller
         }
     }
 
-    public function quotationView()
+    public function quotationView($id)
     {
-        return view('admin.quotations.quotations-view');
+        $quotations = Quotation::where('id', $id)->with('quotationItems')->first();
+        // return $quotations;
+
+        return view('admin.quotations.quotations-view', compact('quotations'));
+    }
+
+    public function getProjectData($id)
+    {
+        $project = Project::find($id);
+
+        if ($project) {
+            return response()->json([
+                'status' => 'success',
+                'data' => $project,
+            ]);
+        }
+
+        return response()->json(['status' => 'error', 'message' => 'Project not found'], 404);
     }
 }

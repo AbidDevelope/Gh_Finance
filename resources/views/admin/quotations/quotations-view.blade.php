@@ -62,7 +62,7 @@
                             <table class="meta">
                                 <tr>
                                     <th><span>Date</span></th>
-                                    <td><span> 11/12/2023 </span>
+                                    <td><span> {{ \Carbon\Carbon::parse($quotations->quotation_date)->format('d M Y') }} </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -71,18 +71,18 @@
                                 </tr>
                                 <tr>
                                     <th><span>Quote*</span></th>
-                                    <td><span>AG. FD.</span></td>
+                                    <td><span>{{ $quotations->quotation_number }}</span></td>
                                 </tr>
                             </table>
                             <table class="table table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>(KUWAITI DINARS FIVE THOUSAND NINE HUNDRED ONLY)*</th>
+                                        <th>QUOTE/PROJECT OF DESCRIPTION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>100% PAYMENT UPON JOB COMPLETION & HANDOVER</td>
+                                        <td>Supply & Installation</td>
                                     </tr>
                                 </tbody>
                             </table><br>
@@ -98,30 +98,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($quotations->quotationItems as $key=>$quotation)   
                                     <tr>
-                                        <td>1</td>
-                                        <td>Mamun</td>
-                                        <td>Roshid</td>
-                                        <td>@Facebook</td>
-                                        <td>@Facebook</td>
-                                        <td>@Facebook</td>
+                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $quotation->description }}</td>
+                                        <td>{{ $quotation->unit }}</td>
+                                        <td>{{ $quotation->qty }}</td>
+                                        <td>{{ $quotation->price }}</td>
+                                        <td>{{ $quotation->total }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Suhag</td>
-                                        <td>Khan</td>
-                                        <td>@Twitter</td>
-                                        <td>@Twitter</td>
-                                        <td>@Twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Sakil</td>
-                                        <td>Shak</td>
-                                        <td>@Linkedin</td>
-                                        <td>@Linkedin</td>
-                                        <td>@Linkedin</td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <table class="sign">
@@ -133,15 +119,15 @@
                             <table class="meta">
                                 <tr>
                                     <th>SubTotal:</th>
-                                    <td><span data-prefix></span><span>600.000</span></td>
+                                    <td><span data-prefix></span><span>{{ $quotations->subtotal }}</span></td>
                                 </tr>
                                 <tr>
                                     <th><span>Others:</span></th>
-                                    <td><span data-prefix></span><span>600.000</span></td>
+                                    <td><span data-prefix></span><span>{{ $quotations->others }}</span></td>
                                 </tr>
                                 <tr>
                                     <th><span>Grand Total</span></th>
-                                    <td><span data-prefix></span><span>600.000</span></td>
+                                    <td><span data-prefix></span><span>{{ $quotations->grandtotal }}</span></td>
                                 </tr>
                             </table><br><br>
                             <div class="norm">

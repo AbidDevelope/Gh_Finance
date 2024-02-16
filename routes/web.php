@@ -42,7 +42,7 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
     Route::get('all-services/view/{id}', 'allServicesView')->name('all-services/view');
     
     Route::get('designs', 'designs')->name('designs');
-    Route::get('create/designs', 'createDesignList')->name('create/designs');
+    Route::get('designs/create', 'createDesignList')->name('designs/create');
     Route::post('create/designs', 'createDesign')->name('create/designs');
     Route::get('design/edit/{id}', 'designEdit')->name('design/edit');
     Route::post('design/update/{id}', 'designUpdate')->name('design/update');
@@ -110,8 +110,9 @@ Route::controller(QuotationController::class)->prefix('admin')->middleware('admi
     Route::get('/lang/{locale}', 'switchLanguage')->name('lang.switch');
     Route::get('quotations/create', 'quotationCreateForm')->name('quotations/create');
     Route::post('quotations/create', 'quotationCreate')->name('quotations/create');
-    Route::get('quotation/view', 'quotationView')->name('quotation/view');
+    Route::get('quotation/view/{id}', 'quotationView')->name('quotation/view');
 });
+Route::get('/project-data/{id}', [QuotationController::class, 'getProjectData'])->name('project.data');
 
 // ---------------------------- ProjectController ---------------------------------- //
 Route::controller(ProjectController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
