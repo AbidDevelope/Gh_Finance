@@ -200,50 +200,100 @@
 </style>
 
 <script>
-   document.addEventListener('DOMContentLoaded', function() {
+//    document.addEventListener('DOMContentLoaded', function() {
+//     var Services = document.getElementsByClassName('Services')[0];
+//     var serviceMenu = document.getElementsByClassName('servicelist')[0];
+
+//     Services.addEventListener('mouseenter', function() {
+//         serviceMenu.style.display = 'block';
+//     });
+
+//     Services.addEventListener('mouseleave', function() {
+//         serviceMenu.style.display = 'none';
+//     });
+
+//     var Invoices = document.getElementsByClassName('invoices')[0];
+//     var invoicesMenu = document.getElementsByClassName('invoiceslist')[0];
+
+//     Invoices.addEventListener('mouseenter', function() {
+//         invoicesMenu.style.display = 'block';
+//     });
+
+//     Invoices.addEventListener('mouseleave', function() {
+//         invoicesMenu.style.display = 'none';
+//     });
+
+
+//     document.addEventListener('click', function(event) {
+//         var targetElement = event.target;
+//         if (!Services.contains(targetElement) && !serviceMenu.contains(targetElement)) {
+//             serviceMenu.style.display = 'none';
+//         }
+//         if (!Invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
+//             invoicesMenu.style.display = 'none';
+//         }
+//     });
+
+
+//     Services.addEventListener('click', function() {
+//         serviceMenu.style.display = serviceMenu.style.display === 'block' ? 'none' : 'block';
+//     });
+
+//     Invoices.addEventListener('click', function() {
+//         invoicesMenu.style.display = invoicesMenu.style.display === 'block' ? 'none' : 'block';
+//     });
+// });
+
+// services
+document.addEventListener('DOMContentLoaded', function() {
     var Services = document.getElementsByClassName('Services')[0];
-    var serviceMenu = document.getElementsByClassName('servicelist')[0];
+    var ServicesMenu = document.getElementsByClassName('servicelist')[0];
 
     Services.addEventListener('mouseenter', function() {
-        serviceMenu.style.display = 'block';
+        ServicesMenu.style.display = 'block';
     });
 
     Services.addEventListener('mouseleave', function() {
-        serviceMenu.style.display = 'none';
+        ServicesMenu.style.display = 'none';
     });
 
-    var Invoices = document.getElementsByClassName('invoices')[0];
+    document.addEventListener('click', function(event) {
+        var targetElement = event.target;
+        if (!Services.contains(targetElement) && !ServicesMenu.contains(targetElement)) {
+            ServicesMenu.style.display = 'none';
+        }
+    });
+
+    Services.addEventListener('click', function() {
+        ServicesMenu.style.display = ServicesMenu.style.display === 'block' ? 'none' : 'block';
+    });
+});
+
+// invoices
+document.addEventListener('DOMContentLoaded', function() {
+    var invoices = document.getElementsByClassName('invoices')[0];
     var invoicesMenu = document.getElementsByClassName('invoiceslist')[0];
 
-    Invoices.addEventListener('mouseenter', function() {
+    invoices.addEventListener('mouseenter', function() {
         invoicesMenu.style.display = 'block';
     });
 
-    Invoices.addEventListener('mouseleave', function() {
+    invoices.addEventListener('mouseleave', function() {
         invoicesMenu.style.display = 'none';
     });
 
-    // Close the menus when clicking outside
     document.addEventListener('click', function(event) {
         var targetElement = event.target;
-        if (!Services.contains(targetElement) && !serviceMenu.contains(targetElement)) {
-            serviceMenu.style.display = 'none';
-        }
-        if (!Invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
+        if (!invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
             invoicesMenu.style.display = 'none';
         }
     });
 
-    // Toggle the display of the menus when clicking on the parent elements
-    Services.addEventListener('click', function() {
-        serviceMenu.style.display = serviceMenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    Invoices.addEventListener('click', function() {
+    invoices.addEventListener('click', function() {
         invoicesMenu.style.display = invoicesMenu.style.display === 'block' ? 'none' : 'block';
     });
 });
-
+// Quotations
 document.addEventListener('DOMContentLoaded', function() {
     var Quotations = document.getElementsByClassName('Quotations')[0];
     var quotationsMenu = document.getElementsByClassName('Quotationslist')[0];

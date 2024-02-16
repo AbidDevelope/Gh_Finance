@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Construction</p>
-                            <p class="m-0 dashboard-color-subcolor">4021.000 KWD</p>
+                            <p class="m-0 dashboard-color-subcolor" style="font-size: 20px">4021.000 KWD</p>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Revenue</p>
-                            <p class="m-0 dashboard-color-subcolor">80.000 KWD</p>
+                            <p class="m-0 dashboard-color-subcolor" style="font-size: 20px">80.000 KWD</p>
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                         </div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">EXPENSES</p>
-                            <p class="m-0 dashboard-color-subcolor">1200.000 KWD</p>
+                            <p class="m-0 dashboard-color-subcolor" style="font-size: 20px" >1200.000 KWD</p>
                         </div>
                     </div>
 
