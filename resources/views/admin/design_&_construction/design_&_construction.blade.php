@@ -8,47 +8,51 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
-                                    <div class="d-flex" >
+                                    <div class="d-flex">
                                         <div class="container mt-5">
                                             <div class="form-group">
-                                              <label for="dateInput">Select Start Date:</label>
-                                              <!-- Input with Bootstrap styling -->
-                                              <input type="date" class="form-control bg-white text-black" id="dateInput">
+                                                <label for="dateInput">Select Start Date:</label>
+                                                <!-- Input with Bootstrap styling -->
+                                                <input type="date" class="form-control bg-white text-black"
+                                                    id="dateInput">
                                             </div>
-                                          </div>
+                                        </div>
                                         <div class="container mt-5 ">
                                             <div class="form-group">
-                                              <label for="dateInput">Select End Date:</label>
-                                              <!-- Input with Bootstrap styling -->
-                                              <input type="date" class="form-control bg-white text-black" id="dateInput">
+                                                <label for="dateInput">Select End Date:</label>
+                                                <!-- Input with Bootstrap styling -->
+                                                <input type="date" class="form-control bg-white text-black"
+                                                    id="dateInput">
                                             </div>
-                                          </div>
-                                        <div class="container " style="margin-top: 80px;">
-                                            <div class="form-group">
-                                                <button class="btn-search bg-gray-100 " type="button">SEARCH </button>
-
-                                            </div>
-                                          </div>
                                         </div>
+                                        <div class="container " style="margin-top: 75px;">
+                                            <div class="form-group">
+                                                <button class="btn-search btn btn-primary bg-gray-100 "
+                                                    type="button">SEARCH </button>
 
-                                    </form>
-                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <h5 class="mt-3"><span>Design & Construction</span></h5>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-                            <div class="table-actions">
-                                <a href="{{ route('design_&_construction/create') }}"
-                                    class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                    <i class="fa fa-plus"></i> Create
-                                </a>
-                                <a href="#"
-                                    class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
-                                    <i class="fa fa-file-export"></i> Export
-                                </a>
+
+                        
+                        <div class="container">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <h5 class="mt-3"><span>Design & Construction</span></h5>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
+                                <div class="table-actions">
+                                    <a href="{{ route('design_&_construction/create') }}"
+                                        class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
+                                        <i class="fa fa-plus"></i> Create
+                                    </a>
+                                    <a href="#"
+                                        class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
+                                        <i class="fa fa-file-export"></i> Export
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -100,7 +104,8 @@
                                                                     href="{{ route('design_&_construction/view', $project->id) }}"><i
                                                                         class="fa fa-eye m-r-5"></i> View
                                                                 </a>
-                                                                <a class="dropdown-item" href="{{ route('design_&_construction/edit', $project->id) }}"><i
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('design_&_construction/edit', $project->id) }}"><i
                                                                         class="fa fa-pencil m-r-5"></i> Edit</a>
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('design_&_construction/delete', $project->id) }}"><i
@@ -133,20 +138,20 @@
     </div>
 
     <!-- metisMenu JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                ============================================ -->
+                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                ============================================ -->
+                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}

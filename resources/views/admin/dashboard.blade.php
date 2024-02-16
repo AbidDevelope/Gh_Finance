@@ -3,392 +3,11 @@
     <!-- Start Welcome area -->
     <!-- style="background: #BEC0BF" -->
     <div class="all-content-wrapper">
-
-        {{-- <div class="header-advance-area">
-
-        <div class="breadcome-area">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="breadcome-list res-mg-t-10">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="breadcomb-wp">
-                                        <div class="breadcomb-icon">
-                                            <i class="icon nalika-home"></i>
-                                        </div>
-                                        <div class="breadcomb-ctn">
-                                            <h2>Dashboard</h2>
-                                            <p>Welcome to <span class="bread-ntd">GHADER & HAMDOUN</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="breadcomb-report">
-                                        <button data-toggle="tooltip" data-placement="left" title="Download Report"
-                                            class="btn"><i class="icon nalika-download"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-        <!-- <div class="section-admin container-fluid">
-            <div class="row admin text-center">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <div class="admin-content analysis-progrebar-ctn res-mg-t-15">
-                                <h4 class="text-left text-uppercase"><b>Employee</b></h4>
-                                <div class="row vertical-center-box vertical-center-box-tablet">
-                                     <div class="col-xs-3 mar-bot-15 text-left">
-                                        <label class="label bg-green">30% <i class="fa fa-level-up"
-                                                aria-hidden="true"></i></label>
-                                    </div>
-                                    <div class="col-xs-9 cus-gh-hd-pro">
-                                        <h2 class="text-right no-margin">10,000</h2>
-                                    </div>
-                                </div>
-                                <div class="progress progress-mini">
-                                    <div style="width: 78%;" class="progress-bar bg-green"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-bottom:1px;">
-                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                                <h4 class="text-left text-uppercase"><b>Tax Deduction</b></h4>
-                                <div class="row vertical-center-box vertical-center-box-tablet">
-                                    <div class="text-left col-xs-3 mar-bot-15">
-                                        <label class="label bg-red">15% <i class="fa fa-level-down"
-                                                aria-hidden="true"></i></label>
-                                    </div>
-                                    <div class="col-xs-9 cus-gh-hd-pro">
-                                        <h2 class="text-right no-margin">5,000</h2>
-                                    </div>
-                                </div>
-                                <div class="progress progress-mini">
-                                    <div style="width: 38%;" class="progress-bar progress-bar-danger bg-red"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                                <h4 class="text-left text-uppercase"><b>Revenue</b></h4>
-                                <div class="row vertical-center-box vertical-center-box-tablet">
-                                    <div class="text-left col-xs-3 mar-bot-15">
-                                        <label class="label bg-blue">50% <i class="fa fa-level-up"
-                                                aria-hidden="true"></i></label>
-                                    </div>
-                                    <div class="col-xs-9 cus-gh-hd-pro">
-                                        <h2 class="text-right no-margin">$70,000</h2>
-                                    </div>
-                                </div>
-                                <div class="progress progress-mini">
-                                    <div style="width: 60%;" class="progress-bar bg-blue"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <div class="admin-content analysis-progrebar-ctn res-mg-t-30">
-                                <h4 class="text-left text-uppercase"><b>Expenses</b></h4>
-                                <div class="row vertical-center-box vertical-center-box-tablet">
-                                    <div class="text-left col-xs-3 mar-bot-15">
-                                        <label class="label bg-purple">80% <i class="fa fa-level-up"
-                                                aria-hidden="true"></i></label>
-                                    </div>
-                                    <div class="col-xs-9 cus-gh-hd-pro">
-                                        <h2 class="text-right no-margin">$100,000</h2>
-                                    </div>
-                                </div>
-                                <div class="progress progress-mini">
-                                    <div style="width: 60%;" class="progress-bar bg-purple"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- {{-- <div class="product-sales-area mg-tb-30">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                        <div class="product-sales-chart">
-                            <div class="portlet-title">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="caption pro-sl-hd">
-                                            <span class="caption-subject text-uppercase"><b>This Year Revenue</b></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="actions graph-rp">
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-grey active">
-													<input type="radio" name="options" class="toggle" id="option1" checked="">Today</label>
-                                                <label class="btn btn-grey">
-													<input type="radio" name="options" class="toggle" id="option2">Week</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="curved-line-chart" class="flot-chart-sts flot-chart curved-chart-statistic"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="white-box analytics-info-cs mg-b-30 res-mg-t-30">
-                            <h3 class="box-title">Total Visit</h3>
-                            <ul class="list-inline two-part-sp">
-                                <li>
-                                    <div id="sparklinedash"></div>
-                                </li>
-                                <li class="text-right sp-cn-r"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter sales-sts-ctn">8659</span></li>
-                            </ul>
-                        </div>
-                        <div class="white-box analytics-info-cs mg-b-30">
-                            <h3 class="box-title">Total Page Views</h3>
-                            <ul class="list-inline two-part-sp">
-                                <li>
-                                    <div id="sparklinedash2"></div>
-                                </li>
-                                <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter sales-sts-ctn">7469</span></li>
-                            </ul>
-                        </div>
-                        <div class="white-box analytics-info-cs mg-b-30">
-                            <h3 class="box-title">Unique Visitor</h3>
-                            <ul class="list-inline two-part-sp">
-                                <li>
-                                    <div id="sparklinedash3"></div>
-                                </li>
-                                <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter sales-sts-ctn">6011</span></li>
-                            </ul>
-                        </div>
-                        <div class="white-box analytics-info-cs">
-                            <h3 class="box-title">Bounce Rate</h3>
-                            <ul class="list-inline two-part-sp">
-                                <li>
-                                    <div id="sparklinedash4"></div>
-                                </li>
-                                <li class="text-right"><i class="fa fa-level-down" aria-hidden="true"></i> <span class="sales-sts-ctn">18%</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}} -->
-        <!-- <div class="product-sales-area mg-tb-30">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                        <div class="product-sales-chart">
-                            <div class="portlet-title">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="caption pro-sl-hd">
-                                            <span class="caption-subject text-uppercase"><b>This Year Revenue</b></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="actions graph-rp">
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-grey active">
-                                                    <input type="radio" name="options" class="toggle" id="option1"
-                                                        checked="">Today</label>
-                                                <label class="btn btn-grey">
-                                                    <input type="radio" name="options" class="toggle"
-                                                        id="option2">Week</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="sparklinehome" class="sparkline-container">Loading..</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="white-box analytics-info-cs mg-b-30 res-mg-t-30">
-                            <h3 class="box-title">Total Visit</h3>
-                            <ul class="list-inline two-part-sp">
-                                <li>
-                                    <div id="sparklinedash"></div>
-                                </li>
-                                <li class="text-right sp-cn-r"><i class="fa fa-level-up" aria-hidden="true"></i> <span
-                                        class="counter sales-sts-ctn">8659</span></li>
-                            </ul>
-                        </div>
-                        <div class="white-box analytics-info-cs mg-b-30">
-                            <h3 class="box-title">Total Page Views</h3>
-                            <ul class="list-inline two-part-sp">
-                                <li>
-                                    <div id="sparklinedash2"></div>
-                                </li>
-                                <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span
-                                        class="counter sales-sts-ctn">7469</span></li>
-                            </ul>
-                        </div>
-                        <div class="white-box analytics-info-cs mg-b-30">
-                            <h3 class="box-title">Unique Visitor</h3>
-                            <ul class="list-inline two-part-sp">
-                                <li>
-                                    <div id="sparklinedash3"></div>
-                                </li>
-                                <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span
-                                        class="counter sales-sts-ctn">6011</span></li>
-                            </ul>
-                        </div>
-                        <div class="white-box analytics-info-cs">
-                            <h3 class="box-title">Bounce Rate</h3>
-                            <ul class="list-inline two-part-sp">
-                                <li>
-                                    <div id="sparklinedash4"></div>
-                                </li>
-                                <li class="text-right"><i class="fa fa-level-down" aria-hidden="true"></i> <span
-                                        class="sales-sts-ctn">18%</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- <div class="traffic-analysis-area">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="white-box tranffic-als-inner">
-                            <h3 class="box-title"><small class="pull-right m-t-10 text-success last-month-sc cl-one"><i
-                                        class="fa fa-sort-asc"></i> 18% last month</small> Site Traffic</h3>
-                            <div class="stats-row">
-                                <div class="stat-item">
-                                    <h6>Overall Growth</h6>
-                                    <b>80.40%</b>
-                                </div>
-                                <div class="stat-item">
-                                    <h6>Montly</h6>
-                                    <b>15.40%</b>
-                                </div>
-                                <div class="stat-item">
-                                    <h6>Day</h6>
-                                    <b>5.50%</b>
-                                </div>
-                            </div>
-                            <div id="sparkline8"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="white-box tranffic-als-inner res-mg-t-30">
-                            <h3 class="box-title"><small class="pull-right m-t-10 text-danger last-month-sc cl-two"><i
-                                        class="fa fa-sort-desc"></i> 18% last month</small>Site Traffic</h3>
-                            <div class="stats-row">
-                                <div class="stat-item">
-                                    <h6>Overall Growth</h6>
-                                    <b>80.40%</b>
-                                </div>
-                                <div class="stat-item">
-                                    <h6>Montly</h6>
-                                    <b>15.40%</b>
-                                </div>
-                                <div class="stat-item">
-                                    <h6>Day</h6>
-                                    <b>5.50%</b>
-                                </div>
-                            </div>
-                            <div id="sparkline9"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="white-box tranffic-als-inner res-mg-t-30">
-                            <h3 class="box-title"><small class="pull-right m-t-10 text-success last-month-sc cl-three"><i
-                                        class="fa fa-sort-asc"></i> 18% last month</small>Site Traffic</h3>
-                            <div class="stats-row">
-                                <div class="stat-item">
-                                    <h6>Overall Growth</h6>
-                                    <b>80.40%</b>
-                                </div>
-                                <div class="stat-item">
-                                    <h6>Montly</h6>
-                                    <b>15.40%</b>
-                                </div>
-                                <div class="stat-item">
-                                    <h6>Day</h6>
-                                    <b>5.50%</b>
-                                </div>
-                            </div>
-                            <div id="sparkline10"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- <div class="product-sales-area mg-tb-30">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                        <div class="product-sales-chart">
-                            <div class="portlet-title">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="caption pro-sl-hd">
-                                            <span class="caption-subject text-uppercase"><b>Last 20 Days Revenue</b></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="actions graph-rp">
-                                            <a href="#" class="btn btn-dark-blue btn-circle active tip-top"
-                                                data-toggle="tooltip" title="Upload">
-                                                <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-dark btn-circle active tip-top" data-toggle="tooltip"
-                                                title="Refresh">
-                                                <i class="fa fa-reply" aria-hidden="true"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-blue-grey btn-circle active tip-top"
-                                                data-toggle="tooltip" title="Delete">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="line-chart" class="flot-chart flot-chart-sts line-chart-statistic"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="analytics-rounded mg-b-30 res-mg-t-30">
-                            <div class="analytics-rounded-content">
-                                <h5>Percentage distribution</h5>
-                                <h2><span class="counter">60</span>/20</h2>
-                                <div class="text-center">
-                                    <div id="sparkline51"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="analytics-rounded">
-                            <div class="analytics-rounded-content">
-                                <h5>Percentage division</h5>
-                                <h2><span class="counter">150</span>/<span class="counter">54</span></h2>
-                                <div class="text-center">
-                                    <div id="sparkline52"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-
         <style>
             .custom-padding-top {
-                padding-top: 110px;
+                padding-top: 30px;
             }
         </style>
-
-
         <div class="container-fluid px-2   custom-padding-top ">
             <div class="row mx-1 gap-1 flex-nowrap ">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 p-3 shadow" style="background-color: white">
@@ -439,7 +58,7 @@
                         </div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Revenue</p>
-                            <p class="m-0 dashboard-color-subcolor">80</p>
+                            <p class="m-0 dashboard-color-subcolor">80.000 KWD</p>
                         </div>
                     </div>
 
@@ -468,39 +87,39 @@
 
         <div class="container-fluid my-4">
             <div class="row mx-1 gap-0">
-                <div class="col-lg-8 col-md-12 pt-3 shadow" style="background-color: white">
-                    <div>
+                <div class="col-lg-7 col-md-12 pt-3 shadow" style="background-color: white">
+                    <div class="" style="margin-left: 50px">
                         <div class="caption pro-sl-hd">
                             <span class="caption-subject text-uppercase pb-4"><b>Revenue</b></span>
                         </div>
                         <!-- <div id="sparklinehome" class="sparkline-container">Loading..</div> -->
-                        <div id="echart-bar" style="width: 100%; height: 400px;"></div>
+                        <div id="echart-bar"  style="width: 100%; height: 400px;"></div>
                         <!-- <div id="thisyearsales " class="sparkline-container">Loading..</div> -->
 
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 pt-3 shadow" style="background-color: white">
+                <div class="col-lg-5 col-md-12 pt-3 shadow" style="background-color: white">
                     <div class="caption pro-sl-hd">
                         <span class="caption-subject text-uppercase pb-4"><b>Services</b></span>
 
                         <div id="echart-bar-sales" style="width: 100%; height: 400px;"></div>
                         <!-- <div class="analytics-rounded-content">
-                            <h5>Percentage distribution</h5>
-                            <h2><span class="counter">60</span>/20</h2>
-                            <div class="text-center">
-                                <div id="sparkline51"></div>
-                            </div>
-                        </div> -->
+                                <h5>Percentage distribution</h5>
+                                <h2><span class="counter">60</span>/20</h2>
+                                <div class="text-center">
+                                    <div id="sparkline51"></div>
+                                </div>
+                            </div> -->
                     </div>
                     <!-- <div class="analytics-rounded">
-                        <div class="analytics-rounded-content">
-                            <h5>Percentage division</h5>
-                            <h2><span class="counter">150</span>/<span class="counter">54</span></h2>
-                            <div class="text-center">
-                                <div id="sparkline52"></div>
+                            <div class="analytics-rounded-content">
+                                <h5>Percentage division</h5>
+                                <h2><span class="counter">150</span>/<span class="counter">54</span></h2>
+                                <div class="text-center">
+                                    <div id="sparkline52"></div>
+                                </div>
                             </div>
-                        </div>
-                    </div> -->
+                        </div> -->
                 </div>
             </div>
 
@@ -520,15 +139,19 @@
                         <div class="col-xs-12 col-md-6 shadow" style="background-color: white">
                             <p class="m-0 dashboard-color-text">Last Week Revenue</p>
                             <p class="dashboard-color-subcolor">7656.000 KWD</p>
-                            <didropdown-menuv id="echart-bar-last-week" style="width: 100%; height:400px"></didropdown-menuv>
+                            <div  id="echart-bar-last-week"
+                                style="width: 100%; height:400px ; position:relative"></div>
 
                         </div>
                     </div>
                 </div>
                 <div class=" col-xs-5 col-md-1  pt-3"></div>
-                <div class=" col-xs-12 col-md-5 bg-white pt-3 ">
+
+                <div class=" col-xs-12 col-md-5 bg-white pt-3">
                     <div>
                         <p class="dashboard-color-text ">Projects</p>
+
+
                         <div class="d-flex align-items-center flex-column flex-md-row  ">
                             <div class="col-lg-3 col-12 p-0">
                                 {{-- <p class="m-0 avatar-lg-top">
@@ -539,8 +162,9 @@
                             <div class="col-lg-7 col-12 p-0">
                                 <p class="mb-2 top-selling-tittle">Project 1 </p>
                                 <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567 KWD</del>
-                                </p>
+                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
+                                        KWD</del>
+                                </p> --}}
                             </div>
                             <div class="col-lg-2 col-12 p-0 mr-lg-5">
                                 <button class="border-white bg-white cursor-pointer">View </button>
@@ -556,8 +180,9 @@
                             <div class="col-lg-7 col-12 p-0">
                                 <p class="mb-2 top-selling-tittle">Project 1 </p>
                                 <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567 KWD</del>
-                                </p>
+                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
+                                        KWD</del>
+                                </p> --}}
                             </div>
                             <div class="col-lg-2 col-12 p-0 mr-lg-5">
                                 <button class="border-white bg-white cursor-pointer">View </button>
@@ -573,8 +198,9 @@
                             <div class="col-lg-7 col-12 p-0">
                                 <p class="mb-2 top-selling-tittle">Project 1 </p>
                                 <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567 KWD</del>
-                                </p>
+                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
+                                        KWD</del>
+                                </p> --}}
                             </div>
                             <div class="col-lg-2 col-12 p-0 mr-lg-5">
                                 <button class="border-white bg-white cursor-pointer">View </button>
@@ -590,8 +216,9 @@
                             <div class="col-lg-7 col-12 p-0">
                                 <p class="mb-2 top-selling-tittle">Project 1 </p>
                                 <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567 KWD</del>
-                                </p>
+                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
+                                        KWD</del>
+                                </p> --}}
                             </div>
                             <div class="col-lg-2 col-12 p-0 mr-lg-5">
                                 <button class="border-white bg-white cursor-pointer">View </button>
@@ -607,8 +234,45 @@
                             <div class="col-lg-7 col-12 p-0">
                                 <p class="mb-2 top-selling-tittle">Project 1 </p>
                                 <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567 KWD</del>
-                                </p>
+                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
+                                        KWD</del>
+                                </p> --}}
+                            </div>
+                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
+                                <button class="border-white bg-white cursor-pointer">View </button>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center flex-column flex-md-row  ">
+                            <div class="col-lg-3 col-12 p-0">
+                                {{-- <p class="m-0 avatar-lg-top">
+                                    <img
+                                        src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
+                                </p> --}}
+                            </div>
+                            <div class="col-lg-7 col-12 p-0">
+                                <p class="mb-2 top-selling-tittle">Project 1 </p>
+                                <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
+                                        KWD</del>
+                                </p> --}}
+                            </div>
+                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
+                                <button class="border-white bg-white cursor-pointer">View </button>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center flex-column flex-md-row  ">
+                            <div class="col-lg-3 col-12 p-0">
+                                {{-- <p class="m-0 avatar-lg-top">
+                                    <img
+                                        src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
+                                </p> --}}
+                            </div>
+                            <div class="col-lg-7 col-12 p-0">
+                                <p class="mb-2 top-selling-tittle">Project 1 </p>
+                                <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
+                                        KWD</del>
+                                </p> --}}
                             </div>
                             <div class="col-lg-2 col-12 p-0 mr-lg-5">
                                 <button class="border-white bg-white cursor-pointer">View </button>
@@ -937,23 +601,23 @@
 
 
     <!-- metisMenu JS
-                ============================================ -->
+                    ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
 
 
     <!-- float JS
-                ============================================ -->
+                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                ============================================ -->
+                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- <script src="{{ asset('assets/admin/js/mychart.js') }}"></script> -->
     <!-- main JS
-            ============================================ -->
+                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"
         integrity="sha512-EmNxF3E6bM0Xg1zvmkeYD3HDBeGxtsG92IxFt1myNZhXdCav9MzvuH/zNMBU1DmIPN6njrhX1VTbqdJxQ2wHDg=="
@@ -1072,38 +736,39 @@
             myChart.setOption(option);
         }
 
-        function getPieGraph(data) {
-            // You can set the colors as needed
-            let dom = document.getElementById('echart-bar-sales');
-            let myChart = echarts.init(dom);
+       function getPieGraph(data) {
+    // You can set the colors as needed
+    let dom = document.getElementById('echart-bar-sales');
+    let myChart = echarts.init(dom);
 
-            // Define the color palette
-            let colorPalette = ['#62549c', '#bcbbdd', '#7569b3', '#6957af', '#9181bd'];
+    // Define the color palette
+    let colorPalette = ['#62549c', '#bcbbdd', '#7569b3', '#6957af', '#9181bd'];
 
-            let option = {
-                tooltip: {
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+    let option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        series: JSON.parse(data).map(seriesItem => {
+            return {
+                ...seriesItem,
+                itemStyle: {
+                    color: function(params) {
+                        return colorPalette[params.dataIndex];
+                    },
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
                 },
-                series: JSON.parse(data).map(seriesItem => {
-                    return {
-                        ...seriesItem,
-                        itemStyle: {
-                            color: function(params) {
-                                return colorPalette[params.dataIndex];
-                            },
-                            emphasis: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
-                        }
-                    };
-                }),
             };
+        }),
+    };
 
-            myChart.setOption(option);
-        }
+    myChart.setOption(option);
+}
+
 
         function getBarGraph(data) {
 
@@ -1137,7 +802,7 @@
                         type: 'value',
                         alignTicks: true,
                         axisLabel: {
-                            formatter: 'KWD {value} -'
+                            formatter: 'KWD {value}'
                         }
 
                     },
@@ -1149,6 +814,8 @@
                     barCategoryGap: '50%', // Adjust this value to set the width of the bars
                 })),
             };
+            delete option.tooltip;
+
             myChart.setOption(option);
         }
     </script>

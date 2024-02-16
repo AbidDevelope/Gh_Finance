@@ -40,8 +40,9 @@
         max-height: 200px;
         overflow-y: auto;
     }
-    .height{
-        height:85px;
+
+    .height {
+        height: 85px;
     }
 </style>
 <div class="header-top-area bg-white">
@@ -51,6 +52,21 @@
                 {{-- <div class="header-top-wraper"> --}}
                 {{-- <div class="row"> --}}
                 {{-- <div class="d-flex"> --}}
+                <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12 mt-1">
+                    <div class="nalika-profile bg-white ">
+                        <div class="profile-dtl">
+                            <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/admin/img/logo/gh_logo.jpg') }}"
+                                    alt="" /></a>
+                            {{-- <h2>{{ Auth::guard('admin')->user()->first_name }} <span class="min-dtn">{{ Auth::guard('admin')->user()->last_name }}</span></h2> --}}
+                            {{-- <h2> <span class="min-dtn text-black-50">GHADER & HAMDOUN</span></h2> --}}
+                        </div>
+                        <div class="profile-social-dtl">
+                            <ul class="dtl-social">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12 mt-1">
                     <div class="menu-switcher-pro ">
                         <button type="button" id="sidebarCollapse"
@@ -72,7 +88,7 @@
                         </a>
 
 
-                        <ul class="dropdown-menu max-w-xl"  style="min-width: 30rem;" aria-labelledby="dropdownMenuLink">
+                        <ul class="dropdown-menu max-w-xl" style="min-width: 30rem;" aria-labelledby="dropdownMenuLink">
                             <div class="container">
                                 <div class="row">
                                     <li class="col-sm-4">
@@ -226,8 +242,10 @@
 
                 {{-- searchbar --}}
                 <div class="mt-3  col-lg-1 col-md-1 col-sm-1 col-xs-12 mt-2">
-                    <div class="input-field first-wrap">
-                        <div class="icon-wrap">
+                    <div class=" d-flex">
+                        <input id="search" type="text" class="bg-white form-control rounded-pill"
+                            style="width: 230px; height: 40px;" placeholder="search">
+                        <div class="text-danger">
                             <!-- Adjust the color class applied to the SVG icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" class="text-black">
@@ -235,21 +253,19 @@
                                     d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l6 5.99L20.49 20l-5.99-6zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
                             </svg>
                         </div>
-                        <input id="search" type="text" class="bg-white form-control rounded-pill"
-                            style="width: 230px; height: 40px;" placeholder="search">
                     </div>
 
                 </div>
 
 
                 <div class="d-flex justify-content-end gap-3 mt-1">
-                    <div class=" mt-1 "> <i class="bi bi-arrows-move text-black-50">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                fill="currentColor" class="bi bi-arrows-move" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10M.146 8.354a.5.5 0 0 1 0-.708l2-2a.5.5 0 1 1 .708.708L1.707 7.5H5.5a.5.5 0 0 1 0 1H1.707l1.147 1.146a.5.5 0 0 1-.708.708zM10 8a.5.5 0 0 1 .5-.5h3.793l-1.147-1.146a.5.5 0 0 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L14.293 8.5H10.5A.5.5 0 0 1 10 8" />
-                            </svg>
-                        </i> </div>
+                    {{-- <div class=" mt-1 "> <i class="bi bi-arrows-move text-black-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                    fill="currentColor" class="bi bi-arrows-move" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10M.146 8.354a.5.5 0 0 1 0-.708l2-2a.5.5 0 1 1 .708.708L1.707 7.5H5.5a.5.5 0 0 1 0 1H1.707l1.147 1.146a.5.5 0 0 1-.708.708zM10 8a.5.5 0 0 1 .5-.5h3.793l-1.147-1.146a.5.5 0 0 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L14.293 8.5H10.5A.5.5 0 0 1 10 8" />
+                                </svg>
+                            </i> </div> --}}
                     <div class=" mt-2 dropdown">
                         <a class="btn btn-secondary dropdown-toggle bg-white text-black-50 border-0" href="#"
                             role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -259,7 +275,8 @@
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
                             </svg></a>
 
-                        <ul class="dropdown-menu max-w-xl"  style="min-width: 30rem;" aria-labelledby="dropdownMenuLink">
+                        <ul class="dropdown-menu max-w-xl" style="min-width: 30rem;"
+                            aria-labelledby="dropdownMenuLink">
                             <div class="container">
                                 <div class="row">
                                     <li class="col-sm-4">

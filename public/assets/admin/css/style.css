@@ -107,8 +107,8 @@ body {}
     height: 104%;
 }
 .left-sidebar-pro {
-    z-index: 9999;
-    width: 140px;
+    z-index: 1;
+    width: 130px;
 }
 #sidebar {
     min-width: 130px;
@@ -154,7 +154,7 @@ body {}
 }
 .nalika-profile {
     /* padding: 20px; */
-    padding-top:5px ;
+    padding-top:1px ;
 	position: relative;
     z-index: 99999;
     background: var(--own-black);
@@ -167,6 +167,7 @@ body {}
     height: 75px;
     border-radius: 50%;
     border: 2px solid var(--active-nav-black);
+    margin-bottom: 2px;
 }
 .sidebarCollapse{
     width: 25px;
@@ -324,7 +325,9 @@ ul.dtl-social li a{
 /*----------------------------------------*/
 .comment-scrollbar, .timeline-scrollbar, .messages-scrollbar, .project-list-scrollbar {
     height: 580px;
+
 }
+
 .mCSB_outside+.mCSB_scrollTools {
     right: 0px;
     margin: 0px 0px;
@@ -499,8 +502,8 @@ ul.dtl-social li a{
 	display:block;
 	color: #fff;
 	font-size: 14px;
-	border-top:1px solid #f1f1f1;
-	padding: 15px 0px;
+	border-top:0px solid #f1f1f1;
+	padding: 15px 5px;
 	text-align:center;
 	text-decoration:none;
 }
@@ -1214,9 +1217,9 @@ ul.two-part-sp li{
 }
 .header-top-area {
     position: fixed;
-    background: var(--own-black);
-    z-index: 99;
-    left: 100px;
+    /* background: var(--own-black); */
+    z-index: 999;
+    left: 1px;
     right: 0;
     top: 0;
     margin: 0 auto;
@@ -1227,7 +1230,7 @@ ul.two-part-sp li{
   height: auto !important;
 }
 .mini-navbar .header-top-area{
-	left: 80px;
+	left: 0px;
 }
 .add-product a {
     float: right;

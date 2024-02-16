@@ -23,14 +23,13 @@
                                               <input type="date" class="form-control bg-white text-black" id="dateInput">
                                             </div>
                                           </div>
-                                        <div class="container " style="margin-top: 80px;">
+                                        <div class="container " style="margin-top: 75px;">
                                             <div class="form-group">
-                                                <button class="btn-search bg-gray-100 " type="button">SEARCH </button>
+                                                <button class="btn-search btn btn-primary bg-gray-100 " type="button">SEARCH </button>
 
                                             </div>
                                           </div>
                                         </div>
-
                                     </form>
                                 </div>
                                 </form>
