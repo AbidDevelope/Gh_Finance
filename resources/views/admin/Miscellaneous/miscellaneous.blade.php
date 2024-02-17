@@ -105,7 +105,7 @@
                                                                     class="fa fa-eye m-r-5"></i> View</a>
                                                             <a class="dropdown-item" href="#"><i
                                                                     class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#"><i
+                                                            <a class="dropdown-item" href="{{ route('miscellaneous/delete', $item->id) }}"><i
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>

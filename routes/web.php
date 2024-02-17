@@ -71,6 +71,7 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('miscellaneous/create', 'miscellaneousCreateForm')->name('miscellaneous/create');
     Route::post('miscellaneous/create', 'miscellaneousCreate')->name('miscellaneous/create');
     Route::get('miscellaneous/view/{id}', 'miscellaneousView')->name('miscellaneous/view');
+    Route::get('miscellaneous/delete/{id}', 'miscellaneousDelete')->name('miscellaneous/delete');
 });
 
 // ------------------------- InvoiceController ----------------------- //
