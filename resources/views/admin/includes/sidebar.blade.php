@@ -56,6 +56,7 @@
 
     }
 
+
     .expenseslist {
         display: none;
         position: absolute;
@@ -122,6 +123,7 @@
     .padding-top-service {
         padding-top: 100px !important;
     }
+
 
     .padding-top-expenses {
         padding-top: 100px !important;
@@ -205,53 +207,12 @@
         height: 30px; /* Maintain aspect ratio */
         width: 30px; /* Set the width to 50% of its container */
     }
+    .text{
+        font-size: 16px;
+    }
 </style>
 
 <script>
-    //    document.addEventListener('DOMContentLoaded', function() {
-    //     var Services = document.getElementsByClassName('Services')[0];
-    //     var serviceMenu = document.getElementsByClassName('servicelist')[0];
-
-    //     Services.addEventListener('mouseenter', function() {
-    //         serviceMenu.style.display = 'block';
-    //     });
-
-    //     Services.addEventListener('mouseleave', function() {
-    //         serviceMenu.style.display = 'none';
-    //     });
-
-    //     var Invoices = document.getElementsByClassName('invoices')[0];
-    //     var invoicesMenu = document.getElementsByClassName('invoiceslist')[0];
-
-    //     Invoices.addEventListener('mouseenter', function() {
-    //         invoicesMenu.style.display = 'block';
-    //     });
-
-    //     Invoices.addEventListener('mouseleave', function() {
-    //         invoicesMenu.style.display = 'none';
-    //     });
-
-
-    //     document.addEventListener('click', function(event) {
-    //         var targetElement = event.target;
-    //         if (!Services.contains(targetElement) && !serviceMenu.contains(targetElement)) {
-    //             serviceMenu.style.display = 'none';
-    //         }
-    //         if (!Invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
-    //             invoicesMenu.style.display = 'none';
-    //         }
-    //     });
-
-
-    //     Services.addEventListener('click', function() {
-    //         serviceMenu.style.display = serviceMenu.style.display === 'block' ? 'none' : 'block';
-    //     });
-
-    //     Invoices.addEventListener('click', function() {
-    //         invoicesMenu.style.display = invoicesMenu.style.display === 'block' ? 'none' : 'block';
-    //     });
-    // });
-
     // services
     document.addEventListener('DOMContentLoaded', function() {
         var Services = document.getElementsByClassName('Services')[0];
@@ -260,11 +221,23 @@
         Services.addEventListener('mouseenter', function() {
             ServicesMenu.style.display = 'block';
         });
+        Services.addEventListener('mouseenter', function() {
+            ServicesMenu.style.display = 'block';
+        });
 
         Services.addEventListener('mouseleave', function() {
             ServicesMenu.style.display = 'none';
         });
+        Services.addEventListener('mouseleave', function() {
+            ServicesMenu.style.display = 'none';
+        });
 
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!Services.contains(targetElement) && !ServicesMenu.contains(targetElement)) {
+                ServicesMenu.style.display = 'none';
+            }
+        });
         document.addEventListener('click', function(event) {
             var targetElement = event.target;
             if (!Services.contains(targetElement) && !ServicesMenu.contains(targetElement)) {
@@ -276,7 +249,15 @@
             ServicesMenu.style.display = ServicesMenu.style.display === 'block' ? 'none' : 'block';
         });
     });
+        Services.addEventListener('click', function() {
+            ServicesMenu.style.display = ServicesMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
 
+    // invoices
+    document.addEventListener('DOMContentLoaded', function() {
+        var invoices = document.getElementsByClassName('invoices')[0];
+        var invoicesMenu = document.getElementsByClassName('invoiceslist')[0];
     // invoices
     document.addEventListener('DOMContentLoaded', function() {
         var invoices = document.getElementsByClassName('invoices')[0];
@@ -285,11 +266,23 @@
         invoices.addEventListener('mouseenter', function() {
             invoicesMenu.style.display = 'block';
         });
+        invoices.addEventListener('mouseenter', function() {
+            invoicesMenu.style.display = 'block';
+        });
 
         invoices.addEventListener('mouseleave', function() {
             invoicesMenu.style.display = 'none';
         });
+        invoices.addEventListener('mouseleave', function() {
+            invoicesMenu.style.display = 'none';
+        });
 
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
+                invoicesMenu.style.display = 'none';
+            }
+        });
         document.addEventListener('click', function(event) {
             var targetElement = event.target;
             if (!invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
@@ -305,7 +298,18 @@
     document.addEventListener('DOMContentLoaded', function() {
         var Quotations = document.getElementsByClassName('Quotations')[0];
         var quotationsMenu = document.getElementsByClassName('Quotationslist')[0];
+        invoices.addEventListener('click', function() {
+            invoicesMenu.style.display = invoicesMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+    // Quotations
+    document.addEventListener('DOMContentLoaded', function() {
+        var Quotations = document.getElementsByClassName('Quotations')[0];
+        var quotationsMenu = document.getElementsByClassName('Quotationslist')[0];
 
+        Quotations.addEventListener('mouseenter', function() {
+            quotationsMenu.style.display = 'block';
+        });
         Quotations.addEventListener('mouseenter', function() {
             quotationsMenu.style.display = 'block';
         });
@@ -313,7 +317,16 @@
         Quotations.addEventListener('mouseleave', function() {
             quotationsMenu.style.display = 'none';
         });
+        Quotations.addEventListener('mouseleave', function() {
+            quotationsMenu.style.display = 'none';
+        });
 
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!Quotations.contains(targetElement) && !quotationsMenu.contains(targetElement)) {
+                quotationsMenu.style.display = 'none';
+            }
+        });
         document.addEventListener('click', function(event) {
             var targetElement = event.target;
             if (!Quotations.contains(targetElement) && !quotationsMenu.contains(targetElement)) {
@@ -325,12 +338,21 @@
             quotationsMenu.style.display = quotationsMenu.style.display === 'block' ? 'none' : 'block';
         });
     });
+        Quotations.addEventListener('click', function() {
+            quotationsMenu.style.display = quotationsMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
 
     // beneficiarylist
     document.addEventListener('DOMContentLoaded', function() {
         var Beneficiary = document.getElementsByClassName('beneficiary')[0];
         var beneficiaryMenu = document.getElementsByClassName('beneficiarylist')[0];
+        var Beneficiary = document.getElementsByClassName('beneficiary')[0];
+        var beneficiaryMenu = document.getElementsByClassName('beneficiarylist')[0];
 
+        Beneficiary.addEventListener('mouseenter', function() {
+            beneficiaryMenu.style.display = 'block';
+        });
         Beneficiary.addEventListener('mouseenter', function() {
             beneficiaryMenu.style.display = 'block';
         });
@@ -338,7 +360,16 @@
         Beneficiary.addEventListener('mouseleave', function() {
             beneficiaryMenu.style.display = 'none';
         });
+        Beneficiary.addEventListener('mouseleave', function() {
+            beneficiaryMenu.style.display = 'none';
+        });
 
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!Beneficiary.contains(targetElement) && !beneficiaryMenu.contains(targetElement)) {
+                beneficiaryMenu.style.display = 'none';
+            }
+        });
         document.addEventListener('click', function(event) {
             var targetElement = event.target;
             if (!Beneficiary.contains(targetElement) && !beneficiaryMenu.contains(targetElement)) {
@@ -352,14 +383,28 @@
         });
     });
     // expenses
+        Beneficiary.addEventListener('click', function() {
+            beneficiaryMenu.style.display = beneficiaryMenu.style.display === 'block' ? 'none' :
+            'block';
+        });
+    });
+    // expenses
     document.addEventListener('DOMContentLoaded', function() {
+        var expenses = document.getElementsByClassName('expenses')[0];
+        var expensesMenu = document.getElementsByClassName('expenseslist')[0];
         var expenses = document.getElementsByClassName('expenses')[0];
         var expensesMenu = document.getElementsByClassName('expenseslist')[0];
 
         expenses.addEventListener('mouseenter', function() {
             expensesMenu.style.display = 'block';
         });
+        expenses.addEventListener('mouseenter', function() {
+            expensesMenu.style.display = 'block';
+        });
 
+        expenses.addEventListener('mouseleave', function() {
+            expensesMenu.style.display = 'none';
+        });
         expenses.addEventListener('mouseleave', function() {
             expensesMenu.style.display = 'none';
         });
@@ -370,7 +415,17 @@
                 expensesMenu.style.display = 'none';
             }
         });
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!expenses.contains(targetElement) && !expensesMenu.contains(targetElement)) {
+                expensesMenu.style.display = 'none';
+            }
+        });
 
+        expenses.addEventListener('click', function() {
+            expensesMenu.style.display = expensesMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
         expenses.addEventListener('click', function() {
             expensesMenu.style.display = expensesMenu.style.display === 'block' ? 'none' : 'block';
         });
@@ -395,7 +450,7 @@
                                     alt="Description of the image">
                             </div>
                             <div>
-                                <span class="mini-click-non hovercolor">Dashboard</span>
+                                <span class="mini-click-non hovercolor text">Dashboard</span>
                             </div>
                             <div class="triangledash"></div>
                         </a>
@@ -475,6 +530,7 @@
                     <li class="removable sidebar-h expenses">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
                             aria-expanded="false">
+                            aria-expanded="false">
                             <div class="mb-2">
                                 <img class="hovercolor custom-image" src="/assets/admin/img/logo/expenses.png"
                                 alt="Description of the image">
@@ -495,6 +551,7 @@
 
                                 </a></div>
                             <div class=" text-black-50"> <a class="left_margin text-black-50 "
+                            <div class=" text-black-50"> <a class="left_margin text-black-50 "
                                     href="{{ route('expenses') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" fill="currentColor" class="bi bi-receipt"
                                         viewBox="0 0 16 16">
@@ -512,6 +569,7 @@
                     <li class="removable sidebar-h invoices">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
                             aria-expanded="false">
+                            aria-expanded="false">
                             <div class="mb-2">
                                 <img class="hovercolor custom-image" src="/assets/admin/img/logo/invoices.png" alt="Description of the image">
 
@@ -521,6 +579,7 @@
                         </a>
                         <ul class="submenu-angle invoiceslist padding-top-Invoices" aria-expanded="false">
 
+                            <div class=" text-black-50"> <a class="left_margin text-black-50 "
                             <div class=" text-black-50"> <a class="left_margin text-black-50 "
                                     href="{{ route('invoices') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" fill="currentColor" class="bi bi-receipt"
@@ -545,6 +604,9 @@
                             <div><span class="text mini-click-non">Reports</span></div>
                         </a>
                         <ul class="submenu-angle beneficiarylist padding-top-beneficiary" aria-expanded="false">
+                            <div class=" text-black-50"> <a class="left_margin text-black-50 " href="#"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
                             <div class=" text-black-50"> <a class="left_margin text-black-50 " href="#"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
