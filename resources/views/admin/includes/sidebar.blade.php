@@ -56,6 +56,7 @@
 
     }
 
+
     .expenseslist {
         display: none;
         position: absolute;
@@ -122,6 +123,7 @@
     .padding-top-service {
         padding-top: 100px !important;
     }
+
 
     .padding-top-expenses {
         padding-top: 100px !important;
@@ -199,6 +201,12 @@
         color: #639;
         /* Set the color to #639 */
     }
+
+    .custom-image {
+        max-width: 100%; /* Ensure image doesn't exceed its container's width */
+        height: 30px; /* Maintain aspect ratio */
+        width: 30px; /* Set the width to 50% of its container */
+    }
     .text{
         font-size: 16px;
     }
@@ -213,11 +221,23 @@
         Services.addEventListener('mouseenter', function() {
             ServicesMenu.style.display = 'block';
         });
+        Services.addEventListener('mouseenter', function() {
+            ServicesMenu.style.display = 'block';
+        });
 
         Services.addEventListener('mouseleave', function() {
             ServicesMenu.style.display = 'none';
         });
+        Services.addEventListener('mouseleave', function() {
+            ServicesMenu.style.display = 'none';
+        });
 
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!Services.contains(targetElement) && !ServicesMenu.contains(targetElement)) {
+                ServicesMenu.style.display = 'none';
+            }
+        });
         document.addEventListener('click', function(event) {
             var targetElement = event.target;
             if (!Services.contains(targetElement) && !ServicesMenu.contains(targetElement)) {
@@ -229,7 +249,15 @@
             ServicesMenu.style.display = ServicesMenu.style.display === 'block' ? 'none' : 'block';
         });
     });
+        Services.addEventListener('click', function() {
+            ServicesMenu.style.display = ServicesMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
 
+    // invoices
+    document.addEventListener('DOMContentLoaded', function() {
+        var invoices = document.getElementsByClassName('invoices')[0];
+        var invoicesMenu = document.getElementsByClassName('invoiceslist')[0];
     // invoices
     document.addEventListener('DOMContentLoaded', function() {
         var invoices = document.getElementsByClassName('invoices')[0];
@@ -238,11 +266,23 @@
         invoices.addEventListener('mouseenter', function() {
             invoicesMenu.style.display = 'block';
         });
+        invoices.addEventListener('mouseenter', function() {
+            invoicesMenu.style.display = 'block';
+        });
 
         invoices.addEventListener('mouseleave', function() {
             invoicesMenu.style.display = 'none';
         });
+        invoices.addEventListener('mouseleave', function() {
+            invoicesMenu.style.display = 'none';
+        });
 
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
+                invoicesMenu.style.display = 'none';
+            }
+        });
         document.addEventListener('click', function(event) {
             var targetElement = event.target;
             if (!invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
@@ -258,7 +298,18 @@
     document.addEventListener('DOMContentLoaded', function() {
         var Quotations = document.getElementsByClassName('Quotations')[0];
         var quotationsMenu = document.getElementsByClassName('Quotationslist')[0];
+        invoices.addEventListener('click', function() {
+            invoicesMenu.style.display = invoicesMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+    // Quotations
+    document.addEventListener('DOMContentLoaded', function() {
+        var Quotations = document.getElementsByClassName('Quotations')[0];
+        var quotationsMenu = document.getElementsByClassName('Quotationslist')[0];
 
+        Quotations.addEventListener('mouseenter', function() {
+            quotationsMenu.style.display = 'block';
+        });
         Quotations.addEventListener('mouseenter', function() {
             quotationsMenu.style.display = 'block';
         });
@@ -266,7 +317,16 @@
         Quotations.addEventListener('mouseleave', function() {
             quotationsMenu.style.display = 'none';
         });
+        Quotations.addEventListener('mouseleave', function() {
+            quotationsMenu.style.display = 'none';
+        });
 
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!Quotations.contains(targetElement) && !quotationsMenu.contains(targetElement)) {
+                quotationsMenu.style.display = 'none';
+            }
+        });
         document.addEventListener('click', function(event) {
             var targetElement = event.target;
             if (!Quotations.contains(targetElement) && !quotationsMenu.contains(targetElement)) {
@@ -278,12 +338,21 @@
             quotationsMenu.style.display = quotationsMenu.style.display === 'block' ? 'none' : 'block';
         });
     });
+        Quotations.addEventListener('click', function() {
+            quotationsMenu.style.display = quotationsMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
 
     // beneficiarylist
     document.addEventListener('DOMContentLoaded', function() {
         var Beneficiary = document.getElementsByClassName('beneficiary')[0];
         var beneficiaryMenu = document.getElementsByClassName('beneficiarylist')[0];
+        var Beneficiary = document.getElementsByClassName('beneficiary')[0];
+        var beneficiaryMenu = document.getElementsByClassName('beneficiarylist')[0];
 
+        Beneficiary.addEventListener('mouseenter', function() {
+            beneficiaryMenu.style.display = 'block';
+        });
         Beneficiary.addEventListener('mouseenter', function() {
             beneficiaryMenu.style.display = 'block';
         });
@@ -291,7 +360,16 @@
         Beneficiary.addEventListener('mouseleave', function() {
             beneficiaryMenu.style.display = 'none';
         });
+        Beneficiary.addEventListener('mouseleave', function() {
+            beneficiaryMenu.style.display = 'none';
+        });
 
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!Beneficiary.contains(targetElement) && !beneficiaryMenu.contains(targetElement)) {
+                beneficiaryMenu.style.display = 'none';
+            }
+        });
         document.addEventListener('click', function(event) {
             var targetElement = event.target;
             if (!Beneficiary.contains(targetElement) && !beneficiaryMenu.contains(targetElement)) {
@@ -305,14 +383,28 @@
         });
     });
     // expenses
+        Beneficiary.addEventListener('click', function() {
+            beneficiaryMenu.style.display = beneficiaryMenu.style.display === 'block' ? 'none' :
+            'block';
+        });
+    });
+    // expenses
     document.addEventListener('DOMContentLoaded', function() {
+        var expenses = document.getElementsByClassName('expenses')[0];
+        var expensesMenu = document.getElementsByClassName('expenseslist')[0];
         var expenses = document.getElementsByClassName('expenses')[0];
         var expensesMenu = document.getElementsByClassName('expenseslist')[0];
 
         expenses.addEventListener('mouseenter', function() {
             expensesMenu.style.display = 'block';
         });
+        expenses.addEventListener('mouseenter', function() {
+            expensesMenu.style.display = 'block';
+        });
 
+        expenses.addEventListener('mouseleave', function() {
+            expensesMenu.style.display = 'none';
+        });
         expenses.addEventListener('mouseleave', function() {
             expensesMenu.style.display = 'none';
         });
@@ -323,7 +415,17 @@
                 expensesMenu.style.display = 'none';
             }
         });
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!expenses.contains(targetElement) && !expensesMenu.contains(targetElement)) {
+                expensesMenu.style.display = 'none';
+            }
+        });
 
+        expenses.addEventListener('click', function() {
+            expensesMenu.style.display = expensesMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
         expenses.addEventListener('click', function() {
             expensesMenu.style.display = expensesMenu.style.display === 'block' ? 'none' : 'block';
         });
@@ -339,11 +441,13 @@
                         <a class="text-black-50 d-flex flex-column align-items-center triangle-container"
                             href="{{ route('dashboard') }}">
                             <div class="mb-2">
-                                <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                {{-- <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
                                     fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
                                     <path
                                         d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
-                                </svg>
+                                </svg> --}}
+                                <img class="hovercolor custom-image" src="/assets/admin/img/logo/dashboard.png"
+                                    alt="Description of the image">
                             </div>
                             <div>
                                 <span class="mini-click-non hovercolor text">Dashboard</span>
@@ -358,12 +462,9 @@
                             href="#" aria-expanded="false">
                             <div class="mb-2">
                                 <!-- SVG Icon -->
-                                <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                    fill="currentColor" class="bi bi-person-raised-hand" viewBox="0 0 16 16">
-                                    <path
-                                        d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
-                                    <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
-                                </svg>
+                                <img class="hovercolor custom-image" src="/assets/admin/img/logo/services.png"
+                                    alt="Description of the image">
+
                             </div>
                             <div>
                                 <!-- Text -->
@@ -409,12 +510,9 @@
                     <li class="removable sidebar-h Quotations">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
                             href="#" aria-expanded="false">
-                            <div class="mb-2"><svg class="hovercolor" xmlns="http://www.w3.org/2000/svg"
-                                    width="36" height="36" fill="currentColor"
-                                    class="bi bi-chat-right-quote-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353zM7.194 4.766q.13.188.227.401c.428.948.393 2.377-.942 3.706a.446.446 0 0 1-.612.01.405.405 0 0 1-.011-.59c.419-.416.672-.831.809-1.22-.269.165-.588.26-.93.26C4.775 7.333 4 6.587 4 5.667S4.776 4 5.734 4c.271 0 .528.06.756.166l.008.004c.169.07.327.182.469.324q.128.125.227.272M11 7.073c-.269.165-.588.26-.93.26-.958 0-1.735-.746-1.735-1.666S9.112 4 10.069 4c.271 0 .528.06.756.166l.008.004c.17.07.327.182.469.324q.128.125.227.272.131.188.228.401c.428.948.392 2.377-.942 3.706a.446.446 0 0 1-.613.01.405.405 0 0 1-.011-.59c.42-.416.672-.831.81-1.22z" />
-                                </svg></div>
+                            <div class="mb-2"> <img class="hovercolor custom-image" src="/assets/admin/img/logo/quotation.png"
+                                    alt="Description of the image">
+                            </div>
                             <div><span class="text mini-click-non hovercolor">Quotations</span></div>
                             <div class="triangle"></div>
                         </a>
@@ -432,14 +530,10 @@
                     <li class="removable sidebar-h expenses">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
                             aria-expanded="false">
+                            aria-expanded="false">
                             <div class="mb-2">
-                                <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36"
-                                    height="36" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
-                                    <path
-                                        d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z" />
-                                    <path
-                                        d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5" />
-                                </svg>
+                                <img class="hovercolor custom-image" src="/assets/admin/img/logo/expenses.png"
+                                alt="Description of the image">
                             </div>
                             <div><span class="text mini-click-non hovercolor">Expenses</span></div>
                             <div class="triangle"></div>
@@ -456,6 +550,7 @@
                                     </svg><span class="ml-1">Miscellaneous </span>
 
                                 </a></div>
+                            <div class=" text-black-50"> <a class="left_margin text-black-50 "
                             <div class=" text-black-50"> <a class="left_margin text-black-50 "
                                     href="{{ route('expenses') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" fill="currentColor" class="bi bi-receipt"
@@ -474,20 +569,17 @@
                     <li class="removable sidebar-h invoices">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
                             aria-expanded="false">
+                            aria-expanded="false">
                             <div class="mb-2">
-                                <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36"
-                                    height="36" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
-                                    <path
-                                        d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z" />
-                                    <path
-                                        d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5" />
-                                </svg>
+                                <img class="hovercolor custom-image" src="/assets/admin/img/logo/invoices.png" alt="Description of the image">
+
                             </div>
                             <div><span class="text mini-click-non hovercolor">Invoices</span></div>
                             <div class="triangle"></div>
                         </a>
                         <ul class="submenu-angle invoiceslist padding-top-Invoices" aria-expanded="false">
 
+                            <div class=" text-black-50"> <a class="left_margin text-black-50 "
                             <div class=" text-black-50"> <a class="left_margin text-black-50 "
                                     href="{{ route('invoices') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" fill="currentColor" class="bi bi-receipt"
@@ -507,17 +599,14 @@
                     <li class="removable sidebar-h beneficiary">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
                             href="#" aria-expanded="false">
-                            <div class="mb-2"><svg class="hovercolor" xmlns="http://www.w3.org/2000/svg"
-                                    width="36" height="36" fill="currentColor" class="bi bi-person-check"
-                                    viewBox="0 0 16 16">
-                                    <path
-                                        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
-                                    <path
-                                        d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
-                                </svg> </div>
+                            <div class="mb-2 custom-image"> <img class="hovercolor " src="/assets/admin/img/logo/report.png" alt="Description of the image">
+                            </div>
                             <div><span class="text mini-click-non">Reports</span></div>
                         </a>
                         <ul class="submenu-angle beneficiarylist padding-top-beneficiary" aria-expanded="false">
+                            <div class=" text-black-50"> <a class="left_margin text-black-50 " href="#"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
                             <div class=" text-black-50"> <a class="left_margin text-black-50 " href="#"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">

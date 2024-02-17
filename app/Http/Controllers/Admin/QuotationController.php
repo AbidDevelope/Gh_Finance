@@ -98,6 +98,6 @@ class QuotationController extends Controller
             ]);
         }
 
-        return response()->json(['status' => 'error', 'message' => 'Project not found'], 404);
+        return response()->json(['message' => 'Project not found'], 404);
     }
 }
