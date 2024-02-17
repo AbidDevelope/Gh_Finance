@@ -1,3 +1,10 @@
+<style>
+    .bg{
+        background-color: #fff !important;
+        color: black !important;
+    }
+</style>
+
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
@@ -21,8 +28,8 @@
                                             <div class="form-group">
                                                 <label for="dateInput">Select End Date:</label>
                                                 <!-- Input with Bootstrap styling -->
-                                                <input type="date" class="form-control bg-white text-black"
-                                                    id="dateInput">
+                                                <input type="text" class="form-control bg" id="Start"
+                                                name="start" min="2000-03" placeholder="DD/MM/YYYY">
                                             </div>
                                         </div>
                                         <div class="container " style="margin-top: 75px;">
@@ -157,5 +164,23 @@
             searchEnabled: false,
             itemSelectText: '',
         });
+    </script>
+     <script>
+        var onDateSelect = function(selectedDate, input) {
+            if (input.id === 'Start') { //Start date selected - update End Date picker
+                $("#End").datepicker('option', 'minDate', selectedDate);
+            } else { //End date selected - update Start Date picker
+                $("#Start").datepicker('option', 'maxDate', selectedDate);
+            }
+        };
+        var onDocumentReady = function() {
+            var datepickerConfiguration = {
+                dateFormat: "dd/mm/yy",
+                onSelect: onDateSelect
+            };
+            ///--- Component Binding ---///
+            $('#Start, #End').datepicker(datepickerConfiguration);
+        };
+        $(onDocumentReady);
     </script>
 @endsection
