@@ -449,7 +449,7 @@
                     <li class="removable sidebar-h expenses">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
                             aria-expanded="false">
-                         
+
                             <div class="mb-2">
                                 <img class="hovercolor custom-image" src="/assets/admin/img/logo/expenses.png"
                                 alt="Description of the image">
