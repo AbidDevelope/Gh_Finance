@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Expense;
 use App\Models\Project;
-use App\Models\ProjectManager;
+use App\Models\Miscellaneous;
+use App\Models\MiscellaneousItem;
 use Validator;
 
 class ExpensesController extends Controller
@@ -20,47 +21,17 @@ class ExpensesController extends Controller
     public function expensesCreate()
     {
         $projects = Project::orderBy('project_type', 'asc')->get();
-        $projectManagers = ProjectManager::all();
-        // return $projects;
-        return view('admin.expenses.expenses-create', compact('projects', 'projectManagers'));
+        return view('admin.expenses.expenses-create', compact('projects'));
     }
 
     public function expensesCreateData(Request $request)
     {
-        // $validate = Validator::make($request->all(), [
-        //     'project'     => 'required|string|max:255' ,  'receipt'        => 'required|string|max:255',
-        //     'beneficiary' => 'required|string|max:255' ,  'amount_deposite'  => 'required|string|max:255',
-        //     'amount_withdraw'   => 'required|string|max:255' ,  'description'         => 'required|string|max:255',
-        // ]);
         $requestData = $request->all();
 
         Expense::create($requestData);
             
         session()->flash('success', 'Expense Created Successfully');
         return redirect()->route('expenses');
-
-        // if($validate->fails()){
-        //     return redirect()->back()->withErrors($validate)->withInput();
-        // }else{
-        //     $requestData = $request->all();
-
-            // if ($request->hasFile('attachments')) {
-            //     $file = $request->file('attachments');
-            //     $extension = $file->getClientOriginalExtension();
-            //     $fileName = time() . '.' . $extension;
-               
-            //     $file->move(public_path('uploads/expenses'), $fileName); 
-            
-            //     $requestData['attachments'] = $fileName; 
-            // }
-            
-        //     Expense::create($requestData);
-            
-        //     session()->flash('success', 'Expense Created Successfully');
-        //     return redirect()->route('expenses');
-        // }
-        // session()->flash('error', 'Something Went Wrong.');
-        // return redirect()->back();
     }
 
     public function expensesView($id)
@@ -151,9 +122,21 @@ class ExpensesController extends Controller
 
     public function miscellaneousCreate(Request $request)
     {
+       $validate = Validator::make($request->all(), [
+        'description.*' => 'required',         'month' => 'required',
+        'date.*'        => 'required',         'total.*' => 'required',
+        'subtotal'    => 'required',         'others' => 'required',
+        'grandtotal'  => 'required',
+       ]);
+
+       if($validate->fails())
+       {
+        return redirect()->back()->withErrors($validate)->withInput();
+       }
+
        $requestData = $request->all();
 
-       Expense::create($requestData);
+       Miscellaneous::create($requestData);
 
        session()->flash('success', 'Created Successfully');
        return redirect()->route('miscellaneous');

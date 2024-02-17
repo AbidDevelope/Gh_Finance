@@ -639,7 +639,6 @@
                             <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Finance <span
                                         class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                 <ul id="Pagemob" class="collapse dropdown-header-top">
-                                    <li><a href="{{ route('payments') }}">Payments</a></li>
                                     <li><a href="{{ route('expenses') }}">Expenses</a></li>
                                 </ul>
                             </li>

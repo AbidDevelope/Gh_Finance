@@ -26,16 +26,6 @@ Route::controller(AuthController::class)->group(function(){
     });
 });
 
-// --------------------------- FinanceController -------------------------- //
-Route::controller(FinanceController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
-    // Route::get('proposals', 'proposalList')->name('proposals');
-    // Route::get('proposals/create', 'proposalCreate')->name('proposals/create');
-    // Route::get('estimates', 'estimatesList')->name('estimates');
-    Route::get('payments', 'paymentList')->name('payments');
-    
-    // Route::get('bankaccounts', 'bankAcoountList')->name('bankaccounts');
-});
-
 // ----------------------------- ServicesController ---------------------------- //
 Route::controller(ServicesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('all/services', 'allServices')->name('all/services');

@@ -172,7 +172,7 @@
                                             </div>
                                         </a></li>
                                     <li class="col-sm-4"><a class="text-black-50" title="Compose Mail"
-                                            href="{{ route('payments') }}">
+                                            href="#">
                                             <div class="d-flex justify-content-center">
                                                 <svg class="text" xmlns="http://www.w3.org/2000/svg" width="36"
                                                     height="36" fill="currentColor"
@@ -360,7 +360,7 @@
                                             </div>
                                         </a></li>
                                     <li class="col-sm-4"><a class="text-black-50" title="Compose Mail"
-                                            href="{{ route('payments') }}">
+                                            href="#">
                                             <div class="d-flex justify-content-center">
                                                 <svg class="text" xmlns="http://www.w3.org/2000/svg" width="36"
                                                     height="36" fill="currentColor"
