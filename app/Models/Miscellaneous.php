@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\MiscellaneousItem;
 
 class Miscellaneous extends Model
 {
@@ -14,4 +15,9 @@ class Miscellaneous extends Model
         'others',
         'grandtotal',
     ];
+
+    public function miscellaneousItem()
+    {
+        return $this->hasMany(MiscellaneousItem::class);
+    }
 }

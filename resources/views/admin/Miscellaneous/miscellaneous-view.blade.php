@@ -8,72 +8,37 @@
                 <div class="container-fluid">
                     <div class="container-fluid">
                         <div class="">
-                            {{-- <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                <div class="form-section">
-                                    <h6 class="card-title m-b-15">Expenses Description</h6>
-                                    <hr class="border-top-grey">
-                                    <div class="card-body">
-                                        <div class="project-title">
-                                            <h5 class="card-title">Project Description</h5>
-                                            <small class="block text-ellipsis m-b-15"><span class="text-xs">2</span> <span class="text-muted">open tasks, </span><span class="text-xs">5</span> <span class="text-muted">tasks completed</span></small>
-                                        </div>
-                                        <p>{{ $expenses->description }} </p>
-                                    </div>
-                                </div>
-                            </div> --}}
                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                 <div class="form-section">
-                                    <h6 class="card-title m-b-15">Project details</h6>
+                                    <h6 class="card-title m-b-15">Miscellaneous details</h6>
                                     <hr class="border-top-grey">
                                     <div class="card-body">
-                                        <table class="table table-striped table-border">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Project Type:</td>
-                                                    <td class="text-right">{{ $expenses->project_type }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Project Name:</td>
-                                                    <td class="text-right">{{ $expenses->project_name }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Project Manager:</td>
-                                                    <td class="text-right">{{ $expenses->project_manager_name }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Receipt:</td>
-                                                    <td class="text-right">{{ $expenses->receipt }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount Deposite:</td>
-                                                    <td class="text-right">{{ $expenses->amount_deposite }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount Withdraw:</td>
-                                                    <td class="text-right">{{ $expenses->amount_withdraw }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Beneficiary:</td>
-                                                    <td class="text-right">{{ $expenses->beneficiary }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Created:</td>
-                                                    <td class="text-right">{{ $expenses->created_at->format('d M Y') }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Description:</td>
-                                                    <td class="text-right">{{ $expenses->description }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Status:</td>
-                                                    <td class="text-right">Working</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        {{-- <p class="m-b-5">Progress <span class="text-success float-right">40%</span></p>
-                                        <div class="progress progress-xs mb-0">
-                                            <div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="40%" style="width: 40%"></div>
-                                        </div> --}}
+                                        <div class="margin-top">
+                                            <table class="products table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Description</th>
+                                                        <th>Unit</th>
+                                                        <th>Qty</th>
+                                                        <th>Price/K.D</th>
+                                                        <th>Total/K.D</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {{-- @foreach ($invoices->invoiceItems as $key => $invoice)
+                                                        <tr class="items">
+                                                            <td>{{ $key + 1 }}</td>
+                                                            <td>{{ $invoice->description }}</td>
+                                                            <td>{{ $invoice->unit }}</td>
+                                                            <td>{{ $invoice->qty }}</td>
+                                                            <td>{{ $invoice->price }}</td>
+                                                            <td>{{ $invoice->total }}</td>
+                                                        </tr>
+                                                    @endforeach --}}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

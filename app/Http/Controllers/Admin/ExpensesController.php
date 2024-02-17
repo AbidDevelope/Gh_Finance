@@ -111,8 +111,9 @@ class ExpensesController extends Controller
 
     public function miscellaneous()
     {
-        $data = Expense::where('project_type', 'Others')->get();
-        return view('admin.miscellaneous.miscellaneous', compact('data'));
+        $miscell = Miscellaneous::with('miscellaneousItem')->get();
+        
+        return view('admin.miscellaneous.miscellaneous', compact('miscell'));
     }
 
     public function miscellaneousCreateForm()
@@ -136,8 +137,24 @@ class ExpensesController extends Controller
 
        $requestData = $request->all();
 
-       Miscellaneous::create($requestData);
+      $miscellaneous =  Miscellaneous::create($requestData);
 
+      if($miscellaneous)
+      {
+        foreach($request->month as $key=>$value)
+        {
+            $formattedDate = \Carbon\Carbon::createFromFormat('d/m/Y', $request->date[$key])->format('Y-m-d');
+
+            $miscellaneousItems = new MiscellaneousItem([
+                'miscellaneous_id' => $miscellaneous->id,
+                'description'   => $request->description[$key],
+                'month'     => $request->month[$key],
+                'date'    => $formattedDate,
+                'total'   => $request->total[$key],
+            ]);
+            $miscellaneousItems->save();
+        }
+      }
        session()->flash('success', 'Created Successfully');
        return redirect()->route('miscellaneous');
     }
