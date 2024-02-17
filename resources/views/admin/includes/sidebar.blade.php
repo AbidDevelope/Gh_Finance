@@ -55,6 +55,7 @@
         margin-top: -222px !important;
 
     }
+
     .expenseslist {
         display: none;
         position: absolute;
@@ -121,6 +122,7 @@
     .padding-top-service {
         padding-top: 100px !important;
     }
+
     .padding-top-expenses {
         padding-top: 100px !important;
     }
@@ -197,176 +199,135 @@
         color: #639;
         /* Set the color to #639 */
     }
+    .text{
+        font-size: 16px;
+    }
 </style>
 
 <script>
-//    document.addEventListener('DOMContentLoaded', function() {
-//     var Services = document.getElementsByClassName('Services')[0];
-//     var serviceMenu = document.getElementsByClassName('servicelist')[0];
+    // services
+    document.addEventListener('DOMContentLoaded', function() {
+        var Services = document.getElementsByClassName('Services')[0];
+        var ServicesMenu = document.getElementsByClassName('servicelist')[0];
 
-//     Services.addEventListener('mouseenter', function() {
-//         serviceMenu.style.display = 'block';
-//     });
+        Services.addEventListener('mouseenter', function() {
+            ServicesMenu.style.display = 'block';
+        });
 
-//     Services.addEventListener('mouseleave', function() {
-//         serviceMenu.style.display = 'none';
-//     });
-
-//     var Invoices = document.getElementsByClassName('invoices')[0];
-//     var invoicesMenu = document.getElementsByClassName('invoiceslist')[0];
-
-//     Invoices.addEventListener('mouseenter', function() {
-//         invoicesMenu.style.display = 'block';
-//     });
-
-//     Invoices.addEventListener('mouseleave', function() {
-//         invoicesMenu.style.display = 'none';
-//     });
-
-
-//     document.addEventListener('click', function(event) {
-//         var targetElement = event.target;
-//         if (!Services.contains(targetElement) && !serviceMenu.contains(targetElement)) {
-//             serviceMenu.style.display = 'none';
-//         }
-//         if (!Invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
-//             invoicesMenu.style.display = 'none';
-//         }
-//     });
-
-
-//     Services.addEventListener('click', function() {
-//         serviceMenu.style.display = serviceMenu.style.display === 'block' ? 'none' : 'block';
-//     });
-
-//     Invoices.addEventListener('click', function() {
-//         invoicesMenu.style.display = invoicesMenu.style.display === 'block' ? 'none' : 'block';
-//     });
-// });
-
-// services
-document.addEventListener('DOMContentLoaded', function() {
-    var Services = document.getElementsByClassName('Services')[0];
-    var ServicesMenu = document.getElementsByClassName('servicelist')[0];
-
-    Services.addEventListener('mouseenter', function() {
-        ServicesMenu.style.display = 'block';
-    });
-
-    Services.addEventListener('mouseleave', function() {
-        ServicesMenu.style.display = 'none';
-    });
-
-    document.addEventListener('click', function(event) {
-        var targetElement = event.target;
-        if (!Services.contains(targetElement) && !ServicesMenu.contains(targetElement)) {
+        Services.addEventListener('mouseleave', function() {
             ServicesMenu.style.display = 'none';
-        }
+        });
+
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!Services.contains(targetElement) && !ServicesMenu.contains(targetElement)) {
+                ServicesMenu.style.display = 'none';
+            }
+        });
+
+        Services.addEventListener('click', function() {
+            ServicesMenu.style.display = ServicesMenu.style.display === 'block' ? 'none' : 'block';
+        });
     });
 
-    Services.addEventListener('click', function() {
-        ServicesMenu.style.display = ServicesMenu.style.display === 'block' ? 'none' : 'block';
-    });
-});
+    // invoices
+    document.addEventListener('DOMContentLoaded', function() {
+        var invoices = document.getElementsByClassName('invoices')[0];
+        var invoicesMenu = document.getElementsByClassName('invoiceslist')[0];
 
-// invoices
-document.addEventListener('DOMContentLoaded', function() {
-    var invoices = document.getElementsByClassName('invoices')[0];
-    var invoicesMenu = document.getElementsByClassName('invoiceslist')[0];
+        invoices.addEventListener('mouseenter', function() {
+            invoicesMenu.style.display = 'block';
+        });
 
-    invoices.addEventListener('mouseenter', function() {
-        invoicesMenu.style.display = 'block';
-    });
-
-    invoices.addEventListener('mouseleave', function() {
-        invoicesMenu.style.display = 'none';
-    });
-
-    document.addEventListener('click', function(event) {
-        var targetElement = event.target;
-        if (!invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
+        invoices.addEventListener('mouseleave', function() {
             invoicesMenu.style.display = 'none';
-        }
-    });
+        });
 
-    invoices.addEventListener('click', function() {
-        invoicesMenu.style.display = invoicesMenu.style.display === 'block' ? 'none' : 'block';
-    });
-});
-// Quotations
-document.addEventListener('DOMContentLoaded', function() {
-    var Quotations = document.getElementsByClassName('Quotations')[0];
-    var quotationsMenu = document.getElementsByClassName('Quotationslist')[0];
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!invoices.contains(targetElement) && !invoicesMenu.contains(targetElement)) {
+                invoicesMenu.style.display = 'none';
+            }
+        });
 
-    Quotations.addEventListener('mouseenter', function() {
-        quotationsMenu.style.display = 'block';
+        invoices.addEventListener('click', function() {
+            invoicesMenu.style.display = invoicesMenu.style.display === 'block' ? 'none' : 'block';
+        });
     });
+    // Quotations
+    document.addEventListener('DOMContentLoaded', function() {
+        var Quotations = document.getElementsByClassName('Quotations')[0];
+        var quotationsMenu = document.getElementsByClassName('Quotationslist')[0];
 
-    Quotations.addEventListener('mouseleave', function() {
-        quotationsMenu.style.display = 'none';
-    });
+        Quotations.addEventListener('mouseenter', function() {
+            quotationsMenu.style.display = 'block';
+        });
 
-    document.addEventListener('click', function(event) {
-        var targetElement = event.target;
-        if (!Quotations.contains(targetElement) && !quotationsMenu.contains(targetElement)) {
+        Quotations.addEventListener('mouseleave', function() {
             quotationsMenu.style.display = 'none';
-        }
-    });
+        });
 
-    Quotations.addEventListener('click', function() {
-        quotationsMenu.style.display = quotationsMenu.style.display === 'block' ? 'none' : 'block';
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!Quotations.contains(targetElement) && !quotationsMenu.contains(targetElement)) {
+                quotationsMenu.style.display = 'none';
+            }
+        });
+
+        Quotations.addEventListener('click', function() {
+            quotationsMenu.style.display = quotationsMenu.style.display === 'block' ? 'none' : 'block';
+        });
     });
-});
 
     // beneficiarylist
     document.addEventListener('DOMContentLoaded', function() {
-    var Beneficiary = document.getElementsByClassName('beneficiary')[0];
-    var beneficiaryMenu = document.getElementsByClassName('beneficiarylist')[0];
+        var Beneficiary = document.getElementsByClassName('beneficiary')[0];
+        var beneficiaryMenu = document.getElementsByClassName('beneficiarylist')[0];
 
-    Beneficiary.addEventListener('mouseenter', function() {
-        beneficiaryMenu.style.display = 'block';
-    });
+        Beneficiary.addEventListener('mouseenter', function() {
+            beneficiaryMenu.style.display = 'block';
+        });
 
-    Beneficiary.addEventListener('mouseleave', function() {
-        beneficiaryMenu.style.display = 'none';
-    });
-
-    document.addEventListener('click', function(event) {
-        var targetElement = event.target;
-        if (!Beneficiary.contains(targetElement) && !beneficiaryMenu.contains(targetElement)) {
+        Beneficiary.addEventListener('mouseleave', function() {
             beneficiaryMenu.style.display = 'none';
-        }
-    });
+        });
 
-    Beneficiary.addEventListener('click', function() {
-        beneficiaryMenu.style.display = beneficiaryMenu.style.display === 'block' ? 'none' : 'block';
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!Beneficiary.contains(targetElement) && !beneficiaryMenu.contains(targetElement)) {
+                beneficiaryMenu.style.display = 'none';
+            }
+        });
+
+        Beneficiary.addEventListener('click', function() {
+            beneficiaryMenu.style.display = beneficiaryMenu.style.display === 'block' ? 'none' :
+            'block';
+        });
     });
-});
-// expenses
+    // expenses
     document.addEventListener('DOMContentLoaded', function() {
-    var expenses = document.getElementsByClassName('expenses')[0];
-    var expensesMenu = document.getElementsByClassName('expenseslist')[0];
+        var expenses = document.getElementsByClassName('expenses')[0];
+        var expensesMenu = document.getElementsByClassName('expenseslist')[0];
 
-    expenses.addEventListener('mouseenter', function() {
-        expensesMenu.style.display = 'block';
-    });
+        expenses.addEventListener('mouseenter', function() {
+            expensesMenu.style.display = 'block';
+        });
 
-    expenses.addEventListener('mouseleave', function() {
-        expensesMenu.style.display = 'none';
-    });
-
-    document.addEventListener('click', function(event) {
-        var targetElement = event.target;
-        if (!expenses.contains(targetElement) && !expensesMenu.contains(targetElement)) {
+        expenses.addEventListener('mouseleave', function() {
             expensesMenu.style.display = 'none';
-        }
-    });
+        });
 
-    expenses.addEventListener('click', function() {
-        expensesMenu.style.display = expensesMenu.style.display === 'block' ? 'none' : 'block';
-    });
-});
+        document.addEventListener('click', function(event) {
+            var targetElement = event.target;
+            if (!expenses.contains(targetElement) && !expensesMenu.contains(targetElement)) {
+                expensesMenu.style.display = 'none';
+            }
+        });
 
+        expenses.addEventListener('click', function() {
+            expensesMenu.style.display = expensesMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
 </script>
 
 <div class="left-sidebar-pro " style="margin-top: 78px">
@@ -385,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </svg>
                             </div>
                             <div>
-                                <span class="mini-click-non hovercolor">Dashboard</span>
+                                <span class="mini-click-non hovercolor text">Dashboard</span>
                             </div>
                             <div class="triangledash"></div>
                         </a>
@@ -470,10 +431,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     </li>
                     <li class="removable sidebar-h expenses">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
-                             aria-expanded="false">
+                            aria-expanded="false">
                             <div class="mb-2">
-                                <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                    fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
+                                <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36"
+                                    height="36" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
                                     <path
                                         d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z" />
                                     <path
@@ -495,7 +456,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </svg><span class="ml-1">Miscellaneous </span>
 
                                 </a></div>
-                                <div class=" text-black-50"> <a class="left_margin text-black-50 "
+                            <div class=" text-black-50"> <a class="left_margin text-black-50 "
                                     href="{{ route('expenses') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" fill="currentColor" class="bi bi-receipt"
                                         viewBox="0 0 16 16">
@@ -512,10 +473,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     </li>
                     <li class="removable sidebar-h invoices">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
-                             aria-expanded="false">
+                            aria-expanded="false">
                             <div class="mb-2">
-                                <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                                    fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
+                                <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36"
+                                    height="36" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
                                     <path
                                         d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z" />
                                     <path
@@ -527,7 +488,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </a>
                         <ul class="submenu-angle invoiceslist padding-top-Invoices" aria-expanded="false">
 
-                                <div class=" text-black-50"> <a class="left_margin text-black-50 "
+                            <div class=" text-black-50"> <a class="left_margin text-black-50 "
                                     href="{{ route('invoices') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" fill="currentColor" class="bi bi-receipt"
                                         viewBox="0 0 16 16">
@@ -557,10 +518,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div><span class="text mini-click-non">Reports</span></div>
                         </a>
                         <ul class="submenu-angle beneficiarylist padding-top-beneficiary" aria-expanded="false">
-                            <div class=" text-black-50"> <a class="left_margin text-black-50 "
-                                    href="#"><svg xmlns="http://www.w3.org/2000/svg"
-                                        width="20" height="20" fill="currentColor" class="bi bi-person-check"
-                                        viewBox="0 0 16 16">
+                            <div class=" text-black-50"> <a class="left_margin text-black-50 " href="#"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
                                         <path
                                             d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
                                         <path
