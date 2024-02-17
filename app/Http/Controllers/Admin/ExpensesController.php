@@ -29,9 +29,32 @@ class ExpensesController extends Controller
         $requestData = $request->all();
 
         Expense::create($requestData);
-            
+
         session()->flash('success', 'Expense Created Successfully');
         return redirect()->route('expenses');
+
+        // if($validate->fails()){
+        //     return redirect()->back()->withErrors($validate)->withInput();
+        // }else{
+        //     $requestData = $request->all();
+
+            // if ($request->hasFile('attachments')) {
+            //     $file = $request->file('attachments');
+            //     $extension = $file->getClientOriginalExtension();
+            //     $fileName = time() . '.' . $extension;
+
+            //     $file->move(public_path('uploads/expenses'), $fileName);
+
+            //     $requestData['attachments'] = $fileName;
+            // }
+
+        //     Expense::create($requestData);
+
+        //     session()->flash('success', 'Expense Created Successfully');
+        //     return redirect()->route('expenses');
+        // }
+        // session()->flash('error', 'Something Went Wrong.');
+        // return redirect()->back();
     }
 
     public function expensesView($id)
@@ -52,7 +75,7 @@ class ExpensesController extends Controller
             'item_name'     => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
             'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
             'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
-            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' , 
+            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' ,
             'status'        => 'required|string|max:255',
         ]);
 
@@ -85,7 +108,7 @@ class ExpensesController extends Controller
     public function expensesChangeStatus($id)
     {
         $data = Expense::where('id', $id)->first();
-     
+
         if($data->status == 'Approved')
         {
             $status = 'Pending';
