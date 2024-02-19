@@ -72,7 +72,6 @@
                                     <tr role="row">
                                         <th>#</th>
                                         <th>Invoice Number</th>
-                                        <th>Beneficiary</th>
                                         <th>Created Date</th>
                                         <th>Amount</th>
                                         <th>Status</th>
@@ -85,7 +84,6 @@
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
                                                 <td>{{ $invoice->invoice_number }}</td>
-                                                <td>{{ $invoice->beneficiaries->beneficiary }}</td>
                                                 <td>{{ $invoice->created_at->format('d M Y') }}</td>
                                                 <td>{{ $invoice->grandtotal }}</td>
                                                 <td><span class="badge bg-success">Paid</span></td>
