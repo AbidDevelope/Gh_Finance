@@ -82,7 +82,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    
+
                                             <tr>
                                                 <td>
                                                     1
@@ -106,12 +106,12 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            @endforeach
+                                            {{-- @endforeach
                                         @else
                                         <tr>
                                             <td colspan="9" class="text-center">No Record Found</td>
                                         </tr>
-                                        @endif
+                                        @endif --}}
                                     </tbody>
                                 </table>
                             </div>
