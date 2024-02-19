@@ -12,129 +12,9 @@ use Validator;
 
 class ExpensesController extends Controller
 {
-    public function expensesList()
-    {
-        $data = Expense::where('project_type', '!=', 'Others')->get();
-        return view('admin.expenses.expenses', compact('data'));
-    }
-
-    public function expensesCreate()
-    {
-        $projects = Project::orderBy('project_type', 'asc')->get();
-        return view('admin.expenses.expenses-create', compact('projects'));
-    }
-
-    public function expensesCreateData(Request $request)
-    {
-        $requestData = $request->all();
-
-        Expense::create($requestData);
-
-        session()->flash('success', 'Expense Created Successfully');
-        return redirect()->route('expenses');
-
-        // if($validate->fails()){
-        //     return redirect()->back()->withErrors($validate)->withInput();
-        // }else{
-        //     $requestData = $request->all();
-
-            // if ($request->hasFile('attachments')) {
-            //     $file = $request->file('attachments');
-            //     $extension = $file->getClientOriginalExtension();
-            //     $fileName = time() . '.' . $extension;
-
-            //     $file->move(public_path('uploads/expenses'), $fileName);
-
-            //     $requestData['attachments'] = $fileName;
-            // }
-
-        //     Expense::create($requestData);
-
-        //     session()->flash('success', 'Expense Created Successfully');
-        //     return redirect()->route('expenses');
-        // }
-        // session()->flash('error', 'Something Went Wrong.');
-        // return redirect()->back();
-    }
-
-    public function expensesView($id)
-    {
-        $expenses = Expense::find($id);
-        return view('admin.expenses.expenses-view', compact('expenses'));
-    }
-
-    public function expensesEdit($id)
-    {
-        $data = Expense::find($id);
-        return view('admin.expenses.expenses-edit', compact('data'));
-    }
-
-    public function expensesUpdate(Request $request, $id)
-    {
-        $validate = Validator::make($request->all(), [
-            'item_name'     => 'required|string|max:255' ,  'project'        => 'required|string|max:255',
-            'purchase_from' => 'required|string|max:255' ,  'purchase_date'  => 'required|string|max:255',
-            'purchase_by'   => 'required|string|max:255' ,  'amount'         => 'required|string|max:255',
-            'paid_by'       => 'required|string|max:255' ,  'description'   => 'required|string|max:255' ,
-            'status'        => 'required|string|max:255',
-        ]);
-
-        if($validate->fails())
-        {
-            return redirect()->back()->withErrors($validate)->withInput();
-        }else{
-            $expenses = Expense::where('id', $id)->first();
-            $requestData = $request->all();
-
-            if($request->hasFile('attachments'))
-            {
-                $file = $request->file('attachments');
-                $extension = $file->getClientOriginalExtension();
-                $fileName = time(). '.' . $extension;
-                $file->move(public_path('uploads/expenses'), $fileName);
-                $requestData['attachments'] = $fileName;
-            }
-
-            $expenses->update($requestData);
-
-            session()->flash('success', 'Expenses Updated Successfully.');
-            return redirect()->route('expenses');
-        }
-
-        session()->flash('error', 'Something Went Wrong.');
-        return redirect()->back();
-    }
-
-    public function expensesChangeStatus($id)
-    {
-        $data = Expense::where('id', $id)->first();
-
-        if($data->status == 'Approved')
-        {
-            $status = 'Pending';
-        }else
-        {
-            $status = 'Approved';
-        }
-
-        $value = array('status'=> $status);
-        Expense::where('id', $id)->update($value);
-
-        session()->flash('success', 'Status Change Successfully.');
-        return redirect()->back();
-    }
-
-    public function expensesDelete($id)
-    {
-        Expense::find($id)->delete();
-
-        session()->flash('success', 'Expenses Deleted Successfully');
-        return redirect()->back();
-    }
-
     public function miscellaneous()
     {
-        $miscell = Miscellaneous::with('miscellaneousItem')->get();
+        $miscell = Miscellaneous::orderBy('id', 'desc')->get();
         
         return view('admin.miscellaneous.miscellaneous', compact('miscell'));
     }
@@ -184,7 +64,60 @@ class ExpensesController extends Controller
 
     public function miscellaneousView($id)
     {
-        $expenses = Expense::find($id);
-        return view('admin.miscellaneous.miscellaneous-view', compact('expenses'));
+        $miscell = Miscellaneous::where('id', $id)->with('miscellaneousItem')->first();
+        return view('admin.miscellaneous.miscellaneous-view', compact('miscell'));
+    }
+
+    public function miscellaneousEdit($id)
+    {
+        $miscellaneous = Miscellaneous::with('miscellaneousItem')->findOrFail($id); 
+        return view('admin.miscellaneous.miscellaneous-edit', compact('miscellaneous'));
+    }
+
+
+    public function miscellaneousUpdate(Request $request, $id)
+    {
+        $data = $request->input('items', []);
+        $miscellaneousData = $request->all();
+
+        $miscellaneous = Miscellaneous::find($id);
+        if($miscellaneous)
+        {
+            $miscellaneous->update($miscellaneousData);
+        }
+        
+        foreach ($data as $itemId => $itemData) {
+            $item = MiscellaneousItem::find($itemId);
+
+            if ($item) {
+                $item->description = $itemData['description'];
+                $item->month = $itemData['month'];
+                $item->date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['date']);
+                $item->total = $itemData['total'];
+                $item->save();
+            }
+        }
+
+        return redirect()->route('miscellaneous')->with('success', 'Miscellaneous items updated successfully.');
+    }
+
+    public function miscellaneousDelete($id)
+    {
+        $miscellaneous = Miscellaneous::find($id);
+        if($miscellaneous)
+        {
+            $miscellaneous->miscellaneousItem()->delete();
+            $miscellaneous->delete();
+        }
+
+        session()->flash('success', 'Deleted Successfully.');
+        return redirect()->back();
+    }
+
+    // ===================    Petty Cash ==================== ////
+
+    public function pettyCash()
+    {
+        return view('admin.pettyCash.pettyCash');
     }
 }

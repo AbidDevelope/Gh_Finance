@@ -91,11 +91,11 @@
                     <div>
                         <h4>Bill To:</h4>
                     </div>
-                    <div> {{ $invoices->beneficiaries->beneficiary }}</div>
-                    <div> {{ $invoices->beneficiaries->email }} <br>
+                    <div> Name</div>
+                    <div> Email  <br>
                         <div> IBRAH COMPANY <br>
-                            <div> {{ $invoices->beneficiaries->beneficiary_address }} <br>
-                                <div> Phone: {{ $invoices->beneficiaries->mobile }}</div>
+                            <div> Address <br>
+                                <div> Phone: Mobile</div>
                 </td>
                 <td class="w-half-right">
                     <table>

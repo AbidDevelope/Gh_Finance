@@ -487,7 +487,7 @@
 
                                 </a></div>
                             <div class=" text-black-50"> <a class="left_margin text-black-50 "
-                                    href="{{ route('expenses') }}"><svg xmlns="http://www.w3.org/2000/svg"
+                                    href="{{ route('pettyCash') }}"><svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" fill="currentColor" class="bi bi-receipt"
                                         viewBox="0 0 16 16">
                                         <path
@@ -634,7 +634,7 @@
                             <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Finance <span
                                         class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                 <ul id="Pagemob" class="collapse dropdown-header-top">
-                                    <li><a href="{{ route('expenses') }}">Expenses</a></li>
+                                    <li><a href="{{ route('pettyCash') }}">Expenses</a></li>
                                 </ul>
                             </li>
                             <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Invoices <span
