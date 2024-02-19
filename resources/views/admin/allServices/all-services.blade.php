@@ -1,3 +1,13 @@
+<style>
+    .bg_button{
+        background-color: #62549C !important;
+        color: white;
+    }
+    .margin_top{
+        margin-top: -100px !important;
+    }
+</style>
+
 <script>
 const dateInput = document.getElementById("dateInput");
 
@@ -22,37 +32,40 @@ dateInput.addEventListener("input", function () {
 
 @extends('admin.layouts.master')
 @section('content')
-    <div class="all-content-wrapper">
-        <div class="header-advance-area">
+    <div class="all-content-wrapper ">
+        <div class="header-advance-area ">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="">
+                    <div class="margin_top ">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
                                     <div class="d-flex">
-                                        <div class="container mt-5">
+                                        <div class=" mt-5">
                                             <div class="form-group">
-                                                <label for="dateInput">Select Start Date:</label>
+                                                <label for="dateInput" class="text-black-50">Select Start Date:</label>
                                                 <!-- Input with Bootstrap styling -->
-                                                <input type="date" class="form-control bg-white text-black"
-                                                    id="dateInput">
+                                                <input type="text" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
+                                                    id="dateInput" style="width: 230px; height: 35px;">
+                                                    {{-- <input id="search" type="text" class="bg-white form-control rounded-pill"
+                                                    style="width: 230px; height: 40px;" placeholder="search"> --}}
                                             </div>
                                         </div>
-                                        <div class="container mt-5 ">
-                                            <div class="form-group">
-                                                <label for="dateInput">Select End Date:</label>
+                                        <div class="container mt-5 d-flex gap-4 ">
+                                            <div class=" form-group">
+                                                <label for="dateInput" class="text-black-50">Select End Date:</label>
                                                 <!-- Input with Bootstrap styling -->
-                                                <input type="date" class="form-control bg-white text-black"
-                                                    id="dateInput">
+                                                <input type="text" id="end_date" class="form-control bg-white text-black-50 rounded"
+                                                name="end_Date" placeholder="DD/MM/YYYY" style="width: 230px; height: 35px;">
                                             </div>
-                                        </div>
-                                        <div class="container " style="margin-top: 75px;">
-                                            <div class="form-group">
-                                                <button class="btn-search btn btn-primary bg-gray-100 "
-                                                    type="button">SEARCH </button>
+                                            <div class="form-group" style="margin-top: 25px;">
+                                                <button class="btn-search btn bg_button text-white bg-gray-100 "
+                                                    type="button ">Search </button>
 
                                             </div>
+                                        </div>
+                                        <div class="container " >
+
                                         </div>
                                     </div>
                                 </form>
@@ -174,4 +187,26 @@ dateInput.addEventListener("input", function () {
             itemSelectText: '',
         });
     </script>
+     {{-- Date Format  --}}
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  {{-- date Format --}}
+  <script>
+      var onDateSelect = function(selectedDate, input) {
+          if (input.id === 'start_date') { //Start date selected - update End Date picker
+              $("#end_date").datepicker('option', 'minDate', selectedDate);
+          } else { //End date selected - update Start Date picker
+              $("#start_date").datepicker('option', 'maxDate', selectedDate);
+          }
+      };
+      var onDocumentReady = function() {
+          var datepickerConfiguration = {
+              dateFormat: "dd/mm/yy",
+              onSelect: onDateSelect
+          };
+          ///--- Component Binding ---///
+          $('#start_date, #end_date').datepicker(datepickerConfiguration);
+      };
+      $(onDocumentReady);
+  </script>
 @endsection
