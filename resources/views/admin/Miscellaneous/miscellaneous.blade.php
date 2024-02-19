@@ -34,7 +34,7 @@
                                                 <!-- Input with Bootstrap styling -->
                                                 <input type="text" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
                                                     id="dateInput" style="width: 230px; height: 35px;">
-                                                    
+
                                             </div>
                                         </div>
                                         <div class="container mt-5 d-flex gap-4 ">

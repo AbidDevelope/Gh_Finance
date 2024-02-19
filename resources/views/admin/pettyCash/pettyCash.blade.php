@@ -19,12 +19,10 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
-
         <div class="header-advance-area">
-
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
@@ -86,7 +84,7 @@
                             @endif
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-                            <div class="table-responsive">
+                            <div class="">
                                 <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
                                     <thead>
                                         <tr>
