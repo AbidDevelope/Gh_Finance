@@ -119,8 +119,8 @@ class ExpensesController extends Controller
 
     public function pettyCash()
     {
-        $expenses = Expense::with('expenseItem')->get();
-        return $expenses->beneficiary;
+        $expenses = Expense::with(['expenseItem', 'project'])->get();
+        // return $expenses;
         return view('admin.pettyCash.pettyCash', compact('expenses'));
     }
 

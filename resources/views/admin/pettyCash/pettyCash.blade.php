@@ -103,11 +103,11 @@
                                         @foreach ($expenses as $index => $item)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td><strong>{{ $item->project_id }}</strong></td>
-                                            <td>{{ $item->project_type }}</td>
-                                            <td>{{ $item->project_name }}</td>
-                                            <td>{{ $item->expenseItem->beneficiary }}</td>
-                                            <td>{{ $item->total }}</td>
+                                            <td>{{ $item->project_id }}</td>
+                                            <td>{{ $item->project->project_type }}</td>
+                                            <td>{{ $item->project->project_name }}</td>
+                                            <td>{{ $item->beneficiary }}</td>
+                                            <td>{{ $item->grandtotal }}</td>
                                             <td class="text-right">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
@@ -123,7 +123,7 @@
 
                                         @else
                                         <tr>
-                                            <td colspan="9" class="text-center">No Record Found</td>
+                                            <td colspan="7" class="text-center">No Record Found</td>
                                         </tr>
                                         @endif
                                     </tbody>

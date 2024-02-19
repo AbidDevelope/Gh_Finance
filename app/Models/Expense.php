@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ExpenseItem;
+use App\Models\Project;
 
 class Expense extends Model
 {
@@ -20,4 +21,9 @@ class Expense extends Model
     {
         return $this->hasMany(ExpenseItem::class, 'expenses_id');
     }    
+
+    public function project()
+    {
+       return $this->belongsTo(Project::class);
+    }
 }
