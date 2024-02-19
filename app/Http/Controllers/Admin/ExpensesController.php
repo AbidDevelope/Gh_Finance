@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Expense;
+use App\Models\ExpenseItem;
 use App\Models\Project;
 use App\Models\Miscellaneous;
 use App\Models\MiscellaneousItem;
@@ -118,6 +119,66 @@ class ExpensesController extends Controller
 
     public function pettyCash()
     {
-        return view('admin.pettyCash.pettyCash');
+        $expenses = Expense::with('expenseItem')->get();
+        return $expenses->beneficiary;
+        return view('admin.pettyCash.pettyCash', compact('expenses'));
+    }
+
+    public function pettyCashCreateForm()
+    {
+        return view('admin.pettyCash.pettyCash-create');
+    }
+
+    public function projectDataGet($id)
+    {
+       $projects = Project::find($id);
+
+       if($projects)
+       {
+        return response()->json([
+            'status' => 'success',
+            'data'   => $projects,
+        ]);
+       }
+    }
+
+    public function expensesCreate(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'project_id'  => 'required', 'description.*'   => 'required',
+            'month'         => 'required', 'date'           => 'required',
+            'receipt'         => 'required', 'amount_deposite' => 'required',
+            'amount_withdrawn'  => 'required', 'beneficiary'      => 'required',
+            'total'               => 'required',
+        ]);
+        
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }else{
+            $requestData = $request->all();
+            $expense = Expense::create($requestData);
+
+            if($expense)
+            {
+              foreach($request->month as $key=>$item)
+              {
+                $expenseItems = new ExpenseItem([
+                    'expenses_id'  => $expense->id,
+                    'description' => $request->description[$key],
+                    'month'       => $request->month[$key],
+                    'date' => \Carbon\Carbon::createFromFormat('d/m/Y', $request->date[$key])->format('Y-m-d'),
+                    'receipt'  => $request->receipt[$key],
+                    'amount_deposite' => $request->amount_deposite[$key],
+                    'amount_withdrawn'  => $request->amount_withdrawn[$key],
+                    'beneficiary'  => $request->beneficiary[$key],
+                    'total' => $request->total[$key],
+                ]);
+                $expenseItems->save();
+              }
+            }
+            session()->flash('success', 'Expenses Created Successfully');
+            return redirect()->route('pettyCash');
+        }
     }
 }

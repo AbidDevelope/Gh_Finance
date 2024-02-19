@@ -59,8 +59,8 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
 // -------------------------- ExpensesController --------------------------- //
 Route::controller(ExpensesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('pettyCash', 'pettyCash')->name('pettyCash');
-    Route::get('expenses/create', 'expensesCreate')->name('expenses/create');
-    Route::post('expenses/create', 'expensesCreateData')->name('expenses/create');
+    Route::get('pettyCash/create', 'pettyCashCreateForm')->name('pettyCash/create');
+    Route::post('expenses/create', 'expensesCreate')->name('expenses/create');
     Route::get('expenses/view/{id}', 'expensesView')->name('expenses/view');
     Route::get('expenses/edit/{id}', 'expensesEdit')->name('expenses/edit');
     Route::put('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
@@ -75,6 +75,7 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::post('miscellaneous/update/{id}', 'miscellaneousUpdate')->name('miscellaneous/update');
     Route::get('miscellaneous/delete/{id}', 'miscellaneousDelete')->name('miscellaneous/delete');
 });
+Route::get('/project-data/{id}',[ExpensesController::class, 'projectDataGet'])->name('project.data');
 
 // ------------------------- InvoiceController ----------------------- //
 Route::controller(InvoiceController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){

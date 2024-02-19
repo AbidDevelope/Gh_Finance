@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
                             <div class="table-actions">
-                                <a href="{{ route('expenses/create') }}"
+                                <a href="{{ route('pettyCash/create') }}"
                                     class="btn btn-primary rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                     <i class="fa fa-plus"></i> Create
                                 </a>
@@ -71,47 +71,44 @@
                                 <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Date</th>
+                                            <th>Sr. No</th>
+                                            <th>Project ID</th>
                                             <th>Project Type</th>
                                             <th>Project Name</th>
-                                            <th>Receipt</th>
+                                            <th>Beneficiary</th>
                                             <th>Total Amount</th>
-                                            <th>Total Withdraw</th>
                                             <th class="text-right">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                            <tr>
-                                                <td>
-                                                    1
-                                                </td>
-                                                <td>2</td>
-                                                <td>
-                                                    <strong>3</strong>
-                                                </td>
-                                                <td>4</td>
-                                                <td>5</td>
-                                                <td>6</td>
-                                                <td>7</td>
-                                                <td class="text-right">
-                                                    <div class="dropdown dropdown-action">
-                                                        <a href="#" class="action-icon " data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" ><i class="fa fa-eye m-r-5"></i> View</a>
-                                                            <a class="dropdown-item" href="#" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                        </div>
+                                        {{-- @dd($expenses) --}}
+                                        @if(count($expenses) > 0)
+                                        @foreach ($expenses as $index => $item)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td><strong>{{ $item->project_id }}</strong></td>
+                                            <td>{{ $item->project_type }}</td>
+                                            <td>{{ $item->project_name }}</td>
+                                            <td>{{ $item->expenseItem->beneficiary }}</td>
+                                            <td>{{ $item->total }}</td>
+                                            <td class="text-right">
+                                                <div class="dropdown dropdown-action">
+                                                    <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="#"><i class="fa fa-eye m-r-5"></i> View</a>
+                                                        <a class="dropdown-item" href="#"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                        <a class="dropdown-item" href="#"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            {{-- @endforeach
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+
                                         @else
                                         <tr>
                                             <td colspan="9" class="text-center">No Record Found</td>
                                         </tr>
-                                        @endif --}}
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
