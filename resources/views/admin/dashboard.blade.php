@@ -21,8 +21,8 @@
           width: 510px !important;
 }
          .project_left{
-            margin-left: 150px !important;
-            width: 410px !important;
+            margin-left: 130px !important;
+            width: 350px !important;
          }
 
         </style>
@@ -186,14 +186,14 @@
         </div>
         <div class="container-fluid mt-4">
             <div class="row mx-1 gap-2">
-                <div class="col-xs-8 col-md-6  ">
+                <div class="col-xs-12 col-md-12  ">
                     <div class="row p-0 gap-2">
-                        <div class="col-xs-6 col-md-6 shadow" style="background-color: white">
+                        <div class="col-xs-4 col-md-6 shadow" style="background-color: white">
                             <p class="m-0 dashboard-color-text">Last Month Revenue</p>
                             <p class="dashboard-color-subcolor">7656765.000 KWD</p>
                             <div id="echart-bar-last-month" style="width: 100%; height:400px ; position:relative"></div>
                         </div>
-                        <div class="col-xs-6 col-md-6 shadow" style="background-color: white">
+                        <div class="col-xs-4 col-md-6 shadow" style="background-color: white">
                             <p class="m-0 dashboard-color-text">Last Week Revenue</p>
                             <p class="dashboard-color-subcolor">7656.000 KWD</p>
                             <div id="echart-bar-last-week" style="width: 100%; height:400px ; position:relative"></div>
@@ -201,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project_left col-xs-4 col-md-5 bg-white shadow">
+                <div class="col-xs-4 col-xs-4 col-md-5 bg-blue shadow">
                     <div>
                         <p class="dashboard-color-text ">Projects</p>
 
