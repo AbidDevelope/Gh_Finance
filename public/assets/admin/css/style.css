@@ -101,9 +101,9 @@ body {}
 /*  8. Menu collapse Area
 /*----------------------------------------*/
 .all-content-wrapper {
-    margin-left: 150px;
+    margin-left: 130px;
     transition: all 0.3s;
-    /* background: #BEC0BF; */
+    background: white;
     height: 104%;
 }
 .left-sidebar-pro {

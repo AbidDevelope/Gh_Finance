@@ -715,7 +715,9 @@
         </div>
     </div>
 </div>
-<div class=" position-fixed top-50 end-0 z-index-setting">
+
+    {{-- spinner --}}
+{{-- <div class=" position-fixed top-50 end-0 z-index-setting">
 
     <div id='colorsidebar' class='d-flex trans-hide  align-items-start  justify-content-end  '>
         <div id="colorsidepicker" class=" p-1 py-2 spin-bg">
@@ -755,7 +757,7 @@
         </div>
     </div>
 
-</div>
+</div> --}}
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
