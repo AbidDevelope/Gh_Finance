@@ -68,11 +68,56 @@ class ExpensesController extends Controller
         return view('admin.miscellaneous.miscellaneous-view', compact('miscell'));
     }
 
+    public function miscellaneousEdit($id)
+    {
+        $miscellaneous = Miscellaneous::with('miscellaneousItem')->findOrFail($id); 
+        return view('admin.miscellaneous.miscellaneous-edit', compact('miscellaneous'));
+    }
+
+
+    public function miscellaneousUpdate(Request $request, $id)
+    {
+        $data = $request->input('items', []);
+        $miscellaneousData = $request->all();
+
+        $miscellaneous = Miscellaneous::find($id);
+        if($miscellaneous)
+        {
+            $miscellaneous->update($miscellaneousData);
+        }
+        
+        foreach ($data as $itemId => $itemData) {
+            $item = MiscellaneousItem::find($itemId);
+
+            if ($item) {
+                $item->description = $itemData['description'];
+                $item->month = $itemData['month'];
+                $item->date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['date']);
+                $item->total = $itemData['total'];
+                $item->save();
+            }
+        }
+
+        return redirect()->route('miscellaneous')->with('success', 'Miscellaneous items updated successfully.');
+    }
+
     public function miscellaneousDelete($id)
     {
-        Miscellaneous::find($id)->delete();
+        $miscellaneous = Miscellaneous::find($id);
+        if($miscellaneous)
+        {
+            $miscellaneous->miscellaneousItem()->delete();
+            $miscellaneous->delete();
+        }
 
         session()->flash('success', 'Deleted Successfully.');
         return redirect()->back();
+    }
+
+    // ===================    Petty Cash ==================== ////
+
+    public function pettyCash()
+    {
+        return view('admin.pettyCash.pettyCash');
     }
 }

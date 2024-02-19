@@ -20,7 +20,7 @@
                                             <div class="form-group">
                                                 <label for="dateInput">Select Start Date:</label>
                                                 <!-- Input with Bootstrap styling -->
-                                                <input type="date" class="form-control bg-white text-black"
+                                                <input type="text" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white text-black"
                                                     id="dateInput">
                                             </div>
                                         </div>
@@ -28,8 +28,8 @@
                                             <div class="form-group">
                                                 <label for="dateInput">Select End Date:</label>
                                                 <!-- Input with Bootstrap styling -->
-                                                <input type="text" class="form-control bg" id="Start"
-                                                name="start" min="2000-03" placeholder="DD/MM/YYYY">
+                                                <input type="text" id="end_date" class="form-control bg"
+                                                name="end_Date" placeholder="DD/MM/YYYY">
                                             </div>
                                         </div>
                                         <div class="container " style="margin-top: 75px;">
@@ -103,7 +103,7 @@
                                                             <a class="dropdown-item"
                                                                 href="{{ route('miscellaneous/view', $item->id) }}"><i
                                                                     class="fa fa-eye m-r-5"></i> View</a>
-                                                            <a class="dropdown-item" href="#"><i
+                                                            <a class="dropdown-item" href="{{ route('miscellaneous/edit', $item->id) }}"><i
                                                                     class="fa fa-pencil m-r-5"></i> Edit</a>
                                                             <a class="dropdown-item" href="{{ route('miscellaneous/delete', $item->id) }}"><i
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>
@@ -165,22 +165,26 @@
             itemSelectText: '',
         });
     </script>
-     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'Start') { //Start date selected - update End Date picker
-                $("#End").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#Start").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#Start, #End').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
-    </script>
+  {{-- Date Format  --}}
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  {{-- date Format --}}
+  <script>
+      var onDateSelect = function(selectedDate, input) {
+          if (input.id === 'start_date') { //Start date selected - update End Date picker
+              $("#end_date").datepicker('option', 'minDate', selectedDate);
+          } else { //End date selected - update Start Date picker
+              $("#start_date").datepicker('option', 'maxDate', selectedDate);
+          }
+      };
+      var onDocumentReady = function() {
+          var datepickerConfiguration = {
+              dateFormat: "dd/mm/yy",
+              onSelect: onDateSelect
+          };
+          ///--- Component Binding ---///
+          $('#start_date, #end_date').datepicker(datepickerConfiguration);
+      };
+      $(onDocumentReady);
+  </script>
 @endsection
