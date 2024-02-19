@@ -11,19 +11,33 @@
             .col-custom-width {
                 width: 231px !important;
             }
-            .heading{
-                font-size: 20px;
+
+            .heading {
+                font-size: 18px;
             }
-            .col-lg-6-1{
-          width: 650px !important;
+
+            .col-lg-6-1 {
+                width: 650px !important;
+            }
+
+            .col-lg-6-2 {
+                width: 520px !important;
+            }
+
+            .project_left {
+                margin-left: 130px !important;
+                width: 350px !important;
+            }
+            .col-xs-3{
+                width: 371px !important;
+            }
+            .rounded{
+    border-radius: 15px !important; /* Adjust the value as per your preference */
 }
-            .col-lg-6-2{
-          width: 510px !important;
+.y-scroll {
+    overflow-y: auto; /* or overflow-y: scroll; */
+    max-height: 500px; /* Set a max-height if needed */
 }
-         .project_left{
-            margin-left: 150px !important;
-            width: 410px !important;
-         }
 
         </style>
         <div class="container-fluid px-2   custom-padding-top ">
@@ -173,169 +187,144 @@
 
         <div class="container-fluid mt-4">
             <div class="row mx-1 gap-2">
-                <div class="col-lg-6-1 col-md-12 pt-2 shadow" style="background-color: white">
-                            <span class="  pb-4 heading">Revenue</span>
-                        <div id="echart-bar" style="margin-left:10px; width:100%; height: 400px;"></div>
+                <div class="col-lg-6-1 col-md-12 pt-2 shadow rounded" style="background-color: white">
+                    <span class="  pb-4 dashboard-color-text heading">Revenue</span>
+                    <div id="echart-bar" style="margin-left:10px; width:100%; height: 400px;"></div>
                 </div>
-                <div class="col-lg-6-2 col-md-12 pt-2 shadow" style="background-color: white">
-                        <span class=" pb-4 heading">Services</span>
-                        <div id="echart-bar-sales" style="width: 100%; height: 400px;"></div>
+                <div class="col-lg-6-2 col-md-12 pt-2 shadow rounded" style="background-color: white">
+                    <span class=" pb-4 dashboard-color-text heading">Services</span>
+                    <div id="echart-bar-sales" style="width: 100%; height: 400px;"></div>
 
                 </div>
             </div>
         </div>
-        <div class="container-fluid mt-4">
+        <div class="container-fluid mt-3">
             <div class="row mx-1 gap-2">
-                <div class="col-xs-8 col-md-6  ">
-                    <div class="row p-0 gap-2">
-                        <div class="col-xs-6 col-md-6 shadow" style="background-color: white">
-                            <p class="m-0 dashboard-color-text">Last Month Revenue</p>
-                            <p class="dashboard-color-subcolor">7656765.000 KWD</p>
-                            <div id="echart-bar-last-month" style="width: 100%; height:400px ; position:relative"></div>
-                        </div>
-                        <div class="col-xs-6 col-md-6 shadow" style="background-color: white">
-                            <p class="m-0 dashboard-color-text">Last Week Revenue</p>
-                            <p class="dashboard-color-subcolor">7656.000 KWD</p>
-                            <div id="echart-bar-last-week" style="width: 100%; height:400px ; position:relative"></div>
+                {{-- <div class="col-xs-12 col-md-12  "> --}}
+                <div class="row p-0 gap-2">
+                    <div class="col-xs-4 col-md-4 shadow rounded py-2" style="background-color: white">
+                        <p class="m-0 dashboard-color-text heading">Last Month Revenue</p>
+                        <p class="dashboard-color-subcolor heading">7656765.000 KWD</p>
+                        <div id="echart-bar-last-month" style="width: 100%;  height:400px ; position:relative"></div>
+                    </div>
+                    <div class="col-xs-4 col-md-4 shadow rounded py-2" style="background-color: white">
+                        <p class="m-0 dashboard-color-text heading">Last Week Revenue</p>
+                        <p class="dashboard-color-subcolor heading">7656.000 KWD</p>
+                        <div id="echart-bar-last-week" style="width: 100%; height:400px ; position:relative"></div>
 
+                    </div>
+                    <div class="col-xs-3 col-xs-4 py-2  shadow rounded y-scroll">
+                        <div>
+                            <p class="dashboard-color-text heading ">Projects</p>
+                            <div class="d-flex align-items-start flex-column flex-md-row  ">
+                                <div class="col-lg-10 col-12 p-0">
+                                    <p class=" dashboard-color-text heading">Project 1 </p>
+                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur. lore,</p>
+                                    {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
+                                                KWD</del>
+                                        </p> --}}
+                                </div>
+                                <div class="col-lg-2 col-12 p-0">
+                                    <button class="border-white bg-white cursor-pointer">View </button>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start flex-column flex-md-row  ">
+
+                                <div class="col-lg-10 col-12 p-0">
+                                    <p class=" dashboard-color-text heading">Project 1 </p>
+                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
+                                                KWD</del>
+                                        </p> --}}
+                                </div>
+                                <div class="col-lg-2 col-12 p-0 ">
+                                    <button class="border-white bg-white cursor-pointer">View </button>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start flex-column flex-md-row  ">
+
+                                <div class="col-lg-10 col-12 p-0">
+                                    <p class=" dashboard-color-text heading">Project 1 </p>
+                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
+                                                KWD</del>
+                                        </p> --}}
+                                </div>
+                                <div class="col-lg-2 col-12 p-0 ">
+                                    <button class="border-white bg-white cursor-pointer">View </button>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start flex-column flex-md-row  ">
+
+                                <div class="col-lg-10 col-12 p-0">
+                                    <p class=" dashboard-color-text heading">Project 1 </p>
+                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
+                                                KWD</del>
+                                        </p> --}}
+                                </div>
+                                <div class="col-lg-2 col-12 p-0 ">
+                                    <button class="border-white bg-white cursor-pointer">View </button>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start flex-column flex-md-row  ">
+
+                                <div class="col-lg-10 col-12 p-0">
+                                    <p class=" dashboard-color-text heading">Project 1 </p>
+                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
+                                                KWD</del>
+                                        </p> --}}
+                                </div>
+                                <div class="col-lg-2 col-12 p-0 ">
+                                    <button class="border-white bg-white cursor-pointer">View </button>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start flex-column flex-md-row  ">
+
+                                <div class="col-lg-10 col-12 p-0">
+                                    <p class=" dashboard-color-text heading">Project 1 </p>
+                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
+                                                KWD</del>
+                                        </p> --}}
+                                </div>
+                                <div class="col-lg-2 col-12 p-0 ">
+                                    <button class="border-white bg-white cursor-pointer">View </button>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start flex-column flex-md-row  ">
+
+                                <div class="col-lg-10 col-12 p-0">
+                                    <p class=" dashboard-color-text heading">Project 1 </p>
+                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
+                                                KWD</del>
+                                        </p> --}}
+                                </div>
+                                <div class="col-lg-2 col-12 p-0 ">
+                                    <button class="border-white bg-white cursor-pointer">View </button>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start flex-column flex-md-row  ">
+
+                                <div class="col-lg-10 col-12 p-0">
+                                    <p class=" dashboard-color-text heading">Project 1 </p>
+                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
+                                                KWD</del>
+                                        </p> --}}
+                                </div>
+                                <div class="col-lg-2 col-12 p-0 ">
+                                    <button class="border-white bg-white cursor-pointer">View </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="project_left col-xs-4 col-md-5 bg-white shadow">
-                    <div>
-                        <p class="dashboard-color-text ">Projects</p>
+                {{-- </div> --}}
 
-
-                        <div class="d-flex align-items-center flex-column flex-md-row  ">
-                            <div class="col-lg-3 col-12 p-0">
-                                {{-- <p class="m-0 avatar-lg-top">
-                                    <img
-                                        src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Project 1 </p>
-                                <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
-                                        KWD</del>
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
-                                <button class="border-white bg-white cursor-pointer">View </button>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center flex-column flex-md-row  ">
-                            <div class="col-lg-3 col-12 p-0">
-                                {{-- <p class="m-0 avatar-lg-top">
-                                    <img
-                                        src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Project 1 </p>
-                                <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
-                                        KWD</del>
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
-                                <button class="border-white bg-white cursor-pointer">View </button>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center flex-column flex-md-row  ">
-                            <div class="col-lg-3 col-12 p-0">
-                                {{-- <p class="m-0 avatar-lg-top">
-                                    <img
-                                        src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Project 1 </p>
-                                <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
-                                        KWD</del>
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
-                                <button class="border-white bg-white cursor-pointer">View </button>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center flex-column flex-md-row  ">
-                            <div class="col-lg-3 col-12 p-0">
-                                {{-- <p class="m-0 avatar-lg-top">
-                                    <img
-                                        src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Project 1 </p>
-                                <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
-                                        KWD</del>
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
-                                <button class="border-white bg-white cursor-pointer">View </button>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center flex-column flex-md-row  ">
-                            <div class="col-lg-3 col-12 p-0">
-                                {{-- <p class="m-0 avatar-lg-top">
-                                    <img
-                                        src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Project 1 </p>
-                                <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
-                                        KWD</del>
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
-                                <button class="border-white bg-white cursor-pointer">View </button>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center flex-column flex-md-row  ">
-                            <div class="col-lg-3 col-12 p-0">
-                                {{-- <p class="m-0 avatar-lg-top">
-                                    <img
-                                        src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Project 1 </p>
-                                <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
-                                        KWD</del>
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
-                                <button class="border-white bg-white cursor-pointer">View </button>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center flex-column flex-md-row  ">
-                            <div class="col-lg-3 col-12 p-0">
-                                {{-- <p class="m-0 avatar-lg-top">
-                                    <img
-                                        src="https://gull-html-laravel.ui-lib.com/assets/images/products/headphone-4.jpg" />
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-7 col-12 p-0">
-                                <p class="mb-2 top-selling-tittle">Project 1 </p>
-                                <p class="m-0 top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                {{-- <p class="text-small text-danger m-0">46456.000 KWD <del class="text-muted">57567
-                                        KWD</del>
-                                </p> --}}
-                            </div>
-                            <div class="col-lg-2 col-12 p-0 mr-lg-5">
-                                <button class="border-white bg-white cursor-pointer">View </button>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -626,8 +615,8 @@
         </div> --}}
 
 
-        <div class="row mx-3 mt-4 shadow " style="background-color: white">
-            <p class="dashboard-color-text mx-3">Last 20 Day Leads</p>
+        <div class="row mx-3 my-3 py-2 shadow rounded" style="background-color: white">
+            <p class="dashboard-color-text heading ">Last 20 Day Leads</p>
 
             <div class="col">
                 <div id="echart-bar-last-leads" style="width: 100%; height: 400px;"></div>
@@ -655,23 +644,23 @@
 
 
     <!-- metisMenu JS
-                            ============================================ -->
+                                ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
 
 
     <!-- float JS
-                            ============================================ -->
+                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                            ============================================ -->
+                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- <script src="{{ asset('assets/admin/js/mychart.js') }}"></script> -->
     <!-- main JS
-                        ============================================ -->
+                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"
         integrity="sha512-EmNxF3E6bM0Xg1zvmkeYD3HDBeGxtsG92IxFt1myNZhXdCav9MzvuH/zNMBU1DmIPN6njrhX1VTbqdJxQ2wHDg=="

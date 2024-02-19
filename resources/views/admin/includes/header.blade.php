@@ -44,10 +44,20 @@
     .height {
         height: 85px;
     }
+    .profile_width{
+        width: 300px !important;
+    }
+    .profil{
+        margin-left: 500px !important;
+    }
+    #bell-icon {
+    font-size: 24px; /* Adjust size as needed */
+}
+
 </style>
 <div class="header-top-area bg-white">
     <div class="container-fluid">
-        <div class="row">
+         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 height shadow">
                 {{-- <div class="header-top-wraper"> --}}
                 {{-- <div class="row"> --}}
@@ -259,17 +269,11 @@
 
 
                 <div class="d-flex justify-content-end gap-3 mt-1">
-                    {{-- <div class=" mt-1 "> <i class="bi bi-arrows-move text-black-50">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                    fill="currentColor" class="bi bi-arrows-move" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10M.146 8.354a.5.5 0 0 1 0-.708l2-2a.5.5 0 1 1 .708.708L1.707 7.5H5.5a.5.5 0 0 1 0 1H1.707l1.147 1.146a.5.5 0 0 1-.708.708zM10 8a.5.5 0 0 1 .5-.5h3.793l-1.147-1.146a.5.5 0 0 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L14.293 8.5H10.5A.5.5 0 0 1 10 8" />
-                                </svg>
-                            </i> </div> --}}
+
                     <div class=" mt-2 dropdown">
                         <a class="btn btn-secondary dropdown-toggle bg-white text-black-50 border-0" href="#"
                             role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                                 <path
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
@@ -593,14 +597,14 @@
 
 
 
-                    <div class="mt-3">
-
-                        <i id="bell-icon" class="fas fa-bell text-black-50"></i>
+                    <div class="mt-4">
+                        <i id="bell-icon" class="fas fa-bell fa-lg text-black-50"></i> <!-- Adjust size using fa-lg -->
                     </div>
+
                     <div class="mt-3 position-relative d-flex justify-content-center">
                         <!-- Notification Popup Container -->
                         <div id="notification-popup"
-                            class="popup-container position-fixed top-10 end-0 translate-middle-y mt-4 me-4">
+                            class="popup-container position-fixed top-10 end-0  translate-middle-y mt-4 me-4">
                             <div class="popup-content">
                                 <ul class="list-unstyled">
                                     <li
@@ -665,12 +669,12 @@
                     </div>
 
                     <!-- Profile Picture Popup Container -->
-                    <div id="profile-pic-popup"
-                        class="popup-container position-fixed top-10 end-0 translate-middle-y mt-4 me-4">
-                        <div class="popup-content">
+                    <div id="profile-pic-popup profil"
+                        class="profile_width popup-container position-fixed top-10  translate-middle-y mt-4 me-4">
+                        <div class="popup-content ">
                             <ul class="list-unstyled">
                                 <li class="mb-2">
-                                    <a href="#" class="d-flex justify-content-between text-black">
+                                    <a href="#" class="d-flex  text-black-50">
                                         <span> My Profile</span>
                                         <span class="icon nalika-settings author-log-ic"></span>
                                     </a>
@@ -678,21 +682,21 @@
                                 <li class="mb-2">
                                     <!-- File Input Element -->
                                     <input type="file" id="file-input" style="display: none;" accept="image/*">
-                                    <a href="#" class="d-flex justify-content-between text-black-50"
+                                    <a href="#" class="d-flex  text-black-50"
                                         id="change-profile-pic">
                                         <span>Change Profile Picture</span>
                                         <span class="icon nalika-edit author-log-ic"></span>
                                     </a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="#" class="d-flex justify-content-between text-black">
+                                    <a href="#" class="d-flex  text-black-50">
                                         <span>Settings</span>
                                         <span class="icon nalika-settings author-log-ic"></span>
                                     </a>
                                 </li>
                                 <!-- Replace {{ route('admin/logout') }} with the appropriate logout URL -->
                                 <li class="mb-2">
-                                    <a href="#" class="d-flex justify-content-between text-black">
+                                    <a href="#" class="d-flex  text-black-50">
                                         <span>Log Out</span>
                                         <span class="icon nalika-unlocked author-log-ic"></span>
                                     </a>
