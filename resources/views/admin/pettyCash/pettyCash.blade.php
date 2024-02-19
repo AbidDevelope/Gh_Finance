@@ -106,12 +106,11 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            @endforeach
-                                        @else
-                                        <tr>
+                                        
+                                        {{-- <tr>
                                             <td colspan="9" class="text-center">No Record Found</td>
                                         </tr>
-                                        @endif
+                                        @endif --}}
                                     </tbody>
                                 </table>
                             </div>
