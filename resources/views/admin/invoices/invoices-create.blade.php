@@ -19,7 +19,7 @@
                                                     value="{{ 'INV#0'.$nextInvoiceId }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        {{-- <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Beneficiary <span class="text-danger">*</span></label>
                                                 <select class="form-control" name="beneficiary_id">
@@ -30,18 +30,18 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project <span class="text-danger">*</span></label>
                                                 <select class="form-control" name="project_id">
                                                     <option value="" disabled selected>Select Project</option>
-                                                    @foreach ($beneficiaries as $beneficiary)
+                                                    {{-- @foreach ($beneficiaries as $beneficiary)
                                                         @foreach ($beneficiary->projects as $item)
                                                             <option value="{{ $item->id }}">{{ $item->project }}
                                                             </option>
                                                         @endforeach
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </select>
                                             </div>
                                         </div>

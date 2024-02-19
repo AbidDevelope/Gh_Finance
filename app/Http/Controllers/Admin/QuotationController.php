@@ -26,11 +26,9 @@ class QuotationController extends Controller
 
     public function quotationCreateForm()
     {
-        $beneficiaries = Beneficiary::all();
         $lastQuotation = Quotation::orderBy('id', 'desc')->first();
-        $nextQuotationId = $lastQuotation ? $lastQuotation->id + 1: 1;
 
-        return view('admin.quotations.quotations-create', compact('beneficiaries', 'nextQuotationId'));
+        return view('admin.quotations.quotations-create');
     }
 
     public function quotationCreate(Request $request)

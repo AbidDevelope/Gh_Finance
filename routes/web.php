@@ -58,7 +58,7 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
 
 // -------------------------- ExpensesController --------------------------- //
 Route::controller(ExpensesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
-    Route::get('expenses', 'expensesList')->name('expenses');
+    Route::get('pettyCash', 'pettyCash')->name('pettyCash');
     Route::get('expenses/create', 'expensesCreate')->name('expenses/create');
     Route::post('expenses/create', 'expensesCreateData')->name('expenses/create');
     Route::get('expenses/view/{id}', 'expensesView')->name('expenses/view');
@@ -71,6 +71,9 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('miscellaneous/create', 'miscellaneousCreateForm')->name('miscellaneous/create');
     Route::post('miscellaneous/create', 'miscellaneousCreate')->name('miscellaneous/create');
     Route::get('miscellaneous/view/{id}', 'miscellaneousView')->name('miscellaneous/view');
+    Route::get('miscellaneous/edit/{id}', 'miscellaneousEdit')->name('miscellaneous/edit');
+    Route::post('miscellaneous/update/{id}', 'miscellaneousUpdate')->name('miscellaneous/update');
+    Route::get('miscellaneous/delete/{id}', 'miscellaneousDelete')->name('miscellaneous/delete');
 });
 
 // ------------------------- InvoiceController ----------------------- //

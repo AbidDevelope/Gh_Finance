@@ -44,11 +44,11 @@
                             <article>
                                 <h1>Recipient</h1>
                                 <address class="norm">
-                                    <h4><b>MRS.</b> {{ $invoices->beneficiaries->beneficiary }}</h4>
-                                    <p> {{ $invoices->beneficiaries->email }} <br>
+                                    <h4><b>MRS.</b> </h4>
+                                    <p> Email<br>
                                     <p> IBRAH COMPANY <br>
-                                    <p> {{ $invoices->beneficiaries->beneficiary_address }} <br>
-                                    <p> Phone: {{ $invoices->beneficiaries->mobile }}</p>
+                                    <p> Address <br>
+                                    <p> Phone: </p>
                                 </address>
 
                                 <table class="meta">

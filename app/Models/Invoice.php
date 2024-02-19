@@ -15,10 +15,10 @@ class Invoice extends Model
         'invoice_number', 'beneficiary_id', 'tax', 'invoice_date', 'due_date', 'subtotal', 'discount',
     ];
 
-    public function beneficiaries()
-    {
-        return $this->belongsto(Beneficiary::class, 'beneficiary_id');
-    }
+    // public function beneficiaries()
+    // {
+    //     return $this->belongsto(Beneficiary::class, 'beneficiary_id');
+    // }
 
     public function invoiceItems()
     {

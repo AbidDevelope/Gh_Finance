@@ -15,29 +15,29 @@ class InvoiceController extends Controller
 {
     public function invoiceList()
     {
-        $invoices = Invoice::orderBy('id', 'desc')->with('beneficiaries')->get();
+        $invoices = Invoice::orderBy('id', 'desc')->get();
         return view('admin.invoices.invoices', compact('invoices'));
     }
 
     public function invoice()
     { 
-        $beneficiaries = Beneficiary::orderBy('beneficiary', 'asc')->with(['projects', 'invoices'])->get();
+        // $beneficiaries = Beneficiary::orderBy('beneficiary', 'asc')->with(['projects', 'invoices'])->get();
         $lastInvoice = Invoice::orderBy('id', 'desc')->first();
         $nextInvoiceId = $lastInvoice ? $lastInvoice->id + 1: 1;
 
-        return view('admin.invoices.invoices-create', compact('beneficiaries', 'nextInvoiceId'));
+        return view('admin.invoices.invoices-create', compact('nextInvoiceId'));
     }
 
     public function invoiceView($id)
     {
-        $invoices = Invoice::where('id', $id)->with(['invoiceItems', 'beneficiaries'])->first();
+        $invoices = Invoice::where('id', $id)->with(['invoiceItems'])->first();
 
         return view('admin.invoices.invoices-view', compact('invoices'));
     }
 
     public function downloadInvoicePDF($id)
     {
-        $invoices = Invoice::where('id', $id)->with(['invoiceItems', 'beneficiaries'])->first();
+        $invoices = Invoice::where('id', $id)->with(['invoiceItems'])->first();
         $pdf = PDF::loadView('admin.invoices.invoices-pdf', compact('invoices'))->setOptions(['defaultFont' => 'sans-serif']);
 
         return $pdf->download('INV#'. $invoices->id. '.pdf');
@@ -45,7 +45,7 @@ class InvoiceController extends Controller
 
     public function invoicePdfView($id)
     {
-        $invoices = Invoice::where('id', $id)->with(['invoiceItems', 'beneficiaries'])->first();
+        $invoices = Invoice::where('id', $id)->with(['invoiceItems'])->first();
 
         return view('admin.invoices.invoices-pdf', compact('invoices'));
     }
