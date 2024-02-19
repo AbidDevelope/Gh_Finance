@@ -28,21 +28,36 @@
                 margin-left: 130px !important;
                 width: 350px !important;
             }
-            .col-xs-3{
+
+            .col-xs-3 {
                 width: 371px !important;
             }
-            .rounded{
-    border-radius: 15px !important; /* Adjust the value as per your preference */
-}
-.y-scroll {
-    overflow-y: auto; /* or overflow-y: scroll; */
-    max-height: 500px; /* Set a max-height if needed */
-}
 
+            .rounded {
+                border-radius: 15px !important;
+                /* Adjust the value as per your preference */
+            }
+
+            .y-scroll {
+                overflow-y: auto;
+                /* or overflow-y: scroll; */
+                max-height: 500px;
+                /* Set a max-height if needed */
+            }
+
+            .gap {
+                width: 47px !important;
+            }
+            .gap_1 {
+                width: 70px !important;
+            }
+            .revenue_left{
+                padding-left:0px !important;
+            }
         </style>
         <div class="container-fluid px-2   custom-padding-top ">
-            <div class="row mx-1 gap-2 flex-nowrap ">
-                <div class="col-custom-width col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded " style="background-color: white">
+            <div class="row mx-1 ps-3 flex-nowrap ">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded " style="background-color: white">
                     <div class="row align-items-start">
                         <div class="col-4 ">
 
@@ -63,14 +78,13 @@
                         </div>
                         <div class="col-2">
                             <p class="m-0 dashboard-color-text">Design</p>
-                            <p class="m-0 dashboard-color-subcolor " style="font-size: 16px">205.000</p>
+                            <p class="m-0 dashboard-color-subcolor " style="font-size: 12px">205.000</p>
                         </div>
                     </div>
 
                 </div>
-
-                <div class="col-custom-width col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded"
-                    style="background-color: white">
+                <div class="gap"></div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded" style="background-color: white">
                     <div class="row align-items-center">
                         <div class="col-4">
                             <svg width="40" height="40" viewBox="0 0 100 100" fill="none"
@@ -92,13 +106,13 @@
                         </div>
                         <div class="col-2">
                             <p class="m-0 dashboard-color-text">Construction</p>
-                            <p class="m-0 dashboard-color-subcolor text-nowrap" style="font-size: 16px">4021.000</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap" style="font-size: 12px">4021.000</p>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-custom-width col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded"
-                    style="background-color: white">
+                <div class="gap"></div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded" style="background-color: white">
                     <div class="row align-items-center">
                         <div class="col-4">
 
@@ -116,13 +130,13 @@
                         </div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Design & Construction</p>
-                            <p class="m-0 dashboard-color-subcolor" style="font-size: 16px">4021.000</p>
+                            <p class="m-0 dashboard-color-subcolor   text-nowrap" style="font-size: 12px">4021.000</p>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-custom-width col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded"
-                    style="background-color: white">
+                <div class="gap"></div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded" style="background-color: white">
                     <div class="row align-items-center">
                         <div class="col-4">
                             <svg width="40" height="40" viewBox="0 0 100 100" fill="none"
@@ -151,13 +165,13 @@
                         </div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Revenue</p>
-                            <p class="m-0 dashboard-color-subcolor" style="font-size: 16px">80.000 KWD</p>
+                            <p class="m-0 dashboard-color-subcolor" style="font-size: 12px">80.000 KWD</p>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-custom-width col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded"
-                    style="background-color: white">
+                <div class="gap"></div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded" style="background-color: white">
                     <div class="row align-items-center">
                         <div class="col-4">
                             <svg class="" style="color: #D4C6E3" width="40" height="40" viewBox="0 0 100 100"
@@ -173,7 +187,7 @@
                         </div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Expenses</p>
-                            <p class="m-0 dashboard-color-subcolor" style="font-size: 16px">1200.000 KWD</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap " style="font-size: 12px">1200.000 KWD</p>
                         </div>
                     </div>
 
@@ -186,14 +200,15 @@
         </div>
 
         <div class="container-fluid mt-4">
-            <div class="row mx-1 gap-2">
-                <div class="col-lg-6-1 col-md-12 pt-2 shadow rounded" style="background-color: white">
+            <div class="row mx-1 gap-2 ">
+                <div class="col-lg-6 col-md-12 py-2 shadow rounded " style="background-color: white">
                     <span class="  pb-4 dashboard-color-text heading">Revenue</span>
-                    <div id="echart-bar" style="margin-left:10px; width:100%; height: 400px;"></div>
+                    <div id="echart-bar" class="revenue_left" style="margin-left:5px; width:602px; height: 400px;"></div>
                 </div>
-                <div class="col-lg-6-2 col-md-12 pt-2 shadow rounded" style="background-color: white">
+                <div class="gap_1"></div>
+                <div class="col-lg-5 col-md-12 py-2 shadow rounded " style="background-color: white">
                     <span class=" pb-4 dashboard-color-text heading">Services</span>
-                    <div id="echart-bar-sales" style="width: 100%; height: 400px;"></div>
+                    <div id="echart-bar-sales" style="width: 463px; height: 400px;"></div>
 
                 </div>
             </div>
@@ -644,23 +659,23 @@
 
 
     <!-- metisMenu JS
-                                ============================================ -->
+                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
 
 
     <!-- float JS
-                                ============================================ -->
+                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                ============================================ -->
+                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- <script src="{{ asset('assets/admin/js/mychart.js') }}"></script> -->
     <!-- main JS
-                            ============================================ -->
+                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"
         integrity="sha512-EmNxF3E6bM0Xg1zvmkeYD3HDBeGxtsG92IxFt1myNZhXdCav9MzvuH/zNMBU1DmIPN6njrhX1VTbqdJxQ2wHDg=="
