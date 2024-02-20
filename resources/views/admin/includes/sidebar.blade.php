@@ -223,7 +223,7 @@
     background-color:  #CCCCCC;
 }
 .m_bottom{
-    margin-bottom: 100px !important;
+    margin-bottom: 90px !important;
 }
 </style>
 
@@ -366,7 +366,7 @@
 
 </script>
 
-<div class="left-sidebar-pro m_bottom shadow" style="margin-top: 70px">
+<div class="left-sidebar-pro m_bottom " style="margin-top: 70px">
     <nav id="sidebar" class="bg-white shadow">
         <div class="left-custom-menu-adp-wrap comment-scrollbar " style="height: 550px; overflow-y: auto;">
             <nav class="sidebar-nav left-sidebar-menu-pro">
