@@ -45,27 +45,139 @@
                 /* Set a max-height if needed */
             }
 
-            @media (min-width: 1322px) {
+            @media (min-width: 1200px) {
                 .gap {
                     width: 47px !important;
                 }
             }
 
-            @media (max-width: 1321px) {
+            @media (min-width: 1199px) {
                 .gap {
-                    width: 43px !important;
+                    width: 120px !important;
+                }
+            }
+            @media (min-width: 1150px) {
+                .gap {
+                    width: 100px !important;
+                }
+            }
+            @media (min-width: 1298px) {
+                .gap {
+                    width: 47px !important;
                 }
             }
 
             /* Add more media queries as per your requirements */
 
-            .gap_1 {
-                width: 70px !important;
-            }
+
 
             .revenue_left {
                 padding-left: 0px !important;
             }
+            .py-2-project{
+                padding-bottom: 10px !important;
+            }
+
+                /* Default width for screen width up to 1199px */
+    #echart-bar-last-leads {
+        width: 1000px;
+        height: 400px;
+    }
+
+    /* Adjust width for screen width 1200px and above */
+    @media (min-width: 1200px) {
+        #echart-bar-last-leads {
+            width: 100%;
+        }
+    }
+    .col-xs-3-project {
+        width: 100%;
+    }
+
+    /* Adjust width for screen width 1200px and above */
+    @media (min-width: 1200px) {
+        .col-xs-3-project {
+            width: 31%;
+        }
+    }
+    .col-xs-4-revenue {
+        width: 49%;
+    }
+
+    /* Adjust width for screen width 1200px and above */
+    @media (min-width: 1200px) {
+        .col-xs-4-revenue {
+            width: 33%;
+        }
+    }
+    .service_w {
+        width: 100%;
+    }
+
+    /* Adjust width for screen width 1200px and above */
+    @media (min-width: 1312px) {
+        .service_w {
+            width: 40%;
+        }
+    }
+    .r_width {
+        width: 100%;
+    }
+
+    /* Adjust width for screen width 1200px and above */
+    @media (min-width: 1312px) {
+        .r_width {
+            width: 54%;
+        }
+    }
+    .revenue_bar_width {
+        width: 100%;
+    }
+
+    /* Adjust width for screen width 1200px and above */
+    @media (min-width: 1312px) {
+        .revenue_bar_width {
+            width: 107%;
+        }
+    }
+    .gap_1 {
+        width: 0px !important;
+    }
+
+    /* Adjust width for screen width 1200px and above */
+    @media (min-width: 1300px) {
+        .gap_1 {
+                width: 45px !important;
+            }
+    }
+    .gap_firstrow {
+        width: 0px !important;
+    }
+
+    /* Adjust width for screen width 1200px and above */
+    @media (min-width: 1298px) {
+        .gap_firstrow {
+                width: 8px !important;
+            }
+    }
+    .padding_top_revenue {
+        margin-top: 25px !important;
+    }
+    .padding_top_expense {
+        margin-top: 25px !important;
+    }
+    @media (min-width: 1200px) {
+        .padding_top_revenue {
+                margin-top: 0px !important;
+            }
+    }
+    /* Adjust padding-top for screen width 1200px and above */
+    @media (min-width: 1298px) {
+        .padding_top {
+                margin-top: 0px !important;
+            }
+    }
+
         </style>
 
         <div class="container-fluid px-2 custom-padding-top">
@@ -105,7 +217,7 @@
 
                 <div class="w-100 d-lg-none"></div> <!-- Break to next row on lg and lower screens -->
 
-                <div class="col-xl-2 col-md-3 col-sm-6 col-12 p-3 shadow rounded" style="background-color: white">
+                <div class="col-xl-2 col-md-3 col-sm-6 col-12 p-3 shadow rounded padding_top padding_top_revenue" style="background-color: white">
                     <div class="row align-items-center">
                         <div class="col-4"></div>
                         <div class="col-8">
@@ -116,7 +228,7 @@
                 </div>
                 <div class="gap "></div> <!-- To ensure the same vertical spacing on lg and lower screens -->
 
-                <div class="col-xl-2 col-md-3 col-sm-6 col-12 p-3 shadow rounded mt-4 mt-xl-0"
+                <div class="col-xl-2 col-md-3 col-sm-6 col-12 p-3 shadow rounded mt-4 padding_top padding_top_expense"
                     style="background-color: white">
                     <div class="row align-items-center">
                         <div class="col-4"></div>
@@ -278,12 +390,12 @@
 
         <div class="container-fluid mt-4">
             <div class="row mx-1 gap-2 ">
-                <div class="col-lg-6 col-md-12 py-2 shadow rounded " style="background-color: white">
+                <div class="r_width py-2 shadow rounded " style="background-color: white">
                     <span class=" dashboard-color-text heading">Revenue</span>
-                    <div id="echart-bar" class="revenue_left" style="margin-left:5px; width:107%; height: 400px;"></div>
+                    <div id="echart-bar" class="revenue_left revenue_bar_width" style=" height: 400px;"></div>
                 </div>
                 <div class="gap_1"></div>
-                <div class="col-lg-5 col-md-12 py-2 shadow rounded " style="background-color: white">
+                <div class="service_w py-2 shadow rounded " style="background-color: white">
                     <span class="    dashboard-color-text heading">Services</span>
                     <div id="echart-bar-sales" style="width: 100%; height: 400px;"></div>
 
@@ -294,18 +406,18 @@
             <div class="row mx-1 gap-2">
                 {{-- <div class="col-xs-12 col-md-12  "> --}}
                 <div class="row p-0 gap-2">
-                    <div class="col-xs-4 col-md-4 shadow rounded py-2" style="background-color: white">
+                    <div class="col-xs-4-revenue shadow rounded py-2" style="background-color: white">
                         <p class="m-0 dashboard-color-text heading">Last Month Revenue</p>
                         <p class="dashboard-color-subcolor heading">7656765.000 KWD</p>
                         <div id="echart-bar-last-month" style="width: 100%;  height:400px ; position:relative"></div>
                     </div>
-                    <div class="col-xs-4 col-md-4 shadow rounded py-2" style="background-color: white">
+                    <div class="col-xs-4-revenue shadow rounded py-2" style="background-color: white">
                         <p class="m-0 dashboard-color-text heading">Last Week Revenue</p>
                         <p class="dashboard-color-subcolor heading">7656.000 KWD</p>
-                        <div id="echart-bar-last-week" style="width: 100%; height:400px ; position:relative"></div>
+                        <div id="echart-bar-last-week" style=" height:400px ; position:relative"></div>
 
                     </div>
-                    <div class="col-xs-3 col-xs-4 py-2  shadow rounded y-scroll">
+                    <div class="col-xs-3-project  py-2-project  shadow rounded y-scroll">
                         <div>
                             <p class="dashboard-color-text heading ">Projects</p>
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
@@ -711,10 +823,8 @@
             <p class="dashboard-color-text heading ">Last 20 Day Leads</p>
 
             <div class="col">
-                <div id="echart-bar-last-leads" style="width: 100%; height: 400px;"></div>
-                <div>
+                <div id="echart-bar-last-leads" style="height: 400px;"></div>
 
-                </div>
             </div>
 
         </div>
