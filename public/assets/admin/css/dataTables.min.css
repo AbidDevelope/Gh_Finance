@@ -340,6 +340,8 @@ table.dataTable td {
     outline: none;
     /* background-color: transparent; */
     margin-left: 3px;
+    color: #7F7F7F;
+    font-weight: lighter;
 }
 .dataTables_wrapper .dataTables_info {
     clear: both;

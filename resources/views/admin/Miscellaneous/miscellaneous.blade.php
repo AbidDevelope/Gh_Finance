@@ -14,6 +14,10 @@
         background-color: #62549C !important;
         color: white;
     }
+    .pb{
+        margin-bottom: -50px !important;
+    }
+
 </style>
 
 
@@ -23,11 +27,11 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top">
+                    <div class="row margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
-                                    <div class="d-flex">
+                                    <div class="d-flex ps-3">
                                         <div class=" mt-5">
                                             <div class="form-group">
                                                 <label for="dateInput" class="text-black-50">Select Start Date:</label>
@@ -55,10 +59,10 @@
                             </div>
                         </div>
                         <div class="container">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="pb">
                                 <h4 class=" text-headings">Miscellaneous</h4>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
+                            <div class="text-right">
                                 <div class="table-actions">
                                     <a href="{{ route('miscellaneous/create') }}"
                                     class="btn bg_button text-white rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">

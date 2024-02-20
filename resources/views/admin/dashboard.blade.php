@@ -5,7 +5,7 @@
     <div class="all-content-wrapper">
         <style>
             .custom-padding-top {
-                padding-top: 30px;
+                padding-top: 10px;
             }
 
             .col-custom-width {
@@ -76,6 +76,7 @@
             }
             .py-2-project{
                 padding-bottom: 10px !important;
+                padding-top: 10px !important;
             }
 
                 /* Default width for screen width up to 1199px */
@@ -177,7 +178,9 @@
                 margin-top: 0px !important;
             }
     }
-
+.mt-n4{
+    margin-top: -8px !important;
+}
         </style>
 
         <div class="container-fluid px-2 custom-padding-top">
@@ -455,8 +458,8 @@
                             <p class="dashboard-color-text heading ">Projects</p>
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text heading">Project 1 </p>
-                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur. lore,</p>
+                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur. lore,</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
                                         </p> --}}
@@ -469,8 +472,8 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text heading">Project 1 </p>
-                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
                                         </p> --}}
@@ -482,8 +485,8 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text heading">Project 1 </p>
-                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
                                         </p> --}}
@@ -495,8 +498,8 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text heading">Project 1 </p>
-                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
                                         </p> --}}
@@ -508,8 +511,8 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text heading">Project 1 </p>
-                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
                                         </p> --}}
@@ -521,8 +524,8 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text heading">Project 1 </p>
-                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
                                         </p> --}}
@@ -534,8 +537,8 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text heading">Project 1 </p>
-                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
                                         </p> --}}
@@ -547,11 +550,9 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text heading">Project 1 </p>
-                                    <p class=" top-selling-subtittle">Lorem ipsum dolor sit amet consectetur.</p>
-                                    {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
-                                                KWD</del>
-                                        </p> --}}
+                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
+
                                 </div>
                                 <div class="col-lg-2 col-12 p-0 ">
                                     <button class="border-white bg-white cursor-pointer">View </button>

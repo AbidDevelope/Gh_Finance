@@ -352,7 +352,7 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="col-sm-4"><a class="text-black-50" title="Login"
+                                    <li class="col-sm-4"><a class="text-black-50"
                                             href="{{ route('quotation') }}">
                                             <div class="d-flex justify-content-center">
                                                 <svg class="hovercolor" width="30" height="30"
@@ -368,7 +368,7 @@
                                                 <span class="text mini-sub-pro">Quotation</span>
                                             </div>
                                         </a></li>
-                                    <li class="col-sm-4"><a class="text-black-50" title="Compose Mail"
+                                    <li class="col-sm-4"><a class="text-black-50"
                                             href="{{ route('miscellaneous') }}">
                                             <div class="" style="display: flex; justify-content: center;">
                                                 <svg class="hovercolor" width="30" height="30"
@@ -651,7 +651,7 @@
 
 
 
-                    <div class="" style="margin-top: 35px;">
+                    <div class="" style="margin-top: 33px;">
                         <i id="bell-icon" class="fas fa-bell fa-lg text-black-50"></i>
                         <!-- Adjust size using fa-lg -->
                     </div>
