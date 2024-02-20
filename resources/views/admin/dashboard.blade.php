@@ -45,17 +45,94 @@
                 /* Set a max-height if needed */
             }
 
-            .gap {
-                width: 47px !important;
+            @media (min-width: 1322px) {
+                .gap {
+                    width: 47px !important;
+                }
             }
+
+            @media (max-width: 1321px) {
+                .gap {
+                    width: 43px !important;
+                }
+            }
+
+            /* Add more media queries as per your requirements */
+
             .gap_1 {
                 width: 70px !important;
             }
-            .revenue_left{
-                padding-left:0px !important;
+
+            .revenue_left {
+                padding-left: 0px !important;
             }
         </style>
-        <div class="container-fluid px-2   custom-padding-top ">
+
+        <div class="container-fluid px-2 custom-padding-top">
+            <div class="row mx-1 ps-3 ">
+                <div class="col-xl-2   col-lg-3 col-sm-6 col-12 p-3 shadow rounded" style="background-color: white">
+                    <div class="row align-items-start">
+                        <div class="col-4"></div>
+                        <div class="col-8">
+                            <p class="m-0 dashboard-color-text">Design</p>
+                            <p class="m-0 dashboard-color-subcolor" style="font-size: 12px">205.000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gap"></div>
+
+                <div class="col-xl-2 col-md-3 col-sm-6 col-12 p-3 shadow rounded" style="background-color: white">
+                    <div class="row align-items-center">
+                        <div class="col-4"></div>
+                        <div class="col-8">
+                            <p class="m-0 dashboard-color-text">Construction</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap" style="font-size: 12px">4021.000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gap"></div>
+
+                <div class="col-xl-2 col-md-3 col-sm-6 col-12 p-3 shadow rounded" style="background-color: white">
+                    <div class="row align-items-center">
+                        <div class="col-4"></div>
+                        <div class="col-8">
+                            <p class="m-0 dashboard-color-text">Design & Construction</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap" style="font-size: 12px">4021.000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gap"></div>
+
+                <div class="w-100 d-lg-none"></div> <!-- Break to next row on lg and lower screens -->
+
+                <div class="col-xl-2 col-md-3 col-sm-6 col-12 p-3 shadow rounded" style="background-color: white">
+                    <div class="row align-items-center">
+                        <div class="col-4"></div>
+                        <div class="col-8">
+                            <p class="m-0 dashboard-color-text">Revenue</p>
+                            <p class="m-0 dashboard-color-subcolor" style="font-size: 12px">80.000 KWD</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gap "></div> <!-- To ensure the same vertical spacing on lg and lower screens -->
+
+                <div class="col-xl-2 col-md-3 col-sm-6 col-12 p-3 shadow rounded mt-4 mt-xl-0"
+                    style="background-color: white">
+                    <div class="row align-items-center">
+                        <div class="col-4"></div>
+                        <div class="col-8">
+                            <p class="m-0 dashboard-color-text">Expenses</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap" style="font-size: 12px">1200.000 KWD</p>
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="gap d-lg-none"></div> <!-- To ensure the same vertical spacing on lg and lower screens --> --}}
+            </div>
+        </div>
+
+
+
+        {{-- <div class="container-fluid px-2   custom-padding-top ">
             <div class="row mx-1 ps-3 flex-nowrap ">
                 <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 p-3 shadow rounded " style="background-color: white">
                     <div class="row align-items-start">
@@ -197,18 +274,18 @@
 
             </div>
 
-        </div>
+        </div> --}}
 
         <div class="container-fluid mt-4">
             <div class="row mx-1 gap-2 ">
                 <div class="col-lg-6 col-md-12 py-2 shadow rounded " style="background-color: white">
-                    <span class="  pb-4 dashboard-color-text heading">Revenue</span>
-                    <div id="echart-bar" class="revenue_left" style="margin-left:5px; width:602px; height: 400px;"></div>
+                    <span class=" dashboard-color-text heading">Revenue</span>
+                    <div id="echart-bar" class="revenue_left" style="margin-left:5px; width:107%; height: 400px;"></div>
                 </div>
                 <div class="gap_1"></div>
                 <div class="col-lg-5 col-md-12 py-2 shadow rounded " style="background-color: white">
-                    <span class=" pb-4 dashboard-color-text heading">Services</span>
-                    <div id="echart-bar-sales" style="width: 463px; height: 400px;"></div>
+                    <span class="    dashboard-color-text heading">Services</span>
+                    <div id="echart-bar-sales" style="width: 100%; height: 400px;"></div>
 
                 </div>
             </div>
@@ -659,23 +736,23 @@
 
 
     <!-- metisMenu JS
-                                    ============================================ -->
+                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
 
 
     <!-- float JS
-                                    ============================================ -->
+                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                    ============================================ -->
+                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- <script src="{{ asset('assets/admin/js/mychart.js') }}"></script> -->
     <!-- main JS
-                                ============================================ -->
+                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"
         integrity="sha512-EmNxF3E6bM0Xg1zvmkeYD3HDBeGxtsG92IxFt1myNZhXdCav9MzvuH/zNMBU1DmIPN6njrhX1VTbqdJxQ2wHDg=="
