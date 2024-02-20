@@ -58,7 +58,7 @@
                     </div>
                     <div class="container">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <h4 class="mt-3">Design</h4>
+                            <h4 class="">Design</h4>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6  text-right">
                             <div class="table-actions">
@@ -87,9 +87,9 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="">
-                            <table class="table" id="dataTable">
+                            <table  id="dataTable">
                                 <thead>
-                                    <tr>
+                                    <tr role="row">
                                         <th>Sr. No.</th>
                                         <th>Project Id</th>
                                         <th>Date</th>

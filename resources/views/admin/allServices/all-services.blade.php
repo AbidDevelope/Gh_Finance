@@ -6,6 +6,9 @@
     .margin_top{
         margin-top: -100px !important;
     }
+    .bg{
+        background-color: white !important;
+    }
 </style>
 
 <script>
@@ -32,7 +35,7 @@ dateInput.addEventListener("input", function () {
 
 @extends('admin.layouts.master')
 @section('content')
-    <div class="all-content-wrapper ">
+    <div class="all-content-wrapper bg">
         <div class="header-advance-area ">
             <div class="breadcome-area">
                 <div class="container-fluid">
@@ -72,7 +75,7 @@ dateInput.addEventListener("input", function () {
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="mt-3">All Services</h4>
+                            <h4 class="">All Services</h4>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))

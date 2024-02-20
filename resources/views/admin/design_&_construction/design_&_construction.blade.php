@@ -58,7 +58,7 @@
 
                         <div class="container">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <h5 class="mt-3"><span>Design & Construction</span></h5>
+                                <h5 class=""><span>Design & Construction</span></h5>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ml-5 text-right">
                                 <div class="table-actions">

@@ -25,7 +25,7 @@
 }
 
 /* .input-group .form-control {
-    padding-left: 50px; 
+    padding-left: 50px;
 } */
 
 .input-group-text {
@@ -58,18 +58,18 @@
 .form-section button[type="submit"] {
     color: #fff;
     padding: 10px 20px;
-    border: 1px solid var(--filter-color) !important;
-    border-radius: 0 !important; 
+    /* border: 1px solid var(--filter-color) !important; */
+    border-radius: 4px !important; /* Adjust the value to make it more or less rounded */
     cursor: pointer;
     font-size: 16px;
     margin: 20px auto;
-    background: var(--filter-color);
+    background: #62549C;
 }
 
 .form-section button[type="submit"]:hover {
-    background-color: #fff;
-    border: 1px solid var(--filter-color);
-    color: #000;
+    background-color: #62549C;
+    /* border: 1px solid var(--filter-color); */
+    color: #fff;
 }
 
 /* Adjustments for smaller screens */
