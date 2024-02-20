@@ -92,7 +92,7 @@
                                             <th>Project ID</th>
                                             <th>Project Type</th>
                                             <th>Project Name</th>
-                                            <th>Beneficiary</th>
+                                            {{-- <th>Beneficiary</th> --}}
                                             <th>Total Amount</th>
                                             <th class="text-right">Actions</th>
                                         </tr>
@@ -106,15 +106,15 @@
                                             <td>{{ $item->project_id }}</td>
                                             <td>{{ $item->project->project_type }}</td>
                                             <td>{{ $item->project->project_name }}</td>
-                                            <td>{{ $item->beneficiary }}</td>
+                                            {{-- <td>Abid</td> --}}
                                             <td>{{ $item->grandtotal }}</td>
                                             <td class="text-right">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><img src="{{ asset('assets/admin/img/icon/action.png') }}" alt=""></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="#"><i class="fa fa-eye m-r-5"></i> View</a>
-                                                        <a class="dropdown-item" href="#"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                        <a class="dropdown-item" href="#"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                        <a class="dropdown-item" href="{{ route('expenses/view', $item->id) }}"><i class="fa fa-eye m-r-5"></i> View</a>
+                                                        <a class="dropdown-item" href="{{ route('expenses/edit', $item->id) }}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                        <a class="dropdown-item" href="{{ route('expenses/delete', $item->id) }}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </div>
                                                 </div>
                                             </td>

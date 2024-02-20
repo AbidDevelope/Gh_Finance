@@ -181,4 +181,80 @@ class ExpensesController extends Controller
             return redirect()->route('pettyCash');
         }
     }
+
+    public function expensesView($id)
+    {
+       $expenses = Expense::find($id);
+       return view('admin.pettyCash.expenses-view', compact('expenses'));
+    }
+
+    public function expensesEdit($id)
+    {
+       $expenses = Expense::with('expenseItem')->findOrFail($id);
+    //    return $expenses;
+       return view('admin.pettyCash.expenses-edit', compact('expenses'));
+    }
+
+    public function expensesUpdate(Request $request, $id)
+    {
+        $validate = Validator::make($request->all(), [
+            'project_id'  => 'required',
+            'items.*.description' => 'required',
+            'month.*'     => 'required', 
+            'items.*.date' => 'required|date_format:d/m/Y', 
+            'items.*.receipt' => 'required',
+            'items.*.amount_deposite' => 'required|numeric',
+            'items.*.amount_withdrawn' => 'required|numeric',
+            'items.*.beneficiary' => 'required',
+            'items.*.total' => 'required|numeric', 
+            'subtotal' => 'required',  'others' => 'required', 
+            'grandtotal'  => 'required'
+        ]);
+        
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }else{
+           $data = $request->input('items', []);
+        //    dd($data);
+           $requestData = $request->all();
+
+           $expense = Expense::find($id);
+           if($expense)
+           {
+              $expense->update($requestData);
+           }
+
+           foreach($data as $itemId=>$itemData)
+           {
+              $items = ExpenseItem::find($itemId);
+              if($items)
+              {
+                $items->description = $itemData['description'];
+                $items->month = $itemData['month'];
+                $items->date  = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['date']);
+                $items->receipt  = $itemData['receipt'];
+                $items->amount_deposite = $itemData['amount_deposite'];
+                $items->amount_withdrawn = $itemData['amount_withdrawn'];
+                $items->beneficiary  = $itemData['beneficiary'];
+                $items->total  =  $itemData['total'];
+                $items->save();
+              }
+           }
+           session()->flash('success', 'Expenses Updated Successfully.');
+           return redirect()->route('pettyCash');
+        }
+    }
+
+    public function expensesDelete($id)
+    {
+        $exepenses = Expense::find($id);
+
+        if($exepenses)
+        {
+            $exepenses->expenseItem()->delete();
+            $exepenses->delete();
+        }
+        session()->flash('success', 'Expenses Deleted Successfully.');
+        return redirect()->back();
+    }
 }

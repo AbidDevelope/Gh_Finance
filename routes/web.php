@@ -63,7 +63,7 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::post('expenses/create', 'expensesCreate')->name('expenses/create');
     Route::get('expenses/view/{id}', 'expensesView')->name('expenses/view');
     Route::get('expenses/edit/{id}', 'expensesEdit')->name('expenses/edit');
-    Route::put('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
+    Route::post('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
     Route::get('expenses/delete/{id}', 'expensesDelete')->name('expenses/delete');
     Route::get('expenses/change/status/{id}', 'expensesChangeStatus')->name('expenses/change/status');
     // Route::post('get/temp/img', 'tempImgStores')->name('get/temp/img');
