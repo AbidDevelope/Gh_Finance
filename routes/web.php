@@ -136,4 +136,5 @@ Route::controller(ProjectManagerController::class)->prefix('admin')->middleware(
 // ======================= ReportController ========================= //
 Route::controller(ReportController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
     Route::get('project/report', 'projectReport')->name('project/report');
+    Route::get('report/view', 'reportView')->name('report/view');
 });

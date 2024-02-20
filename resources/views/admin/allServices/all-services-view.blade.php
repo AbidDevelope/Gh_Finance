@@ -5,8 +5,8 @@
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-section">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                            <div class="form-section bg-white">
                                 <h6 class="card-title m-b-15">Project Type</h6>
                                 <hr class="border-top-grey">
                                 <div class="card-body">
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h6 class="card-title m-b-15">Company details</h6>
                                 <hr class="border-top-grey">
                                 <div class="card-body">
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h6 class="card-title m-b-15">Project details</h6>
                                 <hr class="border-top-grey">
                                 <div class="card-body">

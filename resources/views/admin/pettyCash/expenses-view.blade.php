@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-    <div class="all-content-wrapper" style="background:#F2F4F7">
+    <div class="all-content-wrapper" style="background:white">
 
         <div class="header-advance-area">
 

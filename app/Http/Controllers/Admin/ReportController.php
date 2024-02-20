@@ -11,4 +11,9 @@ class ReportController extends Controller
     {
         return view('admin.report.project_report');
     }
+
+    public function reportView()
+    {
+        return view('admin.report.report-view');
+    }
 }
