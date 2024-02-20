@@ -13,6 +13,7 @@ class Project extends Model
     use HasFactory;
     protected $fillable = [
         'project_type',
+        'date',
         'project_manager',
         'manager_email',
         'Manager_mobile',

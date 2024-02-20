@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use Validator;
+use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\PDF;
 
 class InvoiceController extends Controller
@@ -95,5 +96,28 @@ class InvoiceController extends Controller
             session()->flash('success', 'Invoice Created Successfully');
             return redirect()->route('invoices');
       }
+    }
+
+    public function searchInvoice(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'start_date' => 'required|date_format:d/m/Y',
+            'end_date' => 'required|date_format:d/m/Y',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+
+        $invoices = Invoice::whereDate('invoice_date', '>=', $startDate)
+                            ->whereDate('invoice_date', '<=', $endDate)
+                            ->get(); 
+        if($invoices)
+        {
+            return view('admin.invoices.invoices', compact('invoices'));
+        } 
     }
 }

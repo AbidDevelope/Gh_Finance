@@ -10,6 +10,7 @@ use App\Models\Project;
 use App\Models\Miscellaneous;
 use App\Models\MiscellaneousItem;
 use Validator;
+use Carbon\Carbon;
 
 class ExpensesController extends Controller
 {
@@ -156,22 +157,34 @@ class ExpensesController extends Controller
         {
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
-            $requestData = $request->all();
-            $expense = Expense::create($requestData);
+
+        $requestData = $request->all();
+        $expense = new Expense();
+        $expense->project_id = $request->project_id;
+        $expense->month = $request->month;
+
+        $convertedDate = Carbon::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+        $expense->date = $convertedDate;
+
+        $expense->beneficiary = $request->beneficiary;
+        $expense->subtotal = $request->subtotal;
+        $expense->others = $request->others;
+        $expense->grandtotal = $request->grandtotal;
+        $expense->save();
 
             if($expense)
             {
-              foreach($request->month as $key=>$item)
+              foreach($request->total as $key=>$item)
               {
                 $expenseItems = new ExpenseItem([
                     'expenses_id'  => $expense->id,
                     'description' => $request->description[$key],
-                    'month'       => $request->month[$key],
-                    'date' => \Carbon\Carbon::createFromFormat('d/m/Y', $request->date[$key])->format('Y-m-d'),
+                    // 'month'       => $request->month[$key],
+                    // 'date' => \Carbon\Carbon::createFromFormat('d/m/Y', $request->date[$key])->format('Y-m-d'),
                     'receipt'  => $request->receipt[$key],
                     'amount_deposite' => $request->amount_deposite[$key],
                     'amount_withdrawn'  => $request->amount_withdrawn[$key],
-                    'beneficiary'  => $request->beneficiary[$key],
+                    // 'beneficiary'  => $request->beneficiary[$key],
                     'total' => $request->total[$key],
                 ]);
                 $expenseItems->save();
@@ -244,6 +257,40 @@ class ExpensesController extends Controller
            return redirect()->route('pettyCash');
         }
     }
+
+    public function searchFilter(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'start_date' => 'required|date_format:d/m/Y',
+            'end_date' => 'required|date_format:d/m/Y',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+
+        $expenses = Expense::whereDate('date', '>=', $startDate)->whereDate('date', '<=', $endDate)->get();
+
+        $projects = Project::whereDate('date', '>=', $startDate)
+                            ->whereDate('date', '<=', $endDate)
+                            ->get(); 
+
+        $miscell = Miscellaneous::whereBetween('created_at', [$startDate, $endDate])->get(); 
+        if($miscell)
+        {
+            return view('admin.miscellaneous.miscellaneous', compact('miscell'));
+        }                    
+
+        if($projects)
+        {
+            return view('admin.allServices.all-services', compact('projects'));
+        } 
+    
+        return view('admin.pettyCash.pettyCash', compact('expenses'));
+        }
 
     public function expensesDelete($id)
     {

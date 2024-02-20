@@ -47,12 +47,46 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Project Name</label>
-
                                                 <input readonly class="form-control" type="text" name="project_name" id="project_name" value="{{ old('project_name') }}">
-
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Month</label>
+                                                <select name="month" id="" class="form-control">
+                                                    <option value="" disabled selected>Select Month
+                                                    </option>
+                                                    <option value="January">January</option>
+                                                    <option value="February">February</option>
+                                                    <option value="March">March</option>
+                                                    <option value="April">April</option>
+                                                    <option value="May">May</option>
+                                                    <option value="June">June</option>
+                                                    <option value="July">July</option>
+                                                    <option value="August">August</option>
+                                                    <option value="September">September</option>
+                                                    <option value="October">October</option>
+                                                    <option value="November">November</option>
+                                                    <option value="December">December</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Select Date</label>
+                                                <input type="text" class="form-control" id="Start"
+                                                name="date" value="{{ old('date') }}"
+                                                placeholder="DD/MM/YYYY">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Beneficiary</label>
+                                                <input type="text" class="form-control"
+                                                name="beneficiary" value="{{ old('beneficiary') }}"
+                                                placeholder="DD/MM/YYYY">
+                                            </div>
+                                        </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="table-responsive">
@@ -60,12 +94,12 @@
                                                     <thead>
                                                         <tr style="margin-right: 20px">
                                                             <th class="col-md-2">Description</th>
-                                                            <th class="col-sm-2">Month</th>
-                                                            <th class="col-sm-2">Date</th>
+                                                            {{-- <th class="col-sm-2">Month</th> --}}
+                                                            {{-- <th class="col-sm-2">Date</th> --}}
                                                             <th class="col-sm-2">Recp No. / Cheque number</th>
                                                             <th class="col-sm-1">Amount Deposited</th>
                                                             <th class="col-sm-1">Amount Withdrawn</th>
-                                                            <th class="col-sm-2">Beneficiary</th>
+                                                            {{-- <th class="col-sm-2">Beneficiary</th> --}}
                                                             <th class="col-sm-1">Total/KWD</th>
                                                             <th class="col-sm-1"></th>
                                                         </tr>
@@ -77,7 +111,7 @@
                                                                     style="min-width:120px" name="description[]"
                                                                     value="{{ old('description.0') }}">
                                                             </td>
-                                                            <td>
+                                                            {{-- <td>
                                                                 <select name="month[]" id="" class="form-control">
                                                                     <option value="" disabled selected>Select Month
                                                                     </option>
@@ -94,12 +128,12 @@
                                                                     <option value="November">November</option>
                                                                     <option value="December">December</option>
                                                                 </select>
-                                                            </td>
-                                                            <td>
+                                                            </td> --}}
+                                                            {{-- <td>
                                                                 <input type="text" class="form-control" id="Start"
                                                                     name="date[]" value="{{ old('date.0') }}"
                                                                     placeholder="DD/MM/YYYY">
-                                                            </td>
+                                                            </td> --}}
                                                             <td>
                                                                 <input class="form-control" type="text" name="receipt[]">
                                                             </td>
@@ -111,10 +145,10 @@
                                                                 <input class="form-control" type="text"
                                                                     name="amount_withdrawn[]" onkeypress="return /[0-9]/i.test(event.key)">
                                                             </td>
-                                                            <td>
+                                                            {{-- <td>
                                                                 <input class="form-control" type="text"
                                                                     name="beneficiary[]" placeholder="">
-                                                            </td>
+                                                            </td> --}}
                                                             <td>
                                                                 <input class="form-control kwd" type="text"
                                                                     name="total[]" value="{{ old('total.0') }}"
@@ -216,7 +250,7 @@
             var addButton = $('#add-row');
             var wrapper = $('#customFields');
             var fieldHTML =
-                '<tr style="margin-right: 20px"><td><input class="form-control" type="text" style="min-width:120px" name="description[]" value="{{ old('description.0') }}"></td><td><select name="month[]" id="" class="form-control"><option value="" disabled selected>Select Month</option><option value="January">January</option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="August">August</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option></select></td><td><input type="text" class="form-control" id="Start" name="date[]" value="{{ old('date.0') }}" placeholder="DD/MM/YYYY"></td><td><input class="form-control" type="text" name="receipt[]"></td><td><input class="form-control" type="text" name="amount_deposite[]"></td><td><input class="form-control" type="text" name="amount_withdrawn[]"></td><td><input class="form-control" type="text" name="beneficiary[]" placeholder=""></td><td><input class="form-control kwd" type="text" name="total[]" value="{{ old('total.0') }}" onkeypress="return /[0-9.]/i.test(event.key)"></td><td><a href="javascript:void(0)" id="add-row" class="remove-row" title="Add"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td></tr>';
+                '<tr style="margin-right: 20px"><td><input class="form-control" type="text" style="min-width:120px" name="description[]" value="{{ old('description.0') }}"></td><td><input class="form-control" type="text" name="receipt[]"></td><td><input class="form-control" type="text" name="amount_deposite[]"></td><td><input class="form-control" type="text" name="amount_withdrawn[]"></td><td><input class="form-control kwd" type="text" name="total[]" value="{{ old('total.0') }}" onkeypress="return /[0-9.]/i.test(event.key)"></td><td><a href="javascript:void(0)" id="add-row" class="remove-row" title="Add"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td></tr>';
           
             var x = 1;
 

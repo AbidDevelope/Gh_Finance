@@ -9,6 +9,7 @@ use App\Models\Quotation;
 use App\Models\Beneficiary;
 use App\Models\Project;
 use App, Session, Validator;
+use Carbon\Carbon;
 
 class QuotationController extends Controller
 {
@@ -97,5 +98,28 @@ class QuotationController extends Controller
         }
 
         return response()->json(['message' => 'Project not found'], 404);
+    }
+
+    public function searchQuotation(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'start_date' => 'required|date_format:d/m/Y',
+            'end_date' => 'required|date_format:d/m/Y',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+
+        $quotations = Quotation::whereDate('quotation_date', '>=', $startDate)
+                            ->whereDate('quotation_date', '<=', $endDate)
+                            ->get(); 
+        if($quotations)
+        {
+            return view('admin.quotations.quotations', compact('quotations'));
+        } 
     }
 }

@@ -39,6 +39,7 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
     Route::post('design/update/{id}', 'designUpdate')->name('design/update');
     Route::get('design/view/{id}', 'designView')->name('design/view');
     Route::get('design/delete/{id}', 'designDelete')->name('design/delete');
+    Route::get('search/design', 'searchDesign')->name('search/design');
 
     Route::get('constructions', 'constructions')->name('constructions');
     Route::get('constructions/create', 'createConstructionsForm')->name('create/constructions');
@@ -47,6 +48,7 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
     Route::get('construction/edit/{id}', 'constructionEdit')->name('construction/edit');
     Route::post('construction/update/{id}', 'constructionUpdate')->name('construction/update');
     Route::get('construction/delete/{id}', 'constructionDelete')->name('construction/delete');
+    Route::get('search/construction', 'searchConstruction')->name('search/construction');
 
     Route::get('design_&_construction', 'designConstructions')->name('design_&_construction');
     Route::get('design_&_construction/create', 'designConstructionCreateForm')->name('design_&_construction/create');
@@ -55,6 +57,7 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
     Route::get('design_&_construction/edit/{id}', 'designConstructionEdit')->name('design_&_construction/edit');
     Route::post('design_&_construction/update/{id}', 'designConstructionUpdate')->name('design_&_construction/update');
     Route::get('design_&_construction/delete/{id}', 'designConstructionDelete')->name('design_&_construction/delete');
+    Route::get('search/design&construction', 'searchDesign_Construction')->name('search/design&construction');
 });
 
 // -------------------------- ExpensesController --------------------------- //
@@ -67,7 +70,7 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::post('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
     Route::get('expenses/delete/{id}', 'expensesDelete')->name('expenses/delete');
     Route::get('expenses/change/status/{id}', 'expensesChangeStatus')->name('expenses/change/status');
-    // Route::post('get/temp/img', 'tempImgStores')->name('get/temp/img');
+    Route::get('search/filter', 'searchFilter')->name('search/filter');
     Route::get('miscellaneous', 'miscellaneous')->name('miscellaneous');
     Route::get('miscellaneous/create', 'miscellaneousCreateForm')->name('miscellaneous/create');
     Route::post('miscellaneous/create', 'miscellaneousCreate')->name('miscellaneous/create');
@@ -75,6 +78,7 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('miscellaneous/edit/{id}', 'miscellaneousEdit')->name('miscellaneous/edit');
     Route::post('miscellaneous/update/{id}', 'miscellaneousUpdate')->name('miscellaneous/update');
     Route::get('miscellaneous/delete/{id}', 'miscellaneousDelete')->name('miscellaneous/delete');
+    Route::get('search/miscellaneous', 'searchFilter')->name('search/miscellaneous');
 });
 Route::get('/project-data/{id}',[ExpensesController::class, 'projectDataGet'])->name('project.data');
 
@@ -86,6 +90,7 @@ Route::controller(InvoiceController::class)->prefix('admin')->middleware('adminA
     Route::get('invoice/view/{id}', 'invoiceView')->name('invoice/view');
     Route::get('invoice/pdf/view/{id}', 'invoicePdfView')->name('invoice/pdf/view');
     Route::get('invoice/pdf/download/{id}', 'downloadInvoicePDF')->name('invoice/pdf/download');
+    Route::get('search/invoice', 'searchInvoice')->name('search/invoice');
 });
 
 // ------------------------- BeneficiaryController ------------------------ //
@@ -106,6 +111,7 @@ Route::controller(QuotationController::class)->prefix('admin')->middleware('admi
     Route::get('quotations/create', 'quotationCreateForm')->name('quotations/create');
     Route::post('quotations/create', 'quotationCreate')->name('quotations/create');
     Route::get('quotation/view/{id}', 'quotationView')->name('quotation/view');
+    Route::get('search/quotation', 'searchQuotation')->name('search/quotation');
 });
 Route::get('/project-data/{id}', [QuotationController::class, 'getProjectData'])->name('project.data');
 

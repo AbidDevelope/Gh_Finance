@@ -25,16 +25,18 @@
                     <div class="margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
-                                <form>
+                                <form action="{{ route('search/filter') }}" method="GET">
+                                    @csrf
                                     <div class="d-flex">
                                         <div class=" mt-5">
                                             <div class="form-group">
                                                 <label for="dateInput" class="text-black-50">Select Start Date:</label>
-                                                <!-- Input with Bootstrap styling -->
+        
                                                 <input type="text" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
-                                                    id="dateInput" style="width: 230px; height: 35px;">
-                                                    {{-- <input id="search" type="text" class="bg-white form-control rounded-pill"
-                                                    style="width: 230px; height: 40px;" placeholder="search"> --}}
+                                                 style="width: 230px; height: 35px;" value="{{ old('start_date') }}">
+                                                 @if ($errors->has('start_date'))
+                                                 <span class="text-danger">{{ $errors->first('start_date') }}</span>
+                                             @endif
                                             </div>
                                         </div>
                                         <div class="container mt-5 d-flex gap-4 ">
@@ -42,12 +44,14 @@
                                                 <label for="dateInput" class="text-black-50">Select End Date:</label>
                                                 <!-- Input with Bootstrap styling -->
                                                 <input type="text" id="end_date" class="form-control bg-white text-black-50 rounded"
-                                                name="end_Date" placeholder="DD/MM/YYYY" style="width: 230px; height: 35px;">
+                                                name="end_date" placeholder="DD/MM/YYYY" style="width: 230px; height: 35px;" value="{{ old('end_date') }}">
+                                                @if ($errors->has('end_date'))
+                                                 <span class="text-danger">{{ $errors->first('end_date') }}</span>
+                                             @endif
                                             </div>
                                             <div class="form-group" style="margin-top: 25px;">
                                                 <button class="btn-search btn bg_button text-white bg-gray-100 "
-                                                    type="button ">Search </button>
-
+                                                    type="submit">Search </button>
                                             </div>
                                         </div>
 
@@ -90,6 +94,7 @@
                                         <tr>
                                             <th>Sr. No</th>
                                             <th>Project ID</th>
+                                            <th>Date</th>
                                             <th>Project Type</th>
                                             <th>Project Name</th>
                                             {{-- <th>Beneficiary</th> --}}
@@ -104,6 +109,7 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $item->project_id }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
                                             <td>{{ $item->project->project_type }}</td>
                                             <td>{{ $item->project->project_name }}</td>
                                             {{-- <td>Abid</td> --}}

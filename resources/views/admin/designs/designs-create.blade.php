@@ -36,6 +36,13 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label>Select Date</label>
+                                                <input type="text" id="date" name="date" class="form-control"
+                                                    placeholder="DD/MM/YYYY">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label>Project Manager</label>
                                                 <input type="text" class="form-control" name="project_manager"
                                                     value="{{ old('project_manager') }}">
@@ -405,5 +412,28 @@
         });
         </script>
     {{-- Add or Remove input field end --}}
+
+      {{-- Date Format  --}}
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  {{-- date Format --}}
+  <script>
+      var onDateSelect = function(selectedDate, input) {
+          if (input.id === 'date') { //Start date selected - update End Date picker
+              $("#end_date").datepicker('option', 'minDate', selectedDate);
+          } else { //End date selected - update Start Date picker
+              $("#date").datepicker('option', 'maxDate', selectedDate);
+          }
+      };
+      var onDocumentReady = function() {
+          var datepickerConfiguration = {
+              dateFormat: "dd/mm/yy",
+              onSelect: onDateSelect
+          };
+          ///--- Component Binding ---///
+          $('#date, #end_date').datepicker(datepickerConfiguration);
+      };
+      $(onDocumentReady);
+  </script>
 
 @endsection

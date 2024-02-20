@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Payment;
 use Validator;
+use Carbon\Carbon;
 
 class ServicesController extends Controller
 {
@@ -38,7 +39,7 @@ class ServicesController extends Controller
     {
         // dd($request->all());
         $validate = Validator::make($request->all(), [
-            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'project_type'      => 'required' ,  'date' => 'required',  'project_manager'       => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
             'company_name'      => 'required' ,  'company_project_name'  => 'required',
@@ -370,5 +371,74 @@ class ServicesController extends Controller
 
         session()->flash('success', 'Deleted Successfully.');
         return redirect()->back();
+    }
+
+    public function searchDesign(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'start_date' => 'required|date_format:d/m/Y',
+            'end_date' => 'required|date_format:d/m/Y',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+
+        $projects = Project::where('project_type' , 'Design')->whereDate('date', '>=', $startDate)
+                            ->whereDate('date', '<=', $endDate)
+                            ->get(); 
+        if($projects)
+        {
+            return view('admin.designs.designs', compact('projects'));
+        } 
+    }
+
+    public function searchConstruction(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'start_date' => 'required|date_format:d/m/Y',
+            'end_date' => 'required|date_format:d/m/Y',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+
+        $projects = Project::where('project_type' , 'Construction')->whereDate('date', '>=', $startDate)
+                            ->whereDate('date', '<=', $endDate)
+                            ->get(); 
+        if($projects)
+        {
+            return view('admin.constructions.constructions', compact('projects'));
+        } 
+    }
+
+    public function searchDesign_Construction(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'start_date' => 'required|date_format:d/m/Y',
+            'end_date' => 'required|date_format:d/m/Y',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+
+        $projects = Project::where('project_type' , 'Design & Construction')->whereDate('date', '>=', $startDate)
+                            ->whereDate('date', '<=', $endDate)
+                            ->get(); 
+        if($projects)
+        {
+            return view('admin.design_&_construction.design_&_construction', compact('projects'));
+        }  
     }
 }

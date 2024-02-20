@@ -28,31 +28,41 @@
                     <div class="margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
-                                <form>
+                                <form action="{{ route('search/invoice') }}" method="GET">
+                                    @csrf
                                     <div class="d-flex">
                                         <div class=" mt-5">
                                             <div class="form-group">
                                                 <label for="dateInput" class="text-black-50">Select Start Date:</label>
                                                 <!-- Input with Bootstrap styling -->
-                                                <input type="text" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
-                                                    id="dateInput" style="width: 230px; height: 35px;">
-
+                                                <input type="text" id="start_date" name="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
+                                                 style="width: 230px; height: 35px;">
+                                                 @if ($errors->has('start_date'))
+                                                 <span class="text-danger">{{ $errors->first('start_date') }}</span>
+                                             @endif
+                                             
                                             </div>
                                         </div>
                                         <div class="container mt-5 d-flex gap-4 ">
                                             <div class=" form-group">
                                                 <label for="dateInput" class="text-black-50">Select End Date:</label>
-                                                <!-- Input with Bootstrap styling -->
                                                 <input type="text" id="end_date" class="form-control bg-white text-black-50 rounded"
-                                                name="end_Date" placeholder="DD/MM/YYYY" style="width: 230px; height: 35px;">
+                                                name="end_date" placeholder="DD/MM/YYYY" style="width: 230px; height: 35px;">
+                                                @if ($errors->has('end_date'))
+                                                    <span class="text-danger">{{ $errors->first('end_date') }}</span>
+                                                @endif
+
                                             </div>
                                             <div class="form-group" style="margin-top: 25px;">
                                                 <button class="btn-search btn bg_button text-white bg-gray-100 "
-                                                    type="button ">Search </button>
+                                                    type="submit ">Search </button>
 
                                             </div>
                                         </div>
+                                        <div class="container " >
 
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -102,7 +112,7 @@
                                             <tr>
                                                 <td>{{ $index+1 }}</td>
                                                 <td>{{ $invoice->invoice_number }}</td>
-                                                <td>{{ $invoice->created_at->format('d M Y') }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($invoice->invoice_date)->format('d/m/Y') }}</td>
                                                 <td>{{ $invoice->grandtotal }}</td>
                                                 <td><span class="badge bg-success">Paid</span></td>
                                                 <td class="text-right">
@@ -133,7 +143,7 @@
                                         @endforeach
                                     @else
                                         <tr class="odd">
-                                            <td valign="top" colspan="7" class="dataTables_empty">No data available in
+                                            <td valign="top" colspan="6" class="dataTables_empty">No data available in
                                                 table
                                             </td>
                                         </tr>

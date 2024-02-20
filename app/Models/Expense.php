@@ -12,9 +12,13 @@ class Expense extends Model
     use HasFactory;
     protected $fillable = [
         'project_id',
+        'month',
+        'date',
+        'beneficiary',
         'subtotal',
         'others',
         'grandtotal',
+
         ];
 
     public function expenseItem()
