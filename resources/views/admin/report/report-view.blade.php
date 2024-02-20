@@ -1,198 +1,182 @@
 <style>
-    .bg_button{
-        background-color: #62549C !important;
-        color: white;
-    }
     .margin_top{
-        margin-top: -100px !important;
-    }
-    .bg{
-        background-color: white !important;
+        margin-top: -40px !important;
     }
 </style>
 
-<script>
-const dateInput = document.getElementById("dateInput");
-
-// Set the placeholder dynamically to "dd/mm/yyyy"
-dateInput.placeholder = "dd/mm/yyyy";
-
-dateInput.addEventListener("input", function () {
-  const currentValue = dateInput.value;
-  if (currentValue) {
-    const date = new Date(currentValue);
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
-    const formattedDate = `${day}-${month}-${year}`;
-    dateInput.value = formattedDate;
-    console.log(formattedDate);
-  }
-});
-
-  </script>
-
-
 @extends('admin.layouts.master')
 @section('content')
-    <div class="all-content-wrapper bg">
-        <div class="header-advance-area ">
+    <div class="all-content-wrapper">
+        <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top ">
-                        {{-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="mt-3 text-black">Reports</h4>
-                        </div> --}}
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="s002">
-                                <form>
-                                    <div class="d-flex gap-5">
-                                        <div class=" mt-5">
-                                            <div class="form-group">
-
-                                                <input type="date" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
-                                                    id="dateInput" style="width: 130px; height: 35px;">
-
-                                            </div>
-                                        </div>
-                                        <div class=" mt-5">
-                                            <div class="form-group">
-
-                                                <input type="date" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
-                                                    id="dateInput" style="width: 130px; height: 35px;">
-
-                                            </div>
-                                        </div>
-                                        <div class=" mt-5">
-                                            <div class="form-group">
-
-                                                <input type="text" name="project_type" id="project_type" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
-                                                    id="project_type" style="width: 130px; height: 35px;">
-                                                    {{-- <input id="search" type="text" class="bg-white form-control rounded-pill"
-                                                    style="width: 230px; height: 40px;" placeholder="search"> --}}
-                                            </div>
-                                        </div>
-                                        <div class=" mt-5">
-                                            <div class="form-group">
-
-                                                <input type="text" name="revenue" id="revenue" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
-                                                    id="revenue" style="width: 130px; height: 35px;">
-                                                    {{-- <input id="search" type="text" class="bg-white form-control rounded-pill"
-                                                    style="width: 230px; height: 40px;" placeholder="search"> --}}
-                                            </div>
-                                        </div>
-                                        <div class=" mt-5">
-                                            <div class="form-group">
-
-                                                <input type="text" name="expenses" id="expenses" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
-                                                    id="expenses" style="width: 130px; height: 35px;">
-                                                    {{-- <input id="search" type="text" class="bg-white form-control rounded-pill"
-                                                    style="width: 230px; height: 40px;" placeholder="search"> --}}
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </form>
+                    <div class="margin_top">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                            <div class="form-section bg-white">
+                                <h6 class="card-title m-b-15">Project Type</h6>
+                                <hr class="border-top-grey">
+                                <div class="card-body">
+                                    <table class="table table-striped table-border">
+                                        <tbody>
+                                            <tr>
+                                                <td>Project Type:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Project Manager:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Manager Email:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Manager Mobile:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Manager Landline:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Remarks:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Created Date:</td>
+                                                <td class="text-right"><a href="#"></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="mt-3">All Services</h4>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            @if (Session::has('success'))
-                                <div class="alert alert-success">
-                                    {{ Session::get('success') }}
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <div class="form-section bg-white">
+                                <h6 class="card-title m-b-15">Company details</h6>
+                                <hr class="border-top-grey">
+                                <div class="card-body">
+                                    <table class="table table-striped table-border">
+                                        <tbody>
+                                            <tr>
+                                                <td>Company Name:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Company Project:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Company Email:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Company Mobile:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Company Landline:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Company Location:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Company Country:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Company Website:</td>
+                                                <td class="text-right"><a href="#"></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Company Remarks</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Created Date:</td>
+                                                <td class="text-right"><a href="#"></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            @endif
-                            @if (Session::has('error'))
-                                <div class="alert alert-danger">
-                                    {{ Session::get('error') }}
-                                </div>
-                            @endif
+                            </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-                            <div class="">
-                                <table id="dataTable">
-                                    <thead>
-                                        <tr role="row">
-                                            <th>Sr. No.</th>
-                                            <th>Date</th>
-                                            <th>Project Type</th>
-                                            <th>Project Name</th>
-                                            <th>Revenue</th>
-                                            <th>Expenses</th>
-                                            <th>Mobile</th>
-                                            <th>Project Value</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>21/2/2024</td>
-                                                    <td>design</td>
-                                                    <td>delhi metro</td>
-                                                    <td>5.000KWD</td>
-                                                    <td>4.000KWD</td>
-                                                    <td>123243546</td>
-                                                    <td>10000.000KWD</td>
-
-                                                    <td class="text-right">
-                                                        <div class="dropdown dropdown-action">
-                                                            <a href="#" class="action-icon " data-toggle="dropdown"
-                                                                aria-expanded="false"><img
-                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
-                                                                    alt=""></a>
-                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item"
-                                                                    href="#"><i
-                                                                        class="fa fa-eye m-r-5"></i> View
-                                                                </a>
-
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                    </tbody>
-                                </table>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <div class="form-section bg-white">
+                                <h6 class="card-title m-b-15">Project details</h6>
+                                <hr class="border-top-grey">
+                                <div class="card-body">
+                                    <table class="table table-striped table-border">
+                                        <tbody>
+                                            <tr>
+                                                <td>Project Name:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Project Email:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Project Mobile:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Project Location:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Project Value:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Project Revenue:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Project Expenses:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Project Country:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Project Remarks:</td>
+                                                <td class="text-right"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Created Date:</td>
+                                                <td class="text-right"><a href="#"></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Static Table Start -->
-
             <!-- Static Table End -->
         </div>
     </div>
-
     <!-- metisMenu JS
-                                        ============================================ -->
+                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                            ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                            ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                        ============================================ -->
+                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
-
-    {{-- Data Table js code --}}
-    <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
-    <script>
-        $('#dataTable').DataTable();
-    </script>
-    {{-- Data trigger --}}
-    <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
-
+    {{-- Data table JS --}}
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 @endsection

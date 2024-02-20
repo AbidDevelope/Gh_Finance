@@ -101,7 +101,7 @@ table.dataTable {
     clear: both;
     border-collapse: separate;
     border-spacing: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 table.dataTable thead th,
 table.dataTable tfoot th {
@@ -331,6 +331,7 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_filter {
     float: right;
     text-align: right;
+    padding-bottom: 1em;
 }
 .dataTables_wrapper .dataTables_filter input {
     border: 1px solid #aaa;
@@ -339,16 +340,20 @@ table.dataTable td {
     outline: none;
     /* background-color: transparent; */
     margin-left: 3px;
+    color: #7F7F7F;
+    font-weight: lighter;
 }
 .dataTables_wrapper .dataTables_info {
     clear: both;
     float: left;
-    padding-top: 0.755em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 .dataTables_wrapper .dataTables_paginate {
     float: right;
     text-align: right;
-    padding-top: 0.25em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     box-sizing: border-box;

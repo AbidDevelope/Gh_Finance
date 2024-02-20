@@ -10,9 +10,9 @@
     .margin_top{
         margin-top: -100px !important;
     }
-    /* .ml-5{
-        margin-right: -35px !important;
-    } */
+    .pb{
+        margin-bottom: -50px !important;
+    }
 </style>
 
 @extends('admin.layouts.master')
@@ -21,7 +21,7 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top">
+                    <div class="row margin_top px-2">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form action="{{ route('search/design&construction') }}" method="GET">
@@ -65,10 +65,10 @@
 
 
                         <div class="container">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <h5 class="mt-3"><span>Design & Construction</span></h5>
+                            <div class="">
+                                <h4 class="pb">Design & Construction</h4>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ml-5 text-right">
+                            <div class="text-right">
                                 <div class="table-actions">
                                     <a href="{{ route('design_&_construction/create') }}"
                                         class="btn bg_button text-white rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">

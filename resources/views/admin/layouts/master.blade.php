@@ -3,6 +3,11 @@
 <head>
     @include('admin.includes.link')
 </head>
+<style>
+    .bg{
+background-color: white !important;
+    }
+</style>
 <body>
     <!-- Your page content here -->
 
@@ -14,7 +19,7 @@
         @include('admin.includes.header')
     </header>
 
-    <div>
+    <div class="bg">
         @yield('content')
     </div>
 

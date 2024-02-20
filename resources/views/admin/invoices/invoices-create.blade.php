@@ -1,11 +1,17 @@
+<style>
+        .margin_top{
+        margin-top: -35px !important;
+    }
+</style>
+
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
-        <div class="header-advance-area" style="background: #BEC0BF">
+        <div class="header-advance-area" style="background: white">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="margin_top">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
                             <div class="form-section">
                                 <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Create Invoices </h4>
                                 <hr class="border-top-grey">
@@ -128,7 +134,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="5" class="text-right">
-                                                                Discount 
+                                                                Discount
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px;width: 230px">

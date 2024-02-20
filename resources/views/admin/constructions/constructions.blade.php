@@ -10,9 +10,9 @@
     .margin_top{
         margin-top: -100px !important;
     }
-    /* .ml-5{
-        margin-right: -35px !important;
-    } */
+    .pb{
+        margin-bottom: -50px !important;
+    }
 </style>
 
 @extends('admin.layouts.master')
@@ -63,10 +63,10 @@
                             </div>
                         </div>
                         <div class="container">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="pb">
                                 <h4 class="mt-3">Constructions</h4>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pe-5 text-right">
+                            <div class=" text-right">
                                 <div class="table-actions">
                                     <a href="{{ route('create/constructions') }}"
                                         class="btn bg_button text-white rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">

@@ -14,6 +14,10 @@
         background-color: #62549C !important;
         color: white;
     }
+    .pb{
+        margin-bottom: -50px !important;
+    }
+
 </style>
 
 
@@ -23,7 +27,7 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top">
+                    <div class="row margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form action="{{ route('search/miscellaneous') }}" method="GET">
@@ -65,10 +69,10 @@
                             </div>
                         </div>
                         <div class="container">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <h4 class="mt-3 text-headings">Miscellaneous</h4>
+                            <div class="pb">
+                                <h4 class=" text-headings">Miscellaneous</h4>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
+                            <div class="text-right">
                                 <div class="table-actions">
                                     <a href="{{ route('miscellaneous/create') }}"
                                     class="btn bg_button text-white rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
@@ -96,10 +100,10 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
                             <div class="">
-                                <table class="table table-striped custom-table mb-0 datatable" id="dataTable">
+                                <table id="dataTable">
                                     <thead>
-                                        <tr>
-                                            <th>Id</th>
+                                        <tr role="row">
+                                            <th >Id</th>
                                             <th>Date</th>
                                             <th>Total Amount</th>
                                             <th class="text-right">Actions</th>
