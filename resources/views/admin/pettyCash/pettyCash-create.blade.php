@@ -118,7 +118,7 @@
                                                             <td>
                                                                 <input class="form-control kwd" type="text"
                                                                     name="total[]" value="{{ old('total.0') }}"
-                                                                    onkeypress="return /[0-9.]/i.test(event.key)">
+                                                                    onkeypress="return /[0-9,]/i.test(event.key)">
                                                             </td>
                                                             <td><a href="javascript:void(0)" id="add-row"
                                                                     class="text-success font-18" title="Add"><img
@@ -138,7 +138,7 @@
                                                             <td
                                                                 style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,%]/.test(event.key)"
+                                                                    onkeypress="return /[0-9]/.test(event.key)"
                                                                     type="text" name="subtotal"
                                                                     value="{{ old('subtotal') }}">
                                                             </td>
@@ -150,7 +150,7 @@
                                                             <td
                                                                 style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,]/i.test(event.key)"
+                                                                    onkeypress="return /[0-9,]/i.test(event.key)"
                                                                     type="text" name="others"
                                                                     value="{{ old('others') }}">
                                                             </td>
@@ -163,7 +163,7 @@
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
                                                                 <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,]/i.test(event.key)"
+                                                                    onkeypress="return /[0-9,]/i.test(event.key)"
                                                                     type="text" name="grandtotal"
                                                                     value="{{ old('grandtotal') }}">
                                                             </td>
