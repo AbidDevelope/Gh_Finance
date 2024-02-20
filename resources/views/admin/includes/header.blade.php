@@ -308,7 +308,7 @@
 
                 <div class="d-flex justify-content-end gap-3 mt-1">
 
-                    <div class=" mt-2 dropdown">
+                    <div class="  dropdown" style="margin-top: 17px;">
                         <a class="btn btn-secondary dropdown-toggle bg-white text-black-50 border-0" href="#"
                             role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -651,7 +651,7 @@
 
 
 
-                    <div class="mt-4">
+                    <div class="" style="margin-top: 35px;">
                         <i id="bell-icon" class="fas fa-bell fa-lg text-black-50"></i>
                         <!-- Adjust size using fa-lg -->
                     </div>
@@ -661,7 +661,7 @@
                         <div id="notification-popup"
                             class="popup-container position-fixed top-10 end-0  translate-middle-y mt-4 me-4">
                             <div class="popup-content pt-2">
-                                <ul class="list-unstyled">
+                                <ul class="list-unstyled pe-3">
                                     <li class="d-flex justify-content-between align-items-center mb-3 gap-5 ">
                                         <div class="col-auto">
                                             <!-- Icon -->
