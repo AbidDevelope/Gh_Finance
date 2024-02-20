@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\BeneficiaryController;
 use App\Http\Controllers\Admin\QuotationController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ProjectManagerController;
+use App\Http\Controllers\Admin\ReportController;
 
 
 
@@ -30,7 +31,7 @@ Route::controller(AuthController::class)->group(function(){
 Route::controller(ServicesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('all/services', 'allServices')->name('all/services');
     Route::get('all-services/view/{id}', 'allServicesView')->name('all-services/view');
-    
+
     Route::get('designs', 'designs')->name('designs');
     Route::get('designs/create', 'createDesignList')->name('designs/create');
     Route::post('create/designs', 'createDesign')->name('create/designs');
@@ -129,4 +130,10 @@ Route::controller(ProjectManagerController::class)->prefix('admin')->middleware(
     Route::get('projectManager/view/{id}', 'projectManagerView')->name('projectManager/view');
     Route::get('projectManager/delete/{id}', 'projectManagerDelete')->name('projectManager/delete');
     Route::get('projectManagerChangeStatus/{id}', 'ChangeStatus')->name('projectManagerChangeStatus');
+});
+
+
+// ======================= ReportController ========================= //
+Route::controller(ReportController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
+    Route::get('project/report', 'projectReport')->name('project/report');
 });
