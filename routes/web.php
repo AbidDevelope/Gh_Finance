@@ -80,6 +80,7 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::post('miscellaneous/update/{id}', 'miscellaneousUpdate')->name('miscellaneous/update');
     Route::get('miscellaneous/delete/{id}', 'miscellaneousDelete')->name('miscellaneous/delete');
     Route::get('search/miscellaneous', 'searchMiscellaneous')->name('search/miscellaneous');
+    Route::post('export-excel-csv', 'excelCsvImport')->name('export-excel-csv');
 });
 Route::get('/project-data/{id}',[ExpensesController::class, 'projectDataGet'])->name('project.data');
 

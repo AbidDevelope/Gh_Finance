@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\admin;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ExpensesImport;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Expense;
@@ -320,5 +323,16 @@ class ExpensesController extends Controller
         }
         session()->flash('success', 'Expenses Deleted Successfully.');
         return redirect()->back();
+    }
+
+    public function excelCsvImport(Request $request)
+    {
+        $file = $request->file('file');
+
+        // Excel file ko import karte hue ExcelDataImport class ka use karenge
+        Excel::import(new ExpensesImport, $file);
+
+        // dd($excel);
+        return back()->with('success', 'Expenses imported successfully.');
     }
 }
