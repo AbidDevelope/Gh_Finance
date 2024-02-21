@@ -5,11 +5,11 @@
     }
 
     .margin_top {
-        margin-top: 40px !important;
+        margin-top: -100px !important;
     }
 
     .margin_bottom {
-        margin-bottom: -100px !important;
+        padding-top: 130px !important;
     }
 
     .bg_button {
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="s002">
+                            {{-- <div class="s002"> --}}
                                 <form action="{{ route('search/miscellaneous') }}" method="GET">
                                     @csrf
                                     <div class="d-flex">
@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
