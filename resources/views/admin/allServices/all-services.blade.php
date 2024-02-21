@@ -44,6 +44,8 @@ dateInput.addEventListener("input", function () {
                             <div class="s002">
 
                                 <form action="{{ route('search/filter') }}" method="GEt">
+
+                                <form action="{{ route('search/all-services') }}" method="GET">
                                     @csrf
                                     <div class="d-flex">
                                         <div class=" mt-5">

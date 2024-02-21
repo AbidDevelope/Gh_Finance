@@ -441,4 +441,27 @@ class ServicesController extends Controller
             return view('admin.design_&_construction.design_&_construction', compact('projects'));
         }  
     }
+
+    public function searchAllServices(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'start_date' => 'required|date_format:d/m/Y',
+            'end_date' => 'required|date_format:d/m/Y',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+
+        $projects = Project::whereDate('date', '>=', $startDate)
+                            ->whereDate('date', '<=', $endDate)
+                            ->get(); 
+        if($projects)
+        {
+            return view('admin.allServices.all-services', compact('projects'));
+        }
+    }
 }
