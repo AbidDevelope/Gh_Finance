@@ -135,7 +135,7 @@
                                         <tr>
                                             <td colspan="7" class="text-center">No Record Found</td>
                                         </tr>
-                                        @endif --}}
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
