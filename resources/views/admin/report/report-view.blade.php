@@ -1,7 +1,11 @@
 <style>
-    .margin_top{
-        padding-top: -120px !important;
+   .margin_top {
+        margin-top: -100px !important;
     }
+
+    /* .margin_bottom {
+        padding-top: 130px !important;
+    } */
 </style>
 
 @extends('admin.layouts.master')

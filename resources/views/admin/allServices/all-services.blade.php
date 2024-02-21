@@ -59,7 +59,7 @@
                                     <div class="d-flex">
                                         <div class="">
                                             <div class="form-group">
-                                                <label for="dateInput" class="text-black-50">Select Start Date:</label>
+                                                {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
                                                 <!-- Input with Bootstrap styling -->
                                                 <input type="text" id="start_date" name="start_date"
                                                     placeholder="Select Start Date"
@@ -73,7 +73,7 @@
                                         </div>
                                         <div class="container d-flex gap-4 ">
                                             <div class=" form-group">
-                                                <label for="dateInput" class="text-black-50">Select End Date:</label>
+                                                {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
                                                 <input type="text" id="end_date"
                                                     class="form-control bg-white text-black-50 rounded" name="end_date"
                                                     placeholder="Select End Date" style="width: 230px; height: 35px;">
@@ -82,7 +82,7 @@
                                                 @endif
 
                                             </div>
-                                            <div class="form-group" style="margin-top: 25px;">
+                                            <div class="form-group" style="margin-top: 0px;">
                                                 <button class="btn-search btn bg_button text-white bg-gray-100 "
                                                     type="submit ">Search </button>
 

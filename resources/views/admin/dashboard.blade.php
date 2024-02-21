@@ -184,6 +184,9 @@
 .textcolor{
     color: #0F1316 !important;
 }
+.textcolor_1{
+    color: #7f7f7f !important;
+}
         </style>
 
         <div class="container-fluid px-2 custom-padding-top">
@@ -200,8 +203,8 @@
                             </defs>
                             </svg></div>
                         <div class="col-8">
-                            <p class="m-0 dashboard-color-text">Design</p>
-                            <p class="m-0 dashboard-color-subcolor textcolor" style="font-size: 12px">205.000</p>
+                            <p class="m-0 dashboard-color-text textcolor">Design</p>
+                            <p class="m-0 dashboard-color-subcolor textcolor_1" style="font-size: 12px">205.000</p>
                         </div>
                     </div>
                 </div>
@@ -216,8 +219,8 @@
                             <path d="M77.012 13.3399C73.1253 14.668 70.6644 18.6719 71.3089 22.6172C72.0706 27.2266 76.4456 30.4492 80.8792 29.7266C85.5276 28.9453 88.7503 24.5508 87.9886 20C87.1292 14.8438 81.8948 11.6602 77.012 13.3399ZM82.1683 16.4258C85.3714 18.0274 86.1722 22.2656 83.7503 24.961C82.5394 26.3086 81.387 26.836 79.6487 26.8164C78.0276 26.8164 77.1292 26.4649 75.9378 25.3711C72.8519 22.5195 73.9065 17.5977 77.93 16.0938C79.0042 15.6836 81.0355 15.8399 82.1683 16.4258Z" fill="#7F7F7F"/>
                             </svg></div>
                         <div class="col-8">
-                            <p class="m-0 dashboard-color-text">Construction</p>
-                            <p class="m-0 dashboard-color-subcolor text-nowrap textcolor" style="font-size: 12px">4021.000</p>
+                            <p class="m-0 dashboard-color-text textcolor">Construction</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap textcolor_1" style="font-size: 12px">4021.000</p>
                         </div>
                     </div>
                 </div>
@@ -231,8 +234,8 @@
                             <path d="M6.42993 79.0039V80.6641H16.0979H25.7659V79.0039V77.3438H16.0979H6.42993V79.0039Z" fill="#7F7F7F   "/>
                             </svg></div>
                         <div class="col-8">
-                            <p class="m-0 dashboard-color-text">Design & Construction</p>
-                            <p class="m-0 dashboard-color-subcolor text-nowrap textcolor" style="font-size: 12px">4021.000</p>
+                            <p class="m-0 dashboard-color-text textcolor">Design & Construction</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap textcolor_1" style="font-size: 12px">4021.000</p>
                         </div>
                     </div>
                 </div>
@@ -256,8 +259,8 @@
                             </defs>
                             </svg></div>
                         <div class="col-8">
-                            <p class="m-0 dashboard-color-text">Revenue</p>
-                            <p class="m-0 dashboard-color-subcolor textcolor" style="font-size: 12px">80.000 KWD</p>
+                            <p class="m-0 dashboard-color-text textcolor">Revenue</p>
+                            <p class="m-0 dashboard-color-subcolor textcolor_1" style="font-size: 12px">80.000 KWD</p>
                         </div>
                     </div>
                 </div>
@@ -272,8 +275,8 @@
                             <path d="M75.0977 61.1133C73.3008 61.582 71.7187 62.8711 70.8984 64.5508C70.5273 65.3516 70.4297 65.8398 70.4297 67.1875C70.4102 68.7109 70.4687 68.9453 71.0742 70.0781C71.8164 71.4453 72.4414 72.0312 73.9062 72.8125C74.7461 73.2422 75.1562 73.3203 76.5625 73.3203C77.9687 73.3203 78.3789 73.2422 79.2187 72.8125C80.6836 72.0312 81.3086 71.4453 82.0508 70.0781C82.6562 68.9453 82.7148 68.7109 82.6953 67.1875C82.6953 65.7812 82.6172 65.3711 82.1875 64.5312C81.4258 63.0664 80.8203 62.4414 79.5117 61.7383C78.2422 61.0742 76.3086 60.7812 75.0977 61.1133ZM77.793 64.3359C79.8047 65.1758 80.293 67.793 78.7305 69.3555C77.4609 70.625 75.6641 70.625 74.3945 69.3555C71.9727 66.9531 74.6484 63.0078 77.793 64.3359Z" fill="#BEC0BF"/>
                             </svg></div>
                         <div class="col-8">
-                            <p class="m-0 dashboard-color-text">Expenses</p>
-                            <p class="m-0 dashboard-color-subcolor text-nowrap textcolor" style="font-size: 12px">1200.000 KWD</p>
+                            <p class="m-0 dashboard-color-text textcolor">Expenses</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap textcolor_1" style="font-size: 12px">1200.000 KWD</p>
                         </div>
                     </div>
                 </div>
@@ -430,12 +433,12 @@
         <div class="container-fluid mt-4">
             <div class="row mx-1 gap-2 ">
                 <div class="r_width py-2 shadow rounded " style="background-color: white">
-                    <span class=" dashboard-color-text heading">Revenue</span>
+                    <span class=" dashboard-color-text heading textcolor">Revenue</span>
                     <div id="echart-bar" class="revenue_left revenue_bar_width" style=" height: 400px;"></div>
                 </div>
                 <div class="gap_1"></div>
                 <div class="service_w py-2 shadow rounded " style="background-color: white">
-                    <span class="    dashboard-color-text heading">Services</span>
+                    <span class="    dashboard-color-text heading textcolor">Services</span>
                     <div id="echart-bar-sales" style="width: 100%; height: 400px;"></div>
 
                 </div>
@@ -446,22 +449,22 @@
                 {{-- <div class="col-xs-12 col-md-12  "> --}}
                 <div class="row p-0 gap-2">
                     <div class="col-xs-4-revenue shadow rounded py-2" style="background-color: white">
-                        <p class="m-0 dashboard-color-text heading">Last Month Revenue</p>
-                        <p class="dashboard-color-subcolor heading">7656765.000 KWD</p>
+                        <p class="m-0 dashboard-color-text heading textcolor">Last Month Revenue</p>
+                        <p class="dashboard-color-subcolor heading textcolor_1" style="font-size: 12px">7656765.000 KWD</p>
                         <div id="echart-bar-last-month" style="width: 100%;  height:400px ; position:relative"></div>
                     </div>
                     <div class="col-xs-4-revenue shadow rounded py-2" style="background-color: white">
-                        <p class="m-0 dashboard-color-text heading">Last Week Revenue</p>
-                        <p class="dashboard-color-subcolor heading">7656.000 KWD</p>
+                        <p class="m-0 dashboard-color-text heading textcolor">Last Week Revenue</p>
+                        <p class="dashboard-color-subcolor heading textcolor_1" style="font-size: 12px">7656.000 KWD</p>
                         <div id="echart-bar-last-week" style=" height:400px ; position:relative"></div>
 
                     </div>
                     <div class="col-xs-3-project  py-2-project  shadow rounded y-scroll">
                         <div>
-                            <p class="dashboard-color-text heading ">Projects</p>
+                            <p class="dashboard-color-text heading textcolor">Projects</p>
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" dashboard-color-text textcolor ">Project 1 </p>
                                     <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur. lore,</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
@@ -475,7 +478,7 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" dashboard-color-text textcolor ">Project 1 </p>
                                     <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
@@ -488,7 +491,7 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" dashboard-color-text textcolor ">Project 1 </p>
                                     <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
@@ -501,7 +504,7 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" dashboard-color-text textcolor ">Project 1 </p>
                                     <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
@@ -514,7 +517,7 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" dashboard-color-text textcolor ">Project 1 </p>
                                     <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
@@ -527,7 +530,7 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" dashboard-color-text textcolor ">Project 1 </p>
                                     <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
@@ -540,7 +543,7 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" dashboard-color-text textcolor ">Project 1 </p>
                                     <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
                                     {{-- <p class="text-small text-danger ">46456.000 KWD <del class="text-muted">57567
                                                 KWD</del>
@@ -553,7 +556,7 @@
                             <div class="d-flex align-items-start flex-column flex-md-row  ">
 
                                 <div class="col-lg-10 col-12 p-0">
-                                    <p class=" dashboard-color-text ">Project 1 </p>
+                                    <p class=" dashboard-color-text textcolor ">Project 1 </p>
                                     <p class=" top-selling-subtittle mt-n4">Lorem ipsum dolor sit amet consectetur.</p>
 
                                 </div>
@@ -857,7 +860,7 @@
 
 
         <div class="row mx-3 my-3 py-2 shadow rounded" style="background-color: white">
-            <p class="dashboard-color-text heading ">Last 20 Day Leads</p>
+            <p class="dashboard-color-text heading textcolor">Last 20 Day Leads</p>
 
             <div class="col">
                 <div id="echart-bar-last-leads" style="height: 400px;"></div>

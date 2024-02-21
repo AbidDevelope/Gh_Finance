@@ -37,11 +37,11 @@
                             <div class=" text-right">
                                 <div class="table-actions">
                                     <a href="{{ route('quotations/create') }}"
-                                        class="btn bg_button text-white rounded f-14 p-2 mr-3 float-left mb-2 mb-lg-0 mb-md-0">
+                                        class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                         <i class="fa fa-plus"></i> Create
                                     </a>
                                     <a href="#"
-                                        class="btn  border rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
+                                        class="btn  border rounded f-14  mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
                                         style="border-color: #0F1316 !important;">
                                         <i class="fa fa-file-export"></i> Export
                                     </a>
