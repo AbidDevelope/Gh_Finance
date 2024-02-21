@@ -1,12 +1,19 @@
+<style>
+
+    .margin_top{
+        margin-top: -50px !important;
+    }
+    </style>
+
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="">
+                    <div class="margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Edit Miscellaneous</h4>
                                 <hr class="border-top-grey">
                                 @if ($errors->any())
@@ -138,7 +145,7 @@
                                         </div>
                                     </div>
                                     <div class="submit-section">
-                                        <button type="submit" class="btn btn-primary submit-btn">UPDATE</button>
+                                        <button type="submit" class="btn  submit-btn">UPDATE</button>
                                     </div>
                                 </form>
                             </div>

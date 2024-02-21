@@ -1,10 +1,16 @@
+<style>
+    .margin_top{
+       margin-top: -40px !important;
+   }
+</style>
+
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="">
+                    <div class="margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Service</h4>
@@ -55,7 +61,7 @@
                                             <div class="form-group">
                                                 <label>Landline </label>
                                                 <input type="text" name="Manager_landline" class="form-control"
-                                                    value="{{ old('Manager_landline') }}" onkeypress="return /[0-9]/i.test(event.key)"> 
+                                                    value="{{ old('Manager_landline') }}" onkeypress="return /[0-9]/i.test(event.key)">
                                                 @error('Manager_landline')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -166,7 +172,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Details</h5>
                                         <div class="col-md-6">
@@ -258,7 +264,7 @@
                                             <table class="table table-hover table-white" id="customFields">
                                                 <tbody>
                                                     <tr>
-                                                        <td style="width:50px"><a href="javascript:void(0)" id="add-row" 
+                                                        <td style="width:50px"><a href="javascript:void(0)" id="add-row"
                                                             class="text-success font-18" title="Add"><img
                                                                 src="{{ asset('assets/admin/img/icon/plus.png') }}"
                                                                 alt=""></a>
@@ -298,12 +304,12 @@
                                                                 name="transactionId[]" placeholder="Transaction ID">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control common-field" type="text" 
+                                                            <input class="form-control common-field" type="text"
                                                             name="bankName[]" placeholder="Bank Name" style="display: none">
                                                         </td>
                                                         <!-- Example of an Add button, already in your code -->
                                                     </tr>
-                                                      
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -341,35 +347,35 @@
      {{-- Add or remove section script start --}}
     <script>
         $(document).ready(function() {
-            var maxField = 5; 
-            var addButton = $('#add-row'); 
+            var maxField = 5;
+            var addButton = $('#add-row');
             var wrapper = $('#customFields');
-            // var fieldHTML = '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field" type="date" name="date[]" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td></tr>'; // New input field html 
+            // var fieldHTML = '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field" type="date" name="date[]" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td></tr>'; // New input field html
             var fieldHTML = '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field" type="date" name="date[]" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>';
 
-            var x = 1; 
-        
+            var x = 1;
+
             $(addButton).click(function() {
                 if (x < maxField) {
-                    x++; 
-                    $(wrapper).append(fieldHTML); 
+                    x++;
+                    $(wrapper).append(fieldHTML);
                 } else {
                     alert('A maximum of ' + maxField + ' fields are allowed.');
                 }
             });
-        
+
             $(wrapper).on('click', '.remove-row', function(e) {
                 e.preventDefault();
-                $(this).closest('tr').remove(); 
-                x--; 
+                $(this).closest('tr').remove();
+                x--;
             });
-        
+
             $(wrapper).on('change', '.payment-mode', function() {
                 var tr = $(this).closest('tr');
-                tr.find('.common-field, .cash-fields, .cheque-fields, .online-fields').hide(); 
-        
+                tr.find('.common-field, .cash-fields, .cheque-fields, .online-fields').hide();
+
                 tr.find('.common-field').css('display', 'inline-block');
-        
+
                 if (this.value === 'Cash') {
                     tr.find('.cash-fields').css('display', 'inline-block');
                 } else if (this.value === 'Cheque') {

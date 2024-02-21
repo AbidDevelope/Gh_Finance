@@ -1,10 +1,18 @@
+<style>
+
+    .margin_top{
+        margin-top: -50px !important;
+    }
+    </style>
+
+
 @extends('admin.layouts.master')
 @section('content')
 <div class="all-content-wrapper">
     <div class="header-advance-area" style="background: #fff">
         <div class="breadcome-area">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row margin_top mx-2">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="breadcome-list res-mg-t-15">
                             <div class="row">
@@ -48,7 +56,7 @@
         {{-- English Content Start --}}
         <div class="static-table-area mg-t-15" id="englishContent" style="{{ !session('locale') || session('locale') === 'en' ? '' : 'display: none;' }}">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row mx-2">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <article>
                             <h1>Customer Info</h1>
@@ -98,7 +106,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($quotations->quotationItems as $key=>$quotation)   
+                                    @foreach ($quotations->quotationItems as $key=>$quotation)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $quotation->description }}</td>
@@ -164,14 +172,14 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="row footer-quotation">
+                <div class="row mx-2 footer-quotation">
                     <div class="col-lg-12">
                         <div class="footer-quotation-p">
                             <p>AG Partners General Trading & Contracting</p>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mx-2">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="footer-quotation-p" style="color: #000">
                             <p>Salmiya - Block 4 - Salem Al Mubarak Street - Saheb Tower - 3rd Floor</p>
@@ -188,7 +196,7 @@
         {{-- Arabic Quatation Start --}}
         <div class="static-table-area mg-t-15" id="arabicContent" style="{{ session()->get('locale') == 'ar' ? '' : 'display: none;' }}">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row mx-2">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <article>
                             <table class="meta-arabic">
@@ -343,14 +351,14 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="row footer-quotation">
+                <div class="row mx-2 footer-quotation">
                     <div class="col-lg-12">
                         <div class="footer-quotation-p">
                             <p>AG Partners General Trading & Contracting</p>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mx-2">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="footer-quotation-p" style="color: #000">
                             <p>Salmiya - Block 4 - Salem Al Mubarak Street - Saheb Tower - 3rd Floor</p>

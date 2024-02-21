@@ -589,7 +589,7 @@
                                 </li> --}}
                                 <!-- Replace {{ route('admin/logout') }} with the appropriate logout URL -->
                                 <li class="mb-2">
-                                    <a href="#" class="d-flex  text-black-50">
+                                    <a href=" {{ route('admin/logout') }} " class="d-flex  text-black-50">
                                         <span>Log Out</span>
                                         <span class="mt-1 icon nalika-unlocked author-log-ic"></span>
                                     </a>

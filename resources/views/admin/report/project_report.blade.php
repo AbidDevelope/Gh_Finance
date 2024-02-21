@@ -1,10 +1,13 @@
 <style>
     .bg_button{
-        background-color: #62549C !important;
+        background-color: #0f1316 !important;
         color: white;
     }
-    .margin_top{
-        margin-top: -100px !important;
+    .margin_top {
+        margin-top: 40px !important;
+    }
+    .margin_bottom {
+        margin-bottom: -100px !important;
     }
 </style>
 
@@ -37,11 +40,14 @@ dateInput.addEventListener("input", function () {
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="margin_top  ">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
+                            <h4 class="mt-3">Reports</h4>
+                        </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
                                 <form>
                                     <div class="d-flex gap-3">
-                                        <div class=" mt-5">
+                                        <div class="">
                                             <div class="form-group">
 
                                                 <input type="date" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
@@ -49,7 +55,7 @@ dateInput.addEventListener("input", function () {
 
                                             </div>
                                         </div>
-                                        <div class=" mt-5">
+                                        <div class="">
                                             <div class="form-group">
 
                                                 <input type="date" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
@@ -63,9 +69,7 @@ dateInput.addEventListener("input", function () {
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="mt-3">Reports</h4>
-                        </div>
+
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
                                 <div class="alert alert-success">

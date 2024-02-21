@@ -130,24 +130,22 @@
     }
 
     .padding-top-service {
-        padding-top: 100px !important;
-    }
-
-
-    .padding-top-expenses {
-        padding-top: 312px !important;
-    }
-
-    .padding-top-Invoices {
-        padding-top: 435px !important;
+        padding-top: 108px !important;
     }
 
     .padding-top-quotation {
-        padding-top: 220px !important;
+        padding-top: 228px !important;
+    }
+    .padding-top-expenses {
+        padding-top: 320px !important;
+    }
+
+    .padding-top-Invoices {
+        padding-top: 443px !important;
     }
 
     .padding-top-reports {
-        padding-top: 530px !important;
+        padding-top: 538px !important;
     }
 
     .triangle-container {

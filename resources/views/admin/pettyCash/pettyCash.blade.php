@@ -1,22 +1,31 @@
 <style>
     .bg {
+    .bg {
         background-color: #fff !important;
         color: black !important;
     }
 
     .margin_top {
+
+    .margin_top {
         margin-top: -100px !important;
     }
 
+    .margin_bottom {
+        padding-top: 130px !important;
+    }
+
     .bg_button {
-        background-color: #62549C !important;
+        background-color: #0F1316 !important;
         color: white;
     }
 
     .bg_button:hover {
-        background-color: #62549C !important;
+        background-color: #0F1316 !important;
         color: white;
     }
+
+    .pb {
 
     .pb {
         margin-bottom: -50px !important;
@@ -30,17 +39,36 @@
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="row margin_top px-2">
+
+                        <div class="container margin_bottom">
+                            <div class="pb">
+                                <h4 class=" text-headings">Petty Cash</h4>
+                            </div>
+                            <div class="text-right">
+                                <div class="table-actions">
+                                    <a href="{{ route('pettyCash/create') }}"
+                                        class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
+                                        <i class="fa fa-plus"></i> Create
+                                    </a>
+                                    <button type="button" id="exportButton"
+                                    class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
+                                    style="border-color: #0F1316 !important;">
+                                    <i class="fa fa-file-export"></i> Export
+                                </button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="s002">
-                                <form action="{{ route('search/filter') }}" method="GET">
+                            {{-- <div class="s002"> --}}
+                                <form action="{{ route('search/filter') }}" method="GET" >
                                     @csrf
                                     <div class="d-flex">
-                                        <div class=" mt-5">
+                                        <div class=" ">
                                             <div class="form-group">
-                                                <label for="dateInput" class="text-black-50">Select Start Date:</label>
+                                                {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
 
                                                 <input type="text" name="start_date" id="start_date"
-                                                    placeholder="DD/MM/YYYY"
+                                                    placeholder="Select Start Date"
                                                     class="form-control bg-white rounded text-black-50"
                                                     style="width: 230px; height: 35px;" value="{{ old('start_date') }}">
                                                 @if ($errors->has('start_date'))
@@ -48,24 +76,33 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="container mt-5 d-flex gap-4 ">
+                                        <div class="container  d-flex gap-4 ">
                                             <div class=" form-group">
-                                                <label for="dateInput" class="text-black-50">Select End Date:</label>
+                                                {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
                                                 <!-- Input with Bootstrap styling -->
                                                 <input type="text" id="end_date"
                                                     class="form-control bg-white text-black-50 rounded" name="end_date"
-                                                    placeholder="DD/MM/YYYY" style="width: 230px; height: 35px;"
+                                                    placeholder="Select End Date" style="width: 230px; height: 35px;"
                                                     value="{{ old('end_date') }}">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif
+                                                    <span class="text-danger">{{ $errors->first('end_date') }}</span>
+                                                @endif
                                             </div>
-                                            <div class="form-group" style="margin-top: 25px;">
+                                            <div class="form-group" style="margin-top: ;">
                                                 <button class="btn-search btn bg_button text-white bg-gray-100 "
                                                     type="submit">Search </button>
                                             </div>
                                         </div>
-
+                                        <div class=" ">
+                                            <div class="form-group">
+                                                {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
+                                                <input type="file" name="file" id="file" placeholder=""
+                                                    class="form-control bg-white rounded text-black-50"
+                                                    style="width: 230px; height: 35px;" value="">
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -112,6 +149,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
                             <div class="">
                                 <table id="dataTable">
+                                <table id="dataTable">
                                     <thead>
                                         <tr role="row">
                                             <th>Sr. No</th>
@@ -157,7 +195,41 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
+                                        @if (count($expenses) > 0)
+                                            @foreach ($expenses as $index => $item)
+                                                <tr>
+                                                    <td>{{ $index + 1 }}</td>
+                                                    <td>{{ $item->project_id }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                    <td>{{ $item->project->project_type }}</td>
+                                                    <td>{{ $item->project->project_name }}</td>
+                                                    {{-- <td>Abid</td> --}}
+                                                    <td>{{ $item->grandtotal }}</td>
+                                                    <td class="text-right">
+                                                        <div class="dropdown dropdown-action">
+                                                            <a href="#" class="action-icon" data-toggle="dropdown"
+                                                                aria-expanded="false"><img
+                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                    alt=""></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('expenses/view', $item->id) }}"><i
+                                                                        class="fa fa-eye m-r-5"></i> View</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('expenses/edit', $item->id) }}"><i
+                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('expenses/delete', $item->id) }}"><i
+                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         @else
+                                            <tr>
+                                                <td colspan="7" class="text-center">No Record Found</td>
+                                            </tr>
                                             <tr>
                                                 <td colspan="7" class="text-center">No Record Found</td>
                                             </tr>
@@ -178,9 +250,11 @@
 
     <!-- metisMenu JS
                                             ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
+                                                ============================================ -->
                                                 ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
@@ -188,8 +262,10 @@
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
                                                 ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
+                                            ============================================ -->
                                             ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 

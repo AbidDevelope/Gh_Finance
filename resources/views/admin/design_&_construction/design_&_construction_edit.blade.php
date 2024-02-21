@@ -1,10 +1,16 @@
+<style>
+    .margin_top{
+       margin-top: -40px !important;
+   }
+</style>
+
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row margin_top mx-2">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Edit Service</h4>
@@ -55,7 +61,7 @@
                                             <div class="form-group">
                                                 <label>Landline </label>
                                                 <input type="text" name="Manager_landline" class="form-control"
-                                                    value="{{ $projects->Manager_landline }}" onkeypress="return /[0-9]/i.test(event.key)"> 
+                                                    value="{{ $projects->Manager_landline }}" onkeypress="return /[0-9]/i.test(event.key)">
                                                 @error('Manager_landline')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -166,7 +172,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Details</h5>
                                         <div class="col-md-6">

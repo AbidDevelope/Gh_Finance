@@ -1,15 +1,23 @@
+<style>
+
+    .margin_top{
+        margin-top: -50px !important;
+    }
+    </style>
+
+
 @extends('admin.layouts.master')
 @section('content')
-    <div class="all-content-wrapper" style="background:#F2F4F7">
+    <div class="all-content-wrapper" style="background:white">
 
         <div class="header-advance-area">
 
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="container-fluid">
-                        <div class="">
+                        <div class="margin_top">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-section">
+                                <div class="form-section bg-white">
                                     <h6 class="card-title m-b-15">Miscellaneous Details</h6>
                                     <hr class="border-top-grey">
                                     <div class="card-body">
