@@ -6,9 +6,6 @@
     .margin_top{
         margin-top: -100px !important;
     }
-    .bg{
-        background-color: white !important;
-    }
 </style>
 
 <script>
@@ -35,54 +32,39 @@ dateInput.addEventListener("input", function () {
 
 @extends('admin.layouts.master')
 @section('content')
-    <div class="all-content-wrapper bg">
+    <div class="all-content-wrapper bg-white">
         <div class="header-advance-area ">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top ">
+                    <div class="margin_top  ">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
-            
-                                <form action="{{ route('search/all-services') }}" method="GET">
-                                    @csrf
-                                    <div class="d-flex">
+                                <form>
+                                    <div class="d-flex gap-3">
                                         <div class=" mt-5">
                                             <div class="form-group">
-                                                <label for="dateInput" class="text-black-50">Select Start Date:</label>
-                                                <!-- Input with Bootstrap styling -->
-                                                <input type="text" id="start_date" name="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
-                                                 style="width: 230px; height: 35px;">
-                                                 @if ($errors->has('start_date'))
-                                                 <span class="text-danger">{{ $errors->first('start_date') }}</span>
-                                             @endif
-                                             
-                                            </div>
-                                        </div>
-                                        <div class="container mt-5 d-flex gap-4 ">
-                                            <div class=" form-group">
-                                                <label for="dateInput" class="text-black-50">Select End Date:</label>
-                                                <input type="text" id="end_date" class="form-control bg-white text-black-50 rounded"
-                                                name="end_date" placeholder="DD/MM/YYYY" style="width: 230px; height: 35px;">
-                                                @if ($errors->has('end_date'))
-                                                    <span class="text-danger">{{ $errors->first('end_date') }}</span>
-                                                @endif
 
-                                            </div>
-                                            <div class="form-group" style="margin-top: 25px;">
-                                                <button class="btn-search btn bg_button text-white bg-gray-100 "
-                                                    type="submit ">Search </button>
+                                                <input type="date" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
+                                                    id="dateInput" style="width: 130px; height: 35px;">
 
                                             </div>
                                         </div>
-                                        <div class="container " >
+                                        <div class=" mt-5">
+                                            <div class="form-group">
 
+                                                <input type="date" name="start_date" id="start_date" placeholder="DD/MM/YYYY" class="form-control bg-white rounded text-black-50"
+                                                    id="dateInput" style="width: 130px; height: 35px;">
+
+                                            </div>
                                         </div>
+
+
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h4 class="">All Services</h4>
+                            <h4 class="mt-3">Reports</h4>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
@@ -105,21 +87,25 @@ dateInput.addEventListener("input", function () {
                                             <th>Date</th>
                                             <th>Project Type</th>
                                             <th>Project Name</th>
+                                            <th>Revenue</th>
+                                            <th>Expenses</th>
                                             <th>Mobile</th>
                                             <th>Project Value</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if (count($projects) > 0)
-                                            @foreach ($projects as $index=>$project)
+
                                                 <tr>
-                                                    <td>{{ $index+1 }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
-                                                    <td>{{ $project->project_type }}</td>
-                                                    <td>{{ $project->project_name }}</td>
-                                                    <td>{{ $project->project_mobile }}</td>
-                                                    <td>{{ $project->project_value }}</td>
+                                                    <td>1</td>
+                                                    <td>21/2/2024</td>
+                                                    <td>design</td>
+                                                    <td>delhi metro</td>
+                                                    <td>5.000KWD</td>
+                                                    <td>4.000KWD</td>
+                                                    <td>123243546</td>
+                                                    <td>10000.000KWD</td>
+
                                                     <td class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"
@@ -128,27 +114,15 @@ dateInput.addEventListener("input", function () {
                                                                     alt=""></a>
                                                             <div class="dropdown-menu dropdown-menu-right">
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('all-services/view', $project->id) }}"><i
+                                                                    href="{{ route('report/view') }}"><i
                                                                         class="fa fa-eye m-r-5"></i> View
                                                                 </a>
-                                                                <a class="dropdown-item" href="#"><i
-                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                                <a class="dropdown-item"
-                                                                    href="#"><i
-                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
+
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                            @endforeach
-                                        @else
-                                            <tr class="odd">
-                                                <td valign="top" colspan="6" class="dataTables_empty">No data available
-                                                    in
-                                                    table
-                                                </td>
-                                            </tr>
-                                        @endif
+
                                     </tbody>
                                 </table>
                             </div>

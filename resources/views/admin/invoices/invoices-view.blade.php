@@ -1,3 +1,9 @@
+<style>
+    .margin_top{
+    margin-top: -6  5px !important;
+}
+</style>
+
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
@@ -6,7 +12,7 @@
 
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="breadcome-list res-mg-t-15">
                                 <div class="row">

@@ -23,14 +23,14 @@
 }
 
 .sidebar-nav .metismenu li + li {
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 
 .sidebar-nav .metismenu li:first-child {
   margin-top: 5px;
 }
 .sidebar-nav .metismenu li:last-child {
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 

@@ -1,6 +1,11 @@
+<style>
+    .margin_t{
+        margin-top: -60px !important;
+    }
+</style>
 @extends('admin.layouts.master')
 @section('content')
-    <div class="all-content-wrapper" style="background:#F2F4F7">
+    <div class="all-content-wrapper" style="background:white">
 
         <div class="header-advance-area">
 
@@ -21,8 +26,8 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                <div class="form-section">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 margin_t">
+                                <div class="form-section bg-white">
                                     <h6 class="card-title m-b-15">Project details</h6>
                                     <hr class="border-top-grey">
                                     <div class="card-body">
