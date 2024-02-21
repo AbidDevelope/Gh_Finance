@@ -98,7 +98,7 @@
                                                 type="submit">Search </button>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </form>
                         </div>
@@ -107,12 +107,11 @@
 
                         <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="d-flex gap-2">
+                            <div class="d-flex gap-4">
                                 <input style="width: 230px; height: 35px;" type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                
-                                <button type="submit" style="border-color: #0F1316 !important;"
-                                    class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
-                                      
+
+                                <button type="submit" style="border-color: #0F1316 !important; background-color:#0F1316 !important; color:white !important;"
+                                    class="btn border rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
                             </div>
                         </form>
                     </div>
@@ -133,14 +132,14 @@
                             <table id="dataTable">
                                     <thead>
                                         <tr role="row">
-                                            <th>Sr. No</th>
-                                            <th>Project ID</th>
-                                            <th>Date</th>
-                                            <th>Project Type</th>
-                                            <th>Project Name</th>
+                                            <th class="text-center" style="width: 70px !important;">Sr. No.</th>
+                                            <th class="text-center">Project ID</th>
+                                            <th class="text-center">Date</th>
+                                            <th class="text-center">Project Type</th>
+                                            <th class="text-center">Project Name</th>
                                             {{-- <th>Beneficiary</th> --}}
-                                            <th>Total Amount</th>
-                                            <th class="text-right">Actions</th>
+                                            <th class="text-center">Total Amount</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -148,14 +147,14 @@
                                         @if (count($expenses) > 0)
                                             @foreach ($expenses as $index => $item)
                                                 <tr>
-                                                    <td>{{ $index + 1 }}</td>
-                                                    <td>{{ $item->project_id }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
-                                                    <td>{{ $item->project->project_type }}</td>
-                                                    <td>{{ $item->project->project_name }}</td>
+                                                    <td class="text-center">{{ $index + 1 }}</td>
+                                                    <td class="text-center">{{ $item->project_id }}</td>
+                                                    <td class="text-center">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                    <td class="text-center">{{ $item->project->project_type }}</td>
+                                                    <td class="text-center">{{ $item->project->project_name }}</td>
                                                     {{-- <td>Abid</td> --}}
-                                                    <td>{{ $item->grandtotal }}</td>
-                                                    <td class="text-right">
+                                                    <td class="text-center">{{ $item->grandtotal }}</td>
+                                                    <td class="text-center">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon" data-toggle="dropdown"
                                                                 aria-expanded="false"><img
