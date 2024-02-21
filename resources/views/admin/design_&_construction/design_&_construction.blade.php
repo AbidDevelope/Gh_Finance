@@ -1,10 +1,10 @@
 <style>
     .bg_button{
-        background-color: #62549C !important;
+        background-color: #0F1316 !important;
         color: white;
     }
     .bg_button:hover{
-        background-color: #62549C !important;
+        background-color: #0F1316 !important;
         color: white;
     }
     .margin_top{
@@ -36,7 +36,7 @@
                                                  @if ($errors->has('start_date'))
                                                  <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                              @endif
-                                             
+
                                             </div>
                                         </div>
                                         <div class="container mt-5 d-flex gap-4 ">
@@ -75,8 +75,8 @@
                                         <i class="fa fa-plus"></i> Create
                                     </a>
                                     <a href="#"
-                                        class="btn dt-buttons rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">
-                                        <i class="fa fa-file-export"></i> Export
+                                    class="btn  border rounded f-14 p-2 mr-3 mb-2 mb-lg-0 mb-md-0 float-left" style="border-color: #0F1316 !important;">
+                                    <i class="fa fa-file-export"></i> Export
                                     </a>
                                 </div>
                             </div>

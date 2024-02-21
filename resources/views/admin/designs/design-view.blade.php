@@ -1,10 +1,16 @@
+<style>
+    .margin_top{
+       margin-top: -50px !important;
+   }
+</style>
+
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper">
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="">
+                    <div class="margin_top mx-2">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <div class="form-section">
                                 <h6 class="card-title m-b-15">Project Type</h6>

@@ -181,6 +181,9 @@
 .mt-n4{
     margin-top: -8px !important;
 }
+.textcolor{
+    color: #0F1316 !important;
+}
         </style>
 
         <div class="container-fluid px-2 custom-padding-top">
@@ -198,7 +201,7 @@
                             </svg></div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Design</p>
-                            <p class="m-0 dashboard-color-subcolor" style="font-size: 12px">205.000</p>
+                            <p class="m-0 dashboard-color-subcolor textcolor" style="font-size: 12px">205.000</p>
                         </div>
                     </div>
                 </div>
@@ -214,7 +217,7 @@
                             </svg></div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Construction</p>
-                            <p class="m-0 dashboard-color-subcolor text-nowrap" style="font-size: 12px">4021.000</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap textcolor" style="font-size: 12px">4021.000</p>
                         </div>
                     </div>
                 </div>
@@ -229,7 +232,7 @@
                             </svg></div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Design & Construction</p>
-                            <p class="m-0 dashboard-color-subcolor text-nowrap" style="font-size: 12px">4021.000</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap textcolor" style="font-size: 12px">4021.000</p>
                         </div>
                     </div>
                 </div>
@@ -254,7 +257,7 @@
                             </svg></div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Revenue</p>
-                            <p class="m-0 dashboard-color-subcolor" style="font-size: 12px">80.000 KWD</p>
+                            <p class="m-0 dashboard-color-subcolor textcolor" style="font-size: 12px">80.000 KWD</p>
                         </div>
                     </div>
                 </div>
@@ -270,7 +273,7 @@
                             </svg></div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text">Expenses</p>
-                            <p class="m-0 dashboard-color-subcolor text-nowrap" style="font-size: 12px">1200.000 KWD</p>
+                            <p class="m-0 dashboard-color-subcolor text-nowrap textcolor" style="font-size: 12px">1200.000 KWD</p>
                         </div>
                     </div>
                 </div>

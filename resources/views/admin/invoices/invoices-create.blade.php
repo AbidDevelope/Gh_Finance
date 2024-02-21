@@ -1,6 +1,6 @@
 <style>
         .margin_top{
-        margin-top: -35px !important;
+        margin-top: -45px !important;
     }
 </style>
 
@@ -12,7 +12,7 @@
                 <div class="container-fluid">
                     <div class="margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Create Invoices </h4>
                                 <hr class="border-top-grey">
                                 <form action="{{ route('invoice/create') }}" method="POST">
@@ -161,7 +161,7 @@
                                         </div>
                                     </div>
                                     <div class="submit-section">
-                                        <button type="submit" class="btn btn-primary submit-btn">CREATE</button>
+                                        <button type="submit" class="btn  submit-btn">CREATE</button>
                                     </div>
                                 </form>
                             </div>

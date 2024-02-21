@@ -1,6 +1,6 @@
 <style>
     .bg_button{
-        background-color: #62549C !important;
+        background-color: #0F1316 !important;
         color: white;
     }
     .margin_top{
@@ -42,7 +42,7 @@ dateInput.addEventListener("input", function () {
                     <div class="margin_top ">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
-            
+
                                 <form action="{{ route('search/filter') }}" method="GEt">
                                     @csrf
                                     <div class="d-flex">
@@ -55,7 +55,7 @@ dateInput.addEventListener("input", function () {
                                                  @if ($errors->has('start_date'))
                                                  <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                              @endif
-                                             
+
                                             </div>
                                         </div>
                                         <div class="container mt-5 d-flex gap-4 ">

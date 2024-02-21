@@ -1,9 +1,8 @@
 <style>
-
-    .margin_top{
-        margin-top: -10px !important;
+        .margin_top{
+        margin-top: -45px !important;
     }
-    </style>
+</style>
 
 @extends('admin.layouts.master')
 @section('content')
@@ -12,53 +11,66 @@
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="margin_top">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
                             <div class="form-section bg-white">
-                                <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Create Quotations </h4>
+                                <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Edit Invoices </h4>
                                 <hr class="border-top-grey">
-                                <form action="{{ route('quotations/create') }}" method="POST">
+                                <form action="{{ route('invoice/create') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="Project Id">Project Id</label>
+                                            <label>Invoice Number </label>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="project_id" onkeypress="return /[0-9]/i.test(event.key)"  name="project_id" value="{{ old('project_id') }}">
+                                                <input type="text" readonly class="form-control" name="invoice_number"
+                                                    value="{{ 'INV#0'.$nextInvoiceId }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <label for="Project Type">Project Type</label>
+                                        {{-- <div class="col-md-3">
                                             <div class="form-group">
-                                                <input readonly type="text" class="form-control" id="project_type" name="project_type" value="{{ old('project_type') }}">
+                                                <label>Beneficiary <span class="text-danger">*</span></label>
+                                                <select class="form-control" name="beneficiary_id">
+                                                    <option value="" disabled selected>Please Select</option>
+                                                    @foreach ($beneficiaries as $beneficairy)
+                                                        <option value="{{ $beneficairy->id }}">
+                                                            {{ $beneficairy->beneficiary }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-3">
-                                            <label for="Project Name">Project Name</label>
                                             <div class="form-group">
-                                                <input readonly type="text" class="form-control" id="project_name" name="project_name" value="{{ old('project_name') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label for="Project Value">Project Value</label>
-                                            <div class="form-group">
-                                                <input readonly type="text" class="form-control" id="project_value" name="project_value" value="{{ old('project_value') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Quotation Number </label>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="quotation_number" value="{{ old('quotation_number') }}">
+                                                <label>Project <span class="text-danger">*</span></label>
+                                                <select class="form-control" name="project_id">
+                                                    <option value="" disabled selected>Select Project</option>
+                                                    {{-- @foreach ($beneficiaries as $beneficiary)
+                                                        @foreach ($beneficiary->projects as $item)
+                                                            <option value="{{ $item->id }}">{{ $item->project }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endforeach --}}
+                                                </select>
                                             </div>
                                         </div>
 
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Quotation date <span class="text-danger">*</span></label>
+                                                <label>Invoice date <span class="text-danger">*</span></label>
                                                 <div class="cal-icon">
                                                     <input class="form-control datetimepicker" type="date"
-                                                        name="quotation_date" value="{{ old('quotation_date') }}">
-                                                    @error('quotation_date')
+                                                        name="invoice_date">
+                                                    @error('invoice_date')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Due Date <span class="text-danger">*</span></label>
+                                                <div class="cal-icon">
+                                                    <input class="form-control datetimepicker" type="date"
+                                                        name="due_date">
+                                                    @error('due_date')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
@@ -83,20 +95,20 @@
                                                         <tr>
                                                             <td>
                                                                 <input class="form-control" type="text"
-                                                                    style="min-width:150px" name="description[]" value="{{ old('description.0') }}">
+                                                                    style="min-width:150px" name="description[]">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="unit[]" value="{{ old('unit.0') }}">
+                                                                <input class="form-control" type="text" name="unit[]">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="qty[]" value="{{ old('qty.0') }}">
+                                                                <input class="form-control" type="text" name="qty[]">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="price[]" value="{{ old('price.0') }}">
+                                                                <input class="form-control" type="text" name="price[]">
                                                             </td>
                                                             <td>
                                                                 <input class="form-control" type="text"
-                                                                    style="min-width:150px" name="total[]" value="{{ old('total.0') }}">
+                                                                    style="min-width:150px" name="total[]">
                                                             </td>
                                                             <td><a href="javascript:void(0)" id="add-row"
                                                                     class="text-success font-18" title="Add"><img
@@ -113,7 +125,8 @@
                                                     <tbody>
                                                         <tr>
                                                             <td colspan="5" class="text-right">Sub Total :</td>
-                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                            <td
+                                                                style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input class="form-control text-right"
                                                                     onkeypress="return /[0-9.,%]/.test(event.key)"
                                                                     type="text" name="subtotal">
@@ -121,12 +134,13 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="5" class="text-right">
-                                                                Others
+                                                                Discount
                                                             </td>
-                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                            <td
+                                                                style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input class="form-control text-right"
                                                                     onkeypress="return /[0-9.,]/i.test(event.key)"
-                                                                    type="text" name="others">
+                                                                    type="text" name="discount">
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -137,8 +151,8 @@
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
                                                                 <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,]/i.test(event.key)"
-                                                                    type="text" name="grandtotal">
+                                                                onkeypress="return /[0-9.,]/i.test(event.key)"
+                                                                type="text" name="grandtotal">
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -147,7 +161,7 @@
                                         </div>
                                     </div>
                                     <div class="submit-section">
-                                        <button type="submit" class="btn color submit-btn">CREATE</button>
+                                        <button type="submit" class="btn  submit-btn">CREATE</button>
                                     </div>
                                 </form>
                             </div>
@@ -159,20 +173,20 @@
         </div>
     </div>
     <!-- metisMenu JS
-                                                    ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                        ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                        ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                    ============================================ -->
+                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Add and Remove table row  --}}
@@ -202,38 +216,5 @@
                 x--;
             });
         });
-    </script>
-
-    {{-- Get Project Data --}}
-    <script>
-        $(document).ready(function(){
-            $('#project_id').change(function(){
-                var projectID = $(this).val();
-                if(projectID)
-                {
-                    var url = '/project-data/' + projectID;
-
-                    $.ajax({
-                        url: url,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                        if(data.status === 'success')
-                        {
-                            $('#project_type').val(data.data.project_type);
-                                $('#project_name').val(data.data.project_name);
-                                $('#project_value').val(data.data.project_value);
-                        } else {
-                                alert('Project Not Found');
-                        }
-                        },
-                        error: function(request, status, error) {
-                            alert('Error: ' + request.responseText);
-                        },
-                    });
-                }
-            });
-        });
-
     </script>
 @endsection

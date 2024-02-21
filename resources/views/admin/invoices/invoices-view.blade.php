@@ -1,6 +1,6 @@
 <style>
     .margin_top{
-    margin-top: -6  5px !important;
+    margin-top: -65px !important;
 }
 </style>
 
@@ -8,7 +8,7 @@
 @section('content')
     <div class="all-content-wrapper">
 
-        <div class="header-advance-area" style="background:#fff">
+        <div class="header-advance-area mx-2" style="background:#fff">
 
             <div class="breadcome-area">
                 <div class="container-fluid">

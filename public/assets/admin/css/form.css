@@ -57,17 +57,17 @@
 /* Style the button */
 .form-section button[type="submit"] {
     color: #fff;
-    padding: 10px 20px;
+    /* padding: 5px 20px; */
     /* border: 1px solid var(--filter-color) !important; */
     border-radius: 4px !important; /* Adjust the value to make it more or less rounded */
     cursor: pointer;
     font-size: 16px;
-    margin: 20px auto;
-    background: #62549C;
+    margin: 16px auto;
+    background: #0F1316;
 }
 
 .form-section button[type="submit"]:hover {
-    background-color: #62549C;
+    background-color: #0F1316;
     /* border: 1px solid var(--filter-color); */
     color: #fff;
 }

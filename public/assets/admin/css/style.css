@@ -22,7 +22,7 @@
 :root {
     --blue: #6495ed;
     --own-black: #0F1316;
-    --active-nav-black :#152036;
+    --active-nav-black :#0F1316;
     --nav-black : #0a0b0c;
     --filter-color : #1B2A47;
     --filter-btn : #1d82f5;
@@ -1644,16 +1644,16 @@ ul#single-product-tab li{
 
 }
 .review-content-section .input-group input::-webkit-input-placeholder, .product-delivary .form-group input::-webkit-input-placeholder, .form-group input::-webkit-input-placeholder, .review-content-section input::-webkit-input-placeholder {
-    color:#fff;
+    color:#7f7f7f;
 }
 .review-content-section .input-group input::-moz-placeholder, .product-delivary .form-group input::-moz-placeholder, .form-group input::-moz-placeholder , .review-content-section input::-moz-placeholder {
-    color:#fff;
+    color:#7f7f7f;
 }
 .review-content-section .input-group input::-ms-placeholder, .product-delivary .form-group input::-ms-placeholder, .form-group input::-ms-placeholder , .review-content-section input::-ms-placeholder {
-    color:#fff;
+    color:#7f7f7f;
 }
 .review-content-section .input-group input::placeholder, .product-delivary .form-group input::placeholder, .form-group input::placeholder, .review-content-section input::placeholder {
-    color:#fff;
+    color:#7f7f7f;
 }
 .form-control.pro-edt-select.form-control-primary {
     color: #fff;
@@ -2483,7 +2483,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
     margin-bottom: 0;
 }
 .form-control {
-    background-color: var(--active-nav-black);
+    background-color: #fff;
     background-image: none;
     border: 1px solid var(--active-nav-black);
     border-radius: 1px;
@@ -2493,7 +2493,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
     width: 100%;
 	height:40px;
-	color:#fff;
+	color:#7f7f7f;
 }
 .custom-go-button .btn-primary, .custom-dropdowns-button .dropdown-toggle, .dropdown-segmented .dropdown-toggle, .dropdown-segmented .btn-white {
     background-color: #e12503;

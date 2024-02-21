@@ -1,6 +1,6 @@
 <style>
-    .kwd {
-        /* width: 20px !important; */
+    .margin_top{
+        margin-top: -60px !important;
     }
 </style>
 
@@ -15,9 +15,9 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="">
+                    <div class="margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Expenses</h4>
                                 <hr class="border-top-grey">
                                 <form action="{{ route('expenses/create') }}" method="post">
@@ -209,7 +209,7 @@
                                     </div>
 
                                     <div class="submit-section">
-                                        <button type="submit" class="btn btn-primary submit-btn">CREATE</button>
+                                        <button type="submit" class="btn  submit-btn">CREATE</button>
                                     </div>
                                 </form>
                             </div>
@@ -251,7 +251,7 @@
             var wrapper = $('#customFields');
             var fieldHTML =
                 '<tr style="margin-right: 20px"><td><input class="form-control" type="text" style="min-width:120px" name="description[]" value="{{ old('description.0') }}"></td><td><input class="form-control" type="text" name="receipt[]"></td><td><input class="form-control" type="text" name="amount_deposite[]"></td><td><input class="form-control" type="text" name="amount_withdrawn[]"></td><td><input class="form-control kwd" type="text" name="total[]" value="{{ old('total.0') }}" onkeypress="return /[0-9.]/i.test(event.key)"></td><td><a href="javascript:void(0)" id="add-row" class="remove-row" title="Add"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td></tr>';
-          
+
             var x = 1;
 
             $(addButton).click(function() {
@@ -276,7 +276,7 @@
         $(document).ready(function(){
             $('#project_id').change(function(){
                 var projectId = $(this).val();
-               
+
                 if(projectId)
                 {
                     var url = '/project-data/' + projectId;
@@ -297,7 +297,7 @@
                         {
                           alert('Error' + request.error);
                         }
-                        
+
                     });
                 }
             });
