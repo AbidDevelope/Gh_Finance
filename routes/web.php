@@ -31,6 +31,7 @@ Route::controller(AuthController::class)->group(function(){
 Route::controller(ServicesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('all/services', 'allServices')->name('all/services');
     Route::get('all-services/view/{id}', 'allServicesView')->name('all-services/view');
+    Route::get('search/all-services', 'searchAllServices')->name('search/all-services');
 
     Route::get('designs', 'designs')->name('designs');
     Route::get('designs/create', 'createDesignList')->name('designs/create');
@@ -78,7 +79,7 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('miscellaneous/edit/{id}', 'miscellaneousEdit')->name('miscellaneous/edit');
     Route::post('miscellaneous/update/{id}', 'miscellaneousUpdate')->name('miscellaneous/update');
     Route::get('miscellaneous/delete/{id}', 'miscellaneousDelete')->name('miscellaneous/delete');
-    Route::get('search/miscellaneous', 'searchFilter')->name('search/miscellaneous');
+    Route::get('search/miscellaneous', 'searchMiscellaneous')->name('search/miscellaneous');
 });
 Route::get('/project-data/{id}',[ExpensesController::class, 'projectDataGet'])->name('project.data');
 
