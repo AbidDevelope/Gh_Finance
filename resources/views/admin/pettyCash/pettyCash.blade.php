@@ -42,13 +42,13 @@
                                 <h4 class=" text-headings">Petty Cash</h4>
                             </div>
                             <div class="text-right">
-                                <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
+                                <form action="#" method="GET">
                                     <div class="table-actions">
                                         <a href="{{ route('pettyCash/create') }}"
                                             class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                             <i class="fa fa-plus"></i> Create
                                         </a>
-                                        <button type="buttton" id="export"
+                                        <button type="type" id="export"
                                             class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
                                             style="border-color: #0F1316 !important;">
                                             <i class="fa fa-file-export"></i> Export
@@ -112,9 +112,7 @@
                                 
                                 <button type="submit" style="border-color: #0F1316 !important;"
                                     class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
-                                
-                                
-                                
+                                      
                             </div>
                         </form>
                     </div>
@@ -133,7 +131,6 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
                         <div class="">
                             <table id="dataTable">
-                                <table id="dataTable">
                                     <thead>
                                         <tr role="row">
                                             <th>Sr. No</th>
@@ -200,7 +197,7 @@
 
     <!-- metisMenu JS
                                                         ============================================ -->
-    ============================================ -->
+
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS

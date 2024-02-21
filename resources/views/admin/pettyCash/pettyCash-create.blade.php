@@ -83,8 +83,7 @@
                                             <div class="form-group">
                                                 <label>Beneficiary</label>
                                                 <input type="text" class="form-control"
-                                                name="beneficiary" value="{{ old('beneficiary') }}"
-                                                placeholder="DD/MM/YYYY">
+                                                name="beneficiary" value="{{ old('beneficiary') }}">
                                             </div>
                                         </div>
                                     <div class="row">
