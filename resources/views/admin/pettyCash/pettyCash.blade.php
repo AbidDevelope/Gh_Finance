@@ -133,12 +133,10 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="text-center" style="width: 70px !important;">Sr. No.</th>
-                                            <th class="text-center">Project ID</th>
                                             <th class="text-center">Date</th>
-                                            <th class="text-center">Project Type</th>
                                             <th class="text-center">Project Name</th>
-                                            {{-- <th>Beneficiary</th> --}}
-                                            <th class="text-center">Total Amount</th>
+                                            <th>Beneficiary</th>
+                                            <th class="text-center">Amount Deposite</th>
                                             <th class="text-center">Actions</th>
                                         </tr>
                                     </thead>
@@ -148,12 +146,10 @@
                                             @foreach ($expenses as $index => $item)
                                                 <tr>
                                                     <td class="text-center">{{ $index + 1 }}</td>
-                                                    <td class="text-center">{{ $item->project_id }}</td>
                                                     <td class="text-center">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
-                                                    <td class="text-center">{{ $item->project->project_type }}</td>
-                                                    <td class="text-center">{{ $item->project->project_name }}</td>
-                                                    {{-- <td>Abid</td> --}}
-                                                    <td class="text-center">{{ $item->grandtotal }}</td>
+                                                    <td class="text-center">{{ $item->project }}</td>
+                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td class="text-center">{{ $item->amount_deposited }}</td>
                                                     <td class="text-center">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon" data-toggle="dropdown"
@@ -177,7 +173,7 @@
                                             @endforeach
                                         @else
                                             <tr>
-                                                <td colspan="7" class="text-center">No Record Found</td>
+                                                <td colspan="6" class="text-center">No Record Found</td>
                                             </tr>
                                         @endif
                                     </tbody>
