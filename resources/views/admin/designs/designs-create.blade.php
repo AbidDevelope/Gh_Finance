@@ -24,7 +24,7 @@
                 <div class="container-fluid">
                     <div class="margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-section bg-white">
+                            <div class="form-section">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Service</h4>
                                 <hr class="border-top-grey">
                                 <form action="{{ route('create/designs') }}" method="POST" enctype="multipart/form-data">
@@ -99,8 +99,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4 mt-4">
-                                        <h5 class="ml-0  f-21 font-weight-normal text-capitalize">Company Details</h5>
+                                    <div class="row">
+                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Company Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Company Name </label>
@@ -195,7 +195,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4 mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -290,7 +290,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-white" id="customFields">
@@ -321,7 +321,7 @@
                                                         </td>
                                                         <td class="cash-fields" style="display: none">
                                                             <input class="form-control" type="text"
-                                                                name="receivable[]" placeholder="Received By">
+                                                                name="receivable[]" placeholder="Receivable By">
                                                         </td>
                                                         <td class="cheque-fields" style="display: none">
                                                             <input class="form-control" type="text"

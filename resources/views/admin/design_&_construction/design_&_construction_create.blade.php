@@ -12,12 +12,12 @@
                 <div class="container-fluid">
                     <div class="margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-section bg-white">
+                            <div class="form-section">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Service</h4>
                                 <hr class="border-top-grey">
                                 <form action="{{ route('design_&_construction/create') }}" method="POST">
                                     @csrf
-                                    <div class="row mt-4 ">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Type</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -86,7 +86,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Company Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -180,7 +180,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -265,7 +265,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-white" id="customFields">
@@ -287,11 +287,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-<<<<<<< HEAD
-                                                            <input class="form-control common-field" type="text" id="paymentDate" name="date2[]" style="display: none">
-=======
                                                             <input class="form-control common-field" type="text" placeholder="DD/MM/YYYY" id="paymentDate" name="date2[]" style="display: none">
->>>>>>> 90a21e1b9f6d4d41da3b2d8ed985f6ae7ce0e12c
                                                         </td>
                                                         <td>
                                                             <input class="form-control common-field" type="text"
@@ -300,7 +296,7 @@
                                                         </td>
                                                         <td class="cash-fields" style="display: none">
                                                             <input class="form-control" type="text"
-                                                                name="receivable[]" placeholder="Received By">
+                                                                name="receivable[]" placeholder="Receivable By">
                                                         </td>
                                                         <td class="cheque-fields" style="display: none">
                                                             <input class="form-control" type="text"
@@ -369,7 +365,7 @@
                     x++;
                     $(wrapper).append(fieldHTML);
                 } else {
-                    alert('A maximum of ' + maxField + ' fields are allowed.');
+                    alert('A maximum of ' + maxField + 'fields are allowed.');
                 }
             });
 
@@ -403,25 +399,21 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   {{-- date Format --}}
   <script>
-          var onDateSelect = function(selectedDate, input) {
-    // Yahan logical OR operator ka istemal karen
-    if (input.id === 'date' || input.id === 'paymentDate') { // Start date or Payment date selected - update End Date picker
-        $("#end_date").datepicker('option', 'minDate', selectedDate);
-    } else { // End date selected - update Start Date and Payment Date picker
-        $("#date, #paymentDate").datepicker('option', 'maxDate', selectedDate);
-    }
-};
-
-var onDocumentReady = function() {
-    var datepickerConfiguration = {
-        dateFormat: "dd/mm/yy",
-        onSelect: onDateSelect
-    };
-    ///--- Component Binding ---///
-    // Yahaan selector ko sahi tarah se bind karen
-    $('#date, #end_date, #paymentDate').datepicker(datepickerConfiguration);
-};
-
-$(onDocumentReady);
+      var onDateSelect = function(selectedDate, input) {
+          if (input.id === 'date') { //Start date selected - update End Date picker
+              $("#end_date").datepicker('option', 'minDate', selectedDate);
+          } else { //End date selected - update Start Date picker
+              $("#date").datepicker('option', 'maxDate', selectedDate);
+          }
+      };
+      var onDocumentReady = function() {
+          var datepickerConfiguration = {
+              dateFormat: "dd/mm/yy",
+              onSelect: onDateSelect
+          };
+          ///--- Component Binding ---///
+          $('#date, #end_date').datepicker(datepickerConfiguration);
+      };
+      $(onDocumentReady);
   </script>
 @endsection

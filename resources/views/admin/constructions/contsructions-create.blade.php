@@ -17,7 +17,7 @@
                                 <hr class="border-top-grey">
                                 <form action="{{ route('create/constructions') }}" method="POST">
                                     @csrf
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Type</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -86,7 +86,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Company Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -180,7 +180,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -265,7 +265,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-white" id="customFields">
@@ -287,7 +287,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control common-field" type="text" id="date2[]" name="date2[]" style="display: none">
+                                                            <input class="form-control common-field" type="date" name="date2[]" style="display: none">
                                                         </td>
                                                         <td>
                                                             <input class="form-control common-field" type="text"
@@ -296,7 +296,7 @@
                                                         </td>
                                                         <td class="cash-fields" style="display: none">
                                                             <input class="form-control" type="text"
-                                                                name="receivable[]" placeholder="Received By">
+                                                                name="receivable[]" placeholder="Receivable By">
                                                         </td>
                                                         <td class="cheque-fields" style="display: none">
                                                             <input class="form-control" type="text"
@@ -397,25 +397,21 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   {{-- date Format --}}
   <script>
-     var onDateSelect = function(selectedDate, input) {
-    // Yahan logical OR operator ka istemal karen
-    if (input.id === 'date' || input.id === 'date2[]') { // Start date or Payment date selected - update End Date picker
-        $("#end_date").datepicker('option', 'minDate', selectedDate);
-    } else { // End date selected - update Start Date and Payment Date picker
-        $("#date, #date2[]").datepicker('option', 'maxDate', selectedDate);
-    }
-};
-
-var onDocumentReady = function() {
-    var datepickerConfiguration = {
-        dateFormat: "dd/mm/yy",
-        onSelect: onDateSelect
-    };
-    ///--- Component Binding ---///
-    // Yahaan selector ko sahi tarah se bind karen
-    $('#date, #end_date, #date2[]').datepicker(datepickerConfiguration);
-};
-
-$(onDocumentReady);
+      var onDateSelect = function(selectedDate, input) {
+          if (input.id === 'date') { //Start date selected - update End Date picker
+              $("#end_date").datepicker('option', 'minDate', selectedDate);
+          } else { //End date selected - update Start Date picker
+              $("#date").datepicker('option', 'maxDate', selectedDate);
+          }
+      };
+      var onDocumentReady = function() {
+          var datepickerConfiguration = {
+              dateFormat: "dd/mm/yy",
+              onSelect: onDateSelect
+          };
+          ///--- Component Binding ---///
+          $('#date, #end_date').datepicker(datepickerConfiguration);
+      };
+      $(onDocumentReady);
   </script>
 @endsection
