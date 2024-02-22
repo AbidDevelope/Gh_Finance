@@ -61,6 +61,36 @@
     .text {
         font-size: 12px !important;
     }
+    .z {
+        display: none;
+        position: fixed;
+        top: 43%;
+        left: -1%;
+        right: 0%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        z-index: 10000;
+}
+.he{
+    height: 210px !important;
+    width: 700px !important;
+    padding: 10px !important;
+}
+.p-1{
+    top: 25%;
+    /* left: 10%; */
+}
+.p-2{
+    top: 45%;
+    /* left: 10%; */
+}
+.p-3{
+    top: 65%;
+    /* left: 10%; */
+    /* margin-left: 40px !important; */
+}
 </style>
 <div class="header-top-area bg-white">
     <div class="container-fluid">
@@ -97,15 +127,16 @@
                         <a class="me-3 btn btn-secondary dropdown-toggle bg-white text-black-50 border-0 dropdown-toggle-no-caret"
                             href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Mega menu<svg class="ms-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                            Mega menu<svg class="ms-1" xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                                 <path
                                     d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
                             </svg>
                         </a>
 
 
-                        <ul class="dropdown-menu max-w-xl mt-3 ms-5" style="min-width: 30rem;" aria-labelledby="dropdownMenuLink">
+                        <ul class="dropdown-menu max-w-xl mt-3 ms-5" style="min-width: 30rem;"
+                            aria-labelledby="dropdownMenuLink">
                             <div class="container">
                                 <div class="row">
                                     <li class="col-sm-4">
@@ -351,8 +382,7 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="col-sm-4"><a class="text-black-50"
-                                            href="{{ route('quotation') }}">
+                                    <li class="col-sm-4"><a class="text-black-50" href="{{ route('quotation') }}">
                                             <div class="d-flex justify-content-center">
                                                 <svg class="hovercolor" width="30" height="30"
                                                     viewBox="0 0 60 60" fill="currentColor"
@@ -431,7 +461,8 @@
                                             </div>
                                         </a></li>
 
-                                    <li class="col-sm-4"><a class="text-black-50" href="{{ route('project/report') }}">
+                                    <li class="col-sm-4"><a class="text-black-50"
+                                            href="{{ route('project/report') }}">
                                             <div class="d-flex justify-content-center">
                                                 <svg class="hovercolor" width="30" height="30"
                                                     fill="currentColor" viewBox="0 0 100 100"
@@ -565,22 +596,64 @@
                         class="profile_width popup-container position-fixed top-10  translate-middle-y mt-4 me-4">
                         <div class="popup-content">
                             <ul class="list-unstyled">
-                                <li class="mb-2">
+                                <li class="mb-2 ">
                                     <a href="#" class="d-flex  text-black-50">
                                         <span> My Profile</span>
-                                        <span class="mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                                          </svg></span>
+                                        <span class="mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                height="16" fill="currentColor" class="bi bi-person-fill"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                                            </svg></span>
                                     </a>
                                 </li>
-                                <li class="mb-2">
-                                    <!-- File Input Element -->
+                                {{-- <li class="mb-2">
+
                                     <input type="file" id="file-input" style="display: none;" accept="image/*">
                                     <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
-                                        <span>Change Profile Picture</span>
+                                        <span>Change Pic</span>
+                                        <span class="mt-1 icon nalika-edit author-log-ic"></span>
+                                    </a>
+                                </li> --}}
+                                <li class="mb-2 profile">
+                                    <!-- File Input Element -->
+                                    {{-- <input type="file" id="file-input" style="display: none;" accept="image/*">
+                                    <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
+                                        <span>Change Password</span>
+                                        <span class="mt-1 icon nalika-edit author-log-ic"></span>
+                                    </a> --}}
+                                    {{-- <input type="file" id="file-input" style="display: none;" accept="image/*"> --}}
+                                    <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
+                                        <span>Change Password</span>
                                         <span class="mt-1 icon nalika-edit author-log-ic"></span>
                                     </a>
                                 </li>
+                                <div class=" z position-fixed top-10 translate-middle-y mt-4 me-4" id="profileMod">
+                                    <div class=" he pt-2">
+
+                                            <!-- Input for current password -->
+                                            {{-- <div class="p-1" style="display: inline-block;">
+                                                <label for="curent">Current password:</label> --}}
+                                                <input type="password" style="width: 200px; height: 30px;" class="p-1 ms-4 form-control rounded" placeholder="Current Password">
+                                            {{-- </div> --}}
+
+
+
+
+                                            <!-- Input for new password -->
+                                            {{-- <label for="new">New password:</label> --}}
+                                            <input type="password" style="width: 200px; height: 30px;" class="p-2 ms-4 form-control rounded" placeholder="New Password">
+
+
+
+                                            <!-- Input for confirming new password -->
+                                            {{-- <label for="confirm">Confirm password:</label> --}}
+                                            <input type="password" style="width: 200px; height: 30px;" class="p-3 ms-4 form-control rounded" placeholder="Confirm Password">
+
+
+                                    </div>
+                                </div>
+
                                 {{-- <li class="mb-2">
                                     <a href="#" class="d-flex  text-black-50">
                                         <span>Settings</span>
@@ -656,6 +729,19 @@
 
 </div>
 
+
+<script>
+    // JavaScript to open the modal when the li tag is clicked
+    // document.querySelector('#profile').addEventListener('click', function() {
+    //     $('#profileModal').modal('show');
+    // });
+    // JavaScript to open the modal when the li tag is clicked
+    document.querySelector('.profile').addEventListener('click', function() {
+    document.querySelector('.z').style.display = 'block';
+});
+
+
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var profilePic = document.getElementById('profile-pic');
@@ -791,6 +877,7 @@
         changeColor(clickedColor)
     })
 </script>
+
 
 {{-- <script type="text/javascript">
     function googleTranslateElementInit() {
