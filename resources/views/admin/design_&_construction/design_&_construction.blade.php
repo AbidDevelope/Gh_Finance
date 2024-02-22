@@ -64,7 +64,7 @@
                                             <div class=" form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
                                                 <input type="text" id="end_date" class="form-control bg-white text-black-50 rounded"
-                                                name="end_date" placeholder="Select End Date:" style="width: 230px; height: 35px;">
+                                                name="end_date" placeholder="Select End Date" style="width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif

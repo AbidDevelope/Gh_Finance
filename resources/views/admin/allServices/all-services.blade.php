@@ -73,7 +73,7 @@
                                         </div>
                                         <div class="container d-flex gap-4 ">
                                             <div class=" form-group">
-                                                {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
+                                                {{-- <input class="form-control common-field" type="date" id="date2[]" name="date2[]" style="display: none"> --}}
                                                 <input type="text" id="end_date"
                                                     class="form-control bg-white text-black-50 rounded" name="end_date"
                                                     placeholder="Select End Date" style="width: 230px; height: 35px;">
@@ -212,21 +212,24 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'start_date') { //Start date selected - update End Date picker
-                $("#end_date").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#start_date").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#start_date, #end_date').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+     var onDateSelect = function(selectedDate, input) {
+    if (input.id === 'start_date') { //Start date selected - update End Date picker
+        $("#end_date").datepicker('option', 'minDate', selectedDate);
+    } else { //End date selected - update Start Date picker
+        $("#start_date").datepicker('option', 'maxDate', selectedDate);
+    }
+};
+
+var onDocumentReady = function() {
+    var datepickerConfiguration = {
+        dateFormat: "dd/mm/yy",
+        onSelect: onDateSelect
+    };
+    ///--- Component Binding ---///
+    $('#start_date, #end_date').datepicker(datepickerConfiguration);
+};
+$(onDocumentReady);
+
+
     </script>
 @endsection

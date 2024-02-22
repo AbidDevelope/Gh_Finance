@@ -321,7 +321,7 @@
                                                         </td>
                                                         <td class="cash-fields" style="display: none">
                                                             <input class="form-control" type="text"
-                                                                name="receivable[]" placeholder="Receivable By">
+                                                                name="receivable[]" placeholder="Received By">
                                                         </td>
                                                         <td class="cheque-fields" style="display: none">
                                                             <input class="form-control" type="text"

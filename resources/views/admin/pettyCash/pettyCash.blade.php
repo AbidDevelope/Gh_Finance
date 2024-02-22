@@ -133,13 +133,11 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
-                                            <th style="border-radius: 0 !important;" class="text-center">Project ID</th>
-                                            <th style="border-radius: 0 !important;" class="text-center">Date</th>
-                                            <th style="border-radius: 0 !important;" class="text-center">Project Type</th>
-                                            <th style="border-radius: 0 !important;" class="text-center">Project Name</th>
-                                            {{-- <th>Beneficiary</th> --}}
-                                            <th style="border-radius: 0 !important;" class="text-center">Total Amount</th>
-                                            <th style="border-radius: 0 !important;" class="text-center">Actions</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Date</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Project Name</th>
+                                            <th>Beneficiary</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -147,14 +145,12 @@
                                         @if (count($expenses) > 0)
                                             @foreach ($expenses as $index => $item)
                                                 <tr>
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $index + 1 }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->project_id }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->project->project_type }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->project->project_name }}</td>
-                                                    {{-- <td>Abid</td> --}}
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->grandtotal }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-center">
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->project }}</td>
+                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->amount_deposited }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon" data-toggle="dropdown"
                                                                 aria-expanded="false"><img
@@ -182,6 +178,7 @@
                                         @endif
                                     </tbody>
                                 </table>
+
                         </div>
                     </div>
                 </div>
