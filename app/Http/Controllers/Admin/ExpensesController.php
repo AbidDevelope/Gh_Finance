@@ -328,6 +328,15 @@ class ExpensesController extends Controller
 
     public function pettyCashImport(Request $request)
     {
+        $validate = Validator::make($request->all(), [
+            'file'   => 'required'
+        ]);
+
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+
         $file = $request->file('file');
         Excel::import(new ExpensesImport, $file);
 
