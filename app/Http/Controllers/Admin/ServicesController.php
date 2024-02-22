@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Payment;
 use Validator;
+use DateTime;
 use Carbon\Carbon;
 
 class ServicesController extends Controller
@@ -58,15 +59,45 @@ class ServicesController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }else
         {
-           $requestData = $request->all();
-           $project = Project::create($requestData);
+        //    $requestData = $request->all();
+        //    $project = Project::create($requestData);
+        $date = DateTime::createFromFormat('d/m/Y', $request->date);
+        $formattedDate = $date->format('Y-m-d');
+
+        $project = new Project();
+        $project->project_type = $request->project_type;
+        $project->date = $formattedDate;
+        $project->project_manager = $request->project_manager;
+        $project->manager_email = $request->manager_email;
+        $project->Manager_mobile = $request->Manager_mobile;
+        $project->Manager_landline = $request->Manager_landline;
+        $project->manager_remarks = $request->manager_remarks;
+        $project->company_name = $request->company_name;
+        $project->company_project_name = $request->company_project_name;
+        $project->company_email = $request->company_email;
+        $project->company_mobile = $request->company_mobile;
+        $project->company_landline = $request->company_landline;
+        $project->company_location = $request->company_location;
+        $project->company_country = $request->company_country;
+        $project->company_website = $request->company_website;
+        $project->company_remarks = $request->company_remarks;
+        $project->project_name = $request->project_name;
+        $project->company_project = $request->company_project;
+        $project->project_email = $request->project_email;
+        $project->project_mobile = $request->project_mobile;
+        $project->project_location = $request->project_location;
+        $project->project_value = $request->project_value;
+        $project->project_country = $request->project_country;
+        $project->project_remarks = $request->project_remarks;
+        $project->project_description = $request->project_description;
+        $project->save();
 
            foreach($request->amount as $key=>$payment)
            {
               $payments = new Payment([
                   'project_id' => $project->id,
                   'paymentMode' => $request->paymentMode[$key],
-                  'date'      => $request->date[$key],
+                  'date2'      => $request->date2[$key],
                   'amount'   => $request->amount[$key],
                   'receivable'  => $request->receivable[$key],
                   'chequeNumber'  => $request->chequeNumber[$key],
@@ -154,7 +185,7 @@ class ServicesController extends Controller
     public function createConstructions(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'project_type'      => 'required' ,  'date' => 'required',  'project_manager'       => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
             'company_name'      => 'required' ,  'company_project_name'  => 'required',
@@ -173,8 +204,36 @@ class ServicesController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }else
         {
-            $requestData = $request->all();
-            $projects = Project::create($requestData);
+            $date = DateTime::createFromFormat('d/m/Y', $request->date);
+            $formattedDate = $date->format('Y-m-d');
+    
+            $projects = new Project();
+            $projects->project_type = $request->project_type;
+            $projects->date = $formattedDate;
+            $projects->project_manager = $request->project_manager;
+            $projects->manager_email = $request->manager_email;
+            $projects->Manager_mobile = $request->Manager_mobile;
+            $projects->Manager_landline = $request->Manager_landline;
+            $projects->manager_remarks = $request->manager_remarks;
+            $projects->company_name = $request->company_name;
+            $projects->company_project_name = $request->company_project_name;
+            $projects->company_email = $request->company_email;
+            $projects->company_mobile = $request->company_mobile;
+            $projects->company_landline = $request->company_landline;
+            $projects->company_location = $request->company_location;
+            $projects->company_country = $request->company_country;
+            $projects->company_website = $request->company_website;
+            $projects->company_remarks = $request->company_remarks;
+            $projects->project_name = $request->project_name;
+            $projects->company_project = $request->company_project;
+            $projects->project_email = $request->project_email;
+            $projects->project_mobile = $request->project_mobile;
+            $projects->project_location = $request->project_location;
+            $projects->project_value = $request->project_value;
+            $projects->project_country = $request->project_country;
+            $projects->project_remarks = $request->project_remarks;
+            $projects->project_description = $request->project_description;
+            $projects->save();
 
             if($projects)
             {
@@ -183,7 +242,7 @@ class ServicesController extends Controller
                    $payments = new Payment([
                        'project_id' => $projects->id,
                        'paymentMode' => $request->paymentMode[$key],
-                       'date'      => $request->date[$key],
+                       'date2'      => $request->date2[$key],
                        'amount'   => $request->amount[$key],
                        'receivable'  => $request->receivable[$key],
                        'chequeNumber'  => $request->chequeNumber[$key],
@@ -271,9 +330,9 @@ class ServicesController extends Controller
 
     public function designConstructionCreate(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $validate = Validator::make($request->all(),[
-            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'project_type'      => 'required' , 'date' => 'required',  'project_manager'       => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
             'company_name'      => 'required' ,  'company_project_name'  => 'required',
@@ -291,9 +350,36 @@ class ServicesController extends Controller
         {
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
-            $requestData = $request->all();
-
-            $projects = Project::create($requestData);
+            $date = DateTime::createFromFormat('d/m/Y', $request->date);
+            $formattedDate = $date->format('Y-m-d');
+    
+            $projects = new Project();
+            $projects->project_type = $request->project_type;
+            $projects->date = $formattedDate;
+            $projects->project_manager = $request->project_manager;
+            $projects->manager_email = $request->manager_email;
+            $projects->Manager_mobile = $request->Manager_mobile;
+            $projects->Manager_landline = $request->Manager_landline;
+            $projects->manager_remarks = $request->manager_remarks;
+            $projects->company_name = $request->company_name;
+            $projects->company_project_name = $request->company_project_name;
+            $projects->company_email = $request->company_email;
+            $projects->company_mobile = $request->company_mobile;
+            $projects->company_landline = $request->company_landline;
+            $projects->company_location = $request->company_location;
+            $projects->company_country = $request->company_country;
+            $projects->company_website = $request->company_website;
+            $projects->company_remarks = $request->company_remarks;
+            $projects->project_name = $request->project_name;
+            $projects->company_project = $request->company_project;
+            $projects->project_email = $request->project_email;
+            $projects->project_mobile = $request->project_mobile;
+            $projects->project_location = $request->project_location;
+            $projects->project_value = $request->project_value;
+            $projects->project_country = $request->project_country;
+            $projects->project_remarks = $request->project_remarks;
+            $projects->project_description = $request->project_description;
+            $projects->save();
 
             if($projects)
             {
@@ -302,7 +388,7 @@ class ServicesController extends Controller
                     $payments = new Payment([
                         'project_id' => $projects->id,
                         'paymentMode' => $request->paymentMode[$key],
-                        'date'   => $request->date[$key],
+                        'date2'   => $request->date2[$key],
                         'amount'  => $request->amount[$key],
                         'receivable'  => $request->receivable[$key],
                         'chequeNumber' => $request->chequeNumber[$key],
