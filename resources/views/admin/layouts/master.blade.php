@@ -22,8 +22,8 @@ background-color: white !important;
     <div class="bg">
         @yield('content')
     </div>
-
-    {{-- <footer>
+{{-- 
+    <footer>
         @include('admin.includes.footer')
     </footer> --}}
 </body>
