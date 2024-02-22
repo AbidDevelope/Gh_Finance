@@ -14,12 +14,12 @@
     }
 
     .bg_button {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
     .bg_button:hover {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
@@ -50,7 +50,7 @@
                                         </a>
                                         <button type="type" id="export"
                                             class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
-                                            style="border-color: #0F1316 !important;">
+                                            style="border-color: var(--own-black) !important;">
                                             <i class="fa fa-file-export"></i> Export
                                         </button>
                                     </div>
@@ -59,7 +59,7 @@
                                     <input type ="file" name="file">
                                     <button type="submit" class="btn btn-primary mt-4">Export</button>
                                 </div> --}}
-                             
+
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

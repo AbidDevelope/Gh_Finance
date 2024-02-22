@@ -313,7 +313,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                                 <path
-                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"  />
                             </svg></a>
 
                         <ul class="dropdown-menu max-w-xl mt-3" style="min-width: 30rem;"
@@ -634,7 +634,7 @@
             </div>
 
         </div>
-        <div class="bg-white px-3 pb-4">
+        <div class="bg-white px-3 pb-4" id="openModal">
             <p>Theme color</p>
             <div id="colorChoices" class="row gap-4">
                 <div class="col">
@@ -720,17 +720,19 @@
 </script>
 <script>
     // Add a click event listener to the SVG element
-    document.getElementById('openModal').addEventListener('click', function() {
+    let colorsidepicker = document.getElementById('colorsidepicker')
+    let openModal =  document.getElementById('openModal')
+    colorsidepicker.addEventListener('click', function() {
         // Show the modal
-        $('#myModal').modal('show');
+        // $('#myModal').modal('show');
+        togglePopup(openModal);
     });
-    document.getElementById('close').addEventListener('click', function() {
-        // Show the modal
-        $('#myModal').modal('hide');
-    });
+    // document.getElementById('close').addEventListener('click', function() {
+    //     // Show the modal
+    //     $('#myModal').modal('hide');
+    // });
 
     let colorpicker = document.getElementById('colorsidebar')
-    let colorsidepicker = document.getElementById('colorsidepicker')
     let colorChoices = document.getElementById('colorChoices')
 
     function myFunction() {
