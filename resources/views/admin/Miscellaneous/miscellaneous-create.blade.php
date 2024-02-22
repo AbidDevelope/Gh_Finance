@@ -204,4 +204,47 @@
         };
         $(onDocumentReady);
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Function to calculate the total for a row
+        function calculateRowTotal() {
+            var qty = parseFloat($(this).closest('tr').find('.qty').val()) || 0;
+            var price = parseFloat($(this).closest('tr').find('.price').val()) || 0;
+            var total = qty * price;
+            $(this).closest('tr').find('.total').val(total.toFixed(3));
+            updateSubtotal();
+        }
+    
+        // Function to update subtotal
+        function updateSubtotal() {
+            var subtotal = 0;
+            $('.total').each(function() {
+                var rowTotal = parseFloat($(this).val()) || 0;
+                subtotal += rowTotal;
+            });
+            $('.subtotal').val(subtotal.toFixed(3));
+            updateGrandTotal();
+        }
+    
+        // Function to update grand total
+        function updateGrandTotal() {
+            var subtotal = parseFloat($('.subtotal').val()) || 0;
+            var others = parseFloat($('input[name="others"]').val()) || 0;
+            var grandTotal = subtotal + others;
+            $('input[name="grandtotal"]').val(grandTotal.toFixed(3));
+        }
+    
+        // Event listeners
+        $(document).on('input', '.qty, .price', calculateRowTotal);
+        $('input[name="others"]').on('input', updateGrandTotal);
+    
+        // Function to add a new row
+        $('#add-row').click(function() {
+            var newRow = $('tr:eq(1)').clone(); // Clone the first row
+            newRow.find('input').val(''); // Clear the values in the cloned row
+            $('tr:last').prev().after(newRow); // Insert the new row before the subtotal row
+        });
+    });
+    </script>
 @endsection
