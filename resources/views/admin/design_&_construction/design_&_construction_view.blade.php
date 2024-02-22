@@ -107,6 +107,10 @@
                                     <table class="table table-striped table-border">
                                         <tbody>
                                             <tr>
+                                                <td>Project ID:</td>
+                                                <td class="text-right">{{ $projects->id }}</td>
+                                            </tr>
+                                            <tr>
                                                 <td>Project Name:</td>
                                                 <td class="text-right">{{ $projects->project_name }}</td>
                                             </tr>

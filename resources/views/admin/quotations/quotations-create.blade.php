@@ -20,7 +20,7 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="Project Id">Project Id</label>
+                                            <label for="Project Id">Project Id <span class="text-danger">*</span></label>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="project_id" onkeypress="return /[0-9]/i.test(event.key)"  name="project_id" value="{{ old('project_id') }}">
                                             </div>
@@ -54,7 +54,7 @@
 
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Quotation date <span class="text-danger">*</span></label>
+                                                <label>Quotation date </label>
                                                 <div class="cal-icon">
                                                     <input class="form-control datetimepicker" type="date"
                                                         name="quotation_date" value="{{ old('quotation_date') }}">
@@ -147,7 +147,7 @@
                                         </div>
                                     </div>
                                     <div class="submit-section">
-                                        <button type="submit" class="btn color submit-btn">CREATE</button>
+                                        <button type="submit" class="btn color submit-btn" style="background:var(--own-black)">CREATE</button>
                                     </div>
                                 </form>
                             </div>

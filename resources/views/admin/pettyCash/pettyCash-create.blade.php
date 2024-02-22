@@ -189,7 +189,7 @@
                             <div class="form-section bg-white">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Expenses</h4>
                                 <hr class="border-top-grey">
-                                <form action="{{ route('expenses/create') }}" method="post">
+                                <form action="{{ route('pettyCash/create') }}" method="post">
                                     @csrf
                                     @if ($errors->any())
                                         @foreach ($errors->all() as $error)
@@ -210,7 +210,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Project Name</label>
-                                                <input readonly class="form-control" type="text" name="project_name" id="project_name" value="{{ old('project_name') }}">
+                                                <input class="form-control" type="text" name="project" id="project" value="{{ old('project') }}">
                                             </div>
                                         </div>
 
@@ -225,28 +225,28 @@
                                         <div class="col-md-4">
                                             <div class="form-g  roup">
                                                 <label> Recp No. / Cheque number</span></label>
-                                                <input type="text" class="form-control"  name="receipt[]">
+                                                <input type="text" class="form-control"  name="cheque_number_receipt_number">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Description</label>
                                                 <input class="form-control" type="text"
-                                                style="min-width:120px" name="description[]"
-                                                value="{{ old('description.0') }}">
+                                                style="min-width:120px" name="description"
+                                                value="{{ old('description') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Amout Deposited</label>
                                                 <input class="form-control" type="text"
-                                                name="amount_deposite[]" onkeypress="return /[0-9]/i.test(event.key)">                                            </div>
+                                                name="amount_deposited" onkeypress="return /[0-9]/i.test(event.key)">                                            </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Amount Withdrawn</label>
                                                 <input class="form-control" type="text"
-                                                name="amount_withdrawn[]" onkeypress="return /[0-9]/i.test(event.key)">                                            </div>
+                                                name="amount_withdrawn" onkeypress="return /[0-9]/i.test(event.key)">                                            </div>
                                         </div>
 
 
@@ -311,8 +311,8 @@
                                                                 style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input class="form-control text-right"
                                                                     onkeypress="return /[0-9]/.test(event.key)"
-                                                                    type="text" name="subtotal"
-                                                                    value="{{ old('subtotal') }}">
+                                                                    type="text" name="total_amount_deposited"
+                                                                    value="{{ old('total_amount_deposited') }}">
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -323,8 +323,8 @@
                                                                 style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input class="form-control text-right"
                                                                     onkeypress="return /[0-9,]/i.test(event.key)"
-                                                                    type="text" name="others"
-                                                                    value="{{ old('others') }}">
+                                                                    type="text" name="total_amount_withdrawn"
+                                                                    value="{{ old('total_amount_withdrawn') }}">
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -336,8 +336,8 @@
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
                                                                 <input class="form-control text-right"
                                                                     onkeypress="return /[0-9,]/i.test(event.key)"
-                                                                    type="text" name="grandtotal"
-                                                                    value="{{ old('grandtotal') }}">
+                                                                    type="text" name="total_in_account"
+                                                                    value="{{ old('total_in_account') }}">
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -347,7 +347,7 @@
                                     </div>
 
                                     <div class="submit-section">
-                                        <button type="submit" class="btn  submit-btn">CREATE</button>
+                                        <button type="submit" class="btn  submit-btn" style="background: var(--own-black)">CREATE</button>
                                     </div>
                                 </form>
                             </div>

@@ -14,12 +14,12 @@
     }
 
     .bg_button {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
     .bg_button:hover {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
@@ -42,7 +42,7 @@
                                 <h4 class=" text-headings">Petty Cash</h4>
                             </div>
                             <div class="text-right">
-                                <form action="#" method="GET">
+
                                     <div class="table-actions">
                                         <a href="{{ route('pettyCash/create') }}"
                                             class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
@@ -50,7 +50,7 @@
                                         </a>
                                         <button type="type" id="export"
                                             class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
-                                            style="border-color: #0F1316 !important;">
+                                            style="border-color: var(--own-black) !important;">
                                             <i class="fa fa-file-export"></i> Export
                                         </button>
                                     </div>
@@ -59,7 +59,7 @@
                                     <input type ="file" name="file">
                                     <button type="submit" class="btn btn-primary mt-4">Export</button>
                                 </div> --}}
-                                </form>
+
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -133,13 +133,11 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
-                                            <th style="border-radius: 0 !important;" class="text-center">Project ID</th>
-                                            <th style="border-radius: 0 !important;" class="text-center">Date</th>
-                                            <th style="border-radius: 0 !important;" class="text-center">Project Type</th>
-                                            <th style="border-radius: 0 !important;" class="text-center">Project Name</th>
-                                            {{-- <th>Beneficiary</th> --}}
-                                            <th style="border-radius: 0 !important;" class="text-center">Total Amount</th>
-                                            <th style="border-radius: 0 !important;" class="text-center">Actions</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Date</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Project Name</th>
+                                            <th>Beneficiary</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -147,14 +145,12 @@
                                         @if (count($expenses) > 0)
                                             @foreach ($expenses as $index => $item)
                                                 <tr>
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $index + 1 }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->project_id }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->project->project_type }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->project->project_name }}</td>
-                                                    {{-- <td>Abid</td> --}}
-                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->grandtotal }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-center">
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->project }}</td>
+                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->amount_deposited }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon" data-toggle="dropdown"
                                                                 aria-expanded="false"><img
@@ -177,11 +173,12 @@
                                             @endforeach
                                         @else
                                             <tr>
-                                                <td colspan="7" class="text-center">No Record Found</td>
+                                                <td colspan="6" class="text-center">No Record Found</td>
                                             </tr>
                                         @endif
                                     </tbody>
                                 </table>
+
                         </div>
                     </div>
                 </div>

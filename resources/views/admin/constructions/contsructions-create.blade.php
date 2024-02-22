@@ -17,13 +17,20 @@
                                 <hr class="border-top-grey">
                                 <form action="{{ route('create/constructions') }}" method="POST">
                                     @csrf
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Type</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Project Type</label>
                                                 <input readonly type="text" name="project_type" class="form-control"
                                                     value="Construction">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Select Date</label>
+                                                <input type="text" id="date" name="date" class="form-control"
+                                                    placeholder="DD/MM/YYYY">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -79,7 +86,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Company Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -173,7 +180,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -258,7 +265,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-4">
+                                    <div class="row">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-white" id="customFields">
@@ -280,7 +287,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control common-field" type="date" name="date[]" style="display: none">
+                                                            <input class="form-control common-field" type="date" name="date2[]" style="display: none">
                                                         </td>
                                                         <td>
                                                             <input class="form-control common-field" type="text"
@@ -314,7 +321,7 @@
                                         </div>
                                     </div>
                                     <!-- <div class="row"> -->
-                                    <button type="submit" class="btn btn-create btn-lg mt-5">CREATE</button>
+                                    <button type="submit" class="btn btn-create btn-lg mt-5" style="background:var(--own-black) ">CREATE</button>
                                     <!-- </div> -->
                                 </form>
                             </div>
@@ -349,7 +356,7 @@
             var maxField = 5;
             var addButton = $('#add-row');
             var wrapper = $('#customFields');
-            var fieldHTML = '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field" type="date" name="date[]" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
+            var fieldHTML = '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field" type="date" name="date2[]" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
             var x = 1;
 
             $(addButton).click(function() {
@@ -384,4 +391,27 @@
         });
         </script>
     {{-- Add or Remove input field end --}}
+
+       {{-- Date Format  --}}
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  {{-- date Format --}}
+  <script>
+      var onDateSelect = function(selectedDate, input) {
+          if (input.id === 'date') { //Start date selected - update End Date picker
+              $("#end_date").datepicker('option', 'minDate', selectedDate);
+          } else { //End date selected - update Start Date picker
+              $("#date").datepicker('option', 'maxDate', selectedDate);
+          }
+      };
+      var onDocumentReady = function() {
+          var datepickerConfiguration = {
+              dateFormat: "dd/mm/yy",
+              onSelect: onDateSelect
+          };
+          ///--- Component Binding ---///
+          $('#date, #end_date').datepicker(datepickerConfiguration);
+      };
+      $(onDocumentReady);
+  </script>
 @endsection

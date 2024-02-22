@@ -1,7 +1,7 @@
 <style>
     .bg {
         background-color: #fff !important;
-        color: black !important;
+        color: var(--own-black) !important;
     }
 
     .margin_top {
@@ -13,12 +13,12 @@
     }
 
     .bg_button {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
     .bg_button:hover {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
@@ -48,7 +48,7 @@
                                     </a>
                                     <a href="#"
                                         class="btn  border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
-                                        style="border-color: #0F1316 !important;">
+                                        style="border-color: var(--own-black) !important;">
                                         <i class="fa fa-file-export"></i> Export
                                     </a>
                                 </div>

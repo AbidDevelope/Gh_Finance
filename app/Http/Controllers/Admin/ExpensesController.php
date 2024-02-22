@@ -9,11 +9,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Expense;
 use App\Models\ExpenseItem;
+use App\Models\PettyCash;
 use App\Models\Project;
 use App\Models\Miscellaneous;
 use App\Models\MiscellaneousItem;
 use Validator;
 use Carbon\Carbon;
+use DateTime;
 
 class ExpensesController extends Controller
 {
@@ -123,7 +125,7 @@ class ExpensesController extends Controller
 
     public function pettyCash()
     {
-        $expenses = Expense::with(['expenseItem', 'project'])->get();
+        $expenses = PettyCash::all();
         // return $expenses;
         return view('admin.pettyCash.pettyCash', compact('expenses'));
     }
@@ -200,8 +202,8 @@ class ExpensesController extends Controller
 
     public function expensesView($id)
     {
-       $expenses = Expense::find($id);
-       return view('admin.pettyCash.expenses-view', compact('expenses'));
+       $expenses = PettyCash::find($id);
+       return view('admin.pettyCash.pettyCash-view', compact('expenses'));
     }
 
     public function expensesEdit($id)
@@ -275,11 +277,10 @@ class ExpensesController extends Controller
         $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
         $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
 
-        $expenses = Expense::whereDate('date', '>=', $startDate)->whereDate('date', '<=', $endDate)->get();
-        if($expenses)
-        {
-            return view('admin.pettyCash.pettyCash', compact('expenses'));
-        }                
+        $expenses = PettyCash::whereDate('date', '>=', $startDate)->whereDate('date', '<=', $endDate)->get();
+        
+        return view('admin.pettyCash.pettyCash', compact('expenses'));
+                     
 
 
         $miscell = Miscellaneous::whereBetween('created_at', [$startDate, $endDate])->get(); 
@@ -328,11 +329,36 @@ class ExpensesController extends Controller
     public function excelCsvImport(Request $request)
     {
         $file = $request->file('file');
-
-        // Excel file ko import karte hue ExcelDataImport class ka use karenge
         Excel::import(new ExpensesImport, $file);
 
         // dd($excel);
-        return back()->with('success', 'Expenses imported successfully.');
+        return back()->with('success', 'Imported successfully.');
+    }
+
+    public function pettyCashPost(Request $request)
+    {
+    
+       // Assuming $request->date is in 'DD/MM/YYYY' format
+        $date = DateTime::createFromFormat('d/m/Y', $request->date);
+        $formattedDate = $date->format('Y-m-d'); // Convert to 'YYYY-MM-DD' format
+
+        $pettyCash = new PettyCash();
+        $pettyCash->date = $formattedDate; // Use the correctly formatted date
+        // Set other properties
+        $pettyCash->cheque_number_receipt_number = $request->cheque_number_receipt_number;
+        $pettyCash->description = $request->description;
+        $pettyCash->beneficiary = $request->beneficiary;
+        $pettyCash->amount_deposited = $request->amount_deposited;
+        $pettyCash->amount_withdrawn = $request->amount_withdrawn;
+        $pettyCash->project = $request->project;
+        $pettyCash->total_amount_deposited = $request->total_amount_deposited;
+        $pettyCash->total_amount_withdrawn = $request->total_amount_withdrawn;
+        $pettyCash->total_in_account = $request->total_in_account;
+        $pettyCash->save();
+
+        session()->flash('success', 'Data Submitted Successfully.');
+        return redirect()->route('pettyCash');
+
+    
     }
 }

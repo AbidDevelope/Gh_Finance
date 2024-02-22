@@ -20,6 +20,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('login', 'postLogin')->name('admin/login');
     Route::get('register', 'getRegister')->name('admin/register');
     Route::post('register', 'postRegister')->name('admin/register');
+    Route::get('profile', 'profile')->name('profile');
 
     Route::middleware(['adminAuthentication'])->prefix('admin')->group(function(){
         Route::get('dashboard', 'index')->name('dashboard');
@@ -64,8 +65,9 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
 // -------------------------- ExpensesController --------------------------- //
 Route::controller(ExpensesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('pettyCash', 'pettyCash')->name('pettyCash');
+    Route::get('search/pettyCash', 'searchPettyCash')->name('search/pettyCash');
     Route::get('pettyCash/create', 'pettyCashCreateForm')->name('pettyCash/create');
-    Route::post('expenses/create', 'expensesCreate')->name('expenses/create');
+    Route::post('pettyCash/create', 'pettyCashPost')->name('pettyCash/create');
     Route::get('expenses/view/{id}', 'expensesView')->name('expenses/view');
     Route::get('expenses/edit/{id}', 'expensesEdit')->name('expenses/edit');
     Route::post('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
@@ -81,6 +83,8 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('miscellaneous/delete/{id}', 'miscellaneousDelete')->name('miscellaneous/delete');
     Route::get('search/miscellaneous', 'searchMiscellaneous')->name('search/miscellaneous');
     Route::post('export-excel-csv', 'excelCsvImport')->name('export-excel-csv');
+    // Petty cash
+    // Route::post('pettyCash/create', 'pettyCashCreate')->name('pettyCash/create');
 });
 Route::get('/project-data/{id}',[ExpensesController::class, 'projectDataGet'])->name('project.data');
 

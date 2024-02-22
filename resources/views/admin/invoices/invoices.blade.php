@@ -13,12 +13,12 @@
     }
 
     .bg_button {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
     .bg_button:hover {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 

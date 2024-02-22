@@ -22,6 +22,7 @@
 :root {
     --blue: #6495ed;
     --own-black: #0F1316;
+    --own-gray: #7f7f7f;
     --active-nav-black :#0F1316;
     --nav-black : #0a0b0c;
     --filter-color : #1B2A47;
@@ -3693,7 +3694,7 @@ th.fc-day-header.fc-widget-header {
 	outline:none;
 }
 .credit-card-custom .bg-btn-cl, .devit-card-custom .bg-btn-cl, .review-content-section .bg-btn-cl{
-	background:var(--active-nav-black);
+	background:var(--active-nav-black) !important;
 	border-color: var(--active-nav-black);
 	color:#fff;
 }

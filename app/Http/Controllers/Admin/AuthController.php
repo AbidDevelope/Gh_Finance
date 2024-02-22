@@ -89,6 +89,11 @@ class AuthController extends Controller
         }
     }
 
+    public function profile()
+    {
+        return view('admin.auth.profile');
+    }
+
     public function logout(Request $request)
     {
         Auth::guard('admin')->logout();

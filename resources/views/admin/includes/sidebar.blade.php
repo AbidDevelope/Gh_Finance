@@ -166,7 +166,7 @@
         height: 0;
         border-left: 30px solid transparent;
         /* Adjust the size of the triangle */
-        border-top: 30px solid #0F1316;
+        border-top: 30px solid var(--own-black);
         /* Adjust the size of the triangle and its color */
         transform: translate(100%, 100%);
         opacity: 0;
@@ -184,7 +184,7 @@
         height: 0;
         border-left: 30px solid transparent;
         /* Adjust the size of the triangle */
-        border-top: 30px solid #0F1316;
+        border-top: 30px solid var(--own-black);
         /* Adjust the size of the triangle and its color */
         transform: translate(100%, 100%);
         opacity: 0;
@@ -205,7 +205,7 @@
     }
 
     .triangle-container:hover .hovercolor {
-        color: #0F1316;
+        color: var(--own-black);
 
     }
 
