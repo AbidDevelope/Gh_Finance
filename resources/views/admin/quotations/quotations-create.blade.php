@@ -89,13 +89,13 @@
                                                                 <input class="form-control" type="text" name="unit[]" value="{{ old('unit.0') }}">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="qty[]" value="{{ old('qty.0') }}">
+                                                                <input class="form-control qty" type="text" name="qty[]" value="{{ old('qty.0') }}">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="price[]" value="{{ old('price.0') }}">
+                                                                <input class="form-control price" type="text" name="price[]" value="{{ old('price.0') }}">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text"
+                                                                <input class="form-control total" type="text"
                                                                     style="min-width:150px" name="total[]" value="{{ old('total.0') }}">
                                                             </td>
                                                             <td><a href="javascript:void(0)" id="add-row"
@@ -114,7 +114,7 @@
                                                         <tr>
                                                             <td colspan="5" class="text-right">Sub Total :</td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
-                                                                <input class="form-control text-right"
+                                                                <input class="form-control text-right subtotal"
                                                                     onkeypress="return /[0-9.,%]/.test(event.key)"
                                                                     type="text" name="subtotal">
                                                             </td>
@@ -182,7 +182,7 @@
             var addButton = $('#add-row');
             var wrapper = $('#customFields');
             var fieldHTML =
-                '<tr><td><input class="form-control" type="text" name="description[]" style="min-width:150px"></td><td><input class="form-control" name="unit[]" type="text"></td><td><input class="form-control" name="qty[]"  type="text"></td><td><input class="form-control" name="price[]" type="text"></td><td><input class="form-control" type="text" name="total[]" style="min-width:150px"></td><td><a href="javascript:void(0)" id="add-row" class="remove-row" title="Add"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td></tr>';
+                '<tr><td><input class="form-control" type="text" name="description[]" style="min-width:150px"></td><td><input class="form-control" name="unit[]" type="text"></td><td><input class="form-control qty" name="qty[]"  type="text"></td><td><input class="form-control price" name="price[]" type="text"></td><td><input class="form-control total" type="text" name="total[]" style="min-width:150px"></td><td><a href="javascript:void(0)" id="add-row" class="remove-row" title="Add"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td></tr>';
             var x = 1;
 
             $(addButton).click(function() {
@@ -236,4 +236,52 @@
         });
 
     </script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            // Function to calculate the total for a row
+            function calculateRowTotal() {
+                var qty = parseFloat($(this).closest('tr').find('.qty').val()) || 0;
+                var price = parseFloat($(this).closest('tr').find('.price').val()) || 0;
+                var total = qty * price;
+                $(this).closest('tr').find('.total').val(total.toFixed(3));
+                updateSubtotal();
+            }
+        
+            // Function to update subtotal
+            function updateSubtotal() {
+                var subtotal = 0;
+                $('.total').each(function() {
+                    var rowTotal = parseFloat($(this).val()) || 0;
+                    subtotal += rowTotal;
+                });
+                $('.subtotal').val(subtotal.toFixed(3));
+                updateGrandTotal();
+            }
+        
+            // Function to update grand total
+            function updateGrandTotal() {
+                var subtotal = parseFloat($('.subtotal').val()) || 0;
+                var others = parseFloat($('input[name="others"]').val()) || 0;
+                var grandTotal = subtotal + others;
+                $('input[name="grandtotal"]').val(grandTotal.toFixed(3));
+            }
+        
+            // Event listeners
+            $(document).on('input', '.qty, .price', calculateRowTotal);
+            $('input[name="others"]').on('input', updateGrandTotal);
+        
+            // Function to add a new row
+            $('#add-row').click(function() {
+                var newRow = $('tr:eq(1)').clone(); // Clone the first row
+                newRow.find('input').val(''); // Clear the values in the cloned row
+                $('tr:last').prev().after(newRow); // Insert the new row before the subtotal row
+            });
+        });
+        </script>
+        
+            
+            
+        
 @endsection
