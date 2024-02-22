@@ -61,6 +61,7 @@
     .text {
         font-size: 12px !important;
     }
+
     .z {
         display: none;
         position: fixed;
@@ -72,25 +73,29 @@
         border: 1px solid #ccc;
         padding: 10px;
         z-index: 10000;
-}
-.he{
-    height: 210px !important;
-    width: 700px !important;
-    padding: 10px !important;
-}
-.p-1{
-    top: 25%;
-    /* left: 10%; */
-}
-.p-2{
-    top: 45%;
-    /* left: 10%; */
-}
-.p-3{
-    top: 65%;
-    /* left: 10%; */
-    /* margin-left: 40px !important; */
-}
+    }
+
+    .he {
+        height: 210px !important;
+        width: 700px !important;
+        padding: 10px !important;
+    }
+
+    .p-1 {
+        top: 25%;
+        /* left: 10%; */
+    }
+
+    .p-2 {
+        top: 45%;
+        /* left: 10%; */
+    }
+
+    .p-3 {
+        top: 65%;
+        /* left: 10%; */
+        /* margin-left: 40px !important; */
+    }
 </style>
 <div class="header-top-area bg-white">
     <div class="container-fluid">
@@ -344,7 +349,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
                                 <path
-                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"  />
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
                             </svg></a>
 
                         <ul class="dropdown-menu max-w-xl mt-3" style="min-width: 30rem;"
@@ -597,7 +602,7 @@
                         <div class="popup-content">
                             <ul class="list-unstyled">
                                 <li class="mb-2 ">
-                                    <a href="#" class="d-flex  text-black-50">
+                                    <a href="{{ route('profile') }}" class="d-flex  text-black-50">
                                         <span> My Profile</span>
                                         <span class="mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                 height="16" fill="currentColor" class="bi bi-person-fill"
@@ -631,24 +636,30 @@
                                 <div class=" z position-fixed top-10 translate-middle-y mt-4 me-4" id="profileMod">
                                     <div class=" he pt-2">
 
-                                            <!-- Input for current password -->
-                                            {{-- <div class="p-1" style="display: inline-block;">
+                                        <!-- Input for current password -->
+                                        {{-- <div class="p-1" style="display: inline-block;">
                                                 <label for="curent">Current password:</label> --}}
-                                                <input type="password" style="width: 200px; height: 30px;" class="p-1 ms-4 form-control rounded" placeholder="Current Password">
-                                            {{-- </div> --}}
+
+                                        <input type="password" id="current-password"
+                                            style="width: 200px; height: 30px;" class="p-1 ms-4 form-control rounded"
+                                            placeholder="Current Password">
+
+                                        {{-- </div> --}}
 
 
 
 
-                                            <!-- Input for new password -->
-                                            {{-- <label for="new">New password:</label> --}}
-                                            <input type="password" style="width: 200px; height: 30px;" class="p-2 ms-4 form-control rounded" placeholder="New Password">
+                                        <!-- Input for new password -->
+
+                                        <input type="password" id="new" style="width: 200px; height: 30px;"
+                                            class="p-2 ms-4 form-control rounded" placeholder="New Password">
 
 
 
-                                            <!-- Input for confirming new password -->
-                                            {{-- <label for="confirm">Confirm password:</label> --}}
-                                            <input type="password" style="width: 200px; height: 30px;" class="p-3 ms-4 form-control rounded" placeholder="Confirm Password">
+                                        <!-- Input for confirming new password -->
+
+                                        <input type="password" id="Confirm" style="width: 200px; height: 30px;"
+                                            class="p-3 ms-4 form-control rounded" placeholder="Confirm Password">
 
 
                                     </div>
@@ -737,10 +748,8 @@
     // });
     // JavaScript to open the modal when the li tag is clicked
     document.querySelector('.profile').addEventListener('click', function() {
-    document.querySelector('.z').style.display = 'block';
-});
-
-
+        document.querySelector('.z').style.display = 'block';
+    });
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -807,7 +816,7 @@
 <script>
     // Add a click event listener to the SVG element
     let colorsidepicker = document.getElementById('colorsidepicker')
-    let openModal =  document.getElementById('openModal')
+    let openModal = document.getElementById('openModal')
     colorsidepicker.addEventListener('click', function() {
         // Show the modal
         // $('#myModal').modal('show');
