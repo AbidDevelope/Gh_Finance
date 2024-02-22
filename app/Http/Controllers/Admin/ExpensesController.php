@@ -278,10 +278,9 @@ class ExpensesController extends Controller
         $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
 
         $expenses = Expense::whereDate('date', '>=', $startDate)->whereDate('date', '<=', $endDate)->get();
-        if($expenses)
-        {
-            return view('admin.pettyCash.pettyCash', compact('expenses'));
-        }                
+        
+        return view('admin.pettyCash.pettyCash', compact('expenses'));
+                     
 
 
         $miscell = Miscellaneous::whereBetween('created_at', [$startDate, $endDate])->get(); 
@@ -335,7 +334,7 @@ class ExpensesController extends Controller
         Excel::import(new ExpensesImport, $file);
 
         // dd($excel);
-        return back()->with('success', 'Expenses imported successfully.');
+        return back()->with('success', 'Imported successfully.');
     }
 
     public function pettyCashPost(Request $request)
@@ -364,5 +363,26 @@ session()->flash('success', 'Data Submitted Successfully.');
 return redirect()->route('pettyCash');
 
     
+    }
+
+    public function searchPettyCash(Request $request)
+    {
+        // dd('dsj');
+        $validator = Validator::make($request->all(), [
+            'start_date' => 'required|date_format:d/m/Y',
+            'end_date' => 'required|date_format:d/m/Y',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');              
+
+
+        $expenses = PettyCash::whereDate('date', [$startDate, $endDate])->get(); 
+       
+            return view('admin.miscellaneous.miscellaneous', compact('expenses'));
     }
 }

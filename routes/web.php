@@ -64,6 +64,7 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
 // -------------------------- ExpensesController --------------------------- //
 Route::controller(ExpensesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('pettyCash', 'pettyCash')->name('pettyCash');
+    Route::get('search/pettyCash', 'searchPettyCash')->name('search/pettyCash');
     Route::get('pettyCash/create', 'pettyCashCreateForm')->name('pettyCash/create');
     Route::post('pettyCash/create', 'pettyCashPost')->name('pettyCash/create');
     Route::get('expenses/view/{id}', 'expensesView')->name('expenses/view');
