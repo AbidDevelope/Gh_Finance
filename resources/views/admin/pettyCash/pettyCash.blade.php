@@ -42,7 +42,7 @@
                                 <h4 class=" text-headings">Petty Cash</h4>
                             </div>
                             <div class="text-right">
-                                <form action="#" method="GET">
+
                                     <div class="table-actions">
                                         <a href="{{ route('pettyCash/create') }}"
                                             class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
@@ -59,7 +59,7 @@
                                     <input type ="file" name="file">
                                     <button type="submit" class="btn btn-primary mt-4">Export</button>
                                 </div> --}}
-                                </form>
+                             
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
