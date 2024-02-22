@@ -115,22 +115,22 @@
                                 <table id="dataTable">
                                     <thead>
                                         <tr role="row">
-                                            <th>Id</th>
-                                            <th>Date</th>
-                                            <th>Total Amount</th>
-                                            <th class="text-right">Actions</th>
+                                            <th style="width: 70px !important; border-radius: 0 !important;">Id</th>
+                                            <th style="border-radius: 0 !important;">Date</th>
+                                            <th style="border-radius: 0 !important;">Total Amount</th>
+                                            <th style="border-radius: 0 !important;" class="text-right">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if (count($miscell) > 0)
                                             @foreach ($miscell as $index => $item)
                                                 <tr>
-                                                    <td>
+                                                    <td style="border-radius: 0 !important;">
                                                         {{ $index + 1 }}
                                                     </td>
-                                                    <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
-                                                    <td>{{ $item->grandtotal }}</td>
-                                                    <td class="text-right">
+                                                    <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $item->grandtotal }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"
                                                                 aria-expanded="false"><img

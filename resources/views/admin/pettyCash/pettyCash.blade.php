@@ -42,7 +42,7 @@
                                 <h4 class=" text-headings">Petty Cash</h4>
                             </div>
                             <div class="text-right">
-                                
+
                                     <div class="table-actions">
                                         <a href="{{ route('pettyCash/create') }}"
                                             class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
@@ -59,7 +59,7 @@
                                     <input type ="file" name="file">
                                     <button type="submit" class="btn btn-primary mt-4">Export</button>
                                 </div> --}}
-                    
+                             
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -132,12 +132,12 @@
                             <table id="dataTable">
                                     <thead>
                                         <tr role="row">
-                                            <th class="text-center" style="width: 70px !important;">Sr. No.</th>
-                                            <th class="text-center">Date</th>
-                                            <th class="text-center">Project Name</th>
+                                            <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Date</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Project Name</th>
                                             <th>Beneficiary</th>
-                                            <th class="text-center">Amount Deposite</th>
-                                            <th class="text-center">Actions</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -145,12 +145,12 @@
                                         @if (count($expenses) > 0)
                                             @foreach ($expenses as $index => $item)
                                                 <tr>
-                                                    <td class="text-center">{{ $index + 1 }}</td>
-                                                    <td class="text-center">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
-                                                    <td class="text-center">{{ $item->project }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->project }}</td>
                                                     <td>{{ $item->beneficiary }}</td>
-                                                    <td class="text-center">{{ $item->amount_deposited }}</td>
-                                                    <td class="text-center">
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->amount_deposited }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon" data-toggle="dropdown"
                                                                 aria-expanded="false"><img
@@ -178,6 +178,7 @@
                                         @endif
                                     </tbody>
                                 </table>
+
                         </div>
                     </div>
                 </div>

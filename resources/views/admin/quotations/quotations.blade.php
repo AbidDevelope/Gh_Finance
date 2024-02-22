@@ -92,25 +92,25 @@
                             <table id="dataTable">
                                 <thead>
                                     <tr role="row">
-                                        <th>Sr. No</th>
-                                        <th>Project Id</th>
-                                        <th>Quotation Number</th>
-                                        <th>Quotation Date </th>
-                                        <th>Amount</th>
-                                        <th>Action</th>
+                                        <th style="width: 70px !important; border-radius: 0 !important;">Sr. No</th>
+                                        <th style="border-radius: 0 !important;">Project Id</th>
+                                        <th style="border-radius: 0 !important;">Quotation Number</th>
+                                        <th style="border-radius: 0 !important;">Quotation Date </th>
+                                        <th style="border-radius: 0 !important;">Amount</th>
+                                        <th style="border-radius: 0 !important;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (count($quotations) > 0)
                                         @foreach ($quotations as $index => $quotation)
                                             <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                <td>{{ $quotation->project_id }}</td>
-                                                <td>{{ $quotation->quotation_number }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($quotation->quotation_date)->format('d/m/Y') }}
+                                                <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                <td style="border-radius: 0 !important;">{{ $quotation->project_id }}</td>
+                                                <td style="border-radius: 0 !important;">{{ $quotation->quotation_number }}</td>
+                                                <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($quotation->quotation_date)->format('d/m/Y') }}
                                                 </td>
-                                                <td>{{ $quotation->grandtotal }}</td>
-                                                <td class="text-right">
+                                                <td style="border-radius: 0 !important;">{{ $quotation->grandtotal }}</td>
+                                                <td style="border-radius: 0 !important;" class="text-right">
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon " data-toggle="dropdown"
                                                             aria-expanded="false"><img

@@ -107,24 +107,24 @@
                             <table id="dataTable">
                                 <thead>
                                     <tr role="row">
-                                        <th>Sr. No.</th>
-                                        <th>Invoice Number</th>
-                                        <th>Created Date</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th style="width: 70px !important;border-radius: 0 !important;">Sr. No.</th>
+                                        <th style="border-radius: 0 !important;">Invoice Number</th>
+                                        <th style="border-radius: 0 !important;">Created Date</th>
+                                        <th style="border-radius: 0 !important;">Amount</th>
+                                        <th style="border-radius: 0 !important;">Status</th>
+                                        <th style="border-radius: 0 !important;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (count($invoices) > 0)
                                         @foreach ($invoices as $index => $invoice)
                                             <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                <td>{{ $invoice->invoice_number }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($invoice->invoice_date)->format('d/m/Y') }}</td>
-                                                <td>{{ $invoice->grandtotal }}</td>
-                                                <td><span class="badge bg-success">Paid</span></td>
-                                                <td class="text-right">
+                                                <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                <td style="border-radius: 0 !important;">{{ $invoice->invoice_number }}</td>
+                                                <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($invoice->invoice_date)->format('d/m/Y') }}</td>
+                                                <td style="border-radius: 0 !important;">{{ $invoice->grandtotal }}</td>
+                                                <td style="border-radius: 0 !important;"><span class="badge bg-success">Paid</span></td>
+                                                <td style="border-radius: 0 !important;" class="text-right">
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon " data-toggle="dropdown"
                                                             aria-expanded="false"><img
@@ -135,8 +135,8 @@
                                                                 href="{{ route('invoice/view', $invoice->id) }}"><i
                                                                     class="fa fa-eye m-r-5"></i> View
                                                             </a>
-                                                            <a class="dropdown-item" href="#"><i
-                                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                            {{-- <a class="dropdown-item" href="#"><i
+                                                                    class="fa fa-pencil m-r-5"></i> Edit</a> --}}
                                                             <a class="dropdown-item"
                                                                 href="{{ route('invoice/pdf/view', $invoice->id) }}"><i
                                                                     class="fa fa-eye m-r-5"></i> View PDF
