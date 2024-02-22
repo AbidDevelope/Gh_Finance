@@ -634,7 +634,7 @@
             </div>
 
         </div>
-        <div class="bg-white px-3 pb-4">
+        <div class="bg-white px-3 pb-4" id="openModal">
             <p>Theme color</p>
             <div id="colorChoices" class="row gap-4">
                 <div class="col">
@@ -720,17 +720,19 @@
 </script>
 <script>
     // Add a click event listener to the SVG element
-    document.getElementById('openModal').addEventListener('click', function() {
+    let colorsidepicker = document.getElementById('colorsidepicker')
+    let openModal =  document.getElementById('openModal')
+    colorsidepicker.addEventListener('click', function() {
         // Show the modal
-        $('#myModal').modal('show');
+        // $('#myModal').modal('show');
+        togglePopup(openModal);
     });
-    document.getElementById('close').addEventListener('click', function() {
-        // Show the modal
-        $('#myModal').modal('hide');
-    });
+    // document.getElementById('close').addEventListener('click', function() {
+    //     // Show the modal
+    //     $('#myModal').modal('hide');
+    // });
 
     let colorpicker = document.getElementById('colorsidebar')
-    let colorsidepicker = document.getElementById('colorsidepicker')
     let colorChoices = document.getElementById('colorChoices')
 
     function myFunction() {
