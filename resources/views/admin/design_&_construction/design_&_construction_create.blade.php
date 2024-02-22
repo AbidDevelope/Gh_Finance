@@ -365,7 +365,7 @@
                     x++;
                     $(wrapper).append(fieldHTML);
                 } else {
-                    alert('A maximum of ' + maxField + ' fields are allowed.');
+                    alert('A maximum of ' + maxField + 'fields are allowed.');
                 }
             });
 
