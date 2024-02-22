@@ -101,28 +101,28 @@
                                 <table id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Sr. No.</th>
-                                            <th>Project Id</th>
-                                            <th>Date</th>
-                                            <th>Project Type</th>
-                                            <th>Project Name</th>
-                                            <th>Mobile</th>
-                                            <th>Project Value</th>
-                                            <th class="text-right">Actions</th>
+                                            <th style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
+                                            <th style="border-radius: 0 !important;">Project Id</th>
+                                            <th style="border-radius: 0 !important;">Date</th>
+                                            <th style="border-radius: 0 !important;">Project Type</th>
+                                            <th style="border-radius: 0 !important;">Project Name</th>
+                                            <th style="border-radius: 0 !important;">Mobile</th>
+                                            <th style="border-radius: 0 !important;">Project Value</th>
+                                            <th style="border-radius: 0 !important;" class="txt-right"e>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if (count($projects) > 0)
                                             @foreach ($projects as $index => $project)
                                                 <tr>
-                                                    <td>{{ $index + 1 }}</td>
-                                                    <td>{{ $project->id }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
-                                                    <td>{{ $project->project_type }}</td>
-                                                    <td>{{ $project->project_name }}</td>
-                                                    <td>{{ $project->project_mobile }}</td>
-                                                    <td>{{ $project->project_value }}</td>
-                                                    <td class="text-right">
+                                                    <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->id }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_type }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_name }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_mobile }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_value }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"
                                                                 aria-expanded="false"><img

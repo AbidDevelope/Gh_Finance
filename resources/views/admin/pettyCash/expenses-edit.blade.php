@@ -1,6 +1,6 @@
 <style>
-    .kwd {
-        /* width: 20px !important; */
+     .margin_t{
+        margin-top: -60px !important;
     }
 </style>
 
@@ -15,9 +15,9 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="">
+                    <div class=" margin_t">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Edit Expenses</h4>
                                 <hr class="border-top-grey">
                                 @if ($errors->any())
@@ -203,13 +203,13 @@
     <script src="https://cdn.jsdelivr.net/npm/dropzone@5.9.2/dist/dropzone.min.js"></script>
 
 
-    
+
     {{-- Project Data Get By id --}}
     <script>
         $(document).ready(function(){
             $('#project_id').change(function(){
                 var projectId = $(this).val();
-               
+
                 if(projectId)
                 {
                     var url = '/project-data/' + projectId;
@@ -230,7 +230,7 @@
                         {
                           alert('Error' + request.error);
                         }
-                        
+
                     });
                 }
             });

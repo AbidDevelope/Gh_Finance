@@ -22,24 +22,24 @@
                                     <hr class="border-top-grey">
                                     <div class="card-body">
                                         <div class="margin-top">
-                                            <table class="products table">
+                                            <table class="products table" id="dataTable">
                                                 <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Description</th>
-                                                        <th>Month</th>
-                                                        <th>Date</th>
-                                                        <th>Total/K.D</th>
+                                                    <tr class="" role="row">
+                                                        <th  style="width: 70px !important; background:#D1CFCF !important; border-radius: 0 !important;">Sr. No.</th>
+                                                        <th style="background:#D1CFCF !important; border-radius: 0 !important;">Description</th>
+                                                        <th style="background:#D1CFCF !important; border-radius: 0 !important;">Month</th>
+                                                        <th style="background:#D1CFCF !important; border-radius: 0 !important;">Date</th>
+                                                        <th style="background:#D1CFCF !important; border-radius: 0 !important;">Total/K.D</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($miscell->miscellaneousItem as $key => $item)
                                                         <tr class="items">
-                                                            <td>{{ $key + 1 }}</td>
-                                                            <td>{{ $item->description }}</td>
-                                                            <td>{{ $item->month }}</td>
-                                                            <td>{{ $item->date }}</td>
-                                                            <td>{{ $item->total }}</td>
+                                                            <td class="text-center" style="border-radius: 0 !important;">{{ $key + 1 }}</td>
+                                                            <td style="border-radius: 0 !important;">{{ $item->description }}</td>
+                                                            <td style="border-radius: 0 !important;">{{ $item->month }}</td>
+                                                            <td style="border-radius: 0 !important;">{{ $item->date }}</td>
+                                                            <td style="border-radius: 0 !important;">{{ $item->total }}</td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

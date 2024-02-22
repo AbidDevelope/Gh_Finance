@@ -45,25 +45,25 @@
                 /* Set a max-height if needed */
             }
 
-            @media (min-width: 1200px) {
-                .gap {
-                    width: 47px !important;
-                }
-            }
-
-            @media (min-width: 1199px) {
-                .gap {
-                    width: 120px !important;
-                }
-            }
             @media (min-width: 1150px) {
                 .gap {
                     width: 100px !important;
                 }
             }
+            @media (min-width: 1199px) {
+                .gap {
+                    width: 120px !important;
+                }
+            }
+
+            @media (min-width: 1200px) {
+                .gap {
+                    width: 49px !important;
+                }
+            }
             @media (min-width: 1298px) {
                 .gap {
-                    width: 47px !important;
+                    width: 49px !important;
                 }
             }
 
@@ -92,7 +92,7 @@
         }
     }
     .col-xs-3-project {
-        width: 100%;
+        width: 102%;
     }
 
     /* Adjust width for screen width 1200px and above */

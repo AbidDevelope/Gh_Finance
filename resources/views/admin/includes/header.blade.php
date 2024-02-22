@@ -92,12 +92,12 @@
                         </button>
                     </div>
                 </div>
-                <div class="mt-3 col-lg-2 col-md-1 col-sm-1 col-xs-12 mt-3">
+                <div class=" col-lg-1 col-md-1 col-sm-1 col-xs-12 mt-3 me-5">
                     <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle bg-white text-black-50 border-0 dropdown-toggle-no-caret"
+                        <a class="me-3 btn btn-secondary dropdown-toggle bg-white text-black-50 border-0 dropdown-toggle-no-caret"
                             href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Mega menu<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            Mega menu<svg class="ms-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                                 <path
                                     d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -187,7 +187,7 @@
                                                 <span class="text mini-sub-pro">Invoices</span>
                                             </div>
                                         </a></li>
-                                    <li class="col-sm-4"><a class="text-black-50" href="#">
+                                    <li class="col-sm-4"><a class="text-black-50" href="{{ route('project/report') }}">
                                             <div class="d-flex justify-content-center">
                                                 <svg class="hovercolor" width="30" height="30"
                                                     fill="currentColor" viewBox="0 0 100 100"
@@ -289,7 +289,7 @@
                 </div>
 
                 {{-- searchbar --}}
-                <div class="mt-3  col-lg-1 col-md-1 col-sm-1 col-xs-12 mt-2">
+                <div class="mt-3 ms-5 col-lg-1 col-md-1 col-sm-1 col-xs-12">
                     <div class=" d-flex">
                         <input id="search" type="text" class="bg-white form-control rounded-pill"
                             style="width: 230px; height: 40px;" placeholder="search">
@@ -431,7 +431,7 @@
                                             </div>
                                         </a></li>
 
-                                    <li class="col-sm-4"><a class="text-black-50" href="#">
+                                    <li class="col-sm-4"><a class="text-black-50" href="{{ route('project/report') }}">
                                             <div class="d-flex justify-content-center">
                                                 <svg class="hovercolor" width="30" height="30"
                                                     fill="currentColor" viewBox="0 0 100 100"
@@ -614,7 +614,7 @@
 </div>
 
 {{-- spinner --}}
-{{-- <div class=" position-fixed top-50 end-0 z-index-setting">
+<div class=" position-fixed top-50 end-0 z-index-setting">
 
     <div id='colorsidebar' class='d-flex trans-hide  align-items-start  justify-content-end  '>
         <div id="colorsidepicker" class=" p-1 py-2 spin-bg">
@@ -654,7 +654,7 @@
         </div>
     </div>
 
-</div> --}}
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

@@ -80,7 +80,7 @@ table.dataTable td.dt-control:before {
     display: inline-block;
     color: white;
     border: 0.15em solid white;
-    border-radius: 1em;
+    /* border-radius: 1em; */
     box-shadow: 0 0 0.2em #444;
     box-sizing: content-box;
     text-align: center;

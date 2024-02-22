@@ -87,30 +87,30 @@ dateInput.addEventListener("input", function () {
                                 <table id="dataTable">
                                     <thead>
                                         <tr role="row">
-                                            <th>Sr. No.</th>
-                                            <th>Date</th>
-                                            <th>Project Type</th>
-                                            <th>Project Name</th>
-                                            <th>Revenue</th>
-                                            <th>Expenses</th>
-                                            <th>Mobile</th>
-                                            <th>Project Value</th>
-                                            <th>Action</th>
+                                            <th style="width: 70px !important;  border-radius: 0 !important;">Sr. No.</th>
+                                            <th style="border-radius: 0 !important;">Date</th>
+                                            <th style="border-radius: 0 !important;">Project Type</th>
+                                            <th style="border-radius: 0 !important;">Project Name</th>
+                                            <th style="border-radius: 0 !important;">Revenue</th>
+                                            <th style="border-radius: 0 !important;">Expenses</th>
+                                            <th style="border-radius: 0 !important;">Mobile</th>
+                                            <th style="border-radius: 0 !important;">Project Value</th>
+                                            <th style="border-radius: 0 !important;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>21/2/2024</td>
-                                                    <td>design</td>
-                                                    <td>delhi metro</td>
-                                                    <td>5.000KWD</td>
-                                                    <td>4.000KWD</td>
-                                                    <td>123243546</td>
-                                                    <td>10000.000KWD</td>
+                                                    <td style="border-radius: 0 !important;">1</td>
+                                                    <td style="border-radius: 0 !important;">21/2/2024</td>
+                                                    <td style="border-radius: 0 !important;">design</td>
+                                                    <td style="border-radius: 0 !important;">delhi metro</td>
+                                                    <td style="border-radius: 0 !important;">5.000KWD</td>
+                                                    <td style="border-radius: 0 !important;">4.000KWD</td>
+                                                    <td style="border-radius: 0 !important;">123243546</td>
+                                                    <td style="border-radius: 0 !important;">10000.000KWD</td>
 
-                                                    <td class="text-right">
+                                                    <td style="border-radius: 0 !important;" class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"
                                                                 aria-expanded="false"><img

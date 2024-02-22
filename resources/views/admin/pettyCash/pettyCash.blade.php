@@ -132,14 +132,14 @@
                             <table id="dataTable">
                                     <thead>
                                         <tr role="row">
-                                            <th class="text-center" style="width: 70px !important;">Sr. No.</th>
-                                            <th class="text-center">Project ID</th>
-                                            <th class="text-center">Date</th>
-                                            <th class="text-center">Project Type</th>
-                                            <th class="text-center">Project Name</th>
+                                            <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
+                                            <th style="border-radius: 0 !important;" class="text-center">Project ID</th>
+                                            <th style="border-radius: 0 !important;" class="text-center">Date</th>
+                                            <th style="border-radius: 0 !important;" class="text-center">Project Type</th>
+                                            <th style="border-radius: 0 !important;" class="text-center">Project Name</th>
                                             {{-- <th>Beneficiary</th> --}}
-                                            <th class="text-center">Total Amount</th>
-                                            <th class="text-center">Actions</th>
+                                            <th style="border-radius: 0 !important;" class="text-center">Total Amount</th>
+                                            <th style="border-radius: 0 !important;" class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -147,14 +147,14 @@
                                         @if (count($expenses) > 0)
                                             @foreach ($expenses as $index => $item)
                                                 <tr>
-                                                    <td class="text-center">{{ $index + 1 }}</td>
-                                                    <td class="text-center">{{ $item->project_id }}</td>
-                                                    <td class="text-center">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
-                                                    <td class="text-center">{{ $item->project->project_type }}</td>
-                                                    <td class="text-center">{{ $item->project->project_name }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $index + 1 }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->project_id }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-center">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->project->project_type }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->project->project_name }}</td>
                                                     {{-- <td>Abid</td> --}}
-                                                    <td class="text-center">{{ $item->grandtotal }}</td>
-                                                    <td class="text-center">
+                                                    <td style="border-radius: 0 !important;" class="text-center">{{ $item->grandtotal }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-center">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon" data-toggle="dropdown"
                                                                 aria-expanded="false"><img
