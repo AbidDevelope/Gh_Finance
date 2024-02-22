@@ -60,7 +60,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Mobile</label>
-                                                <input type="text" class="form-control" name="Manager_mobile"
+                                                <input type="text" class="rounded" style="width: 260px; height:39px;  border: 1px solid #CCCCCC;" placeholder="+965" name="Manager_mobile"
                                                     onkeypress="return /[0-9]/i.test(event.key)" maxlength="10"
                                                     value="{{ old('Manager_mobile') }}">
                                                 @error('Manager_mobile')
@@ -125,7 +125,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Mobile </label>
-                                                <input type="text" name="company_mobile" class="form-control"
+                                                <input type="text" name="company_mobile" class="rounded" style="width: 260px; height:39px;  border: 1px solid #CCCCCC;" placeholder="+965"
                                                     value="{{ old('company_mobile') }}" onkeypress="return /[0-9]/i.test(event.key)" maxlength="10">
                                                 @error('company_mobile')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -216,7 +216,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Mobile </label>
-                                                <input type="text" name="project_mobile" class="form-control" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)" value="{{ old('project_mobile') }}">
+                                                <input type="text" name="project_mobile" class="rounded" style="width: 260px; height:39px;  border: 1px solid #CCCCCC;" placeholder="+965" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)" value="{{ old('project_mobile') }}">
                                                 @error('project_mobile')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror

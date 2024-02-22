@@ -27,7 +27,18 @@
     .popup-container {
         display: none;
         position: fixed;
-        top:11%;
+        top:21%;
+        left: 65%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        z-index: 9999;
+    }
+    .pop_profile {
+        display: none;
+        position: fixed;
+        top:15%;
         left: 65%;
         transform: translate(-50%, -50%);
         background-color: white;
@@ -603,7 +614,7 @@
                     </div>
                     <!-- Profile Picture Popup Container -->
                     <div id="profile-pic-popup"
-                        class="profile_width popup-container position-fixed top-10  translate-middle-y mt-4 me-4">
+                        class="profile_width popup-container pop_profile position-fixed top-10  translate-middle-y  me-4">
                         <div class="popup-content">
                             <ul class="list-unstyled">
                                 {{-- <li class="mb-2 ">
@@ -616,25 +627,50 @@
                                                     d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                                             </svg></span>
                                     </a>
-                                </li>
+                                </li> --}}
 
-                                <li class="mb-2 profile">
-
+                                {{-- <li class="mb-2 profile"> --}}
+                                    <!-- File Input Element -->
+                                    {{-- <input type="file" id="file-input" style="display: none;" accept="image/*">
                                     <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
                                         <span>Change Password</span>
                                         <span class="mt-1 icon nalika-edit author-log-ic"></span>
-                                    </a>
-                                </li>
-                                <div class=" z position-fixed top-10 translate-middle-y mt-4 me-4" id="profileMod">
-                                    <div class=" he pt-2">
-                                        <input type="text" id="current-password"
+                                    </a> --}}
+                                    {{-- <input type="file" id="file-input" style="display: none;" accept="image/*"> --}}
+                                    {{-- <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
+                                        <span>Change Password</span>
+                                        <span class="mt-1 icon nalika-edit author-log-ic"></span>
+                                    </a> --}}
+                                {{-- </li> --}}
+                                {{-- <div class=" z position-fixed top-10 translate-middle-y mt-4 me-4" id="profileMod">
+                                    <div class=" he pt-2"> --}}
+
+                                        <!-- Input for current password -->
+                                        {{-- <div class="p-1" style="display: inline-block;">
+                                                <label for="curent">Current password:</label> --}}
+{{--
+                                        <input type="password" id="current-password"
                                             style="width: 200px; height: 30px;" class="p-1 ms-4 form-control rounded"
-                                            placeholder="Current Password">
-                                        <input type="text" id="new" style="width: 200px; height: 30px;"
-                                            class="p-2 ms-4 form-control rounded" placeholder="New Password">
-                                        <input type="text" id="Confirm" style="width: 200px; height: 30px;"
+                                            placeholder="Current Password"> --}}
+
+                                        {{-- </div> --}}
+
+
+
+
+                                        <!-- Input for new password -->
+
+                                        {{-- <input type="password" id="new" style="width: 200px; height: 30px;"
+                                            class="p-2 ms-4 form-control rounded" placeholder="New Password"> --}}
+
+
+
+                                        <!-- Input for confirming new password -->
+
+                                        {{-- <input type="password" id="Confirm" style="width: 200px; height: 30px;"
                                             class="p-3 ms-4 form-control rounded" placeholder="Confirm Password">
-                                      <button class="p4">save</button>
+
+
                                     </div>
                                 </div> --}}
 
