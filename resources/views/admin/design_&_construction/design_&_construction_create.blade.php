@@ -12,12 +12,12 @@
                 <div class="container-fluid">
                     <div class="margin_top">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Service</h4>
                                 <hr class="border-top-grey">
                                 <form action="{{ route('design_&_construction/create') }}" method="POST">
                                     @csrf
-                                    <div class="row">
+                                    <div class="row mt-4 ">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Type</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row mt-4">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Company Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -173,7 +173,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row mt-4">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Details</h5>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -258,7 +258,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row mt-4">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-white" id="customFields">
