@@ -2,6 +2,10 @@
         .margin_top{
        margin-top: -50px !important;
    }
+   input.rounded:focus {
+    outline: none; /* Removes the default focus outline */
+
+}
 </style>
 
 @extends('admin.layouts.master')
@@ -18,22 +22,21 @@
                                 <form action="{{ route('create/constructions') }}" method="POST">
                                     @csrf
                                     <div class="row">
-                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Type</h5>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project Type</label>
                                                 <input readonly type="text" name="project_type" class="form-control"
                                                     value="Construction">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Select Date</label>
                                                 <input type="text" id="date" name="date" class="form-control"
                                                     placeholder="DD/MM/YYYY">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project Manager</label>
                                                 <input type="text" class="form-control" name="project_manager"
@@ -43,7 +46,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Email</label>
                                                 <input type="email" class="form-control" name="manager_email"
@@ -53,10 +56,10 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Mobile</label>
-                                                <input type="text" class="form-control" name="Manager_mobile"
+                                                <input type="text" class="rounded" style="width: 260px; height:39px;  border: 1px solid #CCCCCC;" placeholder="+965" name="Manager_mobile"
                                                     onkeypress="return /[0-9]/i.test(event.key)" maxlength="10"
                                                     value="{{ old('Manager_mobile') }}">
                                                 @error('Manager_mobile')
@@ -64,7 +67,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Landline </label>
                                                 <input type="text" name="Manager_landline" class="form-control"
@@ -74,7 +77,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Remarks</label>
                                                 <input class="form-control" type="text" name="manager_remarks"
@@ -86,9 +89,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row mt-3">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Company Details</h5>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Company Name </label>
                                                 <input type="text" name="company_name" class="form-control"
@@ -98,7 +101,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project Name </label>
                                                 <input type="text" name="company_project_name" class="form-control"
@@ -108,7 +111,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Email </label>
                                                 <input type="email" name="company_email" class="form-control"
@@ -118,17 +121,17 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Mobile </label>
-                                                <input type="text" name="company_mobile" class="form-control"
+                                                <input type="text" name="company_mobile"class="rounded" style="width: 260px; height:39px;  border: 1px solid #CCCCCC;" placeholder="+965"
                                                     value="{{ old('company_mobile') }}" onkeypress="return /[0-9]/i.test(event.key)" maxlength="10">
                                                 @error('company_mobile')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Landline </label>
                                                 <input type="text" name="company_landline" class="form-control"
@@ -138,7 +141,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Location </label>
                                                 <input type="text" name="company_location" class="form-control"
@@ -148,7 +151,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Country </label>
                                                 <input readonly type="text" name="company_country" class="form-control"
@@ -158,7 +161,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Website URL </label>
                                                 <input type="text" name="company_website" class="form-control"
@@ -168,7 +171,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Remarks </label>
                                                 <input type="text" name="company_remarks" class="form-control"
@@ -180,9 +183,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row mt-3">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Details</h5>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project Name </label>
                                                 <input type="text" name="project_name" class="form-control" value="{{ old('project_name') }}">
@@ -191,7 +194,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Company Project </label>
                                                 <input type="text" name="company_project" class="form-control" value="{{ old('company_project') }}">
@@ -200,7 +203,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Email </label>
                                                 <input type="email" name="project_email" class="form-control" value="{{ old('project_email') }}">
@@ -209,16 +212,16 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Mobile </label>
-                                                <input type="text" name="project_mobile" class="form-control" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)" value="{{ old('project_mobile') }}">
+                                                <input type="text" name="project_mobile" class="rounded" style="width: 260px; height:39px;  border: 1px solid #CCCCCC;" placeholder="+965" maxlength="10" onkeypress="return /[0-9]/i.test(event.key)" value="{{ old('project_mobile') }}">
                                                 @error('project_mobile')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Location </label>
                                                 <input type="text" name="project_location" class="form-control" value="{{ old('project_location') }}">
@@ -227,7 +230,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project Value</label>
                                                 <input type="text" name="project_value" class="form-control" onkeypress="return /[0-9]/i.test(event.key)" value="{{ old('project_value') }}">
@@ -236,7 +239,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Country</label>
                                                 <input readonly type="text" name="project_country" class="form-control" value="Kuwait">
@@ -245,7 +248,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Remarks</label>
                                                 <input type="text" name="project_remarks" class="form-control" value="{{ old('project_remarks') }}">
@@ -265,7 +268,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row mt-3">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-white" id="customFields">

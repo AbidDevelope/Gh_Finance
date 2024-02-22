@@ -4,6 +4,10 @@
     .margin_top{
         margin-top: -50px !important;
     }
+    input.rounded:focus {
+    outline: none; /* Removes the default focus outline */
+    border-color: #your-desired-color; /* Change 'your-desired-color' to the color you want */
+}
     </style>
 @extends('admin.layouts.master')
 @section('content')
@@ -31,10 +35,10 @@
                                                 <table class="table table-hover table-white" id="customFields">
                                                     <thead>
                                                         <tr>
-                                                            <th class="col-md-5">Description</th>
-                                                            <th class="col-sm-2">Month</th>
-                                                            <th class="col-sm-2">Date</th>
-                                                            <th class="col-sm-2">Total/KWD</th>
+                                                            <th class="col-md-5 text-center">Description</th>
+                                                            <th class="col-sm-2 text-center">Month</th>
+                                                            <th class="col-sm-2 text-center">Date</th>
+                                                            <th class="col-sm-2 text-center">Total/KWD</th>
                                                             <th> </th>
                                                         </tr>
                                                     </thead>
@@ -88,7 +92,7 @@
                                                 <table class="table table-hover table-white">
                                                     <tbody>
                                                         <tr>
-                                                            <td colspan="5" class="text-right">Sub Total :</td>
+                                                            <td colspan="5" class="text-right" style="font-size: 15px;">Sub Total :</td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input class="form-control text-right"
                                                                     onkeypress="return /[0-9.,%]/.test(event.key)"
@@ -96,7 +100,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="5" class="text-right">
+                                                            <td colspan="5" class="text-right" style="font-size: 15px;">
                                                                 Others :
                                                             </td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
@@ -106,8 +110,8 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="5" style="text-align: right; font-weight: bold">
-                                                                Grand Total :
+                                                            <td colspan="5" style=" font-size: 15px; text-align: right; font-weight: bold">
+                                                                Grand Value :
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">

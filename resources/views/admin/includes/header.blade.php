@@ -27,8 +27,8 @@
     .popup-container {
         display: none;
         position: fixed;
-        top: 20%;
-        left: 60%;
+        top:11%;
+        left: 65%;
         transform: translate(-50%, -50%);
         background-color: white;
         border: 1px solid #ccc;
@@ -46,7 +46,7 @@
     }
 
     .profile_width {
-        width: 300px !important;
+        width: 200px !important;
     }
 
     #profile-pic-popup {
@@ -96,11 +96,16 @@
         /* left: 10%; */
         /* margin-left: 40px !important; */
     }
+    .p4 {
+        top: 5%;
+        /* left: 10%; */
+        /* margin-left: 40px !important; */
+    }
 </style>
 <div class="header-top-area bg-white">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 height shadow">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 height shadow-sm">
                 {{-- <div class="header-top-wraper"> --}}
                 {{-- <div class="row"> --}}
                 {{-- <div class="d-flex"> --}}
@@ -132,7 +137,7 @@
                         <a class="me-3 btn btn-secondary dropdown-toggle bg-white text-black-50 border-0 dropdown-toggle-no-caret"
                             href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Mega menu<svg class="ms-1" xmlns="http://www.w3.org/2000/svg" width="16"
+                            Mega Menu<svg class="ms-1" xmlns="http://www.w3.org/2000/svg" width="16"
                                 height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                                 <path
                                     d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -601,7 +606,7 @@
                         class="profile_width popup-container position-fixed top-10  translate-middle-y mt-4 me-4">
                         <div class="popup-content">
                             <ul class="list-unstyled">
-                                <li class="mb-2 ">
+                                {{-- <li class="mb-2 ">
                                     <a href="{{ route('profile') }}" class="d-flex  text-black-50">
                                         <span> My Profile</span>
                                         <span class="mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="16"
@@ -612,22 +617,9 @@
                                             </svg></span>
                                     </a>
                                 </li>
-                                {{-- <li class="mb-2">
 
-                                    <input type="file" id="file-input" style="display: none;" accept="image/*">
-                                    <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
-                                        <span>Change Pic</span>
-                                        <span class="mt-1 icon nalika-edit author-log-ic"></span>
-                                    </a>
-                                </li> --}}
                                 <li class="mb-2 profile">
-                                    <!-- File Input Element -->
-                                    {{-- <input type="file" id="file-input" style="display: none;" accept="image/*">
-                                    <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
-                                        <span>Change Password</span>
-                                        <span class="mt-1 icon nalika-edit author-log-ic"></span>
-                                    </a> --}}
-                                    {{-- <input type="file" id="file-input" style="display: none;" accept="image/*"> --}}
+
                                     <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
                                         <span>Change Password</span>
                                         <span class="mt-1 icon nalika-edit author-log-ic"></span>
@@ -635,35 +627,16 @@
                                 </li>
                                 <div class=" z position-fixed top-10 translate-middle-y mt-4 me-4" id="profileMod">
                                     <div class=" he pt-2">
-
-                                        <!-- Input for current password -->
-                                        {{-- <div class="p-1" style="display: inline-block;">
-                                                <label for="curent">Current password:</label> --}}
-
-                                        <input type="password" id="current-password"
+                                        <input type="text" id="current-password"
                                             style="width: 200px; height: 30px;" class="p-1 ms-4 form-control rounded"
                                             placeholder="Current Password">
-
-                                        {{-- </div> --}}
-
-
-
-
-                                        <!-- Input for new password -->
-
-                                        <input type="password" id="new" style="width: 200px; height: 30px;"
+                                        <input type="text" id="new" style="width: 200px; height: 30px;"
                                             class="p-2 ms-4 form-control rounded" placeholder="New Password">
-
-
-
-                                        <!-- Input for confirming new password -->
-
-                                        <input type="password" id="Confirm" style="width: 200px; height: 30px;"
+                                        <input type="text" id="Confirm" style="width: 200px; height: 30px;"
                                             class="p-3 ms-4 form-control rounded" placeholder="Confirm Password">
-
-
+                                      <button class="p4">save</button>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 {{-- <li class="mb-2">
                                     <a href="#" class="d-flex  text-black-50">
@@ -845,28 +818,28 @@
     function changeColor(clickedColor) {
         switch (clickedColor) {
             case 'purple-color':
-                document.documentElement.style.setProperty('--own-black', '#1c0d07');
+                document.documentElement.style.setProperty('--own-black', '#1C4C22');
                 document.documentElement.style.setProperty('--active-nav-black', '#391d0d');
                 document.documentElement.style.setProperty('--nav-black', '#552913');
                 document.documentElement.style.setProperty('--filter-color', '#71391a');
                 document.documentElement.style.setProperty('--filter-btn', '#9A4E24');
                 break;
             case 'red-color':
-                document.documentElement.style.setProperty('--own-black', '#130007');
+                document.documentElement.style.setProperty('--own-black', '#1C2E4C');
                 document.documentElement.style.setProperty('--active-nav-black', '#25000E');
                 document.documentElement.style.setProperty('--nav-black', '#380116');
                 document.documentElement.style.setProperty('--filter-color', '#4B011D');
                 document.documentElement.style.setProperty('--filter-btn', '#70012B');
                 break;
             case 'green-color':
-                document.documentElement.style.setProperty('--own-black', '#172621');
+                document.documentElement.style.setProperty('--own-black', '#4C1C46');
                 document.documentElement.style.setProperty('--active-nav-black', '#2A4038');
                 document.documentElement.style.setProperty('--nav-black', '#3B593A');
                 document.documentElement.style.setProperty('--filter-color', '#0D0D0D');
                 document.documentElement.style.setProperty('--filter-btn', '#4D734C');
                 break;
             case 'yellow-color':
-                document.documentElement.style.setProperty('--own-black', ' #0F1316');
+                document.documentElement.style.setProperty('--own-black', ' #4C221C');
                 document.documentElement.style.setProperty('--active-nav-black', '#152036');
                 document.documentElement.style.setProperty('--nav-black', '#0a0b0');
                 document.documentElement.style.setProperty('--filter-color', '#1B2A47');

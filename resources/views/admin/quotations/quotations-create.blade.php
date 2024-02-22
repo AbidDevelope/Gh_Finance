@@ -3,6 +3,11 @@
     .margin_top{
         margin-top: -50px !important;
     }
+
+    input.rounded:focus {
+    outline: none; /* Removes the default focus outline */
+    border-color: #your-desired-color; /* Change 'your-desired-color' to the color you want */
+}
     </style>
 
 @extends('admin.layouts.master')
@@ -71,11 +76,11 @@
                                                 <table class="table table-hover table-white" id="customFields">
                                                     <thead>
                                                         <tr>
-                                                            <th class="col-md-5">Description</th>
-                                                            <th style="col-sm-2">Unit</th>
-                                                            <th style="width:80px;">Qty</th>
-                                                            <th class="col-sm-2">Price/K.D</th>
-                                                            <th class="col-sm-2">Total/K.D</th>
+                                                            <th class="col-md-5 text-center">Description</th>
+                                                            <th style="col-sm-2  text-center">Unit</th>
+                                                            <th class=" text-center" style="width:80px;">Qty</th>
+                                                            <th class="col-sm-2  text-center">Price/K.D</th>
+                                                            <th class="col-sm-2  text-center">Total/K.D</th>
                                                             <th> </th>
                                                         </tr>
                                                     </thead>
@@ -112,7 +117,7 @@
                                                 <table class="table table-hover table-white">
                                                     <tbody>
                                                         <tr>
-                                                            <td colspan="5" class="text-right">Sub Total :</td>
+                                                            <td colspan="5" class="text-right" style="font-size: 15px;">Sub Total :</td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input class="form-control text-right subtotal"
                                                                     onkeypress="return /[0-9.,%]/.test(event.key)"
@@ -120,7 +125,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="5" class="text-right">
+                                                            <td colspan="5" class="text-right" style="font-size: 15px;">
                                                                 Others
                                                             </td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
@@ -131,8 +136,8 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="5"
-                                                                style="text-align: right; font-weight: bold">
-                                                                Grand Total
+                                                                style="text-align: right; font-weight: bold; font-size: 15px;">
+                                                                Grand Value
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
