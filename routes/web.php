@@ -82,7 +82,8 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::post('miscellaneous/update/{id}', 'miscellaneousUpdate')->name('miscellaneous/update');
     Route::get('miscellaneous/delete/{id}', 'miscellaneousDelete')->name('miscellaneous/delete');
     Route::get('search/miscellaneous', 'searchMiscellaneous')->name('search/miscellaneous');
-    Route::post('export-excel-csv', 'excelCsvImport')->name('export-excel-csv');
+    Route::get('miscellaneous/export', 'miscellaneousExport')->name('miscellaneous/export');
+    Route::post('export-excel-csv', 'pettyCashImport')->name('export-excel-csv');
     // Petty cash
     // Route::post('pettyCash/create', 'pettyCashCreate')->name('pettyCash/create');
 });
@@ -118,6 +119,7 @@ Route::controller(QuotationController::class)->prefix('admin')->middleware('admi
     Route::post('quotations/create', 'quotationCreate')->name('quotations/create');
     Route::get('quotation/view/{id}', 'quotationView')->name('quotation/view');
     Route::get('search/quotation', 'searchQuotation')->name('search/quotation');
+    Route::get('quotation/export', 'quotationExport')->name('quotation/export');
 });
 Route::get('/project-data/{id}', [QuotationController::class, 'getProjectData'])->name('project.data');
 

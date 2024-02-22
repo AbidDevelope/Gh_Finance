@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\QuotationExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\QuotationItem;
@@ -49,8 +51,6 @@ class QuotationController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
             // dd($request->all());
         }else{
-            // $requestData = $request->all();
-            // $quotation = Quotation::create($requestData);
             $quotation = new Quotation();
             $quotation->project_id      = $request->project_id;
             $quotation->quotation_number = $request->quotation_number;
@@ -121,5 +121,10 @@ class QuotationController extends Controller
         {
             return view('admin.quotations.quotations', compact('quotations'));
         } 
+    }
+
+    public function quotationExport()
+    {
+        return Excel::download(new QuotationExport, 'quotation.xlsx');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ExpensesImport;
-
+use App\Exports\MiscellaneousExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Expense;
@@ -21,7 +21,7 @@ class ExpensesController extends Controller
 {
     public function miscellaneous()
     {
-        $miscell = Miscellaneous::orderBy('id', 'desc')->get();
+        $miscell = Miscellaneous::orderBy('id', 'desc')->with('miscellaneousItems')->get();
         
         return view('admin.miscellaneous.miscellaneous', compact('miscell'));
     }
@@ -326,12 +326,11 @@ class ExpensesController extends Controller
         return redirect()->back();
     }
 
-    public function excelCsvImport(Request $request)
+    public function pettyCashImport(Request $request)
     {
         $file = $request->file('file');
         Excel::import(new ExpensesImport, $file);
 
-        // dd($excel);
         return back()->with('success', 'Imported successfully.');
     }
 
@@ -358,7 +357,12 @@ class ExpensesController extends Controller
 
         session()->flash('success', 'Data Submitted Successfully.');
         return redirect()->route('pettyCash');
-
     
+    }
+
+    public function miscellaneousExport()
+    {
+    //    dd('wewer');
+        return Excel::download(new MiscellaneousExport, 'miscellaneous.xlsx');
     }
 }

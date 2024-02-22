@@ -40,7 +40,7 @@
                                         class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                         <i class="fa fa-plus"></i> Create
                                     </a>
-                                    <a href="#"
+                                    <a href="{{ route('quotation/export') }}"
                                         class="btn  border rounded f-14  mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
                                         style="border-color: var(--own-black) !important;">
                                         <i class="fa fa-file-export"></i> Export
