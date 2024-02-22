@@ -312,7 +312,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control common-field" type="date" name="date2[]" style="display: none">
+                                                            <input class="form-control common-field" type="text" placeholder="DD/MM/YYYY" id="paymentDate" name="date2[]" style="display: none">
                                                         </td>
                                                         <td>
                                                             <input class="form-control common-field" type="text"
@@ -423,21 +423,26 @@
   {{-- date Format --}}
   <script>
       var onDateSelect = function(selectedDate, input) {
-          if (input.id === 'date') { //Start date selected - update End Date picker
-              $("#end_date").datepicker('option', 'minDate', selectedDate);
-          } else { //End date selected - update Start Date picker
-              $("#date").datepicker('option', 'maxDate', selectedDate);
-          }
-      };
-      var onDocumentReady = function() {
-          var datepickerConfiguration = {
-              dateFormat: "dd/mm/yy",
-              onSelect: onDateSelect
-          };
-          ///--- Component Binding ---///
-          $('#date, #end_date').datepicker(datepickerConfiguration);
-      };
-      $(onDocumentReady);
+    // Yahan logical OR operator ka istemal karen
+    if (input.id === 'date' || input.id === 'paymentDate') { // Start date or Payment date selected - update End Date picker
+        $("#end_date").datepicker('option', 'minDate', selectedDate);
+    } else { // End date selected - update Start Date and Payment Date picker
+        $("#date, #paymentDate").datepicker('option', 'maxDate', selectedDate);
+    }
+};
+
+var onDocumentReady = function() {
+    var datepickerConfiguration = {
+        dateFormat: "dd/mm/yy",
+        onSelect: onDateSelect
+    };
+    ///--- Component Binding ---///
+    // Yahaan selector ko sahi tarah se bind karen
+    $('#date, #end_date, #paymentDate').datepicker(datepickerConfiguration);
+};
+
+$(onDocumentReady);
+
   </script>
 
 @endsection

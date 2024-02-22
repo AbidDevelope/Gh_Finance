@@ -202,8 +202,8 @@ class ExpensesController extends Controller
 
     public function expensesView($id)
     {
-       $expenses = Expense::find($id);
-       return view('admin.pettyCash.expenses-view', compact('expenses'));
+       $expenses = PettyCash::find($id);
+       return view('admin.pettyCash.pettyCash-view', compact('expenses'));
     }
 
     public function expensesEdit($id)
@@ -277,7 +277,7 @@ class ExpensesController extends Controller
         $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
         $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
 
-        $expenses = Expense::whereDate('date', '>=', $startDate)->whereDate('date', '<=', $endDate)->get();
+        $expenses = PettyCash::whereDate('date', '>=', $startDate)->whereDate('date', '<=', $endDate)->get();
         
         return view('admin.pettyCash.pettyCash', compact('expenses'));
                      
@@ -329,8 +329,6 @@ class ExpensesController extends Controller
     public function excelCsvImport(Request $request)
     {
         $file = $request->file('file');
-
-        // Excel file ko import karte hue ExcelDataImport class ka use karenge
         Excel::import(new ExpensesImport, $file);
 
         // dd($excel);
@@ -339,50 +337,28 @@ class ExpensesController extends Controller
 
     public function pettyCashPost(Request $request)
     {
-        // $requestData = $request->all();
-        // dd($requestData);
+    
        // Assuming $request->date is in 'DD/MM/YYYY' format
-$date = DateTime::createFromFormat('d/m/Y', $request->date);
-$formattedDate = $date->format('Y-m-d'); // Convert to 'YYYY-MM-DD' format
+        $date = DateTime::createFromFormat('d/m/Y', $request->date);
+        $formattedDate = $date->format('Y-m-d'); // Convert to 'YYYY-MM-DD' format
 
-$pettyCash = new PettyCash();
-$pettyCash->date = $formattedDate; // Use the correctly formatted date
-// Set other properties
-$pettyCash->cheque_number_receipt_number = $request->cheque_number_receipt_number;
-$pettyCash->description = $request->description;
-$pettyCash->beneficiary = $request->beneficiary;
-$pettyCash->amount_deposited = $request->amount_deposited;
-$pettyCash->amount_withdrawn = $request->amount_withdrawn;
-$pettyCash->project = $request->project;
-$pettyCash->total_amount_deposited = $request->total_amount_deposited;
-$pettyCash->total_amount_withdrawn = $request->total_amount_withdrawn;
-$pettyCash->total_in_account = $request->total_in_account;
-$pettyCash->save();
+        $pettyCash = new PettyCash();
+        $pettyCash->date = $formattedDate; // Use the correctly formatted date
+        // Set other properties
+        $pettyCash->cheque_number_receipt_number = $request->cheque_number_receipt_number;
+        $pettyCash->description = $request->description;
+        $pettyCash->beneficiary = $request->beneficiary;
+        $pettyCash->amount_deposited = $request->amount_deposited;
+        $pettyCash->amount_withdrawn = $request->amount_withdrawn;
+        $pettyCash->project = $request->project;
+        $pettyCash->total_amount_deposited = $request->total_amount_deposited;
+        $pettyCash->total_amount_withdrawn = $request->total_amount_withdrawn;
+        $pettyCash->total_in_account = $request->total_in_account;
+        $pettyCash->save();
 
-session()->flash('success', 'Data Submitted Successfully.');
-return redirect()->route('pettyCash');
+        session()->flash('success', 'Data Submitted Successfully.');
+        return redirect()->route('pettyCash');
 
     
-    }
-
-    public function searchPettyCash(Request $request)
-    {
-        // dd('dsj');
-        $validator = Validator::make($request->all(), [
-            'start_date' => 'required|date_format:d/m/Y',
-            'end_date' => 'required|date_format:d/m/Y',
-        ]);
-    
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
-        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');              
-
-
-        $expenses = PettyCash::whereDate('date', [$startDate, $endDate])->get(); 
-       
-            return view('admin.miscellaneous.miscellaneous', compact('expenses'));
     }
 }

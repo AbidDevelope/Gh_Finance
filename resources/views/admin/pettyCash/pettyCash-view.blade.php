@@ -28,50 +28,50 @@
                             </div> --}}
                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 margin_t">
                                 <div class="form-section bg-white">
-                                    <h6 class="card-title m-b-15">Project details</h6>
+                                    <h6 class="card-title m-b-15">Details</h6>
                                     <hr class="border-top-grey">
                                     <div class="card-body">
                                         <table class="table table-striped table-border">
                                             <tbody>
                                                 <tr>
-                                                    <td>Project Type:</td>
-                                                    <td class="text-right">{{ $expenses->project_type }}</td>
+                                                    <td>Date:</td>
+                                                    <td class="text-right">{{ $expenses->date }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Project Name:</td>
-                                                    <td class="text-right">{{ $expenses->project_name }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Project Manager:</td>
-                                                    <td class="text-right">{{ $expenses->project_manager_name }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Receipt:</td>
-                                                    <td class="text-right">{{ $expenses->receipt }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount Deposite:</td>
-                                                    <td class="text-right">{{ $expenses->amount_deposite }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount Withdraw:</td>
-                                                    <td class="text-right">{{ $expenses->amount_withdraw }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Beneficiary:</td>
-                                                    <td class="text-right">{{ $expenses->beneficiary }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Created:</td>
-                                                    <td class="text-right">{{ $expenses->created_at->format('d M Y') }}</td>
+                                                    <td>Cheque Number / Receipt Number:</td>
+                                                    <td class="text-right">{{ $expenses->cheque_number_receipt_number }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Description:</td>
                                                     <td class="text-right">{{ $expenses->description }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Status:</td>
-                                                    <td class="text-right">Working</td>
+                                                    <td>Beneficiary:</td>
+                                                    <td class="text-right">{{ $expenses->beneficiary }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Amount Deposite:</td>
+                                                    <td class="text-right">{{ $expenses->amount_deposited }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Amount Withdraw:</td>
+                                                    <td class="text-right">{{ $expenses->amount_withdrawn }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Project:</td>
+                                                    <td class="text-right">{{ $expenses->project }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total Amount Deposited:</td>
+                                                    <td class="text-right">{{ $expenses->total_amount_deposited}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total Amount Withdrawn:</td>
+                                                    <td class="text-right">{{ $expenses->total_amount_withdrawn }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total In Account:</td>
+                                                    <td class="text-right">{{ $expenses->total_in_account }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
