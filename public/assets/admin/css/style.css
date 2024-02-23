@@ -161,7 +161,7 @@ body {}
     background: var(--own-black);
 }
 .profile-dtl {
-    text-align: center;
+    text-align: left;
 }
 .profile-dtl img {
     width: 75px;
@@ -169,6 +169,7 @@ body {}
     border-radius: 50%;
     border: 2px solid var(--active-nav-black);
     margin-bottom: 2px;
+
 }
 .sidebarCollapse{
     width: 25px;
@@ -3678,7 +3679,7 @@ th.fc-day-header.fc-widget-header {
 	text-align:left;
 }
 .mini-navbar #sidebar.active .sidebar-nav .metismenu a {
-    padding: 16px 15px;
+    padding: 24px 15px;
 }
 .review-pro-edt.mg-b-0-pt{
 	margin-bottom:0px;

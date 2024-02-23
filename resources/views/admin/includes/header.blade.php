@@ -27,7 +27,7 @@
     .popup-container {
         display: none;
         position: fixed;
-        top:21%;
+        top: 21%;
         left: 65%;
         transform: translate(-50%, -50%);
         background-color: white;
@@ -35,10 +35,11 @@
         padding: 10px;
         z-index: 9999;
     }
+
     .pop_profile {
         display: none;
         position: fixed;
-        top:15%;
+        top: 15%;
         left: 65%;
         transform: translate(-50%, -50%);
         background-color: white;
@@ -65,7 +66,7 @@
     }
 
     #bell-icon {
-        font-size: 24px;
+        font-size: 21px;
         /* Adjust size as needed */
     }
 
@@ -107,10 +108,15 @@
         /* left: 10%; */
         /* margin-left: 40px !important; */
     }
+
     .p4 {
         top: 5%;
         /* left: 10%; */
         /* margin-left: 40px !important; */
+    }
+    .bel_margin{
+    margin-top: 32px;
+    margin-right:20px;
     }
 </style>
 <div class="header-top-area bg-white">
@@ -123,7 +129,7 @@
                 <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12 mt-1">
                     <div class="nalika-profile bg-white ">
                         <div class="profile-dtl">
-                            <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/admin/img/logo/gh_logo.jpg') }}"
+                            <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/admin/img/logo/favIcon.svg') }}"
                                     alt="" /></a>
                             {{-- <h2>{{ Auth::guard('admin')->user()->first_name }} <span class="min-dtn">{{ Auth::guard('admin')->user()->last_name }}</span></h2> --}}
                             {{-- <h2> <span class="min-dtn text-black-50">GHADER & HAMDOUN</span></h2> --}}
@@ -358,8 +364,8 @@
                 </div>
 
 
-                <div class="d-flex justify-content-end gap-3 mt-1">
-                    <div class="  dropdown" style="margin-top: 17px;">
+                <div class="d-flex justify-content-end gap-0 mt-1">
+                    <div class="  dropdown" style="margin-top: 17px; margin-right:10px;">
                         <a class="btn btn-secondary dropdown-toggle bg-white text-black-50 border-0" href="#"
                             role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -537,7 +543,7 @@
 
 
 
-                    <div class="" style="margin-top: 33px;">
+                    <div class="bel_margin" >
                         <i id="bell-icon" class="fas fa-bell fa-lg text-black-50"></i>
                         <!-- Adjust size using fa-lg -->
                     </div>
@@ -610,7 +616,7 @@
                     </div>
                     <div class="mt-3">
                         <div id="profile-pic" class="circular-pic"
-                            style="background-image: url('/assets/admin/img/prof pic.jpg');"></div>
+                            style="background-image: url('/assets/admin/img/prof pic.jpg'); margin-right:20px" ></div>
                     </div>
                     <!-- Profile Picture Popup Container -->
                     <div id="profile-pic-popup"
@@ -630,34 +636,27 @@
                                 </li> --}}
 
                                 {{-- <li class="mb-2 profile"> --}}
-                                    <!-- File Input Element -->
-                                    {{-- <input type="file" id="file-input" style="display: none;" accept="image/*">
+                                <!-- File Input Element -->
+                                {{-- <input type="file" id="file-input" style="display: none;" accept="image/*">
                                     <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
                                         <span>Change Password</span>
                                         <span class="mt-1 icon nalika-edit author-log-ic"></span>
                                     </a> --}}
-                                    {{-- <input type="file" id="file-input" style="display: none;" accept="image/*"> --}}
-                                    {{-- <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
+                                {{-- <input type="file" id="file-input" style="display: none;" accept="image/*"> --}}
+                                {{-- <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
                                         <span>Change Password</span>
                                         <span class="mt-1 icon nalika-edit author-log-ic"></span>
                                     </a> --}}
                                 {{-- </li> --}}
-                                {{-- <div class=" z position-fixed top-10 translate-middle-y mt-4 me-4" id="profileMod">
-                                    <div class=" he pt-2"> --}}
-
+                                <div class=" z position-fixed top-10 translate-middle-y mt-4 me-4" id="profileMod">
+                                    <div class=" he pt-2">
                                         <!-- Input for current password -->
-                                        {{-- <div class="p-1" style="display: inline-block;">
-                                                <label for="curent">Current password:</label> --}}
-{{--
-                                        <input type="password" id="current-password"
-                                            style="width: 200px; height: 30px;" class="p-1 ms-4 form-control rounded"
-                                            placeholder="Current Password"> --}}
-
-                                        {{-- </div> --}}
-
-
-
-
+                                        <div class="p-1" style="display: inline-block;">
+                                            <label for="curent">Current password:</label>
+                                            <input type="password" id="current-password"
+                                                style="width: 200px; height: 30px;"
+                                                class="p-1 ms-4 form-control rounded" placeholder="Current Password">
+                                        </div>
                                         <!-- Input for new password -->
 
                                         {{-- <input type="password" id="new" style="width: 200px; height: 30px;"
@@ -667,26 +666,26 @@
 
                                         <!-- Input for confirming new password -->
 
-                                        {{-- <input type="password" id="Confirm" style="width: 200px; height: 30px;"
+                                        <input type="password" id="Confirm" style="width: 200px; height: 30px;"
                                             class="p-3 ms-4 form-control rounded" placeholder="Confirm Password">
 
 
                                     </div>
-                                </div> --}}
+                                </div>
 
-                                {{-- <li class="mb-2">
+                                        {{-- <li class="mb-2">
                                     <a href="#" class="d-flex  text-black-50">
                                         <span>Settings</span>
                                         <span class="mt-1 icon nalika-settings author-log-ic"></span>
                                     </a>
                                 </li> --}}
-                                <!-- Replace {{ route('admin/logout') }} with the appropriate logout URL -->
-                                <li class="mb-2">
-                                    <a href=" {{ route('admin/logout') }} " class="d-flex  text-black-50">
-                                        <span>Log Out</span>
-                                        <span class="mt-1 icon nalika-unlocked author-log-ic"></span>
-                                    </a>
-                                </li>
+                                        <!-- Replace {{ route('admin/logout') }} with the appropriate logout URL -->
+                                        <li class="mb-2">
+                                            <a href=" {{ route('admin/logout') }} " class="d-flex  text-black-50">
+                                                <span>Log Out</span>
+                                                <span class="mt-1 icon nalika-unlocked author-log-ic"></span>
+                                            </a>
+                                        </li>
                             </ul>
                         </div>
                     </div>
@@ -751,48 +750,43 @@
 
 
 <script>
-    // JavaScript to open the modal when the li tag is clicked
-    // document.querySelector('#profile').addEventListener('click', function() {
-    //     $('#profileModal').modal('show');
-    // });
-    // JavaScript to open the modal when the li tag is clicked
+
     document.querySelector('.profile').addEventListener('click', function() {
         document.querySelector('.z').style.display = 'block';
     });
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var profilePic = document.getElementById('profile-pic');
-        var fileInput = document.getElementById('file-input');
-        var changeProfilePicLink = document.getElementById('change-profile-pic');
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     var profilePic = document.getElementById('profile-pic');
+    //     var fileInput = document.getElementById('file-input');
+    //     var changeProfilePicLink = document.getElementById('change-profile-pic');
 
-        // Check if there's a profile picture URL stored in localStorage
-        var storedPicUrl = localStorage.getItem('profilePicUrl');
-        if (storedPicUrl) {
-            profilePic.style.backgroundImage = 'url(' + storedPicUrl + ')';
-        }
 
-        // Function to handle file input change
-        fileInput.addEventListener('change', function(event) {
-            var file = event.target.files[0];
-            var reader = new FileReader();
+    //     var storedPicUrl = localStorage.getItem('profilePicUrl');
 
-            reader.onload = function(e) {
-                var picUrl = e.target.result;
-                profilePic.style.backgroundImage = 'url(' + picUrl + ')';
+    //     if (storedPicUrl) {
+    //         profilePic.style.backgroundImage = 'url(' + storedPicUrl + ')';
 
-                // Store the URL of the selected profile picture in localStorage
-                localStorage.setItem('profilePicUrl', picUrl);
-            };
+    //     }
 
-            reader.readAsDataURL(file);
-        });
 
-        // Trigger file input when the "Change" option is clicked
-        changeProfilePicLink.addEventListener('click', function() {
-            fileInput.click();
-        });
-    });
+    //     fileInput.addEventListener('change', function(event) {
+    //         var file = event.target.files[0];
+    //         var reader = new FileReader();
+
+    //         reader.onload = function(e) {
+    //             var picUrl = e.target.result;
+    //             profilePic.style.backgroundImage = 'url(' + picUrl + ')';
+    //             localStorage.setItem('profilePicUrl', picUrl);
+    //         };
+    //         reader.readAsDataURL(file);
+    //     });
+
+
+    //     changeProfilePicLink.addEventListener('click', function() {
+    //         fileInput.click();
+    //     });
+    // });
 
 
 

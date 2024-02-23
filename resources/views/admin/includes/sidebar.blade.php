@@ -227,6 +227,11 @@
 .m_bottom{
     margin-bottom: 90px !important;
 }
+/* CSS */
+.sidebar-h.dash {
+    border-top: none; /* Remove the border from the top */
+}
+
 </style>
 
 <script>
@@ -366,8 +371,8 @@
         <div class="left-custom-menu-adp-wrap comment-scrollbar " style="height: 550px; overflow-y: auto;">
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu bg-white " id="menu1">
-                    <div class="sidebar-h dash">
-                        <a class="text-black-50 d-flex flex-column align-items-center triangle-container"
+                    <li class="sidebar-h dash">
+                        <a class="text-black-50 d-flex flex-column align-items-center triangle-container"id="toggleServices"
                             href="{{ route('dashboard') }}">
                             <div class="mb-2">
                                 {{-- <svg class="hovercolor" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
@@ -384,7 +389,7 @@
                             </div>
                             <div class="triangledash"></div>
                         </a>
-                    </div>
+                    </li>
                     <li class="removable sidebar-h Services">
                         <a id="toggleServices"
                             class="text-black-50 d-flex flex-column align-items-center triangle-container"
