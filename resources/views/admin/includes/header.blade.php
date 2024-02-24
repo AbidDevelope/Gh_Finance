@@ -124,6 +124,12 @@
     box-shadow: none; /* Remove box-shadow */
     background-color: transparent; /* Remove background color */
 }
+.meMega{
+    margin-left: -20px !important;
+}
+.mebag{
+    margin-right: 40px !important;
+}
 </style>
 <div class="header-top-area bg-white">
     <div class="container-fluid">
@@ -166,9 +172,7 @@
                                     d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
                             </svg>
                         </a>
-
-
-                        <ul class="dropdown-menu max-w-xl mt-3 ms-5" style="min-width: 30rem;"
+                        <ul class="dropdown-menu max-w-xl mt-3 pt-4 meMega" style="min-width: 30rem;"
                             aria-labelledby="dropdownMenuLink">
                             <div class="container">
                                 <div class="row">
@@ -380,7 +384,7 @@
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
                             </svg></a>
 
-                        <ul class="dropdown-menu max-w-xl mt-3" style="min-width: 30rem;"
+                        <ul class="dropdown-menu max-w-xl mt-3 pt-4 mebag" style="min-width: 30rem;"
                             aria-labelledby="dropdownMenuLink">
                             <div class="container">
                                 <div class="row">
@@ -545,7 +549,7 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="bel_margin" >
+                    <div class="bel_margin rounded" >
                         <i id="bell-icon" class="fas fa-bell fa-lg text-black-50"></i>
                         <!-- Adjust size using fa-lg -->
                     </div>

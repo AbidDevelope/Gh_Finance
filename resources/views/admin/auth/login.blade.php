@@ -74,7 +74,7 @@
     .eye-toggle {
     position: absolute;
     right: 15%;
-    top: 37%;
+    top:37%;
     transform: translateY(-50%);
     cursor: pointer;
 }
@@ -154,11 +154,11 @@
                         @enderror
                         <div class="mt-3">
                             <form id="myForm" action="#" method="post">
-                                <div class="g-recaptcha" data-sitekey="6Leohn0pAAAAAOizPfY4PENoZWIdFyBiT6dkO2QT"></div>
+                                <div class="g-recaptcha" data-sitekey="6LemK34pAAAAAJUrh8OwzcMxeD9pDbOrbEviriah"></div>
 
                             </form>
                             <input onclick="submitForm()" class=" color mt-3 roundedlg mt-3 text-white" type="submit"
-                                value="Sign In" />
+                                value="Submit" />
                 </form>
             </div>
         </div>
