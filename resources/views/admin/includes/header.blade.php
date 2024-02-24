@@ -130,6 +130,9 @@
 .mebag{
     margin-right: 40px !important;
 }
+.round{
+    border-radius: 6px !important;
+}
 </style>
 <div class="header-top-area bg-white">
     <div class="container-fluid">
@@ -375,7 +378,7 @@
 
 
                 <div class="d-flex justify-content-end gap-0 mt-1">
-                    <div class="  dropdown" style="margin-top: 17px; margin-right:10px;">
+                    <div class="dropdown" style="margin-top: 17px; margin-right:10px;">
                         <a class="btn btn-secondary dropdown-toggle bg-white text-black-50 border-0" href="#"
                             role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -557,7 +560,7 @@
                     <div class="mt-3 position-relative d-flex justify-content-center">
                         <!-- Notification Popup Container -->
                         <div id="notification-popup"
-                            class="popup-container position-fixed top-10 end-0  translate-middle-y mt-4 me-4">
+                            class="popup-container position-fixed top-10 end-0 round translate-middle-y mt-4 me-4">
                             <div class="popup-content pt-2">
                                 <ul class="list-unstyled pe-3">
                                     <li class="d-flex justify-content-between align-items-center mb-3 gap-5 ">
@@ -626,7 +629,7 @@
                     </div>
                     <!-- Profile Picture Popup Container -->
                     <div id="profile-pic-popup"
-                        class="profile_width popup-container pop_profile position-fixed top-10  translate-middle-y  me-4">
+                        class="profile_width popup-container pop_profile position-fixed top-10 round translate-middle-y  me-4">
                         <div class="popup-content">
                             <ul class="list-unstyled">
                                 {{-- <li class="mb-2 ">

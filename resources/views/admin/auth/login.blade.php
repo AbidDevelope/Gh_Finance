@@ -73,8 +73,8 @@
     }
     .eye-toggle {
     position: absolute;
-    right: 15%;
-    top:41%;
+    right: 8%;
+    top:45%;
     transform: translateY(-50%);
     cursor: pointer;
 }
@@ -143,11 +143,12 @@
                             <input type="password" name="password" placeholder="Password" />
                         </div> --}}
                         <div class="mt-3">
-                            <div class="password-input d-flex">
-                                <input type="password" name="password" class="rounde " id="passwordField" placeholder="Password" />
+                            <div class="password-input position-relative">
+                                <input type="password" name="password" class="rounde" id="passwordField" placeholder="Password" />
                                 <div toggle="#passwordField" class="eye-toggle fa fa-eye-slash"></div>
                             </div>
                         </div>
+
 
                         @error('password')
                             <span style="color: red">{{ $message }}</span>
