@@ -74,7 +74,7 @@
     .eye-toggle {
     position: absolute;
     right: 15%;
-    top:37%;
+    top:42%;
     transform: translateY(-50%);
     cursor: pointer;
 }
@@ -114,7 +114,7 @@
     </div>
     <div class="vertical_line"></div>
     <div class="form_wrapper form_container shad">
-        <div class="title_container d-flex justify-content-center text-black-50">
+        <div class="title_container  mt-4 d-flex justify-content-center text-black-50">
             <h2 class=" text-center colour"> Sign In </h2>
         </div>
         <div class="row clearfix ">
