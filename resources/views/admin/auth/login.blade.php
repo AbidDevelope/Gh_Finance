@@ -74,7 +74,7 @@
     .eye-toggle {
     position: absolute;
     right: 15%;
-    top:42%;
+    top:41%;
     transform: translateY(-50%);
     cursor: pointer;
 }
