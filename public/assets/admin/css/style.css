@@ -2487,7 +2487,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 .form-control {
     background-color: #fff;
     background-image: none;
-    border: 1px solid var(--active-nav-black);
+    /* border: 1px solid var(--own-black); */
     border-radius: 1px;
     color: inherit;
     display: block;

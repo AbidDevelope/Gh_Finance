@@ -160,7 +160,7 @@
 
     .triangledash {
         position: absolute;
-        bottom: -4px;
+        bottom: -2px;
         right: 2px;
         width: 0;
         height: 0;
@@ -178,7 +178,7 @@
 
     .triangle {
         position: absolute;
-        bottom: -4px;
+        bottom: -2px;
         right: 2px;
         width: 0;
         height: 0;

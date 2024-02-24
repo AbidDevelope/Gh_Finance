@@ -13,14 +13,37 @@
         tr+tr {
             margin-top: 10px;
         }
-        .margin_top{
-       margin-top: -50px !important;
 
-   }
-   input.rounded:focus {
-    outline: none; /* Removes the default focus outline */
-    border-color: #your-desired-color; /* Change 'your-desired-color' to the color you want */
-}
+        .margin_top {
+            margin-top: -50px !important;
+
+        }
+
+        input.rounded:focus {
+            outline: none;
+            /* Removes the default focus outline */
+            border-color: #your-desired-color;
+            /* Change 'your-desired-color' to the color you want */
+        }
+        .no_border{
+            border: none;
+        }
+        .no_borer_mob{
+            border: none;
+        }
+        .num_margin{
+            margin-left: -1px !important;
+            padding-left: -6px !important;
+            padding-top: -6px !important;
+        }
+        .mt{
+            margin-top: 9px !important;
+            margin-right: -0.5px !important;
+        }
+        .mt2{
+            margin-top: 9px !important;
+            /* margin-right: -0.5px !important; */
+        }
     </style>
 
     <div class="all-content-wrapper">
@@ -70,12 +93,17 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
+                                        <div class="col-md-3 ">
+                                            <div class="form-group no_border">
                                                 <label>Mobile</label>
-                                                <input type="text" class="rounded" style="width: 260px; height:39px;  border: 1px solid #CCCCCC;" placeholder="+965" name="Manager_mobile"
-                                                    onkeypress="return /[0-9]/i.test(event.key)" maxlength="10"
-                                                    value="{{ old('Manager_mobile') }}">
+                                                <div class="d-flex border rounded">
+                                                    <div class="mt ms-3">+965</div>
+                                                    <input type="text" class="rounded no_border num_margin"
+                                                        style=" width: 160px; height:39px;"
+                                                        placeholder="" name="Manager_mobile"
+                                                        onkeypress="return /[0-9]/i.test(event.key)" maxlength="10"
+                                                        value="{{ old('Manager_mobile') }}">
+                                                </div>
                                                 @error('Manager_mobile')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -92,7 +120,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Remarks</label>
                                                 <input class="form-control" type="text" name="manager_remarks"
@@ -136,12 +164,17 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Mobile </label>
-                                                <input type="text" name="company_mobile" class="rounded" style="width: 260px; height:39px;  border: 1px solid #CCCCCC;" placeholder="+965"
-                                                    value="{{ old('company_mobile') }}"
-                                                    onkeypress="return /[0-9]/i.test(event.key)" maxlength="10">
+                                        <div class="col-md-3 ">
+                                            <div class="form-group no_border">
+                                                <label>Mobile</label>
+                                                <div class="d-flex border rounded">
+                                                    <div class="mt2 ms-3">+965</div>
+                                                    <input type="text" class="rounded no_border num_margin"
+                                                        style=" width: 160px; height:39px;"
+                                                        placeholder="" name="company_mobile"
+                                                        onkeypress="return /[0-9]/i.test(event.key)" maxlength="10"
+                                                        value="{{ old('company_mobile') }}">
+                                                </div>
                                                 @error('company_mobile')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -188,7 +221,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Remarks </label>
                                                 <input type="text" name="company_remarks" class="form-control"
@@ -232,12 +265,17 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Mobile </label>
-                                                <input type="text" class="rounded" style="width: 260px; height:39px;  border: 1px solid #CCCCCC;" placeholder="+965" name="project_mobile"
-                                                    maxlength="13" onkeypress="return /[0-9]/i.test(event.key)"
-                                                    value="+965{{ old('project_mobile') }}">
+                                        <div class="col-md-3 ">
+                                            <div class="form-group no_border">
+                                                <label>Mobile</label>
+                                                <div class="d-flex border rounded">
+                                                    <div class="mt2 ms-3">+965</div>
+                                                    <input type="text" class="rounded no_border num_margin"
+                                                        style=" width: 160px; height:39px;"
+                                                        placeholder="" name="project_mobile"
+                                                        onkeypress="return /[0-9]/i.test(event.key)" maxlength="10"
+                                                        value="{{ old('project_mobile') }}">
+                                                </div>
                                                 @error('project_mobile')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -301,10 +339,11 @@
                                             <table class="table table-hover table-white" id="customFields">
                                                 <tbody>
                                                     <tr>
-                                                        <td style="width:50px"><a href="javascript:void(0)" id="add-row"
-                                                            class="text-success font-18" title="Add"><img
-                                                                src="{{ asset('assets/admin/img/icon/plus.png') }}"
-                                                                alt=""></a>
+                                                        <td style="width:50px"><a href="javascript:void(0)"
+                                                                id="add-row" class="text-success font-18"
+                                                                title="Add"><img
+                                                                    src="{{ asset('assets/admin/img/icon/plus.png') }}"
+                                                                    alt=""></a>
                                                         </td>
                                                         <td>
                                                             <select name="paymentMode[]"
@@ -317,7 +356,9 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control common-field" type="text" placeholder="DD/MM/YYYY" id="paymentDate" name="date2[]" style="display: none">
+                                                            <input class="form-control common-field" type="text"
+                                                                placeholder="DD/MM/YYYY" id="paymentDate" name="date2[]"
+                                                                style="display: none">
                                                         </td>
                                                         <td>
                                                             <input class="form-control common-field" type="text"
@@ -341,8 +382,8 @@
                                                                 name="transactionId[]" placeholder="Transaction ID">
                                                         </td>
                                                         <td class="online-fields" style="display: none">
-                                                            <input class="form-control" type="text"
-                                                            name="bankName[]" placeholder="Bank Name">
+                                                            <input class="form-control" type="text" name="bankName[]"
+                                                                placeholder="Bank Name">
                                                         </td>
                                                         <!-- Example of an Add button, already in your code -->
                                                     </tr>
@@ -351,7 +392,8 @@
                                         </div>
                                     </div>
                                     <!-- <div class="row"> -->
-                                    <button type="submit" class="btn btn-create btn-lg mt-5" style="background: var(--own-black)">CREATE</button>
+                                    <button type="submit" class="btn btn-create btn-lg mt-5"
+                                        style="background: var(--own-black)">CREATE</button>
                                     <!-- </div> -->
                                 </form>
                             </div>
@@ -363,30 +405,31 @@
         </div>
     </div>
     <!-- metisMenu JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                            ============================================ -->
+                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     {{-- Data table JS --}}
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-  {{-- Add or remove section script start --}}
+    {{-- Add or remove section script start --}}
     <script>
         $(document).ready(function() {
             var maxField = 5;
             var addButton = $('#add-row');
             var wrapper = $('#customFields');
-            var fieldHTML = '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field" type="date" name="date2[]" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
+            var fieldHTML =
+                '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field" type="date" name="date2[]" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
             var x = 1;
 
             $(addButton).click(function() {
@@ -419,35 +462,34 @@
                 }
             });
         });
-        </script>
+    </script>
     {{-- Add or Remove input field end --}}
 
-      {{-- Date Format  --}}
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  {{-- date Format --}}
-  <script>
-      var onDateSelect = function(selectedDate, input) {
-    // Yahan logical OR operator ka istemal karen
-    if (input.id === 'date' || input.id === 'paymentDate') { // Start date or Payment date selected - update End Date picker
-        $("#end_date").datepicker('option', 'minDate', selectedDate);
-    } else { // End date selected - update Start Date and Payment Date picker
-        $("#date, #paymentDate").datepicker('option', 'maxDate', selectedDate);
-    }
-};
+    {{-- Date Format  --}}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    {{-- date Format --}}
+    <script>
+        var onDateSelect = function(selectedDate, input) {
+            // Yahan logical OR operator ka istemal karen
+            if (input.id === 'date' || input.id ===
+                'paymentDate') { // Start date or Payment date selected - update End Date picker
+                $("#end_date").datepicker('option', 'minDate', selectedDate);
+            } else { // End date selected - update Start Date and Payment Date picker
+                $("#date, #paymentDate").datepicker('option', 'maxDate', selectedDate);
+            }
+        };
 
-var onDocumentReady = function() {
-    var datepickerConfiguration = {
-        dateFormat: "dd/mm/yy",
-        onSelect: onDateSelect
-    };
-    ///--- Component Binding ---///
-    // Yahaan selector ko sahi tarah se bind karen
-    $('#date, #end_date, #paymentDate').datepicker(datepickerConfiguration);
-};
+        var onDocumentReady = function() {
+            var datepickerConfiguration = {
+                dateFormat: "dd/mm/yy",
+                onSelect: onDateSelect
+            };
+            ///--- Component Binding ---///
+            // Yahaan selector ko sahi tarah se bind karen
+            $('#date, #end_date, #paymentDate').datepicker(datepickerConfiguration);
+        };
 
-$(onDocumentReady);
-
-  </script>
-
+        $(onDocumentReady);
+    </script>
 @endsection

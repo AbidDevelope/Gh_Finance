@@ -118,6 +118,12 @@
     margin-top: 32px;
     margin-right:20px;
     }
+    #search:focus {
+    outline: none;
+    border-color: var(--own-black) !important;
+    box-shadow: none; /* Remove box-shadow */
+    background-color: transparent; /* Remove background color */
+}
 </style>
 <div class="header-top-area bg-white">
     <div class="container-fluid">
@@ -349,7 +355,7 @@
                 {{-- searchbar --}}
                 <div class="mt-3 ms-5 col-lg-1 col-md-1 col-sm-1 col-xs-12">
                     <div class=" d-flex">
-                        <input id="search" type="text" class="bg-white form-control rounded-pill"
+                        <input id="search" type="text" class="bg-white form-control  rounded-pill"
                             style="width: 230px; height: 40px;" placeholder="search">
                         <div class="text-danger">
                             <!-- Adjust the color class applied to the SVG icon -->
@@ -539,10 +545,6 @@
                                 </div>
                             </div>
                     </div>
-
-
-
-
                     <div class="bel_margin" >
                         <i id="bell-icon" class="fas fa-bell fa-lg text-black-50"></i>
                         <!-- Adjust size using fa-lg -->
@@ -689,14 +691,6 @@
                             </ul>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
                 </div>
                 {{-- </div> --}}
                 {{-- </div> --}}
@@ -791,30 +785,41 @@
 
 
     document.addEventListener('DOMContentLoaded', function() {
-        var bellIcon = document.getElementById('bell-icon');
-        var notificationPopup = document.getElementById('notification-popup');
-        var profilePic = document.getElementById('profile-pic');
-        var profilePicPopup = document.getElementById('profile-pic-popup');
+    var bellIcon = document.getElementById('bell-icon');
+    var notificationPopup = document.getElementById('notification-popup');
+    var profilePic = document.getElementById('profile-pic');
+    var profilePicPopup = document.getElementById('profile-pic-popup');
 
-        // Toggle the visibility of the notification popup when the bell icon is clicked
-        bellIcon.addEventListener('click', function() {
-            togglePopup(notificationPopup);
-        });
+    // Toggle the visibility of the notification popup when the bell icon is clicked
+    bellIcon.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent clicks from closing the popup
+        togglePopup(notificationPopup);
+    });
 
-        // Show the profile pic popup when profile pic is clicked
-        profilePic.addEventListener('click', function() {
-            togglePopup(profilePicPopup);
-        });
+    // Show the profile pic popup when profile pic is clicked
+    profilePic.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent clicks from closing the popup
+        togglePopup(profilePicPopup);
+    });
 
-        // Function to toggle popup visibility
-        function togglePopup(popup) {
-            if (popup.style.display === 'block') {
-                popup.style.display = 'none';
-            } else {
-                popup.style.display = 'block';
-            }
+    // Close the popup when clicking outside of its container
+    document.body.addEventListener('click', function(event) {
+        if (!notificationPopup.contains(event.target) && !profilePicPopup.contains(event.target)) {
+            notificationPopup.style.display = 'none';
+            profilePicPopup.style.display = 'none';
         }
     });
+
+    // Function to toggle popup visibility
+    function togglePopup(popup) {
+        if (popup.style.display === 'block') {
+            popup.style.display = 'none';
+        } else {
+            popup.style.display = 'block';
+        }
+    }
+});
+
 </script>
 <script>
     // Add a click event listener to the SVG element

@@ -73,7 +73,9 @@
                                     </span>
                                 </a>
                             </div>
-                            <div id="saveButton" class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">Save</div>
+                            <div id="saveButton"
+                                class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">Save
+                            </div>
                             <div id="profile-pic" class="circular-pic position-absolute">
                                 <img src="/assets/admin/img/prof pic.jpg" alt="Profile Picture">
                             </div>
@@ -138,21 +140,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                                                            ============================================ -->
+                                                                                                ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                                ============================================ -->
+                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                                ============================================ -->
+                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                            ============================================ -->
+                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -173,40 +175,40 @@
         });
     </script>
     <script>
-       document.addEventListener('DOMContentLoaded', function() {
-        var fileInput = document.getElementById('file-input');
-        var editIcon = document.querySelector('.editIcon');
-        var imgElement = document.querySelector('#profile-pic img');
+        document.addEventListener('DOMContentLoaded', function() {
+            var fileInput = document.getElementById('file-input');
+            var editIcon = document.querySelector('.editIcon');
+            var imgElement = document.querySelector('#profile-pic img');
 
-        // Handle change event on the file input
-        fileInput.addEventListener('change', function(event) {
-            var file = event.target.files[0];
-            var reader = new FileReader();
+            // Handle change event on the file input
+            fileInput.addEventListener('change', function(event) {
+                var file = event.target.files[0];
+                var reader = new FileReader();
 
-            reader.onload = function(e) {
-                var picUrl = e.target.result;
+                reader.onload = function(e) {
+                    var picUrl = e.target.result;
 
-// console.log( imgElement.src)
-                // Store the image URL in localStorage
-                localStorage.setItem('profilePicUrl', picUrl);
-            };
+                    // console.log( imgElement.src)
+                    // Store the image URL in localStorage
+                    localStorage.setItem('profilePicUrl', picUrl);
+                };
 
-            reader.readAsDataURL(file);
+                reader.readAsDataURL(file);
+            });
+
+            // Handle click event on the edit icon
+            editIcon.addEventListener('click', function(event) {
+                event.preventDefault();
+                fileInput.click();
+            });
         });
 
-        // Handle click event on the edit icon
-        editIcon.addEventListener('click', function(event) {
-            event.preventDefault();
-            fileInput.click();
+        document.addEventListener('DOMContentLoaded', function() {
+            var savedPic = localStorage.getItem('profilePicUrl');
+            if (savedPic) {
+                var imgElement = document.getElementById('profile-image');
+                imgElement.src = savedPicUrl;
+            }
         });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var savedPic = localStorage.getItem('profilePicUrl');
-        if (savedPic) {
-            var imgElement = document.getElementById('profile-image');
-            imgElement.src = savedPicUrl;
-        }
-    });
     </script>
 @endsection
