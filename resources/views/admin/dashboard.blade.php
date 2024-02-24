@@ -870,7 +870,7 @@
 
 
         <div class="row mx-3 my-3 py-2 shadow-sm rounded" style="background-color: white">
-            <p class="dashboard-color-text heading textcolor">Last 20 Day Receivables</p>
+            <p class="dashboard-color-text heading textcolor">Last 20 Days Receivables</p>
 
             <div class="col">
                 <div id="echart-bar-last-leads" style="height: 400px;"></div>

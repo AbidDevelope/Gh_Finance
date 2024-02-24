@@ -118,6 +118,9 @@
     margin-top: 32px;
     margin-right:20px;
     }
+    .cursor{
+        cursor: auto;
+    }
     #search:focus {
     outline: none;
     border-color: var(--own-black) !important;
@@ -362,7 +365,7 @@
                 {{-- searchbar --}}
                 <div class="mt-3 ms-5 col-lg-1 col-md-1 col-sm-1 col-xs-12">
                     <div class=" d-flex">
-                        <input id="search" type="text" class="bg-white form-control  rounded-pill"
+                        <input id="search" type="text" class="bg-white cursor form-control  rounded-pill"
                             style="width: 230px; height: 40px;" placeholder="search">
                         <div class="text-danger">
                             <!-- Adjust the color class applied to the SVG icon -->
