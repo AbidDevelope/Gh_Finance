@@ -32,7 +32,7 @@
 
     .form_container {
         width: 50%;
-        padd
+
     }
 
     /* Optional styling for the form */
@@ -73,12 +73,25 @@
     }
     .eye-toggle {
     position: absolute;
-    right: 10px;
-    top: 50%;
+    right: 15%;
+    top: 37%;
     transform: translateY(-50%);
     cursor: pointer;
 }
+.rounde{
+    background-color: white !important;
+    width: 100% !important;
+    height: 45px !important;
+    border-radius: 25px;
 
+
+}
+.rounde:focus {
+        outline: none !important;
+        /* Removes the default focus outline */
+        box-shadow: none !important;
+        background-color: white !important;
+    }
 </style>
 
 @include('admin.includes.link')
@@ -130,10 +143,9 @@
                             <input type="password" name="password" placeholder="Password" />
                         </div> --}}
                         <div class="mt-3">
-                            {{-- <label for="email" class="text-black-50">Password</label> --}}
-                            <div class="password-input">
-                                <input type="password" name="password" class="rounded-lg" id="passwordField" placeholder="Password" />
-                                <span toggle="#passwordField" class="eye-toggle fa fa-eye-slash"></span>
+                            <div class="password-input d-flex">
+                                <input type="password" name="password" class="rounde " id="passwordField" placeholder="Password" />
+                                <div toggle="#passwordField" class="eye-toggle fa fa-eye-slash"></div>
                             </div>
                         </div>
 
@@ -182,6 +194,6 @@
             this.classList.toggle('fa-eye');
         });
     });
- 
+
 
 </script>
