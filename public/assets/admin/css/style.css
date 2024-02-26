@@ -3679,7 +3679,7 @@ th.fc-day-header.fc-widget-header {
 	text-align:left;
 }
 .mini-navbar #sidebar.active .sidebar-nav .metismenu a {
-    padding: 24px 15px;
+    /* padding: 24px 15px; */
 }
 .review-pro-edt.mg-b-0-pt{
 	margin-bottom:0px;
@@ -3727,7 +3727,7 @@ th.fc-day-header.fc-widget-header {
 }
 
 .trans-hide {
-    transform: translateX(90%);
+    /* transform: translateX(90%); */
 }
 
 .trans-show {

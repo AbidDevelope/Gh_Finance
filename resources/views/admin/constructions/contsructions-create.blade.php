@@ -75,7 +75,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="email" class="form-control" name="manager_email"
+                                                <input placeholder="example@gmail.com" type="email" class="form-control" name="manager_email"
                                                     value="{{ old('manager_email') }}">
                                                 @error('manager_email')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -124,7 +124,7 @@
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Company Details</h5>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Company Name </label>
+                                                <label>Client Name </label>
                                                 <input type="text" name="company_name" class="form-control"
                                                     value="{{ old('company_name') }}">
                                                 @error('company_name')
@@ -134,7 +134,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Project Name </label>
+                                                <label>Contact Name </label>
                                                 <input type="text" name="company_project_name" class="form-control"
                                                     value="{{ old('company_project_name') }}">
                                                 @error('company_project_name')
@@ -145,7 +145,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Email </label>
-                                                <input type="email" name="company_email" class="form-control"
+                                                <input placeholder="example@gmail.com" type="email" name="company_email" class="form-control"
                                                     value="{{ old('company_email') }}">
                                                 @error('company_email')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -190,6 +190,16 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
+                                                <label>Landmark </label>
+                                                <input type="text" name="company_location" class="form-control"
+                                                    value="{{ old('company_location') }}">
+                                                @error('company_location')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
                                                 <label>Country </label>
                                                 <input readonly type="text" name="company_country"
                                                     class="form-control" value="Kuwait">
@@ -201,14 +211,14 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Website URL </label>
-                                                <input type="text" name="company_website" class="form-control"
+                                                <input placeholder="ex:www.abc.com" type="text" name="company_website" class="form-control"
                                                     value="{{ old('company_website') }}">
                                                 @error('company_website')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-9">
                                             <div class="form-group">
                                                 <label>Remarks </label>
                                                 <input type="text" name="company_remarks" class="form-control"
@@ -234,7 +244,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Company Project </label>
+                                                <label>Contact Person </label>
                                                 <input type="text" name="company_project" class="form-control"
                                                     value="{{ old('company_project') }}">
                                                 @error('company_project')
@@ -245,7 +255,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Email </label>
-                                                <input type="email" name="project_email" class="form-control"
+                                                <input placeholder="example@gmail.com" type="email" name="project_email" class="form-control"
                                                     value="{{ old('project_email') }}">
                                                 @error('project_email')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -269,7 +279,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Location </label>
+                                                <label>Project Location </label>
                                                 <input type="text" name="project_location" class="form-control"
                                                     value="{{ old('project_location') }}">
                                                 @error('project_location')
@@ -300,8 +310,8 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Remarks</label>
-                                                <input type="text" name="project_remarks" class="form-control"
+                                                <label>Payment Plan</label>
+                                                <input placeholder="payment plan like 1,2,3..." type="text" name="project_remarks" class="form-control"
                                                     value="{{ old('project_remarks') }}">
                                                 @error('project_remarks')
                                                     <span class="text-danger">{{ $message }}</span>

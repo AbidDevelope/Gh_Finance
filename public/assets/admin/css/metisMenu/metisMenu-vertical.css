@@ -50,7 +50,7 @@
 .sidebar-nav .metismenu a {
     position: relative;
     display: block;
-    padding: 13px 1px;
+    /* padding: 13px 1px; */
     color: #fff;
     outline-width: 0;
     transition: all .3s ease-out;
@@ -58,7 +58,7 @@
 }
 
 .sidebar-nav .metismenu ul a {
-    padding: 10px 15px 1px 46px;
+    padding: 10px 15px 0px 46px;
 }
 
 .sidebar-nav .metismenu ul ul a {
@@ -81,10 +81,10 @@
 	font-size:16px;
 }
 #sidebar.active .metismenu li .mini-click-non{
-	display:none;
+	color: transparent !important;
 }
 #sidebar.active .metismenu li .has-arrow:after{
-	display:none;
+	color: transparent !important;
 }
 #sidebar.active .metismenu li .submenu-angle li a {
     padding: 10px 10px 10px 10px;
