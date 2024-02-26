@@ -1,6 +1,6 @@
 <style>
     .m {
-        margin-top: 50px !important;
+        padding-top: 100px !important;
         margin-left: 12px !important;
         margin-right: 12px !important;
     }
@@ -98,17 +98,26 @@
         padding: 20px;
         border: 1px solid #ccc;
         z-index: 1;
-        right: 7%;
-        backdrop-filter: blur(5px); /* Adjust the blur value as needed */
-    background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity as needed */
+        /* top: 1%; */
+        backdrop-filter: blur(5px);
+        /* Adjust the blur value as needed */
+        background-color: rgba(255, 255, 255, 0.8);
+        /* Adjust the background color and opacity as needed */
 
     }
 
     .detailsPop {
         padding-top: 8%;
     }
-    .name::placeholder{
-font-size: 12px;
+
+    .name::placeholder {
+        font-size: 12px;
+    }
+    .margin_new_pass{
+        padding-right: 120px !important;
+    }
+    .maindiv{
+        height: 100% !important;
     }
 </style>
 
@@ -117,7 +126,7 @@ font-size: 12px;
 </script>
 @extends('admin.layouts.master')
 @section('content')
-    <div class="all-content-wrapper">
+    <div class="all-content-wrapper maindiv">
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
@@ -128,8 +137,8 @@ font-size: 12px;
                                     style="background-image: url('/assets/admin/img/prof pic.jpg'); margin-right:20px"></div>
                                 <a href="#" class="d-flex text-black-50 icon" id="change-profile-pic">
                                     <span class="mt-1 author-log-ic editIcon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="#0f1316" class="bi bi-pencil-square bg-white" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0f1316"
+                                            class="bi bi-pencil-square bg-white" viewBox="0 0 16 16">
                                             <path
                                                 d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                             <path fill-rule="evenodd"
@@ -144,19 +153,55 @@ font-size: 12px;
 
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 shadow-sm bg-white p-3 rounded">
-                            <div class="d-flex justify-content-between">
+                            <div>
+                                <h1 class="text-center">My Profile</h1>
+                                <div class="d-flex justify-content-between">
+                                    <span class="mt-1 ms-2 author-log-ic" id="editIcon" style="cursor: pointer;">Edit Details
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-pencil-square bg-white" viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                                        </svg>
+                                    </span> <br>
+                                    <span class="editPass" id="changePassword" style="cursor: pointer;">Change Password
+                                        <svg style="transform: rotate(90deg);" xmlns="http://www.w3.org/2000/svg"
+                                            width="16" height="16" fill="#0f1316" class="bi bi-key"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8m4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5" />
+                                            <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                                        </svg>
+                                    </span>
 
-                                <h1>My Profile</h1>
-                                <span class="mt-1 ms-2 author-log-ic" id="editIcon">Edit Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        fill="currentColor" class="bi bi-pencil-square bg-white" viewBox="0 0 16 16">
-                                        <path
-                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                        <path fill-rule="evenodd"
-                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
-                                    </svg>
-                                </span>
-                                <div class="popup rounded detailsPop" id="popup" style="width:110%; height:110%;">
+                                    <div class="popup rounded detailsPop" id="popupPassword"
+                                        style="width:110%; height:90%; display: none; margin-top:20px !important;">
+                                        <div class="d-flex justify-content-center" ><h5>Change Password</h5></div>
+                                        <div class="d-flex justify-content-start mt-3">
+                                            <label for="name">Current Password</label>
+                                            <input class="mb-3 name" style="margin-left:33px !important;" type="text"
+                                                name="" id="" placeholder="current password">
+                                        </div>
+                                        <div class="d-flex justify-content-start">
+                                            <label for="name">New Password</label>
+                                            <input class="mb-3 name" style="margin-left:58px !important;" type="text"
+                                                name="" id="" placeholder="new password">
+                                        </div>
+                                        <div class="d-flex justify-content-start">
+                                            <label for="name">Confirm Password</label>
+                                            <input class="mb-3 name" style="margin-left:31px !important;" type="text"
+                                                name="" id="" placeholder="confirm password">
+                                        </div>
+                                        <div class=" d-flex justify-content-center ">
+
+                                            <button class="btn-search btn bgEdit text-white bg-gray-100 " type="submit ">Save
+                                                Changes </button>
+
+                                        </div>
+                                     </div>
+                                </div>
+                                <div class="popup rounded detailsPop" id="popupIcon" style="width:110%; height:100%;">
                                     <div class="d-flex justify-content-center">
                                         <label for="name">Name</label>
                                         <input class="mb-3 name" style="margin-left:33px !important;" type="text"
@@ -248,21 +293,21 @@ font-size: 12px;
     </div>
 
     <!-- metisMenu JS
-                                                                                                                        ============================================ -->
+                                                                                                                                ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                                                            ============================================ -->
+                                                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                                                            ============================================ -->
+                                                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                                                        ============================================ -->
+                                                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -283,30 +328,56 @@ font-size: 12px;
         });
     </script>
 
+    {{-- change password --}}
+    <script>
+        // Get the elements
+        const changePasswordSpan = document.getElementById('changePassword');
+        const popupPassword = document.getElementById('popupPassword');
+
+        // Add click event listener to the "Change Password" span
+        changePasswordSpan.addEventListener('click', function(event) {
+            // Show the popup
+            popupPassword.style.display = 'block';
+
+            // Add a class to the body to apply the blur effect
+            document.body.classList.add('popup-open');
+
+            // Prevent the click event from bubbling up to the document
+            event.stopPropagation();
+        });
+
+        // Add click event listener to the document
+        document.addEventListener('click', function() {
+            // Hide the popup
+            popupPassword.style.display = 'none';
+
+            // Remove the class from the body to remove the blur effect
+            document.body.classList.remove('popup-open');
+        });
+    </script>
     {{-- edit details --}}
     <script>
         // Get the SVG icon element
         const editIcon = document.getElementById('editIcon');
-const popup = document.getElementById('popup');
+        const popup = document.getElementById('popupIcon');
 
-editIcon.addEventListener('click', function() {
-    // Show the popup
-    popup.style.display = 'block';
+        editIcon.addEventListener('click', function() {
+            // Show the popup
+            popup.style.display = 'block';
 
-    // Add a class to the body to apply the blur effect
-    document.body.classList.add('popup-open');
-});
+            // Add a class to the body to apply the blur effect
+            document.body.classList.add('popup-open');
+        });
 
-document.addEventListener('click', function(event) {
-    if (!popup.contains(event.target) && !editIcon.contains(event.target)) {
-        // Hide the popup
-        popup.style.display = 'none';
+        document.addEventListener('click', function(event) {
+            if (!popup.contains(event.target) && !editIcon.contains(event.target)) {
+                // Hide the popup
+                popup.style.display = 'none';
 
-        // Remove the class from the body to remove the blur effect
-        document.body.classList.remove('popup-open');
-    }
-});
-
+                // Remove the class from the body to remove the blur effect
+                document.body.classList.remove('popup-open');
+            }
+        });
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
