@@ -197,6 +197,10 @@
 .textcolor_1{
     color: #7f7f7f !important;
 }
+.col-xl-2:hover svg path {
+    fill: var(--own-black);
+}
+
         </style>
 
         <div class="container-fluid px-2 custom-padding-top">
@@ -219,7 +223,6 @@
                     </div>
                 </div>
                 <div class="gap"></div>
-
                 <div class="col-xl-2 col-md-3 col-sm-6 col-12 p-3 shadow-sm rounded" style="background-color: white">
                     <div class="row align-items-center">
                         <div class="col-4"><svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -754,7 +754,6 @@
 
 
 <script>
-
     document.querySelector('.profile').addEventListener('click', function() {
         document.querySelector('.z').style.display = 'block';
     });
@@ -833,13 +832,34 @@
 </script>
 <script>
     // Add a click event listener to the SVG element
-    let colorsidepicker = document.getElementById('colorsidepicker')
-    let openModal = document.getElementById('openModal')
-    colorsidepicker.addEventListener('click', function() {
-        // Show the modal
-        // $('#myModal').modal('show');
+    document.addEventListener('DOMContentLoaded', function() {
+    let colorsidepicker = document.getElementById('colorsidepicker');
+    let openModal = document.getElementById('openModal');
+
+    // Toggle the modal when colorsidepicker is clicked
+    colorsidepicker.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent clicks from closing the modal
         togglePopup(openModal);
     });
+
+    // Close the modal when clicking outside of it
+    document.addEventListener('click', function(event) {
+        if (!openModal.contains(event.target) && event.target !== colorsidepicker) {
+            closePopup(openModal);
+        }
+    });
+
+    // Function to toggle modal visibility
+    function togglePopup(element) {
+        element.classList.toggle('show');
+    }
+
+    // Function to close modal
+    function closePopup(element) {
+        element.classList.remove('show');
+    }
+});
+
     // document.getElementById('close').addEventListener('click', function() {
     //     // Show the modal
     //     $('#myModal').modal('hide');

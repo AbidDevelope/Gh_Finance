@@ -24,10 +24,12 @@
         /* Removes the default focus outline */
         box-shadow: none !important;
         /* Removes the box shadow */
+
     }
 
     .color {
         background-color: var(--own-black) !important;
+        width: 100% !important;
     }
 
     .form_container {
@@ -54,7 +56,7 @@
     }
 
     .top {
-        padding-top: 50%;
+        padding-top: 47%;
     }
 
     .vertical_line {
@@ -71,26 +73,45 @@
     .colour {
         color: var(--own-black) !important;
     }
+
     .eye-toggle {
-    position: absolute;
-    right: 8%;
-    top:45%;
-    transform: translateY(-50%);
-    cursor: pointer;
-}
-.rounde{
-    background-color: white !important;
-    width: 100% !important;
-    height: 45px !important;
-    border-radius: 25px;
+        position: absolute;
+        right: 8%;
+        top: 45%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    .rounde {
+        background-color: white !important;
+        width: 100% !important;
+        height: 45px !important;
+        border-radius: 25px;
 
 
-}
-.rounde:focus {
+    }
+
+    .rounde:focus {
         outline: none !important;
         /* Removes the default focus outline */
         box-shadow: none !important;
         background-color: white !important;
+    }
+
+    .label-input-container input {
+        border: none;
+        /* This removes the border */
+        outline: none;
+        /* This removes the outline when focused (optional) */
+        /* Add any other styling you need for the input here */
+    }
+
+    .password-input input {
+        border: none;
+        /* This removes the border */
+        outline: none;
+        /* This removes the outline when focused (optional) */
+        /* Add any other styling you need for the input here */
     }
 </style>
 
@@ -144,7 +165,8 @@
                         </div> --}}
                         <div class="mt-3">
                             <div class="password-input position-relative">
-                                <input type="password" name="password" class="rounde" id="passwordField" placeholder="Password" />
+                                <input type="password" name="password" class="rounde" id="passwordField"
+                                    placeholder="Password" />
                                 <div toggle="#passwordField" class="eye-toggle fa fa-eye-slash"></div>
                             </div>
                         </div>
@@ -195,6 +217,4 @@
             this.classList.toggle('fa-eye');
         });
     });
-
-
 </script>
