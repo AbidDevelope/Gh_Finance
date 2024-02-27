@@ -20,9 +20,9 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('login', 'postLogin')->name('admin/login');
     Route::get('register', 'getRegister')->name('admin/register');
     Route::post('register', 'postRegister')->name('admin/register');
-    Route::get('profile', 'profile')->name('profile');
 
     Route::middleware(['adminAuthentication'])->prefix('admin')->group(function(){
+        Route::get('profile', 'profile')->name('profile');
         Route::get('dashboard', 'index')->name('dashboard');
         Route::get('logout', 'logout')->name('admin/logout');
     });

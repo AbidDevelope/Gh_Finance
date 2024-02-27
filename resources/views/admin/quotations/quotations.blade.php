@@ -146,8 +146,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
         <!-- Static Table End -->
     </div>

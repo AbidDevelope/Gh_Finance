@@ -1,4 +1,9 @@
-<div class="footer-copyright-area shadow">
+<style>
+    .mt{
+        margin-top: 190px !important;
+    }
+</style>
+<div class="footer-copyright-area shadow mt">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">

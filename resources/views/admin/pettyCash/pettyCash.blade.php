@@ -109,8 +109,8 @@
                             @csrf
                             <div class="d-flex gap-4">
                                 <input style="width: 230px; height: 35px;" type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                <button type="submit" style="border-color: #0F1316 !important; background-color:#0F1316 !important; color:white !important;"
-                                class="btn border rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
+                                <button type="submit" style="border-color: #0F1316 !important; background-color:var(--own-black) !important; color:white !important;"
+                                class="btn  rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
                                 @if ($errors->has('file'))
                                   <span class="text-danger">{{ $errors->first('file') }}</span>
                                 @endif

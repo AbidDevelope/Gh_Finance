@@ -105,7 +105,7 @@ body {}
     margin-left: 130px;
     transition: all 0.3s;
     background: white;
-    height: 104%;
+    /* height: 100%; */
 }
 .left-sidebar-pro {
     z-index: 1;
