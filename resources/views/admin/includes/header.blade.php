@@ -114,31 +114,46 @@
         /* left: 10%; */
         /* margin-left: 40px !important; */
     }
-    .bel_margin{
-    margin-top: 32px;
-    margin-right:20px;
+
+    .bel_margin {
+        margin-top: 32px;
+        margin-right: 20px;
     }
-    .cursor{
+
+    .cursor {
         cursor: auto;
     }
+
     #search:focus {
-    outline: none;
-    border-color: var(--own-black) !important;
-    box-shadow: none; /* Remove box-shadow */
-    background-color: transparent; /* Remove background color */
-}
-.meMega{
-    margin-left: -20px !important;
-}
-.mebag{
-    margin-right: 40px !important;
-}
-.round{
-    border-radius: 6px !important;
-}
-#openModal {
-    display: none;
-}
+        outline: none;
+        border-color: var(--own-black) !important;
+        box-shadow: none;
+        /* Remove box-shadow */
+        background-color: transparent;
+        /* Remove background color */
+    }
+
+    .meMega {
+        margin-left: -20px !important;
+    }
+
+    .mebag {
+        margin-right: 40px !important;
+    }
+
+    .round {
+        border-radius: 6px !important;
+    }
+
+    #openModal {
+        display: none;
+    }
+    .bg_hover:hover{
+        background-color: #ccc;
+    }
+    .bg_hover{
+        padding-top: 10px !important;
+    }
 </style>
 <div class="header-top-area bg-white">
     <div class="container-fluid">
@@ -383,7 +398,7 @@
                 </div>
 
 
-                <div class="d-flex justify-content-end gap-0 mt-1">
+                <div class="d-flex justify-content-end mt-1">
                     <div class="dropdown" style="margin-top: 17px; margin-right:10px;">
                         <a class="btn btn-secondary dropdown-toggle bg-white text-black-50 border-0" href="#"
                             role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -558,7 +573,7 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="bel_margin rounded" >
+                    <div class="bel_margin rounded">
                         <i id="bell-icon" class="fas fa-bell fa-lg text-black-50"></i>
                         <!-- Adjust size using fa-lg -->
                     </div>
@@ -631,82 +646,41 @@
                     </div>
                     <div class="mt-3">
                         <div id="profile-pic" class="circular-pic"
-                            style="background-image: url('/assets/admin/img/prof pic.jpg'); margin-right:20px" ></div>
+                            style="background-image: url('/assets/admin/img/prof pic.jpg'); margin-right:20px"></div>
                     </div>
                     <!-- Profile Picture Popup Container -->
                     <div id="profile-pic-popup"
                         class="profile_width popup-container pop_profile position-fixed top-10 round translate-middle-y  me-4">
                         <div class="popup-content">
                             <ul class="list-unstyled">
-                                <li class="mb-2 ">
+                                <li class="mb-2 bg_hover">
                                     <a href="{{ route('profile') }}" class="d-flex  text-black-50">
                                         <span> My Profile</span>
-                                        <span class=""><svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-                                          </svg></span>
+                                        <span class=""><svg class="me-1" xmlns="http://www.w3.org/2000/svg"
+                                                width="16" height="16" fill="currentColor"
+                                                class="bi bi-person" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                                            </svg></span>
                                     </a>
                                 </li>
-
-                                {{-- <li class="mb-2 profile"> --}}
-                                <!-- File Input Element -->
-                                {{-- <input type="file" id="file-input" style="display: none;" accept="image/*">
-                                    <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
-                                        <span>Change Password</span>
-                                        <span class="mt-1 icon nalika-edit author-log-ic"></span>
-                                    </a> --}}
-                                {{-- <input type="file" id="file-input" style="display: none;" accept="image/*"> --}}
-                                {{-- <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
-                                        <span>Change Password</span>
-                                        <span class="mt-1 icon nalika-edit author-log-ic"></span>
-                                    </a> --}}
-                                {{-- </li> --}}
-                                <div class=" z position-fixed top-10 translate-middle-y mt-4 me-4" id="profileMod">
-                                    <div class=" he pt-2">
-                                        <!-- Input for current password -->
-                                        <div class="p-1" style="display: inline-block;">
-                                            <label for="curent">Current password:</label>
-                                            <input type="password" id="current-password"
-                                                style="width: 200px; height: 30px;"
-                                                class="p-1 ms-4 form-control rounded" placeholder="Current Password">
-                                        </div>
-                                        <!-- Input for new password -->
-
-                                        {{-- <input type="password" id="new" style="width: 200px; height: 30px;"
-                                            class="p-2 ms-4 form-control rounded" placeholder="New Password"> --}}
-
-
-
-                                        <!-- Input for confirming new password -->
-
-                                        <input type="password" id="Confirm" style="width: 200px; height: 30px;"
-                                            class="p-3 ms-4 form-control rounded" placeholder="Confirm Password">
-
-
-                                    </div>
-                                </div>
-
-                                        {{-- <li class="mb-2">
-                                    <a href="#" class="d-flex  text-black-50">
-                                        <span>Settings</span>
-                                        <span class="mt-1 icon nalika-settings author-log-ic"></span>
+                                <li class="mb-2 bg_hover">
+                                    <a href=" {{ route('admin/logout') }} " class="d-flex  text-black-50">
+                                        <span>Log Out</span>
+                                        <svg class="ms-4 mt-1" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-box-arrow-right"
+                                            viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                                            <path fill-rule="evenodd"
+                                                d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                                        </svg>
                                     </a>
-                                </li> --}}
-                                        <!-- Replace {{ route('admin/logout') }} with the appropriate logout URL -->
-                                        <li class="mb-2">
-                                            <a href=" {{ route('admin/logout') }} " class="d-flex  text-black-50">
-                                                <span>Log Out</span>
-                                                <svg class="ms-4 mt-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
-                                                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-                                                  </svg>
-                                            </a>
-                                        </li>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                {{-- </div> --}}
-                {{-- </div> --}}
             </div>
         </div>
     </div>
@@ -796,74 +770,73 @@
 
 
     document.addEventListener('DOMContentLoaded', function() {
-    var bellIcon = document.getElementById('bell-icon');
-    var notificationPopup = document.getElementById('notification-popup');
-    var profilePic = document.getElementById('profile-pic');
-    var profilePicPopup = document.getElementById('profile-pic-popup');
+        var bellIcon = document.getElementById('bell-icon');
+        var notificationPopup = document.getElementById('notification-popup');
+        var profilePic = document.getElementById('profile-pic');
+        var profilePicPopup = document.getElementById('profile-pic-popup');
 
-    // Toggle the visibility of the notification popup when the bell icon is clicked
-    bellIcon.addEventListener('click', function(event) {
-        event.stopPropagation(); // Prevent clicks from closing the popup
-        togglePopup(notificationPopup);
-    });
+        // Toggle the visibility of the notification popup when the bell icon is clicked
+        bellIcon.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent clicks from closing the popup
+            togglePopup(notificationPopup);
+        });
 
-    // Show the profile pic popup when profile pic is clicked
-    profilePic.addEventListener('click', function(event) {
-        event.stopPropagation(); // Prevent clicks from closing the popup
-        togglePopup(profilePicPopup);
-    });
+        // Show the profile pic popup when profile pic is clicked
+        profilePic.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent clicks from closing the popup
+            togglePopup(profilePicPopup);
+        });
 
-    // Close the popup when clicking outside of its container
-    document.body.addEventListener('click', function(event) {
-        if (!notificationPopup.contains(event.target) && !profilePicPopup.contains(event.target)) {
-            notificationPopup.style.display = 'none';
-            profilePicPopup.style.display = 'none';
+        // Close the popup when clicking outside of its container
+        document.body.addEventListener('click', function(event) {
+            if (!notificationPopup.contains(event.target) && !profilePicPopup.contains(event.target)) {
+                notificationPopup.style.display = 'none';
+                profilePicPopup.style.display = 'none';
+            }
+        });
+
+        // Function to toggle popup visibility
+        function togglePopup(popup) {
+            if (popup.style.display === 'block') {
+                popup.style.display = 'none';
+            } else {
+                popup.style.display = 'block';
+            }
         }
     });
-
-    // Function to toggle popup visibility
-    function togglePopup(popup) {
-        if (popup.style.display === 'block') {
-            popup.style.display = 'none';
-        } else {
-            popup.style.display = 'block';
-        }
-    }
-});
-
 </script>
 <script>
     // Add a click event listener to the SVG element
     document.addEventListener('DOMContentLoaded', function() {
-    let colorsidepicker = document.getElementById('colorsidepicker');
-    let openModal = document.getElementById('openModal');
+        let colorsidepicker = document.getElementById('colorsidepicker');
+        let openModal = document.getElementById('openModal');
 
-    console.log(colorsidepicker); // Check if colorsidepicker is correctly selected
-    console.log(openModal); // Check if openModal is correctly selected
+        console.log(colorsidepicker); // Check if colorsidepicker is correctly selected
+        console.log(openModal); // Check if openModal is correctly selected
 
-    // Toggle the modal when colorsidepicker is clicked
-    colorsidepicker.addEventListener('click', function(event) {
-        event.stopPropagation(); // Prevent clicks from closing the modal
-        togglePopup(openModal);
-    });
+        // Toggle the modal when colorsidepicker is clicked
+        colorsidepicker.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent clicks from closing the modal
+            togglePopup(openModal);
+        });
 
-    // Close the modal when clicking outside of it
-    document.addEventListener('click', function(event) {
-        console.log('Clicked outside');
-        if (!openModal.contains(event.target) && event.target !== colorsidepicker) {
-            openModal.style.display = 'none';
+        // Close the modal when clicking outside of it
+        document.addEventListener('click', function(event) {
+            console.log('Clicked outside');
+            if (!openModal.contains(event.target) && event.target !== colorsidepicker) {
+                openModal.style.display = 'none';
+            }
+        });
+
+        function togglePopup(popup) {
+            if (window.getComputedStyle(popup).display === 'block') {
+                popup.style.display = 'none';
+            } else {
+                popup.style.display = 'block';
+            }
         }
+
     });
-
-    function togglePopup(popup) {
-        if (window.getComputedStyle(popup).display === 'block') {
-            popup.style.display = 'none';
-        } else {
-            popup.style.display = 'block';
-        }
-    }
-
-});
 
 
     // document.getElementById('close').addEventListener('click', function() {

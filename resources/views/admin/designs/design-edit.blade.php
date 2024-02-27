@@ -258,7 +258,7 @@
                                         </div>
                                     </div>
                                     <!-- <div class="row"> -->
-                                    <button type="submit" class="btn btn-create btn-lg mt-5">UPDATE</button>
+                                    <button type="submit" class="btn btn-create btn-lg mt-5" style="background-color: var(--own-black);">UPDATE</button>
                                     <!-- </div> -->
                                 </form>
                             </div>

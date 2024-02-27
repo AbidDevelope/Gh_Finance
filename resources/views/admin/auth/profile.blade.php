@@ -103,7 +103,7 @@
         /* Adjust the blur value as needed */
         background-color: rgba(255, 255, 255, 0.8);
         /* Adjust the background color and opacity as needed */
-
+top: 0%;
     }
 
     .detailsPop {
@@ -176,7 +176,7 @@
                                     </span>
 
                                     <div class="popup rounded detailsPop" id="popupPassword"
-                                        style="width:110%; height:90%; display: none; margin-top:20px !important;">
+                                        style="width:110%; height:100%; display: none; ">
                                         <div class="d-flex justify-content-center" ><h5>Change Password</h5></div>
                                         <div class="d-flex justify-content-start mt-3">
                                             <label for="name">Current Password</label>
@@ -196,7 +196,7 @@
                                         <div class=" d-flex justify-content-center ">
 
                                             <button class="btn-search btn bgEdit text-white bg-gray-100 " type="submit ">Save
-                                                Changes </button>
+                                                </button>
 
                                         </div>
                                      </div>
