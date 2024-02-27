@@ -36,21 +36,18 @@
                                                     <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Consumption Month:</td>
+                                                    <td>Month:</td>
                                                     <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Consumption Unit:</td>
+                                                    <td>Description:</td>
                                                     <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Amount:</td>
                                                     <td class="text-right"></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Due Date:</td>
-                                                    <td class="text-right"></td>
-                                                </tr>
+                                               
 
                                                 <tr>
                                                     <td>Payment Mode:</td>

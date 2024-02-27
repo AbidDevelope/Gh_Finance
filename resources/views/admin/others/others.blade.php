@@ -39,7 +39,7 @@
 
                         <div class="container margin_bottom">
                             <div class="pb">
-                                <h4 class=" text-headings">Others</h4>
+                                <h4 class=" text-headings">Reimburse</h4>
                             </div>
                             <div class="text-right">
 

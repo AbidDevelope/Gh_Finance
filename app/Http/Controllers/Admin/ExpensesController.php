@@ -77,7 +77,7 @@ class ExpensesController extends Controller
 
     public function miscellaneousEdit($id)
     {
-        $miscellaneous = Miscellaneous::with('miscellaneousItem')->findOrFail($id);
+        $miscellaneous = Miscellaneous::with('miscellaneousItems')->findOrFail($id);
         return view('admin.miscellaneous.miscellaneous-edit', compact('miscellaneous'));
     }
 

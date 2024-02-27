@@ -36,7 +36,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($miscellaneous->miscellaneousItem as $item)
+                                                        @foreach ($miscellaneous->miscellaneousItems as $item)
                                                             <tr>
                                                                 <td>
                                                                     <input class="form-control" type="text"
