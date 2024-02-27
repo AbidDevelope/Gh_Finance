@@ -155,7 +155,7 @@
                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 shadow-sm bg-white p-3 rounded">
                             <div>
                                 <h1 class="text-center">My Profile</h1>
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-between  mt-5">
                                     <span class="mt-1 ms-2 author-log-ic" id="editIcon" style="cursor: pointer;">Edit Details
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-pencil-square bg-white" viewBox="0 0 16 16">

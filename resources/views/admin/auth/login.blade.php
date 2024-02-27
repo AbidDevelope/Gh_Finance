@@ -100,18 +100,16 @@
 
     .label-input-container input {
         border: none;
-        /* This removes the border */
+
         outline: none;
-        /* This removes the outline when focused (optional) */
-        /* Add any other styling you need for the input here */
+      
     }
 
     .password-input input {
         border: none;
-        /* This removes the border */
+
         outline: none;
-        /* This removes the outline when focused (optional) */
-        /* Add any other styling you need for the input here */
+
     }
 </style>
 

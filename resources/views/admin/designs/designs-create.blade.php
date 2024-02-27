@@ -133,10 +133,10 @@
                                     </div>
 
                                     <div class="row mt-3">
-                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Company Details</h5>
+                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Client Details</h5>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Client Name </label>
+                                                <label>Company Name </label>
                                                 <input type="text" name="company_name" class="form-control"
                                                     value="{{ old('company_name') }}">
                                                 @error('company_name')
