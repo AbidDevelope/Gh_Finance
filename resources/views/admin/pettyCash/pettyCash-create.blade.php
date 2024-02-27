@@ -153,7 +153,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="5" class="text-right" style="font-size: 15px;">
-                                                                Total Amount Withdrwan :
+                                                                Total Amount Withdrawn :
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px;width: 230px">

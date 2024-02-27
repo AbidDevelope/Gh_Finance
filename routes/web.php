@@ -86,6 +86,27 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::post('export-excel-csv', 'pettyCashImport')->name('export-excel-csv');
     // Petty cash
     // Route::post('pettyCash/create', 'pettyCashCreate')->name('pettyCash/create');
+
+    // Payroll Route Start
+    Route::get('payroll', 'payroll')->name('payroll');
+    Route::get('payroll/create', 'payrollCreate')->name('payroll/create');
+    Route::get('payroll/view', 'payrollView')->name('payroll/view');
+    Route::get('payroll/edit', 'payrollEdit')->name('payroll/edit');
+
+    Route::get('rent', 'rent')->name('rent');
+    Route::get('rent/create', 'rentCreate')->name('rent/create');
+    Route::get('rent/view', 'rentView')->name('rent/view');
+    Route::get('rent/edit', 'rentEdit')->name('rent/edit');
+
+    Route::get('electricity', 'electricity')->name('electricity');
+    Route::get('electricity/create', 'electricityCreate')->name('electricity/create');
+    Route::get('electricity/view', 'electricityView')->name('electricity/view');
+    Route::get('electricity/edit', 'electricityEdit')->name('electricity/edit');
+
+    Route::get('others', 'others')->name('others');
+    Route::get('others/create', 'othersCreate')->name('others/create');
+    Route::get('others/view', 'othersView')->name('others/view');
+    Route::get('others/edit', 'othersEdit')->name('others/edit');
 });
 Route::get('/project-data/{id}',[ExpensesController::class, 'projectDataGet'])->name('project.data');
 

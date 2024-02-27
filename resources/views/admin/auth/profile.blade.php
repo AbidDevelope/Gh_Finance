@@ -103,7 +103,7 @@
         /* Adjust the blur value as needed */
         background-color: rgba(255, 255, 255, 0.8);
         /* Adjust the background color and opacity as needed */
-top: 0%;
+        top: 0%;
     }
 
     .detailsPop {
@@ -113,10 +113,12 @@ top: 0%;
     .name::placeholder {
         font-size: 12px;
     }
-    .margin_new_pass{
+
+    .margin_new_pass {
         padding-right: 120px !important;
     }
-    .maindiv{
+
+    .maindiv {
         height: 100% !important;
     }
 </style>
@@ -156,7 +158,8 @@ top: 0%;
                             <div>
                                 <h1 class="text-center">My Profile</h1>
                                 <div class="d-flex justify-content-between  mt-5">
-                                    <span class="mt-1 ms-2 author-log-ic" id="editIcon" style="cursor: pointer;">Edit Details
+                                    <span class="mt-1 ms-2 author-log-ic" id="editIcon" style="cursor: pointer;">Edit
+                                        Details
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-pencil-square bg-white" viewBox="0 0 16 16">
                                             <path
@@ -177,7 +180,9 @@ top: 0%;
 
                                     <div class="popup rounded detailsPop" id="popupPassword"
                                         style="width:110%; height:100%; display: none; ">
-                                        <div class="d-flex justify-content-center" ><h5>Change Password</h5></div>
+                                        <div class="d-flex justify-content-center">
+                                            <h5>Change Password</h5>
+                                        </div>
                                         <div class="d-flex justify-content-start mt-3">
                                             <label for="name">Current Password</label>
                                             <input class="mb-3 name" style="margin-left:33px !important;" type="text"
@@ -195,11 +200,12 @@ top: 0%;
                                         </div>
                                         <div class=" d-flex justify-content-center ">
 
-                                            <button class="btn-search btn bgEdit text-white bg-gray-100 " type="submit ">Save
-                                                </button>
+                                            <button class="btn-search btn bgEdit text-white bg-gray-100 "
+                                                type="submit ">Save
+                                            </button>
 
                                         </div>
-                                     </div>
+                                    </div>
                                 </div>
                                 <div class="popup rounded detailsPop" id="popupIcon" style="width:110%; height:100%;">
                                     <div class="d-flex justify-content-center">
@@ -293,21 +299,21 @@ top: 0%;
     </div>
 
     <!-- metisMenu JS
-                                                                                                                                ============================================ -->
+                                                                                                                                    ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                                                                    ============================================ -->
+                                                                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                                                                    ============================================ -->
+                                                                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                                                                ============================================ -->
+                                                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
