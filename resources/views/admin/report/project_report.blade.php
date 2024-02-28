@@ -119,7 +119,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        {{-- <tr>
                                             <td style="border-radius: 0 !important;">1</td>
                                             <td style="border-radius: 0 !important;">21/2/2024</td>
                                             <td style="border-radius: 0 !important;">design</td>
@@ -142,7 +142,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>
