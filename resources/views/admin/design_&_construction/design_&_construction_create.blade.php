@@ -60,8 +60,11 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Select Date</label>
-                                                <input type="text" id="date" name="date" class="form-control"
+                                                <input type="text" name="date" class="form-control datepicker"
                                                     placeholder="DD/MM/YYYY">
+                                                @error('date')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -77,8 +80,8 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input placeholder="example@gmail.com" type="email" class="form-control" name="manager_email"
-                                                    value="{{ old('manager_email') }}">
+                                                <input placeholder="example@gmail.com" type="email" class="form-control"
+                                                    name="manager_email" value="{{ old('manager_email') }}">
                                                 @error('manager_email')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -136,10 +139,10 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Contact Name </label>
-                                                <input type="text" name="company_project_name" class="form-control"
-                                                    value="{{ old('company_project_name') }}">
-                                                @error('company_project_name')
+                                                <label>Contact Person </label>
+                                                <input type="text" name="contact_name" class="form-control"
+                                                    value="{{ old('contact_name') }}">
+                                                @error('contact_name')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -147,9 +150,9 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Email </label>
-                                                <input placeholder="example@gmail.com" type="email" name="company_email" class="form-control"
-                                                    value="{{ old('company_email') }}">
-                                                @error('company_email')
+                                                <input placeholder="example@gmail.com" type="email" name="client_email"
+                                                    class="form-control" value="{{ old('client_email') }}">
+                                                @error('client_email')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -161,10 +164,10 @@
                                                     <div class="mt2 ms-3">+965</div>
                                                     <input type="text" class="rounded no_border num_margin"
                                                         style=" width: 160px; height:39px;" placeholder=""
-                                                        name="company_mobile" onkeypress="return /[0-9]/i.test(event.key)"
-                                                        maxlength="10" value="{{ old('company_mobile') }}">
+                                                        name="client_mobile" onkeypress="return /[0-9]/i.test(event.key)"
+                                                        maxlength="10" value="{{ old('client_mobile') }}">
                                                 </div>
-                                                @error('company_mobile')
+                                                @error('client_mobile')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -193,9 +196,9 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Landmark </label>
-                                                <input type="text" name="company_location" class="form-control"
-                                                    value="{{ old('company_location') }}">
-                                                @error('company_location')
+                                                <input type="text" name="company_landmark" class="form-control"
+                                                    value="{{ old('company_landmark') }}">
+                                                @error('company_landmark')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -212,15 +215,15 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Website URL </label>
-                                                <input placeholder="ex:www.abc.com" type="text" name="company_website" class="form-control"
-                                                    value="{{ old('company_website') }}">
+                                                <label>Website </label>
+                                                <input placeholder="ex:www.abc.com" type="text" name="company_website"
+                                                    class="form-control" value="{{ old('company_website') }}">
                                                 @error('company_website')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-9">
                                             <div class="form-group">
                                                 <label>Remarks </label>
                                                 <input type="text" name="company_remarks" class="form-control"
@@ -247,9 +250,9 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Contact Person </label>
-                                                <input type="text" name="company_project" class="form-control"
-                                                    value="{{ old('company_project') }}">
-                                                @error('company_project')
+                                                <input type="text" name="contact_person" class="form-control"
+                                                    value="{{ old('contact_person') }}">
+                                                @error('contact_person')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -257,7 +260,8 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Email </label>
-                                                <input placeholder="example@gmail.com" type="email" name="project_email" class="form-control"
+                                                <input placeholder="example@gmail.com" type="email"
+                                                    name="project_email" class="form-control"
                                                     value="{{ old('project_email') }}">
                                                 @error('project_email')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -313,9 +317,10 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Payment Plan</label>
-                                                <input placeholder="payment plan like 1,2,3..." type="text" name="project_remarks" class="form-control"
-                                                    value="{{ old('project_remarks') }}">
-                                                @error('project_remarks')
+                                                <input placeholder="payment plan like 1,2,3..." type="text"
+                                                    name="payment_plan" class="form-control"
+                                                    value="{{ old('payment_plan') }}">
+                                                @error('payment_plan')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -331,6 +336,7 @@
                                         </div>
                                     </div>
 
+
                                     <div class="row mt-3">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
                                         <div class="table-responsive">
@@ -344,8 +350,8 @@
                                                                     alt=""></a>
                                                         </td>
                                                         <td>
-                                                            <select name="paymentMode[]"
-                                                                class="form-control payment-mode">
+                                                            <select name="paymentMode[]" class="form-control payment-mode"
+                                                                id="paymentMode">
                                                                 <option value="" disabled selected>Select Mode
                                                                 </option>
                                                                 <option value="Cash">Cash</option>
@@ -354,9 +360,9 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control common-field" type="text"
-                                                                placeholder="DD/MM/YYYY" id="paymentDate" name="date2[]"
-                                                                style="display: none">
+                                                            <input class="form-control common-field datepicker"
+                                                                type="text" placeholder="DD/MM/YYYY"
+                                                                name="payment_date[]" style="display: none">
                                                         </td>
                                                         <td>
                                                             <input class="form-control common-field" type="text"
@@ -403,38 +409,40 @@
         </div>
     </div>
     <!-- metisMenu JS
-                            ============================================ -->
+                                ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
-    <!-- main JS
-                                                            ============================================ -->
+    <!-- main JS                                                          ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
-    {{-- Data table JS --}}
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+ 
     {{-- Add or remove section script start --}}
     <script>
         $(document).ready(function() {
             var maxField = 5;
             var addButton = $('#add-row');
             var wrapper = $('#customFields');
-            // var fieldHTML = '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field" type="date" name="date[]" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td></tr>'; // New input field html
             var fieldHTML =
-                '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field" type="date" name="date2[]" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
+                '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field datepicker" type="text" name="payment_date[]" placeholder="DD/MM/YYYY" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
             var x = 1;
 
             $(addButton).click(function() {
                 if (x < maxField) {
                     x++;
                     $(wrapper).append(fieldHTML);
+                    $('.datepicker').datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        dateFormat: 'dd/mm/yy'
+                    });
                 } else {
                     alert('A maximum of ' + maxField + 'fields are allowed.');
                 }
@@ -469,21 +477,12 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'date') { //Start date selected - update End Date picker
-                $("#end_date").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#date").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#date, #end_date').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+        $(document).ready(function(){
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy' 
+            });
+        });
     </script>
 @endsection

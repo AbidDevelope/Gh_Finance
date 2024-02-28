@@ -58,7 +58,7 @@
                                                 <!-- Input with Bootstrap styling -->
                                                 <input type="text" id="start_date" name="start_date"
                                                     placeholder="Select Start Date"
-                                                    class="form-control bg-white rounded text-black-50"
+                                                    class="form-control bg-white rounded text-black-50 datepicker"
                                                     style="width: 230px; height: 35px;" value="{{ old('start_date') }}">
                                                 @if ($errors->has('start_date'))
                                                     <span class="text-danger">{{ $errors->first('start_date') }}</span>
@@ -70,7 +70,7 @@
                                             <div class=" form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Se/lect End Date:</label> --}}
                                                 <input type="text" id="end_date"
-                                                    class="form-control bg-white text-black-50 rounded" name="end_date"
+                                                    class="form-control bg-white text-black-50 rounded datepicker" name="end_date"
                                                     placeholder="Select End Date" value="{{ old('end_date') }}" style="width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
@@ -195,9 +195,7 @@
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
-    <script>
-        flatpickr(".datepicker", {});
-    </script>
+
     <script>
         const choices = new Choices('[data-trigger]', {
             searchEnabled: false,
@@ -207,23 +205,14 @@
     {{-- Date Format  --}}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    {{-- date Format --}}
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'start_date') { //Start date selected - update End Date picker
-                $("#end_date").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#start_date").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#start_date, #end_date').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
-    </script>
+        $(document).ready(function(){
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+        </script>
+    {{-- date Format --}}
 @endsection

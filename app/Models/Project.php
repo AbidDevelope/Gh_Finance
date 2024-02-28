@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Invoice;
 use App\Models\ProjectManager;
 use App\Models\Expense;
+use App\Models\Payment;
 
 class Project extends Model
 {
@@ -19,29 +20,32 @@ class Project extends Model
         'Manager_mobile',
         'Manager_landline',
         'manager_remarks',
+
         'company_name',
-        'company_project_name',
-        'company_email',
-        'company_mobile',
+        'contact_name',
+        'client_email',
+        'client_mobile',
         'company_landline',
         'company_location',
+        'company_landmark',
         'company_country',
         'company_website',
         'company_remarks',
+
         'project_name',
-        'company_project',
+        'contact_person',
         'project_email',
         'project_mobile',
         'project_location',
         'project_value',
         'project_country',
-        'project_remarks',
+        'payment_plan',
         'project_description',
     ];
 
-    public function beneficiary()
+    public function payments()
     {
-        return $this->belongsTo(Beneficiary::class);
+        return $this->hasMany(Payment::class);
     }
 
     public function projectManager()
