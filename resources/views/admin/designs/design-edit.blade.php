@@ -207,17 +207,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Landmark </label>
-                                                <input type="text" name="company_landmark" class="form-control"
-                                                    value="{{ $projects->company_landmark }}">
-                                                @error('company_landmark')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Country </label>
                                                 <input readonly type="text" name="company_country"

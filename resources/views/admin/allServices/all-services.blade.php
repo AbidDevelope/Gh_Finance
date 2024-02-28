@@ -15,6 +15,9 @@
     .bg {
         background-color: white !important;
     }
+    .placeholder::placeholder{
+        font-size:15px !important;
+    }
 </style>
 
 <script>

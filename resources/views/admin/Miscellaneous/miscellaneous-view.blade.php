@@ -33,7 +33,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($miscell->miscellaneousItem as $key => $item)
+                                                    @foreach ($miscell->miscellaneousItems as $key => $item)
                                                         <tr class="items">
                                                             <td class="text-center" style="border-radius: 0 !important;">{{ $key + 1 }}</td>
                                                             <td style="border-radius: 0 !important;">{{ $item->description }}</td>

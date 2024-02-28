@@ -27,6 +27,9 @@
     .pb {
         margin-bottom: -50px !important;
     }
+    .placeholder::placeholder{
+        font-size:15px !important;
+    }
 </style>
 
 @extends('admin.layouts.master')
@@ -54,11 +57,6 @@
                                             <i class="fa fa-file-export"></i> Export
                                         </button>
                                     </div>
-                                    {{-- @csrf
-                                <div>
-                                    <input type ="file" name="file">
-                                    <button type="submit" class="btn btn-primary mt-4">Export</button>
-                                </div> --}}
 
                             </div>
                         </div>
@@ -73,8 +71,8 @@
 
                                             <input type="text" name="start_date" id="start_date"
                                                 placeholder="Select Start Date"
-                                                class="form-control bg-white rounded text-black-50"
-                                                style="width: 230px; height: 35px;" value="{{ old('start_date') }}">
+                                                class="form-control bg-white placeholder rounded text-black-50"
+                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid black;" value="{{ old('start_date') }}">
                                             @if ($errors->has('start_date'))
                                                 <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                             @endif
@@ -85,8 +83,8 @@
                                             {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
                                             <!-- Input with Bootstrap styling -->
                                             <input type="text" id="end_date"
-                                                class="form-control bg-white text-black-50 rounded" name="end_date"
-                                                placeholder="Select End Date" style="width: 230px; height: 35px;"
+                                                class="form-control placeholder bg-white text-black-50 rounded" name="end_date"
+                                                placeholder="Select End Date" style="box-shadow: none; border: 1px solid black; width: 230px; height: 35px;"
                                                 value="{{ old('end_date') }}">
                                             @if ($errors->has('end_date'))
                                                 <span class="text-danger">{{ $errors->first('end_date') }}</span>
@@ -103,7 +101,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="container">
+                    {{-- <div class="container">
 
                         <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -116,7 +114,7 @@
                                 @endif
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         @if (Session::has('success'))
                             <div class="alert alert-success">
@@ -136,6 +134,7 @@
                                         <tr role="row">
                                             <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Date</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Employee Name</th>
 
                                             <th class="text-center" style="border-radius: 0 !important;">Total Amount</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Actions</th>
@@ -148,6 +147,7 @@
                                                 <tr>
                                                     <td class="text-center" style="border-radius: 0 !important;"></td>
 
+                                                    <td class="text-center" style="border-radius: 0 !important;"></td>
                                                     <td class="text-center" style="border-radius: 0 !important;"></td>
                                                     <td class="text-center" style="border-radius: 0 !important;"></td>
 
@@ -177,7 +177,7 @@
                                             {{-- @endforeach --}}
                                         {{-- @else --}}
                                             <tr>
-                                                <td colspan="4" class="text-center">No Record Found</td>
+                                                <td colspan="5" class="text-center">No Record Found</td>
                                             </tr>
                                         {{-- @endif --}}
                                     </tbody>

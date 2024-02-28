@@ -27,6 +27,9 @@
     .pb {
         margin-bottom: -50px !important;
     }
+    .placeholder::placeholder{
+        font-size:15px !important;
+    }
 </style>
 
 @extends('admin.layouts.master')
@@ -36,25 +39,24 @@
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="row margin_top px-2">
-
                         <div class="container margin_bottom">
                             <div class="pb">
                                 <h4 class=" text-headings">Petty Cash</h4>
                             </div>
                             <div class="text-right">
 
-                                    <div class="table-actions">
-                                        <a href="{{ route('pettyCash/create') }}"
-                                            class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                            <i class="fa fa-plus"></i> Create
-                                        </a>
-                                        <button type="type" id="export"
-                                            class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
-                                            style="border-color: var(--own-black) !important;">
-                                            <i class="fa fa-file-export"></i> Export
-                                        </button>
-                                    </div>
-                                    {{-- @csrf
+                                <div class="table-actions">
+                                    <a href="{{ route('pettyCash/create') }}"
+                                        class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
+                                        <i class="fa fa-plus"></i> Create
+                                    </a>
+                                    <button type="type" id="export"
+                                        class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
+                                        style="border-color: var(--own-black) !important;">
+                                        <i class="fa fa-file-export"></i> Export
+                                    </button>
+                                </div>
+                                {{-- @csrf
                                 <div>
                                     <input type ="file" name="file">
                                     <button type="submit" class="btn btn-primary mt-4">Export</button>
@@ -73,8 +75,9 @@
 
                                             <input type="text" name="start_date" id="start_date"
                                                 placeholder="Select Start Date"
-                                                class="form-control bg-white rounded text-black-50"
-                                                style="width: 230px; height: 35px;" value="{{ old('start_date') }}">
+                                                class="form-control placeholder bg-white rounded text-black-50"
+                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid black;"
+                                                value="{{ old('start_date') }}">
                                             @if ($errors->has('start_date'))
                                                 <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                             @endif
@@ -85,8 +88,9 @@
                                             {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
                                             <!-- Input with Bootstrap styling -->
                                             <input type="text" id="end_date"
-                                                class="form-control bg-white text-black-50 rounded" name="end_date"
-                                                placeholder="Select End Date" style="width: 230px; height: 35px;"
+                                                class="form-control placeholder bg-white text-black-50 rounded" name="end_date"
+                                                placeholder="Select End Date"
+                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid black;"
                                                 value="{{ old('end_date') }}">
                                             @if ($errors->has('end_date'))
                                                 <span class="text-danger">{{ $errors->first('end_date') }}</span>
@@ -108,11 +112,13 @@
                         <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="d-flex gap-4">
-                                <input style="width: 230px; height: 35px;" type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                <button type="submit" style="border-color: #0F1316 !important; background-color:var(--own-black) !important; color:white !important;"
-                                class="btn  rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
+                                <input style="width: 230px; height: 35px;box-shadow: none; border: 1px solid #ccc;"
+                                    type ="file" name="file" class="form-control bg-white rounded text-black-50">
+                                <button type="submit"
+                                    style=" !important; background-color:var(--own-black) !important; color:white !important;"
+                                    class="btn  rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
                                 @if ($errors->has('file'))
-                                  <span class="text-danger">{{ $errors->first('file') }}</span>
+                                    <span class="text-danger">{{ $errors->first('file') }}</span>
                                 @endif
                             </div>
                         </form>
@@ -132,50 +138,59 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
                         <div class="">
                             <table id="dataTable">
-                                    <thead>
-                                        <tr role="row">
-                                            <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
-                                            <th class="text-center" style="border-radius: 0 !important;">Date</th>
-                                            <th class="text-center" style="border-radius: 0 !important;">Project Name</th>
-                                            <th>Beneficiary</th>
-                                            <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
-                                            <th class="text-center" style="border-radius: 0 !important;">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {{-- @dd($expenses) --}}
-                                        @if (count($expenses) > 0)
-                                            @foreach ($expenses as $index => $item)
-                                                <tr>
-                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $index + 1 }}</td>
-                                                    <td class="text-center" style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
-                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->project }}</td>
-                                                    <td>{{ $item->beneficiary }}</td>
-                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->amount_deposited }}</td>
-                                                    <td class="text-center" style="border-radius: 0 !important;">
-                                                        <div class="dropdown dropdown-action">
-                                                            <a href="#" class="action-icon" data-toggle="dropdown"
-                                                                aria-expanded="false"><img
-                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
-                                                                    alt=""></a>
-                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('expenses/view', $item->id) }}"><i
-                                                                        class="fa fa-eye m-r-5"></i> View</a>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('expenses/edit', $item->id) }}"><i
-                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('expenses/delete', $item->id) }}"><i
-                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                            </div>
+                                <thead>
+                                    <tr role="row">
+                                        <th class="text-center"
+                                            style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Date</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Project Name</th>
+                                        <th>Beneficiary</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{-- @dd($expenses) --}}
+                                    @if (count($expenses) > 0)
+                                        @foreach ($expenses as $index => $item)
+                                            <tr>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $index + 1 }}</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $item->project }}</td>
+                                                <td>{{ $item->beneficiary }}</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $item->amount_deposited }}</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon" data-toggle="dropdown"
+                                                            aria-expanded="false"><img
+                                                                src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                alt=""></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('expenses/view', $item->id) }}"><i
+                                                                    class="fa fa-eye m-r-5"></i> View</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('expenses/edit', $item->id) }}"><i
+                                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('expenses/delete', $item->id) }}"><i
+                                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
-                                    </tbody>
-                                </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="6" class="text-center">No Record Found</td>
+                                        </tr>
+                                    @endif
+                                </tbody>
+                            </table>
 
                         </div>
                     </div>
@@ -190,21 +205,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                        ============================================ -->
+                                                                ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                            ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                            ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                        ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}

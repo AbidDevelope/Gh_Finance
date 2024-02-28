@@ -17,6 +17,9 @@
     .pb{
         margin-bottom: -50px !important;
     }
+    .placeholder::placeholder{
+        font-size:15px !important;
+    }
 </style>
 
 @extends('admin.layouts.master')
