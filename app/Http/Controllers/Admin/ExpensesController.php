@@ -71,7 +71,7 @@ class ExpensesController extends Controller
 
     public function miscellaneousView($id)
     {
-        $miscell = Miscellaneous::where('id', $id)->with('miscellaneousItem')->first();
+        $miscell = Miscellaneous::where('id', $id)->with('miscellaneousItems')->first();
         return view('admin.miscellaneous.miscellaneous-view', compact('miscell'));
     }
 

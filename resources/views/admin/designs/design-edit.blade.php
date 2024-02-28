@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Project Name </label>
+                                                <label>Contact Person </label>
                                                 <input type="text" name="company_project_name" class="form-control"
                                                     value="{{ $projects->company_project_name }}">
                                                 @error('company_project_name')
@@ -133,7 +133,17 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Location </label>
+                                                <label>Project Location </label>
+                                                <input type="text" name="company_location" class="form-control"
+                                                    value="{{ $projects->company_location }}">
+                                                @error('company_location')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Landmark </label>
                                                 <input type="text" name="company_location" class="form-control"
                                                     value="{{ $projects->company_location }}">
                                                 @error('company_location')
@@ -161,16 +171,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Remarks </label>
-                                                <input type="text" name="company_remarks" class="form-control"
-                                                    value="{{ $projects->company_remarks }}">
-                                                @error('company_remarks')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
+
                                     </div>
 
                                     <div class="row mt-3">
@@ -186,7 +187,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Company Project </label>
+                                                <label>Contact Person </label>
                                                 <input type="text" name="company_project" class="form-control" value="{{ $projects->company_project }}">
                                                 @error('company_project')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -240,8 +241,9 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Remarks</label>
-                                                <input type="text" name="project_remarks" class="form-control" value="{{ $projects->project_remarks }}">
+                                                <label>Payment Plan</label>
+                                                <input  placeholder="payment plan like 1,2,3..." type="text" name="project_remarks" class="form-control"
+                                                    value="">
                                                 @error('project_remarks')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror

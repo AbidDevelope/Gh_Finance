@@ -36,7 +36,7 @@
                                                     <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Month:</td>
+                                                    <td>Employee Name:</td>
                                                     <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
@@ -47,10 +47,12 @@
                                                     <td>Amount:</td>
                                                     <td class="text-right"></td>
                                                 </tr>
-                                               
-
                                                 <tr>
                                                     <td>Payment Mode:</td>
+                                                    <td class="text-right"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Payment Date:</td>
                                                     <td class="text-right"></td>
                                                 </tr>
                                                 <tr>

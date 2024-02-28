@@ -15,6 +15,9 @@
     .bg {
         background-color: white !important;
     }
+    .placeholder::placeholder{
+        font-size:15px !important;
+    }
 </style>
 
 <script>
@@ -61,8 +64,8 @@
                                                 <!-- Input with Bootstrap styling -->
                                                 <input type="text" id="start_date" name="start_date"
                                                     placeholder="Select Start Date"
-                                                    class="form-control bg-white rounded text-black-50"
-                                                    style="width: 230px; height: 35px;">
+                                                    class="form-control placeholder bg-white rounded text-black-50"
+                                                    style= "box-shadow: none; border: 1px solid black; width: 230px; height: 35px;">
                                                 @if ($errors->has('start_date'))
                                                     <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                                 @endif
@@ -72,9 +75,9 @@
                                         <div class="container d-flex gap-4 ">
                                             <div class=" form-group">
                                                 {{-- <input class="form-control common-field" type="date" id="date2[]" name="date2[]" style="display: none"> --}}
-                                                <input type="text" id="end_date"
-                                                    class="form-control bg-white text-black-50 rounded" name="end_date"
-                                                    placeholder="Select End Date" style="width: 230px; height: 35px;">
+                                                <input  type="text" id="end_date"
+                                                    class="form-control placeholder bg-white text-black-50 rounded" name="end_date"
+                                                    placeholder="Select End Date" style="box-shadow: none; border: 1px solid black; width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif

@@ -43,7 +43,7 @@
 
 .mCSB_scrollTools {
     position: absolute;
-    width: 16px;
+    /* width: 16px; */
     height: auto;
     left: auto;
     top: 0;

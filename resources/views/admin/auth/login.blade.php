@@ -17,6 +17,7 @@
         border-radius: 25px;
         background-color: white !important;
         height: 45px !important;
+        outline: none !important;
     }
 
     .roundedlg:focus {
@@ -28,7 +29,7 @@
     }
 
     .color {
-        background-color: var(--own-black) !important;
+        background-color:  var(--own-black) !important;
         width: 100% !important;
     }
 
@@ -99,15 +100,13 @@
     }
 
     .label-input-container input {
-        border: none;
-
+        border: 1px solid #ccc;
         outline: none;
-      
+
     }
 
     .password-input input {
-        border: none;
-
+        border: 1px solid #ccc;
         outline: none;
 
     }
@@ -152,15 +151,13 @@
                     @endif
                     <div class="">
                         <div class="label-input-container">
-                            {{-- <label for="email" class="text-black-50">Email Address</label> --}}
+
                             <input type="email" name="email" class=" roundedlg" placeholder="Username" />
                         </div>
                         @error('email')
                             <span style="color: red">{{ $message }}</span>
                         @enderror
-                        {{-- <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                            <input type="password" name="password" placeholder="Password" />
-                        </div> --}}
+
                         <div class="mt-3">
                             <div class="password-input position-relative">
                                 <input type="password" name="password" class="rounde" id="passwordField"
@@ -178,7 +175,7 @@
                                 <div class="g-recaptcha" data-sitekey="6LemK34pAAAAAJUrh8OwzcMxeD9pDbOrbEviriah"></div>
 
                             </form>
-                            <input onclick="submitForm()" class=" color mt-3 roundedlg mt-3 text-white" type="submit"
+                            <input onclick="submitForm()" class=" color mt-3 roundedlg text-white" style="border:1px solid #0f1316" type="submit"
                                 value="Submit" />
                 </form>
             </div>

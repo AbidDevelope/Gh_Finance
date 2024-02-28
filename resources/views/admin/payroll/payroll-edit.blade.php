@@ -218,7 +218,7 @@
                                         </div>
                                     </div> --}}
                                     <div class="submit-section">
-                                        <button type="submit" class="btn  submit-btn">UPDATE</button>
+                                        <button type="submit" class="btn  submit-btn" style="background: var(--own-black)">UPDATE</button>
                                     </div>
                                 </form>
                             </div>
