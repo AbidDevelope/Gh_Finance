@@ -6,9 +6,7 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="all-content-wrapper" style="background:white">
-
         <div class="header-advance-area">
-
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="container-fluid">
@@ -26,53 +24,46 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 margin_t">
+                            <div class="col-lg-12 col-md-8 col-sm-8 col-xs-8 margin_t ">
                                 <div class="form-section bg-white">
-                                    <h6 class="card-title m-b-15">Project details</h6>
+                                    <h6 class="card-title m-b-15">Details</h6>
                                     <hr class="border-top-grey">
                                     <div class="card-body">
                                         <table class="table table-striped table-border">
                                             <tbody>
                                                 <tr>
-                                                    <td>Project Type:</td>
-                                                    <td class="text-right">{{ $expenses->project_type }}</td>
+                                                    <td>Date:</td>
+                                                    <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Project Name:</td>
-                                                    <td class="text-right">{{ $expenses->project_name }}</td>
+                                                    <td>Month:</td>
+                                                    <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Project Manager:</td>
-                                                    <td class="text-right">{{ $expenses->project_manager_name }}</td>
+                                                    <td>Employee Name:</td>
+                                                    <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Receipt:</td>
-                                                    <td class="text-right">{{ $expenses->receipt }}</td>
+                                                    <td>Actual Salary:</td>
+                                                    <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Amount Deposite:</td>
-                                                    <td class="text-right">{{ $expenses->amount_deposite }}</td>
+                                                    <td>Payroll:</td>
+                                                    <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Amount Withdraw:</td>
-                                                    <td class="text-right">{{ $expenses->amount_withdraw }}</td>
+                                                    <td>Salary:</td>
+                                                    <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Beneficiary:</td>
-                                                    <td class="text-right">{{ $expenses->beneficiary }}</td>
+                                                    <td>Payment Mode:</td>
+                                                    <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Created:</td>
-                                                    <td class="text-right">{{ $expenses->created_at->format('d M Y') }}</td>
+                                                    <td>Remarks:</td>
+                                                    <td class="text-right"></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Description:</td>
-                                                    <td class="text-right">{{ $expenses->description }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Status:</td>
-                                                    <td class="text-right">Working</td>
-                                                </tr>
+
                                             </tbody>
                                         </table>
                                         {{-- <p class="m-b-5">Progress <span class="text-success float-right">40%</span></p>

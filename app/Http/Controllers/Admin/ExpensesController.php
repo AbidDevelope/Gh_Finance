@@ -4,23 +4,25 @@ namespace App\Http\Controllers\admin;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ExpensesImport;
-
+use App\Exports\MiscellaneousExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Expense;
 use App\Models\ExpenseItem;
+use App\Models\PettyCash;
 use App\Models\Project;
 use App\Models\Miscellaneous;
 use App\Models\MiscellaneousItem;
 use Validator;
 use Carbon\Carbon;
+use DateTime;
 
 class ExpensesController extends Controller
 {
     public function miscellaneous()
     {
-        $miscell = Miscellaneous::orderBy('id', 'desc')->get();
-        
+        $miscell = Miscellaneous::orderBy('id', 'desc')->with('miscellaneousItems')->get();
+
         return view('admin.miscellaneous.miscellaneous', compact('miscell'));
     }
 
@@ -75,7 +77,8 @@ class ExpensesController extends Controller
 
     public function miscellaneousEdit($id)
     {
-        $miscellaneous = Miscellaneous::with('miscellaneousItem')->findOrFail($id); 
+        $miscellaneous = Miscellaneous::with('miscellaneousItems')->findOrFail($id); 
+
         return view('admin.miscellaneous.miscellaneous-edit', compact('miscellaneous'));
     }
 
@@ -90,7 +93,7 @@ class ExpensesController extends Controller
         {
             $miscellaneous->update($miscellaneousData);
         }
-        
+
         foreach ($data as $itemId => $itemData) {
             $item = MiscellaneousItem::find($itemId);
 
@@ -123,7 +126,7 @@ class ExpensesController extends Controller
 
     public function pettyCash()
     {
-        $expenses = Expense::with(['expenseItem', 'project'])->get();
+        $expenses = PettyCash::all();
         // return $expenses;
         return view('admin.pettyCash.pettyCash', compact('expenses'));
     }
@@ -155,7 +158,7 @@ class ExpensesController extends Controller
             'amount_withdrawn'  => 'required', 'beneficiary'      => 'required',
             'total'               => 'required',
         ]);
-        
+
         if($validate->fails())
         {
             return redirect()->back()->withErrors($validate)->withInput();
@@ -200,8 +203,8 @@ class ExpensesController extends Controller
 
     public function expensesView($id)
     {
-       $expenses = Expense::find($id);
-       return view('admin.pettyCash.expenses-view', compact('expenses'));
+       $expenses = PettyCash::find($id);
+       return view('admin.pettyCash.pettyCash-view', compact('expenses'));
     }
 
     public function expensesEdit($id)
@@ -216,17 +219,17 @@ class ExpensesController extends Controller
         $validate = Validator::make($request->all(), [
             'project_id'  => 'required',
             'items.*.description' => 'required',
-            'month.*'     => 'required', 
-            'items.*.date' => 'required|date_format:d/m/Y', 
+            'month.*'     => 'required',
+            'items.*.date' => 'required|date_format:d/m/Y',
             'items.*.receipt' => 'required',
             'items.*.amount_deposite' => 'required|numeric',
             'items.*.amount_withdrawn' => 'required|numeric',
             'items.*.beneficiary' => 'required',
-            'items.*.total' => 'required|numeric', 
-            'subtotal' => 'required',  'others' => 'required', 
+            'items.*.total' => 'required|numeric',
+            'subtotal' => 'required',  'others' => 'required',
             'grandtotal'  => 'required'
         ]);
-        
+
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
@@ -267,7 +270,7 @@ class ExpensesController extends Controller
             'start_date' => 'required|date_format:d/m/Y',
             'end_date' => 'required|date_format:d/m/Y',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -275,19 +278,18 @@ class ExpensesController extends Controller
         $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
         $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
 
-        $expenses = Expense::whereDate('date', '>=', $startDate)->whereDate('date', '<=', $endDate)->get();
-        if($expenses)
-        {
-            return view('admin.pettyCash.pettyCash', compact('expenses'));
-        }                
+        $expenses = PettyCash::whereDate('date', '>=', $startDate)->whereDate('date', '<=', $endDate)->get();
+
+        return view('admin.pettyCash.pettyCash', compact('expenses'));
 
 
-        $miscell = Miscellaneous::whereBetween('created_at', [$startDate, $endDate])->get(); 
+
+        $miscell = Miscellaneous::whereBetween('created_at', [$startDate, $endDate])->get();
         if($miscell)
         {
             return view('admin.miscellaneous.miscellaneous', compact('miscell'));
-        }                    
- 
+        }
+
         }
 
     public function searchMiscellaneous(Request $request)
@@ -296,21 +298,21 @@ class ExpensesController extends Controller
             'start_date' => 'required|date_format:d/m/Y',
             'end_date' => 'required|date_format:d/m/Y',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
         $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
-        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');              
+        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
 
 
-        $miscell = Miscellaneous::whereBetween('created_at', [$startDate, $endDate])->get(); 
+        $miscell = Miscellaneous::whereBetween('created_at', [$startDate, $endDate])->get();
         if($miscell)
         {
             return view('admin.miscellaneous.miscellaneous', compact('miscell'));
-        }  
-    }    
+        }
+    }
 
     public function expensesDelete($id)
     {
@@ -325,14 +327,140 @@ class ExpensesController extends Controller
         return redirect()->back();
     }
 
-    public function excelCsvImport(Request $request)
+    public function pettyCashImport(Request $request)
     {
-        $file = $request->file('file');
+        $validate = Validator::make($request->all(), [
+            'file'   => 'required'
+        ]);
 
-        // Excel file ko import karte hue ExcelDataImport class ka use karenge
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+
+        $file = $request->file('file');
         Excel::import(new ExpensesImport, $file);
 
-        // dd($excel);
-        return back()->with('success', 'Expenses imported successfully.');
+        return back()->with('success', 'Imported successfully.');
     }
+
+    public function pettyCashPost(Request $request)
+    {
+
+       // Assuming $request->date is in 'DD/MM/YYYY' format
+        $date = DateTime::createFromFormat('d/m/Y', $request->date);
+        $formattedDate = $date->format('Y-m-d'); // Convert to 'YYYY-MM-DD' format
+
+        $pettyCash = new PettyCash();
+        $pettyCash->date = $formattedDate; // Use the correctly formatted date
+        // Set other properties
+        $pettyCash->cheque_number_receipt_number = $request->cheque_number_receipt_number;
+        $pettyCash->description = $request->description;
+        $pettyCash->beneficiary = $request->beneficiary;
+        $pettyCash->amount_deposited = $request->amount_deposited;
+        $pettyCash->amount_withdrawn = $request->amount_withdrawn;
+        $pettyCash->project = $request->project;
+        $pettyCash->total_amount_deposited = $request->total_amount_deposited;
+        $pettyCash->total_amount_withdrawn = $request->total_amount_withdrawn;
+        $pettyCash->total_in_account = $request->total_in_account;
+        $pettyCash->save();
+
+        session()->flash('success', 'Data Submitted Successfully.');
+        return redirect()->route('pettyCash');
+
+    }
+
+    public function miscellaneousExport()
+    {
+    //    dd('wewer');
+        return Excel::download(new MiscellaneousExport, 'miscellaneous.xlsx');
+    }
+
+    // Payroll Controller Start
+    public function payroll()
+    {
+        return view('admin.payroll.payroll');
+    }
+
+    public function payrollCreate()
+    {
+        return view('admin.payroll.payroll-create');
+    }
+
+    public function payrollView()
+    {
+        return view('admin.payroll.payroll-view');
+    }
+
+    public function payrollEdit()
+    {
+        return view('admin.payroll.payroll-edit');
+    }
+    // Payroll Controller End
+
+     // Rent Controller Start
+     public function rent()
+     {
+         return view('admin.rent.rent');
+     }
+
+     public function rentCreate()
+    {
+        return view('admin.rent.rent-create');
+    }
+
+    public function rentView()
+     {
+         return view('admin.rent.rent-view');
+     }
+
+    public function rentEdit()
+    {
+        return view('admin.rent.rent-edit');
+    }
+     // Rent Controller End
+
+     // Electricity Controller Start
+     public function electricity()
+     {
+         return view('admin.electricity.electricity');
+     }
+
+     public function electricityCreate()
+    {
+        return view('admin.electricity.electricity-create');
+    }
+
+    public function electricityView()
+     {
+         return view('admin.electricity.electricity-view');
+     }
+
+    public function electricityEdit()
+    {
+        return view('admin.electricity.electricity-edit');
+    }
+     // Electricity Controller End
+
+     // Others Controller Start
+     public function others()
+     {
+         return view('admin.others.others');
+     }
+
+     public function othersCreate()
+    {
+        return view('admin.others.others-create');
+    }
+
+    public function othersView()
+     {
+         return view('admin.others.others-view');
+     }
+
+    public function othersEdit()
+    {
+        return view('admin.others.others-edit');
+    }
+     // Others Controller End
 }

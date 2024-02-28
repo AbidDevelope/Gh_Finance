@@ -16,7 +16,7 @@ class Miscellaneous extends Model
         'grandtotal',
     ];
 
-    public function miscellaneousItem()
+    public function miscellaneousItems()
     {
         return $this->hasMany(MiscellaneousItem::class);
     }

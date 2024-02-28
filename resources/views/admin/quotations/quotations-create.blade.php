@@ -20,7 +20,7 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="Project Id">Project Id</label>
+                                            <label for="Project Id">Project Id <span class="text-danger">*</span></label>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="project_id" onkeypress="return /[0-9]/i.test(event.key)"  name="project_id" value="{{ old('project_id') }}">
                                             </div>
@@ -54,7 +54,7 @@
 
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Quotation date <span class="text-danger">*</span></label>
+                                                <label>Quotation date </label>
                                                 <div class="cal-icon">
                                                     <input class="form-control datetimepicker" type="date"
                                                         name="quotation_date" value="{{ old('quotation_date') }}">
@@ -89,14 +89,14 @@
                                                                 <input class="form-control" type="text" name="unit[]" value="{{ old('unit.0') }}">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="qty[]" value="{{ old('qty.0') }}">
+                                                                <input class="form-control qty" type="text" name="qty[]" value="{{ old('qty.0') }}" onkeypress="return /[0-9.,%]/.test(event.key)">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="price[]" value="{{ old('price.0') }}">
+                                                                <input class="form-control price" type="text" name="price[]" value="{{ old('price.0') }}" onkeypress="return /[0-9.,%]/.test(event.key)">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text"
-                                                                    style="min-width:150px" name="total[]" value="{{ old('total.0') }}">
+                                                                <input readonly class="form-control total" type="text"
+                                                                    style="min-width:150px" name="total[]" value="{{ old('total.0') }}" onkeypress="return /[0-9.,%]/.test(event.key)">
                                                             </td>
                                                             <td><a href="javascript:void(0)" id="add-row"
                                                                     class="text-success font-18" title="Add"><img
@@ -114,8 +114,8 @@
                                                         <tr>
                                                             <td colspan="5" class="text-right">Sub Total :</td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
-                                                                <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,%]/.test(event.key)"
+                                                                <input readonly class="form-control text-right subtotal"
+                                                                    onkeypress="return /[0-9.,%]/.test(event.key)" placeholder="00.000"
                                                                     type="text" name="subtotal">
                                                             </td>
                                                         </tr>
@@ -124,8 +124,8 @@
                                                                 Others
                                                             </td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
-                                                                <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,]/i.test(event.key)"
+                                                                <input  class="form-control text-right others"
+                                                                    onkeypress="return /[0-9.,]/i.test(event.key)" placeholder="00.000"
                                                                     type="text" name="others">
                                                             </td>
                                                         </tr>
@@ -136,8 +136,8 @@
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
-                                                                <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,]/i.test(event.key)"
+                                                                <input readonly class="form-control text-right grandtotal"
+                                                                    onkeypress="return /[0-9.,]/i.test(event.key)" placeholder="00.000"
                                                                     type="text" name="grandtotal">
                                                             </td>
                                                         </tr>
@@ -147,7 +147,7 @@
                                         </div>
                                     </div>
                                     <div class="submit-section">
-                                        <button type="submit" class="btn color submit-btn">CREATE</button>
+                                        <button type="submit" class="btn color submit-btn" style="background:var(--own-black)">CREATE</button>
                                     </div>
                                 </form>
                             </div>
@@ -182,7 +182,7 @@
             var addButton = $('#add-row');
             var wrapper = $('#customFields');
             var fieldHTML =
-                '<tr><td><input class="form-control" type="text" name="description[]" style="min-width:150px"></td><td><input class="form-control" name="unit[]" type="text"></td><td><input class="form-control" name="qty[]"  type="text"></td><td><input class="form-control" name="price[]" type="text"></td><td><input class="form-control" type="text" name="total[]" style="min-width:150px"></td><td><a href="javascript:void(0)" id="add-row" class="remove-row" title="Add"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td></tr>';
+                '<tr><td><input class="form-control" type="text" name="description[]" style="min-width:150px"></td><td><input class="form-control" name="unit[]" type="text"></td><td><input class="form-control qty" name="qty[]"  type="text"></td><td><input class="form-control price" name="price[]" type="text"></td><td><input class="form-control total" type="text" name="total[]" style="min-width:150px"></td><td><a href="javascript:void(0)" id="add-row" class="remove-row" title="Add"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td></tr>';
             var x = 1;
 
             $(addButton).click(function() {
@@ -236,4 +236,58 @@
         });
 
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const wrapper = document.querySelector('#customFields tbody'); // Corrected to match your table's tbody
+        
+            // Function to update the subtotal and grand total
+            const updateTotals = function () {
+                let subtotal = 0;
+                document.querySelectorAll('.total').forEach(function (totalField) {
+                    const totalValue = parseFloat(totalField.value) || 0;
+                    subtotal += totalValue;
+                });
+                document.querySelector('.subtotal').value = subtotal.toFixed(3);
+                updateGrandTotal();
+            };
+        
+            // Function to update the grand total based on subtotal and others
+            const updateGrandTotal = function () {
+                const subtotal = parseFloat(document.querySelector('.subtotal').value) || 0;
+                const others = parseFloat(document.querySelector('.others').value) || 0;
+                const grandTotal = subtotal + others;
+                document.querySelector('.grandtotal').value = grandTotal.toFixed(3);
+            };
+        
+            // Function to handle row removal and update totals accordingly
+            const removeRowAndUpdateTotals = function (e) {
+                if (e.target && e.target.matches('.remove-row')) {
+                    e.target.closest('tr').remove(); // Remove the clicked row
+                    updateTotals(); // Immediately update totals after row removal
+                }
+            };
+        
+            // Event listener for dynamic input changes in qty or price fields within the table
+            wrapper.addEventListener('input', function (e) {
+                if (e.target && (e.target.matches('.qty') || e.target.matches('.price'))) {
+                    const row = e.target.closest('tr'); // Find the parent row of the input
+                    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+                    const price = parseFloat(row.querySelector('.price').value) || 0;
+                    const total = qty * price; // Calculate total for the row
+                    row.querySelector('.total').value = total.toFixed(3);
+                    updateTotals(); // Update totals whenever qty or price changes
+                }
+            });
+        
+            // Attach event listener to the wrapper for click events that might trigger row removal
+            wrapper.addEventListener('click', removeRowAndUpdateTotals);
+        
+            // Event listener to update grand total when the "others" input field changes
+            const othersInput = document.querySelector('.others');
+            othersInput.addEventListener('input', updateGrandTotal);
+        });
+        </script>
+        
+        
 @endsection

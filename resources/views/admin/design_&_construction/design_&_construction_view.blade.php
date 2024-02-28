@@ -1,8 +1,4 @@
-<style>
-     .margin_top{
-        margin-top: -100px !important;
-    }
-</style>
+
 
 @extends('admin.layouts.master')
 @section('content')
@@ -10,9 +6,9 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top ">
+                    <div class=" ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h6 class="card-title m-b-15">Project Type</h6>
                                 <hr class="border-top-grey">
                                 <div class="card-body">
@@ -52,7 +48,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h6 class="card-title m-b-15">Company details</h6>
                                 <hr class="border-top-grey">
                                 <div class="card-body">
@@ -104,12 +100,16 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h6 class="card-title m-b-15">Project details</h6>
                                 <hr class="border-top-grey">
                                 <div class="card-body">
                                     <table class="table table-striped table-border">
                                         <tbody>
+                                            <tr>
+                                                <td>Project ID:</td>
+                                                <td class="text-right">{{ $projects->id }}</td>
+                                            </tr>
                                             <tr>
                                                 <td>Project Name:</td>
                                                 <td class="text-right">{{ $projects->project_name }}</td>

@@ -2,6 +2,10 @@
     .margin_top{
         margin-top: -60px !important;
     }
+    input.rounded:focus {
+    outline: none; /* Removes the default focus outline */
+    border-color: #your-desired-color; /* Change 'your-desired-color' to the color you want */
+}
 </style>
 
 @extends('admin.layouts.master')
@@ -16,11 +20,12 @@
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="margin_top">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section bg-white">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Expenses</h4>
                                 <hr class="border-top-grey">
-                                <form action="{{ route('expenses/create') }}" method="post">
+                                <form action="{{ route('pettyCash/create') }}" method="post">
                                     @csrf
                                     @if ($errors->any())
                                         @foreach ($errors->all() as $error)
@@ -30,48 +35,7 @@
                                         @endforeach
                                     @endif
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Project Id <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="project_id" onkeypress="return /[0-9]/i.test(event.key)"  name="project_id" value="{{ old('project_id') }}">
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Project Type</label>
-                                                <input readonly class="form-control" type="text" name="project_type" id="project_type" value="{{ old('project_type') }}">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Project Name</label>
-                                                <input readonly class="form-control" type="text" name="project_name" id="project_name" value="{{ old('project_name') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Month</label>
-                                                <select name="month" id="" class="form-control">
-                                                    <option value="" disabled selected>Select Month
-                                                    </option>
-                                                    <option value="January">January</option>
-                                                    <option value="February">February</option>
-                                                    <option value="March">March</option>
-                                                    <option value="April">April</option>
-                                                    <option value="May">May</option>
-                                                    <option value="June">June</option>
-                                                    <option value="July">July</option>
-                                                    <option value="August">August</option>
-                                                    <option value="September">September</option>
-                                                    <option value="October">October</option>
-                                                    <option value="November">November</option>
-                                                    <option value="December">December</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Select Date</label>
                                                 <input type="text" class="form-control" id="Start"
@@ -79,27 +43,62 @@
                                                 placeholder="DD/MM/YYYY">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Project Name</label>
+                                                <input class="form-control" type="text" name="project" id="project" value="{{ old('project') }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Beneficiary</label>
                                                 <input type="text" class="form-control"
                                                 name="beneficiary" value="{{ old('beneficiary') }}"
-                                                placeholder="DD/MM/YYYY">
+                                                placeholder="">
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-g  roup">
+                                                <label> Recp No. / Cheque number</span></label>
+                                                <input type="text" class="form-control"  name="cheque_number_receipt_number">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <input class="form-control" type="text"
+                                                style="min-width:120px" name="description"
+                                                value="{{ old('description') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Amout Deposited</label>
+                                                <input class="form-control" type="text"
+                                                name="amount_deposited" onkeypress="return /[0-9]/i.test(event.key)">                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Amount Withdrawn</label>
+                                                <input class="form-control" type="text"
+                                                name="amount_withdrawn" onkeypress="return /[0-9]/i.test(event.key)">                                            </div>
+                                        </div>
+
+
+
+
+
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="table-responsive">
+                                            {{-- <div class="table-responsive">
                                                 <table class="table table-hover table-white" id="customFields">
                                                     <thead>
                                                         <tr style="margin-right: 20px">
                                                             <th class="col-md-2">Description</th>
-                                                            {{-- <th class="col-sm-2">Month</th> --}}
-                                                            {{-- <th class="col-sm-2">Date</th> --}}
                                                             <th class="col-sm-2">Recp No. / Cheque number</th>
                                                             <th class="col-sm-1">Amount Deposited</th>
                                                             <th class="col-sm-1">Amount Withdrawn</th>
-                                                            {{-- <th class="col-sm-2">Beneficiary</th> --}}
                                                             <th class="col-sm-1">Total/KWD</th>
                                                             <th class="col-sm-1"></th>
                                                         </tr>
@@ -111,29 +110,7 @@
                                                                     style="min-width:120px" name="description[]"
                                                                     value="{{ old('description.0') }}">
                                                             </td>
-                                                            {{-- <td>
-                                                                <select name="month[]" id="" class="form-control">
-                                                                    <option value="" disabled selected>Select Month
-                                                                    </option>
-                                                                    <option value="January">January</option>
-                                                                    <option value="February">February</option>
-                                                                    <option value="March">March</option>
-                                                                    <option value="April">April</option>
-                                                                    <option value="May">May</option>
-                                                                    <option value="June">June</option>
-                                                                    <option value="July">July</option>
-                                                                    <option value="August">August</option>
-                                                                    <option value="September">September</option>
-                                                                    <option value="October">October</option>
-                                                                    <option value="November">November</option>
-                                                                    <option value="December">December</option>
-                                                                </select>
-                                                            </td> --}}
-                                                            {{-- <td>
-                                                                <input type="text" class="form-control" id="Start"
-                                                                    name="date[]" value="{{ old('date.0') }}"
-                                                                    placeholder="DD/MM/YYYY">
-                                                            </td> --}}
+
                                                             <td>
                                                                 <input class="form-control" type="text" name="receipt[]">
                                                             </td>
@@ -145,10 +122,7 @@
                                                                 <input class="form-control" type="text"
                                                                     name="amount_withdrawn[]" onkeypress="return /[0-9]/i.test(event.key)">
                                                             </td>
-                                                            {{-- <td>
-                                                                <input class="form-control" type="text"
-                                                                    name="beneficiary[]" placeholder="">
-                                                            </td> --}}
+
                                                             <td>
                                                                 <input class="form-control kwd" type="text"
                                                                     name="total[]" value="{{ old('total.0') }}"
@@ -163,43 +137,43 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                            </div>
+                                            </div> --}}
                                             <div class="table-responsive">
                                                 <table class="table table-hover table-white">
                                                     <tbody>
                                                         <tr>
-                                                            <td colspan="5" class="text-right">Sub Total :</td>
+                                                            <td colspan="5" class="text-right" style="font-size: 15px;">Total Amount Deposited :</td>
                                                             <td
-                                                                style="text-align: right; padding-right: 30px;width: 230px">
+                                                                style="text-align: right; padding-right: 30px;width: 230px; ">
                                                                 <input class="form-control text-right"
                                                                     onkeypress="return /[0-9]/.test(event.key)"
-                                                                    type="text" name="subtotal"
-                                                                    value="{{ old('subtotal') }}">
+                                                                    type="text" name="total_amount_deposited"
+                                                                    value="{{ old('total_amount_deposited') }}">
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="5" class="text-right">
-                                                                Others :
+                                                            <td colspan="5" class="text-right" style="font-size: 15px;">
+                                                                Total Amount Withdrawn :
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input class="form-control text-right"
                                                                     onkeypress="return /[0-9,]/i.test(event.key)"
-                                                                    type="text" name="others"
-                                                                    value="{{ old('others') }}">
+                                                                    type="text" name="total_amount_withdrawn"
+                                                                    value="{{ old('total_amount_withdrawn') }}">
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="5"
-                                                                style="text-align: right; font-weight: bold">
-                                                                Grand Total :
+                                                                style="text-align: right; font-weight: bold; font-size: 15px;">
+                                                                Grand Value :
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
                                                                 <input class="form-control text-right"
                                                                     onkeypress="return /[0-9,]/i.test(event.key)"
-                                                                    type="text" name="grandtotal"
-                                                                    value="{{ old('grandtotal') }}">
+                                                                    type="text" name="total_in_account"
+                                                                    value="{{ old('total_in_account') }}">
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -209,7 +183,7 @@
                                     </div>
 
                                     <div class="submit-section">
-                                        <button type="submit" class="btn  submit-btn">CREATE</button>
+                                        <button type="submit" class="btn  submit-btn" style="background: var(--own-black)">CREATE</button>
                                     </div>
                                 </form>
                             </div>

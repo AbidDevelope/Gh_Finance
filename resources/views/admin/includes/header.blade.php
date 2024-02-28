@@ -27,8 +27,20 @@
     .popup-container {
         display: none;
         position: fixed;
-        top: 20%;
-        left: 60%;
+        top: 21%;
+        left: 65%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        z-index: 9999;
+    }
+
+    .pop_profile {
+        display: none;
+        position: fixed;
+        top: 18%;
+        left: 65%;
         transform: translate(-50%, -50%);
         background-color: white;
         border: 1px solid #ccc;
@@ -46,7 +58,7 @@
     }
 
     .profile_width {
-        width: 300px !important;
+        width: 200px !important;
     }
 
     #profile-pic-popup {
@@ -54,25 +66,106 @@
     }
 
     #bell-icon {
-        font-size: 24px;
+        font-size: 21px;
         /* Adjust size as needed */
     }
 
     .text {
         font-size: 12px !important;
     }
+
+    .z {
+        display: none;
+        position: fixed;
+        top: 43%;
+        left: -1%;
+        right: 0%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        z-index: 10000;
+    }
+
+    .he {
+        height: 210px !important;
+        width: 700px !important;
+        padding: 10px !important;
+    }
+
+    .p-1 {
+        top: 25%;
+        /* left: 10%; */
+    }
+
+    .p-2 {
+        top: 45%;
+        /* left: 10%; */
+    }
+
+    .p-3 {
+        top: 65%;
+        /* left: 10%; */
+        /* margin-left: 40px !important; */
+    }
+
+    .p4 {
+        top: 5%;
+        /* left: 10%; */
+        /* margin-left: 40px !important; */
+    }
+
+    .bel_margin {
+        margin-top: 32px;
+        margin-right: 20px;
+    }
+
+    .cursor {
+        cursor: auto;
+    }
+
+    #search:focus {
+        outline: none;
+        border-color: var(--own-black) !important;
+        box-shadow: none;
+        /* Remove box-shadow */
+        background-color: transparent;
+        /* Remove background color */
+    }
+
+    .meMega {
+        margin-left: -20px !important;
+    }
+
+    .mebag {
+        margin-right: 40px !important;
+    }
+
+    .round {
+        border-radius: 6px !important;
+    }
+
+    #openModal {
+        display: none;
+    }
+    .bg_hover:hover{
+        background-color: #ccc;
+    }
+    .bg_hover{
+        padding-top: 10px !important;
+    }
 </style>
 <div class="header-top-area bg-white">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 height shadow">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 height shadow-sm">
                 {{-- <div class="header-top-wraper"> --}}
                 {{-- <div class="row"> --}}
                 {{-- <div class="d-flex"> --}}
                 <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12 mt-1">
                     <div class="nalika-profile bg-white ">
                         <div class="profile-dtl">
-                            <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/admin/img/logo/gh_logo.jpg') }}"
+                            <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/admin/img/logo/favIcon.svg') }}"
                                     alt="" /></a>
                             {{-- <h2>{{ Auth::guard('admin')->user()->first_name }} <span class="min-dtn">{{ Auth::guard('admin')->user()->last_name }}</span></h2> --}}
                             {{-- <h2> <span class="min-dtn text-black-50">GHADER & HAMDOUN</span></h2> --}}
@@ -92,20 +185,19 @@
                         </button>
                     </div>
                 </div>
-                <div class="mt-3 col-lg-2 col-md-1 col-sm-1 col-xs-12 mt-3">
+                <div class=" col-lg-1 col-md-1 col-sm-1 col-xs-12 mt-3 me-5">
                     <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle bg-white text-black-50 border-0 dropdown-toggle-no-caret"
+                        <a class="me-3 btn btn-secondary dropdown-toggle bg-white text-black-50 border-0 dropdown-toggle-no-caret"
                             href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Mega menu<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                            Mega Menu<svg class="ms-1" xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                                 <path
                                     d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
                             </svg>
                         </a>
-
-
-                        <ul class="dropdown-menu max-w-xl mt-3 ms-5" style="min-width: 30rem;" aria-labelledby="dropdownMenuLink">
+                        <ul class="dropdown-menu max-w-xl mt-3 pt-4 meMega" style="min-width: 30rem;"
+                            aria-labelledby="dropdownMenuLink">
                             <div class="container">
                                 <div class="row">
                                     <li class="col-sm-4">
@@ -187,7 +279,7 @@
                                                 <span class="text mini-sub-pro">Invoices</span>
                                             </div>
                                         </a></li>
-                                    <li class="col-sm-4"><a class="text-black-50" href="#">
+                                    <li class="col-sm-4"><a class="text-black-50" href="{{ route('project/report') }}">
                                             <div class="d-flex justify-content-center">
                                                 <svg class="hovercolor" width="30" height="30"
                                                     fill="currentColor" viewBox="0 0 100 100"
@@ -289,9 +381,9 @@
                 </div>
 
                 {{-- searchbar --}}
-                <div class="mt-3  col-lg-1 col-md-1 col-sm-1 col-xs-12 mt-2">
+                <div class="mt-3 ms-5 col-lg-1 col-md-1 col-sm-1 col-xs-12">
                     <div class=" d-flex">
-                        <input id="search" type="text" class="bg-white form-control rounded-pill"
+                        <input id="search" type="text" class="bg-white cursor form-control  rounded-pill"
                             style="width: 230px; height: 40px;" placeholder="search">
                         <div class="text-danger">
                             <!-- Adjust the color class applied to the SVG icon -->
@@ -306,8 +398,8 @@
                 </div>
 
 
-                <div class="d-flex justify-content-end gap-3 mt-1">
-                    <div class="  dropdown" style="margin-top: 17px;">
+                <div class="d-flex justify-content-end mt-1">
+                    <div class="dropdown" style="margin-top: 17px; margin-right:10px;">
                         <a class="btn btn-secondary dropdown-toggle bg-white text-black-50 border-0" href="#"
                             role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -316,7 +408,7 @@
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
                             </svg></a>
 
-                        <ul class="dropdown-menu max-w-xl mt-3" style="min-width: 30rem;"
+                        <ul class="dropdown-menu max-w-xl mt-3 pt-4 mebag" style="min-width: 30rem;"
                             aria-labelledby="dropdownMenuLink">
                             <div class="container">
                                 <div class="row">
@@ -351,8 +443,7 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="col-sm-4"><a class="text-black-50"
-                                            href="{{ route('quotation') }}">
+                                    <li class="col-sm-4"><a class="text-black-50" href="{{ route('quotation') }}">
                                             <div class="d-flex justify-content-center">
                                                 <svg class="hovercolor" width="30" height="30"
                                                     viewBox="0 0 60 60" fill="currentColor"
@@ -431,7 +522,8 @@
                                             </div>
                                         </a></li>
 
-                                    <li class="col-sm-4"><a class="text-black-50" href="#">
+                                    <li class="col-sm-4"><a class="text-black-50"
+                                            href="{{ route('project/report') }}">
                                             <div class="d-flex justify-content-center">
                                                 <svg class="hovercolor" width="30" height="30"
                                                     fill="currentColor" viewBox="0 0 100 100"
@@ -481,11 +573,7 @@
                                 </div>
                             </div>
                     </div>
-
-
-
-
-                    <div class="" style="margin-top: 33px;">
+                    <div class="bel_margin rounded">
                         <i id="bell-icon" class="fas fa-bell fa-lg text-black-50"></i>
                         <!-- Adjust size using fa-lg -->
                     </div>
@@ -493,7 +581,7 @@
                     <div class="mt-3 position-relative d-flex justify-content-center">
                         <!-- Notification Popup Container -->
                         <div id="notification-popup"
-                            class="popup-container position-fixed top-10 end-0  translate-middle-y mt-4 me-4">
+                            class="popup-container position-fixed top-10 end-0 round translate-middle-y mt-4 me-4">
                             <div class="popup-content pt-2">
                                 <ul class="list-unstyled pe-3">
                                     <li class="d-flex justify-content-between align-items-center mb-3 gap-5 ">
@@ -557,65 +645,54 @@
                         </div>
                     </div>
                     <div class="mt-3">
+                        <?php
+                         $adminProfile = Auth::guard('admin')->user()->image;
+                         $defaultImage = '/assets/admin/img/prof pic.jpg';
+                         $imagePath = $adminProfile ? 'assets/admin/img/profile/' . $adminProfile : $defaultImage;
+                        ?>
                         <div id="profile-pic" class="circular-pic"
-                            style="background-image: url('/assets/admin/img/prof pic.jpg');"></div>
+                            style="background-image: url('{{ asset($imagePath) }}'); margin-right:20px" ></div>
                     </div>
                     <!-- Profile Picture Popup Container -->
                     <div id="profile-pic-popup"
-                        class="profile_width popup-container position-fixed top-10  translate-middle-y mt-4 me-4">
+                        class="profile_width popup-container pop_profile position-fixed top-10 round translate-middle-y  me-4">
                         <div class="popup-content">
                             <ul class="list-unstyled">
-                                <li class="mb-2">
-                                    <a href="#" class="d-flex  text-black-50">
+                                <li class="mb-2 bg_hover">
+                                    <a href="{{ route('profile') }}" class="d-flex  text-black-50">
                                         <span> My Profile</span>
-                                        <span class="mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                                          </svg></span>
+                                        <span class=""><svg class="me-1" xmlns="http://www.w3.org/2000/svg"
+                                                width="16" height="16" fill="currentColor"
+                                                class="bi bi-person" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                                            </svg></span>
                                     </a>
                                 </li>
-                                <li class="mb-2">
-                                    <!-- File Input Element -->
-                                    <input type="file" id="file-input" style="display: none;" accept="image/*">
-                                    <a href="#" class="d-flex  text-black-50" id="change-profile-pic">
-                                        <span>Change Profile Picture</span>
-                                        <span class="mt-1 icon nalika-edit author-log-ic"></span>
-                                    </a>
-                                </li>
-                                {{-- <li class="mb-2">
-                                    <a href="#" class="d-flex  text-black-50">
-                                        <span>Settings</span>
-                                        <span class="mt-1 icon nalika-settings author-log-ic"></span>
-                                    </a>
-                                </li> --}}
-                                <!-- Replace {{ route('admin/logout') }} with the appropriate logout URL -->
-                                <li class="mb-2">
+                                <li class="mb-2 bg_hover">
                                     <a href=" {{ route('admin/logout') }} " class="d-flex  text-black-50">
                                         <span>Log Out</span>
-                                        <span class="mt-1 icon nalika-unlocked author-log-ic"></span>
+                                        <svg class="ms-4 mt-1" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-box-arrow-right"
+                                            viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                                            <path fill-rule="evenodd"
+                                                d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                                        </svg>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
                 </div>
-                {{-- </div> --}}
-                {{-- </div> --}}
             </div>
         </div>
     </div>
 </div>
 
 {{-- spinner --}}
-{{-- <div class=" position-fixed top-50 end-0 z-index-setting">
-
+<div class=" position-fixed top-50 end-0 z-index-setting">
     <div id='colorsidebar' class='d-flex trans-hide  align-items-start  justify-content-end  '>
         <div id="colorsidepicker" class=" p-1 py-2 spin-bg">
             <div class="spin">
@@ -634,7 +711,7 @@
             </div>
 
         </div>
-        <div class="bg-white px-3 pb-4">
+        <div class="bg-white px-3 pb-4" id="openModal">
             <p>Theme color</p>
             <div id="colorChoices" class="row gap-4">
                 <div class="col">
@@ -654,41 +731,46 @@
         </div>
     </div>
 
-</div> --}}
+</div>
+
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var profilePic = document.getElementById('profile-pic');
-        var fileInput = document.getElementById('file-input');
-        var changeProfilePicLink = document.getElementById('change-profile-pic');
-
-        // Check if there's a profile picture URL stored in localStorage
-        var storedPicUrl = localStorage.getItem('profilePicUrl');
-        if (storedPicUrl) {
-            profilePic.style.backgroundImage = 'url(' + storedPicUrl + ')';
-        }
-
-        // Function to handle file input change
-        fileInput.addEventListener('change', function(event) {
-            var file = event.target.files[0];
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                var picUrl = e.target.result;
-                profilePic.style.backgroundImage = 'url(' + picUrl + ')';
-
-                // Store the URL of the selected profile picture in localStorage
-                localStorage.setItem('profilePicUrl', picUrl);
-            };
-
-            reader.readAsDataURL(file);
-        });
-
-        // Trigger file input when the "Change" option is clicked
-        changeProfilePicLink.addEventListener('click', function() {
-            fileInput.click();
-        });
+    document.querySelector('.profile').addEventListener('click', function() {
+        document.querySelector('.z').style.display = 'block';
     });
+</script>
+<script>
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     var profilePic = document.getElementById('profile-pic');
+    //     var fileInput = document.getElementById('file-input');
+    //     var changeProfilePicLink = document.getElementById('change-profile-pic');
+
+
+    //     var storedPicUrl = localStorage.getItem('profilePicUrl');
+
+    //     if (storedPicUrl) {
+    //         profilePic.style.backgroundImage = 'url(' + storedPicUrl + ')';
+
+    //     }
+
+
+    //     fileInput.addEventListener('change', function(event) {
+    //         var file = event.target.files[0];
+    //         var reader = new FileReader();
+
+    //         reader.onload = function(e) {
+    //             var picUrl = e.target.result;
+    //             profilePic.style.backgroundImage = 'url(' + picUrl + ')';
+    //             localStorage.setItem('profilePicUrl', picUrl);
+    //         };
+    //         reader.readAsDataURL(file);
+    //     });
+
+
+    //     changeProfilePicLink.addEventListener('click', function() {
+    //         fileInput.click();
+    //     });
+    // });
 
 
 
@@ -699,13 +781,23 @@
         var profilePicPopup = document.getElementById('profile-pic-popup');
 
         // Toggle the visibility of the notification popup when the bell icon is clicked
-        bellIcon.addEventListener('click', function() {
+        bellIcon.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent clicks from closing the popup
             togglePopup(notificationPopup);
         });
 
         // Show the profile pic popup when profile pic is clicked
-        profilePic.addEventListener('click', function() {
+        profilePic.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent clicks from closing the popup
             togglePopup(profilePicPopup);
+        });
+
+        // Close the popup when clicking outside of its container
+        document.body.addEventListener('click', function(event) {
+            if (!notificationPopup.contains(event.target) && !profilePicPopup.contains(event.target)) {
+                notificationPopup.style.display = 'none';
+                profilePicPopup.style.display = 'none';
+            }
         });
 
         // Function to toggle popup visibility
@@ -720,17 +812,44 @@
 </script>
 <script>
     // Add a click event listener to the SVG element
-    document.getElementById('openModal').addEventListener('click', function() {
-        // Show the modal
-        $('#myModal').modal('show');
-    });
-    document.getElementById('close').addEventListener('click', function() {
-        // Show the modal
-        $('#myModal').modal('hide');
+    document.addEventListener('DOMContentLoaded', function() {
+        let colorsidepicker = document.getElementById('colorsidepicker');
+        let openModal = document.getElementById('openModal');
+
+        console.log(colorsidepicker); // Check if colorsidepicker is correctly selected
+        console.log(openModal); // Check if openModal is correctly selected
+
+        // Toggle the modal when colorsidepicker is clicked
+        colorsidepicker.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent clicks from closing the modal
+            togglePopup(openModal);
+        });
+
+        // Close the modal when clicking outside of it
+        document.addEventListener('click', function(event) {
+            console.log('Clicked outside');
+            if (!openModal.contains(event.target) && event.target !== colorsidepicker) {
+                openModal.style.display = 'none';
+            }
+        });
+
+        function togglePopup(popup) {
+            if (window.getComputedStyle(popup).display === 'block') {
+                popup.style.display = 'none';
+            } else {
+                popup.style.display = 'block';
+            }
+        }
+
     });
 
+
+    // document.getElementById('close').addEventListener('click', function() {
+    //     // Show the modal
+    //     $('#myModal').modal('hide');
+    // });
+
     let colorpicker = document.getElementById('colorsidebar')
-    let colorsidepicker = document.getElementById('colorsidepicker')
     let colorChoices = document.getElementById('colorChoices')
 
     function myFunction() {
@@ -748,28 +867,28 @@
     function changeColor(clickedColor) {
         switch (clickedColor) {
             case 'purple-color':
-                document.documentElement.style.setProperty('--own-black', '#1c0d07');
+                document.documentElement.style.setProperty('--own-black', '#1C4C22');
                 document.documentElement.style.setProperty('--active-nav-black', '#391d0d');
                 document.documentElement.style.setProperty('--nav-black', '#552913');
                 document.documentElement.style.setProperty('--filter-color', '#71391a');
                 document.documentElement.style.setProperty('--filter-btn', '#9A4E24');
                 break;
             case 'red-color':
-                document.documentElement.style.setProperty('--own-black', '#130007');
+                document.documentElement.style.setProperty('--own-black', '#1C2E4C');
                 document.documentElement.style.setProperty('--active-nav-black', '#25000E');
                 document.documentElement.style.setProperty('--nav-black', '#380116');
                 document.documentElement.style.setProperty('--filter-color', '#4B011D');
                 document.documentElement.style.setProperty('--filter-btn', '#70012B');
                 break;
             case 'green-color':
-                document.documentElement.style.setProperty('--own-black', '#172621');
+                document.documentElement.style.setProperty('--own-black', '#4C1C46');
                 document.documentElement.style.setProperty('--active-nav-black', '#2A4038');
                 document.documentElement.style.setProperty('--nav-black', '#3B593A');
                 document.documentElement.style.setProperty('--filter-color', '#0D0D0D');
                 document.documentElement.style.setProperty('--filter-btn', '#4D734C');
                 break;
             case 'yellow-color':
-                document.documentElement.style.setProperty('--own-black', ' #0F1316');
+                document.documentElement.style.setProperty('--own-black', ' #4C221C');
                 document.documentElement.style.setProperty('--active-nav-black', '#152036');
                 document.documentElement.style.setProperty('--nav-black', '#0a0b0');
                 document.documentElement.style.setProperty('--filter-color', '#1B2A47');
@@ -791,6 +910,7 @@
         changeColor(clickedColor)
     })
 </script>
+
 
 {{-- <script type="text/javascript">
     function googleTranslateElementInit() {

@@ -1,6 +1,6 @@
 <style>
     .bg_button {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
@@ -52,8 +52,6 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
 
-                                <form action="{{ route('search/filter') }}" method="GEt">
-
                                 <form action="{{ route('search/all-services') }}" method="GET">
                                     @csrf
                                     <div class="d-flex">
@@ -64,7 +62,7 @@
                                                 <input type="text" id="start_date" name="start_date"
                                                     placeholder="Select Start Date"
                                                     class="form-control bg-white rounded text-black-50"
-                                                    style="width: 230px; height: 35px;">
+                                                    style="width: 230px; height: 35px;" value="{{ old('start_date') }}">
                                                 @if ($errors->has('start_date'))
                                                     <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                                 @endif
@@ -73,10 +71,10 @@
                                         </div>
                                         <div class="container d-flex gap-4 ">
                                             <div class=" form-group">
-                                                {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
+                                                {{-- <input class="form-control common-field" type="date" id="date2[]" name="date2[]" style="display: none"> --}}
                                                 <input type="text" id="end_date"
                                                     class="form-control bg-white text-black-50 rounded" name="end_date"
-                                                    placeholder="Select End Date" style="width: 230px; height: 35px;">
+                                                    placeholder="Select End Date" value="{{ old('end_date') }}" style="width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif
@@ -112,26 +110,26 @@
                                 <table id="dataTable">
                                     <thead>
                                         <tr role="row">
-                                            <th>Sr. No.</th>
-                                            <th>Date</th>
-                                            <th>Project Type</th>
-                                            <th>Project Name</th>
-                                            <th>Mobile</th>
-                                            <th>Project Value</th>
-                                            <th>Action</th>
+                                            <th style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
+                                            <th style="border-radius: 0 !important;">Date</th>
+                                            <th style="border-radius: 0 !important;">Project Type</th>
+                                            <th style="border-radius: 0 !important;">Project Name</th>
+                                            <th style="border-radius: 0 !important;">Mobile</th>
+                                            <th style="border-radius: 0 !important;">Project Value</th>
+                                            <th style="border-radius: 0 !important;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if (count($projects) > 0)
                                             @foreach ($projects as $index => $project)
                                                 <tr>
-                                                    <td>{{ $index + 1 }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
-                                                    <td>{{ $project->project_type }}</td>
-                                                    <td>{{ $project->project_name }}</td>
-                                                    <td>{{ $project->project_mobile }}</td>
-                                                    <td>{{ $project->project_value }}</td>
-                                                    <td class="text-right">
+                                                    <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_type }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_name }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_mobile }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_value }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"
                                                                 aria-expanded="false"><img
@@ -142,22 +140,11 @@
                                                                     href="{{ route('all-services/view', $project->id) }}"><i
                                                                         class="fa fa-eye m-r-5"></i> View
                                                                 </a>
-                                                                <a class="dropdown-item" href="#"><i
-                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                                <a class="dropdown-item" href="#"><i
-                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                        @else
-                                            <tr class="odd">
-                                                <td valign="top" colspan="6" class="dataTables_empty">No data available
-                                                    in
-                                                    table
-                                                </td>
-                                            </tr>
                                         @endif
                                     </tbody>
                                 </table>
@@ -193,7 +180,13 @@
     {{-- Data Table js code --}}
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
     <script>
-        $('#dataTable').DataTable();
+       $(document).ready(function() {
+        $('#dataTable').DataTable({
+                "language": {
+                    "emptyTable": "No records available"
+                }
+            });
+        });
     </script>
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
@@ -212,21 +205,24 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'start_date') { //Start date selected - update End Date picker
-                $("#end_date").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#start_date").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#start_date, #end_date').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+     var onDateSelect = function(selectedDate, input) {
+    if (input.id === 'start_date') { //Start date selected - update End Date picker
+        $("#end_date").datepicker('option', 'minDate', selectedDate);
+    } else { //End date selected - update Start Date picker
+        $("#start_date").datepicker('option', 'maxDate', selectedDate);
+    }
+};
+
+var onDocumentReady = function() {
+    var datepickerConfiguration = {
+        dateFormat: "dd/mm/yy",
+        onSelect: onDateSelect
+    };
+    ///--- Component Binding ---///
+    $('#start_date, #end_date').datepicker(datepickerConfiguration);
+};
+$(onDocumentReady);
+
+
     </script>
 @endsection

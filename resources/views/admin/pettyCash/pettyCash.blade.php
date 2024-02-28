@@ -14,12 +14,12 @@
     }
 
     .bg_button {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
     .bg_button:hover {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
@@ -42,15 +42,15 @@
                                 <h4 class=" text-headings">Petty Cash</h4>
                             </div>
                             <div class="text-right">
-                                <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
+
                                     <div class="table-actions">
                                         <a href="{{ route('pettyCash/create') }}"
                                             class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                             <i class="fa fa-plus"></i> Create
                                         </a>
-                                        <button type="buttton" id="export"
+                                        <button type="type" id="export"
                                             class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
-                                            style="border-color: #0F1316 !important;">
+                                            style="border-color: var(--own-black) !important;">
                                             <i class="fa fa-file-export"></i> Export
                                         </button>
                                     </div>
@@ -59,7 +59,7 @@
                                     <input type ="file" name="file">
                                     <button type="submit" class="btn btn-primary mt-4">Export</button>
                                 </div> --}}
-                                </form>
+
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -98,7 +98,7 @@
                                                 type="submit">Search </button>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </form>
                         </div>
@@ -107,14 +107,13 @@
 
                         <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="d-flex gap-2">
+                            <div class="d-flex gap-4">
                                 <input style="width: 230px; height: 35px;" type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                
-                                <button type="submit" style="border-color: #0F1316 !important;"
-                                    class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
-                                
-                                
-                                
+                                <button type="submit" style="border-color: #0F1316 !important; background-color:var(--own-black) !important; color:white !important;"
+                                class="btn  rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
+                                @if ($errors->has('file'))
+                                  <span class="text-danger">{{ $errors->first('file') }}</span>
+                                @endif
                             </div>
                         </form>
                     </div>
@@ -133,17 +132,14 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
                         <div class="">
                             <table id="dataTable">
-                                <table id="dataTable">
                                     <thead>
                                         <tr role="row">
-                                            <th>Sr. No</th>
-                                            <th>Project ID</th>
-                                            <th>Date</th>
-                                            <th>Project Type</th>
-                                            <th>Project Name</th>
-                                            {{-- <th>Beneficiary</th> --}}
-                                            <th>Total Amount</th>
-                                            <th class="text-right">Actions</th>
+                                            <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Date</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Project Name</th>
+                                            <th>Beneficiary</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -151,14 +147,12 @@
                                         @if (count($expenses) > 0)
                                             @foreach ($expenses as $index => $item)
                                                 <tr>
-                                                    <td>{{ $index + 1 }}</td>
-                                                    <td>{{ $item->project_id }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
-                                                    <td>{{ $item->project->project_type }}</td>
-                                                    <td>{{ $item->project->project_name }}</td>
-                                                    {{-- <td>Abid</td> --}}
-                                                    <td>{{ $item->grandtotal }}</td>
-                                                    <td class="text-right">
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->project }}</td>
+                                                    <td>{{ $item->beneficiary }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->amount_deposited }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon" data-toggle="dropdown"
                                                                 aria-expanded="false"><img
@@ -179,10 +173,6 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                        @else
-                                            <tr>
-                                                <td colspan="7" class="text-center">No Record Found</td>
-                                            </tr>
                                         @endif
                                     </tbody>
                                 </table>
@@ -200,29 +190,32 @@
 
     <!-- metisMenu JS
                                                         ============================================ -->
-    ============================================ -->
+
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
                                                             ============================================ -->
-    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
                                                             ============================================ -->
-    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
                                                         ============================================ -->
-    ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
     <script>
-        $('#dataTable').DataTable();
+        $(document).ready(function(){
+            $('#dataTable').DataTable({
+                'language' : {
+                    'emptyTable' : 'No records available'
+                }
+            });
+        });
     </script>
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>

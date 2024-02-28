@@ -13,12 +13,12 @@
     }
 
     .bg_button {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
     .bg_button:hover {
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
 
@@ -58,10 +58,8 @@
                                     <div class="d-flex">
                                         <div class=" ">
                                             <div class="form-group">
-                                                {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
-                                                <!-- Input with Bootstrap styling -->
-                                                <input type="text" id="start_date" name="start_date" placeholder="Select Start Date" class="form-control  rounded text-black-50"
-                                                 style="width: 230px; height: 35px;">
+                                                <input type="text" name="start_date" placeholder="Select Start Date" class="form-control date  rounded text-black-50"
+                                                 style="width: 230px; height: 35px;" value="{{ old('start_date') }}">
                                                  @if ($errors->has('start_date'))
                                                  <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                              @endif
@@ -70,9 +68,8 @@
                                         </div>
                                         <div class="container  d-flex gap-4 ">
                                             <div class=" form-group">
-                                                {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
-                                                <input type="text" id="end_date" class="form-control  text-black-50 rounded"
-                                                name="end_date" placeholder="Select End Date" style="width: 230px; height: 35px;">
+                                                <input type="text" class="form-control date text-black-50 rounded"
+                                                name="end_date" placeholder="Select End Date" value="{{ old('end_date') }}" style="width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif
@@ -107,24 +104,22 @@
                             <table id="dataTable">
                                 <thead>
                                     <tr role="row">
-                                        <th>Sr. No.</th>
-                                        <th>Invoice Number</th>
-                                        <th>Created Date</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th style="width: 70px !important;border-radius: 0 !important;">Sr. No.</th>
+                                        <th style="border-radius: 0 !important;">Invoice Number</th>
+                                        <th style="border-radius: 0 !important;">Project ID</th>
+                                        <th style="border-radius: 0 !important;">Invoice Date</th>
+                                        <th style="border-radius: 0 !important;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (count($invoices) > 0)
                                         @foreach ($invoices as $index => $invoice)
                                             <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                <td>{{ $invoice->invoice_number }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($invoice->invoice_date)->format('d/m/Y') }}</td>
-                                                <td>{{ $invoice->grandtotal }}</td>
-                                                <td><span class="badge bg-success">Paid</span></td>
-                                                <td class="text-right">
+                                                <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                <td style="border-radius: 0 !important;">{{ $invoice->invoice_number }}</td>
+                                                <td style="border-radius: 0 !important;">{{ $invoice->project_id }}</td>
+                                                <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($invoice->invoice_date)->format('d/m/Y') }}</td>
+                                                <td style="border-radius: 0 !important;" class="text-right">
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon " data-toggle="dropdown"
                                                             aria-expanded="false"><img
@@ -135,7 +130,7 @@
                                                                 href="{{ route('invoice/view', $invoice->id) }}"><i
                                                                     class="fa fa-eye m-r-5"></i> View
                                                             </a>
-                                                            <a class="dropdown-item" href="#"><i
+                                                            <a class="dropdown-item" href="{{ route('invoice/edit', $invoice->id) }}"><i
                                                                     class="fa fa-pencil m-r-5"></i> Edit</a>
                                                             <a class="dropdown-item"
                                                                 href="{{ route('invoice/pdf/view', $invoice->id) }}"><i
@@ -144,19 +139,13 @@
                                                             <a class="dropdown-item"
                                                                 href="{{ route('invoice/pdf/download', $invoice->id) }}"><i
                                                                     class="fa fa-file-pdf-o m-r-5"></i> Download</a>
-                                                            <a class="dropdown-item" href="#"><i
+                                                            <a class="dropdown-item" href="{{ route('invoice/delete', $invoice->id) }}"><i
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @else
-                                        <tr class="odd">
-                                            <td valign="top" colspan="6" class="dataTables_empty">No data available in
-                                                table
-                                            </td>
-                                        </tr>
                                     @endif
                                 </tbody>
                             </table>
@@ -191,7 +180,13 @@
     {{-- Data Table js code --}}
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
     <script>
-        $('#dataTable').DataTable();
+        $(document).ready(function(){
+            $('#dataTable').DataTable({
+                'language' : {
+                    'emptyTable' : 'No records available'
+                }
+            });
+        });
     </script>
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
@@ -210,21 +205,12 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'start_date') { //Start date selected - update End Date picker
-                $("#end_date").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#start_date").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#start_date, #end_date').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+       $(document).ready(function(){
+        $('.date').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy'
+        });
+       });
     </script>
 @endsection

@@ -22,8 +22,12 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('register', 'postRegister')->name('admin/register');
 
     Route::middleware(['adminAuthentication'])->prefix('admin')->group(function(){
+        Route::get('profile', 'profile')->name('profile');
         Route::get('dashboard', 'index')->name('dashboard');
         Route::get('logout', 'logout')->name('admin/logout');
+        Route::get('profile', 'profile')->name('profile');
+        Route::post('changeProfile', 'changeProfile')->name('changeProfile');
+        Route::post('profile/update/{id}', 'profileUpdate')->name('profile/update');
     });
 });
 
@@ -64,8 +68,9 @@ Route::controller(ServicesController::class)->prefix('admin')->middleware(['admi
 // -------------------------- ExpensesController --------------------------- //
 Route::controller(ExpensesController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
     Route::get('pettyCash', 'pettyCash')->name('pettyCash');
+    Route::get('search/pettyCash', 'searchPettyCash')->name('search/pettyCash');
     Route::get('pettyCash/create', 'pettyCashCreateForm')->name('pettyCash/create');
-    Route::post('expenses/create', 'expensesCreate')->name('expenses/create');
+    Route::post('pettyCash/create', 'pettyCashPost')->name('pettyCash/create');
     Route::get('expenses/view/{id}', 'expensesView')->name('expenses/view');
     Route::get('expenses/edit/{id}', 'expensesEdit')->name('expenses/edit');
     Route::post('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
@@ -80,7 +85,31 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::post('miscellaneous/update/{id}', 'miscellaneousUpdate')->name('miscellaneous/update');
     Route::get('miscellaneous/delete/{id}', 'miscellaneousDelete')->name('miscellaneous/delete');
     Route::get('search/miscellaneous', 'searchMiscellaneous')->name('search/miscellaneous');
-    Route::post('export-excel-csv', 'excelCsvImport')->name('export-excel-csv');
+    Route::get('miscellaneous/export', 'miscellaneousExport')->name('miscellaneous/export');
+    Route::post('export-excel-csv', 'pettyCashImport')->name('export-excel-csv');
+    // Petty cash
+    // Route::post('pettyCash/create', 'pettyCashCreate')->name('pettyCash/create');
+
+    // Payroll Route Start
+    Route::get('payroll', 'payroll')->name('payroll');
+    Route::get('payroll/create', 'payrollCreate')->name('payroll/create');
+    Route::get('payroll/view', 'payrollView')->name('payroll/view');
+    Route::get('payroll/edit', 'payrollEdit')->name('payroll/edit');
+
+    Route::get('rent', 'rent')->name('rent');
+    Route::get('rent/create', 'rentCreate')->name('rent/create');
+    Route::get('rent/view', 'rentView')->name('rent/view');
+    Route::get('rent/edit', 'rentEdit')->name('rent/edit');
+
+    Route::get('electricity', 'electricity')->name('electricity');
+    Route::get('electricity/create', 'electricityCreate')->name('electricity/create');
+    Route::get('electricity/view', 'electricityView')->name('electricity/view');
+    Route::get('electricity/edit', 'electricityEdit')->name('electricity/edit');
+
+    Route::get('others', 'others')->name('others');
+    Route::get('others/create', 'othersCreate')->name('others/create');
+    Route::get('others/view', 'othersView')->name('others/view');
+    Route::get('others/edit', 'othersEdit')->name('others/edit');
 });
 Route::get('/project-data/{id}',[ExpensesController::class, 'projectDataGet'])->name('project.data');
 
@@ -92,8 +121,12 @@ Route::controller(InvoiceController::class)->prefix('admin')->middleware('adminA
     Route::get('invoice/view/{id}', 'invoiceView')->name('invoice/view');
     Route::get('invoice/pdf/view/{id}', 'invoicePdfView')->name('invoice/pdf/view');
     Route::get('invoice/pdf/download/{id}', 'downloadInvoicePDF')->name('invoice/pdf/download');
+    Route::get('invoice/edit/{id}', 'invoiceEdit')->name('invoice/edit');
+    Route::post('invoice/update/{id}', 'invoiceUpdate')->name('invoice/update');
+    Route::get('invoice/delete/{id}', 'invoiceDelete')->name('invoice/delete');
     Route::get('search/invoice', 'searchInvoice')->name('search/invoice');
 });
+Route::get('/project-data/{id}', [InvoiceController::class, 'getProjectData'])->name('project.data');
 
 // ------------------------- BeneficiaryController ------------------------ //
 Route::controller(BeneficiaryController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
@@ -114,6 +147,7 @@ Route::controller(QuotationController::class)->prefix('admin')->middleware('admi
     Route::post('quotations/create', 'quotationCreate')->name('quotations/create');
     Route::get('quotation/view/{id}', 'quotationView')->name('quotation/view');
     Route::get('search/quotation', 'searchQuotation')->name('search/quotation');
+    Route::get('quotation/export', 'quotationExport')->name('quotation/export');
 });
 Route::get('/project-data/{id}', [QuotationController::class, 'getProjectData'])->name('project.data');
 

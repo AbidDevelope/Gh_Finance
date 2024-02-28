@@ -23,8 +23,8 @@ background-color: white !important;
         @yield('content')
     </div>
 
-    {{-- <footer>
+    <footer>
         @include('admin.includes.footer')
-    </footer> --}}
+    </footer>
 </body>
 </html>

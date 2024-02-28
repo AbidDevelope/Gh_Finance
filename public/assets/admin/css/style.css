@@ -22,6 +22,7 @@
 :root {
     --blue: #6495ed;
     --own-black: #0F1316;
+    --own-gray: #7f7f7f;
     --active-nav-black :#0F1316;
     --nav-black : #0a0b0c;
     --filter-color : #1B2A47;
@@ -104,7 +105,7 @@ body {}
     margin-left: 130px;
     transition: all 0.3s;
     background: white;
-    height: 104%;
+    min-height:100%;
 }
 .left-sidebar-pro {
     z-index: 1;
@@ -160,7 +161,7 @@ body {}
     background: var(--own-black);
 }
 .profile-dtl {
-    text-align: center;
+    text-align: left;
 }
 .profile-dtl img {
     width: 75px;
@@ -168,6 +169,7 @@ body {}
     border-radius: 50%;
     border: 2px solid var(--active-nav-black);
     margin-bottom: 2px;
+
 }
 .sidebarCollapse{
     width: 25px;
@@ -2485,7 +2487,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 .form-control {
     background-color: #fff;
     background-image: none;
-    border: 1px solid var(--active-nav-black);
+    /* border: 1px solid var(--own-black); */
     border-radius: 1px;
     color: inherit;
     display: block;
@@ -3677,7 +3679,7 @@ th.fc-day-header.fc-widget-header {
 	text-align:left;
 }
 .mini-navbar #sidebar.active .sidebar-nav .metismenu a {
-    padding: 16px 15px;
+    /* padding: 24px 15px; */
 }
 .review-pro-edt.mg-b-0-pt{
 	margin-bottom:0px;
@@ -3693,7 +3695,7 @@ th.fc-day-header.fc-widget-header {
 	outline:none;
 }
 .credit-card-custom .bg-btn-cl, .devit-card-custom .bg-btn-cl, .review-content-section .bg-btn-cl{
-	background:var(--active-nav-black);
+	background:var(--active-nav-black) !important;
 	border-color: var(--active-nav-black);
 	color:#fff;
 }
@@ -3725,7 +3727,7 @@ th.fc-day-header.fc-widget-header {
 }
 
 .trans-hide {
-    transform: translateX(90%);
+    /* transform: translateX(90%); */
 }
 
 .trans-show {

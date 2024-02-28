@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Beneficiary;
+use App\Models\Invoice;
 use App\Models\ProjectManager;
 use App\Models\Expense;
 
@@ -52,5 +52,10 @@ class Project extends Model
     public function expenses()
     {
         return $this->hasMany(Expense::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
     }
 }

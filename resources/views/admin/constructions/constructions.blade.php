@@ -1,10 +1,10 @@
 <style>
     .bg_button{
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
     .bg_button:hover{
-        background-color: #0F1316 !important;
+        background-color: var(--own-black) !important;
         color: white;
     }
     .margin_top {
@@ -37,6 +37,7 @@
                                         class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                         <i class="fa fa-plus"></i> Create
                                     </a>
+                                   
                                     <a href="#"
                                     class="btn  border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left" style="border-color: #0F1316 !important;">
                                     <i class="fa fa-file-export"></i> Export
@@ -54,7 +55,7 @@
                                                 {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
                                                 <!-- Input with Bootstrap styling -->
                                                 <input type="text" id="start_date" name="start_date" placeholder="Select Start Date" class="form-control bg-white rounded text-black-50"
-                                                 style="width: 230px; height: 35px;">
+                                                 style="width: 230px; height: 35px;" value="{{ old('start_date') }}">
                                                  @if ($errors->has('start_date'))
                                                  <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                              @endif
@@ -65,7 +66,7 @@
                                             <div class=" form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
                                                 <input type="text" id="end_date" class="form-control bg-white text-black-50 rounded"
-                                                name="end_date" placeholder="Select Start Date" style="width: 230px; height: 35px;">
+                                                name="end_date" placeholder="Select Start Date"  value="{{ old('end_date') }}" style="width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif
@@ -101,28 +102,28 @@
                                 <table id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Sr. No.</th>
-                                            <th>Project Id</th>
-                                            <th>Date</th>
-                                            <th>Project Type</th>
-                                            <th>Project Name</th>
-                                            <th>Mobile</th>
-                                            <th>Project Value</th>
-                                            <th class="text-right">Actions</th>
+                                            <th style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
+                                            <th style="border-radius: 0 !important;">Project Id</th>
+                                            <th style="border-radius: 0 !important;">Date</th>
+                                            <th style="border-radius: 0 !important;">Project Type</th>
+                                            <th style="border-radius: 0 !important;">Project Name</th>
+                                            <th style="border-radius: 0 !important;">Mobile</th>
+                                            <th style="border-radius: 0 !important;">Project Value</th>
+                                            <th style="border-radius: 0 !important;" class="txt-right"e>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if (count($projects) > 0)
                                             @foreach ($projects as $index => $project)
                                                 <tr>
-                                                    <td>{{ $index + 1 }}</td>
-                                                    <td>{{ $project->id }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
-                                                    <td>{{ $project->project_type }}</td>
-                                                    <td>{{ $project->project_name }}</td>
-                                                    <td>{{ $project->project_mobile }}</td>
-                                                    <td>{{ $project->project_value }}</td>
-                                                    <td class="text-right">
+                                                    <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->id }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_type }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_name }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_mobile }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_value }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"
                                                                 aria-expanded="false"><img
@@ -143,11 +144,6 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                        @else
-                                            <tr class="odd">
-                                                <td valign="top" colspan="7" class="dataTables_empty">No data available
-                                                    in table </td>
-                                            </tr>
                                         @endif
                                     </tbody>
                                 </table>
@@ -183,7 +179,13 @@
     {{-- Data Table js code --}}
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
     <script>
-        $('#dataTable').DataTable();
+        $(document).ready(function(){
+            $('#dataTable').DataTable({
+                'language' : {
+                    'emptyTable' : 'No records available'
+                }
+            });
+        });
     </script>
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
