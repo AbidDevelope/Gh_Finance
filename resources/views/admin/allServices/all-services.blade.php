@@ -64,7 +64,7 @@
                                                 <!-- Input with Bootstrap styling -->
                                                 <input type="text" id="start_date" name="start_date"
                                                     placeholder="Select Start Date"
-                                                    class="form-control placeholder bg-white rounded text-black-50"
+                                                    class="form-control placeholder bg-white rounded text-black-50 datepicker"
                                                     style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ old('start_date') }}">
                                                 @if ($errors->has('start_date'))
                                                     <span class="text-danger">{{ $errors->first('start_date') }}</span>
@@ -76,7 +76,7 @@
                                             <div class=" form-group">
                                                 {{-- <input class="form-control common-field" type="date" id="date2[]" name="date2[]" style="display: none"> --}}
                                                 <input type="text" id="end_date"
-                                                    class="form-control placeholder bg-white text-black-50 rounded" name="end_date"
+                                                    class="form-control placeholder bg-white text-black-50 rounded datepicker" name="end_date"
                                                     placeholder="Select End Date" value="{{ old('end_date') }}" style="box-shadow: none; border: 1px solid  var(--own-black); width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
