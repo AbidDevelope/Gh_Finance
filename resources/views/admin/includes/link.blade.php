@@ -127,3 +127,24 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        // Check if the 'all-content-wrapper' class exists on the page
+        var contentWrapperExists = document.querySelector('.all-content-wrapper') !== null;
+        
+        // Check if the 'dashboard' ID exists on the page
+        var isDashboardPage = document.getElementById('dashboard') !== null;
+        
+        // Reference to the search bar
+        var searchBar = document.getElementById('search');
+        
+        if(contentWrapperExists && !isDashboardPage) {
+            // If 'all-content-wrapper' exists and it's not the dashboard page, hide the search bar
+            searchBar.style.display = 'none';
+        } else if(isDashboardPage) {
+            // If it's the dashboard page, show the search bar
+            searchBar.style.display = 'block';
+        }
+    });
+
+</script>

@@ -91,7 +91,7 @@
                                             <div class="form-group no_border">
                                                 <label>Mobile</label>
                                                 <div class="d-flex border rounded">
-                                                    <div class="mt ms-3">+965</div>
+                                                    <div class="mt ms-3">+965&nbsp;</div>
                                                     <input type="text" class="rounded no_border num_margin"
                                                         style=" width: 160px; height:39px;" placeholder=""
                                                         name="Manager_mobile" onkeypress="return /[0-9]/i.test(event.key)"
@@ -161,7 +161,7 @@
                                             <div class="form-group no_border">
                                                 <label>Mobile</label>
                                                 <div class="d-flex border rounded">
-                                                    <div class="mt2 ms-3">+965</div>
+                                                    <div class="mt2 ms-3">+965&nbsp;</div>
                                                     <input type="text" class="rounded no_border num_margin"
                                                         style=" width: 160px; height:39px;" placeholder=""
                                                         name="client_mobile" onkeypress="return /[0-9]/i.test(event.key)"
@@ -272,7 +272,7 @@
                                             <div class="form-group no_border">
                                                 <label>Mobile</label>
                                                 <div class="d-flex border rounded">
-                                                    <div class="mt2 ms-3">+965</div>
+                                                    <div class="mt2 ms-3">+965&nbsp;</div>
                                                     <input type="text" class="rounded no_border num_margin"
                                                         style=" width: 160px; height:39px;" placeholder=""
                                                         name="project_mobile" onkeypress="return /[0-9]/i.test(event.key)"

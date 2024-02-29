@@ -148,16 +148,93 @@ class ServicesController extends Controller
             'project_description'   => 'required' ,
         ]);
 
+
         if($validate->fails())
         {
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
             $projects = Project::where('id', $id)->first();
-            $requestData = $request->all();
 
             if($projects)
             {
-                $projects->update($requestData);
+                $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+                $projects->update([
+                    'project_type'       =>  $request->project_type,
+                    'date'               =>  $date,
+                    'project_manager'    =>  $request->project_manager,
+                    'Manager_landline'   =>  $request->Manager_landline,
+                    'Manager_mobile'     =>  $request->Manager_mobile,
+                    'Manager_landline'   =>  $request->Manager_landline,
+                    'manager_remarks'    =>  $request->manager_remarks,
+
+                    'company_name'    =>  $request->company_name,
+                    'contact_name'    =>  $request->contact_name,
+                    'client_email'    =>  $request->client_email,
+                    'client_mobile'    =>  $request->client_mobile,
+                    'company_landline'    =>  $request->company_landline,
+                    'company_location'    =>  $request->company_location,
+                    'company_landmark'    =>  $request->company_landmark,
+                    'company_country'    =>  $request->company_country,
+                    'company_website'    =>  $request->company_website,
+                    'company_remarks'    =>  $request->company_remarks,
+
+                    'project_name'    =>  $request->project_name,
+                    'contact_person'    =>  $request->contact_person,
+                    'project_email'    =>  $request->project_email,
+                    'project_mobile'    =>  $request->project_mobile,
+                    'project_location'    =>  $request->project_location,
+                    'project_value'    =>  $request->project_value,
+                    'project_country'    =>  $request->project_country,
+                    'payment_plan'    =>  $request->payment_plan,
+                    'project_description'    =>  $request->project_description,
+                ]);
+                 
+                $data = $request->input('items', []);
+                foreach($data as $itemId=>$itemData)
+                {
+                    $payments = Payment::find($itemId);
+                    if($payments)
+                    {
+                        $payments->payment_date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['payment_date']);
+                        $payments->amount = $itemData['amount'];
+                        $payments->receivable = $itemData['receivable'];
+                        $payments->chequeNumber = $itemData['chequeNumber'];
+                        $payments->bankName = $itemData['bankName'];
+                        $payments->transactionId = $itemData['transactionId'];
+                        $payments->save();
+                    }
+                }
+
+                $paymentModes = collect($request->input('paymentMode', []));
+
+                foreach($request->amount as $key=>$payment)
+                {
+                    if(!isset($paymentModes[$key]) || empty($paymentModes[$key]))
+                    {
+                         continue;
+                    }
+                    if(isset($request->payment_date[$key]))
+                    {
+                        $newPaymentDate = DateTime::createFromFormat('d/m/Y', $request->payment_date[$key])->format('Y-m-d');
+                    }else{
+                        $newPaymentDate = null;
+                    }
+
+                    $currentPaymentModes = $paymentModes->get($key);
+
+                    $newPayments = new Payment([
+                        'project_id' => $projects->id,
+                        'paymentMode' => $currentPaymentModes,
+                        'payment_date' => $newPaymentDate,
+                        'amount'   => $request->amount[$key],
+                        'receivable'  => $request->receivable[$key],
+                        'chequeNumber'  => $request->chequeNumber[$key],
+                        'bankName'    => $request->bankName[$key],
+                        'transactionId'    => $request->transactionId[$key],
+                    ]);
+                    $newPayments->save();
+                }
+
 
                 session()->flash('success', 'Data Updated Successfully.');
                 return redirect()->route('designs');
@@ -302,18 +379,21 @@ class ServicesController extends Controller
     public function constructionUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'project_type'      => 'required' ,  'date' => 'required',  'project_manager' => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
-            'company_name'      => 'required' ,  'company_project_name'  => 'required',
-            'company_email'     => 'required' ,  'company_mobile'        => 'required',
+
+            'company_name'      => 'required' ,  'contact_name'  => 'required',
+            'client_email'      => 'required' ,  'client_mobile'        => 'required',
             'company_landline'  => 'required' ,  'company_location'      => 'required',
-            'company_country'   => 'required' ,  'company_website'       => 'required' ,
-            'company_remarks'   => 'required' ,  'project_name'          => 'required' ,
-            'company_project'   => 'required' ,  'project_email'         => 'required' ,
-            'project_mobile'    => 'required' ,  'project_location'      => 'required' ,
-            'project_value'     => 'required' ,  'project_country'       => 'required' ,
-            'project_remarks'   => 'required' ,  'project_description'   => 'required' ,
+            'company_landmark'  => 'required',   'company_country'   => 'required' ,
+            'company_website'   => 'required' ,  'company_remarks'   => 'required' , 
+           
+            'project_name'      => 'required' ,  'contact_person'        => 'required',
+            'project_email'     => 'required' ,  'project_mobile'    => 'required',
+            'project_location'  => 'required' ,  'project_value'     => 'required' ,
+            'project_country'   => 'required' ,  'payment_plan'      => 'required',
+            'project_description'   => 'required' ,
         ]);
 
         if($validate->fails())
@@ -321,17 +401,93 @@ class ServicesController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
             $projects = Project::where('id', $id)->first();
-            $requestData = $request->all();
 
             if($projects)
             {
-                $projects->update($requestData);
+                $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+                $projects->update([
+                    'project_type'       =>  $request->project_type,
+                    'date'               =>  $date,
+                    'project_manager'    =>  $request->project_manager,
+                    'Manager_landline'   =>  $request->Manager_landline,
+                    'Manager_mobile'     =>  $request->Manager_mobile,
+                    'Manager_landline'   =>  $request->Manager_landline,
+                    'manager_remarks'    =>  $request->manager_remarks,
+
+                    'company_name'    =>  $request->company_name,
+                    'contact_name'    =>  $request->contact_name,
+                    'client_email'    =>  $request->client_email,
+                    'client_mobile'    =>  $request->client_mobile,
+                    'company_landline'    =>  $request->company_landline,
+                    'company_location'    =>  $request->company_location,
+                    'company_landmark'    =>  $request->company_landmark,
+                    'company_country'    =>  $request->company_country,
+                    'company_website'    =>  $request->company_website,
+                    'company_remarks'    =>  $request->company_remarks,
+
+                    'project_name'    =>  $request->project_name,
+                    'contact_person'    =>  $request->contact_person,
+                    'project_email'    =>  $request->project_email,
+                    'project_mobile'    =>  $request->project_mobile,
+                    'project_location'    =>  $request->project_location,
+                    'project_value'    =>  $request->project_value,
+                    'project_country'    =>  $request->project_country,
+                    'payment_plan'    =>  $request->payment_plan,
+                    'project_description'    =>  $request->project_description,
+                ]);
+                 
+                $data = $request->input('items', []);
+                foreach($data as $itemId=>$itemData)
+                {
+                    $payments = Payment::find($itemId);
+                    if($payments)
+                    {
+                        $payments->payment_date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['payment_date']);
+                        $payments->amount = $itemData['amount'];
+                        $payments->receivable = $itemData['receivable'];
+                        $payments->chequeNumber = $itemData['chequeNumber'];
+                        $payments->bankName = $itemData['bankName'];
+                        $payments->transactionId = $itemData['transactionId'];
+                        $payments->save();
+                    }
+                }
+
+                $paymentModes = collect($request->input('paymentMode', []));
+
+                foreach($request->amount as $key=>$payment)
+                {
+                    if(!isset($paymentModes[$key]) || empty($paymentModes[$key]))
+                    {
+                         continue;
+                    }
+                    if(isset($request->payment_date[$key]))
+                    {
+                        $newPaymentDate = DateTime::createFromFormat('d/m/Y', $request->payment_date[$key])->format('Y-m-d');
+                    }else{
+                        $newPaymentDate = null;
+                    }
+
+                    $currentPaymentModes = $paymentModes->get($key);
+
+                    $newPayments = new Payment([
+                        'project_id' => $projects->id,
+                        'paymentMode' => $currentPaymentModes,
+                        'payment_date' => $newPaymentDate,
+                        'amount'   => $request->amount[$key],
+                        'receivable'  => $request->receivable[$key],
+                        'chequeNumber'  => $request->chequeNumber[$key],
+                        'bankName'    => $request->bankName[$key],
+                        'transactionId'    => $request->transactionId[$key],
+                    ]);
+                    $newPayments->save();
+                }
+
 
                 session()->flash('success', 'Data Updated Successfully.');
                 return redirect()->route('constructions');
             }else{
-                session()->flash('error', 'Something Went Wrong.');
-                return redirect()->back();
+              session()->flash('error', 'Something Went Wrong.');
+              return redirect()->back();
             }
         }
     }
@@ -457,18 +613,21 @@ class ServicesController extends Controller
     public function designConstructionUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'project_type'      => 'required' ,  'project_manager'       => 'required',
+            'project_type'      => 'required' ,  'date' => 'required',  'project_manager' => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
-            'company_name'      => 'required' ,  'company_project_name'  => 'required',
-            'company_email'     => 'required' ,  'company_mobile'        => 'required',
+
+            'company_name'      => 'required' ,  'contact_name'  => 'required',
+            'client_email'      => 'required' ,  'client_mobile'        => 'required',
             'company_landline'  => 'required' ,  'company_location'      => 'required',
-            'company_country'   => 'required' ,  'company_website'       => 'required' ,
-            'company_remarks'   => 'required' ,  'project_name'          => 'required' ,
-            'company_project'   => 'required' ,  'project_email'         => 'required' ,
-            'project_mobile'    => 'required' ,  'project_location'      => 'required' ,
-            'project_value'     => 'required' ,  'project_country'       => 'required' ,
-            'project_remarks'   => 'required' ,  'project_description'   => 'required' ,
+            'company_landmark'  => 'required',   'company_country'   => 'required' ,
+            'company_website'   => 'required' ,  'company_remarks'   => 'required' , 
+           
+            'project_name'      => 'required' ,  'contact_person'        => 'required',
+            'project_email'     => 'required' ,  'project_mobile'    => 'required',
+            'project_location'  => 'required' ,  'project_value'     => 'required' ,
+            'project_country'   => 'required' ,  'payment_plan'      => 'required',
+            'project_description'   => 'required' ,
         ]);
 
         if($validate->fails())
@@ -476,14 +635,93 @@ class ServicesController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
             $projects = Project::where('id', $id)->first();
-            $requestData = $request->all();
 
             if($projects)
             {
-                $projects->update($requestData);
+                $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+                $projects->update([
+                    'project_type'       =>  $request->project_type,
+                    'date'               =>  $date,
+                    'project_manager'    =>  $request->project_manager,
+                    'Manager_landline'   =>  $request->Manager_landline,
+                    'Manager_mobile'     =>  $request->Manager_mobile,
+                    'Manager_landline'   =>  $request->Manager_landline,
+                    'manager_remarks'    =>  $request->manager_remarks,
 
-                session()->flash('success', 'Updated Successfully.');
+                    'company_name'    =>  $request->company_name,
+                    'contact_name'    =>  $request->contact_name,
+                    'client_email'    =>  $request->client_email,
+                    'client_mobile'    =>  $request->client_mobile,
+                    'company_landline'    =>  $request->company_landline,
+                    'company_location'    =>  $request->company_location,
+                    'company_landmark'    =>  $request->company_landmark,
+                    'company_country'    =>  $request->company_country,
+                    'company_website'    =>  $request->company_website,
+                    'company_remarks'    =>  $request->company_remarks,
+
+                    'project_name'    =>  $request->project_name,
+                    'contact_person'    =>  $request->contact_person,
+                    'project_email'    =>  $request->project_email,
+                    'project_mobile'    =>  $request->project_mobile,
+                    'project_location'    =>  $request->project_location,
+                    'project_value'    =>  $request->project_value,
+                    'project_country'    =>  $request->project_country,
+                    'payment_plan'    =>  $request->payment_plan,
+                    'project_description'    =>  $request->project_description,
+                ]);
+                 
+                $data = $request->input('items', []);
+                foreach($data as $itemId=>$itemData)
+                {
+                    $payments = Payment::find($itemId);
+                    if($payments)
+                    {
+                        $payments->payment_date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['payment_date']);
+                        $payments->amount = $itemData['amount'];
+                        $payments->receivable = $itemData['receivable'];
+                        $payments->chequeNumber = $itemData['chequeNumber'];
+                        $payments->bankName = $itemData['bankName'];
+                        $payments->transactionId = $itemData['transactionId'];
+                        $payments->save();
+                    }
+                }
+
+                $paymentModes = collect($request->input('paymentMode', []));
+
+                foreach($request->amount as $key=>$payment)
+                {
+                    if(!isset($paymentModes[$key]) || empty($paymentModes[$key]))
+                    {
+                         continue;
+                    }
+                    if(isset($request->payment_date[$key]))
+                    {
+                        $newPaymentDate = DateTime::createFromFormat('d/m/Y', $request->payment_date[$key])->format('Y-m-d');
+                    }else{
+                        $newPaymentDate = null;
+                    }
+
+                    $currentPaymentModes = $paymentModes->get($key);
+
+                    $newPayments = new Payment([
+                        'project_id' => $projects->id,
+                        'paymentMode' => $currentPaymentModes,
+                        'payment_date' => $newPaymentDate,
+                        'amount'   => $request->amount[$key],
+                        'receivable'  => $request->receivable[$key],
+                        'chequeNumber'  => $request->chequeNumber[$key],
+                        'bankName'    => $request->bankName[$key],
+                        'transactionId'    => $request->transactionId[$key],
+                    ]);
+                    $newPayments->save();
+                }
+
+
+                session()->flash('success', 'Data Updated Successfully.');
                 return redirect()->route('design_&_construction');
+            }else{
+              session()->flash('error', 'Something Went Wrong.');
+              return redirect()->back();
             }
         }
     }

@@ -200,10 +200,9 @@
 .col-xl-2:hover svg path {
     fill: var(--own-black);
 }
-
         </style>
 
-        <div class="container-fluid px-2 custom-padding-top">
+        <div class="container-fluid px-2 custom-padding-top " id="dashboard">
             <div class="row mx-1 ps-2 left ">
                 <div class="col-xl-2 col-lg-3 col-sm-6 col-12 p-3 shadow-sm rounded" style="background-color: white">
                     <div class="row align-items-start">
@@ -1116,5 +1115,12 @@
 
             myChart.setOption(option);
         }
+    </script>
+    <script>
+        // JavaScript logic for showing/hiding the search bar
+        document.addEventListener('DOMContentLoaded', function(){
+            // Since we're on the dashboard page, the search bar should be visible
+            // No additional code required here for visibility as it's the default state
+        });
     </script>
 @endsection

@@ -207,7 +207,17 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Landmark </label>
+                                                <input type="text" name="company_landmark" class="form-control"
+                                                    value="{{ $projects->company_landmark }}">
+                                                @error('company_landmark')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Country </label>
                                                 <input readonly type="text" name="company_country"
@@ -343,59 +353,83 @@
                                     <div class="row mt-3">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
                                         <div class="table-responsive">
+                                            @if ($errors->any())
+                                                @foreach ($errors->all() as $error)
+                                                    <div class="alert-danger">{{ $error }}</div>
+                                                @endforeach
+                                            @endif
                                             <table class="table table-hover table-white" id="customFields">
                                                 <tbody>
                                                     @foreach ($projects->payments as $item)
                                                         <tr>
-                                                            <td></td>
+                                                            <td style="width:40px"></td>
                                                             <td>
-                                                                <select name="paymentMode[]" id="paymentMode"
-                                                                    class="form-control payment-mode">
+                                                                <select name="items[{{ $item->id }}][paymentMode]"
+                                                                    class="form-control payment-mode payment-mode-disabled"
+                                                                    id="paymentMode">
                                                                     <option value="" disabled selected>Select Mode
                                                                     </option>
-                                                                    <option value="Cash" {{ $item->paymentMode == 'Cash' ? 'selected' : '' }}>Cash</option>
-                                                                    <option value="Cheque" {{ $item->paymentMode == 'Cheque' ? 'selected' : '' }}>Cheque</option>
-                                                                    <option value="Online" {{ $item->paymentMode == 'Online' ? 'selected' : '' }}>Online</option>
+                                                                    <option value="Cash"
+                                                                        {{ $item->paymentMode == 'Cash' ? 'selected' : '' }}>
+                                                                        Cash</option>
+                                                                    <option value="Cheque"
+                                                                        {{ $item->paymentMode == 'Cheque' ? 'selected' : '' }}>
+                                                                        Cheque</option>
+                                                                    <option value="Online"
+                                                                        {{ $item->paymentMode == 'Online' ? 'selected' : '' }}>
+                                                                        Online</option>
                                                                 </select>
                                                             </td>
                                                             <td>
                                                                 <input class="form-control common-field datepicker"
                                                                     type="text" placeholder="DD/MM/YYYY"
-                                                                    name="payment_date[]" value="{{ Carbon\Carbon::parse($item->payment_date)->format('d/m/Y') }}" style="display: none">
+                                                                    name="items[{{ $item->id }}][payment_date]"
+                                                                    value="{{ Carbon\Carbon::parse($item->payment_date)->format('d/m/Y') }}"
+                                                                    style="display: none">
                                                             </td>
                                                             <td>
                                                                 <input class="form-control common-field" type="text"
-                                                                    name="amount[]" placeholder="Amount" value="{{ $item->amount }}" style="display: none">
+                                                                    name="items[{{ $item->id }}][amount]"
+                                                                    placeholder="Amount" value="{{ $item->amount }}"
+                                                                    style="display: none">
                                                             </td>
                                                             <td class="cash-fields" style="display: none">
                                                                 <input class="form-control" type="text"
-                                                                    name="receivable[]" placeholder="Receivable By" value="{{ $item->receivable }}">
+                                                                    name="items[{{ $item->id }}][receivable]"
+                                                                    placeholder="Receivable By"
+                                                                    value="{{ $item->receivable }}">
                                                             </td>
+                                                            <!-- Bank Name field -->
+                                                            <td class="cheque-fields online-fields" style="display: none">
+                                                                <input class="form-control" type="text"
+                                                                    name="items[{{ $item->id }}][bankName]"
+                                                                    placeholder="Bank Name"
+                                                                    value="{{ $item->bankName }}">
+                                                            </td>
+                                                            <!-- Cheque Number field in its own td -->
                                                             <td class="cheque-fields" style="display: none">
                                                                 <input class="form-control" type="text"
-                                                                    name="chequeNumber[]" placeholder="Cheque Number" value="{{ $item->chequeNumber }}">
+                                                                    name="items[{{ $item->id }}][chequeNumber]"
+                                                                    placeholder="Cheque Number"
+                                                                    value="{{ $item->chequeNumber }}">
                                                             </td>
-                                                            <td class="cheque-fields" style="display: none">
-                                                                <input class="form-control" type="text"
-                                                                    name="bankName[]" placeholder="Bank Name" value="{{ $item->bankName }}">
-                                                            </td>
+                                                            <!-- Transaction ID field in its own td -->
                                                             <td class="online-fields" style="display: none">
                                                                 <input class="form-control" type="text"
-                                                                    name="transactionId[]" placeholder="Transaction ID" value="{{ $item->transactionId }}">
-                                                            </td>
-                                                            <td class="online-fields" style="display: none">
-                                                                <input class="form-control" type="text"
-                                                                    name="bankName[]" placeholder="Bank Name" value="{{ $item->bankName }}">
+                                                                    name="items[{{ $item->id }}][transactionId]"
+                                                                    placeholder="Transaction ID"
+                                                                    value="{{ $item->transactionId }}">
                                                             </td>
                                                         </tr>
                                                     @endforeach
 
                                                     <tr>
-                                                        <td style="width:50px"><a href="javascript:void(0)"
-                                                                id="add-row" class="text-success font-18"
-                                                                title="Add"><img
-                                                                    src="{{ asset('assets/admin/img/icon/plus.png') }}"
-                                                                    alt=""></a>
+                                                        <td style="width:40px">
+                                                            <a href="javascript:void(0)" id="add-row"
+                                                                class="text-success font-18" title="Add">
+                                                                <img src="{{ asset('assets/admin/img/icon/plus.png') }}"
+                                                                    alt="">
+                                                            </a>
                                                         </td>
                                                         <td>
                                                             <select name="paymentMode[]" class="form-control payment-mode"
@@ -421,24 +455,23 @@
                                                             <input class="form-control" type="text"
                                                                 name="receivable[]" placeholder="Receivable By">
                                                         </td>
+                                                        <!-- Bank Name field -->
+                                                        <td class="cheque-fields online-fields" style="display: none">
+                                                            <input class="form-control" type="text" name="bankName[]"
+                                                                placeholder="Bank Name">
+                                                        </td>
+                                                        <!-- Cheque Number field in its own td -->
                                                         <td class="cheque-fields" style="display: none">
                                                             <input class="form-control" type="text"
                                                                 name="chequeNumber[]" placeholder="Cheque Number">
                                                         </td>
-                                                        <td class="cheque-fields" style="display: none">
-                                                            <input class="form-control" type="text" name="bankName[]"
-                                                                placeholder="Bank Name">
-                                                        </td>
+                                                        <!-- Transaction ID field in its own td -->
                                                         <td class="online-fields" style="display: none">
                                                             <input class="form-control" type="text"
                                                                 name="transactionId[]" placeholder="Transaction ID">
                                                         </td>
-                                                        <td class="online-fields" style="display: none">
-                                                            <input class="form-control" type="text" name="bankName[]"
-                                                                placeholder="Bank Name">
-                                                        </td>
-                                                        <!-- Example of an Add button, already in your code -->
                                                     </tr>
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -457,25 +490,73 @@
         </div>
     </div>
     <!-- metisMenu JS
-                            ============================================ -->
+                                ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                     ============================================ -->
+                         ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Add or remove section script start --}}
     <script>
         $(document).ready(function() {
+            // var maxField = 5;
+            // var addButton = $('#add-row');
+            // var wrapper = $('#customFields');
+            // var fieldHTML =
+            //     '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field datepicker" type="text" name="payment_date[]" placeholder="DD/MM/YYYY" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
+            // var x = 1;
+
+            // $(addButton).click(function() {
+            //     if (x < maxField) {
+            //         x++;
+            //         $(wrapper).append(fieldHTML);
+            //         $('.datepicker').last().datepicker({
+            //             changeMonth: true,
+            //             changeYear: true,
+            //             dateFormat: 'dd/mm/yy'
+            //         });
+            //     } else {
+            //         alert('A maximum of ' + maxField + ' fields are allowed.');
+            //     }
+            // });
+
+
+            // $(wrapper).on('click', '.remove-row', function(e) {
+            //     e.preventDefault();
+            //     $(this).closest('tr').remove();
+            //     x--;
+            // });
+
+            //     $(wrapper).on('change', '.payment-mode', function() {
+            //         var tr = $(this).closest('tr');
+            //         tr.find('.common-field, .cash-fields, .cheque-fields, .online-fields').hide();
+
+            //         tr.find('.common-field').css('display', 'inline-block');
+
+            //         if (this.value === 'Cash') {
+            //             tr.find('.cash-fields').css('display', 'inline-block');
+            //         } else if (this.value === 'Cheque') {
+            //             tr.find('.cheque-fields').css('display', 'inline-block');
+            //         } else if (this.value === 'Online') {
+            //             tr.find('.online-fields').css('display', 'inline-block');
+            //         }
+            //     });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
             var maxField = 5;
             var addButton = $('#add-row');
             var wrapper = $('#customFields');
@@ -507,16 +588,49 @@
             $(wrapper).on('change', '.payment-mode', function() {
                 var tr = $(this).closest('tr');
                 tr.find('.common-field, .cash-fields, .cheque-fields, .online-fields').hide();
-
                 tr.find('.common-field').css('display', 'inline-block');
 
-                if (this.value === 'Cash') {
+                if (this.value == 'Cash') {
                     tr.find('.cash-fields').css('display', 'inline-block');
-                } else if (this.value === 'Cheque') {
+                } else if (this.value == 'Cheque') {
                     tr.find('.cheque-fields').css('display', 'inline-block');
-                } else if (this.value === 'Online') {
+                } else if (this.value == 'Online') {
                     tr.find('.online-fields').css('display', 'inline-block');
                 }
+            });
+
+            // Function to show fields based on the payment mode
+            function showFieldsBasedOnPaymentMode(row) {
+                var paymentMode = row.find('.payment-mode').val();
+
+                // Hide all optional fields initially
+                row.find('.common-field, .cash-fields, .cheque-fields, .online-fields').hide();
+
+                // Show fields based on the payment mode
+                if (paymentMode === 'Cash') {
+                    row.find('.common-field, .cash-fields').show();
+                } else if (paymentMode === 'Cheque') {
+                    row.find('.common-field, .cheque-fields').show();
+                } else if (paymentMode === 'Online') {
+                    row.find('.common-field, .online-fields').show();
+                }
+            }
+
+            // Iterate over each payment row to apply the visibility logic
+            $('tr').each(function() {
+                var row = $(this);
+                showFieldsBasedOnPaymentMode(row);
+
+                if (row.find('.payment-mode-disabled').val() !== '') {
+                    row.find('.payment-mode-disabled').prop('disabled', true);
+                }
+
+                // Additional logic to show any field that has a value
+                row.find('input').each(function() {
+                    if ($(this).val()) {
+                        $(this).show();
+                    }
+                });
             });
         });
     </script>
