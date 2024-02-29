@@ -77,7 +77,7 @@
                                             <input type="text" name="start_date" id="start_date"
                                                 placeholder="Select Start Date"
                                                 class="form-control placeholder bg-white rounded text-black-50"
-                                                style="width: 230px; height: 35px;box-shadow: none; border: 1px solid black;" value="{{ old('start_date') }}">
+                                                style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);" value="{{ old('start_date') }}">
                                             @if ($errors->has('start_date'))
                                                 <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                             @endif
@@ -89,7 +89,7 @@
                                             <!-- Input with Bootstrap styling -->
                                             <input type="text" id="end_date"
                                                 class="form-control placeholder bg-white text-black-50 rounded" name="end_date"
-                                                placeholder="Select End Date" style="box-shadow: none; border: 1px solid black; width: 230px; height: 35px;"
+                                                placeholder="Select End Date" style="box-shadow: none; border: 1px solid var(--own-black); width: 230px; height: 35px;"
                                                 value="{{ old('end_date') }}">
                                             @if ($errors->has('end_date'))
                                                 <span class="text-danger">{{ $errors->first('end_date') }}</span>
@@ -111,8 +111,8 @@
                         <form action="#" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="d-flex gap-4">
-                                <input style="width: 230px; height: 35px;" type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                <button type="submit" style="border-color: #0F1316 !important; background-color:var(--own-black) !important; color:white !important;"
+                                <input style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" type ="file" name="file" class="form-control bg-white rounded text-black-50">
+                                <button type="submit" style="background-color:var(--own-black) !important; color:white !important;"
                                 class="btn  rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
                                 @if ($errors->has('file'))
                                   <span class="text-danger">{{ $errors->first('file') }}</span>

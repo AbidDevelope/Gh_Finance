@@ -61,8 +61,8 @@
                                     <div class="d-flex">
                                         <div class=" ">
                                             <div class="form-group">
-                                                <input type="text" name="start_date" placeholder="Select Start Date" class="form-control date  rounded text-black-50"
-                                                 style="width: 230px; height: 35px;" value="{{ old('start_date') }}">
+                                                <input type="text" name="start_date" placeholder="Select Start Date" class="placeholder form-control date  rounded text-black-50"
+                                                 style="width: 230px; height: 35px;box-shadow: none; border: 1px solid black;" value="{{ old('start_date') }}">
                                                  @if ($errors->has('start_date'))
                                                  <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                              @endif
@@ -71,8 +71,8 @@
                                         </div>
                                         <div class="container  d-flex gap-4 ">
                                             <div class=" form-group">
-                                                <input type="text" class="form-control date text-black-50 rounded"
-                                                name="end_date" placeholder="Select End Date" value="{{ old('end_date') }}" style="width: 230px; height: 35px;">
+                                                <input type="text" class="form-control placeholder date text-black-50 rounded"
+                                                name="end_date" placeholder="Select End Date" value="{{ old('end_date') }}" style="width: 230px; height: 35px; box-shadow: none; border: 1px solid black;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif
