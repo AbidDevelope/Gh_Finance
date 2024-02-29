@@ -52,8 +52,8 @@
                                             <i class="fa fa-plus"></i> Create
                                         </a>
                                         <button type="type" id="export"
-                                            class="btn border rounded f-14 p-    mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
-                                            style="border-color: var(--own-black) !important;">
+                                            class="btn border rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
+                                            style="">
                                             <i class="fa fa-file-export"></i> Export
                                         </button>
                                     </div>
@@ -72,7 +72,7 @@
                                             <input type="text" name="start_date" id="start_date"
                                                 placeholder="Select Start Date"
                                                 class="form-control bg-white placeholder rounded text-black-50"
-                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid black;" value="{{ old('start_date') }}">
+                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid  var(--own-black);" value="{{ old('start_date') }}">
                                             @if ($errors->has('start_date'))
                                                 <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                             @endif
@@ -84,7 +84,7 @@
                                             <!-- Input with Bootstrap styling -->
                                             <input type="text" id="end_date"
                                                 class="form-control placeholder bg-white text-black-50 rounded" name="end_date"
-                                                placeholder="Select End Date" style="box-shadow: none; border: 1px solid black; width: 230px; height: 35px;"
+                                                placeholder="Select End Date" style="box-shadow: none; border: 1px solid  var(--own-black); width: 230px; height: 35px;"
                                                 value="{{ old('end_date') }}">
                                             @if ($errors->has('end_date'))
                                                 <span class="text-danger">{{ $errors->first('end_date') }}</span>
