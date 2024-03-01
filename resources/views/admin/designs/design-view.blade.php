@@ -10,10 +10,10 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top mx-2">
+                    <div class="margin_top mx-3">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-section">
-                                <h6 class="card-title m-b-15">Project Type</h6>
+                            <div class="form-section bg-white">
+                                <h6 class="card-title m-b-15">Basic Details</h6>
                                 <hr class="border-top-grey">
                                 <div class="card-body">
                                     <table class="table table-striped table-border">
@@ -52,8 +52,8 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-section">
-                                <h6 class="card-title m-b-15">Company details</h6>
+                            <div class="form-section bg-white">
+                                <h6 class="card-title m-b-15">Client details</h6>
                                 <hr class="border-top-grey">
                                 <div class="card-body">
                                     <table class="table table-striped table-border">
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h6 class="card-title m-b-15">Project details</h6>
                                 <hr class="border-top-grey">
                                 <div class="card-body">
@@ -138,7 +138,7 @@
                                                 <td>Project Country:</td>
                                                 <td class="text-right">{{ $projects->project_country }}</td>
                                             </tr>
-                                
+
                                             <tr>
                                                 <td>Created Date:</td>
                                                 <td class="text-right"><a href="#">{{ $projects->created_at->format('d M Y') }}</a></td>

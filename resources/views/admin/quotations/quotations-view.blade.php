@@ -12,7 +12,7 @@
     <div class="header-advance-area" style="background: #fff">
         <div class="breadcome-area">
             <div class="container-fluid">
-                <div class="row margin_top mx-2">
+                <div class="row margin_top mx-3">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="breadcome-list res-mg-t-15">
                             <div class="row">

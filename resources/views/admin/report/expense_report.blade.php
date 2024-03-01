@@ -19,15 +19,16 @@
     .hid {
         color: transparent !important;
     }
-    .cursor:hover {
-    cursor: pointer;
-}
-.padding_y{
-    padding-top: 0.29rem !important;
-    padding-bottom: 0.29rem !important;
-    height: 35px;
-}
 
+    .cursor:hover {
+        cursor: pointer;
+    }
+
+    .padding_y {
+        padding-top: 0.29rem !important;
+        padding-bottom: 0.29rem !important;
+        height: 35px;
+    }
 </style>
 
 <script>
@@ -60,23 +61,22 @@
                     <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
                             <div class="d-flex justify-content-between">
-                                <h4 class="mt-3"style="color: var(--own-black)">Project Report</h4>
+                                <h4 class="mt-3"style="color: var(--own-black)">Expense Report</h4>
                                 <button type="type" id="export"
-                                class="padding_y mt-3 btn border rounded f-14 mr-3  mb-lg-0 mb-md-0 float-left"
-                                style="border-color: var(--own-black) !important;">
-                                <i class="fa fa-file-export"></i> Export
-                            </button>
+                                    class="padding_y mt-3 btn border rounded f-14 mr-3  mb-lg-0 mb-md-0 float-left"
+                                    style="border-color: var(--own-black) !important;">
+                                    <i class="fa fa-file-export"></i> Export
+                                </button>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
-                            {{-- <div class="s002"> --}}
+                        {{-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
+
                             <form action="{{ route('search/filter') }}" method="GET">
                                 @csrf
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex">
                                         <div class=" ">
                                             <div class="form-group">
-                                                {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
                                                 <input type="text" name="start_date" id="start_date"
                                                     placeholder="Select Start Date"
                                                     class="form-control cursor placeholder bg-white rounded text-black-50"
@@ -89,11 +89,10 @@
                                         </div>
                                         <div class="container  d-flex gap-4 ">
                                             <div class=" form-group">
-                                                {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
-                                                <!-- Input with Bootstrap styling -->
+
                                                 <input type="text" id="end_date"
-                                                    class="form-control cursor placeholder bg-white  rounded" name="end_date"
-                                                    placeholder="Select End Date"
+                                                    class="form-control cursor placeholder bg-white  rounded"
+                                                    name="end_date" placeholder="Select End Date"
                                                     style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);"
                                                     value="{{ old('end_date') }}">
                                                 @if ($errors->has('end_date'))
@@ -113,9 +112,9 @@
                                         <select class="form-control  cursor placeholder bg-white rounded text-black"
                                             name="Project_type" id="project-type-select"
                                             class=" form-control"style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);">
-                                            <option class="" value="" style="" selected>Select Project Type
+                                            <option class="" value="" style="" selected>Select Project
+                                                Type
                                             </option>
-                                            {{-- <option value="All">All</option> --}}
                                             <option class=" " value="Design">Design</option>
                                             <option value="Construction">Construction</option>
                                             <option value="Design & Construction">Design & Construction</option>
@@ -123,7 +122,7 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
@@ -144,33 +143,31 @@
                                         <tr role="row">
                                             <th style="width: 70px !important;  border-radius: 0 !important;">Sr. No.</th>
                                             <th style="border-radius: 0 !important;">Date</th>
-                                            <th style="border-radius: 0 !important;">Project Type</th>
-                                            <th style="border-radius: 0 !important;">Project Name</th>
-                                            <th style="border-radius: 0 !important;">Project Manager</th>
-                                            <th style="border-radius: 0 !important;">Revenue</th>
-                                            <th style="border-radius: 0 !important;">Expenses</th>
-                                            <th style="border-radius: 0 !important;">Receivables</th>
-                                            <th style="border-radius: 0 !important;">Pending Receivables</th>
-
+                                            <th style="border-radius: 0 !important;">Month</th>
+                                            <th style="border-radius: 0 !important;">Payroll</th>
+                                            <th style="border-radius: 0 !important;">Miscellaneous</th>
+                                            <th style="border-radius: 0 !important;">Rent</th>
+                                            <th style="border-radius: 0 !important;">Electricity</th>
+                                            <th style="border-radius: 0 !important;">Petty Cash</th>
+                                            <th style="border-radius: 0 !important;">Reimburse</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td style="border-radius: 0 !important;">1</td>
-                                            <td style="border-radius: 0 !important;">21/02/2024</td>
-                                            <td style="border-radius: 0 !important;">design</td>
-                                            <td style="border-radius: 0 !important;">Kuwait metro</td>
-                                            <td style="border-radius: 0 !important;">Mr. Hamid</td>
+                                            <td style="border-radius: 0 !important;">21/05/2024</td>
+                                            <td style="border-radius: 0 !important;">May</td>
+                                            <td style="border-radius: 0 !important;">5000.000 KWD</td>
+                                            <td style="border-radius: 0 !important;">5000.000 KWD</td>
                                             <td style="border-radius: 0 !important;">5000.000 KWD</td>
                                             <td style="border-radius: 0 !important;">1600.000 KWD</td>
                                             <td style="border-radius: 0 !important;">3000.000 KWD</td>
                                             <td style="border-radius: 0 !important;">2000.000 KWD</td>
 
                                         </tr>
-
                                     </tbody>
                                     <tfoot>
-                                        <!-- Table footer content here -->
+
                                         <tr class="grand_Value">
                                             <td class="hid"
                                                 style=" border-right-color: transparent; border-radius: 0 !important;">1
@@ -178,12 +175,7 @@
                                             <td class="hid"
                                                 style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
                                                 02/2024</td>
-                                            <td class="hid"
-                                                style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
-                                                design</td>
-                                            <td class="hid"
-                                                style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
-                                                Kuwait metro</td>
+
                                             <td class=""
                                                 style="font-weight: bold; border-left-color: transparent;border-radius: 0 !important;">
                                                 Grand
@@ -191,12 +183,15 @@
                                             <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
                                                 5000.000 KWD</td>
                                             <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
+                                                5000.000 KWD</td>
+                                            <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
+                                                5000.000 KWD</td>
+                                            <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
                                                 1600.000 KWD</td>
-                                            <td class="text-nowrap"
-                                                style="font-weight: bold; border-radius: 0 !important;">
+                                            <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
                                                 3000.000 KWD</td>
-                                            <td class="text-nowrap"
-                                                style="font-weight: bold; border-radius: 0 !important;">2000.000 KWD</td>
+                                            <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
+                                                2000.000 KWD</td>
 
                                         </tr>
                                     </tfoot>
@@ -214,20 +209,20 @@
     </div>
 
     <!-- metisMenu JS
-                                                                                    ============================================ -->
+                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                        ============================================ -->
+                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                        ============================================ -->
+                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                    ============================================ -->
+                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -361,6 +356,4 @@
             });
         });
     </script>
-
-
 @endsection

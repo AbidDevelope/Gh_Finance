@@ -2,6 +2,8 @@
     .bg_button {
         background-color: var(--own-black) !important;
         color: white;
+        height: 35px !important;
+
     }
 
     .margin_top {
@@ -19,15 +21,15 @@
     .hid {
         color: transparent !important;
     }
+
     .cursor:hover {
-    cursor: pointer;
-}
-.padding_y{
+        cursor: pointer;
+    }
+    .padding_y{
     padding-top: 0.29rem !important;
     padding-bottom: 0.29rem !important;
     height: 35px;
 }
-
 </style>
 
 <script>
@@ -57,10 +59,10 @@
         <div class="header-advance-area ">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top mx-3">
+                    <div class="margin_top mx-3  ">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
                             <div class="d-flex justify-content-between">
-                                <h4 class="mt-3"style="color: var(--own-black)">Project Report</h4>
+                                <h4 class="mt-3"style="color: var(--own-black)">Profit & Loss Statement For The Current Year (2024) </h4>
                                 <button type="type" id="export"
                                 class="padding_y mt-3 btn border rounded f-14 mr-3  mb-lg-0 mb-md-0 float-left"
                                 style="border-color: var(--own-black) !important;">
@@ -68,15 +70,14 @@
                             </button>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
-                            {{-- <div class="s002"> --}}
+                        {{-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
+
                             <form action="{{ route('search/filter') }}" method="GET">
                                 @csrf
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex">
                                         <div class=" ">
                                             <div class="form-group">
-                                                {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
                                                 <input type="text" name="start_date" id="start_date"
                                                     placeholder="Select Start Date"
                                                     class="form-control cursor placeholder bg-white rounded text-black-50"
@@ -89,11 +90,10 @@
                                         </div>
                                         <div class="container  d-flex gap-4 ">
                                             <div class=" form-group">
-                                                {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
-                                                <!-- Input with Bootstrap styling -->
+
                                                 <input type="text" id="end_date"
-                                                    class="form-control cursor placeholder bg-white  rounded" name="end_date"
-                                                    placeholder="Select End Date"
+                                                    class="form-control cursor placeholder bg-white  rounded"
+                                                    name="end_date" placeholder="Select End Date"
                                                     style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);"
                                                     value="{{ old('end_date') }}">
                                                 @if ($errors->has('end_date'))
@@ -101,8 +101,8 @@
                                                 @endif
 
                                             </div>
-                                            <div class="form-group" style="margin-top: ;">
-                                                <button class="btn-search btn padding_y bg_button text-white bg-gray-100 "
+                                            <div class="form-group pb-5" style="margin-top: ;">
+                                                <button class="btn-search btn bg_button text-white bg-gray-100 "
                                                     type="submit">Search </button>
                                             </div>
 
@@ -113,9 +113,9 @@
                                         <select class="form-control  cursor placeholder bg-white rounded text-black"
                                             name="Project_type" id="project-type-select"
                                             class=" form-control"style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);">
-                                            <option class="" value="" style="" selected>Select Project Type
+                                            <option class="" value="" selected>Select Project Type
                                             </option>
-                                            {{-- <option value="All">All</option> --}}
+
                                             <option class=" " value="Design">Design</option>
                                             <option value="Construction">Construction</option>
                                             <option value="Design & Construction">Design & Construction</option>
@@ -123,7 +123,7 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
@@ -139,38 +139,54 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
                             <div class="">
-                                <table id="dataTable">
+                                <table id="">
                                     <thead>
                                         <tr role="row">
-                                            <th style="width: 70px !important;  border-radius: 0 !important;">Sr. No.</th>
-                                            <th style="border-radius: 0 !important;">Date</th>
-                                            <th style="border-radius: 0 !important;">Project Type</th>
-                                            <th style="border-radius: 0 !important;">Project Name</th>
-                                            <th style="border-radius: 0 !important;">Project Manager</th>
-                                            <th style="border-radius: 0 !important;">Revenue</th>
-                                            <th style="border-radius: 0 !important;">Expenses</th>
-                                            <th style="border-radius: 0 !important;">Receivables</th>
-                                            <th style="border-radius: 0 !important;">Pending Receivables</th>
+                                            <th style="  border-radius: 0 !important;"></th>
+                                            <th style="width: 70px !important; border-radius: 0 !important;">NOTE NO.</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">FIGURES FOR THE CURRENT
+                                                REPORTING PERIOD</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">FIGURES FOR THE PREVIOUS
+                                                REPORTING PERIOD</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td style="border-radius: 0 !important;">1</td>
-                                            <td style="border-radius: 0 !important;">21/02/2024</td>
-                                            <td style="border-radius: 0 !important;">design</td>
-                                            <td style="border-radius: 0 !important;">Kuwait metro</td>
-                                            <td style="border-radius: 0 !important;">Mr. Hamid</td>
-                                            <td style="border-radius: 0 !important;">5000.000 KWD</td>
-                                            <td style="border-radius: 0 !important;">1600.000 KWD</td>
-                                            <td style="border-radius: 0 !important;">3000.000 KWD</td>
-                                            <td style="border-radius: 0 !important;">2000.000 KWD</td>
+                                            <td colspan="4" style="font-weight :bold; border-radius: 0 !important; background-color: #D1CFCF;">INCOME
+                                            </td>
+                                            {{-- <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td> --}}
 
                                         </tr>
+                                        <tr>
+                                            <td style="border-radius: 0 !important;">Design</td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
 
-                                    </tbody>
-                                    <tfoot>
-                                        <!-- Table footer content here -->
+                                        </tr>
+                                        <tr>
+                                            <td  style="border-radius: 0 !important;">Construction</td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td  style="border-radius: 0 !important;">Design & Construction</td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight :bold; background-color: #D1CFCF; border-radius: 0 !important;">TOTAL INCOME
+                                            </td>
+                                            <td class="text-center" style="background-color: #D1CFCF; border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="background-color: #D1CFCF; border-radius: 0 !important;font-weight :bold;"></td>
+                                            <td class="text-center" style="background-color: #D1CFCF; border-radius: 0 !important;font-weight :bold;"></td>
+                                        </tr>
                                         <tr class="grand_Value">
                                             <td class="hid"
                                                 style=" border-right-color: transparent; border-radius: 0 !important;">1
@@ -182,22 +198,73 @@
                                                 style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
                                                 design</td>
                                             <td class="hid"
-                                                style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
+                                                style="border-left-color: transparent; border-radius: 0 !important;">
                                                 Kuwait metro</td>
-                                            <td class=""
-                                                style="font-weight: bold; border-left-color: transparent;border-radius: 0 !important;">
-                                                Grand
-                                                Total</td>
-                                            <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
-                                                5000.000 KWD</td>
-                                            <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
-                                                1600.000 KWD</td>
-                                            <td class="text-nowrap"
-                                                style="font-weight: bold; border-radius: 0 !important;">
-                                                3000.000 KWD</td>
-                                            <td class="text-nowrap"
-                                                style="font-weight: bold; border-radius: 0 !important;">2000.000 KWD</td>
-
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="font-weight :bold; background-color: #D1CFCF; border-radius: 0 !important;">EXPENSES
+                                            </td>
+                                            {{-- <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td> --}}
+                                        </tr>
+                                        <tr>
+                                            <td style=" border-radius: 0 !important;">Payroll
+                                            </td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style=" border-radius: 0 !important;">Miscellaneous
+                                            </td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style=" border-radius: 0 !important;">Rent
+                                            </td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style=" border-radius: 0 !important;">Electricity
+                                            </td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style=" border-radius: 0 !important;">Petty Cash
+                                            </td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style=" border-radius: 0 !important;">Reimbursement
+                                            </td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight :bold; border-radius: 0 !important;background-color: #D1CFCF;">TOTAL EXPENSES
+                                            </td>
+                                            <td class="text-center" style="border-radius: 0 !important;font-weight :bold; background-color: #D1CFCF;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;font-weight :bold; background-color: #D1CFCF;"></td>
+                                            <td class="text-center" style="border-radius: 0 !important;font-weight :bold; background-color: #D1CFCF;"></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td style="font-size: 15px; font-weight :bold; background-color: #D1CFCF; border-radius: 0 !important;">PROFIT/LOSS
+                                            </td>
+                                            <td class="text-center" style="font-size: 15px; background-color: #D1CFCF; border-radius: 0 !important;font-weight :bold;"></td>
+                                            <td class="text-center" style="font-size: 15px; background-color: #D1CFCF; border-radius: 0 !important;font-weight :bold;"></td>
+                                            <td class="text-center"  style="font-size: 15px; background-color: #D1CFCF; border-radius: 0 !important;font-weight :bold;"></td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -214,20 +281,20 @@
     </div>
 
     <!-- metisMenu JS
-                                                                                    ============================================ -->
+                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                        ============================================ -->
+                                                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                        ============================================ -->
+                                                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                    ============================================ -->
+                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -318,27 +385,7 @@
 
     {{-- dropdown search --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    {{-- <script>
-        $(document).ready(function() {
-            $('select[name="Project_type"]').change(function() {
-                var selectedOption = $(this).val(); // Get the selected option value
-                if (selectedOption) {
-                    // Show all table rows
-                    $('#dataTable tbody tr').show();
-                    // Hide rows that don't match the selected option
-                    $('#dataTable tbody tr').each(function() {
-                        var projectType = $(this).find('td:nth-child(3)').text().toLowerCase(); // Get text of the third td element and convert to lowercase
-                        if (projectType !== selectedOption.toLowerCase()) {
-                            $(this).hide();
-                        }
-                    });
-                } else {
-                    // If no option is selected, show all table rows
-                    $('#dataTable tbody tr').show();
-                }
-            });
-        });
-    </script> --}}
+
     <script>
         $(document).ready(function() {
             $('select[name="Project_type"]').change(function() {
@@ -361,6 +408,7 @@
             });
         });
     </script>
+
 
 
 @endsection

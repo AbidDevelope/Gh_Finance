@@ -179,4 +179,6 @@ Route::controller(ProjectManagerController::class)->prefix('admin')->middleware(
 Route::controller(ReportController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
     Route::get('project/report', 'projectReport')->name('project/report');
     Route::get('report/view', 'reportView')->name('report/view');
+    Route::get('expense/report', 'expenseReport')->name('expense/report');
+    Route::get('p_&_l', 'profitLossReport')->name('p_&_l');
 });

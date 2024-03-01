@@ -14,10 +14,10 @@ border-color: #your-desired-color; /* Change 'your-desired-color' to the color y
     <div class="header-advance-area" style="background: white">
         <div class="breadcome-area">
             <div class="container-fluid">
-                <div class="margin_top">
+                <div class="margin_top mx-3">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
                         <div class="form-section bg-white">
-                            <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Edit Invoices </h4>
+                            <h4 class="mb-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">Edit Invoices </h4>
                             <hr class="border-top-grey">
                             <form action="{{ route('invoice/update', $invoices->id) }}" method="POST">
                                 @csrf
@@ -92,7 +92,7 @@ border-color: #your-desired-color; /* Change 'your-desired-color' to the color y
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($invoices->invoiceItems as $item)   
+                                                    @foreach ($invoices->invoiceItems as $item)
                                                     <tr>
                                                         <td>
                                                             <input class="form-control" type="text"
@@ -233,7 +233,7 @@ border-color: #your-desired-color; /* Change 'your-desired-color' to the color y
             var projectID = $(this).val();
             if(projectID)
             {
-                var url = '/project-data/' + projectID; 
+                var url = '/project-data/' + projectID;
 
                 $.ajax({
                     url: url,
@@ -262,7 +262,7 @@ border-color: #your-desired-color; /* Change 'your-desired-color' to the color y
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const wrapper = document.querySelector('#customFields tbody'); 
+    const wrapper = document.querySelector('#customFields tbody');
 
     const updateTotals = function () {
         let subtotal = 0;
@@ -283,17 +283,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const removeRowAndUpdateTotals = function (e) {
         if (e.target && e.target.matches('.remove-row')) {
-            e.target.closest('tr').remove(); 
-            updateTotals(); 
+            e.target.closest('tr').remove();
+            updateTotals();
         }
     };
 
     wrapper.addEventListener('input', function (e) {
         if (e.target && (e.target.matches('.qty') || e.target.matches('.price'))) {
-            const row = e.target.closest('tr'); 
+            const row = e.target.closest('tr');
             const qty = parseFloat(row.querySelector('.qty').value) || 0;
             const price = parseFloat(row.querySelector('.price').value) || 0;
-            const total = qty * price; 
+            const total = qty * price;
             row.querySelector('.total').value = total.toFixed(3);
             updateTotals();
         }

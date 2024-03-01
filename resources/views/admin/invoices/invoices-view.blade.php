@@ -9,7 +9,6 @@
     <div class="all-content-wrapper">
 
         <div class="header-advance-area mx-2" style="background:#fff">
-
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="row margin_top">

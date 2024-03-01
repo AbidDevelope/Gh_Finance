@@ -11,7 +11,7 @@
         <div class="header-advance-area" style="background: white">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top">
+                    <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                             <div class="form-section bg-white">
                                 <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Create Quotations </h4>
@@ -240,7 +240,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const wrapper = document.querySelector('#customFields tbody'); // Corrected to match your table's tbody
-        
+
             // Function to update the subtotal and grand total
             const updateTotals = function () {
                 let subtotal = 0;
@@ -251,7 +251,7 @@
                 document.querySelector('.subtotal').value = subtotal.toFixed(3);
                 updateGrandTotal();
             };
-        
+
             // Function to update the grand total based on subtotal and others
             const updateGrandTotal = function () {
                 const subtotal = parseFloat(document.querySelector('.subtotal').value) || 0;
@@ -259,7 +259,7 @@
                 const grandTotal = subtotal + others;
                 document.querySelector('.grandtotal').value = grandTotal.toFixed(3);
             };
-        
+
             // Function to handle row removal and update totals accordingly
             const removeRowAndUpdateTotals = function (e) {
                 if (e.target && e.target.matches('.remove-row')) {
@@ -267,7 +267,7 @@
                     updateTotals(); // Immediately update totals after row removal
                 }
             };
-        
+
             // Event listener for dynamic input changes in qty or price fields within the table
             wrapper.addEventListener('input', function (e) {
                 if (e.target && (e.target.matches('.qty') || e.target.matches('.price'))) {
@@ -279,15 +279,15 @@
                     updateTotals(); // Update totals whenever qty or price changes
                 }
             });
-        
+
             // Attach event listener to the wrapper for click events that might trigger row removal
             wrapper.addEventListener('click', removeRowAndUpdateTotals);
-        
+
             // Event listener to update grand total when the "others" input field changes
             const othersInput = document.querySelector('.others');
             othersInput.addEventListener('input', updateGrandTotal);
         });
         </script>
-        
-        
+
+
 @endsection

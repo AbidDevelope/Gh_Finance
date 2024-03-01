@@ -20,6 +20,14 @@
     .placeholder::placeholder{
         font-size:15px !important;
     }
+    .cursor:hover {
+    cursor: pointer;
+}
+.padding_y {
+        padding-top: 0.29rem !important;
+        padding-bottom: 0.29rem !important;
+        height: 35px;
+    }
 </style>
 
 @extends('admin.layouts.master')
@@ -28,27 +36,24 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row margin_top">
-
-                        <div class="container margin_bottom">
-                            <div class="pb">
-                                <h4 class="mt-3">Constructions</h4>
-                            </div>
-                            <div class=" text-right">
-                                <div class="table-actions">
+                    <div class="row margin_top mx-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
+                            <div class="d-flex justify-content-between ">
+                                <h4 class="" style="color: var(--own-black)">Constructions</h4>
+                                <div class="">
                                     <a href="{{ route('create/constructions') }}"
-                                        class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                        <i class="fa fa-plus"></i> Create
+                                        class="btn bg_button padding_y text-white rounded f-1 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
+                                        <i class="fa fa-plus"></i>&nbsp; Create
                                     </a>
-
                                     <a href="#"
-                                    class="btn  border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left" style="border-color: #0F1316 !important;">
-                                    <i class="fa fa-file-export"></i> Export
+                                        class="btn padding_y border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
+                                        style="border-color: #0F1316 !important;">
+                                        <i class="fa fa-file-export"></i> Export
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
                             {{-- <div class="s002"> --}}
                                 <form action="{{ route('search/construction') }}" method="GET">
                                     @csrf
@@ -57,7 +62,7 @@
                                             <div class="form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
                                                 <!-- Input with Bootstrap styling -->
-                                                <input type="text" id="start_date" name="start_date" placeholder="Select Start Date" class="form-control placeholder bg-white rounded text-black-50 datepicker"
+                                                <input type="text" id="start_date" name="start_date" placeholder="Select Start Date" class="form-control cursor placeholder bg-white rounded text-black-50 datepicker"
                                                  style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ old('start_date') }}">
                                                  @if ($errors->has('start_date'))
                                                  <span class="text-danger">{{ $errors->first('start_date') }}</span>
@@ -68,7 +73,7 @@
                                         <div class="container d-flex gap-4 ">
                                             <div class=" form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
-                                                <input type="text" id="end_date" class="form-control placeholder bg-white text-black-50 rounded datepicker"
+                                                <input type="text" id="end_date" class="form-control cursor placeholder bg-white text-black-50 rounded datepicker"
                                                 name="end_date" placeholder="Select Start Date"  value="{{ old('end_date') }}" style="box-shadow: none; border: 1px solid  var(--own-black); width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
@@ -76,7 +81,7 @@
 
                                             </div>
                                             <div class="form-group" style="margin-top: 0px;">
-                                                <button class="btn-search btn bg_button text-white bg-gray-100 "
+                                                <button class="btn-search padding_y btn bg_button text-white bg-gray-100 "
                                                     type="submit ">Search </button>
 
                                             </div>
