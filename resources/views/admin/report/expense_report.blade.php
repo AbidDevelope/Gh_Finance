@@ -154,15 +154,15 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td style="border-radius: 0 !important;">1</td>
-                                            <td style="border-radius: 0 !important;">21/05/2024</td>
-                                            <td style="border-radius: 0 !important;">May</td>
-                                            <td style="border-radius: 0 !important;">5000.000 KWD</td>
-                                            <td style="border-radius: 0 !important;">5000.000 KWD</td>
-                                            <td style="border-radius: 0 !important;">5000.000 KWD</td>
-                                            <td style="border-radius: 0 !important;">1600.000 KWD</td>
-                                            <td style="border-radius: 0 !important;">3000.000 KWD</td>
-                                            <td style="border-radius: 0 !important;">2000.000 KWD</td>
+                                            <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td>
 
                                         </tr>
                                     </tbody>
