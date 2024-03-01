@@ -162,19 +162,8 @@
                                             <td style="border-radius: 0 !important;">{{ $project->project_value }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->pettyCash->total_in_account ?? 'N/A' }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->payments->amount ?? 'N/A' }}</td>
-                                            <td style="border-radius: 0 !important;">{{ $project->project_type }}</td>
-                                            <td style="border-radius: 0 !important;" class="text-right">
-                                                <div class="dropdown dropdown-action">
-                                                    <a href="#" class="action-icon hide" data-toggle="dropdown"
-                                                        aria-expanded="false"><img
-                                                            src="{{ asset('assets/admin/img/icon/action.png') }}"
-                                                            alt=""></a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a id="downloadCSV" class="dropdown-item" href="#"><i
-                                                                class="fa fa-file-pdf-o m-r-5"></i> Export to CSV</a>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td style="border-radius: 0 !important;">0</td>
+                
                                         </tr>
                                         @endforeach
                                     </tbody>

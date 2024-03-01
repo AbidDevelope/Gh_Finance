@@ -21,6 +21,11 @@
     .cursor:hover {
     cursor: pointer;
    }
+   .padding_y {
+        padding-top: 0.29rem !important;
+        padding-bottom: 0.29rem !important;
+        height: 35px;
+    }
 </style>
 
 <script>
