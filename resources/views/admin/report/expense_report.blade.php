@@ -181,17 +181,17 @@
                                                 Grand
                                                 Total</td>
                                             <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
-                                                5000.000 KWD</td>
+                                               </td>
                                             <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
-                                                5000.000 KWD</td>
+                                               </td>
                                             <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
-                                                5000.000 KWD</td>
+                                               </td>
                                             <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
-                                                1600.000 KWD</td>
+                                                </td>
                                             <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
-                                                3000.000 KWD</td>
+                                                </td>
                                             <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
-                                                2000.000 KWD</td>
+                                                </td>
 
                                         </tr>
                                     </tfoot>
