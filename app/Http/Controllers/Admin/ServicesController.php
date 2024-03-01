@@ -39,7 +39,7 @@ class ServicesController extends Controller
     public function createDesign(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'project_type'      => 'required' ,  'date' => 'required',  'project_manager' => 'required',
+            'project_type'      => 'required' ,  'start_date' => 'required',  'project_manager' => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
 
@@ -61,11 +61,11 @@ class ServicesController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }else
         {
-        $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+        $date = DateTime::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
 
         $project = new Project();
         $project->project_type = $request->project_type;
-        $project->date = $date;
+        $project->start_date = $date;
         $project->project_manager = $request->project_manager;
         $project->manager_email = $request->manager_email;
         $project->Manager_mobile = $request->Manager_mobile;
@@ -131,7 +131,7 @@ class ServicesController extends Controller
     public function designUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'project_type'      => 'required' ,  'date' => 'required',  'project_manager' => 'required',
+            'project_type'      => 'required' ,  'start_date' => 'required',  'project_manager' => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
 
@@ -157,10 +157,10 @@ class ServicesController extends Controller
 
             if($projects)
             {
-                $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+                $date = DateTime::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
                 $projects->update([
                     'project_type'       =>  $request->project_type,
-                    'date'               =>  $date,
+                    'start_date'               =>  $date,
                     'project_manager'    =>  $request->project_manager,
                     'Manager_landline'   =>  $request->Manager_landline,
                     'Manager_mobile'     =>  $request->Manager_mobile,
@@ -277,7 +277,7 @@ class ServicesController extends Controller
     public function createConstructions(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'project_type'      => 'required' ,  'date' => 'required',  'project_manager' => 'required',
+            'project_type'      => 'required' ,  'start_date' => 'required',  'project_manager' => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
 
@@ -299,11 +299,11 @@ class ServicesController extends Controller
             return redirect()->back()->withErrors($validate)->withInput();
         }else
         {
-            $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+            $date = DateTime::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
     
             $projects = new Project();
             $projects->project_type = $request->project_type;
-            $projects->date = $date;
+            $projects->start_date = $date;
             $projects->project_manager = $request->project_manager;
             $projects->manager_email = $request->manager_email;
             $projects->Manager_mobile = $request->Manager_mobile;
@@ -379,7 +379,7 @@ class ServicesController extends Controller
     public function constructionUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'project_type'      => 'required' ,  'date' => 'required',  'project_manager' => 'required',
+            'project_type'      => 'required' ,  'start_date' => 'required',  'project_manager' => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
 
@@ -404,10 +404,10 @@ class ServicesController extends Controller
 
             if($projects)
             {
-                $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+                $date = DateTime::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
                 $projects->update([
                     'project_type'       =>  $request->project_type,
-                    'date'               =>  $date,
+                    'start_date'               =>  $date,
                     'project_manager'    =>  $request->project_manager,
                     'Manager_landline'   =>  $request->Manager_landline,
                     'Manager_mobile'     =>  $request->Manager_mobile,
@@ -516,7 +516,7 @@ class ServicesController extends Controller
     public function designConstructionCreate(Request $request)
     {
         $validate = Validator::make($request->all(),[
-            'project_type'      => 'required' ,  'date' => 'required',  'project_manager' => 'required',
+            'project_type'      => 'required' ,  'start_date' => 'required',  'project_manager' => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
 
@@ -537,11 +537,11 @@ class ServicesController extends Controller
         {
             return redirect()->back()->withErrors($validate)->withInput();
         }else{
-            $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+            $date = DateTime::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
     
             $projects = new Project();
             $projects->project_type = $request->project_type;
-            $projects->date = $date;
+            $projects->start_date = $date;
             $projects->project_manager = $request->project_manager;
             $projects->manager_email = $request->manager_email;
             $projects->Manager_mobile = $request->Manager_mobile;
@@ -613,7 +613,7 @@ class ServicesController extends Controller
     public function designConstructionUpdate(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'project_type'      => 'required' ,  'date' => 'required',  'project_manager' => 'required',
+            'project_type'      => 'required' ,  'start_date' => 'required',  'project_manager' => 'required',
             'manager_email'     => 'required' ,  'Manager_mobile'        => 'required',
             'Manager_landline'  => 'required' ,  'manager_remarks'       => 'required',
 
@@ -641,7 +641,7 @@ class ServicesController extends Controller
                 $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
                 $projects->update([
                     'project_type'       =>  $request->project_type,
-                    'date'               =>  $date,
+                    'start_date'               =>  $date,
                     'project_manager'    =>  $request->project_manager,
                     'Manager_landline'   =>  $request->Manager_landline,
                     'Manager_mobile'     =>  $request->Manager_mobile,

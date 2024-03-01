@@ -120,40 +120,45 @@
                                         <tr role="row">
                                             <th style="width: 70px !important; border-radius: 0 !important;">Id</th>
                                             <th style="border-radius: 0 !important;">Date</th>
+                                            {{-- <th style="border-radius: 0 !important;">Description</th> --}}
+                                            {{-- <th style="border-radius: 0 !important;">Month</th> --}}
                                             <th style="border-radius: 0 !important;">Total Amount</th>
                                             <th style="border-radius: 0 !important;" class="text-right">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if (count($miscell) > 0)
-                                            @foreach ($miscell as $index => $item)
-                                                <tr>
-                                                    <td style="border-radius: 0 !important;">
-                                                        {{ $index + 1 }}
-                                                    </td>
-                                                    <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
-                                                    <td style="border-radius: 0 !important;">{{ $item->grandtotal }}</td>
-                                                    <td style="border-radius: 0 !important;" class="text-right">
-                                                        <div class="dropdown dropdown-action">
-                                                            <a href="#" class="action-icon " data-toggle="dropdown"
-                                                                aria-expanded="false"><img
-                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
-                                                                    alt=""></a>
-                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('miscellaneous/view', $item->id) }}"><i
-                                                                        class="fa fa-eye m-r-5"></i> View</a>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('miscellaneous/edit', $item->id) }}"><i
-                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('miscellaneous/delete', $item->id) }}"><i
-                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                            </div>
+
+                                        @foreach ($miscell as $index => $item)
+                                            <tr>
+                                                <td style="border-radius: 0 !important;">
+                                                    {{ $index + 1 }}
+                                                </td>
+                                                <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                {{-- <td style="border-radius: 0 !important;">{{ $item->miscellaneousItems->first()->description ?? 'N/A' }}</td> --}}
+                                                <td style="border-radius: 0 !important;">{{ $item->grandtotal }}</td>
+                                                <td style="border-radius: 0 !important;" class="text-right">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon " data-toggle="dropdown"
+                                                            aria-expanded="false"><img
+                                                                src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                alt=""></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('miscellaneous/view', $item->id) }}"><i
+                                                                    class="fa fa-eye m-r-5"></i> View</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('miscellaneous/edit', $item->id) }}"><i
+                                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('miscellaneous/delete', $item->id) }}"><i
+                                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    
                                         @endif
                                     </tbody>
                                 </table>

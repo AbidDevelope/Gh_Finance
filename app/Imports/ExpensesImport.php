@@ -47,7 +47,7 @@ class ExpensesImport implements ToCollection
                 'beneficiary' => $beneficiary,
                 'amount_deposited' => $amountDeposited,
                 'amount_withdrawn' => $amountWithdrawn,
-                'project' => $project,
+                'project_name' => $project,
                 'total_amount_deposited' => $totalAmountDeposited,
                 'total_amount_withdrawn' => $totalAmountWithdrawn,
                 'total_in_account' => $totalInAccount,

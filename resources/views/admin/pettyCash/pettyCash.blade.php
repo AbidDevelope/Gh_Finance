@@ -145,7 +145,7 @@
                                         <th class="text-center" style="border-radius: 0 !important;">Date</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Project Name</th>
                                         <th>Beneficiary</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Total Value</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Actions</th>
                                     </tr>
                                 </thead>
@@ -159,10 +159,10 @@
                                                 <td class="text-center" style="border-radius: 0 !important;">
                                                     {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ $item->project }}</td>
+                                                    {{ $item->project_name }}</td>
                                                 <td>{{ $item->beneficiary }}</td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ $item->amount_deposited }}</td>
+                                                    {{ $item->total_in_account }}</td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon" data-toggle="dropdown"
@@ -184,10 +184,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @else
-                                        <tr>
-                                            <td colspan="6" class="text-center">No Record Found</td>
-                                        </tr>
                                     @endif
                                 </tbody>
                             </table>

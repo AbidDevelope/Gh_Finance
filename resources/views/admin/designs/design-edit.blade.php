@@ -72,11 +72,11 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Select Date</label>
-                                                <input type="text" name="date" class="form-control datepicker"
+                                                <label>Start Date</label>
+                                                <input type="text" name="start_date" class="form-control datepicker"
                                                     placeholder="DD/MM/YYYY"
-                                                    value="{{ \Carbon\Carbon::parse($projects->date)->format('d/m/Y') }}">
-                                                @error('date')
+                                                    value="{{ \Carbon\Carbon::parse($projects->start_date)->format('d/m/Y') }}">
+                                                @error('start_date')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>

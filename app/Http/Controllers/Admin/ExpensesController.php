@@ -22,7 +22,7 @@ class ExpensesController extends Controller
     public function miscellaneous()
     {
         $miscell = Miscellaneous::orderBy('id', 'desc')->with('miscellaneousItems')->get();
-
+        // return $miscell;
         return view('admin.miscellaneous.miscellaneous', compact('miscell'));
     }
 
@@ -64,6 +64,11 @@ class ExpensesController extends Controller
             ]);
             $miscellaneousItems->save();
         }
+
+        $expenses = new Expense();
+        $expenses->expense_type = $request->expense_type;
+        $expenses->grandtotal = $request->grandtotal;
+        $expenses->save();
       }
        session()->flash('success', 'Created Successfully');
        return redirect()->route('miscellaneous');
@@ -347,19 +352,17 @@ class ExpensesController extends Controller
     public function pettyCashPost(Request $request)
     {
 
-       // Assuming $request->date is in 'DD/MM/YYYY' format
-        $date = DateTime::createFromFormat('d/m/Y', $request->date);
-        $formattedDate = $date->format('Y-m-d'); // Convert to 'YYYY-MM-DD' format
+        $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
 
         $pettyCash = new PettyCash();
-        $pettyCash->date = $formattedDate; // Use the correctly formatted date
-        // Set other properties
+        $pettyCash->date = $date; 
+        $pettyCash->project_id = $request->project_id;
         $pettyCash->cheque_number_receipt_number = $request->cheque_number_receipt_number;
         $pettyCash->description = $request->description;
         $pettyCash->beneficiary = $request->beneficiary;
         $pettyCash->amount_deposited = $request->amount_deposited;
         $pettyCash->amount_withdrawn = $request->amount_withdrawn;
-        $pettyCash->project = $request->project;
+        $pettyCash->project_name = $request->project_name;
         $pettyCash->total_amount_deposited = $request->total_amount_deposited;
         $pettyCash->total_amount_withdrawn = $request->total_amount_withdrawn;
         $pettyCash->total_in_account = $request->total_in_account;

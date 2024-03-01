@@ -33,6 +33,12 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="table-responsive">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Expense Type</label>
+                                                        <input readonly type="text" class="form-control" name="expense_type" value="miscellaneous">
+                                                    </div>
+                                                </div>
                                                 <table class="table table-hover table-white" id="customFields">
                                                     <thead>
                                                         <tr>
@@ -69,7 +75,7 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control" id="Start"
+                                                                <input type="text" class="form-control datepicker"
                                                                     name="date[]" value="{{ old('date.0') }}"
                                                                     placeholder="DD/MM/YYYY">
                                                             </td>
@@ -177,7 +183,7 @@
             var addButton = $('#add-row');
             var wrapper = $('#customFields');
             var fieldHTML =
-                '<tr><td><input class="form-control" type="text" style="min-width:150px" name="description[]" value="{{ old('description.0') }}"></td><td><select name="month[]" id="" class="form-control"><option value="" disabled selected>Select Month</option><option value="January">January</option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="August">August</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option></select></td><td><input type="text" class="form-control" id="Start" name="date[]" value="{{ old('date.0') }}" placeholder="DD/MM/YYYY"></td><td><input class="form-control total" type="text" style="min-width:150px" name="total[]" value="{{ old('total.0') }}" onkeypress="return /[0-9.]/i.test(event.key)"></td><td><a href="javascript:void(0)" id="add-row" class="remove-row" title="Add"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td></tr>';
+                '<tr><td><input class="form-control" type="text" style="min-width:150px" name="description[]" value="{{ old('description.0') }}"></td><td><select name="month[]" id="" class="form-control"><option value="" disabled selected>Select Month</option><option value="January">January</option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="August">August</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option></select></td><td><input type="text" class="form-control datepicker" id="Start" name="date[]" value="{{ old('date.0') }}" placeholder="DD/MM/YYYY"></td><td><input class="form-control total" type="text" style="min-width:150px" name="total[]" value="{{ old('total.0') }}" onkeypress="return /[0-9.]/i.test(event.key)"></td><td><a href="javascript:void(0)" id="add-row" class="remove-row" title="Add"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td></tr>';
             var x = 1;
 
             $(addButton).click(function() {
@@ -185,6 +191,11 @@
                 if (x < maxField) {
                     x++;
                     $(wrapper).append(fieldHTML);
+                    $('.datepicker').datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        dateFormat: 'dd/mm/yy'
+                    });
                 } else {
                     alert('A maximum of ' + maxField + ' fields are allowed to be added. ');
                 }
@@ -198,22 +209,13 @@
         });
     </script>
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'Start') { //Start date selected - update End Date picker
-                $("#End").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#Start").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#Start, #End').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+       $(document).ready(function(){
+        $('.datepicker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy'
+        });
+       });
     </script>
 
     <script>

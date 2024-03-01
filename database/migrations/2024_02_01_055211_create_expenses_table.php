@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('project_id')->unsigned()->index();
-            $table->decimal('subtotal', 10, 3)->nullable();
-            $table->decimal('others', 10, 3)->nullable();
-            $table->decimal('grandtotal', 10, 3)->nullable();
+            // $table->bigInteger('project_id')->unsigned()->index();
+            $table->bigInteger('expense_type_id')->unsigned()->index();
+            $table->string('expense_type')->nullable();
+            $table->decimal('totalValue', 10, 3)->nullable();
             $table->timestamps();
         });
     }

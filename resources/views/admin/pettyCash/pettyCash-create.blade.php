@@ -38,15 +38,27 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Select Date</label>
-                                                <input type="text" class="form-control" id="Start"
+                                                <input type="text" class="form-control datepicker"
                                                 name="date" value="{{ old('date') }}"
-                                                placeholder="DD/MM/YYYY">
+                                                placeholder="DD/MM/YYYY" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Project ID<span class="text-danger">*</span></label>
+                                                <input class="form-control" type="text" name="project_id" id="project_id" value="{{ old('project_id') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Project Type</label>
+                                                <input readonly class="form-control" type="text" name="project_type" id="project_type" value="{{ old('project_type') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project Name</label>
-                                                <input class="form-control" type="text" name="project" id="project" value="{{ old('project') }}">
+                                                <input readonly class="form-control" type="text" name="project_name" id="project_name" value="{{ old('project_name') }}">
                                             </div>
                                         </div>
 
@@ -75,13 +87,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Amout Deposited</label>
-                                                <input class="form-control" type="text"
+                                                <input class="form-control" type="text" id="amount_deposited"
                                                 name="amount_deposited" onkeypress="return /[0-9]/i.test(event.key)">                                            </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Amount Withdrawn</label>
-                                                <input class="form-control" type="text"
+                                                <input class="form-control" type="text" id="amount_withdrawn"
                                                 name="amount_withdrawn" onkeypress="return /[0-9]/i.test(event.key)">                                            </div>
                                         </div>
 
@@ -141,7 +153,7 @@
                                             <div class="table-responsive">
                                                 <table class="table table-hover table-white">
                                                     <tbody>
-                                                        <tr>
+                                                        {{-- <tr>
                                                             <td colspan="5" class="text-right" style="font-size: 15px;">Total Amount Deposited :</td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px;width: 230px; ">
@@ -162,7 +174,7 @@
                                                                     type="text" name="total_amount_withdrawn"
                                                                     value="{{ old('total_amount_withdrawn') }}">
                                                             </td>
-                                                        </tr>
+                                                        </tr> --}}
                                                         <tr>
                                                             <td colspan="5"
                                                                 style="text-align: right; font-weight: bold; font-size: 15px;">
@@ -170,9 +182,9 @@
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
-                                                                <input class="form-control text-right"
+                                                                <input readonly class="form-control text-right"
                                                                     onkeypress="return /[0-9,]/i.test(event.key)"
-                                                                    type="text" name="total_in_account"
+                                                                    type="text" name="total_in_account"  id="total_in_account"
                                                                     value="{{ old('total_in_account') }}">
                                                             </td>
                                                         </tr>
@@ -269,7 +281,7 @@
                         },
                         error: function(request, status, error)
                         {
-                          alert('Error' + request.error);
+                          alert('Project Not Found');
                         }
 
                     });
@@ -278,43 +290,38 @@
         });
     </script>
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'Start') { //Start date selected - update End Date picker
-                $("#End").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#Start").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#Start, #End').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+      $(document).ready(function(){
+        $('.datepicker').datepicker({
+            changeMonth: true, 
+            changeYear: true,
+            dateFormat: 'dd/mm/yy'
+        });
+      });
     </script>
     {{-- Date Format  --}}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
+
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'Start') { //Start date selected - update End Date picker
-                $("#end_date").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#Start").datepicker('option', 'maxDate', selectedDate);
+        $(document).ready(function() {
+            // Function to calculate grand total
+            function calculateTotal() {
+                var amountDeposited = $('#amount_deposited').val() ? parseInt($('#amount_deposited').val()) : 0;
+                var amountWithdrawn = $('#amount_withdrawn').val() ? parseInt($('#amount_withdrawn').val()) : 0;
+        
+                // Calculating grand total
+                var totalInAccount = amountDeposited - amountWithdrawn;
+        
+                // Updating the total in account field
+                $('#total_in_account').val(totalInAccount);
             }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#Start, #end_date').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
-    </script>
+        
+            // Event listeners for input fields
+            $('#amount_deposited, #amount_withdrawn').on('input', function() {
+                calculateTotal();
+            });
+        });
+        </script>
+        
 @endsection

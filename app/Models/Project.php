@@ -8,13 +8,14 @@ use App\Models\Invoice;
 use App\Models\ProjectManager;
 use App\Models\Expense;
 use App\Models\Payment;
+use App\Models\PettyCash;
 
 class Project extends Model
 {
     use HasFactory;
     protected $fillable = [
         'project_type',
-        'date',
+        'start_date',
         'project_manager',
         'manager_email',
         'Manager_mobile',
@@ -45,7 +46,7 @@ class Project extends Model
 
     public function payments()
     {
-        return $this->hasMany(Payment::class);
+        return $this->hasOne(Payment::class, 'project_id');
     }
 
     public function projectManager()
@@ -61,5 +62,9 @@ class Project extends Model
     public function invoices()
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    public function pettyCash(){
+        return $this->hasOne(PettyCash::class, 'project_id');
     }
 }
