@@ -23,7 +23,7 @@
                     <div class="margin_top ">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                             <div class="form-section bg-white">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Edit Payroll</h4>
+                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">Edit Payroll</h4>
                                 <hr class="border-top-grey">
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)

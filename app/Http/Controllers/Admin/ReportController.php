@@ -43,4 +43,16 @@ class ReportController extends Controller
     {
         return view('admin.report.report-view');
     }
+
+    public function profitLossReport()
+    {
+        return view('admin.report.P&L');
+    }
+
+    public function expenseReport()
+    {
+        return view('admin.report.expense_report');
+    }
+
+
 }

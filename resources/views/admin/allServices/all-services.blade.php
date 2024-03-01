@@ -50,10 +50,20 @@
         <div class="header-advance-area ">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top ">
+                    <div class="margin_top mx-3">
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
-                            <h4 class="">All Services</h4>
+                            <div class="d-flex justify-content-between ">
+                                <h4 class="" style="color: var(--own-black)">All Services</h4>
+                                <div class="">
+
+                                    <a href="#"
+                                        class="btn padding_y border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
+                                        style="border-color: #0F1316 !important;">
+                                        <i class="fa fa-file-export"></i> Export
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="s002">
@@ -67,8 +77,9 @@
                                                 <!-- Input with Bootstrap styling -->
                                                 <input type="text" id="start_date" name="start_date"
                                                     placeholder="Select Start Date"
-                                                    class="form-control placeholder bg-white rounded text-black-50 datepicker cursor"
-                                                    style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ old('start_date') }}">
+                                                    class="form-control placeholder bg-white rounded text-black-50"
+                                                    style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);"
+                                                    value="{{ old('start_date') }}">
                                                 @if ($errors->has('start_date'))
                                                     <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                                 @endif
@@ -87,7 +98,7 @@
 
                                             </div>
                                             <div class="form-group" style="margin-top: 0px;">
-                                                <button class="btn-search btn bg_button text-white bg-gray-100 "
+                                                <button class="btn-search padding_y btn bg_button text-white bg-gray-100 "
                                                     type="submit ">Search </button>
 
                                             </div>
@@ -130,11 +141,16 @@
                                             @foreach ($projects as $index => $project)
                                                 <tr>
                                                     <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
-                                                    <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
-                                                    <td style="border-radius: 0 !important;">{{ $project->project_type }}</td>
-                                                    <td style="border-radius: 0 !important;">{{ $project->project_name }}</td>
-                                                    <td style="border-radius: 0 !important;">{{ $project->project_mobile }}</td>
-                                                    <td style="border-radius: 0 !important;">{{ $project->project_value }}</td>
+                                                    <td style="border-radius: 0 !important;">
+                                                        {{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_type }}
+                                                    </td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_name }}
+                                                    </td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_mobile }}
+                                                    </td>
+                                                    <td style="border-radius: 0 !important;">{{ $project->project_value }}
+                                                    </td>
                                                     <td style="border-radius: 0 !important;" class="text-right">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon " data-toggle="dropdown"
@@ -167,27 +183,27 @@
     </div>
 
     <!-- metisMenu JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                ============================================ -->
+                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                ============================================ -->
+                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                            ============================================ -->
+                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
     <script>
-       $(document).ready(function() {
-        $('#dataTable').DataTable({
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
                 "language": {
                     "emptyTable": "No records available"
                 }

@@ -55,7 +55,7 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row margin_top mx-2">
+                    <div class="row margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section bg-white">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Edit Service</h4>

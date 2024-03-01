@@ -1,6 +1,6 @@
 <style>
     .margin_top {
-        margin-top: -40px !important;
+        margin-top: -50px !important;
     }
 
     input.rounded:focus {
@@ -41,7 +41,7 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top">
+                    <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section bg-white">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Service</h4>
@@ -423,7 +423,7 @@
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS                                                          ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
- 
+
     {{-- Add or remove section script start --}}
     <script>
         $(document).ready(function() {
@@ -481,7 +481,7 @@
             $('.datepicker').datepicker({
                 changeMonth: true,
                 changeYear: true,
-                dateFormat: 'dd/mm/yy' 
+                dateFormat: 'dd/mm/yy'
             });
         });
     </script>

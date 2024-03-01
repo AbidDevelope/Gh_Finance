@@ -15,7 +15,7 @@
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="container-fluid">
-                        <div class="margin_top">
+                        <div class="margin_top mx-3">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-section bg-white">
                                     <h6 class="card-title m-b-15">Miscellaneous Details</h6>

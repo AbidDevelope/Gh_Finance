@@ -54,16 +54,16 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row margin_top mx-2">
+                    <div class="row margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-section">
+                            <div class="form-section bg-white">
                                 <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Edit Service</h4>
                                 <hr class="m-0 border-top-grey">
                                 <form action="{{ route('design_&_construction/update', $projects->id) }}" method="POST">
                                     @csrf
                                     <div class="row">
-                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Type</h5>
-                                        <div class="col-md-3">
+                                        {{-- <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Type</h5> --}}
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Project Type</label>
                                                 <input readonly type="text" name="project_type" class="form-control"
@@ -139,9 +139,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-3">
+                                    <div class="row mt-4">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Client Details</h5>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Company Name </label>
                                                 <input type="text" name="company_name" class="form-control"
@@ -249,7 +249,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-3">
+                                    <div class="row mt-4">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Project Details</h5>
                                         <div class="col-md-3">
                                             <div class="form-group">

@@ -22,11 +22,11 @@
     .cursor:hover {
     cursor: pointer;
 }
-.bg_black:hover{
-    background-color: red !important;
+.padding_y{
+    padding-top: 0.29rem !important;
+    padding-bottom: 0.29rem !important;
+    height: 35px;
 }
-/* select.bg_option option:hover {
-    background:  transparent !important; /* or any other color you prefer */
 
 </style>
 
@@ -57,9 +57,16 @@
         <div class="header-advance-area ">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top  ">
+                    <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
-                            <h4 class="mt-3">Reports</h4>
+                            <div class="d-flex justify-content-between">
+                                <h4 class="mt-3"style="color: var(--own-black)">Project Report</h4>
+                                <button type="type" id="export"
+                                class="padding_y mt-3 btn border rounded f-14 mr-3  mb-lg-0 mb-md-0 float-left"
+                                style="border-color: var(--own-black) !important;">
+                                <i class="fa fa-file-export"></i> Export
+                            </button>
+                            </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
                             {{-- <div class="s002"> --}}
@@ -92,7 +99,7 @@
 
                                             </div>
                                             <div class="form-group" style="margin-top: ;">
-                                                <button class="btn-search btn bg_button text-white bg-gray-100 "
+                                                <button class="btn-search btn padding_y bg_button text-white bg-gray-100 "
                                                     type="submit">Search </button>
                                             </div>
 
@@ -100,13 +107,13 @@
 
                                     </div>
                                     <div>
-                                        <select class="form-control bg_option cursor placeholder bg-white rounded text-black"
-                                            name="Project_type" id=""
+                                        <select class="form-control  cursor placeholder bg-white rounded text-black"
+                                            name="Project_type" id="project-type-select"
                                             class=" form-control"style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);">
-                                            <option class="bg_black" value="" selected>Select Project Type
+                                            <option class="" value="" style="" selected>Select Project Type
                                             </option>
                                             {{-- <option value="All">All</option> --}}
-                                            <option class=" bg_black" value="Design">Design</option>
+                                            <option class=" " value="Design">Design</option>
                                             <option value="Construction">Construction</option>
                                             <option value="Design & Construction">Design & Construction</option>
                                         </select>
@@ -141,7 +148,7 @@
                                             <th style="border-radius: 0 !important;">Expenses</th>
                                             <th style="border-radius: 0 !important;">Receivables</th>
                                             <th style="border-radius: 0 !important;">Pending Receivables</th>
-                                            <th style="border-radius: 0 !important;">Action</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -200,23 +207,7 @@
                                                 {{ $receivablesValueFormatted }}000 KWD</td>
                                             <td class="text-nowrap"
                                                 style="font-weight: bold; border-radius: 0 !important;">2000.000 KWD</td>
-                                            <td class="hid" style=" border-radius: 0 !important;" class="text-right">
-                                                <div class="dropdown dropdown-action text-center">
-                                                    <a class="" href="#" class="action-icon "
-                                                        data-toggle="dropdown" aria-expanded="false"><img
-                                                            src="{{ asset('assets/admin/img/icon/action.png') }}"
-                                                            alt=""></a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="{{ route('report/view') }}"><i
-                                                                class="fa fa-file-excel-o m-r-5"></i> Export to CSV
-                                                        </a>
-                                                    </div>
-                                                    {{-- <div class="dropdown-menu dropdown-menu-right">
-                                                        <a id="downloadCSV" class="dropdown-item" href="#"><i
-                                                                class="fa fa-file-pdf-o m-r-5"></i> Export to CSV</a>
-                                                    </div> --}}
-                                                </div>
-                                            </td>
+
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -275,4 +266,6 @@
         });
      });
     </script>
+
+
 @endsection

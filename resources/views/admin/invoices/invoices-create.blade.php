@@ -14,10 +14,10 @@
         <div class="header-advance-area" style="background: white">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top">
+                    <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white">
                             <div class="form-section bg-white">
-                                <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Create Invoices </h4>
+                                <h4 class="mb-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">Create Invoices </h4>
                                 <hr class="border-top-grey">
                                 <form action="{{ route('invoice/create') }}" method="POST">
                                     @csrf
@@ -237,7 +237,7 @@
                 var projectID = $(this).val();
                 if(projectID)
                 {
-                    var url = '/project-data/' + projectID; 
+                    var url = '/project-data/' + projectID;
 
                     $.ajax({
                         url: url,
@@ -266,8 +266,8 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const wrapper = document.querySelector('#customFields tbody'); 
-    
+        const wrapper = document.querySelector('#customFields tbody');
+
         const updateTotals = function () {
             let subtotal = 0;
             document.querySelectorAll('.total').forEach(function (totalField) {
@@ -277,34 +277,34 @@
             document.querySelector('.subtotal').value = subtotal.toFixed(3);
             updateGrandTotal();
         };
-    
+
         const updateGrandTotal = function () {
             const subtotal = parseFloat(document.querySelector('.subtotal').value) || 0;
             const discount = parseFloat(document.querySelector('.discount').value) || 0;
             const grandTotal = subtotal - discount;
             document.querySelector('.grandValue').value = grandTotal.toFixed(3);
         };
-    
+
         const removeRowAndUpdateTotals = function (e) {
             if (e.target && e.target.matches('.remove-row')) {
-                e.target.closest('tr').remove(); 
-                updateTotals(); 
+                e.target.closest('tr').remove();
+                updateTotals();
             }
         };
-    
+
         wrapper.addEventListener('input', function (e) {
             if (e.target && (e.target.matches('.qty') || e.target.matches('.price'))) {
-                const row = e.target.closest('tr'); 
+                const row = e.target.closest('tr');
                 const qty = parseFloat(row.querySelector('.qty').value) || 0;
                 const price = parseFloat(row.querySelector('.price').value) || 0;
-                const total = qty * price; 
+                const total = qty * price;
                 row.querySelector('.total').value = total.toFixed(3);
                 updateTotals();
             }
         });
-    
+
         wrapper.addEventListener('click', removeRowAndUpdateTotals);
-    
+
         const othersInput = document.querySelector('.discount');
         othersInput.addEventListener('input', updateGrandTotal);
     });
