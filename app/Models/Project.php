@@ -42,6 +42,7 @@ class Project extends Model
         'project_country',
         'payment_plan',
         'project_description',
+        'total_receivable',
     ];
 
     public function payments()

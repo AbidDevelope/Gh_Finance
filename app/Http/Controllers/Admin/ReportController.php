@@ -15,8 +15,11 @@ class ReportController extends Controller
     public function projectReport()
     {
         $projects = Project::with(['pettyCash', 'payments'])->get();
+    
 
         $totalProjectValue = $projects->sum('project_value');
+        $totaltotalReceivable = $projects->sum('total_receivable');
+        $pendingReceivable =  $totalProjectValue - $totaltotalReceivable;
         
         $totalExpenseValue = $projects->reduce(function ($carry, $project) {
             $pettyCashTotal = $project->pettyCash->sum('total_in_account');
@@ -29,12 +32,14 @@ class ReportController extends Controller
         }, 0);
         
         $formattedValue = number_format($totalProjectValue, 3, '.', ',');
+        $formattedValueReceivable = number_format($totaltotalReceivable, 3, '.', ',');
+        $formattedValuePendingReceivable = number_format($pendingReceivable, 3, '.', ',');
         
         $totalExpenseValueFormatted = number_format($totalExpenseValue, 3, '.', ','); 
 
         $receivablesValueFormatted = number_format($totalReceivablesValue, 3, '.', ','); 
         
-        return view('admin.report.project_report', compact('projects', 'formattedValue', 'totalExpenseValueFormatted', 'receivablesValueFormatted'));
+        return view('admin.report.project_report', compact('projects', 'formattedValue', 'totalExpenseValueFormatted', 'receivablesValueFormatted', 'formattedValueReceivable', 'formattedValuePendingReceivable'));
         
     }
 

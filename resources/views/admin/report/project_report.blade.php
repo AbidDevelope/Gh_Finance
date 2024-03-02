@@ -161,8 +161,8 @@
                                             <td style="border-radius: 0 !important;">{{ $project->project_manager }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_value }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->pettyCash->total_in_account ?? 'N/A' }}</td>
-                                            <td style="border-radius: 0 !important;">{{ $project->payments->amount ?? 'N/A' }}</td>
-                                            <td style="border-radius: 0 !important;">0</td>
+                                            <td style="border-radius: 0 !important;">{{ $project->total_receivable ?? 'N/A' }}</td>
+                                            <td style="border-radius: 0 !important;">{{ $project->project_value - $project->total_receivable  }}</td>
                 
                                         </tr>
                                         @endforeach
@@ -193,9 +193,9 @@
                                                 {{ $totalExpenseValueFormatted }} KWD</td>
                                             <td class="text-nowrap"
                                                 style="font-weight: bold; border-radius: 0 !important;">
-                                                {{ $receivablesValueFormatted }}000 KWD</td>
+                                                {{ $formattedValueReceivable }} KWD</td>
                                             <td class="text-nowrap"
-                                                style="font-weight: bold; border-radius: 0 !important;">2000.000 KWD</td>
+                                                style="font-weight: bold; border-radius: 0 !important;">{{ $formattedValuePendingReceivable }} KWD</td>
 
                                         </tr>
                                     </tfoot>
@@ -231,7 +231,9 @@
 
     {{-- Data Table js code --}}
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
-  
+  <script>
+    let dataTable = $('#dataTable').DataTable();
+  </script>
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>

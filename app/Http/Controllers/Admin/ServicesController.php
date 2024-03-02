@@ -92,6 +92,7 @@ class ServicesController extends Controller
         $project->project_country = $request->project_country;
         $project->payment_plan = $request->payment_plan;
         $project->project_description = $request->project_description;
+        $project->total_receivable = $request->total_receivable;
         $project->save();
 
            foreach($request->amount as $key=>$payment)
@@ -330,6 +331,7 @@ class ServicesController extends Controller
             $projects->project_country = $request->project_country;
             $projects->payment_plan = $request->payment_plan;
             $projects->project_description = $request->project_description;
+           
             $projects->save();
 
             if($projects)
@@ -434,7 +436,7 @@ class ServicesController extends Controller
                     'project_country'    =>  $request->project_country,
                     'payment_plan'    =>  $request->payment_plan,
                     'project_description'    =>  $request->project_description,
-                ]);
+                ]); $projects->total_receivable = $request->total_receivable;
                  
                 $data = $request->input('items', []);
                 foreach($data as $itemId=>$itemData)
@@ -568,6 +570,7 @@ class ServicesController extends Controller
             $projects->project_country = $request->project_country;
             $projects->payment_plan = $request->payment_plan;
             $projects->project_description = $request->project_description;
+            $projects->total_receivable = $request->total_receivable;
             $projects->save();
 
             if($projects)
