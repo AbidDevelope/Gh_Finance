@@ -144,22 +144,21 @@
                                             <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Date</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Month</th>
-
                                             <th class="text-center" style="border-radius: 0 !important;">Employee Name</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Payroll</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @dd($expenses) --}}
-                                        {{-- @if (count($expenses) > 0) --}}
-                                            {{-- @foreach ($expenses as $index => $item) --}}
+                                         {{-- @dd($payrollItems); --}}
+                                        @if (count($payrollItems) > 0)
+                                            @foreach ($payrollItems as $index => $item)
                                                 <tr>
-                                                    <td class="text-center" style="border-radius: 0 !important;"></td>
-                                                    <td class="text-center" style="border-radius: 0 !important;"></td>
-                                                    <td class="text-center" style="border-radius: 0 !important;"></td>
-                                                    <td class="text-center" style="border-radius: 0 !important;"></td>
-                                                    <td class="text-center" style="border-radius: 0 !important;"></td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $index+1 }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->month }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->employee_name }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->payroll }}</td>
                                                     <td class="text-center" style="border-radius: 0 !important;">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon" data-toggle="dropdown"
@@ -168,30 +167,23 @@
                                                                     alt=""></a>
                                                             <div class="dropdown-menu dropdown-menu-right">
                                                                 <a class="dropdown-item"
-                                                                    {{-- href="{{ route('expenses/view', $item->id) }}"><i --}}
-                                                                    href="{{ route('payroll/view') }}"><i
+                                                                    href="{{ route('payroll/view', $item->id) }}"><i
                                                                         class="fa fa-eye m-r-5"></i> View</a>
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('payroll/edit') }}"><i
                                                                     {{-- href="{{ route('expenses/edit', $item->id) }}"><i --}}
                                                                         class="fa fa-pencil m-r-5"></i> Edit</a>
                                                                 <a class="dropdown-item"
-                                                                    {{-- href="{{ route('expenses/delete', $item->id) }}"><i --}}
-                                                                    href=""><i
+                                                                    href="#"><i
                                                                         class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                            {{-- @endforeach --}}
-                                        {{-- @else --}}
-                                            <tr>
-                                                <td colspan="6" class="text-center">No Record Found</td>
-                                            </tr>
-                                        {{-- @endif --}}
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
-
                         </div>
                     </div>
                 </div>
@@ -225,8 +217,14 @@
     {{-- Data Table js code --}}
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
     <script>
-        $('#dataTable').DataTable();
-    </script>
+        $(document).ready(function(){
+         $('#dataTable').DataTable({
+             'language' : {
+                 'emptyTable' : 'No records available'
+             }
+         });
+        });
+     </script>
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>

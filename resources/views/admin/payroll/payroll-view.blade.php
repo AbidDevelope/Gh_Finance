@@ -33,35 +33,35 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Date:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ \Carbon\Carbon::parse($payrollItems->date)->format('d-m-Y') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Month:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $payrollItems->month }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Employee Name:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $payrollItems->employee_name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Actual Salary:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $payrollItems->actual_salary }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Payroll:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $payrollItems->payroll }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Salary:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $payrollItems->salary }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Payment Mode:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $payrollItems->payment_mode }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Remarks:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $payrollItems->remarks }}</td>
                                                 </tr>
 
                                             </tbody>

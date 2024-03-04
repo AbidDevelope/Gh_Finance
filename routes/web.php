@@ -93,8 +93,10 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     // Payroll Route Start
     Route::get('payroll', 'payroll')->name('payroll');
     Route::get('payroll/create', 'payrollCreate')->name('payroll/create');
-    Route::get('payroll/view', 'payrollView')->name('payroll/view');
+    Route::post('payroll/create', 'payrollCreatePost')->name('payroll/create');
+    Route::get('payroll/view/{id}', 'payrollView')->name('payroll/view');
     Route::get('payroll/edit', 'payrollEdit')->name('payroll/edit');
+    Route::get('payroll/delete/{id}', 'payrollDelete')->name('payroll/delete');
 
     Route::get('rent', 'rent')->name('rent');
     Route::get('rent/create', 'rentCreate')->name('rent/create');
