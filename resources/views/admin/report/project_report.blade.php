@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
                             {{-- <div class="s002"> --}}
-                            <form action="#" method="GET">
+                            <form action="{{ route('searchByDate') }}" method="GET">
                                 @csrf
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex">
