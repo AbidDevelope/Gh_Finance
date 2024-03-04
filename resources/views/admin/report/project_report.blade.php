@@ -77,10 +77,10 @@
                                         <div class=" ">
                                             <div class="form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
-                                                <input type="text" id="start_date" name="start_date"
+                                                <input type="text" name="start_date"
                                                 placeholder="Select Start Date"
                                                 class="form-control placeholder bg-white rounded text-black-50 datepicker cursor"
-                                                style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ old('start_date') }}">
+                                                style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ request('start_date') }}">
                                                 @if ($errors->has('start_date'))
                                                     <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                                 @endif
@@ -90,9 +90,9 @@
                                             <div class=" form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
                                                 <!-- Input with Bootstrap styling -->
-                                                <input type="text" id="end_date"
+                                                <input type="text"
                                                     class="form-control placeholder bg-white text-black-50 rounded datepicker cursor" name="end_date"
-                                                    placeholder="Select End Date" value="{{ old('end_date') }}" style="box-shadow: none; border: 1px solid  var(--own-black); width: 230px; height: 35px;">
+                                                    placeholder="Select End Date" value="{{ request('end_date') }}" style="box-shadow: none; border: 1px solid  var(--own-black); width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif
@@ -155,7 +155,7 @@
                                         @foreach ($projects as $index=>$project)
                                         <tr>
                                             <td style="border-radius: 0 !important;">{{ $index+1 }}</td>
-                                            <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
+                                            <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->start_date)->format('d/m/Y') }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_type }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_name }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_manager }}</td>

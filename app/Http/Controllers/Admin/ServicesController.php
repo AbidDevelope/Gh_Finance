@@ -754,8 +754,8 @@ class ServicesController extends Controller
         $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
         $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
 
-        $projects = Project::where('project_type' , 'Design')->whereDate('date', '>=', $startDate)
-                            ->whereDate('date', '<=', $endDate)
+        $projects = Project::where('project_type' , 'Design')->whereDate('start_date', '>=', $startDate)
+                            ->whereDate('start_date', '<=', $endDate)
                             ->get(); 
         if($projects)
         {
@@ -777,8 +777,8 @@ class ServicesController extends Controller
         $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
         $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
 
-        $projects = Project::where('project_type' , 'Construction')->whereDate('date', '>=', $startDate)
-                            ->whereDate('date', '<=', $endDate)
+        $projects = Project::where('project_type' , 'Construction')->whereDate('start_date', '>=', $startDate)
+                            ->whereDate('start_date', '<=', $endDate)
                             ->get(); 
         if($projects)
         {
@@ -800,8 +800,8 @@ class ServicesController extends Controller
         $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
         $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
 
-        $projects = Project::where('project_type' , 'Design & Construction')->whereDate('date', '>=', $startDate)
-                            ->whereDate('date', '<=', $endDate)
+        $projects = Project::where('project_type' , 'Design & Construction')->whereDate('start_date', '>=', $startDate)
+                            ->whereDate('start_date', '<=', $endDate)
                             ->get(); 
         if($projects)
         {
@@ -823,8 +823,8 @@ class ServicesController extends Controller
         $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
         $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
 
-        $projects = Project::whereDate('date', '>=', $startDate)
-                            ->whereDate('date', '<=', $endDate)
+        $projects = Project::whereDate('start_date', '>=', $startDate)
+                            ->whereDate('start_date', '<=', $endDate)
                             ->get(); 
         if($projects)
         {

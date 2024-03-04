@@ -6,13 +6,35 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Admin;
+use App\Models\Project;
+// use App\Models\Admin;
 use Validator, Hash, Auth;
 
 class AuthController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $projects = Project::with(['pettyCash', 'payments'])->get();
+
+        $designValue = $projects->where('project_type', 'Design')->sum('project_value');
+        $constructionValue = $projects->where('project_type', 'Construction')->sum('project_value');
+        $designConstructionValue = $projects->where('project_type', 'Design & Construction')->sum('project_value');
+
+        $totalProjectRevenue = $projects->sum('project_value');
+
+        $totalExpensesValue = $projects->reduce(function($carry, $project){
+            $sumExpenses = $project->pettyCash->sum('total_in_account');
+            return $sumExpenses;
+        },0);
+
+        $totalRevenue = number_format($totalProjectRevenue, 3, '.', ',');
+        $totalExpenses = number_format($totalExpensesValue, 3, '.', ',');
+        $totalDesign = number_format($designValue, 3, '.', ',');
+        $totalConstruction = number_format($constructionValue, 3, '.', ',');
+        $totalDesignConstruction = number_format($designConstructionValue, 3, '.', ',');
+
+        
+        return view('admin.dashboard', compact('projects', 'totalRevenue', 'totalExpenses', 'totalDesign', 'totalConstruction', 'totalDesignConstruction'));
     }
 
     public function getRegister()

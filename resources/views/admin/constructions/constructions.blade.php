@@ -126,7 +126,7 @@
                                                 <tr>
                                                     <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
                                                     <td style="border-radius: 0 !important;">{{ $project->id }}</td>
-                                                    <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->date)->format('d/m/Y') }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->start_date)->format('d/m/Y') }}</td>
                                                     <td style="border-radius: 0 !important;">{{ $project->project_type }}</td>
                                                     <td style="border-radius: 0 !important;">{{ $project->project_name }}</td>
                                                     <td style="border-radius: 0 !important;">{{ $project->project_mobile }}</td>
