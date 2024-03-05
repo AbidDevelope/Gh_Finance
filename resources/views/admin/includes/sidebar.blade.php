@@ -112,7 +112,7 @@
         background-color: #fff;
         box-sizing: border-box;
         z-index: 999;
-        margin-top: -550px !important;
+        margin-top: -510px !important;
     }
 
     .height {
@@ -724,7 +724,6 @@
                                     </span>
                                 </a></div>
                         </ul>
-
                     </li>
                     <li class="removable sidebar-h expenses">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"

@@ -49,24 +49,21 @@
                                                     <td>Beneficiary:</td>
                                                     <td class="text-right"></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Amount Deposite:</td>
-                                                    <td class="text-right"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount Withdraw:</td>
-                                                    <td class="text-right"></td>
-                                                </tr>
+
                                                 <tr>
                                                     <td>Project:</td>
                                                     <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Total Amount Deposited:</td>
+                                                    <td>Project Type:</td>
                                                     <td class="text-right"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Total Amount Withdrawn:</td>
+                                                    <td>Amount Deposited:</td>
+                                                    <td class="text-right"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Amount Withdrawn:</td>
                                                     <td class="text-right"></td>
                                                 </tr>
                                                 <tr>

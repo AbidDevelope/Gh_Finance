@@ -40,6 +40,7 @@
         padding-bottom: 0.29rem !important;
         height: 35px;
     }
+
     .hid {
         color: transparent !important;
     }
@@ -146,7 +147,8 @@
                                     <tr role="row">
                                         <th class="text-center"
                                             style="width: 50px !important; border-radius: 0 !important;">Sr. No.</th>
-                                        <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Date</th>
+                                        <th class="text-center"
+                                            style="width: 70px !important; border-radius: 0 !important;">Date</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Cheque No./Reciept
                                             No.</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Beneficiary</th>
@@ -155,7 +157,8 @@
                                         <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Amount Withdrawn</th>
 
-                                        <th class="text-center" style="width: 50px !important; border-radius: 0 !important;">Actions</th>
+                                        <th class="text-center"
+                                            style="width: 50px !important; border-radius: 0 !important;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -187,7 +190,8 @@
                                                         src="{{ asset('assets/admin/img/icon/action.png') }}"
                                                         alt=""></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="{{ route('indemnity&leave/view') }}"><i
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('indemnity&leave/view') }}"><i
                                                             class="fa fa-eye m-r-5"></i> View</a>
                                                     <a class="dropdown-item"
                                                         href="{{ route('indemnity&leave/edit') }}"><i
@@ -223,15 +227,12 @@
                                             style="font-weight: bold; border-left-color: transparent;border-radius: 0 !important;">
                                             Grand
                                             Total</td>
-                                        
                                         <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
-                                           KWD</td>
-                                        <td class="text-nowrap"
-                                            style="font-weight: bold; border-radius: 0 !important;">
-                                           KWD</td>
-                                        <td class="text-nowrap"
-                                            style="font-weight: bold; border-radius: 0 !important;"> </td>
-
+                                            KWD</td>
+                                        <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
+                                            KWD</td>
+                                        <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
+                                        </td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -249,21 +250,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                                            ============================================ -->
+                                                                                ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                            ============================================ -->
+                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
