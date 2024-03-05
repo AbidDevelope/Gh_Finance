@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\IndemnityImport;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\IndemnityLeave;
 use Validator;
+use DateTime;
 
 class HRController extends Controller
 {
     public function indemnityAndleave()
     {
-       return view('admin.hr.indemnity_leave');
+      $indemnity = IndemnityLeave::all();
+       return view('admin.hr.indemnity_leave', compact('indemnity'));
     }
 
     public function indemnityAndleaveCreate()
@@ -43,8 +45,9 @@ class HRController extends Controller
      }
 
      $file = $request->file('file');
-     Excel::import(new IndemnityLeave, $file);
+   //   dd($file);
+      Excel::import(new IndemnityImport, $file);
 
-     return back()->with('success', 'Imported successfully.');
+     return back()->with('success', 'Uploaded Successfully.');
     }
 }

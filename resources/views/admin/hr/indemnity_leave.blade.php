@@ -153,7 +153,7 @@
                                             No.</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Beneficiary</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Project</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Service Type</th>
+                                        {{-- <th class="text-center" style="border-radius: 0 !important;">Service Type</th> --}}
                                         <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Amount Withdrawn</th>
 
@@ -163,25 +163,30 @@
                                 </thead>
                                 <tbody>
                                     {{-- @dd($expenses) --}}
-                                    {{-- @if (count($expenses) > 0) --}}
-                                    {{-- @foreach ($expenses as $index => $item) --}}
+                                    @if (count($indemnity) > 0) 
+                                    @foreach ($indemnity as $index => $item)
                                     <tr>
                                         <td class="text-center" style="border-radius: 0 !important;">
+                                            {{ $item->sr_no }}
                                         </td>
                                         <td class="text-center" style="border-radius: 0 !important;">
+                                            {{ $item->date }}
                                         </td>
                                         <td class="text-center" style="border-radius: 0 !important;">
+                                            {{ $item->cheque_number_receipt_number }}
                                         </td>
                                         <td class="text-center" style="border-radius: 0 !important;">
+                                            {{ $item->beneficiary }}
                                         </td>
 
                                         <td class="text-center" style="border-radius: 0 !important;">
+                                            {{ $item->project_name }}
                                         </td>
                                         <td class="text-center" style="border-radius: 0 !important;">
+                                            {{ $item->amount_deposited }}
                                         </td>
                                         <td class="text-center" style="border-radius: 0 !important;">
-                                        </td>
-                                        <td class="text-center" style="border-radius: 0 !important;">
+                                            {{ $item->amount_withdrawn }}
                                         </td>
                                         <td class="text-center" style="border-radius: 0 !important;">
                                             <div class="dropdown dropdown-action">
@@ -202,15 +207,12 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    {{-- @endforeach
-                                    @endif --}}
+                                    @endforeach
+                                    @endif
                                 </tbody>
                                 <tfoot>
                                     <!-- Table footer content here -->
                                     <tr class="grand_Value">
-                                        <td class="hid"
-                                            style=" border-right-color: transparent; border-radius: 0 !important;">1
-                                        </td>
                                         <td class="hid"
                                             style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
                                             02/2024</td>

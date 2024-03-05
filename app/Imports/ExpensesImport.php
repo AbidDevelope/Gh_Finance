@@ -27,7 +27,6 @@ class ExpensesImport implements ToCollection
             } else {
                 $date = null;
             }
-        
        
             $chequeNumberReceiptNumber = $row[2]; 
             $description = $row[3];
