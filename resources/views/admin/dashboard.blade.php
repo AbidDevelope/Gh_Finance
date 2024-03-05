@@ -427,85 +427,34 @@
     </div>
     </div>
 
-
-
-
-
-
-
-
-
-
+    {{-- @dd($piechartJson); --}}
 
 
 
 
 
     <!-- metisMenu JS
-                                                    ============================================ -->
+                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
 
 
     <!-- float JS
-                                                    ============================================ -->
+                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                    ============================================ -->
+                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- <script src="{{ asset('assets/admin/js/mychart.js') }}"></script> -->
     <!-- main JS
-                                                ============================================ -->
+                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"
         integrity="sha512-EmNxF3E6bM0Xg1zvmkeYD3HDBeGxtsG92IxFt1myNZhXdCav9MzvuH/zNMBU1DmIPN6njrhX1VTbqdJxQ2wHDg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                let totalDesign = @json($totalDesign);
-                let totalConstruction = @json($totalConstruction);
-                let totalDesignConstruction = @json($totalDesignConstruction);
-
-                let pieChartData = [{
-                    "name": "Project Revenue",
-                    "type": "pie",
-                    "radius": "50%",
-                    "data": [{
-                            "value": totalDesign,
-                            "name": "Design"
-                        },
-                        {
-                            "value": totalConstruction,
-                            "name": "Construction"
-                        },
-                        {
-                            "value": totalDesignConstruction,
-                            "name": "Design & Construction"
-                        }
-                    ],
-                    "emphasis": {
-                        "itemStyle": {
-                            "shadowBlur": 10,
-                            "shadowOffsetX": 0,
-                            "shadowColor": "rgba(0, 0, 0, 0.5)"
-                        }
-                    }
-                }];
-
-                // Assuming you are using a chart library like ECharts or Chart.js
-                // Initialize and render your pie chart here with pieChartData
-                // Example using ECharts:
-                let myChart = echarts.init(document.getElementById('yourPieChartElementId'));
-                let option = {
-                    series: pieChartData
-                };
-                myChart.setOption(option);
-            });
-
-    </script>
     <script>
         let series =
             '[{"name":" e", "type":"bar", "data":[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],' +

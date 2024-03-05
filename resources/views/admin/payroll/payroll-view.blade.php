@@ -55,14 +55,14 @@
                                                     <td>Salary:</td>
                                                     <td class="text-right">{{ $payrollItems->salary }}</td>
                                                 </tr>
-                                                <tr>
+                                                {{-- <tr>
                                                     <td>Payment Mode:</td>
                                                     <td class="text-right">{{ $payrollItems->payment_mode }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Remarks:</td>
                                                     <td class="text-right">{{ $payrollItems->remarks }}</td>
-                                                </tr>
+                                                </tr> --}}
 
                                             </tbody>
                                         </table>
