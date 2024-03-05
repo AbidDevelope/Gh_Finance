@@ -153,7 +153,7 @@
     <div class="total">
         <p><b>Sub Total : </b>{{ $invoices->subtotal }}</p>
         <p><b>Discount : </b>{{ $invoices->discount }}</p>
-        <p><b>Grand Total : </b>{{ $invoices->grandtotal }}</p>
+        <p><b>Grand Total : </b>{{ $invoices->grandValue }}</p>
     </div>
 
     <div class="margin-top">
@@ -163,7 +163,7 @@
                     <th>#</th>
                     <th>(KUWAITI DINARS FIVE THOUSAND NINE HUNDRED ONLY)</th>
                     <th>PAYMENT DUE</th>
-                    <th>{{ $invoices->grandtotal }}</th>
+                    <th>{{ $invoices->grandValue}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -171,7 +171,7 @@
                     <td>1</td>
                     <td>100% PAYMENT UPON JOB COMPLETION & HANDOVER</td>
                     <td></td>
-                    <td>{{ $invoices->grandtotal }}</td>
+                    <td>{{ $invoices->grandValue }}</td>
                 </tr>
             </tbody>
         </table>

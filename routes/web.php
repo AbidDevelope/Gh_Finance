@@ -6,11 +6,12 @@ use App\Http\Controllers\Admin\FinanceController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\ExpensesController;
 use App\Http\Controllers\Admin\InvoiceController;
-use App\Http\Controllers\Admin\BeneficiaryController;
+use App\Http\Controllers\Admin\HRController;
 use App\Http\Controllers\Admin\QuotationController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ProjectManagerController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\AccountController;
 
 
 
@@ -25,6 +26,9 @@ Route::controller(AuthController::class)->group(function(){
         Route::get('profile', 'profile')->name('profile');
         Route::get('dashboard', 'index')->name('dashboard');
         Route::get('logout', 'logout')->name('admin/logout');
+        Route::get('profile', 'profile')->name('profile');
+        Route::post('changeProfile', 'changeProfile')->name('changeProfile');
+        Route::post('profile/update/{id}', 'profileUpdate')->name('profile/update');
     });
 });
 
@@ -90,8 +94,10 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     // Payroll Route Start
     Route::get('payroll', 'payroll')->name('payroll');
     Route::get('payroll/create', 'payrollCreate')->name('payroll/create');
-    Route::get('payroll/view', 'payrollView')->name('payroll/view');
+    Route::post('payroll/create', 'payrollCreatePost')->name('payroll/create');
+    Route::get('payroll/view/{id}', 'payrollView')->name('payroll/view');
     Route::get('payroll/edit', 'payrollEdit')->name('payroll/edit');
+    Route::get('payroll/delete/{id}', 'payrollDelete')->name('payroll/delete');
 
     Route::get('rent', 'rent')->name('rent');
     Route::get('rent/create', 'rentCreate')->name('rent/create');
@@ -118,18 +124,20 @@ Route::controller(InvoiceController::class)->prefix('admin')->middleware('adminA
     Route::get('invoice/view/{id}', 'invoiceView')->name('invoice/view');
     Route::get('invoice/pdf/view/{id}', 'invoicePdfView')->name('invoice/pdf/view');
     Route::get('invoice/pdf/download/{id}', 'downloadInvoicePDF')->name('invoice/pdf/download');
+    Route::get('invoice/edit/{id}', 'invoiceEdit')->name('invoice/edit');
+    Route::post('invoice/update/{id}', 'invoiceUpdate')->name('invoice/update');
+    Route::get('invoice/delete/{id}', 'invoiceDelete')->name('invoice/delete');
     Route::get('search/invoice', 'searchInvoice')->name('search/invoice');
 });
+Route::get('/project-data/{id}', [InvoiceController::class, 'getProjectData'])->name('project.data');
 
 // ------------------------- BeneficiaryController ------------------------ //
-Route::controller(BeneficiaryController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
-    Route::get('beneficiary', 'beneficiary')->name('beneficiary');
-    Route::get('beneficiary/create', 'beneficiaryCreate')->name('beneficiary/create');
-    Route::post('beneficiary/create', 'beneficiaryCreatePost')->name('beneficiary/create');
-    Route::get('beneficiary/edit/{id}', 'beneficiaryEdit')->name('beneficiary/edit');
-    Route::post('beneficiary/update/{id}', 'beneficiaryUpdate')->name('beneficiary/update');
-    Route::get('beneficiary/delete/{id}', 'beneficiaryDelete')->name('beneficiary/delete');
-    Route::get('beneficiary/status/change/{id}', 'changeStatus')->name('beneficiary/status/change');
+Route::controller(HRController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
+    Route::get('indemnity&leave', 'indemnityAndleave')->name('indemnity&leave');
+    Route::get('indemnity&leave/create', 'indemnityAndleaveCreate')->name('indemnity&leave/create');
+    Route::post('indemnity&leave/create', 'indemnityAndleaveCreatePost')->name('indemnity&leave/create');
+    Route::get('indemnity&leave/view', 'indemnityAndleaveView')->name('indemnity&leave/view');
+    Route::get('indemnity&leave/edit', 'indemnityAndleaveEdit')->name('indemnity&leave/edit');
 });
 
 // ---------------------------- QuotationController ------------------------------ //
@@ -171,5 +179,16 @@ Route::controller(ProjectManagerController::class)->prefix('admin')->middleware(
 // ======================= ReportController ========================= //
 Route::controller(ReportController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
     Route::get('project/report', 'projectReport')->name('project/report');
+    Route::get('searchByDate', 'searchByDate')->name('searchByDate');
     Route::get('report/view', 'reportView')->name('report/view');
+    Route::get('expense/report', 'expenseReport')->name('expense/report');
+    Route::get('p_&_l', 'profitLossReport')->name('p_&_l');
+});
+
+// ============================ AccountController ========================= //
+Route::controller(AccountController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
+    Route::get('accounts', 'accounts')->name('accounts');
+    Route::get('accounts/create', 'accountCreate')->name('accounts/create');
+    Route::get('accounts/view', 'accountView')->name('accounts/view');
+    Route::get('accounts/edit', 'accountEdit')->name('accounts/edit');
 });

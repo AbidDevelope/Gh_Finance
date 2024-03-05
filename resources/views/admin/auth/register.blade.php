@@ -40,9 +40,15 @@
                         <span style="color: red">{{ $message }}</span>
                     @enderror
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-phone"></i></span>
-                        <input type="text" name="mobile" placeholder="Enter Number" />
+                        <input type="text" name="mobile" placeholder="Enter Number" onkeypress="return /[0-9]/i.test(event.key)" maxlength="10"/>
                     </div>
                     @error('mobile')
+                        <span style="color: red">{{ $message }}</span>
+                    @enderror
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-phone"></i></span>
+                        <input type="text" name="landline" placeholder="Enter Landline" onkeypress="return /[0-9]/i.test(event.key)" maxlength="10"/>
+                    </div>
+                    @error('landline')
                         <span style="color: red">{{ $message }}</span>
                     @enderror
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>

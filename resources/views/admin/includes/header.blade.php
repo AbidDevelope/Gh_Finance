@@ -148,10 +148,12 @@
     #openModal {
         display: none;
     }
-    .bg_hover:hover{
+
+    .bg_hover:hover {
         background-color: #ccc;
     }
-    .bg_hover{
+
+    .bg_hover {
         padding-top: 10px !important;
     }
 </style>
@@ -377,24 +379,21 @@
                             </div>
                         </ul>
                     </div>
-
                 </div>
 
                 {{-- searchbar --}}
                 <div class="mt-3 ms-5 col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                    <div class=" d-flex">
+                    <div class="d-flex">
                         <input id="search" type="text" class="bg-white cursor form-control  rounded-pill"
-                            style="width: 230px; height: 40px;" placeholder="search">
+                            style="width: 230px; height: 40px;" placeholder="Search">
                         <div class="text-danger">
-                            <!-- Adjust the color class applied to the SVG icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" class="text-black">
                                 <path
                                     d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l6 5.99L20.49 20l-5.99-6zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                            </svg>
+                            </svg> --}}
                         </div>
                     </div>
-
                 </div>
 
 
@@ -645,8 +644,13 @@
                         </div>
                     </div>
                     <div class="mt-3">
+                        <?php
+                        $adminProfile = Auth::guard('admin')->user()->image;
+                        $defaultImage = '/assets/admin/img/prof pic.jpg';
+                        $imagePath = $adminProfile ? 'assets/admin/img/profile/' . $adminProfile : $defaultImage;
+                        ?>
                         <div id="profile-pic" class="circular-pic"
-                            style="background-image: url('/assets/admin/img/prof pic.jpg'); margin-right:20px"></div>
+                            style="background-image: url('{{ asset($imagePath) }}'); margin-right:20px"></div>
                     </div>
                     <!-- Profile Picture Popup Container -->
                     <div id="profile-pic-popup"

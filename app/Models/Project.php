@@ -4,44 +4,50 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Beneficiary;
+use App\Models\Invoice;
 use App\Models\ProjectManager;
 use App\Models\Expense;
+use App\Models\Payment;
+use App\Models\PettyCash;
 
 class Project extends Model
 {
     use HasFactory;
     protected $fillable = [
         'project_type',
-        'date',
+        'start_date',
         'project_manager',
         'manager_email',
         'Manager_mobile',
         'Manager_landline',
         'manager_remarks',
+
         'company_name',
-        'company_project_name',
-        'company_email',
-        'company_mobile',
+        'contact_name',
+        'client_email',
+        'client_mobile',
         'company_landline',
         'company_location',
+        'company_landmark',
         'company_country',
         'company_website',
         'company_remarks',
+
         'project_name',
-        'company_project',
+        'contact_person',
         'project_email',
         'project_mobile',
         'project_location',
         'project_value',
         'project_country',
-        'project_remarks',
+        'payment_plan',
         'project_description',
+        'total_receivable',
     ];
 
-    public function beneficiary()
+    public function payments()
     {
-        return $this->belongsTo(Beneficiary::class);
+        return $this->hasOne(Payment::class, 'project_id');
     }
 
     public function projectManager()
@@ -52,5 +58,14 @@ class Project extends Model
     public function expenses()
     {
         return $this->hasMany(Expense::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function pettyCash(){
+        return $this->hasOne(PettyCash::class, 'project_id');
     }
 }

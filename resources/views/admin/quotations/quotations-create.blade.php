@@ -11,7 +11,7 @@
         <div class="header-advance-area" style="background: white">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top">
+                    <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                             <div class="form-section bg-white">
                                 <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Create Quotations </h4>
@@ -89,14 +89,14 @@
                                                                 <input class="form-control" type="text" name="unit[]" value="{{ old('unit.0') }}">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control qty" type="text" name="qty[]" value="{{ old('qty.0') }}">
+                                                                <input class="form-control qty" type="text" name="qty[]" value="{{ old('qty.0') }}" onkeypress="return /[0-9.,%]/.test(event.key)">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control price" type="text" name="price[]" value="{{ old('price.0') }}">
+                                                                <input class="form-control price" type="text" name="price[]" value="{{ old('price.0') }}" onkeypress="return /[0-9.,%]/.test(event.key)">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control total" type="text"
-                                                                    style="min-width:150px" name="total[]" value="{{ old('total.0') }}">
+                                                                <input readonly class="form-control total" type="text"
+                                                                    style="min-width:150px" name="total[]" value="{{ old('total.0') }}" onkeypress="return /[0-9.,%]/.test(event.key)">
                                                             </td>
                                                             <td><a href="javascript:void(0)" id="add-row"
                                                                     class="text-success font-18" title="Add"><img
@@ -114,8 +114,8 @@
                                                         <tr>
                                                             <td colspan="5" class="text-right">Sub Total :</td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
-                                                                <input class="form-control text-right subtotal"
-                                                                    onkeypress="return /[0-9.,%]/.test(event.key)"
+                                                                <input readonly class="form-control text-right subtotal"
+                                                                    onkeypress="return /[0-9.,%]/.test(event.key)" placeholder="00.000"
                                                                     type="text" name="subtotal">
                                                             </td>
                                                         </tr>
@@ -124,8 +124,8 @@
                                                                 Others
                                                             </td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
-                                                                <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,]/i.test(event.key)"
+                                                                <input  class="form-control text-right others"
+                                                                    onkeypress="return /[0-9.,]/i.test(event.key)" placeholder="00.000"
                                                                     type="text" name="others">
                                                             </td>
                                                         </tr>
@@ -136,8 +136,8 @@
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
-                                                                <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,]/i.test(event.key)"
+                                                                <input readonly class="form-control text-right grandtotal"
+                                                                    onkeypress="return /[0-9.,]/i.test(event.key)" placeholder="00.000"
                                                                     type="text" name="grandtotal">
                                                             </td>
                                                         </tr>
@@ -236,70 +236,58 @@
         });
 
     </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const calculateSubtotal = function () {
-                const qty = parseFloat(this.parentNode.parentNode.querySelector('.qty').value) || 0;
-                const price = parseFloat(this.parentNode.parentNode.querySelector('.price').value) || 0;
-                const total = qty * price;
-                const subtotal = total;
-                this.parentNode.parentNode.querySelector('.total').value = total.toFixed(3);
-                this.parentNode.parentNode.querySelector('.subtotal').value = subtotal.toFixed(3);
+            const wrapper = document.querySelector('#customFields tbody'); // Corrected to match your table's tbody
+
+            // Function to update the subtotal and grand total
+            const updateTotals = function () {
+                let subtotal = 0;
+                document.querySelectorAll('.total').forEach(function (totalField) {
+                    const totalValue = parseFloat(totalField.value) || 0;
+                    subtotal += totalValue;
+                });
+                document.querySelector('.subtotal').value = subtotal.toFixed(3);
+                updateGrandTotal();
             };
-        
-            const qtyInputs = document.querySelectorAll('.qty');
-            const priceInputs = document.querySelectorAll('.price');
-        
-            qtyInputs.forEach(input => input.addEventListener('input', calculateSubtotal));
-            priceInputs.forEach(input => input.addEventListener('input', calculateSubtotal));
+
+            // Function to update the grand total based on subtotal and others
+            const updateGrandTotal = function () {
+                const subtotal = parseFloat(document.querySelector('.subtotal').value) || 0;
+                const others = parseFloat(document.querySelector('.others').value) || 0;
+                const grandTotal = subtotal + others;
+                document.querySelector('.grandtotal').value = grandTotal.toFixed(3);
+            };
+
+            // Function to handle row removal and update totals accordingly
+            const removeRowAndUpdateTotals = function (e) {
+                if (e.target && e.target.matches('.remove-row')) {
+                    e.target.closest('tr').remove(); // Remove the clicked row
+                    updateTotals(); // Immediately update totals after row removal
+                }
+            };
+
+            // Event listener for dynamic input changes in qty or price fields within the table
+            wrapper.addEventListener('input', function (e) {
+                if (e.target && (e.target.matches('.qty') || e.target.matches('.price'))) {
+                    const row = e.target.closest('tr'); // Find the parent row of the input
+                    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+                    const price = parseFloat(row.querySelector('.price').value) || 0;
+                    const total = qty * price; // Calculate total for the row
+                    row.querySelector('.total').value = total.toFixed(3);
+                    updateTotals(); // Update totals whenever qty or price changes
+                }
+            });
+
+            // Attach event listener to the wrapper for click events that might trigger row removal
+            wrapper.addEventListener('click', removeRowAndUpdateTotals);
+
+            // Event listener to update grand total when the "others" input field changes
+            const othersInput = document.querySelector('.others');
+            othersInput.addEventListener('input', updateGrandTotal);
         });
         </script>
 
-        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-        $(document).ready(function() {
-            // Function to calculate the total for a row
-            function calculateRowTotal() {
-                var qty = parseFloat($(this).closest('tr').find('.qty').val()) || 0;
-                var price = parseFloat($(this).closest('tr').find('.price').val()) || 0;
-                var total = qty * price;
-                $(this).closest('tr').find('.total').val(total.toFixed(3));
-                updateSubtotal();
-            }
-        
-            // Function to update subtotal
-            function updateSubtotal() {
-                var subtotal = 0;
-                $('.total').each(function() {
-                    var rowTotal = parseFloat($(this).val()) || 0;
-                    subtotal += rowTotal;
-                });
-                $('.subtotal').val(subtotal.toFixed(3));
-                updateGrandTotal();
-            }
-        
-            // Function to update grand total
-            function updateGrandTotal() {
-                var subtotal = parseFloat($('.subtotal').val()) || 0;
-                var others = parseFloat($('input[name="others"]').val()) || 0;
-                var grandTotal = subtotal + others;
-                $('input[name="grandtotal"]').val(grandTotal.toFixed(3));
-            }
-        
-            // Event listeners
-            $(document).on('input', '.qty, .price', calculateRowTotal);
-            $('input[name="others"]').on('input', updateGrandTotal);
-        
-            // Function to add a new row
-            $('#add-row').click(function() {
-                var newRow = $('tr:eq(1)').clone(); // Clone the first row
-                newRow.find('input').val(''); // Clear the values in the cloned row
-                $('tr:last').prev().after(newRow); // Insert the new row before the subtotal row
-            });
-        });
-        </script> --}}
-        
-            
-            
-        
+
 @endsection

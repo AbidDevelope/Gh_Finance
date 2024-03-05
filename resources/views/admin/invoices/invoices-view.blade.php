@@ -9,7 +9,6 @@
     <div class="all-content-wrapper">
 
         <div class="header-advance-area mx-2" style="background:#fff">
-
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="row margin_top">
@@ -18,21 +17,14 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="breadcomb-wp">
-                                            <div class="breadcomb-icon">
-                                                <i class="icon nalika-home"></i>
-                                            </div>
                                             <div class="breadcomb-ctn">
                                                 <h2>Invoice</h2>
-                                                <p>Welcome to {{ Auth::guard('admin')->user()->first_name }} <span
-                                                        class="bread-ntd">{{ Auth::guard('admin')->user()->last_name }}</span>
-                                                </p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="breadcomb-report">
-                                            <button data-toggle="tooltip" data-placement="left" title="Download Report"
-                                                class="btn"><i class="icon nalika-download"></i></button>
+                                            <a href="{{ route('invoice/pdf/download', $invoices->id) }}"><i class="icon nalika-download" style="color: #000000"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -117,8 +109,8 @@
                                         <td><span>{{ $invoices->discount }}</span></td>
                                     </tr>
                                     <tr>
-                                        <th><span>Grand Total</span></th>
-                                        <td><span>{{ $invoices->grandtotal }}</span></td>
+                                        <th><span>Grand Value</span></th>
+                                        <td><span>{{ $invoices->grandValue }}</span></td>
                                     </tr>
                                 </table><br>
                                 <table class="table table-responsive">
@@ -126,7 +118,7 @@
                                         <tr>
                                             <td>1</td>
                                             <td colspan="2">100% PAYMENT UPON JOB COMPLETION & HANDOVER</td>
-                                            <td>{{ $invoices->grandtotal }}</td>
+                                            <td>{{ $invoices->grandValue }}</td>
                                         </tr>
                                     </tbody>
                                     <thead>
@@ -134,7 +126,7 @@
                                             <th>ID</th>
                                             <th>(KUWAITI DINARS FIVE THOUSAND NINE HUNDRED ONLY)</th>
                                             <th>PAYMENT DUE</th>
-                                            <th>{{ $invoices->grandtotal }}</th>
+                                            <th>{{ $invoices->grandValue }}</th>
                                         </tr>
                                     </thead>
                                 </table><br>

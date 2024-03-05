@@ -6,13 +6,36 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Admin;
+use App\Models\Project;
+// use App\Models\Admin;
 use Validator, Hash, Auth;
 
 class AuthController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $projects = Project::with(['pettyCash', 'payments'])->get();
+
+        $designValue = $projects->where('project_type', 'Design')->sum('project_value');
+        $constructionValue = $projects->where('project_type', 'Construction')->sum('project_value');
+        $designConstructionValue = $projects->where('project_type', 'Design & Construction')->sum('project_value');
+
+        $totalProjectRevenue = $projects->sum('project_value');
+
+        $totalExpensesValue = $projects->reduce(function($carry, $project){
+            $sumExpenses = $project->pettyCash->sum('total_in_account');
+            return $sumExpenses;
+        },0);
+
+        $totalRevenue = number_format($totalProjectRevenue, 3, '.', ',');
+        $totalExpenses = number_format($totalExpensesValue, 3, '.', ',');
+        $totalDesign = number_format($designValue, 3, '.', ',');
+        $totalConstruction = number_format($constructionValue, 3, '.', ',');
+        $totalDesignConstruction = number_format($designConstructionValue, 3, '.', ',');
+        
+        
+        
+        return view('admin.dashboard', compact('projects', 'totalRevenue', 'totalExpenses', 'totalDesign', 'totalConstruction', 'totalDesignConstruction'));
     }
 
     public function getRegister()
@@ -22,11 +45,11 @@ class AuthController extends Controller
 
     public function postRegister(Request $request)
     {
-        
         $validator = Validator::make($request->all(), [
-            'first_name'      => 'required|string|max:255',                      'last_name' => 'required|string|max:255', 
-            'email'           => 'required|unique:admins',                       'mobile'    => 'required', 
-            'gender'          => 'required',                                     'term_condition'  => 'required',     
+            'first_name'      => 'required|string|max:255',       'last_name' => 'required|string|max:255', 
+            'email'           => 'required|unique:admins',        'mobile'    => 'required',
+            'landline'        => 'required',
+            'gender'          => 'required',                      'term_condition'  => 'required',     
             'password'        => 'required|max:6'
         ]);
         
@@ -41,6 +64,7 @@ class AuthController extends Controller
             $admin->last_name      = $request->last_name;
             $admin->email          = $request->email;
             $admin->mobile         = $request->mobile;
+            $admin->landline       = $request->landline;
             $admin->gender         = $request->gender;
             $admin->password       = Hash::make($request->password);
             $admin->term_condition = $request->term_condition;
@@ -74,8 +98,9 @@ class AuthController extends Controller
                 session()->flash('error', 'Admin Not Found');
                 return redirect()->back();
             }
-            
-            $credentials = $request->only('email', 'password');
+
+
+             $credentials = $request->only('email', 'password');
             if(Auth::guard('admin')->attempt($credentials))
             {
                 $request->session()->put('id', $admin->id);
@@ -91,8 +116,68 @@ class AuthController extends Controller
 
     public function profile()
     {
-        return view('admin.auth.profile');
+        if(Auth::guard('admin')->user())
+        {
+           $admin = Auth::guard('admin')->user();
+        }
+        return view('admin.auth.profile', compact('admin'));
     }
+
+    public function profileUpdate(Request $request, $id)
+    {
+        if(Auth::guard('admin')->user())
+        {
+            $adminId = Auth::guard('admin')->user()->id;
+            if($adminId)
+            {
+                $admin = Admin::where('id', $adminId)->first();
+                if($admin)
+                {
+                    $requestData = $request->all();
+                    $admin->update($requestData);
+                }
+            }
+        }
+        session()->flash('success', 'Profile Updated Successfully.');
+        return redirect()->back();
+    }
+
+    public function changeProfile(Request $request)
+    {
+        if(Auth::guard('admin')->user())
+        {
+            $adminId = Auth::guard('admin')->user()->id;
+            if($adminId)
+            {
+                $admin = Admin::where('id', $adminId)->first();
+                if($admin)
+                {
+                    $request->validate([
+                        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    ]);
+
+                    if($request->hasFile('image'))
+                    {
+                        if ($admin->image && file_exists(public_path($admin->image))) {
+                            unlink(public_path($admin->image));
+                        }
+
+                        $image = $request->file('image');
+                        $imageName = time(). '.' . $image->getClientOriginalExtension();
+                        
+                        $destinationPath = public_path('assets/admin/img/profile');
+                        $image->move($destinationPath, $imageName);
+                        $admin->image = $imageName;
+                    }
+                    $admin->save();
+                    
+                    session()->flash('success', 'Profile updated successfully.');
+                    return redirect()->back();
+                }
+            }
+        }
+    }
+
 
     public function logout(Request $request)
     {

@@ -11,10 +11,10 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top">
+                    <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section bg-white">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Edit Miscellaneous</h4>
+                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">Edit Miscellaneous</h4>
                                 <hr class="border-top-grey">
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)
@@ -145,7 +145,7 @@
                                         </div>
                                     </div>
                                     <div class="submit-section">
-                                        <button type="submit" class="btn  submit-btn">UPDATE</button>
+                                        <button type="submit" class="btn  submit-btn" style="background: var(--own-black)">UPDATE</button>
                                     </div>
                                 </form>
                             </div>

@@ -108,10 +108,10 @@ body {
       background: #fafafa;
     }
     &[type="text"]:focus, &[type="email"]:focus, &[type="password"]:focus {
-      -webkit-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
-      -moz-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
-      box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
-      border: 1px solid #000000;
+      /* -webkit-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5); */
+      /* -moz-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5); */
+      /* box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5); */
+      border: 1px solid #7f7f7f;
       background: #fafafa;
     }
     &[type="submit"] {
@@ -188,11 +188,11 @@ body {
     }
     input {
     &:hover + label:before {
-      border-color: black;
+      border-color: #7f7f7f;
     }
     &:checked + label {
       &:before {
-        border-color: black;
+        border-color: #7f7f7f;
       }
       &:after {
         -moz-animation: check 0.8s ease 0s running;
@@ -201,7 +201,7 @@ body {
         display: block;
         width: 7px;
         height: 20px;
-        border-color: black;
+        border-color: #7f7f7f;
       }
     }
   }
@@ -226,11 +226,11 @@ body {
   }
   input {
     &:hover + label:before {
-      border-color: black;
+      border-color: #7f7f7f;
     }
     &:checked + label:before {
-      background-color: black;
-      border-color: black;
+      background-color: #7f7f7f;
+      border-color: #7f7f7f;
     }
   }
 }

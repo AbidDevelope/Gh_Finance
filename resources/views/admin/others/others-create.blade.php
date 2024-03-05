@@ -20,10 +20,10 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top ">
+                    <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                             <div class="form-section bg-white">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize">Create Reimburse</h4>
+                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">Create Reimburse</h4>
                                 <hr class="border-top-grey">
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)
@@ -52,7 +52,7 @@
                                                         <tr>
                                                             <th class="col-md-4 text-center"> Description</th>
                                                             <th class="col-md-2 text-center">Date </th>
-                                                            <th class="col-md-2 text-center">Month </th>
+                                                            <th class="col-md-2 text-center">Employee Name </th>
 
                                                             <th style="width: 150px;" class="col-sm-2 text-center">Amount
                                                             </th>
@@ -75,22 +75,9 @@
                                                                     placeholder="DD/MM/YYYY">
                                                             </td>
                                                             <td>
-                                                                <select name="month[]" id="" class="form-control">
-                                                                    <option value="" disabled selected>Select Month
-                                                                    </option>
-                                                                    <option value="January">January</option>
-                                                                    <option value="February">February</option>
-                                                                    <option value="March">March</option>
-                                                                    <option value="April">April</option>
-                                                                    <option value="May">May</option>
-                                                                    <option value="June">June</option>
-                                                                    <option value="July">July</option>
-                                                                    <option value="August">August</option>
-                                                                    <option value="September">September</option>
-                                                                    <option value="October">October</option>
-                                                                    <option value="November">November</option>
-                                                                    <option value="December">December</option>
-                                                                </select>
+                                                                <input class="form-control" type="text"
+                                                                    style="min-width:10px" name="description[]"
+                                                                    value="{{ old('description.0') }}">
                                                             </td>
 
 

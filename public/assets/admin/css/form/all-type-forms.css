@@ -650,7 +650,7 @@ white-space: nowrap;
 
 .ts-forms .primary-btn:hover.processing { background:#303f9f; cursor:wait; }
 
-.ts-forms .file-button:hover + input { border:2px solid rgba(48,63,159,.6); }
+.ts-forms .file-button:hover + input { border:2px solid var(--own-black); }
 
 .ts-forms .secondary-btn,
 .ts-forms .secondary-btn:hover,

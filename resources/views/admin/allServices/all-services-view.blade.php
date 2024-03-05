@@ -10,7 +10,7 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top">
+                    <div class="margin_top mx-3">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
                             <div class="form-section bg-white">
                                 <h6 class="card-title m-b-15">Project Type</h6>
@@ -63,16 +63,16 @@
                                                 <td class="text-right">{{ $projects->company_name }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Company Project:</td>
-                                                <td class="text-right">{{ $projects->company_project_name }}</td>
+                                                <td>Contact Name:</td>
+                                                <td class="text-right">{{ $projects->contact_name }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Company Email:</td>
-                                                <td class="text-right">{{ $projects->company_email }}</td>
+                                                <td>Client Email:</td>
+                                                <td class="text-right">{{ $projects->client_email }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Company Mobile:</td>
-                                                <td class="text-right">{{ $projects->company_mobile }}</td>
+                                                <td>Client Mobile:</td>
+                                                <td class="text-right">{{ $projects->client_mobile }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Company Landline:</td>
@@ -111,6 +111,10 @@
                                     <table class="table table-striped table-border">
                                         <tbody>
                                             <tr>
+                                                <td>Project ID:</td>
+                                                <td class="text-right">{{ $projects->id }}</td>
+                                            </tr>
+                                            <tr>
                                                 <td>Project Name:</td>
                                                 <td class="text-right">{{ $projects->project_name }}</td>
                                             </tr>
@@ -135,8 +139,8 @@
                                                 <td class="text-right">{{ $projects->project_country }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Project Remarks:</td>
-                                                <td class="text-right">{{ $projects->project_remarks }}</td>
+                                                <td>Payment Plan:</td>
+                                                <td class="text-right">{{ $projects->payment_plan }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Created Date:</td>

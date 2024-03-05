@@ -13,6 +13,9 @@ use App\Models\PettyCash;
 use App\Models\Project;
 use App\Models\Miscellaneous;
 use App\Models\MiscellaneousItem;
+use App\Models\Payroll;
+use App\Models\PayrollItem;
+use App\Models\PayrollPayment;
 use Validator;
 use Carbon\Carbon;
 use DateTime;
@@ -22,7 +25,7 @@ class ExpensesController extends Controller
     public function miscellaneous()
     {
         $miscell = Miscellaneous::orderBy('id', 'desc')->with('miscellaneousItems')->get();
-
+        // return $miscell;
         return view('admin.miscellaneous.miscellaneous', compact('miscell'));
     }
 
@@ -64,6 +67,11 @@ class ExpensesController extends Controller
             ]);
             $miscellaneousItems->save();
         }
+
+        $expenses = new Expense();
+        $expenses->expense_type = $request->expense_type;
+        $expenses->grandtotal = $request->grandtotal;
+        $expenses->save();
       }
        session()->flash('success', 'Created Successfully');
        return redirect()->route('miscellaneous');
@@ -71,13 +79,14 @@ class ExpensesController extends Controller
 
     public function miscellaneousView($id)
     {
-        $miscell = Miscellaneous::where('id', $id)->with('miscellaneousItem')->first();
+        $miscell = Miscellaneous::where('id', $id)->with('miscellaneousItems')->first();
         return view('admin.miscellaneous.miscellaneous-view', compact('miscell'));
     }
 
     public function miscellaneousEdit($id)
     {
-        $miscellaneous = Miscellaneous::with('miscellaneousItems')->findOrFail($id);
+        $miscellaneous = Miscellaneous::with('miscellaneousItems')->findOrFail($id); 
+
         return view('admin.miscellaneous.miscellaneous-edit', compact('miscellaneous'));
     }
 
@@ -184,12 +193,10 @@ class ExpensesController extends Controller
                 $expenseItems = new ExpenseItem([
                     'expenses_id'  => $expense->id,
                     'description' => $request->description[$key],
-                    // 'month'       => $request->month[$key],
                     // 'date' => \Carbon\Carbon::createFromFormat('d/m/Y', $request->date[$key])->format('Y-m-d'),
                     'receipt'  => $request->receipt[$key],
                     'amount_deposite' => $request->amount_deposite[$key],
                     'amount_withdrawn'  => $request->amount_withdrawn[$key],
-                    // 'beneficiary'  => $request->beneficiary[$key],
                     'total' => $request->total[$key],
                 ]);
                 $expenseItems->save();
@@ -346,19 +353,17 @@ class ExpensesController extends Controller
     public function pettyCashPost(Request $request)
     {
 
-       // Assuming $request->date is in 'DD/MM/YYYY' format
-        $date = DateTime::createFromFormat('d/m/Y', $request->date);
-        $formattedDate = $date->format('Y-m-d'); // Convert to 'YYYY-MM-DD' format
+        $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
 
         $pettyCash = new PettyCash();
-        $pettyCash->date = $formattedDate; // Use the correctly formatted date
-        // Set other properties
+        $pettyCash->date = $date; 
+        $pettyCash->project_id = $request->project_id;
         $pettyCash->cheque_number_receipt_number = $request->cheque_number_receipt_number;
         $pettyCash->description = $request->description;
         $pettyCash->beneficiary = $request->beneficiary;
         $pettyCash->amount_deposited = $request->amount_deposited;
         $pettyCash->amount_withdrawn = $request->amount_withdrawn;
-        $pettyCash->project = $request->project;
+        $pettyCash->project_name = $request->project_name;
         $pettyCash->total_amount_deposited = $request->total_amount_deposited;
         $pettyCash->total_amount_withdrawn = $request->total_amount_withdrawn;
         $pettyCash->total_in_account = $request->total_in_account;
@@ -378,7 +383,8 @@ class ExpensesController extends Controller
     // Payroll Controller Start
     public function payroll()
     {
-        return view('admin.payroll.payroll');
+        $payrollItems = PayrollItem::all();
+        return view('admin.payroll.payroll', compact('payrollItems'));
     }
 
     public function payrollCreate()
@@ -386,14 +392,80 @@ class ExpensesController extends Controller
         return view('admin.payroll.payroll-create');
     }
 
-    public function payrollView()
+    public function payrollCreatePost(Request $request)
     {
-        return view('admin.payroll.payroll-view');
+        $validate = Validator::make($request->all(), [
+            'remarks' => 'required',    'subtotal'  => 'required',
+            'grandtotal' => 'required', 'total_payment'  => 'required',
+        ]);
+
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+
+        $payroll = new Payroll();
+        $payroll->remarks = $request->remarks;
+        $payroll->subtotal = $request->subtotal;
+        $payroll->others = $request->others;
+        $payroll->grandtotal = $request->grandtotal;
+        $payroll->total_payment = $request->total_payment;
+        $payroll->save();
+
+        if($payroll)
+        {
+            foreach($request->month as $key=>$item)
+            {
+                $date = DateTime::createFromFormat('d/m/Y', $request->date[$key])->format('Y-m-d');
+
+                $payrollItems = new PayrollItem([
+                    'payroll_id' => $payroll->id,
+                    'date'       => $date,
+                    'month'      => $request->month[$key],
+                    'employee_name' => $request->employee_name[$key],
+                    'actual_salary' => $request->actual_salary[$key],
+                    'payroll' => $request->payroll[$key],
+                    'salary' => $request->salary[$key],
+                ]);
+                $payrollItems->save();
+            }
+
+            foreach($request->amount as $key=>$item)
+            {
+                $paymentDate = DateTime::createFromFormat('d/m/Y', $request->date[$key])->format('Y-m-d');
+                $payrollPayment = new PayrollPayment([
+                    'payroll_id' => $payroll->id,
+                    'payment_mode'  => $request->payment_mode[$key],
+                    'date'       => $paymentDate,
+                    'amount'     => $request->amount[$key],
+                    'cheque_number'  => $request->cheque_number[$key],
+                    'bank_name'      => $request->bank_name[$key],
+                    'receivable_by'  => $request->receivable_by[$key],
+                    'transaction_id'  => $request->transaction_id[$key],
+                ]);
+                $payrollPayment->save();
+            }
+        }
+        return redirect()->route('payroll')->with('success', 'Payroll Created Successfully');
+    }
+
+    public function payrollView($id)
+    {
+        $payrollItems = PayrollItem::where('payroll_id', $id)->first();
+        return view('admin.payroll.payroll-view', compact('payrollItems'));
     }
 
     public function payrollEdit()
     {
         return view('admin.payroll.payroll-edit');
+    }
+
+    public function payrollDelete($id)
+    {
+        $payrollItems = PayrolllItem::find($id);
+
+        session()->flash('success', 'Payroll Deleted Successfully');
+        return redirect()->back();
     }
     // Payroll Controller End
 

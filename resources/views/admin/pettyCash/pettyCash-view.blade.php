@@ -49,17 +49,18 @@
                                                     <td>Beneficiary:</td>
                                                     <td class="text-right">{{ $expenses->beneficiary }}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Amount Deposite:</td>
-                                                    <td class="text-right">{{ $expenses->amount_deposited }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Amount Withdraw:</td>
-                                                    <td class="text-right">{{ $expenses->amount_withdrawn }}</td>
-                                                </tr>
+
                                                 <tr>
                                                     <td>Project:</td>
                                                     <td class="text-right">{{ $expenses->project }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Amount Deposited:</td>
+                                                    <td class="text-right">{{ $expenses->amount_deposited }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Amount Withdrawn:</td>
+                                                    <td class="text-right">{{ $expenses->amount_withdrawn }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Total Amount Deposited:</td>

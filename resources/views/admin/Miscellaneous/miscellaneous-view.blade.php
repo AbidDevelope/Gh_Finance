@@ -15,7 +15,7 @@
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="container-fluid">
-                        <div class="margin_top">
+                        <div class="margin_top mx-3">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-section bg-white">
                                     <h6 class="card-title m-b-15">Miscellaneous Details</h6>
@@ -33,7 +33,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($miscell->miscellaneousItem as $key => $item)
+                                                    @foreach ($miscell->miscellaneousItems as $key => $item)
                                                         <tr class="items">
                                                             <td class="text-center" style="border-radius: 0 !important;">{{ $key + 1 }}</td>
                                                             <td style="border-radius: 0 !important;">{{ $item->description }}</td>
