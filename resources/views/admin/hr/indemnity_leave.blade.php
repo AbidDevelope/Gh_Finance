@@ -22,9 +22,11 @@
         background-color: var(--own-black) !important;
         color: white;
     }
+
     .pb {
         margin-bottom: -50px !important;
     }
+
     .placeholder::placeholder {
         font-size: 15px !important;
     }
@@ -140,49 +142,59 @@
                                 <thead>
                                     <tr role="row">
                                         <th class="text-center"
-                                            style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Date</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Project Name</th>
-                                        <th>Beneficiary</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Total Value</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Actions</th>
+                                            style="width: 50px !important; border-radius: 0 !important;">Sr. No.</th>
+                                        <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Date</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Cheque No./Reciept
+                                            No.</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Beneficiary</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Amount Withdrawn</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Project</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Service Type</th>
+                                        <th class="text-center" style="width: 50px !important; border-radius: 0 !important;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {{-- @dd($expenses) --}}
                                     {{-- @if (count($expenses) > 0) --}}
-                                        {{-- @foreach ($expenses as $index => $item) --}}
-                                            <tr>
-                                                <td class="text-center" style="border-radius: 0 !important;">
-                                                    </td>
-                                                <td class="text-center" style="border-radius: 0 !important;">
-                                                    </td>
-                                                <td class="text-center" style="border-radius: 0 !important;">
-                                                    </td>
-                                                <td></td>
-                                                <td class="text-center" style="border-radius: 0 !important;">
-                                                    </td>
-                                                <td class="text-center" style="border-radius: 0 !important;">
-                                                    <div class="dropdown dropdown-action">
-                                                        <a href="#" class="action-icon" data-toggle="dropdown"
-                                                            aria-expanded="false"><img
-                                                                src="{{ asset('assets/admin/img/icon/action.png') }}"
-                                                                alt=""></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('indemnity&leave/view') }}"><i
-                                                                    class="fa fa-eye m-r-5"></i> View</a>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('indemnity&leave/edit') }}"><i
-                                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item"
-                                                                href="#"><i
-                                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        {{-- @endforeach
+                                    {{-- @foreach ($expenses as $index => $item) --}}
+                                    <tr>
+                                        <td class="text-center" style="border-radius: 0 !important;">
+                                        </td>
+                                        <td class="text-center" style="border-radius: 0 !important;">
+                                        </td>
+                                        <td class="text-center" style="border-radius: 0 !important;">
+                                        </td>
+                                        <td class="text-center" style="border-radius: 0 !important;">
+                                        </td>
+
+                                        <td class="text-center" style="border-radius: 0 !important;">
+                                        </td>
+                                        <td class="text-center" style="border-radius: 0 !important;">
+                                        </td>
+                                        <td class="text-center" style="border-radius: 0 !important;">
+                                        </td>
+                                        <td class="text-center" style="border-radius: 0 !important;">
+                                        </td>
+                                        <td class="text-center" style="border-radius: 0 !important;">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon" data-toggle="dropdown"
+                                                    aria-expanded="false"><img
+                                                        src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                        alt=""></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="{{ route('indemnity&leave/view') }}"><i
+                                                            class="fa fa-eye m-r-5"></i> View</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('indemnity&leave/edit') }}"><i
+                                                            class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="#"><i
+                                                            class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {{-- @endforeach
                                     @endif --}}
                                 </tbody>
                             </table>
@@ -200,21 +212,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                                        ============================================ -->
+                                                                            ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                            ============================================ -->
+                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                            ============================================ -->
+                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                        ============================================ -->
+                                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
