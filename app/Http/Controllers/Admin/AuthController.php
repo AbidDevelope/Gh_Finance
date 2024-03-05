@@ -34,7 +34,7 @@ class AuthController extends Controller
         $totalDesignConstruction = number_format($designConstructionValue, 3, '.', ',');
         
         
-        
+
         return view('admin.dashboard', compact('projects', 'totalRevenue', 'totalExpenses', 'totalDesign', 'totalConstruction', 'totalDesignConstruction'));
     }
 

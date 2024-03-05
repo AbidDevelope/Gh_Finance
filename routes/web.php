@@ -137,6 +137,7 @@ Route::controller(HRController::class)->prefix('admin')->middleware('adminAuthen
     Route::post('indemnity&leave/create', 'indemnityAndleaveCreatePost')->name('indemnity&leave/create');
     Route::get('indemnity&leave/view', 'indemnityAndleaveView')->name('indemnity&leave/view');
     Route::get('indemnity&leave/edit', 'indemnityAndleaveEdit')->name('indemnity&leave/edit');
+    Route::post('indemnity/import', 'indemnityImport')->name('indemnity/import');
 });
 
 // ---------------------------- QuotationController ------------------------------ //

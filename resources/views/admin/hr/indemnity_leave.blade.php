@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="container mx-1">
-                        <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('indemnity/import') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="d-flex gap-4">
                                 <input
