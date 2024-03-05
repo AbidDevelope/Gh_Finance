@@ -40,6 +40,9 @@
         padding-bottom: 0.29rem !important;
         height: 35px;
     }
+    .hid {
+        color: transparent !important;
+    }
 </style>
 
 @extends('admin.layouts.master')
@@ -147,10 +150,11 @@
                                         <th class="text-center" style="border-radius: 0 !important;">Cheque No./Reciept
                                             No.</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Beneficiary</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Amount Withdrawn</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Project</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Service Type</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Amount Deposited</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Amount Withdrawn</th>
+
                                         <th class="text-center" style="width: 50px !important; border-radius: 0 !important;">Actions</th>
                                     </tr>
                                 </thead>
@@ -197,6 +201,39 @@
                                     {{-- @endforeach
                                     @endif --}}
                                 </tbody>
+                                <tfoot>
+                                    <!-- Table footer content here -->
+                                    <tr class="grand_Value">
+                                        <td class="hid"
+                                            style=" border-right-color: transparent; border-radius: 0 !important;">1
+                                        </td>
+                                        <td class="hid"
+                                            style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
+                                            02/2024</td>
+                                        <td class="hid"
+                                            style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
+                                            design</td>
+                                        <td class="hid"
+                                            style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
+                                            Kuwait metro</td>
+                                        <td class="hid"
+                                            style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
+                                            Kuwait metro</td>
+                                        <td class=""
+                                            style="font-weight: bold; border-left-color: transparent;border-radius: 0 !important;">
+                                            Grand
+                                            Total</td>
+                                        
+                                        <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
+                                           KWD</td>
+                                        <td class="text-nowrap"
+                                            style="font-weight: bold; border-radius: 0 !important;">
+                                           KWD</td>
+                                        <td class="text-nowrap"
+                                            style="font-weight: bold; border-radius: 0 !important;"> </td>
+
+                                    </tr>
+                                </tfoot>
                             </table>
 
                         </div>
