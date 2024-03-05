@@ -1094,7 +1094,7 @@
                         </a>
                         <ul class="submenu-angle accountslist padding-top-accounts" aria-expanded="false">
                             <div class=" text-black-50 h hoverbg d-flex justify-content-start align-content-start"> <a
-                                    class="left_margin  text-black-50 " href="#">
+                                    class="left_margin  text-black-50 " href="{{ route('accounts') }}">
                                     {{-- <svg
                                         style="margin-top: -10px;" class="hoverlist" width="30" height="30"
                                         fill="currentColor" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -1125,7 +1125,7 @@
                                         <path
                                             d="M40.625 43.75V45.3125H43.75H46.875V43.75V42.1875H43.75H40.625V43.75Z" />
                                     </svg>
-                                    <span class="ml-1 text hoverlist" style="margin-top: -15px;">Accounts Report
+                                    <span class="ml-1 text hoverlist" style="margin-top: -15px;">Accounting Reports
                                     </span></a></div>
                         </ul>
                     </li>

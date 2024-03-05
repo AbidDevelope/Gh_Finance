@@ -57,7 +57,7 @@
                             <div class="d-flex justify-content-between ">
                                 <h4 class=" text-headings"style="color: var(--own-black)">Accounting Reports</h4>
                                 <div class="">
-                                    <a href="{{ route('indemnity&leave/create') }}"
+                                    <a href="{{ route('accounts/create') }}"
                                         class="btn bg_button padding_y text-white rounded f-1 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                         <i class="fa fa-plus"></i>&nbsp; Create
                                     </a>
