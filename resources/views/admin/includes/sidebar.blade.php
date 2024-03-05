@@ -541,6 +541,66 @@
 
                         </ul>
                     </li>
+
+                    <li class="removable sidebar-h invoices">
+                        <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
+                            aria-expanded="false">
+
+                            <div class="mb-2">
+                                {{-- <img class="hovercolor custom-image" src="/assets/admin/img/logo/invoices.png" alt="Description of the image"> --}}
+                                <svg class="hovercolor " width="40" height="40" viewBox="0 0 60 60"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.25 5.625V54.375H48.75V18L48.1875 17.4375L36.9375 6.1875L36.375 5.625H11.25ZM15 9.375H33.75V20.625H45V50.625H15V9.375ZM37.5 12L42.375 16.875H37.5V12ZM18.75 24.375V28.125H41.25V24.375H18.75ZM18.75 33.75V37.5H31.875V33.75H18.75ZM35.625 33.75V37.5H41.25V33.75H35.625ZM18.75 41.25V45H31.875V41.25H18.75ZM35.625 41.25V45H41.25V41.25H35.625Z" />
+                                </svg>
+                            </div>
+                            <div><span class="text mini-click-non hovercolor">Invoices</span></div>
+                            <div class="triangle"></div>
+                        </a>
+                        <ul class="submenu-angle invoiceslist padding-top-Invoices" aria-expanded="false">
+
+                            <div class=" text-black-50 hoverbg d-flex justify-content-start"> <a
+                                    class="left_margin text-black-50 pb-2" href="{{ route('invoices') }}"><svg
+                                        class="hoverlist custom-image" width="20" height="20"
+                                        viewBox="0 0 60 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.25 5.625V54.375H48.75V18L48.1875 17.4375L36.9375 6.1875L36.375 5.625H11.25ZM15 9.375H33.75V20.625H45V50.625H15V9.375ZM37.5 12L42.375 16.875H37.5V12ZM18.75 24.375V28.125H41.25V24.375H18.75ZM18.75 33.75V37.5H31.875V33.75H18.75ZM35.625 33.75V37.5H41.25V33.75H35.625ZM18.75 41.25V45H31.875V41.25H18.75ZM35.625 41.25V45H41.25V41.25H35.625Z" />
+                                    </svg><span class="ml-1 text hoverlist">Invoices List </span>
+
+                                </a></div>
+
+                        </ul>
+
+                    </li>
+                    <li class="removable sidebar-h hr">
+                        <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
+                            aria-expanded="false">
+
+                            <div class="mb-2">
+                                {{-- <img class="hovercolor custom-image" src="/assets/admin/img/logo/invoices.png" alt="Description of the image"> --}}
+                                <svg class="hovercolor " width="40" height="40" viewBox="0 0 60 60"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.25 5.625V54.375H48.75V18L48.1875 17.4375L36.9375 6.1875L36.375 5.625H11.25ZM15 9.375H33.75V20.625H45V50.625H15V9.375ZM37.5 12L42.375 16.875H37.5V12ZM18.75 24.375V28.125H41.25V24.375H18.75ZM18.75 33.75V37.5H31.875V33.75H18.75ZM35.625 33.75V37.5H41.25V33.75H35.625ZM18.75 41.25V45H31.875V41.25H18.75ZM35.625 41.25V45H41.25V41.25H35.625Z" />
+                                </svg>
+                            </div>
+                            <div><span class="text mini-click-non hovercolor">HR</span></div>
+                            <div class="triangle"></div>
+                        </a>
+                        <ul class="submenu-angle invoiceslist padding-top-Invoices" aria-expanded="false">
+                            <div class=" text-black-50 hoverbg d-flex justify-content-start"> <a
+                                    class="left_margin text-black-50 pb-2" href="{{ route('invoices') }}"><svg
+                                        class="hoverlist custom-image" width="20" height="20"
+                                        viewBox="0 0 60 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.25 5.625V54.375H48.75V18L48.1875 17.4375L36.9375 6.1875L36.375 5.625H11.25ZM15 9.375H33.75V20.625H45V50.625H15V9.375ZM37.5 12L42.375 16.875H37.5V12ZM18.75 24.375V28.125H41.25V24.375H18.75ZM18.75 33.75V37.5H31.875V33.75H18.75ZM35.625 33.75V37.5H41.25V33.75H35.625ZM18.75 41.25V45H31.875V41.25H18.75ZM35.625 41.25V45H41.25V41.25H35.625Z" />
+                                    </svg><span class="ml-1 text hoverlist">Indemnity & Leave </span>
+
+                                </a></div>
+
+                        </ul>
+
+                    </li>
                     <li class="removable sidebar-h expenses">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
                             aria-expanded="false">
@@ -811,36 +871,6 @@
                                     </span>
                                 </a></div>
                         </ul>
-                    </li>
-                    <li class="removable sidebar-h invoices">
-                        <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
-                            aria-expanded="false">
-
-                            <div class="mb-2">
-                                {{-- <img class="hovercolor custom-image" src="/assets/admin/img/logo/invoices.png" alt="Description of the image"> --}}
-                                <svg class="hovercolor " width="40" height="40" viewBox="0 0 60 60"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M11.25 5.625V54.375H48.75V18L48.1875 17.4375L36.9375 6.1875L36.375 5.625H11.25ZM15 9.375H33.75V20.625H45V50.625H15V9.375ZM37.5 12L42.375 16.875H37.5V12ZM18.75 24.375V28.125H41.25V24.375H18.75ZM18.75 33.75V37.5H31.875V33.75H18.75ZM35.625 33.75V37.5H41.25V33.75H35.625ZM18.75 41.25V45H31.875V41.25H18.75ZM35.625 41.25V45H41.25V41.25H35.625Z" />
-                                </svg>
-                            </div>
-                            <div><span class="text mini-click-non hovercolor">Invoices</span></div>
-                            <div class="triangle"></div>
-                        </a>
-                        <ul class="submenu-angle invoiceslist padding-top-Invoices" aria-expanded="false">
-
-                            <div class=" text-black-50 hoverbg d-flex justify-content-start"> <a
-                                    class="left_margin text-black-50 pb-2" href="{{ route('invoices') }}"><svg
-                                        class="hoverlist custom-image" width="20" height="20"
-                                        viewBox="0 0 60 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.25 5.625V54.375H48.75V18L48.1875 17.4375L36.9375 6.1875L36.375 5.625H11.25ZM15 9.375H33.75V20.625H45V50.625H15V9.375ZM37.5 12L42.375 16.875H37.5V12ZM18.75 24.375V28.125H41.25V24.375H18.75ZM18.75 33.75V37.5H31.875V33.75H18.75ZM35.625 33.75V37.5H41.25V33.75H35.625ZM18.75 41.25V45H31.875V41.25H18.75ZM35.625 41.25V45H41.25V41.25H35.625Z" />
-                                    </svg><span class="ml-1 text hoverlist">Invoices List </span>
-
-                                </a></div>
-
-                        </ul>
-
                     </li>
                     <li class="removable sidebar-h reports mb-5">
                         <a class=" text-black-50 d-flex flex-column align-items-center triangle-container"
