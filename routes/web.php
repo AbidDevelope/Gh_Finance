@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\QuotationController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ProjectManagerController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\AccountController;
 
 
 
@@ -183,4 +184,12 @@ Route::controller(ReportController::class)->prefix('admin')->middleware('adminAu
     Route::get('report/view', 'reportView')->name('report/view');
     Route::get('expense/report', 'expenseReport')->name('expense/report');
     Route::get('p_&_l', 'profitLossReport')->name('p_&_l');
+});
+
+// ============================ AccountController ========================= //
+Route::controller(AccountController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
+    Route::get('accounts', 'accounts')->name('accounts');
+    Route::get('accounts/create', 'accountCreate')->name('accounts/create');
+    Route::get('accounts/view', 'accountView')->name('accounts/view');
+    Route::get('accounts/edit', 'accountEdit')->name('accounts/edit');
 });
