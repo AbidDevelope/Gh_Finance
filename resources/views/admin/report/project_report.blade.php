@@ -124,7 +124,7 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
-                                <div class="alert alert-success">
+                                <div class="alert alert-success" id="successAlert">
                                     {{ Session::get('success') }}
                                 </div>
                             @endif
@@ -257,6 +257,9 @@
         });
      });
     </script>
-
-
+    <script>
+        setTimeout(function(){
+            document.getElementById('successAlert').style.display = 'none';
+        }, 5000);
+    </script>
 @endsection

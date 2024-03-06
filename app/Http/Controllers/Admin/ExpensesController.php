@@ -345,6 +345,7 @@ class ExpensesController extends Controller
         }
 
         $file = $request->file('file');
+        // dd($file);
         Excel::import(new ExpensesImport, $file);
 
         return back()->with('success', 'Imported successfully.');
@@ -364,8 +365,8 @@ class ExpensesController extends Controller
         $pettyCash->amount_deposited = $request->amount_deposited;
         $pettyCash->amount_withdrawn = $request->amount_withdrawn;
         $pettyCash->project_name = $request->project_name;
-        $pettyCash->total_amount_deposited = $request->total_amount_deposited;
-        $pettyCash->total_amount_withdrawn = $request->total_amount_withdrawn;
+        // $pettyCash->total_amount_deposited = $request->total_amount_deposited;
+        // $pettyCash->total_amount_withdrawn = $request->total_amount_withdrawn;
         $pettyCash->total_in_account = $request->total_in_account;
         $pettyCash->save();
 

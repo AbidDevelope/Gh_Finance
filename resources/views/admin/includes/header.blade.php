@@ -39,8 +39,8 @@
     .pop_profile {
         display: none;
         position: fixed;
-        top: 18%;
-        left: 65%;
+        top: 20%;
+        left: 63%;
         transform: translate(-50%, -50%);
         background-color: white;
         border: 1px solid #ccc;
@@ -657,28 +657,28 @@
                         class="profile_width popup-container pop_profile position-fixed top-10 round translate-middle-y  me-4">
                         <div class="popup-content">
                             <ul class="list-unstyled">
-                                <li class="mb-2 bg_hover">
+                                <li class="mb-2 bg_hover ps-2">
                                     <a href="{{ route('profile') }}" class="d-flex  text-black-50">
-                                        <span> My Profile</span>
-                                        <span class=""><svg class="me-1" xmlns="http://www.w3.org/2000/svg"
-                                                width="16" height="16" fill="currentColor"
+                                        <span class=""><svg class="mt-1" xmlns="http://www.w3.org/2000/svg"
+                                                width="20" height="20" fill="currentColor"
                                                 class="bi bi-person" viewBox="0 0 16 16">
                                                 <path
                                                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                                             </svg></span>
+                                        <span class="" style="font-size: 16px"> My Profile</span>
                                     </a>
                                 </li>
                                 <li class="mb-2 bg_hover">
                                     <a href=" {{ route('admin/logout') }} " class="d-flex  text-black-50">
-                                        <span>Log Out</span>
-                                        <svg class="ms-4 mt-1" xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" fill="currentColor" class="bi bi-box-arrow-right"
+                                        <svg class="ms-4 mt-1" xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" fill="currentColor" class="bi bi-box-arrow-right"
                                             viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"
                                                 d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
                                             <path fill-rule="evenodd"
                                                 d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
                                         </svg>
+                                        <span style="font-size: 16px">Log Out</span>
                                     </a>
                                 </li>
                             </ul>

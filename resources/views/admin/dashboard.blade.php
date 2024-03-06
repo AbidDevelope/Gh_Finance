@@ -242,7 +242,7 @@
                             </svg></div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text textcolor">Design</p>
-                            <p class="m-0 dashboard-color-subcolor textcolor_1" style="font-size: 12px">{{ $totalDesign }}
+                            <p class="m-0 dashboard-color-subcolor textcolor_1" style="font-size: 12px">{{ $totalDesign }}.000
                                 KWD</p>
                         </div>
                     </div>
@@ -268,7 +268,7 @@
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text textcolor">Construction</p>
                             <p class="m-0 dashboard-color-subcolor text-nowrap textcolor_1" style="font-size: 12px">
-                                {{ $totalConstruction }} KWD</p>
+                                {{ $totalConstruction }}.000 KWD</p>
                         </div>
                     </div>
                 </div>
@@ -290,7 +290,7 @@
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text textcolor">Design & Construction</p>
                             <p class="m-0 dashboard-color-subcolor text-nowrap textcolor_1" style="font-size: 12px">
-                                {{ $totalDesignConstruction }} KWD</p>
+                                {{ $totalDesignConstruction }}.000 KWD</p>
                         </div>
                     </div>
                 </div>
@@ -322,7 +322,7 @@
                             </svg></div>
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text textcolor">Revenue</p>
-                            <p class="m-0 dashboard-color-subcolor textcolor_1" style="font-size: 12px">{{ $totalRevenue }}
+                            <p class="m-0 dashboard-color-subcolor textcolor_1" style="font-size: 12px">{{ $totalRevenue }}.000
                                 KWD</p>
                         </div>
                     </div>
@@ -448,7 +448,7 @@
     <!-- plugins JS
                                                         ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
-    <!-- <script src="{{ asset('assets/admin/js/mychart.js') }}"></script> -->
+    <script src="{{ asset('assets/admin/js/mychart.js') }}"></script>
     <!-- main JS
                                                     ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
@@ -456,18 +456,44 @@
         integrity="sha512-EmNxF3E6bM0Xg1zvmkeYD3HDBeGxtsG92IxFt1myNZhXdCav9MzvuH/zNMBU1DmIPN6njrhX1VTbqdJxQ2wHDg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+
+
         let series =
             '[{"name":" e", "type":"bar", "data":[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],' +
             '"itemStyle": {"color": "#bcbbdd"}},' +
             '{"name":"Online", "type":"bar", "data":[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],' +
             '"itemStyle": {"color": "#7569b3"}}]';
 
-        let piechart =
-            '[{"name":"Access From","type":"pie","radius":"50%","data":[{"value":200,"name":"Design"},{"value":484,"name":"Constructions"},{"value":300,"name":"Design & Constructions"}],"emphasis":{"itemStyle":{"shadowBlur":10,"shadowOffsetX":0,"shadowColor":"rgba(0, 0, 0, 0.5)"}}}]';
+            // let piechart = <?php echo $piechart; ?>;
+            // console.log(piechart);
+            // let piechart = 
+            // '[{"name":"Access From","type":"pie","radius":"50%","data":[{"value":200,"name":"Design"},{"value":484,"name":"Constructions"},{"value":300,"name":"Design & Constructions"}],"emphasis":{"itemStyle":{"shadowBlur":10,"shadowOffsetX":0,"shadowColor":"rgba(0, 0, 0, 0.5)"}}}]';
+
+            // let series1 =  <?php echo $piechart;  ?>;
+            // let  series =  JSON.stringify(series1)
+
+            let piechart1 =  <?php echo $piechart;  ?>;
+            let  piechart =  JSON.stringify(piechart1)
+
+            // let lastmonth1 =  <?php echo $piechart;  ?>;
+            // let  lastmonth =  JSON.stringify(lastmonth1)   
+
+            // let lastweek1 =  <?php echo $piechart;  ?>;
+            // let  lastweek1 =  JSON.stringify(lastweek1)  
+
+            // let leads1 =  <?php echo $piechart;  ?>;
+            // let  leads =  JSON.stringify(leads1)  
+
+             
+
+
+        //    let piechart =  '[{"name":"Access From","type":"pie","radius":"50%","data":[{"value":"50000.000","name":"Design"},{"value":"10000.000","name":"Constructions"},{"value":"20000.000","name":"Design & Constructions"}],"emphasis":{"itemStyle":{"shadowBlur":10,"shadowOffsetX":0,"shadowColor":"rgba(0, 0, 0, 0.5)"}}}]';
 
         let lastmonth =
             '[{"data":[0, 232, 401, 234, 790, 1230, 920],"type":"line","smooth":true,"itemStyle":{"color":"#5470C6"}}]';
+        
 
+            
         let lastweek =
             '[{"data":[0, 232, 401, 234, 790, 1230, 920],"type":"line","smooth":true,"itemStyle":{"color":"#91CC75"}}]';
 
@@ -509,7 +535,18 @@
 
         // Call the function
         getBarGraph(series);
-        getPieGraph(piechart);
+
+        if(piechart)
+        {
+            getPieGraph(piechart);
+
+            console.log("called")
+        }
+
+        else {
+            console.log("not called")
+        }
+      
         getLastMonthLine(lastmonth);
         getLastWeekLine(lastweek)
         getLeads(leads)

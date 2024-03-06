@@ -88,7 +88,9 @@
     }
 
     .bg-heading {
-        background-color: #cccccc !important;
+        /* padding-left: 5px; */
+       width: 40px;
+        /* background-color: #cccccc !important; */
     }
 
     .popup {
@@ -139,38 +141,46 @@
                         {{-- <img id="imagePreview" style="width: 100px; height: 100px;" /> --}}
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 shadow-sm bg-white p-3 rounded position-relative">
                             <div class="subchild">
-                              
+
                                 @php
-                                $adminProfile = Auth::guard('admin')->user()->image;
-                                $defaultImage = '/assets/admin/img/prof pic.jpg';
-                                $imagePath = $adminProfile ? 'assets/admin/img/profile/' . $adminProfile : $defaultImage;
+                                    $adminProfile = Auth::guard('admin')->user()->image;
+                                    $defaultImage = '/assets/admin/img/prof pic.jpg';
+                                    $imagePath = $adminProfile
+                                        ? 'assets/admin/img/profile/' . $adminProfile
+                                        : $defaultImage;
                                 @endphp
-                                
-                                <div id="imagePreview" class="image circular-pic" style="background-image: url('{{ asset($imagePath) }}'); margin-right:20px; width: 200px; height: 200px; background-size: cover; background-position: center;"></div>
-                                
-                              <form action="{{ route('changeProfile') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                  <input type="file" id="fileInput" name="image" style="display:none">
-                                  <a class="d-flex text-black-50 icon" id="change-profile-pic">
-                                      <span class="mt-1 author-log-ic editIcon">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0f1316" class="bi bi-pencil-square bg-white" viewBox="0 0 16 16">
-                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                        </svg>
-                                    </span>
-                                </a>
+
+                                <div id="imagePreview" class="image circular-pic"
+                                    style="background-image: url('{{ asset($imagePath) }}'); margin-right:20px; width: 200px; height: 200px; background-size: cover; background-position: center;">
+                                </div>
+
+                                <form action="{{ route('changeProfile') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" id="fileInput" name="image" style="display:none">
+                                    <a class="d-flex text-black-50 icon" id="change-profile-pic">
+                                        <span class="mt-1 author-log-ic editIcon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="#0f1316" class="bi bi-pencil-square bg-white" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                                            </svg>
+                                        </span>
+                                    </a>
                             </div>
-                            <button type="submit" id="saveButton" 
-                            class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">Save
-                        </button>
-                    </form>
+                            <button type="submit" id="saveButton"
+                                class="btn bg_button text-white rounded f-14 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">Save
+                            </button>
+                            </form>
 
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 shadow-sm bg-white p-3 rounded">
                             <div>
                                 <h1 class="text-center">My Profile</h1>
                                 <div class="d-flex justify-content-between  mt-5">
-                                    <span class="mt-1 ms-2 author-log-ic " id="editIcon" style="cursor: pointer;">Edit Details
+                                    <span class="mt-1 ms-2 author-log-ic " id="editIcon" style="cursor: pointer;">Edit
+                                        Details
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-pencil-square bg-white" viewBox="0 0 16 16">
                                             <path
@@ -219,36 +229,43 @@
                                     </div>
                                 </div>
                                 <div class="popup rounded detailsPop" id="popupIcon" style="width:110%; height:100%;">
-                                    <form action="{{ route('profile/update',  Auth::guard('admin')->user()->id) }}" method="POST">
+                                    <form action="{{ route('profile/update', Auth::guard('admin')->user()->id) }}"
+                                        method="POST">
                                         @csrf
                                         <div class="d-flex justify-content-center">
                                             <label for="name">First Name</label>
                                             <input class="mb-3 name" style="margin-left:33px !important;" type="text"
-                                                name="first_name" placeholder="First Name" value="{{ Auth::guard('admin')->user()->first_name }}">
+                                                name="first_name" placeholder="First Name"
+                                                value="{{ Auth::guard('admin')->user()->first_name }}">
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <label for="name">Last Name</label>
                                             <input class="mb-3 name" style="margin-left:33px !important;" type="text"
-                                                name="last_name" placeholder="Last Name" value="{{ Auth::guard('admin')->user()->last_name }}">
+                                                name="last_name" placeholder="Last Name"
+                                                value="{{ Auth::guard('admin')->user()->last_name }}">
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <label for="email">Email</label>
                                             <input class="mb-3 name " style="margin-left:33px !important;" type="email"
-                                                name="email" placeholder="email" value="{{ Auth::guard('admin')->user()->email }}">
+                                                name="email" placeholder="email"
+                                                value="{{ Auth::guard('admin')->user()->email }}">
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <label for="phone">Phone</label>
                                             <input class="mb-3 name " style="margin-left:27px !important;" type="text"
-                                                name="mobile" placeholder="phone number" value="{{ Auth::guard('admin')->user()->mobile }}">
+                                                name="mobile" placeholder="phone number"
+                                                value="{{ Auth::guard('admin')->user()->mobile }}">
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <label for="landline">Landline</label>
                                             <input class="mb-3 name ms-2" type="number" name="landline"
-                                                placeholder="123-456-7890" value="{{ Auth::guard('admin')->user()->landline }}">
+                                                placeholder="123-456-7890"
+                                                value="{{ Auth::guard('admin')->user()->landline }}">
                                         </div>
                                         <div class="mb-3 d-flex justify-content-center ">
                                             {{-- <input type="submit" value="Save Changes"> --}}
-                                            <button class="btn-search btn bgEdit text-white bg-gray-100 " type="submit ">Save
+                                            <button class="btn-search btn bgEdit text-white bg-gray-100 "
+                                                type="submit ">Save
                                                 Changes </button>
                                         </div>
                                     </form>
@@ -256,32 +273,54 @@
                             </div>
                             <div class="profile-form mt-5">
                                 <form id="profileForm">
-                                    <div class="mb-3 d-flex">
-                                        <span class="bg-heading ps-2 pe_name" for="name">Name</span>
-                                        <!-- Use a <span> element with contenteditable attribute -->
-                                        <span class="border d-block flex-grow-1 ps-2" id="name">{{ Auth::guard('admin')->user()->first_name }}&nbsp;{{ Auth::guard('admin')->user()->last_name }}</span>
+                                    <div class="mb-3 py-1 d-flex mx-3 border align-items-center">
+                                        <svg class="bg-heading" xmlns="http://www.w3.org/2000/svg" width="22px"
+                                            height="22px" viewBox="0 0 24 24">
+                                            <g fill="none" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linejoin="round"
+                                                    d="M4 18a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" />
+                                                <circle cx="12" cy="7" r="3" />
+                                            </g>
+                                        </svg>
+                                        <span style="border-left:none " class=" d-block flex-grow-1 ps-2"
+                                            id="name">{{ Auth::guard('admin')->user()->first_name }}&nbsp;{{ Auth::guard('admin')->user()->last_name }}</span>
                                     </div>
-                                    <div class="mb-3 d-flex ">
-                                        <span class="bg-heading ps-2 pe_email" for="email">Email</span>
-                                        <!-- Use a <span> element with contenteditable attribute -->
-                                        <span class="border d-block d-block flex-grow-1 ps-2"
+                                    <div class="mb-3 py-1 d-flex mx-3 border align-items-center">
+                                        {{-- <span class="bg-heading ps-2 pe_email" for="email">Email</span> --}}
+                                        <svg class="bg-heading" xmlns="http://www.w3.org/2000/svg" width="22px"
+                                        height="22px" viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2zm-2 0l-8 5l-8-5zm0 12H4V8l8 5l8-5z" />
+                                        </svg>
+                                        <span class="  d-block flex-grow-1 ps-2"
                                             id="email">{{ Auth::guard('admin')->user()->email }}</span>
-
-
                                     </div>
-                                    <div class="mb-3 d-flex ">
-                                        <span class="bg-heading ps-2 pePhone" for="phone">Phone Number</span>
-                                        <!-- Use a <span> element with contenteditable attribute -->
+                                    <div class="mb-3 py-1 d-flex mx-3 border align-items-center">
+                                        <svg  class="bg-heading" xmlns="http://www.w3.org/2000/svg" width="22px" height="22px"
+                                            viewBox="0 0 36 36">
+                                            <path fill="currentColor"
+                                                d="M25 4H11a2 2 0 0 0-2 2v24a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m-6 26h-2v-2h2Zm-8-4V6h14v20Z"
+                                                class="clr-i-solid clr-i-solid-path-1" />
+                                            <path fill="none" d="M0 0h36v36H0z" />
+                                        </svg>
                                         <span id="phone"
-                                            class="border d-block d-block flex-grow-1 ps-2">+965&nbsp;{{ Auth::guard('admin')->user()->mobile }}</span>
-
-
+                                            class="  d-block flex-grow-1 ps-2">+965&nbsp;{{ Auth::guard('admin')->user()->mobile }}</span>
                                     </div>
-                                    <div class="mb-3 d-flex ">
-                                        <span class="ps-2 pe-3 bg-heading" for="landline">Landline Number</span>
-                                        <!-- Use a <span> element with contenteditable attribute -->
+                                    <div class="mb-3 py-1 d-flex mx-3 border align-items-center">
+                                            <svg  class="border-right bg-heading" xmlns="http://www.w3.org/2000/svg" width="22px"
+                                            height="22px"
+                                                viewBox="0 0 24 24">
+                                                <g fill="none" stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2">
+                                                    <path
+                                                        d="M20 3h-2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-4 1H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h11" />
+                                                    <path
+                                                        d="M12 8H6v3h6zm0 6v.01M9 14v.01M6 14v.01M12 17v.01M9 17v.01M6 17v.01" />
+                                                </g>
+                                            </svg>
+
                                         <span id="landline"
-                                            class="border d-block d-block flex-grow-1 ps-2">{{ Auth::guard('admin')->user()->landline }}</span>
+                                            class="  d-block flex-grow-1 ps-2">+965&nbsp;{{ Auth::guard('admin')->user()->landline }}</span>
                                     </div>
                                     {{-- <div class="mb-3 d-flex ">
                                         <span class="bg-heading ps-2 pe-5" for="website">Password</span>
@@ -303,21 +342,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                                                                                                    ============================================ -->
+                                                                                                                                                                ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                                                                        ============================================ -->
+                                                                                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                                                                        ============================================ -->
+                                                                                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                                                                    ============================================ -->
+                                                                                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -389,18 +428,18 @@
             }
         });
     </script>
-    
+
     {{-- Change Profile Image Script --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var changeProfilePicElement = document.getElementById('change-profile-pic');
-            var fileInput = document.getElementById('fileInput'); 
-            var imagePreview = document.getElementById('imagePreview'); 
-        
+            var fileInput = document.getElementById('fileInput');
+            var imagePreview = document.getElementById('imagePreview');
+
             changeProfilePicElement.addEventListener('click', function() {
-                fileInput.click(); 
+                fileInput.click();
             });
-        
+
             fileInput.onchange = function(evt) {
                 const [file] = fileInput.files;
                 if (file) {
@@ -412,6 +451,5 @@
                 }
             };
         });
-        </script>
-        
+    </script>
 @endsection

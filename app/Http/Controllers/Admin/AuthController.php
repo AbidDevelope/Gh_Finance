@@ -27,15 +27,39 @@ class AuthController extends Controller
             return $sumExpenses;
         },0);
 
-        $totalRevenue = number_format($totalProjectRevenue, 3, '.', ',');
-        $totalExpenses = number_format($totalExpensesValue, 3, '.', ',');
-        $totalDesign = number_format($designValue, 3, '.', ',');
-        $totalConstruction = number_format($constructionValue, 3, '.', ',');
-        $totalDesignConstruction = number_format($designConstructionValue, 3, '.', ',');
+        $totalRevenue = $totalProjectRevenue;
+        $totalExpenses = $totalExpensesValue;
+
+        $totalDesign = $designValue;
+        $totalConstruction = $constructionValue;
+        $totalDesignConstruction = $designConstructionValue;
         
+        $piechartData = 0;
+
+        $piechartData = [
+            [
+                "name" => "Access From",
+                "type" => "pie",
+                "radius" => "50%",
+                "data" => [
+                    ["value" => $totalDesign, "name" => "Design"],
+                    ["value" => $totalConstruction, "name" => "Constructions"],
+                    ["value" => $totalDesignConstruction, "name" => "Design & Constructions"]
+                ],
+                "emphasis" => [
+                    "itemStyle" => [
+                        "shadowBlur" => 10,
+                        "shadowOffsetX" => 0,
+                        "shadowColor" => "rgba(0, 0, 0, 0.5)"
+                    ]
+                ]
+            ]
+        ];
         
-        
-        return view('admin.dashboard', compact('projects', 'totalRevenue', 'totalExpenses', 'totalDesign', 'totalConstruction', 'totalDesignConstruction'));
+        $piechart = json_encode($piechartData);
+
+        // dd($piechart);
+        return view('admin.dashboard', compact('projects', 'totalRevenue', 'totalExpenses', 'totalDesign', 'totalConstruction', 'totalDesignConstruction', 'piechart'));
     }
 
     public function getRegister()
@@ -185,7 +209,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        session()->flash('message', 'Successfully Logout.');
+        session()->flash('success', 'Successfully Logout.');
         return redirect('/');
     }
 }
