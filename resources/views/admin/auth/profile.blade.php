@@ -90,7 +90,7 @@
     .bg-heading {
         /* padding-left: 5px; */
        width: 40px;
-        background-color: #cccccc !important;
+        /* background-color: #cccccc !important; */
     }
 
     .popup {
@@ -320,7 +320,7 @@
                                             </svg>
 
                                         <span id="landline"
-                                            class="  d-block flex-grow-1 ps-2">{{ Auth::guard('admin')->user()->landline }}</span>
+                                            class="  d-block flex-grow-1 ps-2">+965&nbsp;{{ Auth::guard('admin')->user()->landline }}</span>
                                     </div>
                                     {{-- <div class="mb-3 d-flex ">
                                         <span class="bg-heading ps-2 pe-5" for="website">Password</span>
