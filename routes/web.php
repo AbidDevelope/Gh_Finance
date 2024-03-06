@@ -139,6 +139,7 @@ Route::controller(HRController::class)->prefix('admin')->middleware('adminAuthen
     Route::get('indemnity&leave/view', 'indemnityAndleaveView')->name('indemnity&leave/view');
     Route::get('indemnity&leave/edit', 'indemnityAndleaveEdit')->name('indemnity&leave/edit');
     Route::post('indemnity/import', 'indemnityImport')->name('indemnity/import');
+    Route::get('indemnitysearchByDate', 'indemnityFilter')->name('indemnitysearchByDate');
 });
 
 // ---------------------------- QuotationController ------------------------------ //
@@ -192,4 +193,6 @@ Route::controller(AccountController::class)->prefix('admin')->middleware('adminA
     Route::get('accounts/create', 'accountCreate')->name('accounts/create');
     Route::get('accounts/view', 'accountView')->name('accounts/view');
     Route::get('accounts/edit', 'accountEdit')->name('accounts/edit');
+    Route::post('accounts/import', 'accountsImport')->name('accounts/import');
+    Route::get('accountReportsearch', 'accountReportSearchBydate')->name('accountReportsearch');
 });

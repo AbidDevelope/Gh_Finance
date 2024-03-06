@@ -19,7 +19,7 @@ class ExpensesImport implements ToCollection
         $rows->shift(); // Skip the header row
         foreach ($rows as $row) 
         {
-            $excelDate = $row[1]; 
+            $excelDate = $row[0] ?? ''; 
             $dateObject = \DateTime::createFromFormat('d-M-y', strtoupper($excelDate));
             
             if ($dateObject) {
@@ -28,16 +28,12 @@ class ExpensesImport implements ToCollection
                 $date = null;
             }
        
-            $chequeNumberReceiptNumber = $row[2]; 
-            $description = $row[3];
-            $beneficiary = $row[4];
-            $amountDeposited = $row[5];
-            $amountWithdrawn = $row[6];
-            $project = $row[7];
-            
-            $totalAmountDeposited = $row[9]; 
-            $totalAmountWithdrawn = $row[10]; 
-            $totalInAccount = $row[11]; 
+            $chequeNumberReceiptNumber = $row[1] ?? ''; 
+            $description = $row[2] ?? '';
+            $beneficiary = $row[3] ?? '';
+            $amountDeposited = $row[4] ?? '';
+            $amountWithdrawn = $row[5] ?? '';
+            $project = $row[6] ?? '';
 
             PettyCash::create([
                 'date' => $date,
@@ -47,9 +43,6 @@ class ExpensesImport implements ToCollection
                 'amount_deposited' => $amountDeposited,
                 'amount_withdrawn' => $amountWithdrawn,
                 'project_name' => $project,
-                'total_amount_deposited' => $totalAmountDeposited,
-                'total_amount_withdrawn' => $totalAmountWithdrawn,
-                'total_in_account' => $totalInAccount,
             ]);
         }
     }

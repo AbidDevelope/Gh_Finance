@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class IndemnityLeave extends Model
+class Account extends Model
 {
     use HasFactory;
 
@@ -18,6 +18,8 @@ class IndemnityLeave extends Model
         'amount_deposited',
         'amount_withdrawn',
         'project_name',
+        'column_1',
+        'column_2',
         'service_type',
         'remarks',
     ];

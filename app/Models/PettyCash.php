@@ -18,9 +18,6 @@ class PettyCash extends Model
         'amount_deposited',
         'amount_withdrawn',
         'project_name',
-        'total_amount_deposited',
-        'total_amount_withdrawn',
-        'total_in_account',
     ];
 
     public function projects()

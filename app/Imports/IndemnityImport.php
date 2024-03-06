@@ -18,36 +18,28 @@ class IndemnityImport implements ToCollection
         $rows->shift();  
         foreach($rows as $row)
         {
-            $excelDate = $row[2]; 
-            $dateObject = \DateTime::createFromFormat('d-M-y', $excelDate);
+            $excelDate = trim($row[0] ?? '');
+            $dateObject = $excelDate ? \DateTime::createFromFormat('d-M-y', $excelDate) : null;
+            // dd($dateObject);
 
-            if ($dateObject !== false) {
+            if ($dateObject) {
                 $date = $dateObject->format('Y-m-d');
             } else {
-                $errors = DateTime::getLastErrors();
-                // Handle errors here
-                var_dump($errors['warnings']);
-                $date = null;
+                $date = null; 
             }
 
-
-
-            $sr_no = isset($row[0]) ? $row[0] : null;
-            $excelDate = isset($row[1]) ? $row[1] : null; 
-            $chequeNumberReceiptNumber = isset($row[2]) ? $row[2] : null;
-            $description = isset($row[3]) ? $row[3] : null;
-            $beneficiary = isset($row[4]) ? $row[4] : null;
-            $amount_deposited = isset($row[5]) ? $row[5] : null;
-            $amount_withdrawn = isset($row[6]) ? $row[6] : null;
-            $project_name = isset($row[7]) ? $row[7] : null;
-            $service_type = isset($row[8]) ? $row[8] : null;
-            $remarks = isset($row[9]) ? $row[9] : null;
+            $chequeNumberReceiptNumber = $row[1] ?? '';
+            $description = $row[2] ?? '';
+            $beneficiary = $row[3] ?? '';
+            $amount_deposited = $row[4] ?? '';
+            $amount_withdrawn = $row[5] ?? '';
+            $project_name = $row[6] ?? '';
+            $service_type = $row[7] ?? '';
+            $remarks = $row[8] ?? '';
         
-            // Your existing date parsing logic here
         
             IndemnityLeave::create([
-                'sr_no' => $sr_no,
-                'date' => $date, // Ensure you have processed $excelDate before this point
+                'date' => $date,
                 'cheque_number_receipt_number' => $chequeNumberReceiptNumber,
                 'description' => $description,
                 'beneficiary' => $beneficiary,
