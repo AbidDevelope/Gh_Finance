@@ -243,21 +243,17 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'start_date') { //Start date selected - update End Date picker
-                $("#end_date").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#start_date").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#start_date, #end_date').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+        $(document).ready(function(){
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+    <script>
+        setTimeout(function(){
+            document.getElementById('successAlert').style.display = 'none';
+        }, 5000);
     </script>
 @endsection

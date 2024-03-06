@@ -63,7 +63,7 @@
                                                 {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
                                                 <!-- Input with Bootstrap styling -->
                                                 <input type="text" id="start_date" name="start_date" placeholder="Select Start Date" class="form-control cursor placeholder bg-white rounded text-black-50 datepicker"
-                                                 style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ old('start_date') }}">
+                                                 style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ request('start_date') }}">
                                                  @if ($errors->has('start_date'))
                                                  <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                              @endif
@@ -74,7 +74,7 @@
                                             <div class=" form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
                                                 <input type="text" id="end_date" class="form-control cursor placeholder bg-white text-black-50 rounded datepicker"
-                                                name="end_date" placeholder="Select Start Date"  value="{{ old('end_date') }}" style="box-shadow: none; border: 1px solid  var(--own-black); width: 230px; height: 35px;">
+                                                name="end_date" placeholder="Select Start Date"  value="{{ request('end_date') }}" style="box-shadow: none; border: 1px solid  var(--own-black); width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif
@@ -95,7 +95,7 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
-                                <div class="alert alert-success">
+                                <div class="alert alert-success" id="successAlert">
                                     {{ Session::get('success') }}
                                 </div>
                             @endif
@@ -217,4 +217,9 @@
     });
     </script>
 {{-- date Format --}}
+<script>
+    setTimeout(function(){
+        document.getElementById('successAlert').style.display = 'none';
+    }, 5000);
+</script>
 @endsection

@@ -209,7 +209,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        session()->flash('message', 'Successfully Logout.');
+        session()->flash('success', 'Successfully Logout.');
         return redirect('/');
     }
 }

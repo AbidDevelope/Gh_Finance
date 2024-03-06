@@ -144,9 +144,9 @@
                             <span>{{ session()->get('error') }}</span>
                         </div>
                     @endif
-                    @if (session()->has('message'))
-                        <div class="alert alert-success">
-                            <span>{{ session()->get('message') }}</span>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success" id="successAlert">
+                            <span>{{ session()->get('success') }}</span>
                         </div>
                     @endif
                     <div class="">
@@ -211,4 +211,9 @@
             this.classList.toggle('fa-eye');
         });
     });
+</script>
+<script>
+    setTimeout(function(){
+        document.getElementById('successAlert').style.display = 'none';
+    }, 5000);
 </script>

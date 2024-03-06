@@ -20,5 +20,6 @@ class IndemnityLeave extends Model
         'project_name',
         'service_type',
         'remarks',
+        'total_in_account',
     ];
 }

@@ -74,43 +74,42 @@
                             {{-- <div class="s002"> --}}
                             <form action="{{ route('accountReportsearch') }}" method="GET">
                                 @csrf
-                            <div class="d-flex">
-                                <div class=" ">
-                                    <div class="form-group">
-                                        {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
+                                <div class="d-flex">
+                                    <div class=" ">
+                                        <div class="form-group">
+                                            {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
 
-                                        <input type="text" name="start_date"
-                                            placeholder="Select Start Date"
-                                            class="form-control cursor placeholder bg-white rounded text-black-50 datepicker"
-                                            style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);;"
-                                            value="{{ request('start_date') }}">
-                                        @if ($errors->has('start_date'))
-                                            <span class="text-danger">{{ $errors->first('start_date') }}</span>
-                                        @endif
+                                            <input type="text" name="start_date" placeholder="Select Start Date"
+                                                class="form-control cursor placeholder bg-white rounded text-black-50 datepicker"
+                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);;"
+                                                value="{{ request('start_date') }}">
+                                            @if ($errors->has('start_date'))
+                                                <span class="text-danger">{{ $errors->first('start_date') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
+                                    <div class="container  d-flex gap-4 ">
+                                        <div class=" form-group">
+                                            {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
+                                            <!-- Input with Bootstrap styling -->
+                                            <input type="text"
+                                                class="form-control cursor placeholder bg-white text-black-50 rounded datepicker"
+                                                name="end_date" placeholder="Select End Date"
+                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);;"
+                                                value="{{ request('end_date') }}">
+                                            @if ($errors->has('end_date'))
+                                                <span class="text-danger">{{ $errors->first('end_date') }}</span>
+                                            @endif
+
+                                        </div>
+                                        <div class="form-group" style="margin-top: ;">
+                                            <button class="btn-search padding_y btn bg_button text-white bg-gray-100 "
+                                                type="submit">Search </button>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="container  d-flex gap-4 ">
-                                    <div class=" form-group">
-                                        {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
-                                        <!-- Input with Bootstrap styling -->
-                                        <input type="text"
-                                            class="form-control cursor placeholder bg-white text-black-50 rounded datepicker"
-                                            name="end_date" placeholder="Select End Date"
-                                            style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);;"
-                                            value="{{ request('end_date') }}">
-                                        @if ($errors->has('end_date'))
-                                            <span class="text-danger">{{ $errors->first('end_date') }}</span>
-                                        @endif
-
-                                    </div>
-                                    <div class="form-group" style="margin-top: ;">
-                                        <button class="btn-search padding_y btn bg_button text-white bg-gray-100 "
-                                            type="submit">Search </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                            {{-- </form> --}}
+                            </form>
                         </div>
                     </div>
                     <div class="container mx-1">
@@ -131,7 +130,7 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-1">
                         @if (Session::has('success'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-success" id="successAlert">
                                 {{ Session::get('success') }}
                             </div>
                         @endif
@@ -256,21 +255,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                                                                        ============================================ -->
+                                                                                                            ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                                            ============================================ -->
+                                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                                            ============================================ -->
+                                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                                        ============================================ -->
+                                                                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     {{-- Data Table js code --}}
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
@@ -307,6 +306,10 @@
             });
         });
     </script>
-
+    <script>
+        setTimeout(function(){
+            document.getElementById('successAlert').style.display = 'none';
+        }, 5000);
+    </script>
 
 @endsection

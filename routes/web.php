@@ -135,7 +135,7 @@ Route::get('/project-data/{id}', [InvoiceController::class, 'getProjectData'])->
 Route::controller(HRController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
     Route::get('indemnity&leave', 'indemnityAndleave')->name('indemnity&leave');
     Route::get('indemnity&leave/create', 'indemnityAndleaveCreate')->name('indemnity&leave/create');
-    Route::post('indemnity&leave/create', 'indemnityAndleaveCreatePost')->name('indemnity&leave/create');
+    Route::post('indemnity/create', 'indemnityAndleaveCreatePost')->name('indemnity/create');
     Route::get('indemnity&leave/view', 'indemnityAndleaveView')->name('indemnity&leave/view');
     Route::get('indemnity&leave/edit', 'indemnityAndleaveEdit')->name('indemnity&leave/edit');
     Route::post('indemnity/import', 'indemnityImport')->name('indemnity/import');
@@ -191,6 +191,7 @@ Route::controller(ReportController::class)->prefix('admin')->middleware('adminAu
 Route::controller(AccountController::class)->prefix('admin')->middleware('adminAuthentication')->group(function(){
     Route::get('accounts', 'accounts')->name('accounts');
     Route::get('accounts/create', 'accountCreate')->name('accounts/create');
+    Route::post('accountreport/create', 'accountReportCreate')->name('accountreport/create');
     Route::get('accounts/view', 'accountView')->name('accounts/view');
     Route::get('accounts/edit', 'accountEdit')->name('accounts/edit');
     Route::post('accounts/import', 'accountsImport')->name('accounts/import');

@@ -36,6 +36,43 @@ class AccountController extends Controller
         return view('admin.accounts.accounts-create');
     }
 
+    public function accountReportCreate(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'date'  => 'required',  'cheque_number_receipt_number' => 'required',
+            'description'  => 'required',    'beneficiary'  => 'required',
+            'amount_deposited' => 'required', 'amount_withdrawn'  => 'required',
+            'project_name'  => 'required',  'column_1'  => 'required',
+            'column_2'  => 'required',  'service_type'  => 'required',
+            'remarks'  => 'required',  'total_in_account' => 'required'
+        ]);
+
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }else{
+            $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+
+            $accounts = new Account();
+            $accounts->date = $date;
+            $accounts->cheque_number_receipt_number = $request->cheque_number_receipt_number;
+            $accounts->description = $request->description;
+            $accounts->beneficiary = $request->beneficiary;
+            $accounts->amount_deposited = sprintf("%.3f", $request->amount_deposited);
+            $accounts->amount_withdrawn = sprintf("%.3f", $request->amount_withdrawn);
+            $accounts->project_name = $request->project_name;
+            $accounts->service_type = $request->service_type;
+            $accounts->column_1 = $request->column_1;
+            $accounts->column_2 = $request->column_2;
+            $accounts->remarks = $request->remarks;
+            $accounts->total_in_account = $request->total_in_account;
+            $accounts->save();
+
+            session()->flash('success', 'Account Report Created Successfully');
+            return redirect()->route('accounts');
+        }
+    }
+
     public function accountView()
     {
         return view('admin.accounts.accounts-view');

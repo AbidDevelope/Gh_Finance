@@ -36,6 +36,41 @@ class HRController extends Controller
        return view('admin.hr.indemnity_leave_create');
     }
 
+    public function indemnityAndleaveCreatePost(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+         'date'  => 'required',  'cheque_number_receipt_number'  => 'required',
+         'description'  => 'required',  'beneficiary'  => 'required',
+         'amount_deposited'  => 'required',  'amount_withdrawn'  => 'required',
+         'project_name'  => 'required',  'service_type'  => 'required',
+         'remarks'  => 'required',  'total_in_account'  => 'required',
+        ]);
+
+        if($validate->fails())
+        {
+         return redirect()->back()->withErrors($validate)->withInput();
+        }
+        else{
+             $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+
+             $indemnity = new IndemnityLeave();
+             $indemnity->date = $date;
+             $indemnity->cheque_number_receipt_number = $request->cheque_number_receipt_number;
+             $indemnity->description = $request->description;
+             $indemnity->beneficiary = $request->beneficiary;
+             $indemnity->amount_deposited = sprintf("%.3f", $request->amount_deposited);
+             $indemnity->amount_withdrawn = sprintf("%.3f", $request->amount_withdrawn);
+             $indemnity->project_name = $request->project_name;
+             $indemnity->service_type = $request->service_type;
+             $indemnity->remarks = $request->remarks;
+             $indemnity->total_in_account = $request->total_in_account;
+             $indemnity->save();
+
+             session()->flash('success', 'Indemnity Created Successfully.');
+             return redirect()->route('indemnity&leave');
+        }
+    }
+
     public function indemnityAndleaveView()
     {
        return view('admin.hr.indemnity_leave_view');
