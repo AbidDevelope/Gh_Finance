@@ -130,7 +130,7 @@
         background-color: #fff;
         box-sizing: border-box;
         z-index: 999;
-        margin-top: -548px !important;
+        margin-top: -560px !important;
     }
 
     .height {

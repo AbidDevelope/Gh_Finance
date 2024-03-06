@@ -344,7 +344,7 @@ table.dataTable td {
     font-weight: lighter;
     width: 218px;
     height: 20px;
-    border-top: 1px solid;
+    /* border-top: 1px solid; */
 }
 .dataTables_wrapper .dataTables_info {
     clear: both;
