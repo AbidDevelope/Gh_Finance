@@ -273,7 +273,7 @@
                             </div>
                             <div class="profile-form mt-5">
                                 <form id="profileForm">
-                                    <div class="mb-3 d-flex mx-3 border align-items-center">
+                                    <div class="mb-3 py-1 d-flex mx-3 border align-items-center">
                                         <svg class="bg-heading" xmlns="http://www.w3.org/2000/svg" width="22px"
                                             height="22px" viewBox="0 0 24 24">
                                             <g fill="none" stroke="currentColor" stroke-width="2">
@@ -285,7 +285,7 @@
                                         <span style="border-left:none " class=" d-block flex-grow-1 ps-2"
                                             id="name">{{ Auth::guard('admin')->user()->first_name }}&nbsp;{{ Auth::guard('admin')->user()->last_name }}</span>
                                     </div>
-                                    <div class="mb-3 d-flex mx-3 border align-items-center">
+                                    <div class="mb-3 py-1 d-flex mx-3 border align-items-center">
                                         {{-- <span class="bg-heading ps-2 pe_email" for="email">Email</span> --}}
                                         <svg class="bg-heading" xmlns="http://www.w3.org/2000/svg" width="22px"
                                         height="22px" viewBox="0 0 24 24">
@@ -295,8 +295,8 @@
                                         <span class="  d-block flex-grow-1 ps-2"
                                             id="email">{{ Auth::guard('admin')->user()->email }}</span>
                                     </div>
-                                    <div class="mb-3 d-flex mx-3 border align-items-center">
-                                        <svg  class="bg-heading" xmlns="http://www.w3.org/2000/svg" width="27px" height="27px"
+                                    <div class="mb-3 py-1 d-flex mx-3 border align-items-center">
+                                        <svg  class="bg-heading" xmlns="http://www.w3.org/2000/svg" width="22px" height="22px"
                                             viewBox="0 0 36 36">
                                             <path fill="currentColor"
                                                 d="M25 4H11a2 2 0 0 0-2 2v24a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m-6 26h-2v-2h2Zm-8-4V6h14v20Z"
@@ -306,8 +306,8 @@
                                         <span id="phone"
                                             class="  d-block flex-grow-1 ps-2">+965&nbsp;{{ Auth::guard('admin')->user()->mobile }}</span>
                                     </div>
-                                    <div class="mb-3 d-flex mx-3 border align-items-center">
-                                            <svg  class="bg-heading" xmlns="http://www.w3.org/2000/svg" width="22px"
+                                    <div class="mb-3 py-1 d-flex mx-3 border align-items-center">
+                                            <svg  class="border-right bg-heading" xmlns="http://www.w3.org/2000/svg" width="22px"
                                             height="22px"
                                                 viewBox="0 0 24 24">
                                                 <g fill="none" stroke="currentColor" stroke-linecap="round"
