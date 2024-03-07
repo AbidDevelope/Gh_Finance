@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Beneficiary;
 use App\Models\QuotationItem;
+use App\Models\Project;
 
 class Quotation extends Model
 {
@@ -28,5 +29,10 @@ class Quotation extends Model
     public function quotationItems()
     {
         return $this->hasMany(QuotationItem::class);
+    }
+
+    public function projects()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
     }
 }

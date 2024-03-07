@@ -9,6 +9,7 @@ use App\Models\ProjectManager;
 use App\Models\Expense;
 use App\Models\Payment;
 use App\Models\PettyCash;
+use App\Models\Quotation;
 
 class Project extends Model
 {
@@ -47,7 +48,7 @@ class Project extends Model
 
     public function payments()
     {
-        return $this->hasOne(Payment::class, 'project_id');
+        return $this->hasMany(Payment::class, 'project_id');
     }
 
     public function projectManager()
@@ -67,5 +68,10 @@ class Project extends Model
 
     public function pettyCash(){
         return $this->hasOne(PettyCash::class, 'project_id');
+    }
+
+    public function quotation()
+    {
+        return $this->hasMany(Quotation::class);
     }
 }

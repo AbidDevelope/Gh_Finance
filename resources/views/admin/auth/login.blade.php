@@ -215,5 +215,5 @@
 <script>
     setTimeout(function(){
         document.getElementById('successAlert').style.display = 'none';
-    }, 5000);
+    }, 3000);
 </script>

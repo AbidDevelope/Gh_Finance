@@ -63,16 +63,16 @@
                                                 <td class="text-right">{{ $projects->company_name }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Company Project:</td>
-                                                <td class="text-right">{{ $projects->company_project_name }}</td>
+                                                <td>Contact Name:</td>
+                                                <td class="text-right">{{ $projects->contact_name }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Company Email:</td>
-                                                <td class="text-right">{{ $projects->company_email }}</td>
+                                                <td>Contact Email:</td>
+                                                <td class="text-right">{{ $projects->client_email }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Company Mobile:</td>
-                                                <td class="text-right">{{ $projects->company_mobile }}</td>
+                                                <td class="text-right">{{ $projects->client_mobile }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Company Landline:</td>

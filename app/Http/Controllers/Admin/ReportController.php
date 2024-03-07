@@ -22,8 +22,13 @@ class ReportController extends Controller
         $pendingReceivable =  $totalProjectValue - $totaltotalReceivable;
         
         $totalExpenseValue = $projects->reduce(function ($carry, $project) {
-            $pettyCashTotal = $project->pettyCash->sum('total_in_account');
-            return  $pettyCashTotal;
+            if($project->pattyCash)
+            {
+                $pettyCashTotal = $project->pettyCash->sum('total_in_account');
+            }else{
+                $pettyCashTotal = 0;
+            }
+            return  $carry + $pettyCashTotal;
         }, 0);
 
         $totalReceivablesValue = $projects->reduce(function ($carry, $project) {

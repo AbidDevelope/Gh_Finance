@@ -89,15 +89,15 @@
 
                                             </div>
                                         </div>
-                                        <div class="container" >
-                                            @if (session()->has('success'))
-                                            <div class="alert alert-success" id="successAlert">
-                                                <span>{{ session()->get('success') }}</span>
-                                            </div>
-                                        @endif
                                         </div>
                                     </div>
                                 </form>
+                                <div class="container" >
+                                    @if (session()->has('success'))
+                                    <div class="alert alert-success" id="successAlert">
+                                        <span>{{ session()->get('success') }}</span>
+                                    </div>
+                                @endif
                             {{-- </div> --}}
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -133,14 +133,14 @@
                                                                 href="{{ route('quotation/view', $quotation->id) }}"><i
                                                                     class="fa fa-eye m-r-5"></i> View
                                                             </a>
-                                                            <a class="dropdown-item" href="#"><i
+                                                            <a class="dropdown-item" href="{{ route('quotation/edit', $quotation->id) }}"><i
                                                                     class="fa fa-pencil m-r-5"></i> Edit</a>
                                                             <a class="dropdown-item" href="#"><i
                                                                     class="fa fa-eye m-r-5"></i> View PDF
                                                             </a>
                                                             <a class="dropdown-item" href="#"><i
                                                                     class="fa fa-file-pdf-o m-r-5"></i> Download</a>
-                                                            <a class="dropdown-item" href="#"><i
+                                                            <a class="dropdown-item" href="{{ route('quotation/delete', $quotation->id) }}"><i
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>
@@ -232,6 +232,6 @@
     <script>
         setTimeout(function(){
             document.getElementById('successAlert').style.display ='none';
-        }, 5000);
+        }, 3000);
     </script>
 @endsection

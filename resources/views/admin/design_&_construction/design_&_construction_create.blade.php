@@ -367,7 +367,7 @@
                                                         <td>
                                                             <input class="form-control common-field amount" type="text"
                                                                 name="amount[]" placeholder="Amount"
-                                                                style="display: none">
+                                                                style="display: none" onkeypress="return /[0-9]/i.test(event.key)">
                                                         </td>
                                                         <td class="cash-fields" style="display: none">
                                                             <input class="form-control" type="text"
@@ -378,7 +378,7 @@
                                                                 name="chequeNumber[]" placeholder="Cheque Number">
                                                         </td>
                                                         <td class="cheque-fields" style="display: none">
-                                                            <input class="form-control" type="text" name="bankName[]"
+                                                            <input class="form-control" type="text" name="chequeBankName[]"
                                                                 placeholder="Bank Name">
                                                         </td>
                                                         <td class="online-fields" style="display: none">
@@ -386,7 +386,7 @@
                                                                 name="transactionId[]" placeholder="Transaction ID">
                                                         </td>
                                                         <td class="online-fields" style="display: none">
-                                                            <input class="form-control" type="text" name="bankName[]"
+                                                            <input class="form-control" type="text" name="onlineBankName[]"
                                                                 placeholder="Bank Name">
                                                         </td>
                                                         <!-- Example of an Add button, already in your code -->
@@ -449,7 +449,7 @@
             var addButton = $('#add-row');
             var wrapper = $('#customFields');
             var fieldHTML =
-                '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field datepicker" type="text" name="payment_date[]" placeholder="DD/MM/YYYY" style="display:none"></td><td><input class="form-control common-field amount" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
+                '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field datepicker" type="text" name="payment_date[]" placeholder="DD/MM/YYYY" style="display:none"></td><td><input class="form-control common-field amount" onkeypress="return /[0-9]/i.test(event.key)" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeBankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="onlineBankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
             var x = 1;
 
             $(addButton).click(function() {
