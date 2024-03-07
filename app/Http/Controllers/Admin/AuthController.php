@@ -23,7 +23,12 @@ class AuthController extends Controller
         $totalProjectRevenue = $projects->sum('project_value');
 
         $totalExpensesValue = $projects->reduce(function($carry, $project){
-            $sumExpenses = $project->pettyCash->sum('total_in_account');
+            if($project->pettyCash)
+            {
+                $sumExpenses = $projects->pettyCash->sum('total_in_account');
+            }else{
+                $sumExpenses = 0;
+            }
             return $sumExpenses;
         },0);
 

@@ -150,6 +150,9 @@ Route::controller(QuotationController::class)->prefix('admin')->middleware('admi
     Route::post('quotations/create', 'quotationCreate')->name('quotations/create');
     Route::get('quotation/view/{id}', 'quotationView')->name('quotation/view');
     Route::get('search/quotation', 'searchQuotation')->name('search/quotation');
+    Route::get('quotation/edit/{id}', 'quotationEdit')->name('quotation/edit');
+    Route::post('quotation/update/{id}', 'quotationUpdate')->name('quotation/update');
+    Route::get('quotation/delete/{id}', 'quotationDelete')->name('quotation/delete');
     Route::get('quotation/export', 'quotationExport')->name('quotation/export');
 });
 Route::get('/project-data/{id}', [QuotationController::class, 'getProjectData'])->name('project.data');

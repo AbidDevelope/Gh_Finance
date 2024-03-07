@@ -104,6 +104,15 @@ class ServicesController extends Controller
                 $paymentDate = null;
             }
 
+            $paymentMode = $request->paymentMode[$key];
+            $bankName = null; // Initialize bankName as null
+
+            if ($paymentMode == 'Cheque' && isset($request->chequeBankName[$key])) {
+                $bankName = $request->chequeBankName[$key];
+            } elseif ($paymentMode == 'Online' && isset($request->onlineBankName[$key])) {
+                $bankName = $request->onlineBankName[$key];
+            }
+
               $payments = new Payment([
                   'project_id' => $project->id,
                   'paymentMode' => $request->paymentMode[$key],
@@ -111,7 +120,7 @@ class ServicesController extends Controller
                   'amount'   => $request->amount[$key],
                   'receivable'  => $request->receivable[$key],
                   'chequeNumber'  => $request->chequeNumber[$key],
-                  'bankName'  => $request->bankName[$key],
+                  'bankName'  => $bankName,
                   'transactionId'  => $request->transactionId[$key],
               ]);
               $payments->save();
@@ -126,6 +135,7 @@ class ServicesController extends Controller
     public function designEdit($id)
     {
         $projects = Project::with('payments')->findOrFail($id);
+        // return $projects;
         return view('admin.designs.design-edit', compact('projects'));
     }
 
@@ -146,7 +156,7 @@ class ServicesController extends Controller
             'project_email'     => 'required' ,  'project_mobile'    => 'required',
             'project_location'  => 'required' ,  'project_value'     => 'required' ,
             'project_country'   => 'required' ,  'payment_plan'      => 'required',
-            'project_description'   => 'required' ,
+            'project_description'   => 'required' , 'total_receivable' => 'required',
         ]);
 
 
@@ -188,10 +198,11 @@ class ServicesController extends Controller
                     'project_country'    =>  $request->project_country,
                     'payment_plan'    =>  $request->payment_plan,
                     'project_description'    =>  $request->project_description,
+                    'total_receivable'   => $request->total_receivable,
                 ]);
                  
-                $data = $request->input('items', []);
-                foreach($data as $itemId=>$itemData)
+                $paymentData = $request->input('items', []);
+                foreach($paymentData as $itemId=>$itemData)
                 {
                     $payments = Payment::find($itemId);
                     if($payments)
@@ -292,7 +303,7 @@ class ServicesController extends Controller
             'project_email'     => 'required' ,  'project_mobile'    => 'required',
             'project_location'  => 'required' ,  'project_value'     => 'required' ,
             'project_country'   => 'required' ,  'payment_plan'      => 'required',
-            'project_description'   => 'required' ,
+            'project_description'   => 'required' ,  'total_receivable'  => 'required'
           ]);
 
         if($validate->fails())
@@ -331,6 +342,7 @@ class ServicesController extends Controller
             $projects->project_country = $request->project_country;
             $projects->payment_plan = $request->payment_plan;
             $projects->project_description = $request->project_description;
+            $projects->total_receivable = $request->total_receivable;
            
             $projects->save();
 
@@ -345,6 +357,17 @@ class ServicesController extends Controller
                         $paymentDate = null;
                     }
 
+                    $paymentMode = $request->paymentMode[$key];
+                    $bankName = null;
+
+                    if($paymentMode == 'Cheque' && isset($request->chequeBankName[$key]))
+                    {
+                        $bankName = $request->chequeBankName[$key];
+                    }elseif($paymentMode == 'Online' && isset($request->onlineBankName[$key]))
+                    {
+                      $bankName = $request->onlineBankName[$key];
+                    }
+
                    $payments = new Payment([
                        'project_id' => $projects->id,
                        'paymentMode' => $request->paymentMode[$key],
@@ -352,7 +375,7 @@ class ServicesController extends Controller
                        'amount'   => $request->amount[$key],
                        'receivable'  => $request->receivable[$key],
                        'chequeNumber'  => $request->chequeNumber[$key],
-                       'bankName'  => $request->bankName[$key],
+                       'bankName'  => $bankName,
                        'transactionId'  => $request->transactionId[$key],
                    ]);
                    $payments->save();
@@ -436,7 +459,8 @@ class ServicesController extends Controller
                     'project_country'    =>  $request->project_country,
                     'payment_plan'    =>  $request->payment_plan,
                     'project_description'    =>  $request->project_description,
-                ]); $projects->total_receivable = $request->total_receivable;
+                    'total_receivable'    =>  $request->total_receivable,
+                ]);
                  
                 $data = $request->input('items', []);
                 foreach($data as $itemId=>$itemData)
@@ -532,7 +556,7 @@ class ServicesController extends Controller
             'project_email'     => 'required' ,  'project_mobile'    => 'required',
             'project_location'  => 'required' ,  'project_value'     => 'required' ,
             'project_country'   => 'required' ,  'payment_plan'      => 'required',
-            'project_description'   => 'required' ,
+            'project_description'   => 'required' ,  'total_receivable'  => 'required',
         ]);
 
         if($validate->fails())
@@ -583,6 +607,17 @@ class ServicesController extends Controller
                     }else{
                         $paymentDate = null;
                     }
+
+                    $paymentMode = $request->paymentMode[$key];
+                    $bankName = null;
+                    if($paymentMode == 'Cheque' && isset($request->chequeBankName[$key]))
+                    {
+                        $bankName = $request->chequeBankName[$key];
+                    }elseif($paymentMode == 'Online' && isset($request->onlineBankName[$key]))
+                    {
+                        $bankName = $request->onlineBankName[$key];
+                    }
+
                     $payments = new Payment([
                         'project_id' => $projects->id,
                         'paymentMode' => $request->paymentMode[$key],
@@ -590,7 +625,7 @@ class ServicesController extends Controller
                         'amount'  => $request->amount[$key],
                         'receivable'  => $request->receivable[$key],
                         'chequeNumber' => $request->chequeNumber[$key],
-                        'bankName'   => $request->bankName[$key],
+                        'bankName'   => $bankName,
                         'transactionId'  => $request->transactionId[$key],
                     ]);
                     $payments->save();
@@ -630,7 +665,7 @@ class ServicesController extends Controller
             'project_email'     => 'required' ,  'project_mobile'    => 'required',
             'project_location'  => 'required' ,  'project_value'     => 'required' ,
             'project_country'   => 'required' ,  'payment_plan'      => 'required',
-            'project_description'   => 'required' ,
+            'project_description'   => 'required' ,  'total_receivable'  => 'required'
         ]);
 
         if($validate->fails())
@@ -641,7 +676,7 @@ class ServicesController extends Controller
 
             if($projects)
             {
-                $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+                $date = DateTime::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
                 $projects->update([
                     'project_type'       =>  $request->project_type,
                     'start_date'               =>  $date,
@@ -671,6 +706,7 @@ class ServicesController extends Controller
                     'project_country'    =>  $request->project_country,
                     'payment_plan'    =>  $request->payment_plan,
                     'project_description'    =>  $request->project_description,
+                    'total_receivable'    =>  $request->total_receivable,
                 ]);
                  
                 $data = $request->input('items', []);

@@ -16,31 +16,31 @@
                             <div class="form-section bg-white">
                                 <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Edit Quotations </h4>
                                 <hr class="border-top-grey">
-                                <form action="{{ route('quotations/create') }}" method="POST">
+                                <form action="{{ route('quotation/update', $quotations->id) }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="Project Id">Project Id</label>
+                                            <label for="Project Id">Project Id <span class="text-danger">*</span></label>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="project_id" onkeypress="return /[0-9]/i.test(event.key)"  name="project_id" value="{{ old('project_id') }}">
+                                                <input type="text" class="form-control" id="project_id" onkeypress="return /[0-9]/i.test(event.key)"  name="project_id" value="{{ $quotations->project_id }}" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="Project Type">Project Type</label>
                                             <div class="form-group">
-                                                <input readonly type="text" class="form-control" id="project_type" name="project_type" value="{{ old('project_type') }}">
+                                                <input readonly type="text" class="form-control" id="project_type" name="project_type" value="{{ $quotations->projects->project_type }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="Project Name">Project Name</label>
                                             <div class="form-group">
-                                                <input readonly type="text" class="form-control" id="project_name" name="project_name" value="{{ old('project_name') }}">
+                                                <input readonly type="text" class="form-control" id="project_name" name="project_name" value="{{ $quotations->projects->project_name }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="Project Value">Project Value</label>
                                             <div class="form-group">
-                                                <input readonly type="text" class="form-control" id="project_value" name="project_value" value="{{ old('project_value') }}">
+                                                <input readonly type="text" class="form-control" id="project_value" name="project_value" value="{{ $quotations->projects->project_value }}">
                                             </div>
                                         </div>
                                     </div>
@@ -48,16 +48,16 @@
                                         <div class="col-md-3">
                                             <label>Quotation Number </label>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="quotation_number" value="{{ old('quotation_number') }}">
+                                                <input type="text" class="form-control" name="quotation_number" value="{{ $quotations->quotation_number }}">
                                             </div>
                                         </div>
 
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Quotation date <span class="text-danger">*</span></label>
+                                                <label>Quotation date </label>
                                                 <div class="cal-icon">
-                                                    <input class="form-control datetimepicker" type="date"
-                                                        name="quotation_date" value="{{ old('quotation_date') }}">
+                                                    <input class="form-control datetimepicker datepicker" type="text"
+                                                        name="quotation_date" value="{{ \Carbon\Carbon::parse($quotations->quotation_date)->format('d/m/Y') }}">
                                                     @error('quotation_date')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -76,35 +76,31 @@
                                                             <th style="width:80px;">Qty</th>
                                                             <th class="col-sm-2">Price/K.D</th>
                                                             <th class="col-sm-2">Total/K.D</th>
-                                                            <th> </th>
+                                                    
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($quotations->quotationItems as $quotation)
                                                         <tr>
                                                             <td>
                                                                 <input class="form-control" type="text"
-                                                                    style="min-width:150px" name="description[]" value="{{ old('description.0') }}">
+                                                                    style="min-width:150px" name="items[{{ $quotation->id }}][description]" value="{{ $quotation->description }}" required>
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="unit[]" value="{{ old('unit.0') }}">
+                                                                <input class="form-control" type="text" name="items[{{ $quotation->id }}][unit]" value="{{ $quotation->unit }}" required>
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="qty[]" value="{{ old('qty.0') }}">
+                                                                <input class="form-control qty" type="text" name="items[{{ $quotation->id }}][qty]" value="{{ $quotation->qty }}" onkeypress="return /[0-9.,%]/.test(event.key)" required>
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text" name="price[]" value="{{ old('price.0') }}">
+                                                                <input class="form-control price" type="text" name="items[{{ $quotation->id }}][price]" value="{{ $quotation->price }}" onkeypress="return /[0-9.,%]/.test(event.key)" required>
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="text"
-                                                                    style="min-width:150px" name="total[]" value="{{ old('total.0') }}">
-                                                            </td>
-                                                            <td><a href="javascript:void(0)" id="add-row"
-                                                                    class="text-success font-18" title="Add"><img
-                                                                        src="{{ asset('assets/admin/img/icon/plus.png') }}"
-                                                                        alt="">
-                                                                </a>
+                                                                <input readonly class="form-control total" type="text"
+                                                                    style="min-width:150px" name="items[{{ $quotation->id }}][total]" value="{{ $quotation->total }}" onkeypress="return /[0-9.,%]/.test(event.key)" required>
                                                             </td>
                                                         </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -114,9 +110,9 @@
                                                         <tr>
                                                             <td colspan="5" class="text-right">Sub Total :</td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
-                                                                <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,%]/.test(event.key)"
-                                                                    type="text" name="subtotal">
+                                                                <input readonly class="form-control text-right subtotal"
+                                                                    onkeypress="return /[0-9.,%]/.test(event.key)" placeholder="00.000"
+                                                                    type="text" name="subtotal" value="{{ $quotations->subtotal }}">
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -124,9 +120,9 @@
                                                                 Others
                                                             </td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
-                                                                <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,]/i.test(event.key)"
-                                                                    type="text" name="others">
+                                                                <input  class="form-control text-right others"
+                                                                    onkeypress="return /[0-9.,]/i.test(event.key)" placeholder="00.000"
+                                                                    type="text" name="others" value="{{ $quotations->others }}">
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -136,9 +132,9 @@
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
-                                                                <input class="form-control text-right"
-                                                                    onkeypress="return /[0-9.,]/i.test(event.key)"
-                                                                    type="text" name="grandtotal">
+                                                                <input readonly class="form-control text-right grandtotal"
+                                                                    onkeypress="return /[0-9.,]/i.test(event.key)" placeholder="00.000"
+                                                                    type="text" name="grandtotal" value="{{ $quotations->grandtotal }}">
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -147,7 +143,7 @@
                                         </div>
                                     </div>
                                     <div class="submit-section">
-                                        <button type="submit" class="btn color submit-btn">CREATE</button>
+                                        <button type="submit" class="btn color submit-btn" style="background:var(--own-black)">UPDATE</button>
                                     </div>
                                 </form>
                             </div>
@@ -174,7 +170,8 @@
     <!-- main JS
                                                                                     ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     {{-- Add and Remove table row  --}}
     <script>
         $(document).ready(function() {
@@ -228,12 +225,58 @@
                         }
                         },
                         error: function(request, status, error) {
-                            alert('Error: ' + request.responseText);
+                            alert('Project Not Found');
                         },
                     });
                 }
             });
         });
 
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear:true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const updateTotals = function() {
+                let subtotal = 0;
+                document.querySelectorAll('.total').forEach(function(totalField) {
+                    const totalValue = parseFloat(totalField.value) || 0;
+                    subtotal += totalValue;
+                });
+                document.querySelector('.subtotal').value = subtotal.toFixed(3);
+                updateGrandTotal();
+            };
+
+            const updateGrandTotal = function() {
+                const subtotal = parseFloat(document.querySelector('.subtotal').value) || 0;
+                const others = parseFloat(document.querySelector('.others').value) || 0;
+                const grandTotal = subtotal + others;
+                document.querySelector('.grandtotal').value = grandTotal.toFixed(3);
+            };
+
+
+            document.addEventListener('input', function(e) {
+                if (e.target && (e.target.matches('.qty') || e.target.matches('.price'))) {
+                    const row = e.target.closest('tr');
+                    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+                    const price = parseFloat(row.querySelector('.price').value) || 0;
+                    const total = qty * price;
+                    row.querySelector('.total').value = total.toFixed(3);
+                    updateTotals();
+                }
+            });
+
+            // Removed the undefined function reference line
+
+            const othersInput = document.querySelector('.others');
+            othersInput.addEventListener('input', updateGrandTotal);
+        });
     </script>
 @endsection

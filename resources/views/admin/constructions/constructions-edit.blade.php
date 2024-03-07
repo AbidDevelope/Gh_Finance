@@ -74,10 +74,10 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Select Date</label>
-                                                <input type="text" name="date" class="form-control datepicker"
+                                                <input type="text" name="start_date" class="form-control datepicker"
                                                     placeholder="DD/MM/YYYY"
                                                     value="{{ \Carbon\Carbon::parse($projects->date)->format('d/m/Y') }}">
-                                                @error('date')
+                                                @error('start_date')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -389,9 +389,9 @@
                                                                     style="display: none">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control common-field" type="text"
+                                                                <input class="form-control common-field amount" type="text"
                                                                     name="items[{{ $item->id }}][amount]"
-                                                                    placeholder="Amount" value="{{ $item->amount }}"
+                                                                    placeholder="Amount" onkeypress="return /[0-9]/i.test(event.key)" value="{{ $item->amount }}"
                                                                     style="display: none">
                                                             </td>
                                                             <td class="cash-fields" style="display: none">
@@ -448,8 +448,8 @@
                                                                 name="payment_date[]" style="display: none">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control common-field" type="text"
-                                                                name="amount[]" placeholder="Amount"
+                                                            <input class="form-control common-field amount" type="text"
+                                                                name="amount[]" placeholder="Amount" onkeypress="return /[0-9]/i.test(event.key)"
                                                                 style="display: none">
                                                         </td>
                                                         <td class="cash-fields" style="display: none">
@@ -476,6 +476,23 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-white">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="5"
+                                                        style=" font-size: 15px; text-align: right; font-weight: bold">
+                                                        Total Receivable :
+                                                    </td>
+                                                    <td
+                                                        style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
+                                                        <input readonly class="form-control text-right totalReceivable" value="{{ $projects->total_receivable }}"
+                                                            placeholder="00.000" type="text" name="total_receivable">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <!-- <div class="row"> -->
                                     <button type="submit" class="btn btn-create btn-lg mt-5"  style="background-color: var(--own-black);">UPDATE</button>
@@ -512,7 +529,7 @@
             var addButton = $('#add-row');
             var wrapper = $('#customFields');
             var fieldHTML =
-                '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field datepicker" type="text" name="payment_date[]" placeholder="DD/MM/YYYY" style="display:none"></td><td><input class="form-control common-field" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
+                '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field datepicker" type="text" name="payment_date[]" placeholder="DD/MM/YYYY" style="display:none"></td><td><input class="form-control common-field amount" onkeypress="return /[0-9]/i.test(event.key)" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
             var x = 1;
 
             $(addButton).click(function() {
@@ -600,4 +617,38 @@
         });
     </script>
     {{-- date Format --}}
+    <script>
+       document.addEventListener('DOMContentLoaded', function(){
+            const wrapper = document.querySelector('#customFields tbody');
+
+            const updateTotalReceivable = function (){
+               let totalReceivable = 0;
+               document.querySelectorAll('.amount').forEach(function(amountField){
+                 const amountValue = parseFloat(amountField.value) || 0;
+                 totalReceivable += amountValue;
+               });
+               document.querySelector('.totalReceivable').value = totalReceivable.toFixed(3);
+            }
+
+            document.querySelectorAll('.amount').forEach(function(amountField){
+                amountField.addEventListener('input', updateTotalReceivable);
+            });
+
+            $('#addRowButton').click(function(){
+                $('#customFields tbody').append(fieldHTML);
+                $('.amount').last().on('input', updateTotalReceivable);
+                updateTotalReceivable();
+            });
+
+            $('#customFields').on('click', '.remove-row', function(){
+                $(this).closest('tr').remove();
+                updateTotalReceivable();
+            });
+
+            updateTotalReceivable();
+
+            wrapper.addEventListener('input', updateTotalReceivable);
+
+        });
+    </script>
 @endsection
