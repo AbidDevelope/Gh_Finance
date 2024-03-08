@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Payroll;
 
 class PayrollPayment extends Model
 {
@@ -19,4 +20,9 @@ class PayrollPayment extends Model
         'bank_name',
         'transaction_id',
     ];
+
+    public function payroll()
+    {
+        return $this->belongsTo(Payroll::class);
+    }
 }

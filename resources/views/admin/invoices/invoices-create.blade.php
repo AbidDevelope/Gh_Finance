@@ -37,7 +37,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project ID<span class="text-danger">*</span></label>
-                                                 <input type="text" name="project_id" class="form-control" id="project_id" value="{{ old('project_id') }}" onkeypress="return /[0-9]/i.test(event.key)">
+                                                 <input type="text" name="project_id" class="form-control" id="project_id" value="{{ old('project_id') }}" onkeypress="return /[0-9]/i.test(event.key)" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -107,7 +107,7 @@
                                                                 <input class="form-control price" type="text" name="price[]" value="{{ old('price.0') }}">
                                                             </td>
                                                             <td>
-                                                                <input class="form-control total" type="text"
+                                                                <input readonly class="form-control total" type="text"
                                                                     style="min-width:150px" name="total[]" value="{{ old('total.0') }}">
                                                             </td>
                                                             <td class="pt-3 ps-4"><a href="javascript:void(0)" id="add-row"
@@ -127,7 +127,7 @@
                                                             <td colspan="5" class="text-right" style="font-size: 15px;">Sub Total :</td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px;width: 230px">
-                                                                <input class="form-control text-right subtotal"
+                                                                <input readonly class="form-control text-right subtotal"
                                                                     onkeypress="return /[0-9.,%]/.test(event.key)"
                                                                     type="text" name="subtotal" value="{{ old('subtotal') }}">
                                                             </td>
@@ -150,7 +150,7 @@
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
-                                                                <input class="form-control text-right grandValue"
+                                                                <input readonly class="form-control text-right grandValue"
                                                                 onkeypress="return /[0-9.,]/i.test(event.key)"
                                                                 type="text" name="grandValue" value="{{ old('grandValue') }}">
                                                             </td>
@@ -285,12 +285,10 @@
             document.querySelector('.grandValue').value = grandTotal.toFixed(3);
         };
 
-        const removeRowAndUpdateTotals = function (e) {
-            if (e.target && e.target.matches('.remove-row')) {
-                e.target.closest('tr').remove();
-                updateTotals();
-            }
-        };
+        $("#customFields").on('click', '.remove-row', function(){
+            $(this).closest('tr').remove();
+            updateTotals();
+        });
 
         wrapper.addEventListener('input', function (e) {
             if (e.target && (e.target.matches('.qty') || e.target.matches('.price'))) {
@@ -303,10 +301,9 @@
             }
         });
 
-        wrapper.addEventListener('click', removeRowAndUpdateTotals);
 
-        const othersInput = document.querySelector('.discount');
-        othersInput.addEventListener('input', updateGrandTotal);
+        const discountInput = document.querySelector('.discount');
+        discountInput.addEventListener('input', updateGrandTotal);
     });
     </script>
 @endsection

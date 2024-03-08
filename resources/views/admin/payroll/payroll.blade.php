@@ -110,23 +110,10 @@
                             </form>
                         </div>
                     </div>
-                    <div class="container ">
-
-                        <form action="#" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="d-flex gap-3 " style="padding-left: 11px;">
-                                <input style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                <button type="submit" style="background-color:var(--own-black) !important; color:white !important;"
-                                class="btn padding_y rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
-                                @if ($errors->has('file'))
-                                  <span class="text-danger">{{ $errors->first('file') }}</span>
-                                @endif
-                            </div>
-                        </form>
-                    </div>
+                    
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         @if (Session::has('success'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-success" id="successAlert">
                                 {{ Session::get('success') }}
                             </div>
                         @endif
@@ -143,22 +130,22 @@
                                         <tr role="row">
                                             <th class="text-center" style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Date</th>
-                                            <th class="text-center" style="border-radius: 0 !important;">Month</th>
-                                            <th class="text-center" style="border-radius: 0 !important;">Employee Name</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Description</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Payroll</th>
+                                            <th class="text-center" style="border-radius: 0 !important;">Total Pay</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                          {{-- @dd($payrollItems); --}}
-                                        @if (count($payrollItems) > 0)
-                                            @foreach ($payrollItems as $index => $item)
+                                        @if (count($payroll) > 0)
+                                            @foreach ($payroll as $index => $item)
                                                 <tr>
                                                     <td class="text-center" style="border-radius: 0 !important;">{{ $index+1 }}</td>
                                                     <td class="text-center" style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
-                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->month }}</td>
-                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->employee_name }}</td>
-                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->payroll }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->remarks }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->grandtotal }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ $item->total_payment }}</td>
                                                     <td class="text-center" style="border-radius: 0 !important;">
                                                         <div class="dropdown dropdown-action">
                                                             <a href="#" class="action-icon" data-toggle="dropdown"
@@ -170,11 +157,10 @@
                                                                     href="{{ route('payroll/view', $item->id) }}"><i
                                                                         class="fa fa-eye m-r-5"></i> View</a>
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('payroll/edit') }}"><i
-                                                                    {{-- href="{{ route('expenses/edit', $item->id) }}"><i --}}
+                                                                    href="{{ route('payroll/edit', $item->id) }}"><i
                                                                         class="fa fa-pencil m-r-5"></i> Edit</a>
                                                                 <a class="dropdown-item"
-                                                                    href="#"><i
+                                                                    href="{{ route('payroll/delete', $item->id) }}"><i
                                                                         class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                             </div>
                                                         </div>
@@ -254,6 +240,6 @@
     <script>
         setTimeout(function(){
             document.getElementById('successAlert').style.display = 'none';
-        }, 5000);
+        }, 3000);
     </script>
 @endsection

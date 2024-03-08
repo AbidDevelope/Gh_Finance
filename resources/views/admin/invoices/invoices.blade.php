@@ -102,7 +102,7 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
-                                <div class="alert alert-success" id="successAlert">
+                                <div class="alert alert-success" id="sucessAlert">
                                     {{ Session::get('success') }}
                                 </div>
                             @endif
@@ -117,8 +117,8 @@
                                 <thead>
                                     <tr role="row">
                                         <th style="width: 70px !important;border-radius: 0 !important;">Sr. No.</th>
-                                        <th style="border-radius: 0 !important;">Invoice Number</th>
                                         <th style="border-radius: 0 !important;">Project ID</th>
+                                        <th style="border-radius: 0 !important;">Invoice Number</th>
                                         <th style="border-radius: 0 !important;">Invoice Date</th>
                                         <th style="border-radius: 0 !important;">Action</th>
                                     </tr>
@@ -128,8 +128,8 @@
                                         @foreach ($invoices as $index => $invoice)
                                             <tr>
                                                 <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
-                                                <td style="border-radius: 0 !important;">{{ $invoice->invoice_number }}</td>
                                                 <td style="border-radius: 0 !important;">{{ $invoice->project_id }}</td>
+                                                <td style="border-radius: 0 !important;">{{ $invoice->invoice_number }}</td>
                                                 <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($invoice->invoice_date)->format('d/m/Y') }}</td>
                                                 <td style="border-radius: 0 !important;" class="text-right">
                                                     <div class="dropdown dropdown-action">
@@ -221,5 +221,10 @@
             dateFormat: 'dd/mm/yy'
         });
        });
+    </script>
+    <script>
+        setTimeout(function(){
+            document.getElementById('sucessAlert').style.display = 'none';
+        }, 3000);
     </script>
 @endsection

@@ -152,7 +152,7 @@
 
     <div class="total">
         <p><b>Sub Total : </b>{{ $invoices->subtotal }}</p>
-        <p><b>Discount : </b>{{ $invoices->discount }}</p>
+        <p><b>Discount(KWD) : </b>{{ $invoices->discount }}</p>
         <p><b>Grand Total : </b>{{ $invoices->grandValue }}</p>
     </div>
 
