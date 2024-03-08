@@ -196,12 +196,12 @@
                                                         alt=""></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item"
-                                                        href="{{ route('indemnity&leave/view') }}"><i
+                                                        href="{{ route('indemnity&leave/view', $item->id) }}"><i
                                                             class="fa fa-eye m-r-5"></i> View</a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('indemnity&leave/edit') }}"><i
+                                                        href="{{ route('indemnity&leave/edit', $item->id) }}"><i
                                                             class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#"><i
+                                                    <a class="dropdown-item" href="{{ route('indemnity&leave/delete', $item->id) }}"><i
                                                             class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                 </div>
                                             </div>
@@ -306,6 +306,6 @@
     <script>
         setTimeout(function(){
             document.getElementById('successAlert').style.display = 'none';
-        }, 5000);
+        }, 3000);
     </script>
 @endsection

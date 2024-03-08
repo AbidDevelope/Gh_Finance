@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Payroll;
+use App\Models\PayrollPayment;
 
 class PayrollItem extends Model
 {
@@ -24,4 +25,7 @@ class PayrollItem extends Model
     {
         return $this->belongsTo(Payroll::class);
     }
+
+   
+
 }

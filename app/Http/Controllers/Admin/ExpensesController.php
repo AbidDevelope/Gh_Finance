@@ -384,8 +384,8 @@ class ExpensesController extends Controller
     // Payroll Controller Start
     public function payroll()
     {
-        $payrollItems = PayrollItem::all();
-        return view('admin.payroll.payroll', compact('payrollItems'));
+        $payroll = Payroll::orderBy('id', 'desc')->get();
+        return view('admin.payroll.payroll', compact('payroll'));
     }
 
     public function payrollCreate()
@@ -404,8 +404,10 @@ class ExpensesController extends Controller
         {
             return redirect()->back()->withErrors($validate)->withInput();
         }
+        $payrollDate = DateTime::createFromFormat('d/m/Y', $request->payroll_date)->format('Y-m-d');
 
         $payroll = new Payroll();
+        $payroll->payroll_date = $payrollDate;
         $payroll->remarks = $request->remarks;
         $payroll->subtotal = $request->subtotal;
         $payroll->others = $request->others;
@@ -434,13 +436,23 @@ class ExpensesController extends Controller
             foreach($request->amount as $key=>$item)
             {
                 $paymentDate = DateTime::createFromFormat('d/m/Y', $request->date[$key])->format('Y-m-d');
+                
+                $paymentMode = $request->payment_mode[$key];
+                $bankName = null; 
+
+                if ($paymentMode == 'Cheque' && isset($request->chequeBankName[$key])) {
+                    $bankName = $request->chequeBankName[$key];
+                } elseif ($paymentMode == 'Online' && isset($request->onlineBankName[$key])) {
+                    $bankName = $request->onlineBankName[$key];
+            }
+
                 $payrollPayment = new PayrollPayment([
                     'payroll_id' => $payroll->id,
                     'payment_mode'  => $request->payment_mode[$key],
                     'date'       => $paymentDate,
                     'amount'     => $request->amount[$key],
                     'cheque_number'  => $request->cheque_number[$key],
-                    'bank_name'      => $request->bank_name[$key],
+                    'bank_name'      => $bankName,
                     'receivable_by'  => $request->receivable_by[$key],
                     'transaction_id'  => $request->transaction_id[$key],
                 ]);
@@ -456,18 +468,85 @@ class ExpensesController extends Controller
         return view('admin.payroll.payroll-view', compact('payrollItems'));
     }
 
-    public function payrollEdit()
+    public function payrollEdit($id)
     {
-        return view('admin.payroll.payroll-edit');
+        $payroll = Payroll::with(['payrollItems', 'payrollPayment'])->find($id);
+        return view('admin.payroll.payroll-edit', compact('payroll'));
+    }
+
+    public function payrollUpdate(Request $request, $id)
+    {
+        $validate = Validator::make($request->all(), [
+            'remarks' => 'required',    'subtotal'  => 'required',
+            'grandtotal' => 'required', 'total_payment'  => 'required',
+        ]);
+
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }else{
+            $payroll = Payroll::find($id);
+            if($payroll)
+            {
+                $payrollDate = DateTime::createFromFormat('d/m/Y', $request->payroll_date)->format('Y-m-d');
+                $payroll->update([
+                    'payroll_date' => $payrollDate,
+                    'remarks' => $request->remarks,
+                    'subtotal' => $request->subtotal,
+                    'others' => $request->others,
+                    'grandtotal' => $request->grandtotal,
+                    'total_payment' => $request->total_payment,
+                ]);
+
+                $payrollItemsData = $request->input('items', []);
+                foreach($payrollItemsData as $itemId=>$itemData)
+                {
+                   $payrollItems = PayrollItem::find($id);
+                   if($payrollItems)
+                   {
+                    $payrollItems->date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['date']);
+                    $payrollItems->month = $itemData['month'];
+                    $payrollItems->employee_name = $itemData['employee_name'];
+                    $payrollItems->actual_salary = $itemData['actual_salary'];
+                    $payrollItems->payroll = $itemData['payroll'];
+                    $payrollItems->salary = $itemData['salary'];
+                    $payrollItems->save();
+                   }
+                }
+
+                $paymentData = $request->input('items', []);
+                foreach ($paymentData as $itemId => $itemData) {
+                    $payments = PayrollPayment::find($itemId);
+                    if ($payments && isset($itemData['date'])) { 
+                        $payments->date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['date']);
+                        $payments->amount = $itemData['amount'] ?? null; 
+                        $payments->receivable_by = $itemData['receivable_by'] ?? '';
+                        $payments->cheque_number = $itemData['cheque_number'] ?? '';
+                        $payments->bank_name = $itemData['bank_name'] ?? '';
+                        $payments->transaction_id = $itemData['transaction_id'] ?? '';
+                        $payments->save();
+                    }
+                }
+                session()->flash('success', 'Payroll Updated Successfully.');
+                return redirect()->route('payroll');
+            }
+        }  
     }
 
     public function payrollDelete($id)
     {
-        $payrollItems = PayrolllItem::find($id);
+        $payroll = Payroll::find($id);
+        if($payroll)
+        {
+            $payroll->payrollItems()->delete();
+            $payroll->payrollPayment()->delete();
+            $payroll->delete();
+            session()->flash('success', 'Payroll Deleted Successfully');
+        }
 
-        session()->flash('success', 'Payroll Deleted Successfully');
         return redirect()->back();
     }
+
     // Payroll Controller End
 
      // Rent Controller Start

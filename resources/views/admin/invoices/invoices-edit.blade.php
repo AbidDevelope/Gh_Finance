@@ -38,7 +38,7 @@ border-color: #your-desired-color; /* Change 'your-desired-color' to the color y
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Project ID<span class="text-danger">*</span></label>
-                                             <input type="text" name="project_id" class="form-control" id="project_id" value="{{ $invoices->project_id }}" onkeypress="return /[0-9]/i.test(event.key)">
+                                             <input type="text" name="project_id" class="form-control" id="project_id" value="{{ $invoices->project_id }}" onkeypress="return /[0-9]/i.test(event.key)" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -108,7 +108,7 @@ border-color: #your-desired-color; /* Change 'your-desired-color' to the color y
                                                             <input class="form-control price" type="text" name="items[{{ $item->id }}][price]" value="{{ $item->price }}">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control total" type="text"
+                                                            <input readonly class="form-control total" type="text"
                                                             style="min-width:150px" name="items[{{ $item->id }}][total]" value="{{ $item->total }}">
                                                         </td>
                                                     </tr>
@@ -123,7 +123,7 @@ border-color: #your-desired-color; /* Change 'your-desired-color' to the color y
                                                         <td colspan="5" class="text-right" style="font-size: 15px;">Sub Total :</td>
                                                         <td
                                                             style="text-align: right; padding-right: 30px;width: 230px">
-                                                            <input class="form-control text-right subtotal"
+                                                            <input readonly class="form-control text-right subtotal"
                                                                 onkeypress="return /[0-9.,%]/.test(event.key)"
                                                                 type="text" name="subtotal" value="{{ $invoices->subtotal }}">
                                                         </td>
@@ -146,7 +146,7 @@ border-color: #your-desired-color; /* Change 'your-desired-color' to the color y
                                                         </td>
                                                         <td
                                                             style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
-                                                            <input class="form-control text-right grandValue"
+                                                            <input readonly class="form-control text-right grandValue"
                                                             onkeypress="return /[0-9.,]/i.test(event.key)"
                                                             type="text" name="grandValue" value="{{ $invoices->grandValue }}">
                                                         </td>

@@ -61,7 +61,7 @@
                                     </tr>
                                     <tr>
                                         <th><span>Payment Due</span></th>
-                                        <td><span>600.00</span></td>
+                                        <td><span>00.000</span></td>
                                     </tr>
                                     <tr>
                                         <th><span>Due Date</span></th>
@@ -105,7 +105,7 @@
                                         <td><span>{{ $invoices->subtotal }}</span></td>
                                     </tr>
                                     <tr>
-                                        <th><span>Discount :</span></th>
+                                        <th><span>Discount(KWD) :</span></th>
                                         <td><span>{{ $invoices->discount }}</span></td>
                                     </tr>
                                     <tr>

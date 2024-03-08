@@ -96,7 +96,8 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('payroll/create', 'payrollCreate')->name('payroll/create');
     Route::post('payroll/create', 'payrollCreatePost')->name('payroll/create');
     Route::get('payroll/view/{id}', 'payrollView')->name('payroll/view');
-    Route::get('payroll/edit', 'payrollEdit')->name('payroll/edit');
+    Route::get('payroll/edit/{id}', 'payrollEdit')->name('payroll/edit');
+    Route::post('payroll/update/{id}', 'payrollUpdate')->name('payroll/update');
     Route::get('payroll/delete/{id}', 'payrollDelete')->name('payroll/delete');
 
     Route::get('rent', 'rent')->name('rent');
@@ -136,8 +137,10 @@ Route::controller(HRController::class)->prefix('admin')->middleware('adminAuthen
     Route::get('indemnity&leave', 'indemnityAndleave')->name('indemnity&leave');
     Route::get('indemnity&leave/create', 'indemnityAndleaveCreate')->name('indemnity&leave/create');
     Route::post('indemnity/create', 'indemnityAndleaveCreatePost')->name('indemnity/create');
-    Route::get('indemnity&leave/view', 'indemnityAndleaveView')->name('indemnity&leave/view');
-    Route::get('indemnity&leave/edit', 'indemnityAndleaveEdit')->name('indemnity&leave/edit');
+    Route::get('indemnity&leave/view/{id}', 'indemnityAndleaveView')->name('indemnity&leave/view');
+    Route::get('indemnity&leave/edit/{id}', 'indemnityAndleaveEdit')->name('indemnity&leave/edit');
+    Route::post('indemnity&leave/update/{id}', 'indemnityAndleaveUpdate')->name('indemnity&leave/update');
+    Route::get('indemnity&leave/delete/{id}', 'indemnityLeaveDelete')->name('indemnity&leave/delete');
     Route::post('indemnity/import', 'indemnityImport')->name('indemnity/import');
     Route::get('indemnitysearchByDate', 'indemnityFilter')->name('indemnitysearchByDate');
 });

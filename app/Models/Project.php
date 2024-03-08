@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Invoice;
-use App\Models\ProjectManager;
 use App\Models\Expense;
 use App\Models\Payment;
 use App\Models\PettyCash;
 use App\Models\Quotation;
+use App\Models\IndemnityLeave;
 
 class Project extends Model
 {
@@ -51,11 +51,6 @@ class Project extends Model
         return $this->hasMany(Payment::class, 'project_id');
     }
 
-    public function projectManager()
-    {
-        return $this->belongsTo(ProjectManager::class, 'project_manager_id');
-    }
-
     public function expenses()
     {
         return $this->hasMany(Expense::class);
@@ -73,5 +68,10 @@ class Project extends Model
     public function quotation()
     {
         return $this->hasMany(Quotation::class);
+    }
+
+    public function indemnity()
+    {
+        return $this->hasMany(IndemnityLeave::class);
     }
 }

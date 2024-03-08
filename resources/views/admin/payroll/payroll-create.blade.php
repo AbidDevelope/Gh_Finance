@@ -34,10 +34,16 @@
                                 <form action="{{ route('payroll/create') }}" method="post">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Select Date</label>
+                                                <input name="payroll_date" class="form-control datepicker" type="text" value="{{ old('date') }}" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Remarks</label>
-                                                <textarea name="remarks" class="form-control" type="text"></textarea>
+                                                <input name="remarks" class="form-control" type="text">
                                                 @error('remarks')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -201,7 +207,7 @@
                                                                 name="cheque_number[]" placeholder="Cheque Number">
                                                         </td>
                                                         <td class="cheque-fields" style="display: none">
-                                                            <input class="form-control" type="text" name="bank_name[]"
+                                                            <input class="form-control" type="text" name="chequeBankName[]"
                                                                 placeholder="Bank Name">
                                                         </td>
                                                         <td class="online-fields" style="display: none">
@@ -209,7 +215,7 @@
                                                                 name="transaction_id[]" placeholder="Transaction ID">
                                                         </td>
                                                         <td class="online-fields" style="display: none">
-                                                            <input class="form-control" type="text" name="bank_name[]"
+                                                            <input class="form-control" type="text" name="onlineBankName[]"
                                                                 placeholder="Bank Name">
                                                         </td>
                                                         <!-- Example of an Add button, already in your code -->
@@ -380,10 +386,7 @@
                     x++;
 
                     var fieldHTML =
-                        '<tr><td style="width:50px"><a href="javascript:void(0)" class="payment-remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="payment_mode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field datepicker" type="text" name="payment_date[]" placeholder="DD/MM/YYYY" style="display:none"></td><td><input class="form-control common-field amount" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable_by[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="cheque_number[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bank_name[' +
-                        x +
-                        ']" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transaction_id[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bank_name[' +
-                        x + ']" placeholder="Bank Name"></td></tr>';
+                        '<tr><td style="width:50px"><a href="javascript:void(0)" class="payment-remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="payment_mode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field datepicker" type="text" name="payment_date[]" placeholder="DD/MM/YYYY" style="display:none"></td><td><input class="form-control common-field amount" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable_by[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="cheque_number[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeBankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transaction_id[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="onlineBankName[]" placeholder="Bank Name"></td></tr>';
 
                     // Add new row
                     $(wrapper).append(fieldHTML);
