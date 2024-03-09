@@ -36,7 +36,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Expense Type</label>
-                                                        <input readonly type="text" class="form-control" name="expense_type" value="miscellaneous">
+                                                        <input readonly type="hidden" class="form-control" name="expense_type" value="miscellaneous">
                                                     </div>
                                                 </div>
                                                 <table class="table table-hover table-white" id="customFields">
@@ -247,15 +247,13 @@
                 totalField.addEventListener('change', updateTotals);
             });
 
-            const removeRowandUpdateTotals = function(e) {
-                if (e.target && e.target.matches('.remove-row')) {
-                    e.target.closest('tr').remove();
-                    updateTotals();
-                }
-            };
+            $('#customFields').on('click', '.remove-row', function(){
+                $(this).closest('tr').remove();
+                updateTotals();
+            });
+
 
             wrapper.addEventListener('input', updateTotals);
-            wrapper.addEventListener('click', removeRowandUpdateTotals);
         });
 
 

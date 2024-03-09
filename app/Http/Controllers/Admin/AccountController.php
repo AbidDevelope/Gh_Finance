@@ -39,6 +39,7 @@ class AccountController extends Controller
     public function accountReportCreate(Request $request)
     {
         $validate = Validator::make($request->all(), [
+            'project_id' => 'required',
             'date'  => 'required',  'cheque_number_receipt_number' => 'required',
             'description'  => 'required',    'beneficiary'  => 'required',
             'amount_deposited' => 'required', 'amount_withdrawn'  => 'required',
@@ -55,6 +56,7 @@ class AccountController extends Controller
 
             $accounts = new Account();
             $accounts->date = $date;
+            $accounts->project_id = $request->project_id;
             $accounts->cheque_number_receipt_number = $request->cheque_number_receipt_number;
             $accounts->description = $request->description;
             $accounts->beneficiary = $request->beneficiary;
@@ -73,14 +75,70 @@ class AccountController extends Controller
         }
     }
 
-    public function accountView()
+    public function accountsView($id)
     {
-        return view('admin.accounts.accounts-view');
+        $accounts = Account::find($id);
+        return view('admin.accounts.accounts-view', compact('accounts'));
     }
 
-    public function accountEdit()
+    public function accountEdit($id)
     {
-        return view('admin.accounts.accounts-edit');
+        $accounts = Account::find($id);
+        return view('admin.accounts.accounts-edit', compact('accounts'));
+    }
+
+    public function accountUpdate(Request $request, $id)
+    {
+        $validate = Validator::make($request->all(), [
+            'project_id' => 'required',
+            'date'  => 'required',  'cheque_number_receipt_number' => 'required',
+            'description'  => 'required',    'beneficiary'  => 'required',
+            'amount_deposited' => 'required', 'amount_withdrawn'  => 'required',
+            'project_name'  => 'required',  'column_1'  => 'required',
+            'column_2'  => 'required',  'service_type'  => 'required',
+            'remarks'  => 'required',  'total_in_account' => 'required'
+        ]);
+
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }else{
+            $accounts = Account::find($id);
+            if($accounts)
+            {
+                $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+                $accounts->update([
+                    'project_id'  => $request->project_id,
+                    'date'  => $date,
+                    'cheque_number_receipt_number'  => $request->cheque_number_receipt_number,
+                    'description'  => $request->description,
+                    'beneficiary'  => $request->beneficiary,
+                    'amount_deposited'  => sprintf("%.3f", $request->amount_deposited),
+                    'amount_withdrawn'  => sprintf("%.3f", $request->amount_withdrawn),
+                    'project_name'  => $request->project_name,
+                    'column_1'  => $request->column_1,
+                    'column_2'  => $request->column_2,
+                    'service_type'  => $request->service_type,
+                    'remarks'  => $request->remarks,
+                    'total_in_account'  => $request->total_in_account,
+                ]);
+
+                session()->flash('success', 'Data Updated Successfully');
+                return redirect()->route('accounts');
+            }
+        }
+    }
+
+    public function accountDelete($id)
+    {
+        $accounts = Account::find($id);
+        if($accounts)
+        {
+            $accounts->delete();
+
+            session()->flash('success', 'Data Deleted Successfully');
+            return redirect()->back();
+        }
     }
 
     public function accountsImport(Request $request)

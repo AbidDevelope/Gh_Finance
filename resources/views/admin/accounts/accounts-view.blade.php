@@ -35,55 +35,52 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Date:</td>
-                                                    <td class="text-right"></td>
+                                                    {{-- <td class="text-right">{{ \Carbon\Carbon::parse($account->date)->format('Y-m-d') }}</td> --}}
+                                                    <td class="text-right">{{ \Carbon\Carbon::parse($accounts->date)->format('d M Y') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Cheque Number / Receipt Number:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $accounts->cheque_number_receipt_number }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Description:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $accounts->description }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Beneficiary:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $accounts->beneficiary }}</td>
                                                 </tr>
-
+                                                
                                                 <tr>
                                                     <td>Project:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $accounts->project_name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Project Type:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $accounts->service_type }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Column 1:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $accounts->column_1 }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Column 2:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $accounts->column_2 }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Amount Deposited:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $accounts->amount_deposited }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Amount Withdrawn:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $accounts->amount_withdrawn }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Total In Account:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $accounts->total_in_account }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        {{-- <p class="m-b-5">Progress <span class="text-success float-right">40%</span></p>
-                                        <div class="progress progress-xs mb-0">
-                                            <div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="40%" style="width: 40%"></div>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

@@ -70,7 +70,7 @@
                                             <div class="form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
                                                 <!-- Input with Bootstrap styling -->
-                                                <input type="text" id="start_date" name="start_date"
+                                                <input type="text" name="start_date"
                                                     placeholder="Select Start Date"
                                                     class="form-control placeholder datepicker cursor bg-white rounded text-black-50"
                                                     style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ request('start_date') }}">
@@ -83,7 +83,7 @@
                                         <div class="container d-flex gap-4 ">
                                             <div class=" form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
-                                                <input type="text" id="end_date"
+                                                <input type="text"
                                                     class="form-control placeholder cursor bg-white text-black-50 datepicker rounded" name="end_date"
                                                     placeholder="Select End Date" value="{{ request('end_date') }}" style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);">
                                                 @if ($errors->has('end_date'))
@@ -210,9 +210,6 @@
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
     <script>
-        flatpickr(".datepicker", {});
-    </script>
-    <script>
         const choices = new Choices('[data-trigger]', {
             searchEnabled: false,
             itemSelectText: '',
@@ -234,6 +231,6 @@
     <script>
         setTimeout(function(){
             document.getElementById('successAlert').style.display = 'none';
-        }, 5000);
+        }, 3000);
     </script>
 @endsection

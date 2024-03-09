@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ExpenseItem;
 use App\Models\Project;
+use App\Models\Miscellaneous;
 
 class Expense extends Model
 {
     use HasFactory;
     protected $fillable = [
-        // 'project_id',
+        'expense_type_id',
         'expense_type',
         'grandtotal',
         ];
@@ -24,5 +25,10 @@ class Expense extends Model
     public function project()
     {
        return $this->belongsTo(Project::class);
+    }
+
+    public function miscellaneous()
+    {
+        return $this->belongsTo(Miscellaneous::class);
     }
 }

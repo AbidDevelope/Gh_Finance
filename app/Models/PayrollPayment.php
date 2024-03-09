@@ -13,7 +13,7 @@ class PayrollPayment extends Model
     protected $fillable = [
         'payroll_id',
         'payment_mode',
-        'date',
+        'payment_date',
         'amount',
         'receivable_by',
         'cheque_number',

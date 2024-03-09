@@ -142,7 +142,7 @@
                                             @foreach ($payroll as $index => $item)
                                                 <tr>
                                                     <td class="text-center" style="border-radius: 0 !important;">{{ $index+1 }}</td>
-                                                    <td class="text-center" style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                    <td class="text-center" style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($item->payroll_date)->format('d/m/Y') }}</td>
                                                     <td class="text-center" style="border-radius: 0 !important;">{{ $item->remarks }}</td>
                                                     <td class="text-center" style="border-radius: 0 !important;">{{ $item->grandtotal }}</td>
                                                     <td class="text-center" style="border-radius: 0 !important;">{{ $item->total_payment }}</td>

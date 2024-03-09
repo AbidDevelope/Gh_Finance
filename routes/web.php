@@ -198,8 +198,10 @@ Route::controller(AccountController::class)->prefix('admin')->middleware('adminA
     Route::get('accounts', 'accounts')->name('accounts');
     Route::get('accounts/create', 'accountCreate')->name('accounts/create');
     Route::post('accountreport/create', 'accountReportCreate')->name('accountreport/create');
-    Route::get('accounts/view', 'accountView')->name('accounts/view');
-    Route::get('accounts/edit', 'accountEdit')->name('accounts/edit');
+    Route::get('accounts/view/{id}', 'accountsView')->name('accounts/view');
+    Route::get('accounts/edit/{id}', 'accountEdit')->name('accounts/edit');
+    Route::post('accounts/update/{id}', 'accountUpdate')->name('accounts/update');
+    Route::get('accounts/delete/{id}', 'accountDelete')->name('accounts/delete');
     Route::post('accounts/import', 'accountsImport')->name('accounts/import');
     Route::get('accountReportsearch', 'accountReportSearchBydate')->name('accountReportsearch');
 });
