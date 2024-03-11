@@ -73,9 +73,8 @@
                                         <div class="form-group">
                                             {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
                                             <!-- Input with Bootstrap styling -->
-                                            <input type="text" id="start_date" name="start_date"
-                                                placeholder="Select Start Date"
-                                                class="form-control cursor placeholder bg-white rounded text-black-50"
+                                            <input type="text" name="start_date" placeholder="Select Start Date"
+                                                class="form-control cursor placeholder bg-white rounded text-black-50 datepicker"
                                                 style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;">
                                             @if ($errors->has('start_date'))
                                                 <span class="text-danger">{{ $errors->first('start_date') }}</span>
@@ -87,7 +86,7 @@
                                         <div class=" form-group">
                                             {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
                                             <input type="text" id="end_date"
-                                                class="form-control cursor placeholder bg-white text-black-50 rounded"
+                                                class="form-control cursor placeholder bg-white datepicker text-black-50 rounded"
                                                 name="end_date" placeholder="Select End Date"
                                                 style="box-shadow: none; border: 1px solid var(--own-black); width: 230px; height: 35px;">
                                             @if ($errors->has('end_date'))
@@ -110,7 +109,7 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
-                                <div class="alert alert-success">
+                                <div class="alert alert-success" id="successAlert">
                                     {{ Session::get('success') }}
                                 </div>
                             @endif
@@ -128,44 +127,41 @@
                                         <tr role="row">
                                             <th style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
                                             <th style="border-radius: 0 !important;">Date</th>
-                                            <th style="border-radius: 0 !important;">Year</th>
-                                            <th style="border-radius: 0 !important;">Month</th>
-                                            <th style="border-radius: 0 !important;">Rent</th>
+                                            <th style="border-radius: 0 !important;">Remarks</th>
+                                            <th style="border-radius: 0 !important;">Rent Amount</th>
+                                            <th style="border-radius: 0 !important;">Total Pay</th>
                                             <th style="border-radius: 0 !important;" class="text-right">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @if (count($miscell) > 0) --}}
-                                        {{-- @foreach ($miscell as $index => $item) --}}
-                                        <tr>
-                                            <td style="border-radius: 0 !important;"></td>
-                                            <td style="border-radius: 0 !important;"></td>
-                                            <td style="border-radius: 0 !important;"></td>
-                                            <td style="border-radius: 0 !important;"></td>
-                                            <td style="border-radius: 0 !important;"></td>
-                                            <td style="border-radius: 0 !important;" class="text-right">
-                                                <div class="dropdown dropdown-action">
-                                                    <a href="#" class="action-icon " data-toggle="dropdown"
-                                                        aria-expanded="false"><img
-                                                            src="{{ asset('assets/admin/img/icon/action.png') }}"
-                                                            alt=""></a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="{{ route('rent/view') }}"><i
-                                                                class="fa fa-eye m-r-5"></i> View</a>
-                                                        <a class="dropdown-item" href="{{ route('rent/edit') }}"><i
-                                                                class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                        <a class="dropdown-item" href="#"><i
-                                                                class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        {{-- @endforeach
-                                        @else --}}
-                                        <tr>
-                                            <td colspan="6" class="text-center">No Record Found</td>
-                                        </tr>
-                                        {{-- @endif --}}
+                                        @if (count($rents) > 0)
+                                            @foreach ($rents as $index => $item)
+                                                <tr>
+                                                    <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                    <td style="border-radius: 0 !important;">
+                                                        {{ \Carbon\Carbon::parse($item->rent_date)->format('d/m/Y') }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $item->remarks }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $item->grandtotal }}</td>
+                                                    <td style="border-radius: 0 !important;">{{ $item->total_payment }}</td>
+                                                    <td style="border-radius: 0 !important;" class="text-right">
+                                                        <div class="dropdown dropdown-action">
+                                                            <a href="#" class="action-icon " data-toggle="dropdown"
+                                                                aria-expanded="false"><img
+                                                                    src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                    alt=""></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="{{ route('rent/view') }}"><i
+                                                                        class="fa fa-eye m-r-5"></i> View</a>
+                                                                <a class="dropdown-item" href="{{ route('rent/edit', $item->id) }}"><i
+                                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                                <a class="dropdown-item" href="#"><i
+                                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -177,33 +173,36 @@
     </div>
 
     <!-- metisMenu JS
-                                                        ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                            ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                            ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                        ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
     <script>
-        $('#dataTable').DataTable();
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                'language': {
+                    'emptyTable': 'No records available'
+                }
+            });
+        });
     </script>
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
-    <script>
-        flatpickr(".datepicker", {});
-    </script>
     <script>
         const choices = new Choices('[data-trigger]', {
             searchEnabled: false,
@@ -215,21 +214,17 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'start_date') { //Start date selected - update End Date picker
-                $("#end_date").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#start_date").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#start_date, #end_date').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+        $(document).ready(function() {
+            ('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy',
+            });
+        });
+    </script>
+    <script>
+        setTimeout(function() {
+            document.getElementById('successAlert').style.display = 'none';
+        }, 3000);
     </script>
 @endsection

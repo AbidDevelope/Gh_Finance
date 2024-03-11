@@ -560,27 +560,7 @@ class ExpensesController extends Controller
 
     // Payroll Controller End
 
-     // Rent Controller Start
-     public function rent()
-     {
-         return view('admin.rent.rent');
-     }
-
-     public function rentCreate()
-    {
-        return view('admin.rent.rent-create');
-    }
-
-    public function rentView()
-     {
-         return view('admin.rent.rent-view');
-     }
-
-    public function rentEdit()
-    {
-        return view('admin.rent.rent-edit');
-    }
-     // Rent Controller End
+     
 
      // Electricity Controller Start
      public function electricity()
