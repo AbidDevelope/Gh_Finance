@@ -29,7 +29,7 @@
     }
 
     .color {
-        background-color:  var(--own-black) !important;
+        background-color: var(--own-black) !important;
         width: 100% !important;
     }
 
@@ -140,7 +140,7 @@
                 <form action="{{ route('admin/login') }}" method="POST">
                     @csrf
                     @if (session()->has('error'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-danger" id="dangerAlert">
                             <span>{{ session()->get('error') }}</span>
                         </div>
                     @endif
@@ -174,8 +174,8 @@
                                 <div class="g-recaptcha" data-sitekey="6LemK34pAAAAAJUrh8OwzcMxeD9pDbOrbEviriah"></div>
 
                             </form>
-                            <input onclick="submitForm()" class=" color mt-3 roundedlg text-white" style="border:1px solid #0f1316" type="submit"
-                                value="Submit" />
+                            <input onclick="submitForm()" class=" color mt-3 roundedlg text-white"
+                                style="border:1px solid #0f1316" type="submit" value="Submit" />
                 </form>
             </div>
         </div>
@@ -213,7 +213,21 @@
     });
 </script>
 <script>
-    setTimeout(function(){
-        document.getElementById('successAlert').style.display = 'none';
-    }, 3000);
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if the success alert exists
+        var successAlert = document.getElementById('successAlert');
+        if (successAlert) {
+            setTimeout(function() {
+                successAlert.style.display = 'none';
+            }, 3000);
+        }
+
+        // Check if the danger alert exists
+        var dangerAlert = document.getElementById('dangerAlert');
+        if (dangerAlert) {
+            setTimeout(function() {
+                dangerAlert.style.display = 'none';
+            }, 3000);
+        }
+    });
 </script>

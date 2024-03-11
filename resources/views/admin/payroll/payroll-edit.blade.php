@@ -73,12 +73,12 @@
                                                             <tr>
                                                                 <td>
                                                                     <input type="text" class="form-control datepicker"
-                                                                        name="items[{{ $item->id }}][payroll_date]"
+                                                                        name="payrollItems[{{ $item->id }}][date]"
                                                                         value="{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}"
                                                                         placeholder="DD/MM/YYYY">
                                                                 </td>
                                                                 <td>
-                                                                    <select name="items[{{ $item }}][month]" id=""
+                                                                    <select name="payrollItems[{{ $item->id }}][month]" id=""
                                                                         class="form-control">
                                                                         <option value="" disabled selected>Select
                                                                             Month
@@ -123,23 +123,23 @@
                                                                 </td>
                                                                 <td>
                                                                     <input class="form-control" type="text"
-                                                                        style="min-width:150px" name="items[{{ $item }}][employee_name]"
+                                                                        style="min-width:150px" name="payrollItems[{{ $item->id }}][employee_name]"
                                                                         value="{{ $item->employee_name }}">
                                                                 </td>
                                                                 <td>
                                                                     <input class="form-control actual_salary" type="text"
-                                                                        style="min-width:10px" name="items[{{ $item }}][actual_salary]"
+                                                                        style="min-width:10px" name="payrollItems[{{ $item->id }}][actual_salary]"
                                                                         value="{{ $item->actual_salary }}"
                                                                         onkeypress="return /[0-9.,%]/.test(event.key)">
                                                                 </td>
                                                                 <td>
                                                                     <input class="form-control payroll" type="text"
-                                                                        style="min-width:10px" name="items[{{ $item->id }}][payroll]"
+                                                                        style="min-width:10px" name="payrollItems[{{ $item->id }}][payroll]"
                                                                         value="{{ $item->payroll }}">
                                                                 </td>
                                                                 <td>
                                                                     <input class="form-control salary" type="text"
-                                                                        style="min-width:150px" name="items[{{ $item->id }}][salary]"
+                                                                        style="min-width:150px" name="payrollItems[{{ $item->id }}][salary]"
                                                                         value="{{ $item->salary }}"
                                                                         onkeypress="return /[0-9.]/i.test(event.key)">
                                                                 </td>
@@ -215,8 +215,8 @@
                                                             </td>
                                                             <td>
                                                                 <input class="form-control common-field datepicker" type="text"
-                                                                    placeholder="DD/MM/YYYY" value="{{ \Carbon\Carbon::parse($payment->date)->format('d/m/Y') }}"
-                                                                    name="items[{{ $payment->id }}][date]" style="display: none">
+                                                                    placeholder="DD/MM/YYYY" value="{{ \Carbon\Carbon::parse($payment->payment_date)->format('d/m/Y') }}"
+                                                                    name="items[{{ $payment->id }}][payment_date]" style="display: none">
                                                             </td>
                                                             <td>
                                                                 <input class="form-control common-field amount" type="text"

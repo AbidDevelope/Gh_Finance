@@ -69,6 +69,7 @@ class ExpensesController extends Controller
         }
 
         $expenses = new Expense();
+        $expenses->expense_type_id = $miscellaneous->id;
         $expenses->expense_type = $request->expense_type;
         $expenses->grandtotal = $request->grandtotal;
         $expenses->save();
@@ -114,6 +115,14 @@ class ExpensesController extends Controller
             }
         }
 
+        $expense = Expense::find($id);
+        if($expense)
+        {
+            $expense->update([
+                'grandtotal' => $request->grandtotal,
+            ]);
+        }
+
         return redirect()->route('miscellaneous')->with('success', 'Miscellaneous items updated successfully.');
     }
 
@@ -122,7 +131,9 @@ class ExpensesController extends Controller
         $miscellaneous = Miscellaneous::find($id);
         if($miscellaneous)
         {
-            $miscellaneous->miscellaneousItem()->delete();
+            // dd($miscellaneous);
+            $miscellaneous->miscellaneousItems()->delete();
+            $miscellaneous->expenses()->delete();
             $miscellaneous->delete();
         }
 
@@ -435,7 +446,7 @@ class ExpensesController extends Controller
 
             foreach($request->amount as $key=>$item)
             {
-                $paymentDate = DateTime::createFromFormat('d/m/Y', $request->date[$key])->format('Y-m-d');
+                $paymentDate = DateTime::createFromFormat('d/m/Y', $request->payment_date[$key])->format('Y-m-d');
                 
                 $paymentMode = $request->payment_mode[$key];
                 $bankName = null; 
@@ -449,7 +460,7 @@ class ExpensesController extends Controller
                 $payrollPayment = new PayrollPayment([
                     'payroll_id' => $payroll->id,
                     'payment_mode'  => $request->payment_mode[$key],
-                    'date'       => $paymentDate,
+                    'payment_date'       => $paymentDate,
                     'amount'     => $request->amount[$key],
                     'cheque_number'  => $request->cheque_number[$key],
                     'bank_name'      => $bankName,
@@ -498,10 +509,10 @@ class ExpensesController extends Controller
                     'total_payment' => $request->total_payment,
                 ]);
 
-                $payrollItemsData = $request->input('items', []);
+                $payrollItemsData = $request->input('payrollItems', []);
                 foreach($payrollItemsData as $itemId=>$itemData)
                 {
-                   $payrollItems = PayrollItem::find($id);
+                   $payrollItems = PayrollItem::find($itemId);
                    if($payrollItems)
                    {
                     $payrollItems->date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['date']);
@@ -517,8 +528,8 @@ class ExpensesController extends Controller
                 $paymentData = $request->input('items', []);
                 foreach ($paymentData as $itemId => $itemData) {
                     $payments = PayrollPayment::find($itemId);
-                    if ($payments && isset($itemData['date'])) { 
-                        $payments->date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['date']);
+                    if ($payments && isset($itemData['payment_date'])) { 
+                        $payments->payment_date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['payment_date']);
                         $payments->amount = $itemData['amount'] ?? null; 
                         $payments->receivable_by = $itemData['receivable_by'] ?? '';
                         $payments->cheque_number = $itemData['cheque_number'] ?? '';
@@ -549,27 +560,7 @@ class ExpensesController extends Controller
 
     // Payroll Controller End
 
-     // Rent Controller Start
-     public function rent()
-     {
-         return view('admin.rent.rent');
-     }
-
-     public function rentCreate()
-    {
-        return view('admin.rent.rent-create');
-    }
-
-    public function rentView()
-     {
-         return view('admin.rent.rent-view');
-     }
-
-    public function rentEdit()
-    {
-        return view('admin.rent.rent-edit');
-    }
-     // Rent Controller End
+     
 
      // Electricity Controller Start
      public function electricity()

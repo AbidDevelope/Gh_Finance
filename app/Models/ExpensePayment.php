@@ -4,25 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Payroll;
+use App\Models\Rent;
 
-class PayrollPayment extends Model
+class ExpensePayment extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'payroll_id',
+        'expense_type_id',
+        'expense_type',
         'payment_mode',
         'payment_date',
         'amount',
-        'receivable_by',
         'cheque_number',
         'bank_name',
+        'receivable_by',
         'transaction_id',
     ];
 
-    public function payroll()
+    public function rents()
     {
-        return $this->belongsTo(Payroll::class);
+        return $this->belongsTo(Rent::class);
     }
 }

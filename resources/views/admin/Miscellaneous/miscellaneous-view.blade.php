@@ -22,7 +22,7 @@
                                     <hr class="border-top-grey">
                                     <div class="card-body">
                                         <div class="margin-top">
-                                            <table class="products table" id="dataTable">
+                                            <table class="products table">
                                                 <thead>
                                                     <tr class="" role="row">
                                                         <th  style="width: 70px !important; background:#D1CFCF !important; border-radius: 0 !important;">Sr. No.</th>

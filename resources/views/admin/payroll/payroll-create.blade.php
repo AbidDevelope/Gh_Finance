@@ -191,7 +191,7 @@
                                                         <td>
                                                             <input class="form-control common-field datepicker"
                                                                 type="text" placeholder="DD/MM/YYYY"
-                                                                name="date[]" style="display: none">
+                                                                name="payment_date[]" style="display: none">
                                                         </td>
                                                         <td>
                                                             <input class="form-control common-field amount" type="text"

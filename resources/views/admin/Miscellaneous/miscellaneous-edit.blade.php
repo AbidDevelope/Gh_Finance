@@ -1,9 +1,8 @@
 <style>
-
-    .margin_top{
+    .margin_top {
         margin-top: -50px !important;
     }
-    </style>
+</style>
 
 @extends('admin.layouts.master')
 @section('content')
@@ -14,7 +13,8 @@
                     <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section bg-white">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">Edit Miscellaneous</h4>
+                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">Edit
+                                    Miscellaneous</h4>
                                 <hr class="border-top-grey">
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)
@@ -40,12 +40,13 @@
                                                             <tr>
                                                                 <td>
                                                                     <input class="form-control" type="text"
-                                                                        style="min-width:150px" name="items[{{ $item->id }}][description]"
+                                                                        style="min-width:150px"
+                                                                        name="items[{{ $item->id }}][description]"
                                                                         value="{{ $item->description }}">
                                                                 </td>
                                                                 <td>
-                                                                    <select name="items[{{ $item->id }}][month]" id=""
-                                                                        class="form-control">
+                                                                    <select name="items[{{ $item->id }}][month]"
+                                                                        id="" class="form-control">
                                                                         <option value="" disabled selected>Select
                                                                             Month
                                                                         </option>
@@ -88,14 +89,16 @@
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" class="form-control"
-                                                                        id="Start" name="items[{{ $item->id }}][date]"
+                                                                    <input type="text" class="form-control datepicker"
+                                                                        id="Start"
+                                                                        name="items[{{ $item->id }}][date]"
                                                                         value="{{ Carbon\Carbon::parse($item->date)->format('d/m/Y') }}"
                                                                         placeholder="DD/MM/YYYY">
                                                                 </td>
                                                                 <td>
-                                                                    <input class="form-control" type="text"
-                                                                        style="min-width:150px" name="items[{{ $item->id }}][total]"
+                                                                    <input class="form-control total" type="text"
+                                                                        style="min-width:150px"
+                                                                        name="items[{{ $item->id }}][total]"
                                                                         value="{{ $item->total }}"
                                                                         onkeypress="return /[0-9.]/i.test(event.key)">
                                                                 </td>
@@ -110,7 +113,7 @@
                                                         <tr>
                                                             <td colspan="5" class="text-right">Sub Total :</td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
-                                                                <input class="form-control text-right"
+                                                                <input readonly class="form-control text-right subtotal"
                                                                     onkeypress="return /[0-9.,%]/.test(event.key)"
                                                                     type="text" name="subtotal"
                                                                     value="{{ $miscellaneous->subtotal }}">
@@ -121,7 +124,7 @@
                                                                 Others :
                                                             </td>
                                                             <td style="text-align: right; padding-right: 30px;width: 230px">
-                                                                <input class="form-control text-right"
+                                                                <input class="form-control text-right others"
                                                                     onkeypress="return /[0-9.,]/i.test(event.key)"
                                                                     type="text" name="others"
                                                                     value="{{ $miscellaneous->others }}">
@@ -133,7 +136,7 @@
                                                             </td>
                                                             <td
                                                                 style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
-                                                                <input class="form-control text-right"
+                                                                <input readonly class="form-control text-right grandtotal"
                                                                     onkeypress="return /[0-9.,]/i.test(event.key)"
                                                                     type="text" name="grandtotal"
                                                                     value="{{ $miscellaneous->grandtotal }}">
@@ -145,7 +148,8 @@
                                         </div>
                                     </div>
                                     <div class="submit-section">
-                                        <button type="submit" class="btn  submit-btn" style="background: var(--own-black)">UPDATE</button>
+                                        <button type="submit" class="btn  submit-btn"
+                                            style="background: var(--own-black)">UPDATE</button>
                                     </div>
                                 </form>
                             </div>
@@ -157,20 +161,20 @@
         </div>
     </div>
     <!-- metisMenu JS
-                                                        ============================================ -->
+                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                            ============================================ -->
+                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                            ============================================ -->
+                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                        ============================================ -->
+                                                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     {{-- Data table JS --}}
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -183,21 +187,45 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'Start') { //Start date selected - update End Date picker
-                $("#End").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#Start").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const updateTotals = function() {
+                let subtotal = 0;
+                document.querySelectorAll('.total').forEach(function(totalField) {
+                    const totalValue = parseFloat(totalField.value) || 0;
+                    subtotal += totalValue;
+                });
+
+                document.querySelector('.subtotal').value = subtotal.toFixed(3);
+                updateGrandTotal();
             };
-            ///--- Component Binding ---///
-            $('#Start, #End').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+
+            const updateGrandTotal = function() {
+                const subtotal = parseFloat(document.querySelector('.subtotal').value) || 0;
+                const others = parseFloat(document.querySelector('.others').value) || 0;
+                const grandTotal = subtotal + others;
+                document.querySelector('.grandtotal').value = grandTotal.toFixed(3);
+            };
+
+            const othersInput = document.querySelector('.others');
+            othersInput.addEventListener('input', updateGrandTotal);
+
+            document.querySelectorAll('.total').forEach(function(totalField) {
+                totalField.addEventListener('change', updateTotals);
+            });
+
+            document.addEventListener('input', updateTotals);
+        });
+
+
     </script>
 @endsection
