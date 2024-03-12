@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\RentController;
+use App\Http\Controllers\Admin\ElectricityController;
 
 
 
@@ -100,11 +101,6 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::post('payroll/update/{id}', 'payrollUpdate')->name('payroll/update');
     Route::get('payroll/delete/{id}', 'payrollDelete')->name('payroll/delete');
 
-    Route::get('electricity', 'electricity')->name('electricity');
-    Route::get('electricity/create', 'electricityCreate')->name('electricity/create');
-    Route::get('electricity/view', 'electricityView')->name('electricity/view');
-    Route::get('electricity/edit', 'electricityEdit')->name('electricity/edit');
-
     Route::get('others', 'others')->name('others');
     Route::get('others/create', 'othersCreate')->name('others/create');
     Route::get('others/view', 'othersView')->name('others/view');
@@ -117,9 +113,10 @@ Route::controller(RentController::class)->prefix('admin')->middleware(['adminAut
     Route::get('rent', 'rent')->name('rent');
     Route::get('rent/create', 'rentCreate')->name('rent/create');
     Route::post('rent/create', 'rentCreatePost')->name('rent/create');
-    Route::get('rent/view', 'rentView')->name('rent/view');
+    Route::get('rent/view/{id}', 'rentView')->name('rent/view');
     Route::get('rent/edit/{id}', 'rentEdit')->name('rent/edit');
     Route::post('rent/update/{id}', 'rentUpdate')->name('rent/update');
+    Route::get('rent/delete/{id}', 'rentDelete')->name('rent/delete');
 });
 
 // ------------------------- InvoiceController ----------------------- //
@@ -197,4 +194,14 @@ Route::controller(AccountController::class)->prefix('admin')->middleware('adminA
     Route::get('accounts/delete/{id}', 'accountDelete')->name('accounts/delete');
     Route::post('accounts/import', 'accountsImport')->name('accounts/import');
     Route::get('accountReportsearch', 'accountReportSearchBydate')->name('accountReportsearch');
+});
+
+// ======================== ElectricityController ======================== //
+Route::controller(ElectricityController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
+    Route::get('electricity', 'electricity')->name('electricity');
+    Route::get('electricity/create', 'electricityCreate')->name('electricity/create');
+    Route::post('electricity/create', 'electricityCreatePost')->name('electricity/create');
+    Route::get('electricity/view', 'electricityView')->name('electricity/view');
+    Route::get('electricity/edit/{id}', 'electricityEdit')->name('electricity/edit');
+    Route::post('electricity/update/{id}', 'electricityUpdate')->name('electricity/update');
 });

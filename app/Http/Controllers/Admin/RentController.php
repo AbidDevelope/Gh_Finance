@@ -75,7 +75,7 @@ class RentController extends Controller
                     $bankName = $request->chequeBankName[$value];
                 } elseif ($paymentMode == 'Online' && isset($request->onlineBankName[$value])) {
                     $bankName = $request->onlineBankName[$value];
-            }
+                 }
 
                 $rentPayment = new ExpensePayment([
                     'expense_type_id' => $rent->id,
@@ -103,9 +103,10 @@ class RentController extends Controller
       }
    }
 
-   public function rentView()
+   public function rentView($id)
     {
-        return view('admin.rent.rent-view');
+        $rents = Rent::find($id);
+        return view('admin.rent.rent-view', compact('rents'));
     }
 
    public function rentEdit($id)
@@ -174,13 +175,12 @@ class RentController extends Controller
                 }
             }
 
-            $expense = Expense::where('expense_type_id', $id)->get();
-            // dd($expense);
+            $expense = Expense::where('expense_type_id', $id)->first();
             if($expense)
             {
-                $expense = new Expense();
-                $expense->grandtotal = $request->grandtotal;
-                $expense->save();
+                $expense->update([
+                'grandtotal' => $request->grandtotal,
+               ]);
                 
             }
         }
@@ -188,5 +188,20 @@ class RentController extends Controller
         session()->flash('success', 'Rent Updated Successfully');
         return redirect()->route('rent');
       }
+   }
+
+   public function rentDelete($id)
+   {
+      $rents = Rent::find($id);
+      if($rents)
+      {
+        $rents->rentItems()->delete();
+        $rents->rentPayment()->delete();
+        $rents->expenses()->delete();
+        $rents->delete();
+      }
+
+      session()->flash('success', 'Rent Deleted Successfully');
+      redirect()->back();
    }
 }
