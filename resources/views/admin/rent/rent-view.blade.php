@@ -33,36 +33,28 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Date:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $rents->rent_date }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Rent Month:</td>
-                                                    <td class="text-right"></td>
+                                                    <td>Rent Others:</td>
+                                                    <td class="text-right">{{ $rents->others }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Rent Amount:</td>
-                                                    <td class="text-right"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Used By:</td>
-                                                    <td class="text-right"></td>
+                                                    <td>Rent GrandTotal:</td>
+                                                    <td class="text-right">{{ $rents->grandtotal }}</td>
                                                 </tr>
                                                
                                                 <tr>
-                                                    <td>Payment Mode:</td>
-                                                    <td class="text-right"></td>
+                                                    <td>Total Payment:</td>
+                                                    <td class="text-right">{{ $rents->total_payment }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Remarks:</td>
-                                                    <td class="text-right"></td>
+                                                    <td>Rent Remarks:</td>
+                                                    <td class="text-right">{{ $rents->remarks }}</td>
                                                 </tr>
 
                                             </tbody>
                                         </table>
-                                        {{-- <p class="m-b-5">Progress <span class="text-success float-right">40%</span></p>
-                                        <div class="progress progress-xs mb-0">
-                                            <div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="40%" style="width: 40%"></div>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

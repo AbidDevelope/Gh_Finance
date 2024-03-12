@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Rent;
+use App\Models\Electricity;
 
 class ExpensePayment extends Model
 {
@@ -24,5 +25,10 @@ class ExpensePayment extends Model
     public function rents()
     {
         return $this->belongsTo(Rent::class);
+    }
+
+    public function electricity()
+    {
+        return $this->belongsTo(Electricity::class);
     }
 }

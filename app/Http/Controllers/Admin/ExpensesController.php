@@ -560,30 +560,6 @@ class ExpensesController extends Controller
 
     // Payroll Controller End
 
-     
-
-     // Electricity Controller Start
-     public function electricity()
-     {
-         return view('admin.electricity.electricity');
-     }
-
-     public function electricityCreate()
-    {
-        return view('admin.electricity.electricity-create');
-    }
-
-    public function electricityView()
-     {
-         return view('admin.electricity.electricity-view');
-     }
-
-    public function electricityEdit()
-    {
-        return view('admin.electricity.electricity-edit');
-    }
-     // Electricity Controller End
-
      // Others Controller Start
      public function others()
      {

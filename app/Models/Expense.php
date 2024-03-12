@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ExpenseItem;
 use App\Models\Project;
+use App\Models\Rent;
 use App\Models\Miscellaneous;
 
 class Expense extends Model
@@ -30,5 +31,10 @@ class Expense extends Model
     public function miscellaneous()
     {
         return $this->belongsTo(Miscellaneous::class);
+    }
+
+    public function rent()
+    {
+        return $this->belongsTo(Rent::class);
     }
 }

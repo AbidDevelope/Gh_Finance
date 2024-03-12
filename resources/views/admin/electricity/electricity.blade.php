@@ -127,7 +127,7 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-3">
                         @if (Session::has('success'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-success" id="successAlert">
                                 {{ Session::get('success') }}
                             </div>
                         @endif
@@ -142,50 +142,52 @@
                             <table id="dataTable">
                                 <thead>
                                     <tr role="row">
-                                        <th class="text-center"
-                                            style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Date</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Consumption Month</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Electricity Unit</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Amount</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Actions</th>
+                                        <th style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
+                                        <th style="border-radius: 0 !important;">Date</th>
+                                        <th style="border-radius: 0 !important;">Remarks</th>
+                                        <th style="border-radius: 0 !important;">Electricity Amount</th>
+                                        <th style="border-radius: 0 !important;">Total Pay</th>
+                                        <th style="border-radius: 0 !important;" class="text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @dd($expenses) --}}
-                                    {{-- @if (count($expenses) > 0) --}}
-                                    {{-- @foreach ($expenses as $index => $item) --}}
-                                    <tr>
-                                        <td class="text-center" style="border-radius: 0 !important;"></td>
-                                        <td class="text-center" style="border-radius: 0 !important;"></td>
-                                        <td class="text-center" style="border-radius: 0 !important;"></td>
-                                        <td class="text-center" style="border-radius: 0 !important;"></td>
-                                        <td class="text-center" style="border-radius: 0 !important;"></td>
 
-                                        <td class="text-center" style="border-radius: 0 !important;">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon" data-toggle="dropdown"
-                                                    aria-expanded="false"><img
-                                                        src="{{ asset('assets/admin/img/icon/action.png') }}"
-                                                        alt=""></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" {{-- href="{{ route('expenses/view', $item->id) }}"><i --}}
-                                                        href="{{ route('electricity/view') }}"><i
-                                                            class="fa fa-eye m-r-5"></i> View</a>
-                                                    <a class="dropdown-item" href="{{ route('electricity/edit') }}"><i
-                                                            {{-- href="{{ route('expenses/edit', $item->id) }}"><i --}} class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" {{-- href="{{ route('expenses/delete', $item->id) }}"><i --}} href="{#"><i
-                                                            class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    {{-- @endforeach --}}
-                                    {{-- @else --}}
-                                    <tr>
-                                        <td colspan="6" class="text-center">No Record Found</td>
-                                    </tr>
-                                    {{-- @endif --}}
+                                    @if (count($electricity) > 0)
+                                        @foreach ($electricity as $index => $item)
+                                            <tr>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $index + 1 }}</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ \Carbon\Carbon::parse($item->electricity_date)->format('d/m/Y') }}
+                                                </td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $item->remarks }}</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $item->grandtotal }}</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $item->total_payment }}</td>
+
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon" data-toggle="dropdown"
+                                                            aria-expanded="false"><img
+                                                                src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                alt=""></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('electricity/view') }}"><i
+                                                                    class="fa fa-eye m-r-5"></i> View</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('electricity/edit', $item->id) }}"><i
+                                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                            <a class="dropdown-item" href="#"><i
+                                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
 
@@ -202,34 +204,37 @@
     </div>
 
     <!-- metisMenu JS
-                                                            ============================================ -->
+                                                                ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                            ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
     <script>
-        $('#dataTable').DataTable();
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                'language': {
+                    'emptyTable': 'No records available'
+                }
+            });
+        });
     </script>
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
-    <script>
-        flatpickr(".datepicker", {});
-    </script>
     <script>
         const choices = new Choices('[data-trigger]', {
             searchEnabled: false,
@@ -242,21 +247,17 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'start_date') { //Start date selected - update End Date picker
-                $("#end_date").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#start_date").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#start_date, #end_date').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+        $(document).ready(function() {
+            ('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy',
+            });
+        });
+    </script>
+    <script>
+        setTimeout(function() {
+            document.getElementById('successAlert').style.display = 'none';
+        }, 3000);
     </script>
 @endsection
