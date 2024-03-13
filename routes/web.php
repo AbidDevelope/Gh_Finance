@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\RentController;
 use App\Http\Controllers\Admin\ElectricityController;
+use App\Http\Controllers\Admin\ReimbursementController;
 
 
 
@@ -100,11 +101,6 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('payroll/edit/{id}', 'payrollEdit')->name('payroll/edit');
     Route::post('payroll/update/{id}', 'payrollUpdate')->name('payroll/update');
     Route::get('payroll/delete/{id}', 'payrollDelete')->name('payroll/delete');
-
-    Route::get('others', 'others')->name('others');
-    Route::get('others/create', 'othersCreate')->name('others/create');
-    Route::get('others/view', 'othersView')->name('others/view');
-    Route::get('others/edit', 'othersEdit')->name('others/edit');
 });
 Route::get('/project-data/{id}',[ExpensesController::class, 'projectDataGet'])->name('project.data');
 
@@ -201,7 +197,19 @@ Route::controller(ElectricityController::class)->prefix('admin')->middleware(['a
     Route::get('electricity', 'electricity')->name('electricity');
     Route::get('electricity/create', 'electricityCreate')->name('electricity/create');
     Route::post('electricity/create', 'electricityCreatePost')->name('electricity/create');
-    Route::get('electricity/view', 'electricityView')->name('electricity/view');
+    Route::get('electricity/view/{id}', 'electricityView')->name('electricity/view');
     Route::get('electricity/edit/{id}', 'electricityEdit')->name('electricity/edit');
     Route::post('electricity/update/{id}', 'electricityUpdate')->name('electricity/update');
+    Route::get('electricity/delete/{id}', 'electricityDelete')->name('electricity/delete');
+    Route::post('file/upload', 'fileUpload')->name('file/upload');
+});
+
+// ================================ ReimbursementController ============================= //
+Route::controller(ReimbursementController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
+    Route::get('reimbursement', 'reimbursement')->name('reimbursement');
+    Route::get('reimbursement/create', 'reimbursementCreate')->name('reimbursement/create');
+    Route::post('reimbursement/create', 'reimbursementCreatePost')->name('reimbursement/create');
+    Route::get('reimbursement/view/{id}', 'reimbursementView')->name('reimbursement/view');
+    Route::get('reimbursement/edit/{id}', 'reimbursementEdit')->name('reimbursement/edit');
+    Route::get('reimbursement/delete/{id}', 'reimbursementDelete')->name('reimbursement/delete');
 });

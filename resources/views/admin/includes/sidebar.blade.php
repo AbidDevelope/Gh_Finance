@@ -1027,7 +1027,7 @@
                                     </svg><span class="ml-1 text hoverlist">Petty Cash </span>
                                 </a></div>
                             <div class=" text-black-50 hoverbg d-flex justify-content-start"> <a
-                                    class="left_margin text-black-50 pb-2" href="{{ route('others') }}"><svg
+                                    class="left_margin text-black-50 pb-2" href="{{ route('reimbursement') }}"><svg
                                         class="hoverlist" width="20" height="20" viewBox="0 0 683 683"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path

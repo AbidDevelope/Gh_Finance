@@ -75,11 +75,11 @@
                                         <div class="form-group">
                                             {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
 
-                                            <input type="text" name="start_date" id="start_date"
+                                            <input type="text" name="start_date"
                                                 placeholder="Select Start Date"
-                                                class="form-control cursor placeholder bg-white rounded text-black-50"
+                                                class="form-control cursor placeholder datepicker bg-white rounded text-black-50"
                                                 style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
-                                                value="{{ old('start_date') }}">
+                                                value="{{ request('start_date') }}">
                                             @if ($errors->has('start_date'))
                                                 <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                             @endif
@@ -87,13 +87,12 @@
                                     </div>
                                     <div class="container  d-flex gap-4 ">
                                         <div class=" form-group">
-                                            {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
-                                            <!-- Input with Bootstrap styling -->
-                                            <input type="text" id="end_date"
-                                                class="form-control cursor placeholder bg-white text-black-50 rounded "
+                    
+                                            <input type="text"
+                                                class="form-control cursor placeholder bg-white text-black-50 rounded datepicker "
                                                 name="end_date" placeholder="Select End Date"
                                                 style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
-                                                value="{{ old('end_date') }}">
+                                                value="{{ request('end_date') }}">
                                             @if ($errors->has('end_date'))
                                                 <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                             @endif
@@ -110,21 +109,26 @@
                         </div>
                     </div>
                     <div class="container mx-3">
-                        <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('file/upload') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="d-flex gap-4">
                                 <input
                                     style="width: 230px; height: 35px;box-shadow: none;border: 1px solid var(--own-black);;"
                                     type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                <button type="submit"
+                                <button type="button"
                                     style=" !important; background-color:var(--own-black) !important; color:white !important;"
-                                    class="btn  rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
+                                    class="btn  rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Upload</button>
                                 @if ($errors->has('file'))
                                     <span class="text-danger">{{ $errors->first('file') }}</span>
                                 @endif
                             </div>
                         </form>
                     </div>
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div>{{$error}}</div>
+                        @endforeach
+                    @endif
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-3">
                         @if (Session::has('success'))
                             <div class="alert alert-success" id="successAlert">
@@ -175,12 +179,12 @@
                                                                 alt=""></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item"
-                                                                href="{{ route('electricity/view') }}"><i
+                                                                href="{{ route('electricity/view', $item->id) }}"><i
                                                                     class="fa fa-eye m-r-5"></i> View</a>
                                                             <a class="dropdown-item"
                                                                 href="{{ route('electricity/edit', $item->id) }}"><i
                                                                     class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#"><i
+                                                            <a class="dropdown-item" href="{{ route('electricity/delete', $item->id) }}"><i
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>
@@ -248,7 +252,7 @@
     {{-- date Format --}}
     <script>
         $(document).ready(function() {
-            ('.datepicker').datepicker({
+            $('.datepicker').datepicker({
                 changeMonth: true,
                 changeYear: true,
                 dateFormat: 'dd/mm/yy',

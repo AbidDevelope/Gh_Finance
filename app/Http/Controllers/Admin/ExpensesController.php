@@ -559,26 +559,4 @@ class ExpensesController extends Controller
     }
 
     // Payroll Controller End
-
-     // Others Controller Start
-     public function others()
-     {
-         return view('admin.others.others');
-     }
-
-     public function othersCreate()
-    {
-        return view('admin.others.others-create');
-    }
-
-    public function othersView()
-     {
-         return view('admin.others.others-view');
-     }
-
-    public function othersEdit()
-    {
-        return view('admin.others.others-edit');
-    }
-     // Others Controller End
 }

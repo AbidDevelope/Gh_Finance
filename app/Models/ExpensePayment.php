@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Rent;
 use App\Models\Electricity;
+use App\Models\Reimbursement;
 
 class ExpensePayment extends Model
 {
@@ -30,5 +31,10 @@ class ExpensePayment extends Model
     public function electricity()
     {
         return $this->belongsTo(Electricity::class);
+    }
+
+    public function reimbursement()
+    {
+      return $this->belongsTo(Reimbursement::class);
     }
 }
