@@ -211,5 +211,6 @@ Route::controller(ReimbursementController::class)->prefix('admin')->middleware([
     Route::post('reimbursement/create', 'reimbursementCreatePost')->name('reimbursement/create');
     Route::get('reimbursement/view/{id}', 'reimbursementView')->name('reimbursement/view');
     Route::get('reimbursement/edit/{id}', 'reimbursementEdit')->name('reimbursement/edit');
+    Route::post('reimbursement/update/{id}', 'reimbursementUpdate')->name('reimbursement/update');
     Route::get('reimbursement/delete/{id}', 'reimbursementDelete')->name('reimbursement/delete');
 });

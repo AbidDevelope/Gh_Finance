@@ -23,15 +23,15 @@
                     <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                             <div class="form-section bg-white">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">Edit Reimburse</h4>
+                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">Edit
+                                    Reimburse</h4>
                                 <hr class="border-top-grey">
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)
                                         <div class="alert-danger">{{ $error }}</div>
                                     @endforeach
                                 @endif
-                                <form action="{{ route('miscellaneous/create') }}" method="post"
-                                    enctype="multipart/form-data">
+                                <form action="{{ route('reimbursement/update', $reimbursement->id) }}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
@@ -44,13 +44,15 @@
                                             <div class="form-group">
                                                 <label>Select date</label>
                                                 <input name="reimbursement_date" class="form-control datepicker"
-                                                    type="text" value="{{ \Carbon\Carbon::parse($reimbursement->reimbursement_date)->format('d/m/Y') }}">
+                                                    type="text"
+                                                    value="{{ \Carbon\Carbon::parse($reimbursement->reimbursement_date)->format('d/m/Y') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Remarks</label>
-                                                <input name="remarks" class="form-control" type="text" value="{{ $reimbursement->remarks }}">
+                                                <input name="remarks" class="form-control" type="text"
+                                                    value="{{ $reimbursement->remarks }}">
                                             </div>
                                         </div>
                                     </div>
@@ -68,30 +70,30 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($reimbursement->reimbursementItems as $item)
-                                                        <tr>
-                                                            <td>
-                                                                <input class="form-control" type="text"
-                                                                    style="min-width:10px" name="description[]"
-                                                                    value="{{ $item->description }}">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control datepicker"
-                                                                    name="date[]"
-                                                                    value="{{ \Carbon\Carbon::parse( $item->date)->format('d/m/Y') }}"
-                                                                    placeholder="DD/MM/YYYY">
+                                                            <tr>
+                                                                <td>
+                                                                    <input class="form-control" type="text"
+                                                                        style="min-width:10px" name="items[{{ $item->id }}][description]"
+                                                                        value="{{ $item->description }}">
                                                                 </td>
-                                                            <td>
-                                                                <input class="form-control" type="text"
-                                                                style="min-width:10px" name="employee_name[]"
-                                                                value="{{ $item->employee_name }}">
-                                                            </td>
-                                                            <td>
-                                                                <input class="form-control total" type="text"
-                                                                style="min-width:150px" name="total[]"
-                                                                    value="{{ $item->total }}"
-                                                                    onkeypress="return /[0-9.]/i.test(event.key)">
-                                                            </td>
-                                                        </tr>
+                                                                <td>
+                                                                    <input type="text" class="form-control datepicker"
+                                                                        name="items[{{ $item->id }}][date]"
+                                                                        value="{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}"
+                                                                        placeholder="DD/MM/YYYY">
+                                                                </td>
+                                                                <td>
+                                                                    <input class="form-control" type="text"
+                                                                        style="min-width:10px" name="items[{{ $item->id }}][employee_name]"
+                                                                        value="{{ $item->employee_name }}">
+                                                                </td>
+                                                                <td>
+                                                                    <input class="form-control total" type="text"
+                                                                        style="min-width:150px" name="items[{{ $item->id }}][total]"
+                                                                        value="{{ $item->total }}"
+                                                                        onkeypress="return /[0-9.]/i.test(event.key)">
+                                                                </td>
+                                                            </tr>
                                                         @endforeach
                                                     </tbody>
                                                 </table>
@@ -162,7 +164,7 @@
                                                                 name="paymentItems[{{ $item->id }}][payment_date]" style="display: none" value="{{ \Carbon\Carbon::parse($item->payment_date)->format('d/m/Y') }} ">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control common-field amount" type="text"
+                                                            <input class="form-control common-field amount" type="text"  onkeypress="return /[0-9.,]/i.test(event.key)"
                                                                 name="paymentItems[{{ $item->id }}][amount]" placeholder="Amount" value="{{ $item->amount }}"
                                                                 style="display: none">
                                                         </td>
@@ -203,13 +205,14 @@
                                                     <td
                                                         style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
                                                         <input readonly class="form-control text-right totalReceivable"
-                                                            placeholder="00.000" type="text" name="total_payment" value="{{ $reimbursement->total_payment }}">
+                                                            placeholder="00.000" type="text" name="total_payment"
+                                                            value="{{ $reimbursement->total_payment }}">
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                   
+
                                     <div class="submit-section">
                                         <button type="submit" class="btn submit-btn"
                                             style="background: var(--own-black)">UPDATE</button>
@@ -224,20 +227,20 @@
         </div>
     </div>
     <!-- metisMenu JS
-                                                        ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                            ============================================ -->
+                                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                            ============================================ -->
+                                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                        ============================================ -->
+                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     {{-- Data table JS --}}
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -251,48 +254,169 @@
     {{-- date Format --}}
 
     <script>
-       $(document).ready(function(){
-        $('.datepicker').datepicker({
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'dd/mm/yy'
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
         });
-       });
     </script>
 
-<script>
-    $(document).ready(function() {
-        // Function to update subtotal and grandtotal
-        function updateTotals() {
-            var total = 0;
-            var others = parseFloat($('.others').val()) || 0;
+    <script>
+        $(document).ready(function() {
+            // Function to update subtotal and grandtotal
+            function updateTotals() {
+                var total = 0;
+                var others = parseFloat($('.others').val()) || 0;
 
-            // Sum all total values
-            $('.total').each(function() {
-                var value = parseFloat($(this).val()) || 0;
-                total += value;
+                // Sum all total values
+                $('.total').each(function() {
+                    var value = parseFloat($(this).val()) || 0;
+                    total += value;
+                });
+
+                // Update subtotal and grandtotal
+                $('.subtotal').val(total.toFixed(3));
+                $('.grandtotal').val((total + others).toFixed(3));
+            }
+
+            // Event listener for changes in the 'total' inputs
+            $(document).on('input', '.total', function() {
+                updateTotals();
             });
 
-            // Update subtotal and grandtotal
-            $('.subtotal').val(total.toFixed(3));
-            $('.grandtotal').val((total + others).toFixed(3));
-        }
+            $('#customFields').on('click', '.remove-row', function() {
+                $(this).closest('tr').remove();
+                updateTotals();
+            });
 
-        // Event listener for changes in the 'total' inputs
-        $(document).on('input', '.total', function() {
-            updateTotals();
+            // Event listener for changes in the 'others' input
+            $(document).on('input', '.others', function() {
+                updateTotals();
+            });
         });
+    </script>
+    <script>
+        $(document).ready(function() {
 
-        $('#customFields').on('click', '.remove-row', function() {
-            $(this).closest('tr').remove();
-            updateTotals();
-        });
+            var maxField = 5;
+            var addButton = $('#add-row');
+            var wrapper = $('#paymentFields');
+            var fieldHTML =
+                '<tr><td style="width:50px"><a href="javascript:void(0)" class="remove-row" title="Remove"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td><td><select name="paymentMode[]" class="form-control payment-mode"><option value="" disabled selected>Select Mode</option><option value="Cash">Cash</option><option value="Cheque">Cheque</option><option value="Online">Online</option></select></td><td><input class="form-control common-field datepicker" type="text" name="payment_date[]" placeholder="DD/MM/YYYY" style="display:none"></td><td><input class="form-control common-field amount" type="text" name="amount[]" placeholder="Amount" style="display:none"></td><td class="cash-fields" style="display:none"><input class="form-control" type="text" name="receivable[]" placeholder="Receivable By"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="chequeNumber[]" placeholder="Cheque Number"></td><td class="cheque-fields" style="display:none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td><td class="online-fields" style="display:none"><input class="form-control" type="text" name="transactionId[]" placeholder="Transaction ID"></td><td class="online-fields" style="display: none"><input class="form-control" type="text" name="bankName[]" placeholder="Bank Name"></td></tr>'; // New input field html
+            var x = 1;
 
-        // Event listener for changes in the 'others' input
-        $(document).on('input', '.others', function() {
-            updateTotals();
+            $(addButton).click(function() {
+                if (x < maxField) {
+                    x++;
+                    $(wrapper).append(fieldHTML);
+                    $('.datepicker').last().datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        dateFormat: 'dd/mm/yy'
+                    });
+                } else {
+                    alert('A maximum of ' + maxField + ' fields are allowed.');
+                }
+            });
+
+
+            $(wrapper).on('click', '.remove-row', function(e) {
+                e.preventDefault();
+                $(this).closest('tr').remove();
+                x--;
+            });
+
+            $(wrapper).on('change', '.payment-mode', function() {
+                var tr = $(this).closest('tr');
+                tr.find('.common-field, .cash-fields, .cheque-fields, .online-fields').hide();
+                tr.find('.common-field').css('display', 'inline-block');
+
+                if (this.value == 'Cash') {
+                    tr.find('.cash-fields').css('display', 'inline-block');
+                } else if (this.value == 'Cheque') {
+                    tr.find('.cheque-fields').css('display', 'inline-block');
+                } else if (this.value == 'Online') {
+                    tr.find('.online-fields').css('display', 'inline-block');
+                }
+            });
+
+            // Function to show fields based on the payment mode
+            function showFieldsBasedOnPaymentMode(row) {
+                var paymentMode = row.find('.payment-mode').val();
+
+                // Hide all optional fields initially
+                row.find('.common-field, .cash-fields, .cheque-fields, .online-fields').hide();
+
+                // Show fields based on the payment mode
+                if (paymentMode === 'Cash') {
+                    row.find('.common-field, .cash-fields').show();
+                } else if (paymentMode === 'Cheque') {
+                    row.find('.common-field, .cheque-fields').show();
+                } else if (paymentMode === 'Online') {
+                    row.find('.common-field, .online-fields').show();
+                }
+            }
+
+            // Iterate over each payment row to apply the visibility logic
+            $('tr').each(function() {
+                var row = $(this);
+                showFieldsBasedOnPaymentMode(row);
+
+                if (row.find('.payment-mode-disabled').val() !== '') {
+                    row.find('.payment-mode-disabled').prop('disabled', true);
+                }
+
+                // Additional logic to show any field that has a value
+                row.find('input').each(function() {
+                    if ($(this).val()) {
+                        $(this).show();
+                    }
+                });
+            });
         });
-    });
-</script>
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.querySelector('#paymentFields tbody');
+
+            // Function to update the total receivable based on amounts entered
+            const updateTotalReceivable = function() {
+                let totalReceivable = 0;
+                document.querySelectorAll('.amount').forEach(function(amountField) {
+                    const amountValue = parseFloat(amountField.value) || 0;
+                    totalReceivable += amountValue;
+                });
+
+                document.querySelector('.totalReceivable').value = totalReceivable.toFixed(3);
+            };
+
+            // Event listener for changes in the amount fields to update totals
+            document.querySelectorAll('.amount').forEach(function(amountField) {
+                amountField.addEventListener('input',
+                    updateTotalReceivable);
+            });
+
+            // Function to add a new row
+            $('#addRowButton').click(function() {
+                $('#paymentFields tbody').append(fieldHTML);
+                $('.amount').last().on('input',
+                    updateTotalReceivable);
+                updateTotalReceivable();
+            });
+
+            // Function to handle row removal and update totals accordingly
+            $('#paymentFields').on('click', '.payment-remove-row', function() {
+                $(this).closest('tr').remove();
+                updateTotalReceivable();
+            });
+
+            updateTotalReceivable();
+
+            wrapper.addEventListener('input', updateTotalReceivable);
+            wrapper.addEventListener('click', removeRowAndUpdateTotals);
+        });
+    </script>
 
 @endsection

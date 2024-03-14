@@ -187,7 +187,7 @@
                                                                 name="paymentItems[{{ $item->id }}][payment_date]" style="display: none" value="{{ \Carbon\Carbon::parse($item->payment_date)->format('d/m/Y') }} ">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control common-field amount" type="text"
+                                                            <input class="form-control common-field amount" type="text"  onkeypress="return /[0-9.,]/i.test(event.key)"
                                                                 name="paymentItems[{{ $item->id }}][amount]" placeholder="Amount" value="{{ $item->amount }}"
                                                                 style="display: none">
                                                         </td>

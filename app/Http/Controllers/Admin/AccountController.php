@@ -15,20 +15,26 @@ use \Carbon\Carbon;
 class AccountController extends Controller
 {
     public function accounts()
-{
-    $accounts = Account::all()->map(function($item){
-        $item->amount_deposited = preg_match('/[\d,]+\.\d+/', $item->amount_deposited, $matchesDeposited) ? floatval(str_replace(',', '', $matchesDeposited[0])) : 0;
+    {
+        $currentYear = now()->year;
 
-        $item->amount_withdrawn = preg_match('/[\d,]+\.\d+/', $item->amount_withdrawn, $matchedWithdrawn) ? floatval(str_replace(',', '', $matchedWithdrawn[0])) : 0;
+    $accounts = Account::whereYear('date', '<=', $currentYear)
+                       ->orderBy('date', 'desc')
+                       ->get();
 
-        return $item;
-    });
+        $accounts = $accounts->map(function($item){
+            $item->amount_deposited = preg_match('/[\d,]+\.\d+/', $item->amount_deposited, $matchesDeposited) ? floatval(str_replace(',', '', $matchesDeposited[0])) : 0;
 
-    $totalDeposited = $accounts->sum('amount_deposited');
-    $totalWithdrwan = $accounts->sum('amount_withdrawn');
+            $item->amount_withdrawn = preg_match('/[\d,]+\.\d+/', $item->amount_withdrawn, $matchedWithdrawn) ? floatval(str_replace(',', '', $matchedWithdrawn[0])) : 0;
 
-    return view('admin.accounts.accounts', compact('accounts', 'totalDeposited', 'totalWithdrwan'));
-}
+            return $item;
+        });
+
+        $totalDeposited = $accounts->sum('amount_deposited');
+        $totalWithdrwan = $accounts->sum('amount_withdrawn');
+
+        return view('admin.accounts.accounts', compact('accounts', 'totalDeposited', 'totalWithdrwan'));
+    }
 
 
     public function accountCreate()

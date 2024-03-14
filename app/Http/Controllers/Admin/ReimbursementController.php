@@ -120,8 +120,76 @@ class ReimbursementController extends Controller
     public function reimbursementEdit($id)
     {
         $reimbursement = Reimbursement::with('reimbursementItems')->find($id);
-        $payments = ExpensePayment::where('expense_type', 'electricity')->where('expense_type_id', $id)->get();
+        $payments = ExpensePayment::where('expense_type', 'reimbursement')->where('expense_type_id', $id)->get();
         return view('admin.reimbursement.reimbursement-edit', compact('reimbursement', 'payments'));
+    }
+
+    public function reimbursementUpdate(Request $request, $id)
+    {
+      $validate = Validator::make($request->all(),[
+        'reimbursement_date'  => 'required',  'remarks'  => 'required',
+        'subtotal'  => 'required',  'others'  => 'required',
+        'grandtotal'  => 'required',
+      ]);
+
+      if($validate->fails())
+      {
+        return redirect()->back()->withErrors($validate)->withInput();
+      }
+      else
+      {
+          $reimbursement = Reimbursement::find($id);
+          if($reimbursement)
+          {
+            $reimbursementDate = DateTime::createFromFormat('d/m/Y', $request->reimbursement_date)->format('Y-m-d');
+            $reimbursement->update([
+              'reimbursement_date' => $reimbursementDate,
+              'remarks'  => $request->remarks,
+              'subtotal'  => $request->subtotal,
+              'others'  => $request->others,
+              'grandtotal'  => $request->grandtotal,
+              'total_payment'  => $request->total_payment,
+            ]);
+
+            $reimbursementData = $request->input('items', []);
+            foreach($reimbursementData as $itemId=>$itemData)
+            {
+              $reimbursementItem = ReimbursementItem::find($itemId);
+              if($reimbursementItem)
+              {
+                $reimbursementItem->description = $itemData['description'];
+                $reimbursementItem->date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['date']);
+                $reimbursementItem->employee_name = $itemData['employee_name'];
+                $reimbursementItem->total = $itemData['total'];
+                $reimbursementItem->save();
+              }
+            }
+
+            $paymentdata = $request->input('paymentItems', []);
+            foreach($paymentdata as $itemId=>$itemData)
+            {
+              $reimbursementPayment = ExpensePayment::find($itemId);
+              if($reimbursementPayment)
+              {
+                  $reimbursementPayment->payment_date = \Carbon\Carbon::createFromFormat('d/m/Y', $itemData['payment_date']);
+                  $reimbursementPayment->amount = $itemData['amount'];
+                  $reimbursementPayment->cheque_number = $itemData['cheque_number'];
+                  $reimbursementPayment->bank_name = $itemData['bank_name'];
+                  $reimbursementPayment->receivable_by = $itemData['receivable_by'];
+                  $reimbursementPayment->transaction_id = $itemData['transaction_id'];
+                  $reimbursementPayment->save();
+              }
+            }
+
+            $expense = Expense::where('expense_type', 'reimbursement')->where('expense_type_id', $id)->update([
+              'grandtotal'  => $request->grandtotal,
+            ]);
+          }
+
+          session()->flash('success', 'Data Updated Successfully');
+          return redirect()->route('reimbursement');
+
+      }
     }
 
     public function reimbursementDelete($id)
