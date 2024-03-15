@@ -13,9 +13,27 @@ use \Carbon\Carbon;
 
 class HRController extends Controller
 {
-   public function indemnityAndleave()
+   public function indemnityAndleave(Request $request)
    {
-      $indemnity = IndemnityLeave::orderBy('id', 'desc')->get()->map(function ($item) {
+
+    $currentYear = now()->year;
+    $year = $request->input('year');
+    // dd($year);
+    $availableYears = IndemnityLeave::selectRaw('YEAR(date) as year')
+                                      ->groupBy('year')
+                                      ->orderBy('year', 'desc')
+                                      ->get()
+                                      ->pluck('year');
+    if(!empty($year))
+    {
+       $indemnity = IndemnityLeave::whereYear('date', $year)->get();
+    }   
+    else
+    {
+        $indemnity = IndemnityLeave::whereYear('date', '<=', $currentYear)->orderBy('date', 'desc')->get();
+    }                               
+      
+      $indemnity = $indemnity->map(function ($item) {
          $item->amount_deposited = preg_match('/[\d,]+\.\d+/', $item->amount_deposited, $matchesDeposited) ? floatval(str_replace(',', '', $matchesDeposited[0])) : 0;
 
         $item->amount_withdrawn = preg_match('/[\d,]+\.\d+/', $item->amount_withdrawn, $matchedWithdrawn) ? floatval(str_replace(',', '', $matchedWithdrawn[0])) : 0;
@@ -26,7 +44,7 @@ class HRController extends Controller
       $totalIndemnity = $indemnity->sum('amount_deposited');
       $totalWithdrawn = $indemnity->sum('amount_withdrawn');
 
-      return view('admin.indemnityLeave.indemnity_leave', compact('indemnity', 'totalIndemnity', 'totalWithdrawn'));
+      return view('admin.indemnityLeave.indemnity_leave', compact('indemnity', 'totalIndemnity', 'totalWithdrawn', 'availableYears', 'year'));
    }
 
 
@@ -149,33 +167,39 @@ class HRController extends Controller
      return back()->with('success', 'Uploaded Successfully.');
     }
 
-    public function indemnityFilter(Request $request){
-      $validate = Validator::make($request->all(), [
-         'start_date' => 'required',  'end_date'  => 'required'
-     ]);
-     if($validate->fails())
-     {
-         return redirect()->back()->withErrors($validate)->withInput();
-     }else{
-    
-            $indemnity = IndemnityLeave::all()->map(function ($item) {
-               $item->amount_deposited = preg_match('/[\d,]+\.\d+/', $item->amount_deposited, $matchesDeposited) ? floatval(str_replace(',', '', $matchesDeposited[0])) : 0;
-      
-              $item->amount_withdrawn = preg_match('/[\d,]+\.\d+/', $item->amount_withdrawn, $matchedWithdrawn) ? floatval(str_replace(',', '', $matchedWithdrawn[0])) : 0;
-      
-               return $item;
-            });
-      
-            $totalIndemnity = $indemnity->sum('amount_deposited');
-            $totalWithdrawn = $indemnity->sum('amount_withdrawn');
-
-            $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
-            $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
-            $indemnity = IndemnityLeave::whereDate('date', '>=', $startDate)
-                                ->whereDate('date', '<=', $endDate)
-                                ->get();
-      
-            return view('admin.indemnityLeave.indemnity_leave', compact('indemnity', 'totalIndemnity', 'totalWithdrawn'));
-     }
+    public function indemnityExport(Request $request)
+    {
+        $year = $request->year;
+        dd($year);
     }
+
+    // public function indemnityFilter(Request $request){
+    //   $validate = Validator::make($request->all(), [
+    //      'start_date' => 'required',  'end_date'  => 'required'
+    //  ]);
+    //  if($validate->fails())
+    //  {
+    //      return redirect()->back()->withErrors($validate)->withInput();
+    //  }else{
+    
+    //         $indemnity = IndemnityLeave::all()->map(function ($item) {
+    //            $item->amount_deposited = preg_match('/[\d,]+\.\d+/', $item->amount_deposited, $matchesDeposited) ? floatval(str_replace(',', '', $matchesDeposited[0])) : 0;
+      
+    //           $item->amount_withdrawn = preg_match('/[\d,]+\.\d+/', $item->amount_withdrawn, $matchedWithdrawn) ? floatval(str_replace(',', '', $matchedWithdrawn[0])) : 0;
+      
+    //            return $item;
+    //         });
+      
+    //         $totalIndemnity = $indemnity->sum('amount_deposited');
+    //         $totalWithdrawn = $indemnity->sum('amount_withdrawn');
+
+    //         $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+    //         $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+    //         $indemnity = IndemnityLeave::whereDate('date', '>=', $startDate)
+    //                             ->whereDate('date', '<=', $endDate)
+    //                             ->get();
+      
+    //         return view('admin.indemnityLeave.indemnity_leave', compact('indemnity', 'totalIndemnity', 'totalWithdrawn'));
+    //  }
+    // }
 }

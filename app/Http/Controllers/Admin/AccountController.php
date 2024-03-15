@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AccountExport;
 use App\Imports\AccountImport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,13 +15,24 @@ use \Carbon\Carbon;
 
 class AccountController extends Controller
 {
-    public function accounts()
+    public function accounts(Request $request)
     {
         $currentYear = now()->year;
-
-    $accounts = Account::whereYear('date', '<=', $currentYear)
-                       ->orderBy('date', 'desc')
-                       ->get();
+        $year = $request->input('year');
+        // dd($year);
+        $availableYears = Account::selectRaw('YEAR(date) as year')
+                                ->groupBy('year')
+                                ->orderBy('year', 'desc')
+                                ->get()
+                                ->pluck('year');
+        
+        if (!empty($year)) {
+            $accounts = Account::whereYear('date', $year)->get();
+        } else {
+            $accounts = Account::whereYear('date', '<=', $currentYear)
+                            ->orderBy('date', 'desc')
+                            ->get();
+        }
 
         $accounts = $accounts->map(function($item){
             $item->amount_deposited = preg_match('/[\d,]+\.\d+/', $item->amount_deposited, $matchesDeposited) ? floatval(str_replace(',', '', $matchesDeposited[0])) : 0;
@@ -33,7 +45,7 @@ class AccountController extends Controller
         $totalDeposited = $accounts->sum('amount_deposited');
         $totalWithdrwan = $accounts->sum('amount_withdrawn');
 
-        return view('admin.accounts.accounts', compact('accounts', 'totalDeposited', 'totalWithdrwan'));
+        return view('admin.accounts.accounts', compact('accounts', 'totalDeposited', 'totalWithdrwan', 'availableYears', 'year'));
     }
 
 
@@ -194,5 +206,14 @@ class AccountController extends Controller
 
             return view('admin.accounts.accounts', compact('accounts', 'totalDeposited', 'totalWithdrwan'));
         }
+    }
+
+    public function accountExport(Request $request)
+    {
+        $year = $request->input('year'); 
+
+        $fileName = 'account_' . $year . '.xlsx';
+
+        return Excel::download(new AccountExport($year), $fileName);
     }
 }

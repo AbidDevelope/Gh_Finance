@@ -140,6 +140,7 @@ Route::controller(HRController::class)->prefix('admin')->middleware('adminAuthen
     Route::post('indemnity&leave/update/{id}', 'indemnityAndleaveUpdate')->name('indemnity&leave/update');
     Route::get('indemnity&leave/delete/{id}', 'indemnityLeaveDelete')->name('indemnity&leave/delete');
     Route::post('indemnity/import', 'indemnityImport')->name('indemnity/import');
+    Route::get('indemnity/export', 'indemnityExport')->name('indemnity/export');
     Route::get('indemnitysearchByDate', 'indemnityFilter')->name('indemnitysearchByDate');
 });
 
@@ -189,6 +190,7 @@ Route::controller(AccountController::class)->prefix('admin')->middleware('adminA
     Route::post('accounts/update/{id}', 'accountUpdate')->name('accounts/update');
     Route::get('accounts/delete/{id}', 'accountDelete')->name('accounts/delete');
     Route::post('accounts/import', 'accountsImport')->name('accounts/import');
+    Route::get('account/export', 'accountExport')->name('account/export');
     Route::get('accountReportsearch', 'accountReportSearchBydate')->name('accountReportsearch');
 });
 
