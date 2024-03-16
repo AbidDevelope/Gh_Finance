@@ -22,9 +22,11 @@
         background-color: var(--own-black) !important;
         color: white;
     }
+
     .pb {
         margin-bottom: -50px !important;
     }
+
     .placeholder::placeholder {
         font-size: 15px !important;
     }
@@ -55,11 +57,11 @@
                                         class="btn bg_button padding_y text-white rounded f-1 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                         <i class="fa fa-plus"></i>&nbsp; Create
                                     </a>
-                                    <a href="#"
+                                    <button id="exportButton"
                                         class="btn padding_y border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
                                         style="border-color: #0F1316 !important;">
                                         <i class="fa fa-file-export"></i> Export
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -81,12 +83,18 @@
                         </form>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 mt-4">
-                        <select name="year" id="" class="form-control">
-                            <option value="">All</option>
-                            <option value="">2023</option>
-                            <option value="">2022</option>
-                            <option value="">2021</option>
-                        </select>
+                        <form>
+                            <select name="year" onchange="this.form.submit()" class="form-control" id="">
+                                <option value="" selected>All</option>
+                                @foreach ($availableYears as $availableYear)
+                                    @if ($availableYear)
+                                        <option value="{{ $availableYear }}"
+                                            {{ (string) $availableYear === (string) $year ? 'selected' : '' }}>
+                                            {{ $availableYear }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </form>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-1">
                         @if (Session::has('success'))
@@ -115,7 +123,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-          
+
                                     @if (count($pettyCash) > 0)
                                         @foreach ($pettyCash as $index => $item)
                                             <tr>
@@ -166,21 +174,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                                        ============================================ -->
+                                                                                ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                            ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                            ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                        ============================================ -->
+                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -197,9 +205,7 @@
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
-    <script>
-        flatpickr(".datepicker", {});
-    </script>
+
     <script>
         const choices = new Choices('[data-trigger]', {
             searchEnabled: false,
@@ -212,17 +218,32 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        $(document).ready(function(){
-         $('.datepicker').datepicker({
-             changeMonth: true,
-             changeYear: true,
-             dateFormat: 'dd/mm/yy'
-         });
+        document.addEventListener('DOMContentLoaded', function() {
+            const exportBtn = document.getElementById('exportButton');
+            const yearSelect = document.querySelector('select[name="year"]');
+
+            exportBtn.addEventListener('click', function() {
+                const year = yearSelect.value;
+                let exportUrl = `{{ route('pettyCash/export') }}`;
+                if (year) {
+                    exportUrl += `?year=${year}`;
+                }
+                window.location.href = exportUrl;
+            });
         });
-     </script>
-     <script>
-         setTimeout(function(){
-             document.getElementById('successAlert').style.display = 'none';
-         }, 5000);
-     </script>
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+    <script>
+        setTimeout(function() {
+            document.getElementById('successAlert').style.display = 'none';
+        }, 3000);
+    </script>
 @endsection

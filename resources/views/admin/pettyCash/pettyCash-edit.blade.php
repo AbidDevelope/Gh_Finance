@@ -26,7 +26,7 @@
                                         <div class="alert-danger">{{ $error }}</div>
                                     @endforeach
                                 @endif
-                                <form action="{{ route('pettyCash/edit', $pettyCash->id) }}" method="post">
+                                <form action="{{ route('pettyCash/update', $pettyCash->id) }}" method="post">
                                     @csrf
                                     @if ($errors->any())
                                         @foreach ($errors->all() as $error)
@@ -192,44 +192,39 @@
             });
         });
     </script>
-    <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'Start') { //Start date selected - update End Date picker
-                $("#End").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#Start").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#Start, #End').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
-    </script>
+    
     {{-- Date Format  --}}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        var onDateSelect = function(selectedDate, input) {
-            if (input.id === 'Start') { //Start date selected - update End Date picker
-                $("#end_date").datepicker('option', 'minDate', selectedDate);
-            } else { //End date selected - update Start Date picker
-                $("#Start").datepicker('option', 'maxDate', selectedDate);
-            }
-        };
-        var onDocumentReady = function() {
-            var datepickerConfiguration = {
-                dateFormat: "dd/mm/yy",
-                onSelect: onDateSelect
-            };
-            ///--- Component Binding ---///
-            $('#Start, #end_date').datepicker(datepickerConfiguration);
-        };
-        $(onDocumentReady);
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
     </script>
+    <script>
+        $(document).ready(function() {
+            // Function to calculate grand total
+            function calculateTotal() {
+                var amountDeposited = $('#amount_deposited').val() ? parseInt($('#amount_deposited').val()) : 0;
+                var amountWithdrawn = $('#amount_withdrawn').val() ? parseInt($('#amount_withdrawn').val()) : 0;
+
+                // Calculating grand total
+                var totalInAccount = amountDeposited - amountWithdrawn;
+
+                // Updating the total in account field
+                $('#total_in_account').val(totalInAccount);
+            }
+
+            // Event listeners for input fields
+            $('#amount_deposited, #amount_withdrawn').on('input', function() {
+                calculateTotal();
+            });
+        });
+    </script>
+
 @endsection

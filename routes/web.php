@@ -90,8 +90,7 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('search/miscellaneous', 'searchMiscellaneous')->name('search/miscellaneous');
     Route::get('miscellaneous/export', 'miscellaneousExport')->name('miscellaneous/export');
     Route::post('export-excel-csv', 'pettyCashImport')->name('export-excel-csv');
-    // Petty cash
-    // Route::post('pettyCash/create', 'pettyCashCreate')->name('pettyCash/create');
+    Route::get('pettyCash/export', 'pettyCashExport')->name('pettyCash/export');
 
     // Payroll Route Start
     Route::get('payroll', 'payroll')->name('payroll');
