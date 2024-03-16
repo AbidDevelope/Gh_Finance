@@ -105,7 +105,8 @@
                                 <thead>
                                     <tr role="row">
                                         <th style="width: 70px !important; border-radius: 0 !important;">Sr. No</th>
-                                        <th style="border-radius: 0 !important;">Project Id</th>
+                                        {{-- <th style="border-radius: 0 !important;">Project Id</th> --}}
+                                        <th style="border-radius: 0 !important;">Project Name</th>
                                         <th style="border-radius: 0 !important;">Quotation Number</th>
                                         <th style="border-radius: 0 !important;">Quotation Date </th>
                                         <th style="border-radius: 0 !important;">Amount</th>

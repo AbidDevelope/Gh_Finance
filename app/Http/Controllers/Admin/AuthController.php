@@ -23,13 +23,13 @@ class AuthController extends Controller
         $totalProjectRevenue = $projects->sum('project_value');
 
         $totalExpensesValue = $projects->reduce(function($carry, $project){
-            if($project->pettyCash)
-            {
-                $sumExpenses = $projects->pettyCash->sum('total_in_account');
-            }else{
-                $sumExpenses = 0;
-            }
-            return $sumExpenses;
+            // if($project->pettyCash)
+            // {
+            //     $sumExpenses = $projects->pettyCash->sum('total_in_account');
+            // }else{
+            //     $sumExpenses = 0;
+            // }
+            // return $sumExpenses;
         },0);
 
         $totalRevenue = $totalProjectRevenue;
@@ -38,7 +38,7 @@ class AuthController extends Controller
         $totalDesign = $designValue;
         $totalConstruction = $constructionValue;
         $totalDesignConstruction = $designConstructionValue;
-        
+
         $piechartData = 0;
 
         $piechartData = [
@@ -60,7 +60,7 @@ class AuthController extends Controller
                 ]
             ]
         ];
-        
+
         $piechart = json_encode($piechartData);
 
         // dd($piechart);
@@ -75,13 +75,13 @@ class AuthController extends Controller
     public function postRegister(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'first_name'      => 'required|string|max:255',       'last_name' => 'required|string|max:255', 
+            'first_name'      => 'required|string|max:255',       'last_name' => 'required|string|max:255',
             'email'           => 'required|unique:admins',        'mobile'    => 'required',
             'landline'        => 'required',
-            'gender'          => 'required',                      'term_condition'  => 'required',     
+            'gender'          => 'required',                      'term_condition'  => 'required',
             'password'        => 'required|max:6'
         ]);
-        
+
         if($validator->fails())
         {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -112,7 +112,7 @@ class AuthController extends Controller
     public function postLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email'           => 'required',   
+            'email'           => 'required',
             'password'        => 'required|max:6'
         ]);
         if($validator->fails())
@@ -193,13 +193,13 @@ class AuthController extends Controller
 
                         $image = $request->file('image');
                         $imageName = time(). '.' . $image->getClientOriginalExtension();
-                        
+
                         $destinationPath = public_path('assets/admin/img/profile');
                         $image->move($destinationPath, $imageName);
                         $admin->image = $imageName;
                     }
                     $admin->save();
-                    
+
                     session()->flash('success', 'Profile updated successfully.');
                     return redirect()->back();
                 }

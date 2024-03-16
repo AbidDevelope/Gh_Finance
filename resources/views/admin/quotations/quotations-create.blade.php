@@ -162,6 +162,89 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    <div class="row mt-3">
+                                        <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-white" id="customFields">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width:50px"><a href="javascript:void(0)"
+                                                                id="add-row" class="text-success font-18"
+                                                                title="Add"><img
+                                                                    src="{{ asset('assets/admin/img/icon/plus.png') }}"
+                                                                    alt=""></a>
+                                                        </td>
+                                                        <td>
+                                                            <select name="paymentMode[]" class="form-control payment-mode"
+                                                                id="paymentMode">
+                                                                <option value="" disabled selected>Select Mode
+                                                                </option>
+                                                                <option value="Cash">Cash</option>
+                                                                <option value="Cheque">Cheque</option>
+                                                                <option value="Online">Online</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control common-field datepicker"
+                                                                type="text" placeholder="DD/MM/YYYY"
+                                                                name="payment_date[]" style="display: none">
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control common-field amount" type="text"
+                                                                name="amount[]" placeholder="Amount"
+                                                                style="display: none">
+                                                        </td>
+                                                        <td class="cash-fields" style="display: none">
+                                                            <input class="form-control" type="text"
+                                                                name="receivable[]" placeholder="Receivable By">
+                                                        </td>
+                                                        <td class="cheque-fields" style="display: none">
+                                                            <input class="form-control" type="text"
+                                                                name="chequeNumber[]" placeholder="Cheque Number">
+                                                        </td>
+                                                        <td class="cheque-fields" style="display: none">
+                                                            <input class="form-control" type="text" name="chequeBankName[]"
+                                                                placeholder="Bank Name">
+                                                        </td>
+                                                        <td class="online-fields" style="display: none">
+                                                            <input class="form-control" type="text"
+                                                                name="transactionId[]" placeholder="Transaction ID">
+                                                        </td>
+                                                        <td class="online-fields" style="display: none">
+                                                            <input class="form-control" type="text" name="onlineBankName[]"
+                                                                placeholder="Bank Name">
+                                                        </td>
+                                                        <!-- Example of an Add button, already in your code -->
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-white">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="5"
+                                                        style=" font-size: 15px; text-align: right; font-weight: bold">
+                                                        Total Receivable :
+                                                    </td>
+                                                    <td
+                                                        style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
+                                                        <input readonly class="form-control text-right totalReceivable"
+                                                            placeholder="00.000" type="text" name="total_receivable">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+
+
+
                                     <div class="submit-section">
                                         <button type="submit" class="btn color submit-btn"
                                             style="background:var(--own-black)">CREATE</button>

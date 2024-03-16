@@ -117,7 +117,8 @@
                                 <thead>
                                     <tr role="row">
                                         <th style="width: 70px !important;border-radius: 0 !important;">Sr. No.</th>
-                                        <th style="border-radius: 0 !important;">Project ID</th>
+                                        {{-- <th style="border-radius: 0 !important;">Project ID</th> --}}
+                                        <th style="border-radius: 0 !important;">Project Name</th>
                                         <th style="border-radius: 0 !important;">Invoice Number</th>
                                         <th style="border-radius: 0 !important;">Invoice Date</th>
                                         <th style="border-radius: 0 !important;">Action</th>
