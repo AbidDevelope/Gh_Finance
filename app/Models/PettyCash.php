@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Project;
 
 class PettyCash extends Model
 {
@@ -18,11 +19,12 @@ class PettyCash extends Model
         'amount_deposited',
         'amount_withdrawn',
         'project_name',
+        'total_in_account',
     ];
 
     public function projects()
     {
-       return $this->belongsTo(Project::class);
+       return $this->belongsTo(Project::class, 'project_id');
     }
 }
 

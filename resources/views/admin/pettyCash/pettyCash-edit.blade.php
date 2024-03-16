@@ -1,13 +1,6 @@
 <style>
-    .margin_top {
+    .margin_t {
         margin-top: -60px !important;
-    }
-
-    input.rounded:focus {
-        outline: none;
-        /* Removes the default focus outline */
-        border-color: #your-desired-color;
-        /* Change 'your-desired-color' to the color you want */
     }
 </style>
 
@@ -22,14 +15,18 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="margin_top mx-3">
-
+                    <div class=" margin_t mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-section bg-white">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">
-                                    Create PettyCash</h4>
+                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">Edit
+                                    PettyCash</h4>
                                 <hr class="border-top-grey">
-                                <form action="{{ route('pettyCash/create') }}" method="post">
+                                @if ($errors->any())
+                                    @foreach ($errors->all() as $error)
+                                        <div class="alert-danger">{{ $error }}</div>
+                                    @endforeach
+                                @endif
+                                <form action="{{ route('pettyCash/edit', $pettyCash->id) }}" method="post">
                                     @csrf
                                     @if ($errors->any())
                                         @foreach ($errors->all() as $error)
@@ -43,28 +40,28 @@
                                             <div class="form-group">
                                                 <label>Select Date</label>
                                                 <input type="text" class="form-control datepicker" name="date"
-                                                    value="{{ old('date') }}" placeholder="DD/MM/YYYY" required>
+                                                    value="{{ \Carbon\Carbon::parse($pettyCash->date)->format('d/m/Y') }}" placeholder="DD/MM/YYYY" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project ID<span class="text-danger">*</span></label>
                                                 <input class="form-control" type="text" name="project_id" id="project_id"
-                                                    value="{{ old('project_id') }}">
+                                                    value="{{ $pettyCash->project_id }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project Type</label>
                                                 <input readonly class="form-control" type="text" name="project_type"
-                                                    id="project_type" value="{{ old('project_type') }}">
+                                                    id="project_type" value="{{ $pettyCash->projects->project_type }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Project Name</label>
                                                 <input readonly class="form-control" type="text" name="project_name"
-                                                    id="project_name" value="{{ old('project_name') }}">
+                                                    id="project_name" value="{{ $pettyCash->project_name }}">
                                             </div>
                                         </div>
 
@@ -72,13 +69,13 @@
                                             <div class="form-group">
                                                 <label>Beneficiary</label>
                                                 <input type="text" class="form-control" name="beneficiary"
-                                                    value="{{ old('beneficiary') }}" placeholder="">
+                                                    value="{{ $pettyCash->beneficiary }}" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-g  roup">
                                                 <label> Recp No. / Cheque number</span></label>
-                                                <input type="text" class="form-control"
+                                                <input type="text" class="form-control" value="{{ $pettyCash->cheque_number_receipt_number }}"
                                                     name="cheque_number_receipt_number">
                                             </div>
                                         </div>
@@ -86,28 +83,23 @@
                                             <div class="form-group">
                                                 <label>Description</label>
                                                 <input class="form-control" type="text" style="min-width:120px"
-                                                    name="description" value="{{ old('description') }}">
+                                                    name="description" value="{{ $pettyCash->description }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Amout Deposited</label>
-                                                <input class="form-control" type="text" id="amount_deposited"
+                                                <input class="form-control" type="text" id="amount_deposited" value="{{ $pettyCash->amount_deposited }}"
                                                     name="amount_deposited" onkeypress="return /[0-9]/i.test(event.key)">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Amount Withdrawn</label>
-                                                <input class="form-control" type="text" id="amount_withdrawn"
+                                                <input class="form-control" type="text" id="amount_withdrawn" value="{{ $pettyCash->amount_withdrawn }}"
                                                     name="amount_withdrawn" onkeypress="return /[0-9]/i.test(event.key)">
                                             </div>
                                         </div>
-
-
-
-
-
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="table-responsive">
@@ -124,7 +116,7 @@
                                                                         onkeypress="return /[0-9,]/i.test(event.key)"
                                                                         type="text" name="total_in_account"
                                                                         id="total_in_account"
-                                                                        value="{{ old('total_in_account') }}">
+                                                                        value="{{ $pettyCash->total_in_account }}">
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -135,7 +127,7 @@
 
                                         <div class="submit-section">
                                             <button type="submit" class="btn  submit-btn"
-                                                style="background: var(--own-black)">CREATE</button>
+                                                style="background: var(--own-black)">UPDATE</button>
                                         </div>
                                 </form>
                             </div>
@@ -147,20 +139,20 @@
         </div>
     </div>
     <!-- metisMenu JS
-                                        ============================================ -->
+                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                            ============================================ -->
+                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                            ============================================ -->
+                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                        ============================================ -->
+                                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     {{-- Data table JS --}}
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -170,33 +162,7 @@
     <script src="https://cdn.jsdelivr.net/npm/dropzone@5.9.2/dist/dropzone.min.js"></script>
 
 
-    <script>
-        $(document).ready(function() {
-            var maxField = 5;
-            var addButton = $('#add-row');
-            var wrapper = $('#customFields');
-            var fieldHTML =
-                '<tr style="margin-right: 20px"><td><input class="form-control" type="text" style="min-width:120px" name="description[]" value="{{ old('description.0') }}"></td><td><input class="form-control" type="text" name="receipt[]"></td><td><input class="form-control" type="text" name="amount_deposite[]"></td><td><input class="form-control" type="text" name="amount_withdrawn[]"></td><td><input class="form-control kwd" type="text" name="total[]" value="{{ old('total.0') }}" onkeypress="return /[0-9.]/i.test(event.key)"></td><td><a href="javascript:void(0)" id="add-row" class="remove-row" title="Add"><img src="{{ asset('assets/admin/img/icon/remove.png') }}"/></a></td></tr>';
 
-            var x = 1;
-
-            $(addButton).click(function() {
-
-                if (x < maxField) {
-                    x++;
-                    $(wrapper).append(fieldHTML);
-                } else {
-                    alert('A maximum of ' + maxField + ' fields are allowed to be added. ');
-                }
-            });
-
-            $(wrapper).on('click', '.remove-row', function(e) {
-                e.preventDefault();
-                $(this).closest('tr').remove();
-                x--;
-            });
-        });
-    </script>
     {{-- Project Data Get By id --}}
     <script>
         $(document).ready(function() {
@@ -218,7 +184,7 @@
                             }
                         },
                         error: function(request, status, error) {
-                            alert('Project Not Found');
+                            alert('Error' + request.error);
                         }
 
                     });
@@ -227,38 +193,43 @@
         });
     </script>
     <script>
-        $(document).ready(function() {
-            $('.datepicker').datepicker({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'dd/mm/yy'
-            });
-        });
+        var onDateSelect = function(selectedDate, input) {
+            if (input.id === 'Start') { //Start date selected - update End Date picker
+                $("#End").datepicker('option', 'minDate', selectedDate);
+            } else { //End date selected - update Start Date picker
+                $("#Start").datepicker('option', 'maxDate', selectedDate);
+            }
+        };
+        var onDocumentReady = function() {
+            var datepickerConfiguration = {
+                dateFormat: "dd/mm/yy",
+                onSelect: onDateSelect
+            };
+            ///--- Component Binding ---///
+            $('#Start, #End').datepicker(datepickerConfiguration);
+        };
+        $(onDocumentReady);
     </script>
     {{-- Date Format  --}}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
-
     <script>
-        $(document).ready(function() {
-            // Function to calculate grand total
-            function calculateTotal() {
-                var amountDeposited = $('#amount_deposited').val() ? parseInt($('#amount_deposited').val()) : 0;
-                var amountWithdrawn = $('#amount_withdrawn').val() ? parseInt($('#amount_withdrawn').val()) : 0;
-
-                // Calculating grand total
-                var totalInAccount = amountDeposited - amountWithdrawn;
-
-                // Updating the total in account field
-                $('#total_in_account').val(totalInAccount);
+        var onDateSelect = function(selectedDate, input) {
+            if (input.id === 'Start') { //Start date selected - update End Date picker
+                $("#end_date").datepicker('option', 'minDate', selectedDate);
+            } else { //End date selected - update Start Date picker
+                $("#Start").datepicker('option', 'maxDate', selectedDate);
             }
-
-            // Event listeners for input fields
-            $('#amount_deposited, #amount_withdrawn').on('input', function() {
-                calculateTotal();
-            });
-        });
+        };
+        var onDocumentReady = function() {
+            var datepickerConfiguration = {
+                dateFormat: "dd/mm/yy",
+                onSelect: onDateSelect
+            };
+            ///--- Component Binding ---///
+            $('#Start, #end_date').datepicker(datepickerConfiguration);
+        };
+        $(onDocumentReady);
     </script>
-
 @endsection

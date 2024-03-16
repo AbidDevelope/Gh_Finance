@@ -74,10 +74,10 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('search/pettyCash', 'searchPettyCash')->name('search/pettyCash');
     Route::get('pettyCash/create', 'pettyCashCreateForm')->name('pettyCash/create');
     Route::post('pettyCash/create', 'pettyCashPost')->name('pettyCash/create');
-    Route::get('expenses/view/{id}', 'expensesView')->name('expenses/view');
-    Route::get('expenses/edit/{id}', 'expensesEdit')->name('expenses/edit');
-    Route::post('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
-    Route::get('expenses/delete/{id}', 'expensesDelete')->name('expenses/delete');
+    Route::get('pettyCash/view/{id}', 'pettyCashView')->name('pettyCash/view');
+    Route::get('pettyCash/edit/{id}', 'pettyCashEdit')->name('pettyCash/edit');
+    Route::post('pettyCash/update/{id}', 'pettyCashUpdate')->name('pettyCash/update');
+    Route::get('pettyCash/delete/{id}', 'pettyCashDelete')->name('pettyCash/delete');
     Route::get('expenses/change/status/{id}', 'expensesChangeStatus')->name('expenses/change/status');
     Route::get('search/filter', 'searchFilter')->name('search/filter');
     Route::get('miscellaneous', 'miscellaneous')->name('miscellaneous');

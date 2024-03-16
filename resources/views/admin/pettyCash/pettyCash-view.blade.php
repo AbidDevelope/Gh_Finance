@@ -35,44 +35,37 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Date:</td>
-                                                    <td class="text-right">{{ $expenses->date }}</td>
+                                                    <td class="text-right">{{ $pettyCash->date }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Cheque Number / Receipt Number:</td>
-                                                    <td class="text-right">{{ $expenses->cheque_number_receipt_number }}</td>
+                                                    <td class="text-right">{{ $pettyCash->cheque_number_receipt_number }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Description:</td>
-                                                    <td class="text-right">{{ $expenses->description }}</td>
+                                                    <td class="text-right">{{ $pettyCash->description }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Beneficiary:</td>
-                                                    <td class="text-right">{{ $expenses->beneficiary }}</td>
+                                                    <td class="text-right">{{ $pettyCash->beneficiary }}</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>Project:</td>
-                                                    <td class="text-right">{{ $expenses->project }}</td>
+                                                    <td class="text-right">{{ $pettyCash->project_name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Amount Deposited:</td>
-                                                    <td class="text-right">{{ $expenses->amount_deposited }}</td>
+                                                    <td class="text-right">{{ $pettyCash->amount_deposited }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Amount Withdrawn:</td>
-                                                    <td class="text-right">{{ $expenses->amount_withdrawn }}</td>
+                                                    <td class="text-right">{{ $pettyCash->amount_withdrawn }}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Total Amount Deposited:</td>
-                                                    <td class="text-right">{{ $expenses->total_amount_deposited}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Total Amount Withdrawn:</td>
-                                                    <td class="text-right">{{ $expenses->total_amount_withdrawn }}</td>
-                                                </tr>
+                                               
                                                 <tr>
                                                     <td>Total In Account:</td>
-                                                    <td class="text-right">{{ $expenses->total_in_account }}</td>
+                                                    <td class="text-right">{{ $pettyCash->total_in_account }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

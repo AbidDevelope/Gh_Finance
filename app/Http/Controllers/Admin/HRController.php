@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\IndemnityImport;
+use App\Exports\IndemnityExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\IndemnityLeave;
@@ -158,7 +159,7 @@ class HRController extends Controller
 
      if($validate->fails())
      {
-         return redirect()->back()->withErrors($validate)->withInput();
+        return redirect()->back()->withErrors($validate)->withInput();
      }
 
      $file = $request->file('file');
@@ -169,37 +170,11 @@ class HRController extends Controller
 
     public function indemnityExport(Request $request)
     {
-        $year = $request->year;
-        dd($year);
+        $year = $request->input('year');
+
+        $fileName = "Indemnity_". $year . ".xlsx";
+
+        return Excel::download(new IndemnityExport($year), $fileName);
     }
 
-    // public function indemnityFilter(Request $request){
-    //   $validate = Validator::make($request->all(), [
-    //      'start_date' => 'required',  'end_date'  => 'required'
-    //  ]);
-    //  if($validate->fails())
-    //  {
-    //      return redirect()->back()->withErrors($validate)->withInput();
-    //  }else{
-    
-    //         $indemnity = IndemnityLeave::all()->map(function ($item) {
-    //            $item->amount_deposited = preg_match('/[\d,]+\.\d+/', $item->amount_deposited, $matchesDeposited) ? floatval(str_replace(',', '', $matchesDeposited[0])) : 0;
-      
-    //           $item->amount_withdrawn = preg_match('/[\d,]+\.\d+/', $item->amount_withdrawn, $matchedWithdrawn) ? floatval(str_replace(',', '', $matchedWithdrawn[0])) : 0;
-      
-    //            return $item;
-    //         });
-      
-    //         $totalIndemnity = $indemnity->sum('amount_deposited');
-    //         $totalWithdrawn = $indemnity->sum('amount_withdrawn');
-
-    //         $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
-    //         $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
-    //         $indemnity = IndemnityLeave::whereDate('date', '>=', $startDate)
-    //                             ->whereDate('date', '<=', $endDate)
-    //                             ->get();
-      
-    //         return view('admin.indemnityLeave.indemnity_leave', compact('indemnity', 'totalIndemnity', 'totalWithdrawn'));
-    //  }
-    // }
 }

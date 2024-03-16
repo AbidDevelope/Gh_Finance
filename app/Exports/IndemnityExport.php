@@ -3,35 +3,34 @@
 namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\withHeadings;
 use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use App\Models\Account;
+use App\Models\IndemnityLeave;
 
-class AccountExport implements FromQuery, WithHeadings
+class IndemnityExport implements FromQuery, withHeadings
 {
     protected $year;
 
-    public function __construct($year = null)
+
+    public function __construct($year=null)
     {
         return $this->year = $year;
     }
-    
+
     public function query()
     {
-        $query =  Account::query();
+        $query = IndemnityLeave::query();
         if(!is_null($this->year))
         {
             $query->whereYear('date', $this->year);
         }
-
         return $query;
     }
 
     public function headings():array
     {
         return [
-            'Sr. No', 'Project Id', 'Date', 'Cheque Number/Receipt Number', 'Description', 'Beneficiary', 'Amount Deposited', 'Amount Withdrwan', 'Project', 'Column 1', 'Column 2', 'Service Type', 'Remarks', 'Total in account',
+            'Sr. No', 'Project Id', 'Date', 'Cheque Number / Receipt Number', 'Description', 'Beneficiary', 'Amount Deposited', 'Amount Withdrwan', 'Project Name', 'Service Type', 'Remarks', 'Total in Account'
         ];
     }
-
 }
