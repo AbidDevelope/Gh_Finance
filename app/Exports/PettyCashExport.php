@@ -3,11 +3,11 @@
 namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\withHeadings;
 use Maatwebsite\Excel\Concerns\FromQuery;
-use App\Models\IndemnityLeave;
+use App\Models\PettyCash;
 
-class IndemnityExport implements FromQuery, WithHeadings
+class PettyCashExport implements FromQuery, withHeadings
 {
     protected $year;
 
@@ -18,7 +18,7 @@ class IndemnityExport implements FromQuery, WithHeadings
 
     public function query()
     {
-        $query = IndemnityLeave::query();
+        $query = PettyCash::query();
         if(!is_null($this->year))
         {
             $query->whereYear('date', $this->year);
@@ -29,7 +29,7 @@ class IndemnityExport implements FromQuery, WithHeadings
     public function headings():array
     {
         return [
-            'Sr. No', 'Project Id', 'Date', 'Cheque Number / Receipt Number', 'Description', 'Beneficiary', 'Amount Deposited', 'Amount Withdrwan', 'Project Name', 'Service Type', 'Remarks', 'Total in Account'
+            'Sr. No', 'Project Id', 'Date', 'Cheque Number Receipt Number', 'Description', 'Beneficiary', 'Amount Deposited', 'Amount Withdrawn', 'Project Name', 'Total In Account'
         ];
     }
 }

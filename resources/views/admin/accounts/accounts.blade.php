@@ -299,6 +299,6 @@
             window.location.href = exportUrl;
         });
     });
-    </script>
+</script>
     
 @endsection
