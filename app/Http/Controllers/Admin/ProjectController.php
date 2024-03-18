@@ -10,7 +10,7 @@ use Validator;
 
 class ProjectController extends Controller
 {
-  
+
     public function projects()
     {
         $projects = Project::orderBy('id', 'desc')->get();
@@ -27,7 +27,7 @@ class ProjectController extends Controller
     public function projectsCreate(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'project_manager_id' => 'required', 
+            'project_manager_id' => 'required',
             'name'      => 'required' ,     'description'  => 'required',
             'start_date'  => 'required' ,   'end_date'   => 'required',
             'budget'    => 'required' ,     'location'  => 'required',
@@ -64,7 +64,7 @@ class ProjectController extends Controller
         return view('admin.projects.projects-edit', compact('projects', 'projectManagers'));
     }
 
- 
+
     public function projectsUpdate(Request $request, string $id)
     {
         $validate = Validator::make($request->all(), [
@@ -98,5 +98,10 @@ class ProjectController extends Controller
 
         session()->flash('success', 'Project Deleted Successfully.');
         return redirect()->back();
+    }
+
+    public function clients()
+    {
+        return view('admin.clients.clients');
     }
 }

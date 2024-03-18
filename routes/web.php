@@ -167,6 +167,8 @@ Route::controller(ProjectController::class)->prefix('admin')->middleware('adminA
     Route::get('projects/edit/{id}', 'projectsEdit')->name('projects/edit');
     Route::post('projects/update/{id}', 'projectsUpdate')->name('projects/update');
     Route::get('projects/delete/{id}', 'projectsDelete')->name('projects/delete');
+
+    Route::get('clients', 'clients')->name('clients');
 });
 
 
