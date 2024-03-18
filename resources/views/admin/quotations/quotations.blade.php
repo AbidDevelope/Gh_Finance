@@ -106,11 +106,13 @@
                                     <tr role="row">
                                         <th style="width: 70px !important; border-radius: 0 !important;">Sr. No</th>
                                         {{-- <th style="border-radius: 0 !important;">Project Id</th> --}}
-                                        <th style="border-radius: 0 !important;">Project Name</th>
+                                        <th style="border-radius: 0 !important;">First Name</th>
+                                            <th style="border-radius: 0 !important;">Last Name</th>
+                                        <th style="border-radius: 0 !important;">Project Type</th>
                                         <th style="border-radius: 0 !important;">Quotation Number</th>
                                         <th style="border-radius: 0 !important;">Quotation Date </th>
                                         <th style="border-radius: 0 !important;">Amount</th>
-                                        <th style="border-radius: 0 !important;">Action</th>
+                                        <th style="border-radius: 0 !important;width: 50px !important;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -118,7 +120,9 @@
                                         @foreach ($quotations as $index => $quotation)
                                             <tr>
                                                 <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
-                                                <td style="border-radius: 0 !important;">{{ $quotation->project_id }}</td>
+                                                <td style="border-radius: 0 !important;">A</td>
+                                                <td style="border-radius: 0 !important;">BC</td>
+                                                <td style="border-radius: 0 !important;"></td>
                                                 <td style="border-radius: 0 !important;">{{ $quotation->quotation_number }}</td>
                                                 <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($quotation->quotation_date)->format('d/m/Y') }}
                                                 </td>

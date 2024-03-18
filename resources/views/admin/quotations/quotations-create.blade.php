@@ -79,7 +79,7 @@
                                                             <th class="col-md-5">Description</th>
                                                             <th style="col-sm-2">Unit</th>
                                                             <th style="width:80px;">Qty</th>
-                                                            <th class="col-sm-2">Price/K.D</th>
+                                                            <th class="col-sm-2">Cost Plus</th>
                                                             <th class="col-sm-2">Total/K.D</th>
                                                             <th> </th>
                                                         </tr>
@@ -222,7 +222,6 @@
                                             </table>
                                         </div>
                                     </div>
-
                                     <div class="table-responsive">
                                         <table class="table table-hover table-white">
                                             <tbody>
@@ -240,11 +239,6 @@
                                             </tbody>
                                         </table>
                                     </div>
-
-
-
-
-
                                     <div class="submit-section">
                                         <button type="submit" class="btn color submit-btn"
                                             style="background:var(--own-black)">CREATE</button>

@@ -87,7 +87,7 @@
                                     </div>
                                     <div class="container  d-flex gap-4 ">
                                         <div class=" form-group">
-                    
+
                                             <input type="text"
                                                 class="form-control cursor placeholder bg-white text-black-50 rounded datepicker "
                                                 name="end_date" placeholder="Select End Date"
@@ -108,22 +108,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="container mx-3">
-                        <form action="{{ route('file/upload') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="d-flex gap-4">
-                                <input
-                                    style="width: 230px; height: 35px;box-shadow: none;border: 1px solid var(--own-black);;"
-                                    type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                <button type="button"
-                                    style=" !important; background-color:var(--own-black) !important; color:white !important;"
-                                    class="btn  rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Upload</button>
-                                @if ($errors->has('file'))
-                                    <span class="text-danger">{{ $errors->first('file') }}</span>
-                                @endif
-                            </div>
-                        </form>
-                    </div>
+
                     @if ($errors->any())
                         @foreach ($errors->all() as $error)
                             <div>{{$error}}</div>

@@ -66,35 +66,38 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container mx-1">
-                        <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="d-flex gap-4">
-                                <input
-                                    style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
-                                    type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                <button type="submit"
-                                    style=" !important; background-color:var(--own-black) !important; color:white !important;"
-                                    class="btn padding_y rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
-                                @if ($errors->has('file'))
-                                    <span class="text-danger">{{ $errors->first('file') }}</span>
-                                @endif
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 mt-4">
-                        <form>
-                            <select name="year" onchange="this.form.submit()" class="form-control" id="">
-                                <option value="" selected>All</option>
-                                @foreach ($availableYears as $availableYear)
-                                    @if ($availableYear)
-                                        <option value="{{ $availableYear }}"
-                                            {{ (string) $availableYear === (string) $year ? 'selected' : '' }}>
-                                            {{ $availableYear }}</option>
+
+                    <div class="d-flex justify-content-between mt-4 pe-2">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <form>
+                                <select name="year" onchange="this.form.submit()" class="form-control" id="">
+                                    <option value="" selected>All</option>
+                                    @foreach ($availableYears as $availableYear)
+                                        @if ($availableYear)
+                                            <option value="{{ $availableYear }}"
+                                                {{ (string) $availableYear === (string) $year ? 'selected' : '' }}>
+                                                {{ $availableYear }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </form>
+                        </div>
+                        <div class=" mx-1">
+                            <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="d-flex gap-4">
+                                    <input
+                                        style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
+                                        type ="file" name="file" class="form-control bg-white rounded text-black-50">
+                                    <button type="submit"
+                                        style=" !important; background-color:var(--own-black) !important; color:white !important;"
+                                        class="btn padding_y rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
+                                    @if ($errors->has('file'))
+                                        <span class="text-danger">{{ $errors->first('file') }}</span>
                                     @endif
-                                @endforeach
-                            </select>
-                        </form>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-1">
                         @if (Session::has('success'))
@@ -116,10 +119,13 @@
                                         <th class="text-center"
                                             style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Date</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">First Name</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Last Name</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Project Name</th>
                                         <th>Beneficiary</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Total Value</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Actions</th>
+                                        <th class="text-center"
+                                            style="width: 70px !important; border-radius: 0 !important;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -131,6 +137,10 @@
                                                     {{ $index + 1 }}</td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
                                                     {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    A</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    BC </td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
                                                     {{ $item->project_name }}</td>
                                                 <td>{{ $item->beneficiary }}</td>
@@ -174,21 +184,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                                                ============================================ -->
+                                                                                    ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                    ============================================ -->
+                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                    ============================================ -->
+                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}

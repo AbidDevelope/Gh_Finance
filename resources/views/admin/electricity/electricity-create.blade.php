@@ -23,8 +23,26 @@
                     <div class="margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                             <div class="form-section bg-white">
-                                <h4 class="ml-0 f-21 font-weight-normal text-capitalize"style="color: var(--own-black)">
-                                    Create Electricity</h4>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h4 class="f-21 font-weight-normal text-capitalize"
+                                        style="color: var(--own-black);margin:0;">Create Electricity</h4>
+                                    <div>
+                                        <form action="{{ route('file/upload') }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="d-flex gap-4">
+                                                <input style="width: 230px; height: 35px;box-shadow: none;border: 1px solid var(--own-black);"
+                                                    type="file" name="file" class="form-control bg-white rounded text-black-50">
+                                                <button type="button"
+                                                    style=" !important; background-color:var(--own-black) !important; color:white !important;"
+                                                    class="btn  rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Upload</button>
+                                                @if ($errors->has('file'))
+                                                <span class="text-danger">{{ $errors->first('file') }}</span>
+                                                @endif
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
                                 <hr class="border-top-grey">
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)
@@ -47,6 +65,7 @@
                                                     type="text">
                                             </div>
                                         </div>
+
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Remarks</label>
@@ -130,7 +149,8 @@
                                                         <tr>
                                                             <td colspan="5" class="text-right" style="font-size: 15px;">
                                                                 Sub Total :</td>
-                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                            <td
+                                                                style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input readonly class="form-control text-right subtotal"
                                                                     onkeypress="return /[0-9.,%]/.test(event.key)"
                                                                     type="text" name="subtotal"
@@ -138,10 +158,12 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="5" class="text-right" style="font-size: 15px;">
+                                                            <td colspan="5" class="text-right"
+                                                                style="font-size: 15px;">
                                                                 Others :
                                                             </td>
-                                                            <td style="text-align: right; padding-right: 30px;width: 230px">
+                                                            <td
+                                                                style="text-align: right; padding-right: 30px;width: 230px">
                                                                 <input class="form-control text-right others"
                                                                     onkeypress="return /[0-9.,]/i.test(event.key)"
                                                                     type="text" name="others"
@@ -254,20 +276,20 @@
         </div>
     </div>
     <!-- metisMenu JS
-                                                                ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                                    ============================================ -->
+                                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                                    ============================================ -->
+                                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                                ============================================ -->
+                                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     {{-- Data table JS --}}
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

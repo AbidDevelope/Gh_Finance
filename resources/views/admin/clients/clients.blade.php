@@ -54,7 +54,6 @@
                             <div class="d-flex justify-content-between ">
                                 <h4 class=""style="color: var(--own-black)">Clients</h4>
                                 <div class="">
-                                   
                                     <a href="#"
                                         class="btn padding_y border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
                                         style="border-color: #0F1316 !important;">
@@ -67,45 +66,57 @@
                             {{-- <div class="s002"> --}}
                             <form action="{{ route('search/filter') }}" method="GET">
                                 @csrf
-                                <div class="d-flex">
-                                    <div class=" ">
-                                        <div class="form-group">
-                                            {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
-
-                                            <input type="text" name="start_date"
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <div class=" ">
+                                            <div class="form-group">
+                                                {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
+                                                <input type="text" name="start_date"
                                                 placeholder="Select Start Date"
-                                                class="form-control cursor placeholder datepicker bg-white rounded text-black-50"
-                                                style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
-                                                value="{{ request('start_date') }}">
-                                            @if ($errors->has('start_date'))
-                                                <span class="text-danger">{{ $errors->first('start_date') }}</span>
-                                            @endif
+                                                class="form-control placeholder bg-white rounded text-black-50 datepicker cursor"
+                                                style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ request('start_date') }}">
+                                                @if ($errors->has('start_date'))
+                                                    <span class="text-danger">{{ $errors->first('start_date') }}</span>
+                                                @endif
+                                            </div>
                                         </div>
+                                        <div class="container  d-flex gap-4 ">
+                                            <div class=" form-group">
+                                                {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
+                                                <!-- Input with Bootstrap styling -->
+                                                <input type="text"
+                                                    class="form-control placeholder bg-white text-black-50 rounded datepicker cursor" name="end_date"
+                                                    placeholder="Select End Date" value="{{ request('end_date') }}" style="box-shadow: none; border: 1px solid  var(--own-black); width: 230px; height: 35px;">
+                                                @if ($errors->has('end_date'))
+                                                    <span class="text-danger">{{ $errors->first('end_date') }}</span>
+                                                @endif
+
+                                            </div>
+                                            <div class="form-group" style="margin-top: ;">
+                                                <button class="btn-search btn padding_y bg_button text-white bg-gray-100 "
+                                                    type="submit">Search </button>
+                                            </div>
+
+                                        </div>
+
                                     </div>
-                                    <div class="container  d-flex gap-4 ">
-                                        <div class=" form-group">
-
-                                            <input type="text"
-                                                class="form-control cursor placeholder bg-white text-black-50 rounded datepicker "
-                                                name="end_date" placeholder="Select End Date"
-                                                style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
-                                                value="{{ request('end_date') }}">
-                                            @if ($errors->has('end_date'))
-                                                <span class="text-danger">{{ $errors->first('end_date') }}</span>
-                                            @endif
-
-                                        </div>
-                                        <div class="form-group" style="margin-top: ;">
-                                            <button class="btn-search padding_y btn bg_button text-white bg-gray-100 "
-                                                type="submit">Search </button>
-                                        </div>
+                                    <div>
+                                        <select class="form-control  cursor placeholder bg-white rounded text-black"
+                                            name="Project_type" id="project-type-select"
+                                            class=" form-control"style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);">
+                                            <option class="" value="" style="" selected>Select Project Type
+                                            </option>
+                                            {{-- <option value="All">All</option> --}}
+                                            <option class=" " value="Design">Design</option>
+                                            <option value="Construction">Construction</option>
+                                            <option value="Design & Construction">Design & Construction</option>
+                                        </select>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="container mx-3">
+                    {{-- <div class="container mx-3">
                         <form action="{{ route('file/upload') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="d-flex gap-4">
@@ -120,7 +131,7 @@
                                 @endif
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
                     @if ($errors->any())
                         @foreach ($errors->all() as $error)
                             <div>{{$error}}</div>
@@ -144,31 +155,35 @@
                                 <thead>
                                     <tr role="row">
                                         <th style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
-                                        <th style="border-radius: 0 !important;">Date</th>
-                                        <th style="border-radius: 0 !important;">Remarks</th>
-                                        <th style="border-radius: 0 !important;">Electricity Amount</th>
-                                        <th style="border-radius: 0 !important;">Total Pay</th>
-                                        <th style="border-radius: 0 !important;" class="text-right">Actions</th>
+                                        <th style="border-radius: 0 !important;">First Name</th>
+                                        <th style="border-radius: 0 !important;">Last Name</th>
+                                        <th style="border-radius: 0 !important;">Service Type</th>
+                                        <th style="border-radius: 0 !important;">Mobile</th>
+                                        <th style="border-radius: 0 !important;">Email</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    @if (count($electricity) > 0)
-                                        @foreach ($electricity as $index => $item)
+                                    {{-- @if (count($electricity) > 0)
+                                        @foreach ($electricity as $index => $item) --}}
                                             <tr>
                                                 <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ $index + 1 }}</td>
+                                                   1</td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ \Carbon\Carbon::parse($item->electricity_date)->format('d/m/Y') }}
+
                                                 </td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ $item->remarks }}</td>
-                                                <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ $item->grandtotal }}</td>
-                                                <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ $item->total_payment }}</td>
 
+                                                </td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
+                                                  </td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                   </td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                  </td>
+
+                                                {{-- <td class="text-center" style="border-radius: 0 !important;">
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon" data-toggle="dropdown"
                                                             aria-expanded="false"><img
@@ -185,10 +200,10 @@
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>
-                                                </td>
+                                                </td> --}}
                                             </tr>
-                                        @endforeach
-                                    @endif
+                                        {{-- @endforeach
+                                    @endif --}}
                                 </tbody>
                             </table>
 

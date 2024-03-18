@@ -110,7 +110,7 @@
                             </form>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         @if (Session::has('success'))
                             <div class="alert alert-success" id="successAlert">
@@ -133,7 +133,7 @@
                                             <th class="text-center" style="border-radius: 0 !important;">Description</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Payroll</th>
                                             <th class="text-center" style="border-radius: 0 !important;">Total Pay</th>
-                                            <th class="text-center" style="border-radius: 0 !important;">Actions</th>
+                                            <th class="text-center" style="width: 50px !important; border-radius: 0 !important;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>

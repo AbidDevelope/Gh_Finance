@@ -134,11 +134,13 @@
                                         <tr role="row">
                                             <th style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
                                             <th style="border-radius: 0 !important;">Date</th>
+                                            <th style="border-radius: 0 !important;">First Name</th>
+                                            <th style="border-radius: 0 !important;">Last Name</th>
                                             <th style="border-radius: 0 !important;">Project Type</th>
                                             <th style="border-radius: 0 !important;">Project Name</th>
                                             <th style="border-radius: 0 !important;">Mobile</th>
                                             <th style="border-radius: 0 !important;">Project Value</th>
-                                            <th style="border-radius: 0 !important;">Action</th>
+                                            <th style="width: 50px !important; border-radius: 0 !important;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -148,6 +150,10 @@
                                                     <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
                                                     <td style="border-radius: 0 !important;">
                                                         {{ \Carbon\Carbon::parse($project->start_date)->format('d/m/Y') }}</td>
+                                                    <td style="border-radius: 0 !important;">
+                                                        A</td>
+                                                    <td style="border-radius: 0 !important;">
+                                                        BC</td>
                                                     <td style="border-radius: 0 !important;">{{ $project->project_type }}
                                                     </td>
                                                     <td style="border-radius: 0 !important;">{{ $project->project_name }}
