@@ -65,44 +65,42 @@
                                     <button id="exportButton" class="btn padding_y border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left" style="border-color: #0F1316 !important;">
                                         <i class="fa fa-file-export"></i> Export
                                     </button>
-
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between mt-4 pe-2">
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                            <form>
-                                <select name="year" onchange="this.form.submit()" class="form-control" id="">
-                                    <option value="" selected>All</option>
-                                    @foreach ($availableYears as $availableYear)
-                                        @if ($availableYear)
-                                            <option value="{{ $availableYear }}"
-                                                {{ (string) $availableYear === (string) $year ? 'selected' : '' }}>
-                                                {{ $availableYear }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </form>
-                        </div>
-                        <div class=" mx-1">
-                            <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="d-flex gap-4">
-                                    <input
-                                        style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
-                                        type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                    <button type="submit"
-                                        style=" !important; background-color:var(--own-black) !important; color:white !important;"
-                                        class="btn padding_y rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
-                                    @if ($errors->has('file'))
-                                        <span class="text-danger">{{ $errors->first('file') }}</span>
-                                    @endif
-                                </div>
-                            </form>
-                        </div>
+                    <div class="container mx-1">
+                        <form action="{{ route('accounts/import') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="d-flex gap-4">
+                                <input
+                                    style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
+                                    type ="file" name="file" class="form-control bg-white rounded text-black-50">
+                                <button type="submit"
+                                    style=" !important; background-color:var(--own-black) !important; color:white !important;"
+                                    class="btn padding_y rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
+                                @if ($errors->has('file'))
+                                    <span class="text-danger">{{ $errors->first('file') }}</span>
+                                @endif
+                            </div>
+                        </form>
                     </div>
-                   
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 mt-4">
+                        <form>
+            
+
+                            <select name="year" onchange="this.form.submit()" class="form-control" id="">
+                                <option value="" selected>All</option>
+                                @foreach($availableYears as $availableYear)
+                                    @if($availableYear)
+                                        <option value="{{ $availableYear }}" {{ (string)$availableYear === (string)$year ? 'selected' : '' }}>{{ $availableYear }}</option>
+                                    @endif
+                                @endforeach
+                            </select>                         
+                            
+                        </form>
+                    </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-1">
                         @if (Session::has('success'))
                             <div class="alert alert-success" id="successAlert">
@@ -291,7 +289,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         const exportBtn = document.getElementById('exportButton');
         const yearSelect = document.querySelector('select[name="year"]');
-
+    
         exportBtn.addEventListener('click', function() {
             const year = yearSelect.value;
             let exportUrl = `{{ route('account/export') }}`;
@@ -302,5 +300,5 @@
         });
     });
 </script>
-
+    
 @endsection

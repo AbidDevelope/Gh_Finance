@@ -346,7 +346,7 @@
                         <div class="col-8">
                             <p class="m-0 dashboard-color-text textcolor">Expenses</p>
                             <p class="m-0 dashboard-color-subcolor text-nowrap textcolor_1" style="font-size: 12px">
-                                {{ $totalExpenses }} KWD</p>
+                                {{ $totalExpenses }}.000 KWD</p>
                         </div>
                     </div>
                 </div>

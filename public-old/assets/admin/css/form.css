@@ -1,0 +1,81 @@
+/* Style the form section */
+.form-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 100px 0;
+}
+
+/* Style labels */
+.form-section .form-label {
+    color: #333;
+    margin-top: 11px;
+    font-weight: bold;
+}
+
+/* Style input fields */
+.form-section .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    background: #fff;
+    color: #000;
+    box-shadow: none;
+}
+
+/* .input-group .form-control {
+    padding-left: 50px;
+} */
+
+.input-group-text {
+    position: absolute;
+    z-index: 3;
+    margin-left: 10px; /* Adjust based on your layout */
+    margin-top: calc(0.375rem + 1px); /* Adjust to vertically center, based on input height */
+    background-color: transparent;
+    border-color: transparent;
+}
+
+
+.table-responsive{
+    overflow: hidden;
+}
+
+/* Style the textarea */
+.form-section .form-floating > .form-control {
+    height: auto;
+}
+.form-section h4
+{
+    color: #000;
+    margin: 0px auto;
+}
+.form-section form{
+    margin-top: 22px;
+}
+/* Style the button */
+.form-section button[type="submit"] {
+    color: #fff;
+    /* padding: 5px 20px; */
+    /* border: 1px solid var(--filter-color) !important; */
+    border-radius: 4px !important; /* Adjust the value to make it more or less rounded */
+    cursor: pointer;
+    font-size: 16px;
+    margin: 16px auto;
+    background: #0F1316;
+}
+
+.form-section button[type="submit"]:hover {
+    background-color: #0F1316;
+    /* border: 1px solid var(--filter-color); */
+    color: #fff;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .form-section .row > div {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}

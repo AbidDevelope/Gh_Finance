@@ -14,7 +14,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $projects = Project::with(['pettyCash', 'payments'])->get();
+        $projects = Project::with(['pettyCash', 'payments'])->withsum('pettyCash as total_in_account', 'total_in_account')->get();
 
         $designValue = $projects->where('project_type', 'Design')->sum('project_value');
         $constructionValue = $projects->where('project_type', 'Construction')->sum('project_value');
@@ -22,18 +22,19 @@ class AuthController extends Controller
 
         $totalProjectRevenue = $projects->sum('project_value');
 
-        $totalExpensesValue = $projects->reduce(function($carry, $project){
-            // if($project->pettyCash)
-            // {
-            //     $sumExpenses = $projects->pettyCash->sum('total_in_account');
-            // }else{
-            //     $sumExpenses = 0;
-            // }
-            // return $sumExpenses;
-        },0);
+        $totalExpenseValue = $projects->reduce(function ($carry, $project) {
+            if($project->pettyCash)
+            {
+                $pettyCashTotal = $project->pettyCash->sum('total_in_account');
+            }else{
+                $pettyCashTotal = 0;
+            }
+            return  $carry + $pettyCashTotal;
+        }, 0);
+
 
         $totalRevenue = $totalProjectRevenue;
-        $totalExpenses = $totalExpensesValue;
+        $totalExpenses = $totalExpenseValue;
 
         $totalDesign = $designValue;
         $totalConstruction = $constructionValue;

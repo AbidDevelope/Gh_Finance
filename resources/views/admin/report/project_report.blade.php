@@ -142,7 +142,6 @@
                                             <th style="width: 70px !important;  border-radius: 0 !important;">Sr. No.</th>
                                             <th style="border-radius: 0 !important;">Date</th>
                                             <th style="border-radius: 0 !important;">Payment Method</th>
-                                            <th style="border-radius: 0 !important;">Project ID</th>
                                             <th style="border-radius: 0 !important;">Project Type</th>
                                             <th style="border-radius: 0 !important;">Project Name</th>
                                             <th style="border-radius: 0 !important;">Project Manager</th>
@@ -154,17 +153,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {{-- @dd($projects); --}}
                                         @foreach ($projects as $index=>$project)
                                         <tr>
                                             <td style="border-radius: 0 !important;">{{ $index+1 }}</td>
                                             <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->start_date)->format('d/m/Y') }}</td>
                                             <td style="border-radius: 0 !important;"></td>
-                                            <td style="border-radius: 0 !important;"></td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_type }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_name }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_manager }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_value }}</td>
-                                            <td style="border-radius: 0 !important;">{{ 'N/A' }}</td>
+                                            {{-- <td style="border-radius: 0 !important;">{{ 'N/A' }}</td> --}}
+                                            <td style="border-radius: 0 !important;">{{ $project->total_in_account ?? 'N/A' }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->total_receivable ?? 'N/A' }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_value - $project->total_receivable  }}</td>
 
@@ -184,26 +184,23 @@
                                                 </td>
                                             <td class="hid"
                                                 style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
-                                                </td>
-                                            <td class="hid"
-                                                style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
                                                 design</td>
                                             <td class="hid"
                                                 style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
                                                 Kuwait metro</td>
                                             <td class=""
-                                                style="text-nowrap font-weight: bold; border-left-color: transparent;border-radius: 0 !important;">
+                                                style="font-weight: bold; border-left-color: transparent;border-radius: 0 !important;">
                                                 Grand
                                                 Total</td>
-                                            <td class="" style="font-weight: bold; border-radius: 0 !important;">
+                                            <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
                                                 {{ $formattedValue }} KWD
                                             </td>
-                                            <td class="" style="font-weight: bold; border-radius: 0 !important;">
+                                            <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
                                                 {{ $totalExpenseValueFormatted }} KWD</td>
-                                            <td class=""
+                                            <td class="text-nowrap"
                                                 style="font-weight: bold; border-radius: 0 !important;">
                                                 {{ $formattedValueReceivable }} KWD</td>
-                                            <td class=""
+                                            <td class="text-nowrap"
                                                 style="font-weight: bold; border-radius: 0 !important;">{{ $formattedValuePendingReceivable }} KWD</td>
 
                                         </tr>

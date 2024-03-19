@@ -100,8 +100,26 @@ class ProjectController extends Controller
         return redirect()->back();
     }
 
-    public function clients()
+    public function clients(Request $request)
     {
-        return view('admin.clients.clients');
+        $serviceType = Project::select('project_type')->distinct()->pluck('project_type');
+        $selectedType = $request->input('project_type');
+    
+        if($selectedType)
+        {
+            $clients = Project::where('project_type', $selectedType)->get();
+        }else
+        {
+            $clients = Project::all();
+        }
+
+        $clients = $clients->map(function($client){
+            $names = explode(' ', $client->contact_name, 2);
+            $client->first_name = $names[0] ?? null;
+            $client->last_name = $names[1] ?? null;
+            return $client;
+        });
+       
+        return view('admin.clients.clients', compact('clients', 'serviceType', 'selectedType'));
     }
 }

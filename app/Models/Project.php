@@ -62,7 +62,7 @@ class Project extends Model
     }
 
     public function pettyCash(){
-        return $this->hasMany(PettyCash::class);
+        return $this->hasMany(PettyCash::class, 'project_id');
     }
 
     public function quotation()

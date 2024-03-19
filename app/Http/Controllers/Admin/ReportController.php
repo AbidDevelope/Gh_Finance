@@ -15,14 +15,16 @@ class ReportController extends Controller
 {
     public function projectReport(Request $request)
     {
-        $projects = Project::with(['pettyCash', 'payments'])->get();
+        $projects = Project::with(['pettyCash', 'payments'])
+            ->withSum('pettyCash as total_in_account', 'total_in_account')->get();
+
 
         $totalProjectValue = $projects->sum('project_value');
         $totaltotalReceivable = $projects->sum('total_receivable');
         $pendingReceivable =  $totalProjectValue - $totaltotalReceivable;
         
         $totalExpenseValue = $projects->reduce(function ($carry, $project) {
-            if($project->pattyCash)
+            if($project->pettyCash)
             {
                 $pettyCashTotal = $project->pettyCash->sum('total_in_account');
             }else{
@@ -30,6 +32,8 @@ class ReportController extends Controller
             }
             return  $carry + $pettyCashTotal;
         }, 0);
+
+        // dd($totalExpenseValue);
 
         $totalReceivablesValue = $projects->reduce(function ($carry, $project) {
             $receivablesTotal = $project->payments->sum('amount');

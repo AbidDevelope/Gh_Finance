@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\ExpensesImport;
+use App\Imports\PettyCashImport;
 use App\Exports\PettyCashExport;
 use App\Exports\MiscellaneousExport;
 use App\Http\Controllers\Controller;
@@ -252,8 +252,8 @@ class ExpensesController extends Controller
         }
 
         $file = $request->file('file');
-        // dd($file);
-        Excel::import(new ExpensesImport, $file);
+      
+        Excel::import(new PettyCashImport, $file);
 
         return back()->with('success', 'Imported successfully.');
     }

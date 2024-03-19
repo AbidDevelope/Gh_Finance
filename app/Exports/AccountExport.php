@@ -3,12 +3,14 @@
 namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use App\Models\Account;
 
 class AccountExport implements FromQuery, WithHeadings
 {
+    use Exportable;
     protected $year;
 
     public function __construct($year = null)
