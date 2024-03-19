@@ -153,7 +153,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @dd($projects); --}}
                                         @foreach ($projects as $index=>$project)
                                         <tr>
                                             <td style="border-radius: 0 !important;">{{ $index+1 }}</td>
@@ -163,7 +162,6 @@
                                             <td style="border-radius: 0 !important;">{{ $project->project_name }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_manager }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_value }}</td>
-                                            {{-- <td style="border-radius: 0 !important;">{{ 'N/A' }}</td> --}}
                                             <td style="border-radius: 0 !important;">{{ $project->total_in_account ?? 'N/A' }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->total_receivable ?? 'N/A' }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_value - $project->total_receivable  }}</td>
