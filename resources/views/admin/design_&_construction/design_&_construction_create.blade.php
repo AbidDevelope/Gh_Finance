@@ -59,9 +59,19 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Select Date</label>
-                                                <input type="text" name="start_date" class="form-control datepicker"
-                                                    placeholder="DD/MM/YYYY">
+                                                <label>Select Start Date</label>
+                                                <input type="text" name="start_date" value="{{ old('start_date') }}"
+                                                    class="form-control datepicker" placeholder="DD/MM/YYYY">
+                                                @error('start_date')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Expected Completion Date</label>
+                                                <input type="text" name="start_date" value="{{ old('start_date') }}"
+                                                    class="form-control datepicker" placeholder="DD/MM/YYYY">
                                                 @error('start_date')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -337,7 +347,7 @@
                                     </div>
 
 
-                                    <div class="row mt-3">
+                                    {{-- <div class="row mt-3">
                                         <h5 class="ml-0 f-21 font-weight-normal text-capitalize">Payment Details</h5>
                                         <div class="table-responsive">
                                             <table class="table table-hover table-white" id="customFields">
@@ -412,7 +422,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
+                                    </div> --}}
                                     <!-- <div class="row"> -->
                                     <button type="submit" class="btn btn-create btn-lg mt-5"
                                         style="background: var(--own-black)">CREATE</button>

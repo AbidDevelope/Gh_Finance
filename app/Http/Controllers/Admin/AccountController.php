@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AccountExport;
 use App\Imports\AccountImport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,21 +15,38 @@ use \Carbon\Carbon;
 
 class AccountController extends Controller
 {
-    public function accounts()
-{
-    $accounts = Account::all()->map(function($item){
-        $item->amount_deposited = preg_match('/[\d,]+\.\d+/', $item->amount_deposited, $matchesDeposited) ? floatval(str_replace(',', '', $matchesDeposited[0])) : 0;
+    public function accounts(Request $request)
+    {
+        $currentYear = now()->year;
+        $year = $request->input('year');
 
-        $item->amount_withdrawn = preg_match('/[\d,]+\.\d+/', $item->amount_withdrawn, $matchedWithdrawn) ? floatval(str_replace(',', '', $matchedWithdrawn[0])) : 0;
+        $availableYears = Account::selectRaw('YEAR(date) as year')
+                                ->groupBy('year')
+                                ->orderBy('year', 'desc')
+                                ->get()
+                                ->pluck('year');
+        
+        if (!empty($year)) {
+            $accounts = Account::whereYear('date', $year)->get();
+        } else {
+            $accounts = Account::whereYear('date', '<=', $currentYear)
+                            ->orderBy('date', 'desc')
+                            ->get();
+        }
 
-        return $item;
-    });
+        $accounts = $accounts->map(function($item){
+            $item->amount_deposited = preg_match('/[\d,]+\.\d+/', $item->amount_deposited, $matchesDeposited) ? floatval(str_replace(',', '', $matchesDeposited[0])) : 0;
 
-    $totalDeposited = $accounts->sum('amount_deposited');
-    $totalWithdrwan = $accounts->sum('amount_withdrawn');
+            $item->amount_withdrawn = preg_match('/[\d,]+\.\d+/', $item->amount_withdrawn, $matchedWithdrawn) ? floatval(str_replace(',', '', $matchedWithdrawn[0])) : 0;
 
-    return view('admin.accounts.accounts', compact('accounts', 'totalDeposited', 'totalWithdrwan'));
-}
+            return $item;
+        });
+
+        $totalDeposited = $accounts->sum('amount_deposited');
+        $totalWithdrwan = $accounts->sum('amount_withdrawn');
+
+        return view('admin.accounts.accounts', compact('accounts', 'totalDeposited', 'totalWithdrwan', 'availableYears', 'year'));
+    }
 
 
     public function accountCreate()
@@ -158,35 +176,12 @@ class AccountController extends Controller
         }
     }
 
-    public function accountReportSearchBydate(Request $request)
+    public function accountExport(Request $request)
     {
-        $validate = Validator::make($request->all(), [
-            'start_date' => 'required',  'end_date'  => 'required'
-        ]);
-        if($validate->fails())
-        {
-            return redirect()->back()->withErrors($validate)->withInput();
-        }else{
+        $year = $request->input('year'); 
 
-            $accounts = Account::all()->map(function($item){
-                $item->amount_deposited = preg_match('/[\d,]+\.\d+/', $item->amount_deposited, $matchesDeposited) ? floatval(str_replace(',', '', $matchesDeposited[0])) : 0;
-        
-                $item->amount_withdrawn = preg_match('/[\d,]+\.\d+/', $item->amount_withdrawn, $matchedWithdrawn) ? floatval(str_replace(',', '', $matchedWithdrawn[0])) : 0;
-        
-                return $item;
-            });
-        
-            $totalDeposited = $accounts->sum('amount_deposited');
-            $totalWithdrwan = $accounts->sum('amount_withdrawn');
+        $fileName = 'account_' . $year . '.xlsx';
 
-            $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
-            $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
-    
-            $accounts = Account::whereDate('date', '>=', $startDate)
-                                ->whereDate('date', '<=', $endDate)
-                                ->get();
-
-            return view('admin.accounts.accounts', compact('accounts', 'totalDeposited', 'totalWithdrwan'));
-        }
+        return Excel::download(new AccountExport($year), $fileName);
     }
 }

@@ -61,55 +61,13 @@
                                         class="btn bg_button padding_y text-white rounded f-1 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                         <i class="fa fa-plus"></i>&nbsp; Create
                                     </a>
-                                    <a href="#"
+                                    <button id="indemnityExport" 
                                         class="btn padding_y border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
                                         style="border-color: #0F1316 !important;">
                                         <i class="fa fa-file-export"></i> Export
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-                            {{-- <div class="s002"> --}}
-                            <form action="{{ route('indemnitysearchByDate') }}" method="GET">
-                                @csrf
-                                <div class="d-flex">
-                                    <div class=" ">
-                                        <div class="form-group">
-                                            {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
-
-                                            <input type="text" name="start_date"
-                                                placeholder="Select Start Date"
-                                                class="form-control cursor placeholder bg-white rounded text-black-50 datepicker"
-                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);;"
-                                                value="{{ request('start_date') }}">
-                                            @if ($errors->has('start_date'))
-                                                <span class="text-danger">{{ $errors->first('start_date') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="container  d-flex gap-4 ">
-                                        <div class=" form-group">
-                                            {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
-                                            <!-- Input with Bootstrap styling -->
-                                            <input type="text"
-                                                class="form-control cursor placeholder bg-white text-black-50 rounded datepicker"
-                                                name="end_date" placeholder="Select End Date"
-                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);;"
-                                                value="{{ request('end_date') }}">
-                                            @if ($errors->has('end_date'))
-                                                <span class="text-danger">{{ $errors->first('end_date') }}</span>
-                                            @endif
-
-                                        </div>
-                                        <div class="form-group" style="margin-top: ;">
-                                            <button class="btn-search padding_y btn bg_button text-white bg-gray-100 "
-                                                type="submit">Search </button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </form>
                         </div>
                     </div>
                     <div class="container mx-1">
@@ -126,6 +84,20 @@
                                     <span class="text-danger">{{ $errors->first('file') }}</span>
                                 @endif
                             </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 mt-4">
+                        <form>
+                            <select name="year" onchange="this.form.submit()" id="" class="form-control">
+                                <option value="" selected>All</option>
+                                @foreach ($availableYears as $availableYear)
+                                    @if ($availableYear)
+                                        <option value="{{ $availableYear }}"
+                                            {{ (string) $availableYear === (string) $year ? 'selected' : '' }}>
+                                            {{ $availableYear }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </form>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-1">
@@ -163,51 +135,52 @@
                                 </thead>
                                 <tbody>
                                     {{-- @dd($expenses) --}}
-                                    @if (count($indemnity) > 0) 
-                                    @foreach ($indemnity as $index => $item)
-                                    <tr>
-                                        <td class="text-center" style="border-radius: 0 !important;">
-                                            {{ $index+1 }}
-                                        </td>
-                                        <td class="text-center" style="border-radius: 0 !important;">
-                                            {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}
-                                        </td>
-                                        <td class="text-center" style="border-radius: 0 !important;">
-                                            {{ $item->cheque_number_receipt_number }}
-                                        </td>
-                                        <td class="text-center" style="border-radius: 0 !important;">
-                                            {{ $item->beneficiary }}
-                                        </td>
+                                    @if (count($indemnity) > 0)
+                                        @foreach ($indemnity as $index => $item)
+                                            <tr>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $index + 1 }}
+                                                </td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}
+                                                </td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $item->cheque_number_receipt_number }}
+                                                </td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $item->beneficiary }}
+                                                </td>
 
-                                        <td class="text-center" style="border-radius: 0 !important;">
-                                            {{ $item->project_name }}
-                                        </td>
-                                        <td class="text-center" style="border-radius: 0 !important;">
-                                            {{ $item->amount_deposited }}
-                                        </td>
-                                        <td class="text-center" style="border-radius: 0 !important;">
-                                            {{ $item->amount_withdrawn }}
-                                        </td>
-                                        <td class="text-center" style="border-radius: 0 !important;">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon" data-toggle="dropdown"
-                                                    aria-expanded="false"><img
-                                                        src="{{ asset('assets/admin/img/icon/action.png') }}"
-                                                        alt=""></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('indemnity&leave/view', $item->id) }}"><i
-                                                            class="fa fa-eye m-r-5"></i> View</a>
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('indemnity&leave/edit', $item->id) }}"><i
-                                                            class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="{{ route('indemnity&leave/delete', $item->id) }}"><i
-                                                            class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $item->project_name }}
+                                                </td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $item->amount_deposited }}
+                                                </td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    {{ $item->amount_withdrawn }}
+                                                </td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon" data-toggle="dropdown"
+                                                            aria-expanded="false"><img
+                                                                src="{{ asset('assets/admin/img/icon/action.png') }}"
+                                                                alt=""></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('indemnity&leave/view', $item->id) }}"><i
+                                                                    class="fa fa-eye m-r-5"></i> View</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('indemnity&leave/edit', $item->id) }}"><i
+                                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('indemnity&leave/delete', $item->id) }}"><i
+                                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     @endif
                                 </tbody>
                                 <tfoot>
@@ -252,21 +225,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                                                ============================================ -->
+                                                                                    ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                                    ============================================ -->
+                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                                    ============================================ -->
+                                                                                        ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                                ============================================ -->
+                                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -295,17 +268,34 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-       $(document).ready(function(){
-        $('.datepicker').datepicker({
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'dd/mm/yy'
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
         });
-       });
     </script>
     <script>
-        setTimeout(function(){
+        setTimeout(function() {
             document.getElementById('successAlert').style.display = 'none';
         }, 3000);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const exptBtn = document.getElementById('indemnityExport');
+            const yearSelect = document.querySelector("select[name='year']");
+
+            exptBtn.addEventListener('click', function(){
+                const year = yearSelect.value;
+                let exportUrl =`{{ route('indemnity/export') }}`;
+               if(year)
+               {
+                exportUrl += `?year=${year}`;
+               } 
+               window.location.href = exportUrl;
+            });
+            });
     </script>
 @endsection

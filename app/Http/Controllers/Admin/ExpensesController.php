@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ExpensesImport;
+use App\Exports\PettyCashExport;
 use App\Exports\MiscellaneousExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -143,16 +144,127 @@ class ExpensesController extends Controller
 
     // ===================    Petty Cash ==================== ////
 
-    public function pettyCash()
+    public function pettyCash(Request $request)
     {
-        $expenses = PettyCash::all();
-        // return $expenses;
-        return view('admin.pettyCash.pettyCash', compact('expenses'));
+        $currentYear = now()->year;
+        $year = $request->input('year');
+        // dd($year);
+        $availableYears = PettyCash::selectRaw('YEAR(date) as year')
+                                    ->groupBy('year')
+                                    ->orderBy('year', 'desc')
+                                    ->get()
+                                    ->pluck('year');
+
+        if (!empty($year)) {
+            $pettyCash = PettyCash::whereYear('date', $year)->get();
+        } else {
+            $pettyCash = PettyCash::whereYear('date', "<=", $currentYear)->orderBy('date', 'desc')->get();
+        }
+
+        return view('admin.pettyCash.pettyCash', compact('pettyCash', 'year', 'availableYears'));
     }
+
+
 
     public function pettyCashCreateForm()
     {
         return view('admin.pettyCash.pettyCash-create');
+    }
+
+    public function pettyCashPost(Request $request)
+    {
+
+        $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+
+        $pettyCash = new PettyCash();
+        $pettyCash->date = $date; 
+        $pettyCash->project_id = $request->project_id;
+        $pettyCash->cheque_number_receipt_number = $request->cheque_number_receipt_number;
+        $pettyCash->description = $request->description;
+        $pettyCash->beneficiary = $request->beneficiary;
+        $pettyCash->amount_deposited = $request->amount_deposited;
+        $pettyCash->amount_withdrawn = $request->amount_withdrawn;
+        $pettyCash->project_name = $request->project_name;
+        $pettyCash->total_in_account = $request->total_in_account;
+        $pettyCash->save();
+
+        session()->flash('success', 'PettyCash Created Successfully.');
+        return redirect()->route('pettyCash');
+
+    }
+
+    public function pettyCashView($id)
+    {
+       $pettyCash = PettyCash::find($id);
+       return view('admin.pettyCash.pettyCash-view', compact('pettyCash'));
+    }
+
+    public function pettyCashEdit($id)
+    {
+       $pettyCash = PettyCash::with('projects')->find($id);
+       return view('admin.pettyCash.pettyCash-edit', compact('pettyCash'));
+    }
+
+    public function pettyCashUpdate(Request $request, $id)
+    {
+        $pettyCash = PettyCash::find($id);
+        if($pettyCash)
+        {
+            $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+            $pettyCash->update([
+                'project_id'  => $request->project_id,
+                'date'  => $date,
+                'cheque_number_receipt_number'  => $request->cheque_number_receipt_number,
+                'description'  => $request->description,
+                'beneficiary'  => $request->beneficiary,
+                'amount_deposited'  => $request->amount_deposited,
+                'amount_withdrawn'  => $request->amount_withdrawn,
+                'project_name'  => $request->project_name,
+                'total_in_account'  => $request->total_in_account,
+            ]);
+
+            session()->flash('success', 'PettyCash Updated Successfully');
+            return redirect()->route('pettyCash');
+        }
+    }
+
+    public function pettyCashDelete($id)
+    {
+        $exepenses = PettyCash::find($id);
+
+        if($exepenses)
+        {
+            $exepenses->delete();
+        }
+        session()->flash('success', 'PettyCash Deleted Successfully.');
+        return redirect()->back();
+    }
+
+    public function pettyCashImport(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'file'   => 'required'
+        ]);
+
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+
+        $file = $request->file('file');
+        // dd($file);
+        Excel::import(new ExpensesImport, $file);
+
+        return back()->with('success', 'Imported successfully.');
+    }
+
+    public function pettyCashExport(Request $request)
+    {
+        $year = $request->input('year'); 
+
+        $fileName = 'pettycash_' . $year . '.xlsx';
+
+        return Excel::download(new PettyCashExport($year), $fileName);
     }
 
     public function projectDataGet($id)
@@ -218,18 +330,6 @@ class ExpensesController extends Controller
         }
     }
 
-    public function expensesView($id)
-    {
-       $expenses = PettyCash::find($id);
-       return view('admin.pettyCash.pettyCash-view', compact('expenses'));
-    }
-
-    public function expensesEdit($id)
-    {
-       $expenses = Expense::with('expenseItem')->findOrFail($id);
-    //    return $expenses;
-       return view('admin.pettyCash.expenses-edit', compact('expenses'));
-    }
 
     public function expensesUpdate(Request $request, $id)
     {
@@ -281,33 +381,7 @@ class ExpensesController extends Controller
         }
     }
 
-    public function searchFilter(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'start_date' => 'required|date_format:d/m/Y',
-            'end_date' => 'required|date_format:d/m/Y',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $startDate = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
-        $endDate = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
-
-        $expenses = PettyCash::whereDate('date', '>=', $startDate)->whereDate('date', '<=', $endDate)->get();
-
-        return view('admin.pettyCash.pettyCash', compact('expenses'));
-
-
-
-        $miscell = Miscellaneous::whereBetween('created_at', [$startDate, $endDate])->get();
-        if($miscell)
-        {
-            return view('admin.miscellaneous.miscellaneous', compact('miscell'));
-        }
-
-        }
+    
 
     public function searchMiscellaneous(Request $request)
     {
@@ -331,60 +405,6 @@ class ExpensesController extends Controller
         }
     }
 
-    public function expensesDelete($id)
-    {
-        $exepenses = Expense::find($id);
-
-        if($exepenses)
-        {
-            $exepenses->expenseItem()->delete();
-            $exepenses->delete();
-        }
-        session()->flash('success', 'Expenses Deleted Successfully.');
-        return redirect()->back();
-    }
-
-    public function pettyCashImport(Request $request)
-    {
-        $validate = Validator::make($request->all(), [
-            'file'   => 'required'
-        ]);
-
-        if($validate->fails())
-        {
-            return redirect()->back()->withErrors($validate)->withInput();
-        }
-
-        $file = $request->file('file');
-        // dd($file);
-        Excel::import(new ExpensesImport, $file);
-
-        return back()->with('success', 'Imported successfully.');
-    }
-
-    public function pettyCashPost(Request $request)
-    {
-
-        $date = DateTime::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
-
-        $pettyCash = new PettyCash();
-        $pettyCash->date = $date; 
-        $pettyCash->project_id = $request->project_id;
-        $pettyCash->cheque_number_receipt_number = $request->cheque_number_receipt_number;
-        $pettyCash->description = $request->description;
-        $pettyCash->beneficiary = $request->beneficiary;
-        $pettyCash->amount_deposited = $request->amount_deposited;
-        $pettyCash->amount_withdrawn = $request->amount_withdrawn;
-        $pettyCash->project_name = $request->project_name;
-        // $pettyCash->total_amount_deposited = $request->total_amount_deposited;
-        // $pettyCash->total_amount_withdrawn = $request->total_amount_withdrawn;
-        $pettyCash->total_in_account = $request->total_in_account;
-        $pettyCash->save();
-
-        session()->flash('success', 'Data Submitted Successfully.');
-        return redirect()->route('pettyCash');
-
-    }
 
     public function miscellaneousExport()
     {
@@ -559,26 +579,4 @@ class ExpensesController extends Controller
     }
 
     // Payroll Controller End
-
-     // Others Controller Start
-     public function others()
-     {
-         return view('admin.others.others');
-     }
-
-     public function othersCreate()
-    {
-        return view('admin.others.others-create');
-    }
-
-    public function othersView()
-     {
-         return view('admin.others.others-view');
-     }
-
-    public function othersEdit()
-    {
-        return view('admin.others.others-edit');
-    }
-     // Others Controller End
 }

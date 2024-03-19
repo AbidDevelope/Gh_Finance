@@ -15,7 +15,7 @@ class RentController extends Controller
     
     public function rent()
     {
-        $rents = Rent::all();
+        $rents = Rent::orderBy('id', 'desc')->get();
         return view('admin.rent.rent', compact('rents'));
     }
 
@@ -175,14 +175,10 @@ class RentController extends Controller
                 }
             }
 
-            $expense = Expense::where('expense_type_id', $id)->first();
-            if($expense)
-            {
-                $expense->update([
-                'grandtotal' => $request->grandtotal,
-               ]);
-                
-            }
+            $expense = Expense::where('expense_type', 'rent')->where('expense_type_id', $id)->update([
+                'grandtotal'  => $request->grandtotal,
+            ]);
+           
         }
 
         session()->flash('success', 'Rent Updated Successfully');
@@ -196,8 +192,10 @@ class RentController extends Controller
       if($rents)
       {
         $rents->rentItems()->delete();
-        $rents->rentPayment()->delete();
-        $rents->expenses()->delete();
+        
+        $rents = ExpensePayment::where('expense_type', 'rent')->where('expense_type_id', $id)->delete();
+        $rents = Expense::where('expense_type', 'rent')->where('expense_type_id', $id)->delete();
+
         $rents->delete();
       }
 

@@ -22,9 +22,11 @@
         background-color: var(--own-black) !important;
         color: white;
     }
+
     .pb {
         margin-bottom: -50px !important;
     }
+
     .placeholder::placeholder {
         font-size: 15px !important;
     }
@@ -55,72 +57,47 @@
                                         class="btn bg_button padding_y text-white rounded f-1 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
                                         <i class="fa fa-plus"></i>&nbsp; Create
                                     </a>
-                                    <a href="#"
+                                    <button id="exportButton"
                                         class="btn padding_y border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
                                         style="border-color: #0F1316 !important;">
                                         <i class="fa fa-file-export"></i> Export
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-                            {{-- <div class="s002"> --}}
-                            <form action="{{ route('search/filter') }}" method="GET">
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4 pe-2">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <form>
+                                <select name="year" onchange="this.form.submit()" class="form-control" id="">
+                                    <option value="" selected>All</option>
+                                    @foreach ($availableYears as $availableYear)
+                                        @if ($availableYear)
+                                            <option value="{{ $availableYear }}"
+                                                {{ (string) $availableYear === (string) $year ? 'selected' : '' }}>
+                                                {{ $availableYear }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </form>
+                        </div>
+                        <div class=" mx-1">
+                            <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="d-flex">
-                                    <div class=" ">
-                                        <div class="form-group">
-                                            {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
-
-                                            <input type="text" name="start_date" id="start_date"
-                                                placeholder="Select Start Date"
-                                                class="form-control cursor placeholder datepicker bg-white rounded text-black-50"
-                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);;"
-                                                value="{{ request('start_date') }}">
-                                            @if ($errors->has('start_date'))
-                                                <span class="text-danger">{{ $errors->first('start_date') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="container  d-flex gap-4 ">
-                                        <div class=" form-group">
-                                            {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
-                                            <!-- Input with Bootstrap styling -->
-                                            <input type="text" id="end_date"
-                                                class="form-control cursor placeholder bg-white datepicker text-black-50 rounded"
-                                                name="end_date" placeholder="Select End Date"
-                                                style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);;"
-                                                value="{{ request('end_date') }}">
-                                            @if ($errors->has('end_date'))
-                                                <span class="text-danger">{{ $errors->first('end_date') }}</span>
-                                            @endif
-
-                                        </div>
-                                        <div class="form-group" style="margin-top: ;">
-                                            <button class="btn-search padding_y btn bg_button text-white bg-gray-100 "
-                                                type="submit">Search </button>
-                                        </div>
-                                    </div>
-
+                                <div class="d-flex gap-4">
+                                    <input
+                                        style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
+                                        type ="file" name="file" class="form-control bg-white rounded text-black-50">
+                                    <button type="submit"
+                                        style=" !important; background-color:var(--own-black) !important; color:white !important;"
+                                        class="btn padding_y rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
+                                    @if ($errors->has('file'))
+                                        <span class="text-danger">{{ $errors->first('file') }}</span>
+                                    @endif
                                 </div>
                             </form>
                         </div>
-                    </div>
-                    <div class="container mx-1">
-                        <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="d-flex gap-4">
-                                <input
-                                    style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
-                                    type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                <button type="submit"
-                                    style=" !important; background-color:var(--own-black) !important; color:white !important;"
-                                    class="btn padding_y rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
-                                @if ($errors->has('file'))
-                                    <span class="text-danger">{{ $errors->first('file') }}</span>
-                                @endif
-                            </div>
-                        </form>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-1">
                         @if (Session::has('success'))
@@ -142,21 +119,28 @@
                                         <th class="text-center"
                                             style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Date</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">First Name</th>
+                                        <th class="text-center" style="border-radius: 0 !important;">Last Name</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Project Name</th>
                                         <th>Beneficiary</th>
                                         <th class="text-center" style="border-radius: 0 !important;">Total Value</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Actions</th>
+                                        <th class="text-center"
+                                            style="width: 70px !important; border-radius: 0 !important;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @dd($expenses) --}}
-                                    @if (count($expenses) > 0)
-                                        @foreach ($expenses as $index => $item)
+
+                                    @if (count($pettyCash) > 0)
+                                        @foreach ($pettyCash as $index => $item)
                                             <tr>
                                                 <td class="text-center" style="border-radius: 0 !important;">
                                                     {{ $index + 1 }}</td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
                                                     {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    A</td>
+                                                <td class="text-center" style="border-radius: 0 !important;">
+                                                    BC </td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
                                                     {{ $item->project_name }}</td>
                                                 <td>{{ $item->beneficiary }}</td>
@@ -170,13 +154,13 @@
                                                                 alt=""></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item"
-                                                                href="{{ route('expenses/view', $item->id) }}"><i
+                                                                href="{{ route('pettyCash/view', $item->id) }}"><i
                                                                     class="fa fa-eye m-r-5"></i> View</a>
                                                             <a class="dropdown-item"
-                                                                href="{{ route('expenses/edit', $item->id) }}"><i
+                                                                href="{{ route('pettyCash/edit', $item->id) }}"><i
                                                                     class="fa fa-pencil m-r-5"></i> Edit</a>
                                                             <a class="dropdown-item"
-                                                                href="{{ route('expenses/delete', $item->id) }}"><i
+                                                                href="{{ route('pettyCash/delete', $item->id) }}"><i
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>
@@ -200,21 +184,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                                        ============================================ -->
+                                                                                            ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                            ============================================ -->
+                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                            ============================================ -->
+                                                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                                        ============================================ -->
+                                                                                            ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -231,9 +215,7 @@
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
-    <script>
-        flatpickr(".datepicker", {});
-    </script>
+
     <script>
         const choices = new Choices('[data-trigger]', {
             searchEnabled: false,
@@ -246,17 +228,32 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     {{-- date Format --}}
     <script>
-        $(document).ready(function(){
-         $('.datepicker').datepicker({
-             changeMonth: true,
-             changeYear: true,
-             dateFormat: 'dd/mm/yy'
-         });
+        document.addEventListener('DOMContentLoaded', function() {
+            const exportBtn = document.getElementById('exportButton');
+            const yearSelect = document.querySelector('select[name="year"]');
+
+            exportBtn.addEventListener('click', function() {
+                const year = yearSelect.value;
+                let exportUrl = `{{ route('pettyCash/export') }}`;
+                if (year) {
+                    exportUrl += `?year=${year}`;
+                }
+                window.location.href = exportUrl;
+            });
         });
-     </script>
-     <script>
-         setTimeout(function(){
-             document.getElementById('successAlert').style.display = 'none';
-         }, 5000);
-     </script>
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+    <script>
+        setTimeout(function() {
+            document.getElementById('successAlert').style.display = 'none';
+        }, 3000);
+    </script>
 @endsection

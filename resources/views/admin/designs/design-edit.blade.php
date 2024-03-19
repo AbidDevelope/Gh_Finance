@@ -75,7 +75,18 @@
                                                 <label>Start Date</label>
                                                 <input type="text" name="start_date" class="form-control datepicker"
                                                     placeholder="DD/MM/YYYY"
-                                                    value="{{ \Carbon\Carbon::parse($projects->start_date)->format('d/m/Y') }}">
+                                                    value="{{ \Carbon\Carbon::parse($projects->date)->format('d/m/Y') }}">
+                                                @error('start_date')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Expected Completion Date</label>
+                                                <input type="text" name="start_date" class="form-control datepicker"
+                                                    placeholder="DD/MM/YYYY"
+                                                    value="{{ \Carbon\Carbon::parse($projects->date)->format('d/m/Y') }}">
                                                 @error('start_date')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror

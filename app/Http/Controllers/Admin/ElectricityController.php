@@ -14,7 +14,7 @@ class ElectricityController extends Controller
 {
     public function electricity()
     {
-        $electricity = Electricity::all();
+        $electricity = Electricity::orderBy('id', 'desc')->get();
         return view('admin.electricity.electricity', compact('electricity'));
     }
 
@@ -104,9 +104,10 @@ class ElectricityController extends Controller
       return redirect()->route('electricity');
    }
 
-   public function electricityView()
+   public function electricityView($id)
     {
-        return view('admin.electricity.electricity-view');
+        $electricity = Electricity::find($id);
+        return view('admin.electricity.electricity-view', compact('electricity'));
     }
 
    public function electricityEdit($id)
@@ -173,19 +174,56 @@ class ElectricityController extends Controller
                 }
             }
 
-            // $expense = Expense::where('expense_type_id', $id)->get();
-            // if($expense)
-            // {
-            //     $expense->update([
-            //     'grandtotal' => $request->grandtotal,
-            //    ]);
-                
-            // }
+            Expense::where('expense_type', 'electricity')->where('expense_type_id', $id)->update([
+                'grandtotal' => $request->grandtotal,
+            ]);
+            
         }
 
         session()->flash('success', 'Data Updated Successfully');
         return redirect()->route('electricity');
       }
    }
+
+   public function electricityDelete($id)
+   {
+      $electricity = Electricity::find($id);
+      if($electricity)
+      {
+        $electricity->electricityItems()->delete();
+
+        $payments = ExpensePayment::where('expense_type', 'electricity')->where('expense_type_id', $id)->delete();
+        $expense = Expense::where('expense_type', 'electricity')->where('expense_type_id', $id)->delete();
+
+        $electricity->delete();
+      }
+
+      session()->flash('success', 'Data Deleted Successfully');
+      return redirect()->back();
+   }
+
+   public function fileUpload(Request $request)
+    {
+       $validate = Validator::make($request->all(),[
+           'file' =>  'file|mimes:jpg,jpeg,png,gif|max:1024',
+        ]);
+        
+        if($validate->fails())
+        {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+        else
+        {
+        return "Progress";
+            // dd($request->all());
+            if ($request->hasFile('file')) {
+                $file = $request->file('file');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $path = $file->move(public_path('assets/admin/upload/electricity', $filename));
+    
+                return back()->with('success', 'file uploaded successfully');
+            }
+        }
+    }
     
 }

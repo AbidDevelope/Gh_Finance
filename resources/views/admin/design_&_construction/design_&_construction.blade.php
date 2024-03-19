@@ -111,13 +111,15 @@
                                     <thead>
                                         <tr role="row">
                                             <th style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
-                                            <th style="border-radius: 0 !important;">Project Id</th>
+                                            {{-- <th style="border-radius: 0 !important;">Project Id</th> --}}
                                             <th style="border-radius: 0 !important;">Date</th>
+                                            <th style="border-radius: 0 !important;">First Name</th>
+                                            <th style="border-radius: 0 !important;">Last Name</th>
                                             <th style="border-radius: 0 !important;">Project Type</th>
                                             <th style="border-radius: 0 !important;">Project Name</th>
                                             <th style="border-radius: 0 !important;">Mobile</th>
                                             <th style="border-radius: 0 !important;">Project value</th>
-                                            <th style="border-radius: 0 !important;" class="text-right">Actions</th>
+                                            <th style="width: 50px !important;border-radius: 0 !important;" class="text-right">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -125,8 +127,10 @@
                                             @foreach ($projects as $index => $project)
                                                 <tr>
                                                     <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
-                                                    <td style="border-radius: 0 !important;">{{ $project->id }}</td>
+                                                    {{-- <td style="border-radius: 0 !important;">{{ $project->id }}</td> --}}
                                                     <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->start_date)->format('d/m/Y') }}</td>
+                                                    <td style="border-radius: 0 !important;">A</td>
+                                                    <td style="border-radius: 0 !important;">BC</td>
                                                     <td style="border-radius: 0 !important;">{{ $project->project_type }}</td>
                                                     <td style="border-radius: 0 !important;">{{ $project->project_name }}</td>
                                                     <td style="border-radius: 0 !important;">{{ $project->project_mobile }}</td>

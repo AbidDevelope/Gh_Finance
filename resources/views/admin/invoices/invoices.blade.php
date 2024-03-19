@@ -117,10 +117,13 @@
                                 <thead>
                                     <tr role="row">
                                         <th style="width: 70px !important;border-radius: 0 !important;">Sr. No.</th>
-                                        <th style="border-radius: 0 !important;">Project ID</th>
+                                        {{-- <th style="border-radius: 0 !important;">Project ID</th> --}}
+                                        <th style="border-radius: 0 !important;">First Name</th>
+                                            <th style="border-radius: 0 !important;">Last Name</th>
+                                        <th style="border-radius: 0 !important;">Project Name</th>
                                         <th style="border-radius: 0 !important;">Invoice Number</th>
                                         <th style="border-radius: 0 !important;">Invoice Date</th>
-                                        <th style="border-radius: 0 !important;">Action</th>
+                                        <th style="width: 70px !important;border-radius: 0 !important;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -128,6 +131,8 @@
                                         @foreach ($invoices as $index => $invoice)
                                             <tr>
                                                 <td style="border-radius: 0 !important;">{{ $index + 1 }}</td>
+                                                <td style="border-radius: 0 !important;">A</td>
+                                                <td style="border-radius: 0 !important;">BC</td>
                                                 <td style="border-radius: 0 !important;">{{ $invoice->project_id }}</td>
                                                 <td style="border-radius: 0 !important;">{{ $invoice->invoice_number }}</td>
                                                 <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($invoice->invoice_date)->format('d/m/Y') }}</td>

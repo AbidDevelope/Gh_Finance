@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\RentController;
 use App\Http\Controllers\Admin\ElectricityController;
+use App\Http\Controllers\Admin\ReimbursementController;
 
 
 
@@ -73,10 +74,10 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('search/pettyCash', 'searchPettyCash')->name('search/pettyCash');
     Route::get('pettyCash/create', 'pettyCashCreateForm')->name('pettyCash/create');
     Route::post('pettyCash/create', 'pettyCashPost')->name('pettyCash/create');
-    Route::get('expenses/view/{id}', 'expensesView')->name('expenses/view');
-    Route::get('expenses/edit/{id}', 'expensesEdit')->name('expenses/edit');
-    Route::post('expenses/update/{id}', 'expensesUpdate')->name('expenses/update');
-    Route::get('expenses/delete/{id}', 'expensesDelete')->name('expenses/delete');
+    Route::get('pettyCash/view/{id}', 'pettyCashView')->name('pettyCash/view');
+    Route::get('pettyCash/edit/{id}', 'pettyCashEdit')->name('pettyCash/edit');
+    Route::post('pettyCash/update/{id}', 'pettyCashUpdate')->name('pettyCash/update');
+    Route::get('pettyCash/delete/{id}', 'pettyCashDelete')->name('pettyCash/delete');
     Route::get('expenses/change/status/{id}', 'expensesChangeStatus')->name('expenses/change/status');
     Route::get('search/filter', 'searchFilter')->name('search/filter');
     Route::get('miscellaneous', 'miscellaneous')->name('miscellaneous');
@@ -89,8 +90,7 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('search/miscellaneous', 'searchMiscellaneous')->name('search/miscellaneous');
     Route::get('miscellaneous/export', 'miscellaneousExport')->name('miscellaneous/export');
     Route::post('export-excel-csv', 'pettyCashImport')->name('export-excel-csv');
-    // Petty cash
-    // Route::post('pettyCash/create', 'pettyCashCreate')->name('pettyCash/create');
+    Route::get('pettyCash/export', 'pettyCashExport')->name('pettyCash/export');
 
     // Payroll Route Start
     Route::get('payroll', 'payroll')->name('payroll');
@@ -100,11 +100,6 @@ Route::controller(ExpensesController::class)->prefix('admin')->middleware(['admi
     Route::get('payroll/edit/{id}', 'payrollEdit')->name('payroll/edit');
     Route::post('payroll/update/{id}', 'payrollUpdate')->name('payroll/update');
     Route::get('payroll/delete/{id}', 'payrollDelete')->name('payroll/delete');
-
-    Route::get('others', 'others')->name('others');
-    Route::get('others/create', 'othersCreate')->name('others/create');
-    Route::get('others/view', 'othersView')->name('others/view');
-    Route::get('others/edit', 'othersEdit')->name('others/edit');
 });
 Route::get('/project-data/{id}',[ExpensesController::class, 'projectDataGet'])->name('project.data');
 
@@ -144,6 +139,7 @@ Route::controller(HRController::class)->prefix('admin')->middleware('adminAuthen
     Route::post('indemnity&leave/update/{id}', 'indemnityAndleaveUpdate')->name('indemnity&leave/update');
     Route::get('indemnity&leave/delete/{id}', 'indemnityLeaveDelete')->name('indemnity&leave/delete');
     Route::post('indemnity/import', 'indemnityImport')->name('indemnity/import');
+    Route::get('indemnity/export', 'indemnityExport')->name('indemnity/export');
     Route::get('indemnitysearchByDate', 'indemnityFilter')->name('indemnitysearchByDate');
 });
 
@@ -171,6 +167,8 @@ Route::controller(ProjectController::class)->prefix('admin')->middleware('adminA
     Route::get('projects/edit/{id}', 'projectsEdit')->name('projects/edit');
     Route::post('projects/update/{id}', 'projectsUpdate')->name('projects/update');
     Route::get('projects/delete/{id}', 'projectsDelete')->name('projects/delete');
+
+    Route::get('clients', 'clients')->name('clients');
 });
 
 
@@ -193,6 +191,7 @@ Route::controller(AccountController::class)->prefix('admin')->middleware('adminA
     Route::post('accounts/update/{id}', 'accountUpdate')->name('accounts/update');
     Route::get('accounts/delete/{id}', 'accountDelete')->name('accounts/delete');
     Route::post('accounts/import', 'accountsImport')->name('accounts/import');
+    Route::get('account/export', 'accountExport')->name('account/export');
     Route::get('accountReportsearch', 'accountReportSearchBydate')->name('accountReportsearch');
 });
 
@@ -201,7 +200,20 @@ Route::controller(ElectricityController::class)->prefix('admin')->middleware(['a
     Route::get('electricity', 'electricity')->name('electricity');
     Route::get('electricity/create', 'electricityCreate')->name('electricity/create');
     Route::post('electricity/create', 'electricityCreatePost')->name('electricity/create');
-    Route::get('electricity/view', 'electricityView')->name('electricity/view');
+    Route::get('electricity/view/{id}', 'electricityView')->name('electricity/view');
     Route::get('electricity/edit/{id}', 'electricityEdit')->name('electricity/edit');
     Route::post('electricity/update/{id}', 'electricityUpdate')->name('electricity/update');
+    Route::get('electricity/delete/{id}', 'electricityDelete')->name('electricity/delete');
+    Route::post('file/upload', 'fileUpload')->name('file/upload');
+});
+
+// ================================ ReimbursementController ============================= //
+Route::controller(ReimbursementController::class)->prefix('admin')->middleware(['adminAuthentication'])->group(function(){
+    Route::get('reimbursement', 'reimbursement')->name('reimbursement');
+    Route::get('reimbursement/create', 'reimbursementCreate')->name('reimbursement/create');
+    Route::post('reimbursement/create', 'reimbursementCreatePost')->name('reimbursement/create');
+    Route::get('reimbursement/view/{id}', 'reimbursementView')->name('reimbursement/view');
+    Route::get('reimbursement/edit/{id}', 'reimbursementEdit')->name('reimbursement/edit');
+    Route::post('reimbursement/update/{id}', 'reimbursementUpdate')->name('reimbursement/update');
+    Route::get('reimbursement/delete/{id}', 'reimbursementDelete')->name('reimbursement/delete');
 });

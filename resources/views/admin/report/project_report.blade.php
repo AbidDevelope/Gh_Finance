@@ -141,6 +141,8 @@
                                         <tr role="row">
                                             <th style="width: 70px !important;  border-radius: 0 !important;">Sr. No.</th>
                                             <th style="border-radius: 0 !important;">Date</th>
+                                            <th style="border-radius: 0 !important;">Payment Method</th>
+                                            <th style="border-radius: 0 !important;">Project ID</th>
                                             <th style="border-radius: 0 !important;">Project Type</th>
                                             <th style="border-radius: 0 !important;">Project Name</th>
                                             <th style="border-radius: 0 !important;">Project Manager</th>
@@ -156,19 +158,20 @@
                                         <tr>
                                             <td style="border-radius: 0 !important;">{{ $index+1 }}</td>
                                             <td style="border-radius: 0 !important;">{{ \Carbon\Carbon::parse($project->start_date)->format('d/m/Y') }}</td>
+                                            <td style="border-radius: 0 !important;"></td>
+                                            <td style="border-radius: 0 !important;"></td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_type }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_name }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_manager }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_value }}</td>
-                                            <td style="border-radius: 0 !important;">{{ $project->pettyCash->total_in_account ?? 'N/A' }}</td>
+                                            <td style="border-radius: 0 !important;">{{ 'N/A' }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->total_receivable ?? 'N/A' }}</td>
                                             <td style="border-radius: 0 !important;">{{ $project->project_value - $project->total_receivable  }}</td>
-                
+
                                         </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
-                                        <!-- Table footer content here -->
                                         <tr class="grand_Value">
                                             <td class="hid"
                                                 style=" border-right-color: transparent; border-radius: 0 !important;">1
@@ -178,23 +181,29 @@
                                                 02/2024</td>
                                             <td class="hid"
                                                 style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
+                                                </td>
+                                            <td class="hid"
+                                                style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
+                                                </td>
+                                            <td class="hid"
+                                                style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
                                                 design</td>
                                             <td class="hid"
                                                 style="border-left-color: transparent; border-right-color: transparent;border-radius: 0 !important;">
                                                 Kuwait metro</td>
                                             <td class=""
-                                                style="font-weight: bold; border-left-color: transparent;border-radius: 0 !important;">
+                                                style="text-nowrap font-weight: bold; border-left-color: transparent;border-radius: 0 !important;">
                                                 Grand
                                                 Total</td>
-                                            <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
+                                            <td class="" style="font-weight: bold; border-radius: 0 !important;">
                                                 {{ $formattedValue }} KWD
                                             </td>
-                                            <td class="text-nowrap" style="font-weight: bold; border-radius: 0 !important;">
+                                            <td class="" style="font-weight: bold; border-radius: 0 !important;">
                                                 {{ $totalExpenseValueFormatted }} KWD</td>
-                                            <td class="text-nowrap"
+                                            <td class=""
                                                 style="font-weight: bold; border-radius: 0 !important;">
                                                 {{ $formattedValueReceivable }} KWD</td>
-                                            <td class="text-nowrap"
+                                            <td class=""
                                                 style="font-weight: bold; border-radius: 0 !important;">{{ $formattedValuePendingReceivable }} KWD</td>
 
                                         </tr>
@@ -237,7 +246,7 @@
     {{-- Data trigger --}}
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
-   
+
     <script>
         const choices = new Choices('[data-trigger]', {
             searchEnabled: false,
@@ -262,4 +271,21 @@
             document.getElementById('successAlert').style.display = 'none';
         }, 5000);
     </script>
+
+<script>
+    document.getElementById('project-type-select').addEventListener('change', function() {
+        var selectedProjectType = this.value.toLowerCase();
+        var rows = document.querySelectorAll('#dataTable tbody tr');
+
+        rows.forEach(function(row) {
+            var projectTypeCell = row.cells[3].textContent.toLowerCase();
+            if (selectedProjectType === '' || selectedProjectType === projectTypeCell) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 @endsection

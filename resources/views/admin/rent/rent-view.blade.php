@@ -33,7 +33,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Date:</td>
-                                                    <td class="text-right">{{ $rents->rent_date }}</td>
+                                                    <td class="text-right">{{ \Carbon\Carbon::parse($rents->rent_date)->format('d/m/Y') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Rent Others:</td>

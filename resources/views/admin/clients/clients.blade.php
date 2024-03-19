@@ -16,10 +16,6 @@
     .bg_button {
         background-color: var(--own-black) !important;
         color: white;
-
-        padding-top: 0.29rem !important;
-        padding-bottom: 0.29rem !important;
-
     }
 
     .bg_button:hover {
@@ -53,16 +49,11 @@
         <div class="header-advance-area">
             <div class="breadcome-area">
                 <div class="container-fluid">
-                    <div class="row margin_top px-4">
-
+                    <div class="row margin_top mx-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin_bottom">
                             <div class="d-flex justify-content-between ">
-                                <h4 class=" text-headings" style="color: var(--own-black)">Payroll</h4>
+                                <h4 class=""style="color: var(--own-black)">Clients</h4>
                                 <div class="">
-                                    <a href="{{ route('payroll/create') }}"
-                                        class="btn bg_button padding_y text-white rounded f-1 p- mr-3 float-left mb-2 mb-lg-0 mb-md-0">
-                                        <i class="fa fa-plus"></i>&nbsp; Create
-                                    </a>
                                     <a href="#"
                                         class="btn padding_y border rounded f-14 p- mr-3 mb-2 mb-lg-0 mb-md-0 float-left"
                                         style="border-color: #0F1316 !important;">
@@ -71,70 +62,82 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between mt-4 pe-2">
-                            <div class="">
-                                {{-- <div class="s002"> --}}
-                                <form action="#" method="GET">
-                                    @csrf
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
+                            {{-- <div class="s002"> --}}
+                            <form action="{{ route('search/filter') }}" method="GET">
+                                @csrf
+                                <div class="d-flex justify-content-between">
                                     <div class="d-flex">
                                         <div class=" ">
                                             <div class="form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
-
-                                                <input type="text" name="start_date" id="start_date"
-                                                    placeholder="Select Start Date"
-                                                    class="form-control placeholder cursor bg-white rounded text-black-50"
-                                                    style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);"
-                                                    value="{{ old('start_date') }}">
+                                                <input type="text" name="start_date"
+                                                placeholder="Select Start Date"
+                                                class="form-control placeholder bg-white rounded text-black-50 datepicker cursor"
+                                                style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ request('start_date') }}">
                                                 @if ($errors->has('start_date'))
                                                     <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="container  d-flex gap-3 ">
+                                        <div class="container  d-flex gap-4 ">
                                             <div class=" form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
                                                 <!-- Input with Bootstrap styling -->
-                                                <input type="text" id="end_date"
-                                                    class="form-control placeholder cursor bg-white text-black-50 rounded"
-                                                    name="end_date" placeholder="Select End Date"
-                                                    style="box-shadow: none; border: 1px solid var(--own-black); width: 230px; height: 35px;"
-                                                    value="{{ old('end_date') }}">
+                                                <input type="text"
+                                                    class="form-control placeholder bg-white text-black-50 rounded datepicker cursor" name="end_date"
+                                                    placeholder="Select End Date" value="{{ request('end_date') }}" style="box-shadow: none; border: 1px solid  var(--own-black); width: 230px; height: 35px;">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif
 
                                             </div>
                                             <div class="form-group" style="margin-top: ;">
-                                                <button class="btn-search btn bg_button text-white bg-gray-100 "
+                                                <button class="btn-search btn padding_y bg_button text-white bg-gray-100 "
                                                     type="submit">Search </button>
                                             </div>
+
                                         </div>
 
                                     </div>
-                                </form>
-                            </div>
-                            <div class=" mx-1">
-                                <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="d-flex gap-4">
-                                        <input
-                                            style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
-                                            type ="file" name="file" class="form-control bg-white rounded text-black-50">
-                                        <button type="submit"
-                                            style=" !important; background-color:var(--own-black) !important; color:white !important;"
-                                            class="btn padding_y rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
-                                        @if ($errors->has('file'))
-                                            <span class="text-danger">{{ $errors->first('file') }}</span>
-                                        @endif
+                                    <div>
+                                        <select class="form-control  cursor placeholder bg-white rounded text-black"
+                                            name="Project_type" id="project-type-select"
+                                            class=" form-control"style="width: 230px; height: 35px; box-shadow: none; border: 1px solid var(--own-black);">
+                                            <option class="" value="" style="" selected>Select Project Type
+                                            </option>
+                                            {{-- <option value="All">All</option> --}}
+                                            <option class=" " value="Design">Design</option>
+                                            <option value="Construction">Construction</option>
+                                            <option value="Design & Construction">Design & Construction</option>
+                                        </select>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
-
                     </div>
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    {{-- <div class="container mx-3">
+                        <form action="{{ route('file/upload') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="d-flex gap-4">
+                                <input
+                                    style="width: 230px; height: 35px;box-shadow: none;border: 1px solid var(--own-black);;"
+                                    type ="file" name="file" class="form-control bg-white rounded text-black-50">
+                                <button type="button"
+                                    style=" !important; background-color:var(--own-black) !important; color:white !important;"
+                                    class="btn  rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Upload</button>
+                                @if ($errors->has('file'))
+                                    <span class="text-danger">{{ $errors->first('file') }}</span>
+                                @endif
+                            </div>
+                        </form>
+                    </div> --}}
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div>{{$error}}</div>
+                        @endforeach
+                    @endif
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-3">
                         @if (Session::has('success'))
                             <div class="alert alert-success" id="successAlert">
                                 {{ Session::get('success') }}
@@ -146,37 +149,41 @@
                             </div>
                         @endif
                     </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4 px-4">
-                        <div class="">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4 ">
+                        <div class="mx-3">
                             <table id="dataTable">
                                 <thead>
                                     <tr role="row">
-                                        <th class="text-center"
-                                            style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Date</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Description</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Payroll</th>
-                                        <th class="text-center" style="border-radius: 0 !important;">Total Pay</th>
-                                        <th class="text-center"
-                                            style="width: 50px !important; border-radius: 0 !important;">Actions</th>
+                                        <th style="width: 70px !important; border-radius: 0 !important;">Sr. No.</th>
+                                        <th style="border-radius: 0 !important;">First Name</th>
+                                        <th style="border-radius: 0 !important;">Last Name</th>
+                                        <th style="border-radius: 0 !important;">Service Type</th>
+                                        <th style="border-radius: 0 !important;">Mobile</th>
+                                        <th style="border-radius: 0 !important;">Email</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @dd($payrollItems); --}}
-                                    @if (count($payroll) > 0)
-                                        @foreach ($payroll as $index => $item)
+
+                                    {{-- @if (count($electricity) > 0)
+                                        @foreach ($electricity as $index => $item) --}}
                                             <tr>
                                                 <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ $index + 1 }}</td>
+                                                   1</td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ \Carbon\Carbon::parse($item->payroll_date)->format('d/m/Y') }}</td>
+
+                                                </td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ $item->remarks }}</td>
+
+                                                </td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ $item->grandtotal }}</td>
+                                                  </td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
-                                                    {{ $item->total_payment }}</td>
+                                                   </td>
                                                 <td class="text-center" style="border-radius: 0 !important;">
+                                                  </td>
+
+                                                {{-- <td class="text-center" style="border-radius: 0 !important;">
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon" data-toggle="dropdown"
                                                             aria-expanded="false"><img
@@ -184,22 +191,22 @@
                                                                 alt=""></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item"
-                                                                href="{{ route('payroll/view', $item->id) }}"><i
+                                                                href="{{ route('electricity/view', $item->id) }}"><i
                                                                     class="fa fa-eye m-r-5"></i> View</a>
                                                             <a class="dropdown-item"
-                                                                href="{{ route('payroll/edit', $item->id) }}"><i
+                                                                href="{{ route('electricity/edit', $item->id) }}"><i
                                                                     class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('payroll/delete', $item->id) }}"><i
+                                                            <a class="dropdown-item" href="{{ route('electricity/delete', $item->id) }}"><i
                                                                     class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>
-                                                </td>
+                                                </td> --}}
                                             </tr>
-                                        @endforeach
-                                    @endif
+                                        {{-- @endforeach
+                                    @endif --}}
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>
@@ -213,21 +220,21 @@
     </div>
 
     <!-- metisMenu JS
-                                                            ============================================ -->
+                                                                ============================================ -->
 
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- float JS
-                                                                ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/curvedLines.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
-                                                                ============================================ -->
+                                                                    ============================================ -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <!-- main JS
-                                                            ============================================ -->
+                                                                ============================================ -->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     {{-- Data Table js code --}}
@@ -245,9 +252,6 @@
     <script src="{{ asset('assets/admin/js/extention/choices.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extention/flatpickr.js') }}"></script>
     <script>
-        flatpickr(".datepicker", {});
-    </script>
-    <script>
         const choices = new Choices('[data-trigger]', {
             searchEnabled: false,
             itemSelectText: '',
@@ -263,7 +267,7 @@
             $('.datepicker').datepicker({
                 changeMonth: true,
                 changeYear: true,
-                dateFormat: 'dd/mm/yy'
+                dateFormat: 'dd/mm/yy',
             });
         });
     </script>

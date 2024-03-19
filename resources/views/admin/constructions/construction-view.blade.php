@@ -146,6 +146,10 @@
                                                 <td>Created Date:</td>
                                                 <td class="text-right"><a href="#">{{ $projects->created_at->format('d M Y') }}</a></td>
                                             </tr>
+                                            <tr>
+                                                <td>Expected Completion Date:</td>
+                                                <td class="text-right"><a href="#">{{ $projects->created_at->format('d M Y') }}</a></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

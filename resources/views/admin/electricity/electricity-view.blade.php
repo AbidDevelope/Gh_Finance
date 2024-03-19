@@ -33,32 +33,27 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Date:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ \Carbon\Carbon::parse($electricity->electricity_date)->format('d/m/Y') }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Consumption Month:</td>
-                                                    <td class="text-right"></td>
+                                                    <td>Subtotal:</td>
+                                                    <td class="text-right">{{ $electricity->subtotal }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Consumption Unit:</td>
-                                                    <td class="text-right"></td>
+                                                    <td>Others Value:</td>
+                                                    <td class="text-right">{{ $electricity->others }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Amount:</td>
-                                                    <td class="text-right"></td>
+                                                    <td>Grand Total:</td>
+                                                    <td class="text-right">{{ $electricity->grandtotal }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Due Date:</td>
-                                                    <td class="text-right"></td>
-                                                </tr>
-                                               
-                                                <tr>
-                                                    <td>Payment Mode:</td>
-                                                    <td class="text-right"></td>
+                                                    <td>Total Payment:</td>
+                                                    <td class="text-right">{{ $electricity->total_payment }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Remarks:</td>
-                                                    <td class="text-right"></td>
+                                                    <td class="text-right">{{ $electricity->remarks }}</td>
                                                 </tr>
 
                                             </tbody>
