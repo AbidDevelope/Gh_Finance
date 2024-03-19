@@ -61,48 +61,65 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-                            {{-- <div class="s002"> --}}
-                                <form action="{{ route('search/miscellaneous') }}" method="GET">
+                        <div class="d-flex justify-content-between mt-4 pe-2">
+                            <div class="">
+                                {{-- <div class="s002"> --}}
+                                <form action="#" method="GET">
                                     @csrf
                                     <div class="d-flex">
-                                        <div class="">
+                                        <div class=" ">
                                             <div class="form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select Start Date:</label> --}}
-                                                <!-- Input with Bootstrap styling -->
-                                                <input type="text" name="start_date"
+
+                                                <input type="text" name="start_date" id="start_date"
                                                     placeholder="Select Start Date"
-                                                    class="form-control placeholder datepicker cursor bg-white rounded text-black-50"
-                                                    style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);" value="{{ request('start_date') }}">
+                                                    class="form-control placeholder cursor bg-white rounded text-black-50"
+                                                    style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);"
+                                                    value="{{ old('start_date') }}">
                                                 @if ($errors->has('start_date'))
                                                     <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                                 @endif
-
                                             </div>
                                         </div>
-                                        <div class="container d-flex gap-4 ">
+                                        <div class="container  d-flex gap-3 ">
                                             <div class=" form-group">
                                                 {{-- <label for="dateInput" class="text-black-50">Select End Date:</label> --}}
-                                                <input type="text"
-                                                    class="form-control placeholder cursor bg-white text-black-50 datepicker rounded" name="end_date"
-                                                    placeholder="Select End Date" value="{{ request('end_date') }}" style="width: 230px; height: 35px;box-shadow: none; border: 1px solid  var(--own-black);">
+                                                <!-- Input with Bootstrap styling -->
+                                                <input type="text" id="end_date"
+                                                    class="form-control placeholder cursor bg-white text-black-50 rounded"
+                                                    name="end_date" placeholder="Select End Date"
+                                                    style="box-shadow: none; border: 1px solid var(--own-black); width: 230px; height: 35px;"
+                                                    value="{{ old('end_date') }}">
                                                 @if ($errors->has('end_date'))
                                                     <span class="text-danger">{{ $errors->first('end_date') }}</span>
                                                 @endif
 
                                             </div>
                                             <div class="form-group" style="margin-top: ;">
-                                                <button class="btn-search padding_y btn bg_button text-white bg-gray-100 "
-                                                    type="submit ">Search </button>
-
+                                                <button class="btn-search btn bg_button text-white bg-gray-100 "
+                                                    type="submit">Search </button>
                                             </div>
                                         </div>
-                                        <div class="container ">
 
-                                        </div>
                                     </div>
                                 </form>
-                            {{-- </div> --}}
+                            </div>
+                            <div class=" mx-1">
+                                <form action="{{ route('export-excel-csv') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="d-flex gap-4">
+                                        <input
+                                            style="width: 230px; height: 35px;box-shadow: none; border: 1px solid var(--own-black);;"
+                                            type ="file" name="file" class="form-control bg-white rounded text-black-50">
+                                        <button type="submit"
+                                            style=" !important; background-color:var(--own-black) !important; color:white !important;"
+                                            class="btn padding_y rounded f-14 mr-3 mb-2 mb-lg-0 mb-md-0 float-left">Import</button>
+                                        @if ($errors->has('file'))
+                                            <span class="text-danger">{{ $errors->first('file') }}</span>
+                                        @endif
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if (Session::has('success'))
@@ -162,7 +179,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    
+
                                         @endif
                                     </tbody>
                                 </table>
