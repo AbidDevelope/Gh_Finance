@@ -241,7 +241,7 @@
                                 </defs>
                             </svg></div>
                         <div class="col-8">
-                            <p class="m-0 dashboard-color-text textcolor">Design</p>
+                            <p class="m-0 dashboard-color-text textcolor">Designs</p>
                             <p class="m-0 dashboard-color-subcolor textcolor_1" style="font-size: 12px">{{ $totalDesign }}.000
                                 KWD</p>
                         </div>
